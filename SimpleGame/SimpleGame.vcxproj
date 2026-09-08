@@ -166,12 +166,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Prototype.h" />
+    <ClInclude Include="PostProcessing.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Prototype.cpp" />
+    <ClCompile Include="PostProcessing.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SimpleGame.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -184,6 +187,10 @@
   <ItemGroup>
     <None Include="Shaders\SolidRect.fs" />
     <None Include="Shaders\SolidRect.vs" />
+    <None Include="Shaders\Fullscreen.vs" />
+    <None Include="Shaders\BloomExtract.fs" />
+    <None Include="Shaders\GaussianBlur.fs" />
+    <None Include="Shaders\PostComposite.fs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Target Name="CopyPrototypeAssets" AfterTargets="Build">

@@ -15,6 +15,7 @@ but WITHOUT ANY WARRANTY.
 #include <chrono>
 #include <iostream>
 #include <memory>
+#include <cctype>
 
 namespace {
     std::unique_ptr<Renderer> renderer;
@@ -40,6 +41,18 @@ namespace {
     }
     void KeyDown(unsigned char key, int, int) {
         if (key == 27) { glutLeaveMainLoop(); return; }
+        if (renderer) {
+            auto& post = renderer->Post().settings;
+            switch (std::tolower(key)) {
+            case 'p': post.enabled = !post.enabled; return;
+            case 'b': post.bloom = !post.bloom; return;
+            case 'v': post.vignette = !post.vignette; return;
+            case 'n': post.edgeBlur = !post.edgeBlur; return;
+            case '[': post.exposure = (std::max)(0.25f, post.exposure-0.1f); return;
+            case ']': post.exposure = (std::min)(3.0f, post.exposure+0.1f); return;
+            case '0': post = PostProcessSettings{}; return;
+            }
+        }
         game.Key(key,true);
     }
     void KeyUp(unsigned char key, int, int) { game.Key(key,false); }
@@ -79,6 +92,7 @@ int main(int argc, char** argv) {
     std::cout << "The Last Ember / rendering prototype\n"
         << "WASD move | Space strike | E cleanse | R relic | K demo death\n"
         << "H help | G chunk grid | +/- zoom | Esc exit\n"
+        << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
         << "Session only: no disk saves, no AI dialogue service.\n";
     glutIgnoreKeyRepeat(1);
     glutDisplayFunc(Display);

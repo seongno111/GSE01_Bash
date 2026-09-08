@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Renderer.h"
+#include "ShaderProgram.h"
 #include <Windows.h>
 #include <algorithm>
 #include <cmath>
@@ -10,6 +11,9 @@
 #include <map>
 
 namespace {
+    float Linear(float value) {
+        return value <= 0.04045f ? value/12.92f : std::pow((value+0.055f)/1.055f,2.4f);
+    }
     std::string ReadShader(const char* filename) {
         wchar_t executable[32768] = {};
         const DWORD length = GetModuleFileNameW(nullptr, executable, 32768);
@@ -126,7 +130,10 @@ struct Renderer::FontCache {
 
 Renderer::Renderer(int width, int height) : m_Font(std::make_unique<FontCache>()) {
     Resize(width, height);
-    if (!LoadProgram()) return;
+    m_Program = LoadShaderProgram("SolidRect.vs", "SolidRect.fs");
+    if (!m_Program) return;
+    m_Viewport = glGetUniformLocation(m_Program, "u_Viewport");
+    m_ColorSpace = glGetUniformLocation(m_Program, "u_LinearScene");
     glGenVertexArrays(1, &m_VAO);
     glGenBuffers(1, &m_VBO);
     glBindVertexArray(m_VAO);
@@ -136,15 +143,20 @@ Renderer::Renderer(int width, int height) : m_Font(std::make_unique<FontCache>()
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
         reinterpret_cast<const void*>(sizeof(float) * 2));
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+        reinterpret_cast<const void*>(sizeof(float) * 6));
     glBindVertexArray(0);
     m_Vertices.reserve(200000);
+    if (!m_Post.Initialize(width, height))
+        std::cerr << "Post processing unavailable. Using direct rendering.\n";
 }
 Renderer::~Renderer() {
     if (m_VBO) glDeleteBuffers(1, &m_VBO);
     if (m_VAO) glDeleteVertexArrays(1, &m_VAO);
     if (m_Program) glDeleteProgram(m_Program);
 }
-GLuint Renderer::Compile(GLenum type, const std::string& source) {
+static GLuint CompileShader(GLenum type, const std::string& source) {
     if (source.empty()) return 0;
     const GLuint shader = glCreateShader(type);
     if (!shader) return 0;
@@ -162,43 +174,49 @@ GLuint Renderer::Compile(GLenum type, const std::string& source) {
     }
     return shader;
 }
-bool Renderer::LoadProgram() {
-    const GLuint vs = Compile(GL_VERTEX_SHADER, ReadShader("SolidRect.vs"));
-    const GLuint fs = Compile(GL_FRAGMENT_SHADER, ReadShader("SolidRect.fs"));
+GLuint LoadShaderProgram(const char* vertexFile, const char* fragmentFile) {
+    const GLuint vs = CompileShader(GL_VERTEX_SHADER, ReadShader(vertexFile));
+    const GLuint fs = CompileShader(GL_FRAGMENT_SHADER, ReadShader(fragmentFile));
     if (!vs || !fs) {
         if (vs) glDeleteShader(vs);
         if (fs) glDeleteShader(fs);
-        return false;
+        std::cerr << "Cannot create shader program: " << vertexFile << " / " << fragmentFile << "\n";
+        return 0;
     }
-    m_Program = glCreateProgram();
-    if (m_Program) {
-        glAttachShader(m_Program, vs);
-        glAttachShader(m_Program, fs);
-        glLinkProgram(m_Program);
+    GLuint program = glCreateProgram();
+    if (program) {
+        glAttachShader(program, vs);
+        glAttachShader(program, fs);
+        glLinkProgram(program);
     }
     glDeleteShader(vs);
     glDeleteShader(fs);
-    if (!m_Program) return false;
+    if (!program) return 0;
     GLint success = 0;
-    glGetProgramiv(m_Program, GL_LINK_STATUS, &success);
+    glGetProgramiv(program, GL_LINK_STATUS, &success);
     if (!success) {
         char log[4096] = {};
-        glGetProgramInfoLog(m_Program, sizeof(log), nullptr, log);
-        std::cerr << "Shader linking failed: " << log << "\n";
-        glDeleteProgram(m_Program);
-        m_Program = 0;
-        return false;
+        glGetProgramInfoLog(program, sizeof(log), nullptr, log);
+        std::cerr << "Shader linking failed (" << fragmentFile << "): " << log << "\n";
+        glDeleteProgram(program);
+        return 0;
     }
-    m_Viewport = glGetUniformLocation(m_Program, "u_Viewport");
-    return true;
+    return program;
 }
 void Renderer::Resize(int width, int height) {
     m_Width = (std::max)(1, width);
     m_Height = (std::max)(1, height);
+    m_Post.Resize(m_Width, m_Height);
     glViewport(0, 0, m_Width, m_Height);
 }
 void Renderer::Begin(Color background) {
     m_Vertices.clear();
+    m_LinearScene = m_Post.BeginScene();
+    if (m_LinearScene) {
+        background.r = Linear(background.r);
+        background.g = Linear(background.g);
+        background.b = Linear(background.b);
+    }
     glClearColor(background.r, background.g, background.b, 1);
     glClear(GL_COLOR_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);
@@ -210,6 +228,7 @@ void Renderer::Flush() {
     if (m_Vertices.empty() || !IsInitialized()) return;
     glUseProgram(m_Program);
     glUniform2f(m_Viewport, float(m_Width), float(m_Height));
+    glUniform1i(m_ColorSpace, m_LinearScene ? 1 : 0);
     glBindVertexArray(m_VAO);
     glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
     glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(Vertex),
@@ -218,8 +237,18 @@ void Renderer::Flush() {
     glBindVertexArray(0);
     m_Vertices.clear();
 }
+void Renderer::BeginUI() {
+    Flush();
+    if (m_LinearScene) m_Post.Composite();
+    m_LinearScene = false;
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glViewport(0, 0, m_Width, m_Height);
+    glDisable(GL_FRAMEBUFFER_SRGB);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
 void Renderer::VertexAt(Point p, Color c) {
-    m_Vertices.push_back({p.x, p.y, c.r, c.g, c.b, c.a});
+    m_Vertices.push_back({p.x, p.y, c.r, c.g, c.b, c.a, c.intensity});
 }
 void Renderer::Triangle(Point a, Point b, Point c, Color color) {
     VertexAt(a, color); VertexAt(b, color); VertexAt(c, color);
@@ -246,7 +275,8 @@ void Renderer::Ellipse(Point p, float rx, float ry, Color color, int segments) {
     }
 }
 void Renderer::Glow(Point p, float rx, float ry, Color color) {
-    const Color edge(color.r, color.g, color.b, 0);
+    Color edge = color;
+    edge.a = 0;
     for (int i = 0; i < 32; ++i) {
         const float a = 6.2831853f*i/32, b = 6.2831853f*(i+1)/32;
         VertexAt(p, color);

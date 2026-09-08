@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cctype>
 #include <sstream>
+#include <iomanip>
 
 namespace {
     constexpr int ChunkSize = 8;
@@ -239,9 +240,12 @@ void Prototype::Chapel(Renderer& r, Point p) {
     // Pointed doorway, window and cross are deliberately readable silhouettes.
     r.Rect(p.x-20*z,p.y-48*z,25*z,41*z,Ink);
     r.Triangle({p.x-20*z,p.y-48*z},{p.x-7*z,p.y-68*z},{p.x+5*z,p.y-48*z},Ink);
-    r.Glow({p.x-7*z,p.y-27*z},22*z,39*z,Color(0.94f,0.45f,0.13f,0.32f));
+    // Only the lantern surface emits. Its halo comes from post-process bloom.
+    r.Rect(p.x-13*z,p.y-37*z,12*z,18*z,Ink);
+    r.Rect(p.x-11*z,p.y-35*z,8*z,13*z,Color(0.98f,0.63f,0.22f).Radiance(4));
+    r.Line({p.x-7*z,p.y-37*z},{p.x-7*z,p.y-20*z},z,Ink);
     r.Ellipse({p.x-8*z,p.y-102*z},12*z,18*z,Ink);
-    r.Ellipse({p.x-8*z,p.y-102*z},7*z,13*z,Color(0.60f,0.38f,0.15f));
+    r.Ellipse({p.x-8*z,p.y-102*z},7*z,13*z,Color(0.60f,0.38f,0.15f).Radiance(4));
     r.Line({p.x-8*z,p.y-118*z},{p.x-8*z,p.y-86*z},3*z,Ink);
     r.Line({p.x-20*z,p.y-103*z},{p.x+3*z,p.y-101*z},3*z,Ink);
     Block(r,{p.x-63*z,p.y-7*z},15,9,132,Color(0.34f,0.37f,0.33f));
@@ -258,20 +262,19 @@ void Prototype::Chapel(Renderer& r, Point p) {
 
 void Prototype::Shrine(Renderer& r, Point p) {
     const float z = m_Zoom;
-    r.Ellipse(p,70*z,33*z,Color(0.52f,0.37f,0.18f,0.13f));
     Block(r,p,30,15,7,Color(0.43f,0.40f,0.31f));
     Block(r,{p.x,p.y-7*z},17,8,20,Color(0.37f,0.33f,0.25f));
     r.Ellipse({p.x,p.y-29*z},21*z,8*z,Color(0.16f,0.17f,0.14f));
     const float flicker = std::sin(m_Time*9)*3;
-    r.Glow({p.x,p.y-42*z},70*z,88*z,Color(1,0.46f,0.12f,0.19f));
+    // Draw the HDR flame and embers, not an additional translucent light disk.
     r.Triangle({p.x-13*z,p.y-29*z},{p.x+(3+flicker)*z,p.y-73*z},
-        {p.x+14*z,p.y-29*z},Color(0.95f,0.39f,0.10f));
+        {p.x+14*z,p.y-29*z},Color(0.95f,0.39f,0.10f).Radiance(5));
     r.Triangle({p.x-7*z,p.y-29*z},{p.x-flicker*z,p.y-58*z},
-        {p.x+7*z,p.y-29*z},Color(1,0.80f,0.34f));
+        {p.x+7*z,p.y-29*z},Color(1,0.80f,0.34f).Radiance(8));
     for (int i = 0; i < 7; ++i) {
         const float age = std::fmod(m_Time*0.35f+i*0.143f,1.0f);
         r.Rect(p.x+std::sin(i*8.0f+age*5)*12*z,p.y-(32+age*77)*z,
-            2*z,2*z,Color(1,0.69f,0.23f,1-age));
+            2*z,2*z,Color(1,0.69f,0.23f,1-age).Radiance(4));
     }
 }
 
@@ -298,22 +301,20 @@ void Prototype::Actor(Renderer& r, Point p, int corruption, bool hostile) {
     r.Ellipse({p.x,p.y-39*z},10*z,12*z,cloak.Shade(1.35f));
     r.Quad({p.x-6*z,p.y-42*z},{p.x+6*z,p.y-42*z},
         {p.x+4*z,p.y-34*z},{p.x-4*z,p.y-34*z},Ink);
-    r.Rect(p.x-4*z,p.y-40*z,3*z,z,monster ? Color(1,0.3f,0.55f) : Gold);
-    r.Rect(p.x+2*z,p.y-40*z,3*z,z,monster ? Color(1,0.3f,0.55f) : Gold);
+    r.Rect(p.x-4*z,p.y-40*z,3*z,z,monster ? Color(1,0.3f,0.55f).Radiance(3) : Gold);
+    r.Rect(p.x+2*z,p.y-40*z,3*z,z,monster ? Color(1,0.3f,0.55f).Radiance(3) : Gold);
     if (monster) {
         r.Triangle({p.x-8*z,p.y-43*z},{p.x-18*z,p.y-61*z},{p.x-6*z,p.y-50*z},Violet.Shade(0.65f));
         r.Triangle({p.x+8*z,p.y-43*z},{p.x+17*z,p.y-62*z},{p.x+6*z,p.y-50*z},Violet.Shade(0.8f));
         r.Line({p.x+12*z,p.y-25*z},{p.x+23*z,p.y-9*z},4*z,cloak);
         r.Line({p.x+23*z,p.y-9*z},{p.x+20*z,p.y+1*z},2*z,Paper);
-        r.Glow({p.x,p.y-24*z},32*z,43*z,Color(0.6f,0.12f,0.45f,0.09f));
     } else {
         r.Line({p.x+13*z,p.y-23*z},{p.x+20*z,p.y-3*z},3*z,Color(0.54f,0.60f,0.59f));
         r.Line({p.x+10*z,p.y-19*z},{p.x+19*z,p.y-23*z},3*z,Gold);
     }
     if (!hostile) {
         r.Line({p.x-12*z,p.y-20*z},{p.x-20*z,p.y-37*z},3*z,Color(0.38f,0.28f,0.17f));
-        r.Glow({p.x-20*z,p.y-43*z},28*z,36*z,Color(1,0.50f,0.13f,0.32f));
-        r.Triangle({p.x-24*z,p.y-38*z},{p.x-19*z,p.y-54*z},{p.x-15*z,p.y-38*z},Gold);
+        r.Triangle({p.x-24*z,p.y-38*z},{p.x-19*z,p.y-54*z},{p.x-15*z,p.y-38*z},Gold.Radiance(6));
         if (m_Attack > 0.23f) {
             for (int i = 0; i < 12; ++i) {
                 const float a = float(i)*0.19f-1.0f, b = a+0.19f;
@@ -380,11 +381,9 @@ void Prototype::Draw(Renderer& r) {
             const double sx = double(x)*ShrineSpacing, sy = double(y)*ShrineSpacing;
             Point p = Project(sx,sy);
             if (p.x < -250*m_Zoom || p.x > m_Width+250*m_Zoom || p.y < -100*m_Zoom || p.y > m_Height+400*m_Zoom) continue;
-            r.Glow(p,190*m_Zoom,95*m_Zoom,Color(0.92f,0.55f,0.22f,0.23f));
             objects.push_back({sx-3,sy-3,5,0,0});
             objects.push_back({sx,sy,6,0,0});
         }
-    r.Glow(Project(m_X,m_Y),105*m_Zoom,58*m_Zoom,Color(0.81f,0.55f,0.25f,0.10f));
     objects.push_back({m_X,m_Y,7,0,0});
     for (size_t i = 0; i < m_Echoes.size(); ++i) {
         const Echo& e = m_Echoes[i];
@@ -413,10 +412,6 @@ void Prototype::Draw(Renderer& r) {
         if (o.kind == 8) {
             const Echo& e = m_Echoes[o.index];
             Actor(r,p,e.corruption,true);
-            r.Rect(p.x-25*m_Zoom,p.y-89*m_Zoom,50*m_Zoom,3*m_Zoom,Ink);
-            r.Rect(p.x-25*m_Zoom,p.y-89*m_Zoom,50*m_Zoom*e.health/(100+e.corruption),3*m_Zoom,Violet);
-            const std::string name = "잔재 " + std::to_string(e.id);
-            r.Text(p.x-r.TextWidth(name,m_Zoom)*0.5f,p.y-109*m_Zoom,name,Violet,m_Zoom);
         }
         if (o.kind == 9) r.Ellipse(p,16*m_Zoom,7*m_Zoom,Color(0.28f,0.10f,0.25f,0.75f));
     }
@@ -431,17 +426,23 @@ void Prototype::Draw(Renderer& r) {
         const float y = std::fmod(float(i*83)+m_Time*(3+i%3),float(m_Height));
         r.Rect(x,y,1.5f,1.5f,Color(0.68f,0.72f,0.66f,0.20f));
     }
-    for (int i = 0; i < 12; ++i) {
-        const float alpha = 0.028f;
-        r.Rect(float(i*9),0,9,float(m_Height),Color(0,0.015f,0.02f,alpha*(12-i)));
-        r.Rect(float(m_Width-(i+1)*9),0,9,float(m_Height),Color(0,0.015f,0.02f,alpha*(12-i)));
-    }
+    // Finish scene rendering and composite HDR effects before any screen-space UI.
+    r.BeginUI();
     Interface(r);
     r.Flush();
 }
 
 void Prototype::Interface(Renderer& r) {
     const float w = float(m_Width), h = float(m_Height);
+    for (const Echo& e : m_Echoes) {
+        if (!e.alive) continue;
+        const Point p = Project(e.x,e.y);
+        if (p.x < -80 || p.x > w+80 || p.y < 0 || p.y > h+140) continue;
+        r.Rect(p.x-25*m_Zoom,p.y-89*m_Zoom,50*m_Zoom,3*m_Zoom,Ink);
+        r.Rect(p.x-25*m_Zoom,p.y-89*m_Zoom,50*m_Zoom*e.health/(100+e.corruption),3*m_Zoom,Violet);
+        const std::string name = "잔재 " + std::to_string(e.id);
+        r.Text(p.x-r.TextWidth(name,m_Zoom)*0.5f,p.y-109*m_Zoom,name,Violet,m_Zoom);
+    }
     r.Rect(0,0,w,105,Color(0.025f,0.035f,0.042f,0.92f));
     r.Rect(28,24,3,49,Gold);
     r.Text(45,17,"마지막 불씨",Paper,2.3f);
@@ -460,6 +461,19 @@ void Prototype::Interface(Renderer& r) {
         r.Rect(24,125,255,290,Color(0.025f,0.035f,0.042f,0.86f));
         r.Text(40,139,"폐허 속의 빛",Gold,1.5f);
         r.Text(40,171,"WASD   이동\nSPACE   공격\nE   성소에서 회복·정화\nR   성물 사용\nK   사망 시연\nG   청크 경계 표시\n+/-   확대·축소\nH   안내 숨기기\nESC   종료",Paper,1.4f);
+        const auto& post = r.Post().settings;
+        const auto onOff = [](bool value) { return value ? "켜짐" : "꺼짐"; };
+        std::ostringstream effects;
+        effects << "P   전체 후처리: " << onOff(post.enabled)
+            << "\nB   블룸: " << onOff(post.bloom)
+            << "\nV   비네트: " << onOff(post.vignette)
+            << "\nN   가장자리 블러: " << onOff(post.edgeBlur)
+            << "\n[ / ]   노출: " << std::fixed << std::setprecision(2) << post.exposure
+            << "\n0   효과 기본값 복원";
+        r.Rect(w-280,125,255,205,Color(0.025f,0.035f,0.042f,0.86f));
+        r.Text(w-264,139,"빛과 그림자",Gold,1.5f);
+        r.Text(w-264,171,r.Post().Available() ? effects.str()
+            : "후처리 초기화 실패\n기본 렌더링으로 실행 중\n콘솔 오류를 확인해 주세요.",Paper,1.3f);
     }
     const Point fire = Project(m_ShrineX,m_ShrineY);
     if (Distance(m_X-m_ShrineX,m_Y-m_ShrineY) < 2.8) {
