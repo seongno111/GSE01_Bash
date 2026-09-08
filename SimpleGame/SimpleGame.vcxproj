@@ -70,6 +70,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
@@ -155,11 +165,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Prototype.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SimpleGame.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -174,6 +186,16 @@
     <None Include="Shaders\SolidRect.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="CopyPrototypeAssets" AfterTargets="Build">
+    <ItemGroup>
+      <PrototypeShaders Include="$(ProjectDir)Shaders\*.vs;$(ProjectDir)Shaders\*.fs" />
+      <PrototypeRuntime Include="$(ProjectDir)Dependencies\x64\*.dll" Condition="'$(Platform)'=='x64'" />
+      <PrototypeRuntime Include="$(ProjectDir)Dependencies\*.dll" Condition="'$(Platform)'=='Win32'" />
+    </ItemGroup>
+    <MakeDir Directories="$(OutDir)Shaders" />
+    <Copy SourceFiles="@(PrototypeShaders)" DestinationFolder="$(OutDir)Shaders" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(PrototypeRuntime)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

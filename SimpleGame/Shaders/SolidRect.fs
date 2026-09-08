@@ -1,10 +1,4 @@
-#version 330
-
-layout(location=0) out vec4 FragColor;
-
-uniform vec4 u_Color;
-
-void main()
-{
-	FragColor = vec4(u_Color.r, u_Color.g, u_Color.b, u_Color.a);
-}
+#version 330 core
+in vec4 v_Color;
+layout(location = 0) out vec4 FragColor;
+void main() { FragColor = v_Color; }

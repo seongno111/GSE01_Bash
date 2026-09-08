@@ -12,3 +12,9 @@
 *.suo 
 *.db 
 
+# Shader copies generated in build output directories
+/Debug/Shaders/
+/Release/Shaders/
+/x64/Debug/Shaders/
+/x64/Release/Shaders/
+
