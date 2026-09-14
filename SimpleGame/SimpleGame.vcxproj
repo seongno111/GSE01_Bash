@@ -174,7 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Prototype.cpp" />
+    <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="PostProcessing.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SimpleGame.cpp" />
     <ClCompile Include="stdafx.cpp">

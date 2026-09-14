@@ -61,7 +61,7 @@
 주요 파일
   PostProcessing.h / PostProcessing.cpp
     HDR 렌더 타깃과 후처리 패스 관리, 리사이즈, 자원 해제.
-  ShaderProgram.h / Renderer.cpp
+  ShaderProgram.h / ShaderProgram.cpp
     장면·후처리 셰이더에서 함께 사용하는 파일 로딩과 컴파일/링크 처리.
   Shaders/Fullscreen.vs
     화면 전체를 채우는 삼각형.

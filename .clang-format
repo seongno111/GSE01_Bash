@@ -1,0 +1,41 @@
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++17
+IndentWidth: 4
+ContinuationIndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+LineEnding: CRLF
+
+BreakBeforeBraces: Allman
+InsertBraces: true
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: None
+AllowShortLoopsOnASingleLine: false
+
+BinPackArguments: false
+BinPackParameters: false
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+BreakConstructorInitializers: BeforeColon
+PackConstructorInitializers: Never
+BreakBeforeBinaryOperators: NonAssignment
+
+SeparateDefinitionBlocks: Always
+EmptyLineBeforeAccessModifier: Always
+EmptyLineAfterAccessModifier: Always
+AccessModifierOffset: -4
+NamespaceIndentation: All
+MaxEmptyLinesToKeep: 1
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+
+# Preserve the precompiled header as the first include in each translation unit.
+SortIncludes: Never
+IncludeBlocks: Preserve
+ReflowComments: false
