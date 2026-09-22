@@ -285,6 +285,8 @@ void Renderer::Resize(int width, int height)
 
 void Renderer::Begin(Color background)
 {
+    m_DrawCalls = 0;
+    m_Translation = {0, 0};
     m_Commands.clear();
     m_Vertices.clear();
     ++m_CacheFrame;
@@ -333,6 +335,7 @@ void Renderer::Flush()
         glUniform4f(m_Tint, command.tint.r, command.tint.g, command.tint.b, command.tint.a);
         glUniform1f(m_Radiance, command.tint.intensity);
         glDrawArrays(GL_TRIANGLES, command.first, command.count);
+        ++m_DrawCalls;
     }
     glBindVertexArray(0);
     m_Commands.clear();
@@ -450,7 +453,7 @@ void Renderer::DrawCachedMesh(const std::string& key,
         DrawCommand command;
         command.mesh = mesh;
         command.count = mesh->count;
-        command.position = position;
+        command.position = {position.x + m_Translation.x, position.y + m_Translation.y};
         command.scale = scale;
         command.tint = tint;
         m_Commands.push_back(command);
@@ -518,6 +521,8 @@ void Renderer::VertexAt(Point p, Color c)
         m_CapturedVertices.push_back({p.x, p.y, c.r, c.g, c.b, c.a, c.intensity});
         return;
     }
+    p.x += m_Translation.x;
+    p.y += m_Translation.y;
     if (m_Commands.empty() || m_Commands.back().mesh)
     {
         DrawCommand command;
@@ -526,6 +531,19 @@ void Renderer::VertexAt(Point p, Color c)
     }
     m_Vertices.push_back({p.x, p.y, c.r, c.g, c.b, c.a, c.intensity});
     ++m_Commands.back().count;
+}
+
+Renderer::ScopedTranslation::ScopedTranslation(Renderer& renderer, Point offset)
+    : m_Renderer(renderer),
+      m_Previous(renderer.m_Translation)
+{
+    renderer.m_Translation.x += offset.x;
+    renderer.m_Translation.y += offset.y;
+}
+
+Renderer::ScopedTranslation::~ScopedTranslation()
+{
+    m_Renderer.m_Translation = m_Previous;
 }
 
 void Renderer::Triangle(Point a, Point b, Point c, Color color)

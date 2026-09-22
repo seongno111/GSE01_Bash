@@ -1,0 +1,137 @@
+Actor / SceneGraph 구조 안내
+작성일: 2026-09-21
+
+1. 책임 분리
+  Actor.h / Actor.cpp
+    공통 오브젝트 ID, 이름, 로컬·월드 위치, 부모·자식 관계,
+    활성화·표시 상태, Update / Draw / DrawOverlay 인터페이스.
+    월드 위치는 double 좌표로 보관하고 부모의 이동을 상속한다.
+    월드 위치를 캐시하며 위치나 부모가 바뀐 하위 트리만 무효화한다.
+
+  SceneGraph.h / SceneGraph.cpp
+    모든 Actor의 단독 소유권, 생성·검색·부모 변경·삭제,
+    단계별 갱신과 화면에 보이는 Actor의 렌더링 순서 관리.
+    플레이어부터 HUD까지 이 경로로 갱신·렌더링에 참여한다.
+    삼각형이나 글자 한 획은 독립 Actor가 아니라 오브젝트의 메시 구성 요소다.
+
+  GameActors.h / 종류별 Actor.cpp
+    PlayerActor: 위치·능력치·인벤토리 상태, 이동과 자동 사격.
+    EnemyActor: 일반 적·보스의 추적, 공격, 재등장, 본체·체력 표시.
+    EchoActor: 죽음의 잔재, 추적·접촉 공격, 사체와 정보 표시.
+    ProjectileActor: 플레이어·적 발사체의 이동, 충돌과 수명.
+    LootActor: 드랍 아이템의 자석 이동·습득·수명.
+    CombatTextActor: 피해·경험치 문구의 수명과 표시.
+    TerrainActor / PropActor: 지형, 나무·벽·바위·묘비·성당·성소.
+    AtmosphereActor: 안개와 재 입자.
+    RangeIndicatorActor / HUDActor: 사거리 및 화면 UI.
+
+  LevelOne.cpp
+    경작지 맵 생성, 첫 배치와 완료 규칙만 담당한다.
+  Combat.cpp / Progression.cpp
+    타깃 선택·보상·경험치 등 여러 Actor가 이용하는 공통 게임 규칙.
+  World.cpp
+    청크 스트리밍과 배치, 이동·충돌 조회.
+  ActorVisuals.cpp / GameHUD.cpp
+    도형 기반 메시 구성과 HUD 표시. Actor의 Draw에서 호출한다.
+  Prototype.cpp
+    입력·카메라·세션 진행, 사망·부활, 갱신 단계와 렌더 패스 연결.
+
+2. 기본 계층
+  Scene
+    World
+      Chunk
+        TerrainActor
+          PropActor (소품 / 성소 / 성당)
+    Gameplay
+      PlayerActor
+        RangeIndicatorActor
+      Enemies / Echoes / PlayerProjectiles / EnemyProjectiles / Loot
+        해당 종류의 Actor
+    Effects
+      AtmosphereActor
+    UI
+      CombatText
+        CombatTextActor
+      HUDActor
+
+  청크 제거 시 자식 지형과 소품도 함께 제거한다.
+  적·드랍·발사체·잔재는 청크와 분리하여 청크 경계 이동만으로 사라지지 않는다.
+  플레이어는 세션 동안 유지하고 사망 시 같은 Actor의 상태를 복원한다.
+  현재 계층 변환은 평행 이동이다. 회전·개별 크기 변환은 아직 제공하지 않는다.
+  게임 월드 Actor의 좌표 단위는 타일, HUD·안개·재의 오프셋 단위는 화면 픽셀이다.
+  화면 UI와 월드 오브젝트는 각각의 계층에 배치한다.
+
+3. 생성과 제어
+  일반 오브젝트 생성 예:
+    SceneGraph& scene = game.Scene();
+    Actor& group = scene.Spawn<Actor>(scene.Root(), "Landmark");
+    group.SetLocalPosition(10, 5);
+    PropActor& tree = scene.Spawn<PropActor>(group.Id(), game, 1, 17u);
+    tree.SetLocalPosition(2, 0);
+    // 나무의 월드 위치는 (12, 5). 부모 이동 시 함께 이동한다.
+
+  ActorId를 저장하고 SceneGraph::Find(id)로 조회한다.
+  삭제되었거나 삭제 대기 중이면 nullptr를 반환하며 ID를 재사용하지 않는다.
+  오래 보관하는 참조는 포인터·벡터 인덱스 대신 ActorId를 사용한다.
+  생성 직후 받은 참조는 해당 Actor가 실제로 해제되기 전까지만 유효하다.
+
+  SetLocalPosition: 부모 기준 위치 설정.
+  SetWorldPosition / TranslateWorld: 월드 위치 설정 / 이동.
+  SetEnabled(false): 자신과 하위 Actor의 갱신·충돌 비활성화.
+  SetVisible(false): 자신과 하위 Actor의 그리기 비활성화.
+  두 상태는 독립적이다. 숨겨진 오브젝트도 Enabled 상태라면 갱신된다.
+  Reparent(id, parentId, true): 월드 위치를 유지하며 부모 변경.
+  Reparent(id, parentId, false): 로컬 위치를 유지하며 부모 변경.
+  자기 자신이나 자손을 부모로 지정하는 순환 구조, 루트 이동은 거절한다.
+  Destroy(id): 하위 트리까지 삭제 표시. 프레임 끝 CollectGarbage에서 실제 해제.
+
+4. 새 종류의 Actor와 적 추가
+  Actor 또는 GameActor를 상속하고 필요한 Update / Draw를 구현한다.
+  TickGroup과 ActorLayer를 생성자에서 선택한다. 정적 오브젝트는 TickGroup::None이다.
+  GameActor는 기존 카메라의 화면 밖 판정을 제공한다.
+  새 종류는 생성 시 SceneGraph::Spawn<T>로 등록하면 되며,
+  중앙 렌더링 함수에 종류별 switch나 if를 추가할 필요가 없다.
+  기존 메시 캐시는 각 Draw에서 그대로 사용할 수 있다.
+
+  일반 적 생성 예:
+    EnemyActor& enemy = game.SpawnEnemy(1);
+    enemy.SetWorldPosition(12, 5);
+    enemy.homeX = 12;
+    enemy.homeY = 5;
+
+  다른 행동의 적은 EnemyActor를 상속하고 game.SpawnEnemy<새클래스>(...)로 생성한다.
+  이 경로는 SceneGraph 생성과 전투용 목록 등록을 함께 처리하므로
+  기존 자동 조준·피격·경험치·드랍에 참여할 수 있다.
+  homeX/homeY는 월드 좌표의 복귀 지점이므로 배치 위치와 함께 설정한다.
+  게임 규칙이 필요한 새 Actor는 Prototype의 Player / Project / Zoom / Time /
+  MoveActor / Blocked / ClearShot / Scene API를 이용할 수 있다.
+  배치된 장애물은 ColliderRadius()를 구현하면 공간 격자 조회에 참여한다.
+
+5. 갱신·조회·렌더링
+  Player → Projectile → Enemy → Loot → Effect 순서로 갱신한다.
+  단계 시작 시 ID 목록을 복사하므로 갱신 중 생성·삭제해도 순회가 무효화되지 않는다.
+  같은 단계 도중 생성된 Actor는 다음 해당 단계부터 갱신한다.
+  삭제 표시된 Actor는 이후 조회·갱신·그리기에서 즉시 제외한다.
+  CollectGarbage는 갱신·그리기 콜백 안에서는 실행하지 않는다.
+
+  ActorCollection은 Actor 데이터를 복제하지 않는 타입별 ID 목록이다.
+  부모를 변경해도 전투 등록은 유지하며, 삭제한 ID는 프레임 끝에 정리한다.
+  표적과 보스 참조 역시 ActorId를 사용한다.
+
+  갱신이 필요한 Actor만 단계별 목록에 등록한다. 정적 지형 전체를 매 단계 순회하지 않는다.
+  장애물 충돌은 4타일 공간 격자를 사용하며 장애물·부모의 위치/활성화가
+  바뀌거나 청크가 추가·삭제되면 격자를 다시 구성한다.
+  배치되지 않은 먼 지역은 시드 기반 충돌 조회를 유지한다.
+  청크를 다시 불러올 때 절차적 배치를 복원하며 배치 편집의 영구 저장은 포함하지 않는다.
+
+  지형 → 월드 오브젝트 → 전투 효과 → 환경 효과 순으로 렌더링한다.
+  월드 내부의 깊이는 x+y를 기준으로 정렬한다.
+  HDR/Bloom 합성 이후 Actor의 체력 표시·전투 문구·HUD를 그린다.
+  HUD 위치 이동은 캐시된 글리프에도 적용되며 메시 재생성을 요구하지 않는다.
+
+6. 확인 범위
+  Visual Studio 프로젝트와 필터에 새 소스·헤더를 등록했다.
+  빌드·실행·렌더링 결과 확인 및 성능 측정은 사용자 요청에 따라 수행하지 않았다.
+  플레이 확인 시 기존 사냥→드랍→보스 흐름, 괴물 사망 후 잔재 생성,
+  발사체가 남은 상태의 사망, 청크 왕복, HUD와 Bloom의 표시를 확인한다.
+  계층 기능은 부모 이동·표시/활성화 전파, 부모 변경, 하위 트리 삭제를 확인한다.

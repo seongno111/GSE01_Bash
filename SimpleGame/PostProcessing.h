@@ -1,5 +1,6 @@
 #pragma once
 #include "Dependencies/glew.h"
+#include <cstdint>
 
 struct PostProcessSettings
 {
@@ -32,6 +33,11 @@ public:
     bool BeginScene(); // False: caller draws directly to the default framebuffer.
     void Composite();
 
+    std::uint64_t DrawCalls() const
+    {
+        return m_DrawCalls;
+    }
+
     bool Available() const
     {
         return m_Ready;
@@ -63,4 +69,5 @@ private:
     int m_HalfWidth = 1;
     int m_HalfHeight = 1;
     bool m_Ready = false;
+    std::uint64_t m_DrawCalls = 0;
 };

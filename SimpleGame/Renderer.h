@@ -65,6 +65,27 @@ public:
     void Flush();
     void BeginUI();
 
+    std::uint64_t DrawCalls() const
+    {
+        return m_DrawCalls + m_Post.DrawCalls();
+    }
+
+    // Translates a logical screen-space actor, including cached glyph meshes.
+    class ScopedTranslation
+    {
+    public:
+
+        ScopedTranslation(Renderer& renderer, Point offset);
+        ~ScopedTranslation();
+        ScopedTranslation(const ScopedTranslation&) = delete;
+        ScopedTranslation& operator=(const ScopedTranslation&) = delete;
+
+    private:
+
+        Renderer& m_Renderer;
+        Point m_Previous;
+    };
+
     // The builder only submits geometry in the supplied coordinates and runs
     // on a cache miss. Nested builders become part of their parent's mesh.
     // Position/scale/tint are instance properties and must not be part of the key.
@@ -148,10 +169,12 @@ private:
     std::vector<DrawCommand> m_Commands;
     std::vector<Vertex> m_CapturedVertices;
     bool m_Capturing = false;
+    Point m_Translation{0, 0};
     std::uint64_t m_CacheFrame = 0;
     size_t m_CacheBytes = 0;
     size_t m_CacheHits = 0;
     size_t m_CacheMisses = 0;
+    std::uint64_t m_DrawCalls = 0;
     PostProcessing m_Post;
     bool m_LinearScene = false;
     std::vector<Vertex> m_Vertices;

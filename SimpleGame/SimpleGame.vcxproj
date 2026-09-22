@@ -165,6 +165,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="FrameProfiler.h" />
+    <ClInclude Include="SceneGraph.h" />
+    <ClInclude Include="GameActors.h" />
+    <ClInclude Include="GameRules.h" />
     <ClInclude Include="Prototype.h" />
     <ClInclude Include="PostProcessing.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -173,6 +178,21 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="FrameProfiler.cpp" />
+    <ClCompile Include="SceneGraph.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Combat.cpp" />
+    <ClCompile Include="Progression.cpp" />
+    <ClCompile Include="ActorVisuals.cpp" />
+    <ClCompile Include="EnemyActor.cpp" />
+    <ClCompile Include="EchoActor.cpp" />
+    <ClCompile Include="ProjectileActor.cpp" />
+    <ClCompile Include="LootActor.cpp" />
+    <ClCompile Include="CombatTextActor.cpp" />
+    <ClCompile Include="PlayerActor.cpp" />
+    <ClCompile Include="WorldActors.cpp" />
+    <ClCompile Include="GameHUD.cpp" />
     <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="PostProcessing.cpp" />

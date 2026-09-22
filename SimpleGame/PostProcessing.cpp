@@ -105,6 +105,8 @@ void PostProcessing::Resize(int width, int height)
 
 bool PostProcessing::BeginScene()
 {
+    // Reset even when post processing is disabled or unavailable.
+    m_DrawCalls = 0;
     const bool active = settings.enabled && m_Ready;
     glBindFramebuffer(GL_FRAMEBUFFER, active ? m_Scene.fbo : 0);
     glViewport(0, 0, m_Width, m_Height);
@@ -127,6 +129,7 @@ void PostProcessing::Draw(GLuint program,
     glUniform1i(glGetUniformLocation(program, "u_Source"), 0);
     glBindVertexArray(m_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);
+    ++m_DrawCalls;
 }
 
 GLuint PostProcessing::Blur(GLuint source, Target (&targets)[2], int rounds, float radius)

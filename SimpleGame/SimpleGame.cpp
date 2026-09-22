@@ -10,6 +10,7 @@ but WITHOUT ANY WARRANTY.
 #include "stdafx.h"
 #include "Renderer.h"
 #include "Prototype.h"
+#include "FrameProfiler.h"
 #include "Dependencies/freeglut.h"
 #include <algorithm>
 #include <chrono>
@@ -21,6 +22,7 @@ namespace
 {
     std::unique_ptr<Renderer> renderer;
     Prototype game;
+    FrameProfiler profiler;
     auto lastFrame = std::chrono::steady_clock::now();
 
     void Display()
@@ -29,8 +31,10 @@ namespace
         {
             return;
         }
+        profiler.BeginFrame();
         game.Draw(*renderer);
         glutSwapBuffers();
+        profiler.EndFrame(renderer->DrawCalls());
     }
 
     void Tick(int)
@@ -148,7 +152,9 @@ int main(int argc, char** argv)
               << "E sanctuary/report | R relic | K demo death\n"
               << "H help | G chunk grid | +/- zoom | Esc exit\n"
               << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
-              << "Session only: no disk saves, no AI dialogue service.\n";
+              << "Session only: no disk saves, no AI dialogue service.\n"
+              << "[Profile] Logs every second: FPS and glDraw calls per frame "
+                 "(scene + UI + post processing; last/avg/min/max).\n";
     glutIgnoreKeyRepeat(1);
     glutDisplayFunc(Display);
     glutReshapeFunc(Reshape);
