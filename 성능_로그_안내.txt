@@ -1,26 +1,111 @@
-기본 성능 로그
+성능 로그 안내 (schema 2 / 2026-09-22)
 
-게임 실행 중 약 1초마다 콘솔에 다음 형식으로 출력한다.
-아래 숫자는 형식을 설명하기 위한 예시이며 측정 결과가 아니다.
-  [Profile] FPS=60.0 | DrawCalls/frame: last=350 avg=347.2 min=340 max=362
+저장 위치
+  실행 파일 옆 Profiling/<날짜-시각-밀리초-PID>/
+  session.log: GPU/GL/GLSL, 빌드 시각, Debug/Release, 1초 단위 요약.
+  frames-1.csv, frames-2.csv, ...: 완료한 각 프레임의 원자료.
+  시작 시 콘솔에 실제 저장 경로가 출력된다.
+  콘솔과 파일 요약은 약 1초마다 기록한다. CSV도 매 프레임 데이터를 모아 약 1초마다 쓴다.
+  CSV는 약 64 MiB마다 다음 파일로 나누며 정상 종료 시 남은 자료를 저장한다.
+  강제 종료 시 아직 쓰지 않은 마지막 약 1초는 유실될 수 있다.
+  파일 기록 실패 시 콘솔 출력은 계속한다. 파일은 자동으로 삭제하지 않는다.
 
-FPS
-  실제 완료한 Display 프레임 수 / 실제 경과 시간(초).
-  steady_clock을 사용하며 게임 갱신용으로 제한된 dt는 사용하지 않는다.
-  업데이트, 타이머 대기, 버퍼 교환과 콘솔 출력에 걸린 시간도 반영한다.
-  GPU 실행 시간이나 모니터에서 실제 표시한 프레임 수를 측정하는 값은 아니다.
+콘솔 요약
+  FPS: 실제 완료 프레임 수 / 해당 구간의 실제 경과 시간.
+  DrawCalls/frame: 마지막 프레임, 구간 평균/최소/최대 실제 GL 그리기 호출 수.
+  CPU ms avg: 갱신, 렌더 제출, 버퍼 교환 시간의 프레임당 평균.
+  Frame ms: 구간 내 프레임 간격의 p50/p95/p99/최대값. nearest-rank 방식.
+  Mesh/window: 구간 전체에서 생성한 메시 수와 디스크에서 읽은 메시 수. 프레임 평균이 아니다.
+  Last draws: 마지막 프레임의 월드/UI/후처리 호출 수.
+  FPS를 계산할 때 게임용으로 최대 0.05초로 제한한 dt는 사용하지 않는다.
 
-DrawCalls/frame
-  last: 마지막으로 완료한 한 프레임의 glDraw 호출 횟수.
-  avg / min / max: 해당 출력 구간에서 프레임당 평균 / 최소 / 최대 횟수.
-  Renderer::Begin에서 초기화하고 실제 glDrawArrays 호출 위치마다 1씩 증가한다.
-  캐시 메시, 동적 배치, 한글 UI, Bloom·블러·최종 합성을 모두 포함한다.
-  glDrawBuffer, glClear, 버퍼 업로드, 버퍼 교환은 드로우콜로 세지 않는다.
-  현재 그리기 명령은 모두 glDrawArrays이며, 새 glDraw 계열 호출을 추가할 때도
-  해당 렌더러의 호출 직후 카운터를 증가시켜야 한다.
-  후처리가 꺼진 프레임도 후처리 카운터를 초기화하여 이전 프레임 값을 남기지 않는다.
+CSV 필드: 기본 시간
+  frame: 실행 내 완료 프레임 일련번호, 1부터 시작.
+  elapsed_s: 첫 BeginFrame부터 현재 버퍼 교환 완료까지의 시간.
+  frame_interval_ms: 직전 버퍼 교환 완료부터 이번 완료까지의 실제 경과 시간.
+    첫 프레임은 BeginFrame부터 측정하여 다른 프레임과 구간 정의가 다르다.
+    갱신, 타이머/OS 대기, 렌더링, 버퍼 교환, 이전 프레임의 로그 처리도 반영된다.
+  update_ms / updates: 이전 프레임 종료 이후 Tick의 game.Update CPU 시간 합계/호출 수.
+    시작 준비 단계의 game.Update(0)는 포함하지 않는다.
+  render_cpu_ms: Display에서 game.Draw에 걸린 CPU 경과 시간.
+  swap_ms: glutSwapBuffers에 걸린 CPU 경과 시간.
+  previous_log_flush_ms: 직전 1초 요약 출력/CSV 쓰기/구간 정렬 비용.
+    다음 기록까지 같은 값이 반복된다. 프레임마다 합산하지 않는다.
 
-프레임마다 수집하되 콘솔 출력은 1초 간격으로 제한한다.
-FrameProfiler.cpp의 출력 간격 조건에서 이 주기를 변경할 수 있다.
-GPU 동기화나 glFinish를 추가하지 않는다.
-사용자 요청에 따라 빌드·실행·실측 확인은 진행하지 않았다.
+CSV 필드: 제출량
+  draw_calls: Renderer와 PostProcessing의 실제 glDraw 호출 합계.
+  world_draws / ui_draws / post_draws: 월드/UI/후처리 각각의 호출 수.
+  batches: Renderer가 제출한 배치 수. world_draws + ui_draws와 같다.
+  logical_instances: 제출한 메시 변환 레코드 수. Actor 수와는 다르다.
+    한 Actor가 여러 메시를 제출할 수 있고 큰 메시를 나눌 때 변환 레코드가 반복된다.
+  triangles: Renderer가 제출한 삼각형 수. 이번 경로에서는 GL 인스턴스 수와 같다.
+    후처리의 전체 화면 삼각형은 제외한다.
+  한 번의 glDrawArraysInstanced는 인스턴스 개수와 무관하게 드로우콜 1회다.
+  후처리 glDrawArrays도 호출당 1회로 센다.
+  glDrawBuffer, glClear, 텍스처/버퍼 업로드, SwapBuffers는 드로우콜이 아니다.
+
+CSV 필드: 캐시/파일
+  cache_entries: 해당 프레임 종료 시 메모리 캐시 항목 수.
+  cache_bytes: 캐시에 남아 있는 CPU 정점 데이터 바이트 수.
+    GPU atlas 고정 할당량, 빈 atlas 공간, 폰트/GDI 정보, 인스턴스/벡터 여유 용량은 제외.
+  cache_hits / cache_misses: 이번 프레임 최상위 캐시 조회의 메모리 hit/miss.
+  mesh_builds: 메모리와 파일에 없어서 생성 콜백을 실행한 수.
+  disk_loads: 유효한 .mesh 파일을 읽어 생성 콜백을 생략한 수.
+  disk_writes: 파일 저장/교체 성공 수.
+  disk_rejects: 존재하는 캐시를 형식/키/범위/체크섬 검증에서 거부한 수.
+  disk_write_skips: 디스크 예산 초과 또는 실제 저장/교체 실패 수.
+    파일 캐시 자체가 꺼져 있어 쓰기를 시도하지 않은 경우는 포함하지 않는다.
+  cache_evictions: 메모리 캐시 정책에 의한 퇴출 수. 디스크 파일은 유지한다.
+  atlas_repacks: GPU 정점 atlas 재배치 횟수.
+  capacity_flushes: 인스턴스/삼각형 배치 한도에 도달해서 중간 제출한 횟수.
+    월드/UI 경계의 정상 제출이나 atlas 공간 회수용 제출은 이 값에 포함하지 않는다.
+
+CSV 필드: 업로드와 세부 CPU 시간
+  geometry_upload_bytes: 이번 프레임 GPU atlas에 기록한 정점 데이터 바이트.
+    최초 생성, 파일 로드, atlas 재배치에 따른 재업로드를 모두 포함한다.
+  instance_upload_bytes: 변환/색상 레코드와 삼각형 참조 목록의 GPU 전송 바이트.
+    메시를 재사용해도 이 데이터는 매 프레임 전송한다.
+  disk_read_ms: 메모리 miss 후 파일 조회/읽기/검증의 CPU 경과 시간. 없는 파일 조회도 포함.
+  disk_write_ms: 파일 저장 및 예산/경로 처리의 CPU 경과 시간.
+  mesh_build_ms: 생성 콜백 실행 시간. 중첩 형상 생성과 일부 GDI 작업을 포함할 수 있다.
+    콜백 전후의 정점 복사/정규화, 별도 Text 호출의 폰트 조회 전체 시간은 포함하지 않는다.
+  geometry_upload_cpu_ms: atlas 업로드 함수에 걸린 CPU 시간.
+  batch_submit_cpu_ms: Flush의 GL 설정/버퍼 업로드/그리기 제출 CPU 시간.
+    CPU에서 삼각형 참조를 작성하는 Submit 시간은 render_cpu_ms에만 반영된다.
+  세부 시간은 render_cpu_ms에 포함된다. 합산하면 중복 집계된다.
+  업로드 바이트는 직접 전달한 payload만 센다. 후처리 타깃 재생성/드라이버 내부 전송량은 제외.
+
+CSV 필드: 환경과 장면
+  width / height: 실제 렌더 타깃 해상도.
+  post_available / post_enabled: 후처리 타깃 사용 가능 여부/사용자가 선택한 활성화 여부.
+  bloom / vignette / edge_blur: 효과별 설정값. 후처리 전체가 꺼져 있으면 효과도 적용되지 않는다.
+  exposure, bloom_threshold/knee/strength/radius,
+  vignette_strength/start, edge_blur_strength/start/radius: 해당 프레임 효과 파라미터.
+  zoom / grid: 카메라 줌과 격자 표시 상태.
+  camera_x/y / player_x/y: 카메라와 플레이어 월드 좌표.
+  scene_actors: 살아 있는 그래프 노드 수. root/group/비표시 노드를 포함하며 삭제 예정은 제외.
+  loaded_chunks: 스트리밍된 청크 수.
+  world_visible_actors / ui_visible_actors: 필터를 통과한 월드/UI 그리기 목록 노드 수.
+    UI 목록에는 월드 액터의 체력 바 등 overlay도 포함된다.
+    Draw에서 실제 아무것도 제출하지 않는 노드가 있을 수 있어 드로우콜 수와 일치하지 않는다.
+  world_list_cpu_ms / ui_list_cpu_ms: 그래프 조회/컬링/깊이 정렬/목록 작성 CPU 시간.
+    Actor::Draw 자체의 시간은 제외한다. render_cpu_ms 안에 포함되는 값이다.
+
+분석할 때
+  같은 조건에서 cold 실행/파일 캐시 재사용 실행/메모리 캐시 안정 구간을 구분한다.
+  안정 구간에서 mesh_builds와 geometry_upload_bytes가 낮은지 확인한다.
+  새 지역/상태/글리프 등장 시 생성이나 파일 로드가 발생하는 것은 정상이다.
+  긴 프레임에 디스크 I/O, atlas 재배치, 대량 삼각형, 목록 작성 비용이 같이 증가하는지 본다.
+  draw_calls가 줄었는데 FPS가 그대로면 CPU 목록/게임 갱신, 후처리, GPU/버퍼 교환 대기를
+  구분해서 살핀다. 드로우콜 수 하나만으로 성능 원인을 단정하지 않는다.
+
+계측 한계
+  CPU wall-clock 기반이며 GPU 실행 시간을 측정하지 않는다.
+  glFinish나 동기 GPU query는 추가하지 않았다.
+  VSync 상태나 모니터 실제 표시 프레임 수는 알 수 없다.
+  타이머 요청 간격은 16ms이며 FPS 상한/대기에 영향을 줄 수 있다.
+  폰트 래스터 정보, CPU 벡터 용량 재할당, 드라이버 메모리 할당 수는 별도 계측하지 않는다.
+  프로파일링 자체의 문자열 처리/파일 기록 비용도 있다.
+  FrameProfiler.cpp의 CsvHeader를 변경하면 필드 출력 순서도 함께 변경하고 schema를 올린다.
+
+빌드와 게임 실행은 사용자 담당으로 남겨두었다. 수정 후 실측 수치는 아직 없다.

@@ -33,8 +33,9 @@ namespace
         }
         profiler.BeginFrame();
         game.Draw(*renderer);
+        profiler.RenderFinished();
         glutSwapBuffers();
-        profiler.EndFrame(renderer->DrawCalls());
+        profiler.EndFrame(*renderer, game);
     }
 
     void Tick(int)
@@ -46,7 +47,11 @@ namespace
         const auto now = std::chrono::steady_clock::now();
         const float elapsed = std::chrono::duration<float>(now - lastFrame).count();
         lastFrame = now;
+        const auto updateStart = std::chrono::steady_clock::now();
         game.Update((std::min)(0.05f, elapsed));
+        profiler.RecordUpdate(std::chrono::duration<double, std::milli>(
+                                  std::chrono::steady_clock::now() - updateStart)
+                                  .count());
         glutPostRedisplay();
         glutTimerFunc(16, Tick, 0);
     }
@@ -146,13 +151,15 @@ int main(int argc, char** argv)
         glutDestroyWindow(window);
         return 1;
     }
+    profiler.Initialize(*renderer);
     std::cout << "The Last Ember / rendering prototype\n"
               << "WASD move | Hold Space auto aim | F auto fire | U upgrade | Q potion | T "
                  "cleansing stone\n"
               << "E sanctuary/report | R relic | K demo death\n"
               << "H help | G chunk grid | +/- zoom | Esc exit\n"
               << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
-              << "Session only: no disk saves, no AI dialogue service.\n"
+              << "Session only: no gameplay saves, no AI dialogue service.\n"
+              << "Mesh files: MeshCache/ | Performance captures: Profiling/\n"
               << "[Profile] Logs every second: FPS and glDraw calls per frame "
                  "(scene + UI + post processing; last/avg/min/max).\n";
     glutIgnoreKeyRepeat(1);

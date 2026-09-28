@@ -6,6 +6,8 @@
 #include <cmath>
 #include <iostream>
 #include <map>
+#include <stdexcept>
+#include <chrono>
 
 namespace
 {
@@ -188,29 +190,11 @@ struct Renderer::FontCache
     }
 };
 
-struct Renderer::CachedMesh
-{
-    GLuint vao = 0;
-    GLuint vbo = 0;
-    GLsizei count = 0;
-    size_t bytes = 0;
-
-    ~CachedMesh()
-    {
-        if (vbo)
-        {
-            glDeleteBuffers(1, &vbo);
-        }
-        if (vao)
-        {
-            glDeleteVertexArrays(1, &vao);
-        }
-    }
-};
-
 Renderer::Renderer(int width, int height)
     : m_Font(std::make_unique<FontCache>())
 {
+    static_assert(sizeof(Instance) == 12 * sizeof(float), "Three RGBA32F texels per instance");
+    static_assert(sizeof(TriangleInstance) == 2 * sizeof(GLuint), "Two integer vertex attributes");
     Resize(width, height);
     m_Program = LoadShaderProgram("SolidRect.vs", "SolidRect.fs");
     if (!m_Program)
@@ -219,48 +203,38 @@ Renderer::Renderer(int width, int height)
     }
     m_Viewport = glGetUniformLocation(m_Program, "u_Viewport");
     m_ColorSpace = glGetUniformLocation(m_Program, "u_LinearScene");
-    m_Model = glGetUniformLocation(m_Program, "u_Model");
-    m_Tint = glGetUniformLocation(m_Program, "u_Tint");
-    m_Radiance = glGetUniformLocation(m_Program, "u_Radiance");
+    glUseProgram(m_Program);
+    glUniform1i(glGetUniformLocation(m_Program, "u_Geometry"), 0);
+    glUniform1i(glGetUniformLocation(m_Program, "u_Instances"), 1);
     glGenVertexArrays(1, &m_VAO);
     glGenBuffers(1, &m_VBO);
-    ConfigureVertexArray(m_VAO, m_VBO);
-    m_Vertices.reserve(200000);
-    m_Commands.reserve(2048);
+    glBindVertexArray(m_VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+    glEnableVertexAttribArray(0);
+    glVertexAttribIPointer(0, 2, GL_UNSIGNED_INT, sizeof(TriangleInstance), nullptr);
+    glVertexAttribDivisor(0, 1);
+    glBindVertexArray(0);
+    glGenBuffers(1, &m_InstanceBuffer);
+    glGenTextures(1, &m_InstanceTexture);
+    GLint maxTexels = 0;
+    glGetIntegerv(GL_MAX_TEXTURE_BUFFER_SIZE, &maxTexels);
+    m_MaxInstances = (std::min)(size_t(maxTexels / 3), size_t(16384));
+    m_Instances.reserve(m_MaxInstances);
+    m_Triangles.reserve(262144);
+    InitializeMeshCache();
     if (!m_Post.Initialize(width, height))
     {
         std::cerr << "Post processing unavailable. Using direct rendering.\n";
     }
 }
 
-void Renderer::ConfigureVertexArray(GLuint vao, GLuint vbo)
-{
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), nullptr);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1,
-                          4,
-                          GL_FLOAT,
-                          GL_FALSE,
-                          sizeof(Vertex),
-                          reinterpret_cast<const void*>(sizeof(float) * 2));
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2,
-                          1,
-                          GL_FLOAT,
-                          GL_FALSE,
-                          sizeof(Vertex),
-                          reinterpret_cast<const void*>(sizeof(float) * 6));
-    glBindVertexArray(0);
-}
-
 Renderer::~Renderer()
 {
     // All GL resources must be released while the renderer's context is alive.
-    m_Commands.clear();
     m_MeshCache.clear();
+    glDeleteTextures(1, &m_Atlas);
+    glDeleteTextures(1, &m_InstanceTexture);
+    glDeleteBuffers(1, &m_InstanceBuffer);
     if (m_VBO)
     {
         glDeleteBuffers(1, &m_VBO);
@@ -286,9 +260,11 @@ void Renderer::Resize(int width, int height)
 void Renderer::Begin(Color background)
 {
     m_DrawCalls = 0;
+    m_DrawingUI = false;
     m_Translation = {0, 0};
-    m_Commands.clear();
-    m_Vertices.clear();
+    m_Instances.clear();
+    m_Triangles.clear();
+    m_Stats = {};
     ++m_CacheFrame;
     m_CacheHits = 0;
     m_CacheMisses = 0;
@@ -310,41 +286,99 @@ void Renderer::Begin(Color background)
 
 void Renderer::Flush()
 {
-    if (m_Commands.empty() || !IsInitialized())
+    if (m_Triangles.empty() || !IsInitialized())
     {
         return;
     }
+    const auto started = std::chrono::steady_clock::now();
     glUseProgram(m_Program);
     glUniform2f(m_Viewport, float(m_Width), float(m_Height));
     glUniform1i(m_ColorSpace, m_LinearScene ? 1 : 0);
-    if (!m_Vertices.empty())
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferData(GL_ARRAY_BUFFER,
-                     m_Vertices.size() * sizeof(Vertex),
-                     m_Vertices.data(),
-                     GL_STREAM_DRAW);
-    }
-
-    // Keep cached and dynamic submissions interleaved: alpha blending depends
-    // on painter order, so sorting commands by mesh would change the image.
-    for (const DrawCommand& command : m_Commands)
-    {
-        glBindVertexArray(command.mesh ? command.mesh->vao : m_VAO);
-        glUniform4f(m_Model, command.position.x, command.position.y, command.scale, command.scale);
-        glUniform4f(m_Tint, command.tint.r, command.tint.g, command.tint.b, command.tint.a);
-        glUniform1f(m_Radiance, command.tint.intensity);
-        glDrawArrays(GL_TRIANGLES, command.first, command.count);
-        ++m_DrawCalls;
-    }
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_Atlas);
+    glActiveTexture(GL_TEXTURE1);
+    glBindBuffer(GL_TEXTURE_BUFFER, m_InstanceBuffer);
+    glBufferData(GL_TEXTURE_BUFFER,
+                 m_Instances.size() * sizeof(Instance),
+                 m_Instances.data(),
+                 GL_STREAM_DRAW);
+    glBindTexture(GL_TEXTURE_BUFFER, m_InstanceTexture);
+    glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA32F, m_InstanceBuffer);
+    glBindVertexArray(m_VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+    glBufferData(GL_ARRAY_BUFFER,
+                 m_Triangles.size() * sizeof(TriangleInstance),
+                 m_Triangles.data(),
+                 GL_STREAM_DRAW);
+    // Every instance is one triangle. Both triangle and object order match
+    // submission order, even across unrelated meshes and transparent glyphs.
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 3, static_cast<GLsizei>(m_Triangles.size()));
+    ++m_DrawCalls;
+    ++m_Stats.batches;
+    m_DrawingUI ? ++m_Stats.uiDraws : ++m_Stats.worldDraws;
+    m_Stats.instanceBytes +=
+        m_Instances.size() * sizeof(Instance) + m_Triangles.size() * sizeof(TriangleInstance);
     glBindVertexArray(0);
-    m_Commands.clear();
-    m_Vertices.clear();
+    glActiveTexture(GL_TEXTURE0);
+    m_Instances.clear();
+    m_Triangles.clear();
+    m_Stats.batchSubmitMs +=
+        std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - started)
+            .count();
+}
+
+void Renderer::Submit(const CachedMesh& mesh, const Transform& transform, Color tint)
+{
+    if (mesh.vertices.empty() || !IsInitialized())
+    {
+        return;
+    }
+    constexpr size_t MaxTriangles = 262144;
+    size_t first = 0;
+    while (first < mesh.vertices.size())
+    {
+        if (m_Instances.size() >= m_MaxInstances || m_Triangles.size() == MaxTriangles)
+        {
+            ++m_Stats.capacityFlushes;
+            Flush();
+        }
+        const GLuint instance = static_cast<GLuint>(m_Instances.size());
+        m_Instances.push_back(
+            {{transform.xAxis.x, transform.xAxis.y, transform.yAxis.x, transform.yAxis.y},
+             {transform.position.x + m_Translation.x,
+              transform.position.y + m_Translation.y,
+              tint.intensity,
+              0},
+             {tint.r, tint.g, tint.b, tint.a}});
+        const size_t count =
+            (std::min)((mesh.vertices.size() - first) / 3, MaxTriangles - m_Triangles.size());
+        for (size_t i = 0; i < count; ++i)
+        {
+            m_Triangles.push_back({mesh.first + static_cast<GLuint>(first + i * 3), instance});
+        }
+        first += count * 3;
+        ++m_Stats.instances;
+        m_Stats.triangles += count;
+    }
+}
+
+void Renderer::DrawPrimitive(const std::string& key,
+                             const Transform& transform,
+                             Color tint,
+                             const std::function<void()>& builder)
+{
+    if (!IsInitialized())
+    {
+        return;
+    }
+    const auto mesh = GetMesh(key, {0, 0}, 1, builder);
+    Submit(*mesh, transform, tint);
 }
 
 void Renderer::BeginUI()
 {
     Flush();
+    m_DrawingUI = true;
     if (m_LinearScene)
     {
         m_Post.Composite();
@@ -386,117 +420,8 @@ void Renderer::DrawCachedMesh(const std::string& key,
         return;
     }
 
-    std::shared_ptr<CachedMesh> mesh;
-    const auto found = m_MeshCache.find(key);
-    if (found != m_MeshCache.end())
-    {
-        mesh = found->second.mesh;
-        found->second.lastUsed = m_CacheFrame;
-        ++m_CacheHits;
-    }
-    else
-    {
-        ++m_CacheMisses;
-        m_CapturedVertices.clear();
-        m_Capturing = true;
-        try
-        {
-            builder();
-        }
-        catch (...)
-        {
-            m_Capturing = false;
-            m_CapturedVertices.clear();
-            throw;
-        }
-        m_Capturing = false;
-
-        mesh = std::make_shared<CachedMesh>();
-        mesh->count = static_cast<GLsizei>(m_CapturedVertices.size());
-        mesh->bytes = m_CapturedVertices.size() * sizeof(Vertex);
-        if (mesh->count > 0)
-        {
-            glGenVertexArrays(1, &mesh->vao);
-            glGenBuffers(1, &mesh->vbo);
-            if (!mesh->vao || !mesh->vbo)
-            {
-                // Retain the current frame's image if a cache buffer cannot
-                // be created; these vertices use the ordinary dynamic batch.
-                for (const Vertex& vertex : m_CapturedVertices)
-                {
-                    Color color(vertex.r * tint.r,
-                                vertex.g * tint.g,
-                                vertex.b * tint.b,
-                                vertex.a * tint.a);
-                    color.intensity = vertex.intensity * tint.intensity;
-                    VertexAt({vertex.x, vertex.y}, color);
-                }
-                m_CapturedVertices.clear();
-                return;
-            }
-            for (Vertex& vertex : m_CapturedVertices)
-            {
-                vertex.x = (vertex.x - position.x) / scale;
-                vertex.y = (vertex.y - position.y) / scale;
-            }
-            ConfigureVertexArray(mesh->vao, mesh->vbo);
-            glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-            glBufferData(GL_ARRAY_BUFFER, mesh->bytes, m_CapturedVertices.data(), GL_STATIC_DRAW);
-        }
-        m_CapturedVertices.clear();
-        m_MeshCache.emplace(key, CacheEntry{mesh, m_CacheFrame});
-        m_CacheBytes += mesh->bytes;
-    }
-
-    if (mesh->count > 0)
-    {
-        DrawCommand command;
-        command.mesh = mesh;
-        command.count = mesh->count;
-        command.position = {position.x + m_Translation.x, position.y + m_Translation.y};
-        command.scale = scale;
-        command.tint = tint;
-        m_Commands.push_back(command);
-    }
-}
-
-void Renderer::InvalidateMesh(const std::string& key)
-{
-    const auto found = m_MeshCache.find(key);
-    if (found != m_MeshCache.end())
-    {
-        m_CacheBytes -= found->second.mesh->bytes;
-        m_MeshCache.erase(found);
-    }
-    // Commands already queued retain ownership until Flush finishes.
-}
-
-void Renderer::TrimMeshCache()
-{
-    constexpr size_t MaxEntries = 4096;
-    constexpr size_t MaxBytes = 64 * 1024 * 1024;
-    if (m_MeshCache.size() <= MaxEntries && m_CacheBytes <= MaxBytes)
-    {
-        return;
-    }
-
-    // Evict at frame boundaries, after all previous commands have released
-    // their resources. The current frame can temporarily exceed this budget.
-    std::vector<std::pair<std::uint64_t, std::string>> oldest;
-    oldest.reserve(m_MeshCache.size());
-    for (const auto& entry : m_MeshCache)
-    {
-        oldest.emplace_back(entry.second.lastUsed, entry.first);
-    }
-    std::sort(oldest.begin(), oldest.end());
-    for (const auto& entry : oldest)
-    {
-        if (m_MeshCache.size() <= MaxEntries && m_CacheBytes <= MaxBytes)
-        {
-            break;
-        }
-        InvalidateMesh(entry.second);
-    }
+    const auto mesh = GetMesh(key, position, scale, builder);
+    Submit(*mesh, {{scale, 0}, {0, scale}, position}, tint);
 }
 
 size_t Renderer::CachedMeshCount() const
@@ -521,16 +446,8 @@ void Renderer::VertexAt(Point p, Color c)
         m_CapturedVertices.push_back({p.x, p.y, c.r, c.g, c.b, c.a, c.intensity});
         return;
     }
-    p.x += m_Translation.x;
-    p.y += m_Translation.y;
-    if (m_Commands.empty() || m_Commands.back().mesh)
-    {
-        DrawCommand command;
-        command.first = static_cast<GLint>(m_Vertices.size());
-        m_Commands.push_back(command);
-    }
-    m_Vertices.push_back({p.x, p.y, c.r, c.g, c.b, c.a, c.intensity});
-    ++m_Commands.back().count;
+    // Only cache builders create vertices. Runtime primitives submit transforms.
+    throw std::logic_error("VertexAt must be called inside a mesh builder");
 }
 
 Renderer::ScopedTranslation::ScopedTranslation(Renderer& renderer, Point offset)
@@ -548,9 +465,20 @@ Renderer::ScopedTranslation::~ScopedTranslation()
 
 void Renderer::Triangle(Point a, Point b, Point c, Color color)
 {
-    VertexAt(a, color);
-    VertexAt(b, color);
-    VertexAt(c, color);
+    if (m_Capturing)
+    {
+        VertexAt(a, color);
+        VertexAt(b, color);
+        VertexAt(c, color);
+        return;
+    }
+    DrawPrimitive("primitive/triangle",
+                  {{b.x - a.x, b.y - a.y}, {c.x - a.x, c.y - a.y}, a},
+                  color,
+                  [&]()
+                  {
+                      Triangle({0, 0}, {1, 0}, {0, 1}, Color());
+                  });
 }
 
 void Renderer::Quad(Point a, Point b, Point c, Point d, Color color)
@@ -561,7 +489,18 @@ void Renderer::Quad(Point a, Point b, Point c, Point d, Color color)
 
 void Renderer::Rect(float x, float y, float width, float height, Color color)
 {
-    Quad({x, y}, {x + width, y}, {x + width, y + height}, {x, y + height}, color);
+    if (m_Capturing)
+    {
+        Quad({x, y}, {x + width, y}, {x + width, y + height}, {x, y + height}, color);
+        return;
+    }
+    DrawPrimitive("primitive/quad",
+                  {{width, 0}, {0, height}, {x, y}},
+                  color,
+                  [&]()
+                  {
+                      Rect(0, 0, 1, 1, Color());
+                  });
 }
 
 void Renderer::Line(Point a, Point b, float width, Color color)
@@ -575,11 +514,22 @@ void Renderer::Line(Point a, Point b, float width, Color color)
     }
     const float ox = -dy / length * width * 0.5f;
     const float oy = dx / length * width * 0.5f;
-    Quad({a.x + ox, a.y + oy},
-         {b.x + ox, b.y + oy},
-         {b.x - ox, b.y - oy},
-         {a.x - ox, a.y - oy},
-         color);
+    if (m_Capturing)
+    {
+        Quad({a.x + ox, a.y + oy},
+             {b.x + ox, b.y + oy},
+             {b.x - ox, b.y - oy},
+             {a.x - ox, a.y - oy},
+             color);
+        return;
+    }
+    DrawPrimitive("primitive/quad",
+                  {{dx, dy}, {-2 * ox, -2 * oy}, {a.x + ox, a.y + oy}},
+                  color,
+                  [&]()
+                  {
+                      Rect(0, 0, 1, 1, Color());
+                  });
 }
 
 const std::vector<Point>& Renderer::UnitCircle(int segments)
@@ -606,6 +556,17 @@ void Renderer::Ellipse(Point p, float rx, float ry, Color color, int segments)
     {
         return;
     }
+    if (!m_Capturing)
+    {
+        DrawPrimitive("primitive/ellipse/" + std::to_string(segments),
+                      {{rx, 0}, {0, ry}, p},
+                      color,
+                      [&]()
+                      {
+                          Ellipse({0, 0}, 1, 1, Color(), segments);
+                      });
+        return;
+    }
     const auto& circle = UnitCircle(segments);
     for (int i = 0; i < segments; ++i)
     {
@@ -618,6 +579,17 @@ void Renderer::Ellipse(Point p, float rx, float ry, Color color, int segments)
 
 void Renderer::Glow(Point p, float rx, float ry, Color color)
 {
+    if (!m_Capturing)
+    {
+        DrawPrimitive("primitive/glow",
+                      {{rx, 0}, {0, ry}, p},
+                      color,
+                      [&]()
+                      {
+                          Glow({0, 0}, 1, 1, Color());
+                      });
+        return;
+    }
     Color edge = color;
     edge.a = 0;
     const auto& circle = UnitCircle(32);

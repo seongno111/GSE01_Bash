@@ -18,3 +18,7 @@
 /x64/Debug/Shaders/
 /x64/Release/Shaders/
 
+# Generated mesh assets and per-session performance captures
+**/MeshCache/
+**/Profiling/
+

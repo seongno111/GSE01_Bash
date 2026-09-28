@@ -65,6 +65,9 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="RendererMeshCache.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

@@ -47,6 +47,21 @@ public:
         return m_Time;
     }
 
+    WorldPoint CameraPosition() const
+    {
+        return {m_CameraX, m_CameraY};
+    }
+
+    bool GridEnabled() const
+    {
+        return m_Grid;
+    }
+
+    size_t LoadedChunkCount() const
+    {
+        return m_Chunks.size();
+    }
+
     Point Project(double x, double y) const;
     bool Blocked(double x, double y) const;
     bool ClearShot(double fromX, double fromY, double toX, double toY) const;

@@ -37,6 +37,24 @@ public:
     bool Blocked(double x, double y) const;
     void NotifyTransformChanged(ActorId id);
 
+    struct DrawStats
+    {
+        size_t worldActors = 0;
+        size_t uiActors = 0;
+        double worldListMs = 0;
+        double uiListMs = 0;
+    };
+
+    const DrawStats& RenderingStats() const
+    {
+        return m_DrawStats;
+    }
+
+    size_t ActorCount() const
+    {
+        return m_Actors.size() - m_DestroyedActors.size();
+    }
+
 private:
 
     template <class T> friend class ActorCollection;
@@ -56,6 +74,7 @@ private:
     ActorId m_NextId = 1;
     ActorId m_Root = InvalidActor;
     unsigned m_TraversalDepth = 0;
+    mutable DrawStats m_DrawStats;
 };
 
 // A typed membership view of graph-owned actors, independent of reparenting.

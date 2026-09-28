@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <cstdint>
 #include <cstddef>
+#include <filesystem>
 #include "Dependencies/glew.h"
 #include "PostProcessing.h"
 
@@ -57,17 +58,54 @@ public:
 
     bool IsInitialized() const
     {
-        return m_Program != 0 && m_VBO != 0 && m_VAO != 0;
+        return m_Program && m_VBO && m_VAO && m_Atlas && m_InstanceBuffer && m_InstanceTexture
+               && m_MaxInstances > 0 && m_AtlasCapacity > 0;
     }
 
     void Resize(int width, int height);
     void Begin(Color background);
+    // Submit queued instances in painter order. BeginUI flushes automatically
+    // before post processing; finish each frame with Flush after drawing UI.
     void Flush();
     void BeginUI();
 
     std::uint64_t DrawCalls() const
     {
         return m_DrawCalls + m_Post.DrawCalls();
+    }
+
+    struct FrameStats
+    {
+        std::uint64_t batches = 0;
+        std::uint64_t instances = 0;
+        std::uint64_t triangles = 0;
+        std::uint64_t meshBuilds = 0;
+        std::uint64_t diskLoads = 0;
+        std::uint64_t geometryBytes = 0;
+        std::uint64_t instanceBytes = 0;
+        std::uint64_t capacityFlushes = 0;
+        std::uint64_t atlasRepacks = 0;
+        std::uint64_t cacheEvictions = 0;
+        std::uint64_t diskRejects = 0;
+        std::uint64_t diskWrites = 0;
+        std::uint64_t diskWriteSkips = 0;
+        std::uint64_t worldDraws = 0;
+        std::uint64_t uiDraws = 0;
+        double diskReadMs = 0;
+        double diskWriteMs = 0;
+        double meshBuildMs = 0;
+        double geometryUploadMs = 0;
+        double batchSubmitMs = 0;
+    };
+
+    const FrameStats& Stats() const
+    {
+        return m_Stats;
+    }
+
+    size_t CachedMeshBytes() const
+    {
+        return m_CacheBytes;
     }
 
     // Translates a logical screen-space actor, including cached glyph meshes.
@@ -87,7 +125,8 @@ public:
     };
 
     // The builder only submits geometry in the supplied coordinates and runs
-    // on a cache miss. Nested builders become part of their parent's mesh.
+    // only on both memory and disk cache misses. Nested builders become part
+    // of their parent's mesh. GPU geometry is shared by all queued instances.
     // Position/scale/tint are instance properties and must not be part of the key.
     // Include every baked shape/color/state variant in the key; do not animate
     // or mutate game state inside a builder. Invalidate after changing geometry.
@@ -139,14 +178,54 @@ private:
         float b;
         float a;
         float intensity;
+        float padding = 0;
     };
 
     void VertexAt(Point p, Color c);
-    void ConfigureVertexArray(GLuint vao, GLuint vbo);
     const std::vector<Point>& UnitCircle(int segments);
     void TrimMeshCache();
 
-    struct CachedMesh;
+    struct CachedMesh
+    {
+        std::vector<Vertex> vertices;
+        GLuint first = 0;
+    };
+
+    struct Transform
+    {
+        Point xAxis{1, 0};
+        Point yAxis{0, 1};
+        Point position{0, 0};
+    };
+
+    struct Instance
+    {
+        float axes[4];
+        float placement[4];
+        float tint[4];
+    };
+
+    struct TriangleInstance
+    {
+        GLuint first;
+        GLuint instance;
+    };
+
+    std::shared_ptr<CachedMesh> GetMesh(const std::string& key,
+                                        Point position,
+                                        float scale,
+                                        const std::function<void()>& builder);
+    void Submit(const CachedMesh& mesh, const Transform& transform, Color tint);
+    void DrawPrimitive(const std::string& key,
+                       const Transform& transform,
+                       Color tint,
+                       const std::function<void()>& builder);
+    void InitializeMeshCache();
+    bool LoadMeshFile(const std::string& key, std::vector<Vertex>& vertices);
+    void SaveMeshFile(const std::string& key, const std::vector<Vertex>& vertices);
+    void UploadMesh(CachedMesh& mesh);
+    void RepackAtlas();
+    std::filesystem::path MeshPath(const std::string& key) const;
 
     struct CacheEntry
     {
@@ -154,38 +233,38 @@ private:
         std::uint64_t lastUsed = 0;
     };
 
-    struct DrawCommand
-    {
-        std::shared_ptr<CachedMesh> mesh;
-        GLint first = 0;
-        GLsizei count = 0;
-        Point position{0, 0};
-        float scale = 1;
-        Color tint;
-    };
-
     std::unordered_map<std::string, CacheEntry> m_MeshCache;
     std::unordered_map<int, std::vector<Point>> m_CircleCache;
-    std::vector<DrawCommand> m_Commands;
+    std::vector<Instance> m_Instances;
+    std::vector<TriangleInstance> m_Triangles;
     std::vector<Vertex> m_CapturedVertices;
     bool m_Capturing = false;
     Point m_Translation{0, 0};
     std::uint64_t m_CacheFrame = 0;
     size_t m_CacheBytes = 0;
+    size_t m_DiskBytes = 0;
     size_t m_CacheHits = 0;
     size_t m_CacheMisses = 0;
     std::uint64_t m_DrawCalls = 0;
+    FrameStats m_Stats;
+    std::filesystem::path m_CacheDirectory;
+    bool m_DiskCacheEnabled = false;
+    bool m_DiskWarning = false;
+    GLuint m_Atlas = 0;
+    size_t m_AtlasUsed = 0;
+    size_t m_AtlasCapacity = 0;
+    int m_AtlasSide = 0;
+    GLuint m_InstanceBuffer = 0;
+    GLuint m_InstanceTexture = 0;
+    size_t m_MaxInstances = 0;
     PostProcessing m_Post;
     bool m_LinearScene = false;
-    std::vector<Vertex> m_Vertices;
+    bool m_DrawingUI = false;
     GLuint m_Program = 0;
     GLuint m_VBO = 0;
     GLuint m_VAO = 0;
     GLint m_Viewport = -1;
     GLint m_ColorSpace = -1;
-    GLint m_Model = -1;
-    GLint m_Tint = -1;
-    GLint m_Radiance = -1;
     int m_Width = 1;
     int m_Height = 1;
 };

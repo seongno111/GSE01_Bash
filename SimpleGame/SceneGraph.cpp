@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <cmath>
+#include <chrono>
 
 namespace
 {
@@ -189,6 +190,8 @@ void SceneGraph::Update(float dt, TickGroup group)
 
 std::vector<ActorId> SceneGraph::DrawList(bool ui) const
 {
+    const auto started = std::chrono::steady_clock::now();
+
     struct Entry
     {
         ActorId id;
@@ -237,11 +240,25 @@ std::vector<ActorId> SceneGraph::DrawList(bool ui) const
     {
         actors.push_back(entry.id);
     }
+    const double milliseconds =
+        std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - started)
+            .count();
+    if (ui)
+    {
+        m_DrawStats.uiActors = actors.size();
+        m_DrawStats.uiListMs = milliseconds;
+    }
+    else
+    {
+        m_DrawStats.worldActors = actors.size();
+        m_DrawStats.worldListMs = milliseconds;
+    }
     return actors;
 }
 
 void SceneGraph::DrawWorld(Renderer& renderer)
 {
+    m_DrawStats = {};
     TraversalScope scope(m_TraversalDepth);
     for (ActorId id : DrawList(false))
     {

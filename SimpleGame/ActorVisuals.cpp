@@ -321,55 +321,70 @@ void Prototype::DrawEnemyMesh(Renderer& r, Point p, const EnemyActor& enemy)
 void Prototype::DrawTile(Renderer& r, const WorldTileData& tile, Point p)
 {
 
-    const float v = 0.86f + float(tile.variant % 100) * 0.002f;
-    Color c = tile.road ? Color(0.27f, 0.285f, 0.25f) : Color(0.16f, 0.215f, 0.20f);
-    if (LevelOneCell(tile.x, tile.y) >= 0)
-    {
-        c = tile.road ? Color(0.32f, 0.29f, 0.21f) : Color(0.23f, 0.24f, 0.17f);
-    }
-    if (!tile.road && tile.taint > 0.56f)
-    {
-        c = Color(0.20f, 0.155f, 0.22f);
-    }
-    const float w = 40 * m_Zoom + 0.35f;
-    const float h = 20 * m_Zoom + 0.25f;
-    r.Quad({p.x, p.y - h}, {p.x + w, p.y}, {p.x, p.y + h}, {p.x - w, p.y}, c.Shade(v));
-    if (tile.road)
-    {
-        r.Line({p.x - w + 2, p.y}, {p.x, p.y + h - 1}, m_Zoom, Color(0.10f, 0.14f, 0.14f, 0.5f));
-        if (tile.variant % 3 == 0)
+    const unsigned flags =
+        (tile.road ? 1u : 0u) | (LevelOneCell(tile.x, tile.y) >= 0 ? 2u : 0u)
+        | (tile.taint > 0.56f ? 4u : 0u) | (tile.taint > 0.61f ? 8u : 0u)
+        | (m_Grid && (tile.x % ChunkSize == 0 || tile.y % ChunkSize == 0) ? 16u : 0u);
+    const std::string key = "terrain/" + std::to_string(tile.variant) + "/" + std::to_string(flags);
+    r.DrawCachedMesh(
+        key,
+        p,
+        m_Zoom,
+        [&]()
         {
-            r.Line({p.x - 9 * m_Zoom, p.y - 9 * m_Zoom},
-                   {p.x + 5 * m_Zoom, p.y + 8 * m_Zoom},
-                   m_Zoom,
-                   c.Shade(0.6f));
-        }
-    }
-    else
-    {
-        for (int i = 0; i < 3; ++i)
-        {
-            const float ox = float((tile.variant >> (i * 5)) % 29) - 14;
-            const float oy = float((tile.variant >> (i * 4 + 2)) % 13) - 6;
-            r.Line({p.x + ox * m_Zoom, p.y + oy * m_Zoom},
-                   {p.x + (ox + 4) * m_Zoom, p.y + (oy - 2) * m_Zoom},
-                   m_Zoom,
-                   c.Shade(1.25f));
-        }
-        if (tile.taint > 0.61f && tile.variant % 4 == 0)
-        {
-            r.Ellipse(p, 24 * m_Zoom, 10 * m_Zoom, Color(0.12f, 0.065f, 0.16f, 0.8f));
-            r.Line({p.x - 16 * m_Zoom, p.y},
-                   {p.x + 8 * m_Zoom, p.y - 5 * m_Zoom},
-                   m_Zoom,
-                   Color(0.46f, 0.26f, 0.43f, 0.6f));
-        }
-    }
-    if (m_Grid && (tile.x % ChunkSize == 0 || tile.y % ChunkSize == 0))
-    {
-        r.Line({p.x, p.y - h}, {p.x + w, p.y}, m_Zoom, Color(0.5f, 0.78f, 0.7f, 0.6f));
-        r.Line({p.x, p.y - h}, {p.x - w, p.y}, m_Zoom, Color(0.5f, 0.78f, 0.7f, 0.6f));
-    }
+            const float v = 0.86f + float(tile.variant % 100) * 0.002f;
+            Color c = tile.road ? Color(0.27f, 0.285f, 0.25f) : Color(0.16f, 0.215f, 0.20f);
+            if (LevelOneCell(tile.x, tile.y) >= 0)
+            {
+                c = tile.road ? Color(0.32f, 0.29f, 0.21f) : Color(0.23f, 0.24f, 0.17f);
+            }
+            if (!tile.road && tile.taint > 0.56f)
+            {
+                c = Color(0.20f, 0.155f, 0.22f);
+            }
+            const float w = 40.35f * m_Zoom;
+            const float h = 20.25f * m_Zoom;
+            r.Quad({p.x, p.y - h}, {p.x + w, p.y}, {p.x, p.y + h}, {p.x - w, p.y}, c.Shade(v));
+            if (tile.road)
+            {
+                r.Line({p.x - w + 2 * m_Zoom, p.y},
+                       {p.x, p.y + h - m_Zoom},
+                       m_Zoom,
+                       Color(0.10f, 0.14f, 0.14f, 0.5f));
+                if (tile.variant % 3 == 0)
+                {
+                    r.Line({p.x - 9 * m_Zoom, p.y - 9 * m_Zoom},
+                           {p.x + 5 * m_Zoom, p.y + 8 * m_Zoom},
+                           m_Zoom,
+                           c.Shade(0.6f));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; ++i)
+                {
+                    const float ox = float((tile.variant >> (i * 5)) % 29) - 14;
+                    const float oy = float((tile.variant >> (i * 4 + 2)) % 13) - 6;
+                    r.Line({p.x + ox * m_Zoom, p.y + oy * m_Zoom},
+                           {p.x + (ox + 4) * m_Zoom, p.y + (oy - 2) * m_Zoom},
+                           m_Zoom,
+                           c.Shade(1.25f));
+                }
+                if (tile.taint > 0.61f && tile.variant % 4 == 0)
+                {
+                    r.Ellipse(p, 24 * m_Zoom, 10 * m_Zoom, Color(0.12f, 0.065f, 0.16f, 0.8f));
+                    r.Line({p.x - 16 * m_Zoom, p.y},
+                           {p.x + 8 * m_Zoom, p.y - 5 * m_Zoom},
+                           m_Zoom,
+                           Color(0.46f, 0.26f, 0.43f, 0.6f));
+                }
+            }
+            if (m_Grid && (tile.x % ChunkSize == 0 || tile.y % ChunkSize == 0))
+            {
+                r.Line({p.x, p.y - h}, {p.x + w, p.y}, m_Zoom, Color(0.5f, 0.78f, 0.7f, 0.6f));
+                r.Line({p.x, p.y - h}, {p.x - w, p.y}, m_Zoom, Color(0.5f, 0.78f, 0.7f, 0.6f));
+            }
+        });
 }
 
 void Prototype::DrawProp(Renderer& r, Point p, int kind, unsigned seed)
