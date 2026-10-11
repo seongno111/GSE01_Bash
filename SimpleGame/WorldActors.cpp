@@ -45,6 +45,14 @@ void PropActor::Draw(Renderer& r)
 
 double PropActor::ColliderRadius() const
 {
+    if (m_Kind == 7 || m_Kind == 8)
+    {
+        return 1.15;
+    }
+    if (m_Kind == 9)
+    {
+        return 0.6;
+    }
     if (m_Kind == 5)
     {
         return 2.15;

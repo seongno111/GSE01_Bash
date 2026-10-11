@@ -1,12 +1,15 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "NpcWorld.h"
 
 #include <algorithm>
 #include <cmath>
 #include <cctype>
 
 using namespace GameRules;
+
+Prototype::~Prototype() = default;
 
 Prototype::Prototype()
     : m_WorldRoot(m_Scene.Spawn<::Actor>(m_Scene.Root(), "World").Id()),
@@ -94,6 +97,10 @@ void Prototype::Key(unsigned char key, bool down)
     const bool pressed = down && !m_Keys[key];
     m_Keys[key] = down;
     if (!pressed)
+    {
+        return;
+    }
+    if (m_NpcWorld && m_NpcWorld->Key(key))
     {
         return;
     }
@@ -228,6 +235,10 @@ void Prototype::Update(float dt)
     m_ShrineX = NearestShrine(m_Player.WorldX());
     m_ShrineY = NearestShrine(m_Player.WorldY());
     UpdateGameplay(dt);
+    if (m_NpcWorld)
+    {
+        m_NpcWorld->Update(dt);
+    }
     const double blend = 1.0 - std::exp(-8.0 * dt);
     m_CameraX += (m_Player.WorldX() - m_CameraX) * blend;
     m_CameraY += (m_Player.WorldY() - m_CameraY) * blend;

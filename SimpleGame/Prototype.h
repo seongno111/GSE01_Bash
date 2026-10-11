@@ -7,11 +7,14 @@
 #include <string>
 #include <vector>
 
+class NpcWorld;
+
 class Prototype
 {
 public:
 
     Prototype();
+    ~Prototype();
     void Update(float dt);
     void Draw(Renderer& renderer);
     void Key(unsigned char key, bool down);
@@ -74,6 +77,8 @@ public:
 
 private:
 
+    friend class NpcWorld;
+
     friend class GameActor;
     friend class PlayerActor;
     friend class EnemyActor;
@@ -96,7 +101,7 @@ private:
     void SelectTarget();
     bool TargetPosition(double& x, double& y) const;
     void FireProjectile();
-    void DefeatEnemy(EnemyActor& enemy);
+    void DefeatEnemy(EnemyActor& enemy, bool rewardPlayer = true);
     void AddExperience(int amount);
     void AddCombatText(double x, double y, const std::string& text, Color color);
     void CompleteLevelOne();
@@ -134,6 +139,7 @@ private:
     ActorCollection<ProjectileActor> m_EnemyProjectiles;
     ActorCollection<LootActor> m_Loot;
     ActorCollection<CombatTextActor> m_CombatText;
+    std::unique_ptr<NpcWorld> m_NpcWorld;
     int m_FarmKills = 0;
     int m_CollectedItems = 0;
     std::uint64_t m_WorldSeed = 0;
@@ -156,8 +162,8 @@ private:
     int m_Height = 800;
     int m_Radius = 3;
     bool m_Grid = false;
-    bool m_Help = true;
+    bool m_Help = false;
     std::uint64_t m_NextEcho = 1;
     std::string m_Message =
-        "레벨 1 · 버려진 경작지. 동쪽 사냥터에서 SPACE를 누르고 적을 사냥하세요.";
+        "성당 마을 · C로 주민 선택, Y 거래, O 축복, I 상태 확인. J는 PK 전환입니다.";
 };

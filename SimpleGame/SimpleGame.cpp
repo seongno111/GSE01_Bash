@@ -156,6 +156,7 @@ int main(int argc, char** argv)
               << "WASD move | Hold Space auto aim | F auto fire | U upgrade | Q potion | T "
                  "cleansing stone\n"
               << "E sanctuary/report | R relic | K demo death\n"
+              << "NPC: C select | I inspector | J PK | Y trade | O blessing | L AI log\n"
               << "H help | G chunk grid | +/- zoom | Esc exit\n"
               << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
               << "Session only: no gameplay saves, no AI dialogue service.\n"

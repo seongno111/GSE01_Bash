@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "NpcWorld.h"
 
 #include <algorithm>
 #include <cmath>
 #include <queue>
 #include <random>
 #include <chrono>
+#include <cstdlib>
 
 using namespace GameRules;
 
@@ -102,6 +104,20 @@ void Prototype::InitializeLevelOne()
     m_LevelOneStarted = true;
     m_WorldSeed =
         std::uint64_t(std::chrono::high_resolution_clock::now().time_since_epoch().count());
+    char* configuredSeed = nullptr;
+    size_t configuredSeedSize = 0;
+    if (_dupenv_s(&configuredSeed, &configuredSeedSize, "EMBER_WORLD_SEED") == 0
+        && configuredSeed != nullptr)
+    {
+        char* end = nullptr;
+        const auto value = std::strtoull(configuredSeed, &end, 10);
+        if (end != configuredSeed && *end == '\0')
+        {
+            m_WorldSeed = value;
+        }
+    }
+    std::free(configuredSeed);
+
     std::mt19937_64 random(m_WorldSeed);
     const auto spawn = [this, &random](double x, double y, int tier)
     {
@@ -135,6 +151,7 @@ void Prototype::InitializeLevelOne()
     spawn(16, 6, 1);
     spawn(18, 2, 2);
     GenerateLevelOneMap();
+    m_NpcWorld = std::make_unique<NpcWorld>(*this, m_WorldSeed);
 }
 
 void Prototype::CompleteLevelOne()

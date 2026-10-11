@@ -19,6 +19,24 @@ WorldTileData Prototype::MakeTile(std::int64_t x, std::int64_t y) const
         taint *= 0.25f;
     }
     int prop = 0;
+    // A compact inhabited hub beside the existing 19x17 encounter area.
+    // Clear the entire village footprint; buildings leave connected streets.
+    if (x >= -10 && x <= 3 && y >= -6 && y <= 10)
+    {
+        if ((x == -8 && y == 5) || (x == -8 && y == -3) || (x == -6 && y == -5))
+        {
+            prop = 7;
+        }
+        if (x == -7 && y == 0)
+        {
+            prop = 8;
+        }
+        if (x == 1 && y == 8)
+        {
+            prop = 9;
+        }
+        return {x, y, taint * 0.15f, static_cast<unsigned>(seed >> 32), prop, true};
+    }
     // Keep the landmark and its approach clear, including the respawn point.
     if (!road && x % 4 != 0 && y % 4 != 0 && !(std::abs(lx) < 6 && std::abs(ly) < 6))
     {
@@ -148,7 +166,10 @@ bool Prototype::Blocked(double x, double y) const
         for (auto tx = ix - 1; tx <= ix + 1; ++tx)
         {
             const WorldTileData t = MakeTile(tx, ty);
-            const double radius = t.prop == 2 ? 0.62 : 0.36;
+            const double radius = t.prop == 7 || t.prop == 8 ? 1.15
+                                  : t.prop == 9              ? 0.6
+                                  : t.prop == 2              ? 0.62
+                                                             : 0.36;
             if (t.prop && Distance(x - double(tx), y - double(ty)) < radius)
             {
                 return true;

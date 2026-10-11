@@ -21,4 +21,5 @@
 # Generated mesh assets and per-session performance captures
 **/MeshCache/
 **/Profiling/
+**/NpcAI/
 

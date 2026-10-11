@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "NpcWorld.h"
 
 #include <algorithm>
 #include <cmath>
@@ -17,8 +18,8 @@ void Prototype::Interface(Renderer& r)
 
     r.Rect(0, 0, w, 105, Color(0.025f, 0.035f, 0.042f, 0.92f));
     r.Rect(28, 24, 3, 49, Gold);
-    r.Text(45, 17, "마지막 불씨", Paper, 2.3f);
-    r.Text(46, 53, "레벨 1 · 버려진 경작지", Muted, 1.4f);
+    r.Text(45, 17, "성화의 파편", Paper, 2.3f);
+    r.Text(46, 53, "성당 마을 · 살아 움직이는 변경", Muted, 1.4f);
     r.Text(46, 78, "불을 찾아라. 네가 누구인지 잊지 마라.", Gold, 1.2f);
     const float panelX = w - 305;
     r.Text(panelX,
@@ -126,6 +127,11 @@ void Prototype::Interface(Renderer& r)
 
 void Prototype::DrawLevelOneUI(Renderer& r)
 {
+    if (m_NpcWorld)
+    {
+        m_NpcWorld->DrawHUD(r);
+        return;
+    }
     const Color text(0.82f, 0.84f, 0.78f);
     const Color panel(0.025f, 0.035f, 0.042f, 0.91f);
 

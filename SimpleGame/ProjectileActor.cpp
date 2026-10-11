@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "NpcWorld.h"
 
 #include <algorithm>
 #include <cmath>
@@ -23,6 +24,8 @@ ProjectileActor::ProjectileActor(Prototype& game,
       hostile(hostile)
 {
     SetLocalPosition(x, y);
+    allowPK =
+        !hostile && m_Game.m_NpcWorld && m_Game.m_NpcWorld->PKEnabled() && !InsideSanctuary(x, y);
 }
 
 void ProjectileActor::Update(float dt)
@@ -39,6 +42,11 @@ void ProjectileActor::Update(float dt)
             shot.remaining -= step;
             movement -= step;
             if (m_Game.Blocked(shot.WorldX(), shot.WorldY()))
+            {
+                shot.alive = false;
+            }
+            else if (m_Game.m_NpcWorld
+                     && m_Game.m_NpcWorld->HitByMonster(shot.WorldX(), shot.WorldY(), shot.damage))
             {
                 shot.alive = false;
             }
@@ -108,6 +116,15 @@ void ProjectileActor::Update(float dt)
                     }
                     break;
                 }
+            }
+
+            if (projectile.alive && m_Game.m_NpcWorld
+                && m_Game.m_NpcWorld->HitByPlayer(projectile.WorldX(),
+                                                  projectile.WorldY(),
+                                                  projectile.damage,
+                                                  allowPK))
+            {
+                projectile.alive = false;
             }
 
             if (!projectile.alive)

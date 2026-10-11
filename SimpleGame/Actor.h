@@ -21,7 +21,9 @@ enum class TickGroup
     Projectile,
     Enemy,
     Loot,
-    Effect
+    Effect,
+    Npc,
+    Count
 };
 
 enum class ActorLayer

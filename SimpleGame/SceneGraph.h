@@ -65,7 +65,7 @@ private:
     std::vector<ActorId> DrawList(bool ui) const;
     void RebuildCollisionGrid() const;
     std::unordered_map<ActorId, std::unique_ptr<Actor>> m_Actors;
-    std::array<std::vector<ActorId>, 6> m_TickActors;
+    std::array<std::vector<ActorId>, static_cast<size_t>(TickGroup::Count)> m_TickActors;
     std::vector<ActorId> m_DrawActors;
     std::vector<ActorId> m_DestroyedActors;
     std::unordered_map<ActorId, std::vector<ActorId>> m_Members;

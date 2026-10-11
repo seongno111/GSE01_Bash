@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "NpcWorld.h"
 
 #include <algorithm>
 #include <cmath>
@@ -56,7 +57,7 @@ void Prototype::FireProjectile()
     m_Player.attack = 0.16f;
 }
 
-void Prototype::DefeatEnemy(EnemyActor& enemy)
+void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
 {
     if (!enemy.alive)
     {
@@ -69,6 +70,14 @@ void Prototype::DefeatEnemy(EnemyActor& enemy)
     enemy.recovery = 0;
     enemy.burstWindup = 0;
     enemy.burstCooldown = 5;
+    if (!rewardPlayer)
+    {
+        if (enemy.tier == 2)
+        {
+            m_GuardianDefeated = true;
+        }
+        return;
+    }
     ++m_FarmKills;
     const auto drop = [this, &enemy](double offsetX, double offsetY, int amount, LootType type)
     {
@@ -212,6 +221,17 @@ void Prototype::SelectTarget()
             consider(echo);
         }
     }
+    if (m_NpcWorld)
+    {
+        for (auto id : m_NpcWorld->Actors())
+        {
+            const auto* npc = dynamic_cast<const NpcActor*>(m_Scene.Find(id));
+            if (npc && m_NpcWorld->PlayerCanTarget(*npc))
+            {
+                consider(*npc);
+            }
+        }
+    }
 }
 
 bool Prototype::TargetPosition(double& x, double& y) const
@@ -219,8 +239,10 @@ bool Prototype::TargetPosition(double& x, double& y) const
     const ::Actor* actor = m_Scene.Find(m_TargetId);
     const auto* enemy = dynamic_cast<const EnemyActor*>(actor);
     const auto* echo = dynamic_cast<const EchoActor*>(actor);
+    const auto* npc = dynamic_cast<const NpcActor*>(actor);
     if (!actor || !actor->EnabledInHierarchy()
-        || !((enemy && enemy->alive) || (echo && echo->alive)))
+        || !((enemy && enemy->alive) || (echo && echo->alive)
+             || (npc && m_NpcWorld && m_NpcWorld->PlayerCanTarget(*npc))))
     {
         return false;
     }

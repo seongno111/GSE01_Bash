@@ -48,6 +48,7 @@ public:
     int weaponRank = 0;
     int purificationStones = 0;
     int potions = 2;
+    int gold = 35;
     int corruption = 0;
     int deaths = 0;
     int relics = 1;
@@ -89,6 +90,7 @@ public:
     bool alive = true;
     float burstCooldown = 5;
     float burstWindup = 0;
+    ActorId combatTarget = InvalidActor;
 };
 
 class EchoActor final : public GameActor
@@ -143,6 +145,7 @@ public:
     float remaining;
     bool alive = true;
     bool hostile;
+    bool allowPK = false;
 };
 
 class LootActor final : public GameActor

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>성화의 파편 · 월드 관측소</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header><div><span class="eyebrow">EMBER / WORLD OBSERVATORY</span><h1>월드 관측소</h1><p>주민의 선택과 마을의 변화를 실시간으로 살펴봅니다.</p></div>
+        <div class="connection"><strong id="connection" role="status">연결 준비</strong><div id="clock">JSON 수신 대기</div><button id="pause">화면 갱신 일시정지</button></div></header>
+    <main>
+        <div id="notice" role="status">게임을 시작하고 JSON 메시지를 기다려 주세요.</div>
+        <section id="totals" class="totals" aria-label="전체 개체 현황"></section>
+        <section><div class="section-head"><h2>마을 현황</h2><small>소속 주민과 현재 체류 인원을 구분합니다.</small></div><div id="villages" class="villages"></div></section>
+        <section class="workspace"><div class="panel"><div class="section-head"><h2>활동 지도</h2><small>청록: NPC · 붉은색: 몬스터 · 회색: 사망/비활성</small></div><canvas id="map" width="960" height="460" aria-label="현재 등록된 개체의 위치 지도"></canvas><p class="hint">등록된 Actor 범위입니다. 아직 생성되지 않은 무한 월드 전체 개체 수는 포함하지 않습니다.</p></div>
+            <aside class="panel"><h2>최근 사건</h2><ul id="events"></ul></aside></section>
+        <section class="panel"><div class="section-head"><h2>NPC 상태</h2><div class="filters"><label>마을 <select id="village"><option value="">전체 위치</option><option value="outside">마을 밖</option></select></label><label>직업 <select id="role"><option value="">전체 직업</option></select></label><label>상태 <select id="state"><option value="">전체</option><option value="alive">생존</option><option value="dead">사망</option><option value="combat">전투·대피</option></select></label><label>검색 <input id="search" type="search" placeholder="이름 / 행동" autocomplete="off"></label></div></div>
+            <div class="table-scroll"><table><thead><tr><th>주민</th><th>직업 / 목표</th><th>현재 위치</th><th>체력</th><th>상태 / 행동</th><th>금화</th><th>오염</th><th>이동 / 완료·실패</th></tr></thead><tbody id="npcs"></tbody></table></div>
+            <p id="count" class="hint">수신된 NPC가 없습니다.</p></section>
+        <section id="detail" class="panel"><h2>주민 상세</h2><p>NPC 이름을 누르면 능력치와 행동 판단을 볼 수 있습니다.</p></section>
+        <details class="panel"><summary>몬스터 목록 · 보스 / 변이 잔재 포함</summary><div class="table-scroll"><table><thead><tr><th>개체</th><th>종류</th><th>상태</th><th>체력</th><th>위치</th></tr></thead><tbody id="monsters"></tbody></table></div></details>
+        <footer><p id="source">데이터 소스 없음</p><p>JSON 수신: GET /api/snapshot · 갱신 주기 1초 · 읽기 전용</p></footer>
+    </main>
+</body>
+</html>

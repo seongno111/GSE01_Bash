@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "NpcWorld.h"
 
 #include <algorithm>
 #include <cmath>
@@ -21,8 +22,24 @@ EnemyActor::EnemyActor(Prototype& game, int tier)
 void EnemyActor::Update(float dt)
 {
     auto& enemy = *this;
-    const bool sanctuary = !m_Game.m_Player.EnabledInHierarchy()
-                           || InsideSanctuary(m_Game.m_Player.WorldX(), m_Game.m_Player.WorldY());
+    Actor* target = &m_Game.m_Player;
+    if (m_Game.m_NpcWorld)
+    {
+        if (attackWindup <= 0 && burstWindup <= 0)
+        {
+            target = m_Game.m_NpcWorld->EnemyTarget(*this);
+            combatTarget = target ? target->Id() : InvalidActor;
+        }
+        else
+        {
+            target = m_Game.Scene().Find(combatTarget);
+        }
+    }
+    const auto* npc = dynamic_cast<const NpcActor*>(target);
+    const bool sanctuary = !target || !target->EnabledInHierarchy() || (npc && !npc->vitals.alive)
+                           || InsideSanctuary(target->WorldX(), target->WorldY());
+    const double targetX = target ? target->WorldX() : homeX;
+    const double targetY = target ? target->WorldY() : homeY;
 
     if (!enemy.alive)
     {
@@ -39,8 +56,8 @@ void EnemyActor::Update(float dt)
         return;
     }
 
-    double dx = m_Game.m_Player.WorldX() - enemy.WorldX();
-    double dy = m_Game.m_Player.WorldY() - enemy.WorldY();
+    double dx = targetX - enemy.WorldX();
+    double dy = targetY - enemy.WorldY();
     const double distance = Length(dx, dy);
     const bool returning =
         sanctuary || distance > 8
@@ -89,18 +106,21 @@ void EnemyActor::Update(float dt)
         if (enemy.attackWindup <= 0)
         {
             enemy.recovery = 1.15f;
-            if (!sanctuary && distance < 1.2 && m_Game.m_Player.hitCooldown <= 0)
+            if (!sanctuary && distance < 1.2 && target
+                && m_Game.ClearShot(WorldX(), WorldY(), target->WorldX(), target->WorldY()))
             {
-                m_Game.m_Player.health -= enemy.damage;
-                m_Game.m_Player.hitCooldown = 0.8f;
-                m_Game.AddCombatText(m_Game.m_Player.WorldX(),
-                                     m_Game.m_Player.WorldY(),
-                                     "-" + std::to_string(int(enemy.damage)),
-                                     Color(1, 0.35f, 0.28f));
-                if (m_Game.m_Player.health <= 0)
+                if (m_Game.m_NpcWorld)
                 {
-                    m_Game.Die();
-                    return;
+                    m_Game.m_NpcWorld->MonsterDamage(*target, enemy.damage);
+                }
+                else if (m_Game.m_Player.hitCooldown <= 0)
+                {
+                    m_Game.m_Player.health -= enemy.damage;
+                    m_Game.m_Player.hitCooldown = 0.8f;
+                    if (m_Game.m_Player.health <= 0)
+                    {
+                        m_Game.Die();
+                    }
                 }
             }
         }
@@ -124,8 +144,8 @@ void EnemyActor::Update(float dt)
     {
         const float speed = enemy.speed * (enraged ? 1.3f : 1.0f);
         m_Game.MoveEnemy(enemy,
-                         returning ? enemy.homeX : m_Game.m_Player.WorldX(),
-                         returning ? enemy.homeY : m_Game.m_Player.WorldY(),
+                         returning ? enemy.homeX : targetX,
+                         returning ? enemy.homeY : targetY,
                          speed,
                          dt);
     }

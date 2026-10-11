@@ -389,6 +389,38 @@ void Prototype::DrawTile(Renderer& r, const WorldTileData& tile, Point p)
 
 void Prototype::DrawProp(Renderer& r, Point p, int kind, unsigned seed)
 {
+    if (kind >= 7 && kind <= 9)
+    {
+        const float z = m_Zoom;
+        r.DrawCachedMesh(
+            "village/building/v1/" + std::to_string(kind),
+            p,
+            z,
+            [&]()
+            {
+                if (kind == 9)
+                {
+                    Block(r, p, 16, 8, 4, Color(0.34f, 0.30f, 0.23f));
+                    r.Line({p.x, p.y}, {p.x, p.y - 45 * z}, 5 * z, Gold.Shade(0.6f));
+                    r.Line({p.x - 15 * z, p.y - 29 * z},
+                           {p.x + 15 * z, p.y - 29 * z},
+                           4 * z,
+                           Paper);
+                }
+                else
+                {
+                    Block(r, p, 38, 23, kind == 7 ? 46.0f : 25.0f, Color(0.31f, 0.28f, 0.23f));
+                    const float roof = kind == 7 ? 46.0f : 25.0f;
+                    r.Triangle({p.x - 43 * z, p.y - roof * z},
+                               {p.x + 43 * z, p.y - roof * z},
+                               {p.x, p.y - (roof + 38) * z},
+                               kind == 7 ? Color(0.20f, 0.24f, 0.23f) : Color(0.50f, 0.32f, 0.19f));
+                    r.Rect(p.x - 8 * z, p.y - 28 * z, 16 * z, 30 * z, Ink);
+                    r.Rect(p.x - 26 * z, p.y - 33 * z, 9 * z, 11 * z, Gold.Radiance(3));
+                }
+            });
+        return;
+    }
 
     if (kind == 1)
     {

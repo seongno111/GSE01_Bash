@@ -173,6 +173,8 @@
     <ClInclude Include="Prototype.h" />
     <ClInclude Include="PostProcessing.h" />
     <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="NpcAI.h" />
+    <ClInclude Include="NpcWorld.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -197,6 +199,12 @@
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="PostProcessing.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="NpcBrain.cpp" />
+    <ClCompile Include="NpcWorld.cpp" />
+    <ClCompile Include="NpcMonitor.cpp" />
+    <ClCompile Include="NpcActions.cpp" />
+    <ClCompile Include="NpcActor.cpp" />
+    <ClCompile Include="NpcInterface.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RendererMeshCache.cpp" />
     <ClCompile Include="SimpleGame.cpp" />
