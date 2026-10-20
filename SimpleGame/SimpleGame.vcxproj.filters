@@ -21,6 +21,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ModelAsset.h"><Filter>헤더 파일</Filter></ClInclude>
+    <ClInclude Include="ModelLibrary.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -30,6 +32,8 @@
     <ClInclude Include="NpcAI.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Villages.h" />
+    <ClInclude Include="Outposts.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="NpcWorld.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -48,6 +52,9 @@
     <ClInclude Include="GameActors.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="UnitAnimation.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="GameRules.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -62,6 +69,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ModelAsset.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="ModelAnimation.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="ModelLibrary.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -71,6 +81,11 @@
     <ClCompile Include="NpcBrain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="NpcSociety.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="NpcCommunication.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="NpcMigration.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="NpcOutposts.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="WorldNavigation.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="NpcWorld.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -87,6 +102,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererSprites.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererRig.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="RendererMeshCache.cpp">
@@ -151,6 +172,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\realistic-atlas-v1.png" />
+    <None Include="Assets\unit-rigs-humans-v3.png" />
+    <None Include="Assets\unit-rigs-monsters-v3.png" />
+    <None Include="Assets\unit-walk-humans-v1.png" />
+    <None Include="Assets\unit-walk-monsters-v1.png" />
+    <None Include="Assets\player-attack-v1.png" />
+    <None Include="Assets\unit-walk-humans-inbetweens-v2.png" />
+    <None Include="Assets\unit-walk-monsters-inbetweens-v2.png" />
+    <None Include="Assets\player-attack-inbetweens-v2.png" />
     <None Include="Shaders\SolidRect.fs">
       <Filter>소스 파일\Shaders</Filter>
     </None>

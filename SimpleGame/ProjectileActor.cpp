@@ -148,6 +148,14 @@ void ProjectileActor::Update(float dt)
                     if (echo.health <= 0)
                     {
                         echo.alive = false;
+                        if (m_Game.m_NpcWorld)
+                        {
+                            m_Game.m_NpcWorld->RecordWorldEvent("hunt",
+                                                                "플레이어가 변이 잔재를 토벌했다",
+                                                                echo.WorldPosition(),
+                                                                &m_Game.m_Player,
+                                                                &echo);
+                        }
                         m_Game.Notice("잔재가 쓰러졌다. 그 흔적은 이 땅에 남는다.");
                     }
                     break;
@@ -173,7 +181,7 @@ void ProjectileActor::Draw(Renderer& r)
         const auto& shot = *this;
 
         Point p = m_Game.Project(shot.WorldX(), shot.WorldY());
-        p.y -= 24 * m_Game.m_Zoom;
+        p.y -= 39 * m_Game.m_Zoom;
         r.Ellipse(p, 5 * m_Game.m_Zoom, 5 * m_Game.m_Zoom, Color(1, 0.19f, 0.12f).Radiance(4));
     }
     else
@@ -183,8 +191,8 @@ void ProjectileActor::Draw(Renderer& r)
         Point head = m_Game.Project(projectile.WorldX(), projectile.WorldY());
         Point tail = m_Game.Project(projectile.WorldX() - projectile.directionX * 0.35,
                                     projectile.WorldY() - projectile.directionY * 0.35);
-        head.y -= 24 * m_Game.m_Zoom;
-        tail.y -= 24 * m_Game.m_Zoom;
+        head.y -= 39 * m_Game.m_Zoom;
+        tail.y -= 39 * m_Game.m_Zoom;
         r.Line(tail, head, 3 * m_Game.m_Zoom, Color(1.0f, 0.62f, 0.24f).Radiance(5));
         r.Ellipse(head,
                   3 * m_Game.m_Zoom,

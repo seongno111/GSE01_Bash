@@ -91,6 +91,7 @@ const NpcWeapon& NpcWeaponFor(NpcRole role);
 struct NpcProfile
 {
     std::uint64_t id = 0;
+    size_t village = 0;
     std::string name;
     NpcRole role = NpcRole::Adventurer;
     NpcGoal goal = NpcGoal::Wealth;
@@ -116,6 +117,8 @@ struct NpcVitals
     float holyPower = 20;
     float strength = 10;
     float wisdom = 0;
+    float armor = 0;
+    float moveSpeed = 2;
     int gold = 30;
     int food = 3;
     int medicine = 1;
@@ -123,6 +126,57 @@ struct NpcVitals
     int dawnOil = 0;
     bool alive = true;
     bool frenzy = false;
+};
+
+struct NpcBirthStats
+{
+    float health;
+    float strength;
+    float holyPower;
+    float wisdom;
+    float armor;
+    float speed;
+    int gold;
+};
+
+inline constexpr std::array<NpcBirthStats, 5> NpcBirthByRole = {{{85, 8, 80, 24, 2, 1.9f, 25},
+                                                                 {150, 19, 25, 8, 8, 1.8f, 35},
+                                                                 {110, 14, 18, 18, 3, 2.35f, 40},
+                                                                 {105, 18, 8, 6, 4, 2.5f, 20},
+                                                                 {90, 7, 15, 22, 1, 2.1f, 100}}};
+
+enum class VillageMission
+{
+    None,
+    Courier,
+    Blessing,
+    Support,
+    Raid,
+    Relocate
+};
+
+const char* VillageMissionName(VillageMission mission);
+
+struct VillageKnowledge
+{
+    WorldPoint position;
+    float alignment = 0;
+    double observedAt = -1;
+    size_t sourceVillage = 0;
+    bool threatened = false;
+    float geographicRisk = 0;
+};
+
+struct NpcMission
+{
+    VillageMission type = VillageMission::None;
+    size_t destination = 0;
+    bool returning = false;
+    bool arrived = false;
+    double deadline = 0;
+    double serviceUntil = 0;
+    double nextService = 0;
+    unsigned pathFailures = 0;
 };
 
 struct NpcMemory
@@ -170,6 +224,7 @@ struct NpcExecution
     std::uint64_t id = 0;
     double startedAt = 0;
     double phaseUntil = 0;
+    double timeBudget = 15;
     bool applied = false;
     bool playerRequest = false;
     std::uint64_t reservation = 0;
@@ -196,6 +251,13 @@ public:
 
     NpcProfile profile;
     NpcVitals vitals;
+    NpcBirthStats birth{};
+    NpcMission mission;
+    double nextMigration = 45;
+    unsigned migrations = 0;
+    std::string migrationReason;
+    WorldPoint migrationHome;
+    std::map<size_t, VillageKnowledge> villageKnowledge;
     WorldPoint home;
     NpcMode mode = NpcMode::Daily;
     NpcExecution execution;
@@ -237,6 +299,18 @@ public:
 
     static void Score(NpcActor& npc, double now);
     static size_t Choose(NpcActor& npc);
+};
+
+class CarrierBirdActor final : public GameActor
+{
+public:
+
+    CarrierBirdActor(Prototype& game, NpcWorld& world);
+    void Draw(Renderer& renderer) override;
+
+private:
+
+    NpcWorld& m_World;
 };
 
 class NpcMissileActor final : public GameActor

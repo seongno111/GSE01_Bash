@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cctype>
+#include <chrono>
 
 using namespace GameRules;
 
@@ -42,8 +43,16 @@ void Prototype::Notice(const std::string& text)
     m_MessageTime = 5;
 }
 
-void Prototype::Die()
+void Prototype::Die(const ::Actor* killer, bool unlawful)
 {
+    if (m_NpcWorld)
+    {
+        m_NpcWorld->RecordWorldEvent(unlawful ? "murder" : "death",
+                                     "플레이어 사망",
+                                     m_Player.WorldPosition(),
+                                     killer,
+                                     &m_Player);
+    }
     // Evaluate the pre-death state: reaching the threshold on this death
     // mutates the survivor; dying while already mutated leaves an echo.
     if (m_Player.corruption >= MutationThreshold)
@@ -72,6 +81,10 @@ void Prototype::Die()
     ++m_Player.deaths;
     m_Player.corruption = (std::min)(150, m_Player.corruption + 25);
     m_Player.SetWorldPosition(m_ShrineX + 2, m_ShrineY + 1);
+    m_Player.ResetAnimation();
+    m_Player.attack = 0;
+    m_Player.walking = false;
+    m_Player.running = false;
     m_CameraX = m_Player.WorldX();
     m_CameraY = m_Player.WorldY();
     m_Player.health = MaxHealth();
@@ -83,7 +96,12 @@ void Prototype::Die()
 
     for (EnemyActor& enemy : m_Enemies)
     {
+        if (enemy.outpost >= 0)
+        {
+            continue;
+        }
         enemy.SetWorldPosition(enemy.homeX, enemy.homeY);
+        enemy.ResetAnimation();
         enemy.health = enemy.maxHealth;
         enemy.attackWindup = 0;
         enemy.burstWindup = 0;
@@ -228,6 +246,8 @@ void Prototype::Key(unsigned char key, bool down)
 
 void Prototype::Update(float dt)
 {
+    m_UpdateStats = {};
+    const auto updateStart = std::chrono::steady_clock::now();
     InitializeLevelOne();
     m_Time += dt;
     m_MessageTime = (std::max)(0.0f, m_MessageTime - dt);
@@ -235,15 +255,28 @@ void Prototype::Update(float dt)
     m_ShrineX = NearestShrine(m_Player.WorldX());
     m_ShrineY = NearestShrine(m_Player.WorldY());
     UpdateGameplay(dt);
+    const auto npcStart = std::chrono::steady_clock::now();
+    m_UpdateStats.gameplayMs =
+        std::chrono::duration<double, std::milli>(npcStart - updateStart).count();
     if (m_NpcWorld)
     {
         m_NpcWorld->Update(dt);
+        const auto& stats = m_NpcWorld->Performance();
+        m_UpdateStats.npcExportMs = stats.exportMs;
+        m_UpdateStats.pathCalls += stats.pathCalls;
+        m_UpdateStats.pathNodes += stats.pathNodes;
     }
+    m_Scene.UpdateVisuals(dt);
+    const auto streamStart = std::chrono::steady_clock::now();
+    m_UpdateStats.npcMs = std::chrono::duration<double, std::milli>(streamStart - npcStart).count();
     const double blend = 1.0 - std::exp(-8.0 * dt);
     m_CameraX += (m_Player.WorldX() - m_CameraX) * blend;
     m_CameraY += (m_Player.WorldY() - m_CameraY) * blend;
     Stream();
     m_Scene.CollectGarbage();
+    m_UpdateStats.streamMs =
+        std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - streamStart)
+            .count();
 }
 
 Point Prototype::Project(double x, double y) const
@@ -262,5 +295,5 @@ void Prototype::Draw(Renderer& r)
     m_Scene.DrawWorld(r);
     r.BeginUI();
     m_Scene.DrawUI(r);
-    r.Flush();
+    r.EndFrame();
 }

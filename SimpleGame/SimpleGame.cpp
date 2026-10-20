@@ -12,18 +12,25 @@ but WITHOUT ANY WARRANTY.
 #include "Prototype.h"
 #include "FrameProfiler.h"
 #include "Dependencies/freeglut.h"
+#include <Windows.h>
 #include <algorithm>
 #include <chrono>
 #include <iostream>
 #include <memory>
 #include <cctype>
+#include <cmath>
 
 namespace
 {
     std::unique_ptr<Renderer> renderer;
     Prototype game;
+    HWND gameWindow = nullptr;
     FrameProfiler profiler;
-    auto lastFrame = std::chrono::steady_clock::now();
+    using FrameClock = std::chrono::steady_clock;
+    auto lastFrame = FrameClock::now();
+    auto nextTick = lastFrame;
+    const auto framePeriod =
+        std::chrono::duration_cast<FrameClock::duration>(std::chrono::duration<double>(1.0 / 60.0));
 
     void Display()
     {
@@ -48,12 +55,27 @@ namespace
         const float elapsed = std::chrono::duration<float>(now - lastFrame).count();
         lastFrame = now;
         const auto updateStart = std::chrono::steady_clock::now();
+        // Poll both Shift keys independently of letter events: pressing/releasing
+        // Shift while already moving must take effect, including after focus loss.
+        game.SetRunHeld(gameWindow && GetForegroundWindow() == gameWindow
+                        && (GetAsyncKeyState(VK_SHIFT) & 0x8000) != 0);
         game.Update((std::min)(0.05f, elapsed));
         profiler.RecordUpdate(std::chrono::duration<double, std::milli>(
                                   std::chrono::steady_clock::now() - updateStart)
-                                  .count());
+                                  .count(),
+                              game);
         glutPostRedisplay();
-        glutTimerFunc(16, Tick, 0);
+        // Reserve against an absolute deadline so update work does not add a
+        // fresh 16 ms delay each tick. Missed deadlines are skipped, not replayed.
+        nextTick += framePeriod;
+        const auto finished = FrameClock::now();
+        if (nextTick <= finished)
+        {
+            nextTick = finished + framePeriod;
+        }
+        const double remaining =
+            std::chrono::duration<double, std::milli>(nextTick - finished).count();
+        glutTimerFunc(static_cast<unsigned>((std::max)(1.0, std::ceil(remaining))), Tick, 0);
     }
 
     void Reshape(int width, int height)
@@ -117,6 +139,7 @@ namespace
     {
         if (state == GLUT_LEFT)
         {
+            game.SetRunHeld(false);
             for (int key = 0; key < 256; ++key)
             {
                 game.Key(static_cast<unsigned char>(key), false);
@@ -134,6 +157,7 @@ int main(int argc, char** argv)
     glutInitWindowSize(1280, 800);
     glutInitWindowPosition(70, 45);
     const int window = glutCreateWindow("The Last Ember - 2.5D Prototype");
+    gameWindow = GetActiveWindow();
     glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
     glewExperimental = GL_TRUE;
     const GLenum result = glewInit();
@@ -153,7 +177,8 @@ int main(int argc, char** argv)
     }
     profiler.Initialize(*renderer);
     std::cout << "The Last Ember / rendering prototype\n"
-              << "WASD move | Hold Space auto aim | F auto fire | U upgrade | Q potion | T "
+              << "WASD move | Hold Shift run | Hold Space auto aim | F auto fire | U upgrade | Q "
+                 "potion | T "
                  "cleansing stone\n"
               << "E sanctuary/report | R relic | K demo death\n"
               << "NPC: C select | I inspector | J PK | Y trade | O blessing | L AI log\n"
@@ -171,8 +196,9 @@ int main(int argc, char** argv)
     glutEntryFunc(Entry);
     glutCloseFunc(Close);
     game.Update(0);
-    lastFrame = std::chrono::steady_clock::now();
-    glutTimerFunc(16, Tick, 0);
+    lastFrame = FrameClock::now();
+    nextTick = lastFrame;
+    glutTimerFunc(0, Tick, 0);
     glutMainLoop();
     // Freeglut closes its windows before returning from the main loop.
     return 0;

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-20",
+  "checks": {
+    "unique_mesh_names": true,
+    "preset_count_20": true,
+    "population_336": true,
+    "unique_npc_ids": true,
+    "all_slot_arrays_valid": true,
+    "glb_files_valid": true,
+    "all_appearance_roles_match_presets": true
+  },
+  "glb": [
+    {
+      "file": "npc_parts.glb",
+      "meshes": 39,
+      "nodes": 39,
+      "materials": 11,
+      "bytes": 203148
+    },
+    {
+      "file": "props.glb",
+      "meshes": 14,
+      "nodes": 14,
+      "materials": 13,
+      "bytes": 140052
+    },
+    {
+      "file": "npc_20_presets_preview.glb",
+      "meshes": 39,
+      "nodes": 324,
+      "materials": 11,
+      "bytes": 266120
+    }
+  ],
+  "npc_part_triangles": 2018.0,
+  "prop_triangles": 1442.0,
+  "note": "Static asset validation only. No engine build, rig or animation tests."
+}

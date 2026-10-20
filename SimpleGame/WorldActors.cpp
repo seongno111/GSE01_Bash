@@ -2,6 +2,7 @@
 #include "Prototype.h"
 #include "GameRules.h"
 
+#include <algorithm>
 #include <cmath>
 
 using namespace GameRules;
@@ -10,6 +11,102 @@ GameActor::GameActor(Prototype& game, const std::string& name, TickGroup tick, A
     : Actor(name, tick, layer),
       m_Game(game)
 {
+}
+
+UnitSpritePose GameActor::SpritePose() const
+{
+    UnitSpritePose pose;
+    const float now = m_Game.Time();
+    pose.locomotionWeight = m_LocomotionWeight;
+    pose.moving = m_LocomotionWeight > 0.001f;
+    pose.walkCycle = m_WalkCycle;
+    pose.facingLeft = m_FacingLeft;
+    const float elapsed = now - m_AttackAnimationStart;
+    if (m_AttackAnimationStart >= 0 && elapsed >= 0 && elapsed < m_AttackAnimationDuration)
+    {
+        pose.attackProgress = std::clamp(elapsed / m_AttackAnimationDuration, 0.0f, 1.0f);
+        pose.facingLeft = m_AttackFacingLeft;
+    }
+    return pose;
+}
+
+void GameActor::RecordMovement(double dx, double dy)
+{
+    const double distance = std::hypot(dx, dy);
+    if (distance <= 0.00001)
+    {
+        return;
+    }
+    const float now = m_Game.Time();
+    // Accumulate collision-resolved travel. Visual time advances separately every
+    // frame, so 20 Hz AI does not make limbs jump from one pose to the next.
+    m_TravelDistance += float(distance);
+    m_LastMovementTime = now;
+    const double screenX = dx - dy;
+    if (std::abs(screenX) > distance * 0.15)
+    {
+        m_FacingLeft = screenX < 0;
+    }
+}
+
+void GameActor::UpdateVisual(float dt)
+{
+    if (!std::isfinite(dt) || dt <= 0)
+    {
+        return;
+    }
+    m_TravelWindow += dt;
+    if (m_TravelWindow >= 0.10f)
+    {
+        m_TargetSpeed = m_TravelDistance / m_TravelWindow;
+        m_TravelDistance = 0;
+        m_TravelWindow = 0;
+    }
+
+    // Bridge one skipped path-node tick; settle smoothly when actually stopped.
+    const bool active = m_LastMovementTime >= 0 && m_Game.Time() - m_LastMovementTime <= 0.12f;
+    const float targetSpeed = active ? m_TargetSpeed : 0;
+    m_VisualSpeed += (targetSpeed - m_VisualSpeed) * (1 - std::exp(-12 * dt));
+    const float targetWeight = active ? 1.0f : 0.0f;
+    m_LocomotionWeight += (targetWeight - m_LocomotionWeight) * (1 - std::exp(-14 * dt));
+    if (!active && m_LocomotionWeight < 0.001f)
+    {
+        m_LocomotionWeight = 0;
+        m_VisualSpeed = 0;
+    }
+
+    // One full cycle contains two alternating steps. Normal walking is about
+    // 1 Hz; sprinting is capped at 1.8 Hz instead of the former nearly 3 Hz.
+    constexpr float StrideLength = 3.6f;
+    const float cyclesPerSecond = std::clamp(m_VisualSpeed / StrideLength, 0.0f, 1.8f);
+    m_WalkCycle = std::fmod(m_WalkCycle + cyclesPerSecond * dt, 1.0f);
+}
+
+void GameActor::BeginAttackAnimation(double directionX, double directionY, float duration)
+{
+    const double screenX = directionX - directionY;
+    if (std::abs(screenX) > 0.00001)
+    {
+        m_FacingLeft = screenX < 0;
+    }
+    m_AttackFacingLeft = m_FacingLeft;
+    m_AttackAnimationStart = m_Game.Time();
+    m_AttackAnimationDuration = (std::max)(0.01f, duration);
+}
+
+void GameActor::ResetAnimation()
+{
+    m_WalkCycle = 0;
+    m_TravelWindow = 0;
+    m_TravelDistance = 0;
+    m_TargetSpeed = 0;
+    m_VisualSpeed = 0;
+    m_LocomotionWeight = 0;
+    m_LastMovementTime = -1;
+    m_AttackAnimationStart = -1;
+    m_AttackAnimationDuration = 0;
+    m_FacingLeft = false;
+    m_AttackFacingLeft = false;
 }
 
 bool GameActor::InView() const

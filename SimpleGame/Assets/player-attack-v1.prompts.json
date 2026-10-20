@@ -1,0 +1,55 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate with identity references, then targeted padding edit",
+  "asset": "player-attack-v1.png",
+  "size": [
+    2172,
+    724
+  ],
+  "grid": {
+    "columns": 6,
+    "rows": 2
+  },
+  "rowSprites": [
+    0,
+    9
+  ],
+  "frames": [
+    "release",
+    "full extension",
+    "follow-through",
+    "recoil",
+    "lower arm",
+    "idle"
+  ],
+  "references": [
+    "realistic-atlas-v1.png",
+    "human-walk-v1 reference first row"
+  ],
+  "sourceOutput": "C:\\Users\\seong\\.codex\\generated_images\\01a143e6-052a-7c41-b2e0-bc15f5485c91\\exec-60dd40f5-6914-418b-8e68-16f7a9039655.png",
+  "prompts": [
+    "Use case: stylized-concept. Asset type: production 2.5D medieval dark-apocalypse RPG sprite animation sheet, genuinely transparent RGBA PNG.\nInput image 1 is ONLY an identity and material reference: use the gray hooded sword-and-lantern player in its top-left cell for row 1, and the mutated hooded player with the long pale bony claw in its third-row second cell for row 2. Input image 2 is ONLY a rendering style and camera reference; use its first character identity, not its layout. Create a NEW player-only ranged attack sheet, not a walking sheet.\nREQUIRED EXACT LAYOUT: exactly SIX equal-width columns and TWO equal-height rows, twelve complete isolated full-body characters. Wide 3:1 canvas, preferably 1536 x 512. Every figure must be VERY SMALL inside its own cell, contained within the MIDDLE 60 PERCENT of BOTH cell width and cell height. Leave at least 20 percent of cell width transparent on each side, and 20 percent of cell height transparent above and below each character. This padding is functional: maintain wide EMPTY TRANSPARENT vertical and horizontal gutters at ALL uniform cell boundaries and the entire outer canvas border. Do not enlarge the figures to fill the sheet. No figure, weapon, sleeve, cape, lantern, claw, or shadow may approach or cross a cell boundary.\nAll twelve figures face screen-right in exactly the same fixed three-quarter isometric view. Same realistic natural proportions, lighting, camera scale, cloth, leather, metal details and identity within each row. Full body visible with identical standing body height within each row, torso centered on the cell center, feet grounded on exactly the same baseline in every frame. Boots stay planted throughout the attack; no stepping, jumping, hovering or vertical bobbing. Keep head and torso size constant. Sparse slight cloth motion only.\nTOP ROW, gray hood player: retain dark gray weathered cloak, layered brown leather armor and belts, boots, lowered steel sword in the same hand, and small brass warm-glowing lantern in the other hand, matching the references. Attack is a magical ranged release using the lantern arm toward screen-right; the lowered sword is retained throughout.\nBOTTOM ROW, mutated player: retain dark gray hood and ragged cloak, brown leather torso, dark boots, red eyes, and one pale elongated bony thorned claw, matching image 1. Attack is a ranged casting thrust of the large claw toward screen-right.\nEach row has a readable SIX-FRAME attack sequence from left to right:\nframe 1: arm already thrust forward in the instant of release, torso slightly forward;\nframe 2: full horizontal arm/claw extension toward screen-right;\nframe 3: follow-through, shoulder and torso twist with extended arm beginning to settle;\nframe 4: recoil, elbow visibly bent and hand pulled toward torso;\nframe 5: hand/lantern/claw lowering toward hip, torso returning upright;\nframe 6: relaxed settled neutral idle matching original standing outfit.\nThe arm and shoulder silhouettes MUST differ visibly across all six frames. Show a coherent single attack recovery, not six identical static poses. Do not add projectile, fireball, smoke, rays, or effects: projectiles are rendered separately by game code. Warm lantern remains small. No floor, ground shadows, grid lines, labels, numbers, text, watermark, background, checkerboard, weapons swapping, clothing swaps, extra characters, decorative frames. Preserve actual transparent alpha.",
+    "Use case: precise-object-edit. Edit the attached 6-column by 2-row player attack sprite sheet for safe texture atlas packing. KEEP all 12 character identities, costumes, hand/weapon assignments, six attack poses per row, natural proportions, camera direction, frame order, colors, material details and transparent background unchanged. The ONLY change is generous uniform spacing: shrink every full character uniformly to 70 percent of its current size about its feet, and place each character with torso aligned to the center of its own equal-sized cell. Keep both rows and exactly six columns. Use a wide 3:1 transparent canvas. Every sword tip, lantern, cloak and especially every mutant claw must be entirely contained inside its own equal-width cell with at least 15 percent of cell width of EMPTY transparent padding on BOTH sides. Do not let claws overhang the next column. Keep generous empty transparent gutters across the entire image at each of the five exact column boundaries and the one exact row boundary. Top row feet lie on one common baseline at 85 percent of the top row's height; bottom row feet on the corresponding baseline at 85 percent of the bottom row's height. Constant body scale within each row. Preserve the exact visible arm-extension to recoil-to-idle progression in the original. Do not invent new poses or duplicate frames, do not add text or effects or grid lines, no ground shadows or background. Keep genuinely transparent RGBA alpha. Make the twelve figures VISIBLY SMALLER relative to the canvas than the input sheet, do not crop or auto-fit the canvas around them."
+  ],
+  "validation": {
+    "mode": "RGBA",
+    "allCellsContainArt": true,
+    "maxAlphaAtColumnDividers": 1,
+    "maxAlphaAtRowDivider": 1,
+    "columnDividers": [
+      0,
+      362,
+      724,
+      1086,
+      1448,
+      1810,
+      2172
+    ],
+    "rowDividers": [
+      0,
+      362,
+      724
+    ],
+    "gameBuildOrRun": false
+  }
+}

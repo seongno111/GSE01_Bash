@@ -1,0 +1,52 @@
+{
+  "tool": "built-in image_gen",
+  "asset": "unit-walk-monsters-inbetweens-v2.png",
+  "sourceReference": "unit-walk-monsters-v1.png",
+  "grid": {
+    "columns": 6,
+    "rows": 4
+  },
+  "rows": [
+    "gaunt_undead",
+    "corrupted_raider",
+    "horned_plague_boss",
+    "mutated_player"
+  ],
+  "direction": "right",
+  "usage": "Interleave original and new poses: old0,new0,old1,new1,old2,new2,old3,new3,old4,new4,old5,new5. Each new column is the intermediate pose toward the next original frame, wrapping after the last.",
+  "prompts": [
+    {
+      "stage": "inbetween_generation",
+      "text": "Use case: stylized-concept.\nAsset type: transparent game sprite-sheet INBETWEEN WALK POSES, not a contact sheet illustration.\nReference image 1 is the EXISTING 6-column 4-row walk sheet. Preserve these exact four monster identities, camera, original colors, textures, equipment, body proportions and screen-RIGHT orientation. We are doubling the animation frame count. Generate ONLY the 24 NEW intermediary poses, arranged EXACTLY SIX COLUMNS by FOUR ROWS, in the same row order.\nTemporal meaning: output column1 is halfway between reference columns1 and2; output column2 halfway between reference2 and3; output column3 halfway between reference3 and4; output column4 halfway between reference4 and5; output column5 halfway between reference5 and6; output column6 halfway between reference6 and1 across the loop. Runtime plays old1,new1,old2,new2,...old6,new6. These MUST be newly articulated distinct poses, not duplicate keyframes, not crossfades, not two superimposed bodies. Naturally interpolate knees, feet, arms and cloth. No changes to identity or lighting.\nRow1: gaunt undead male with skeletal gray flesh and ragged brown skirt.\nRow2: corrupted armored raider in battered rusty plate with fur cloak, holding a long axe horizontally at the waist.\nRow3: hulking plague boss with horned skull face, brass shoulder armor, long pale claw arms, bells and tattered dark robes.\nRow4: corrupted gray hooded adventurer with red eyes, gray black leather and enormous exposed bony left claw.\nFixed three-quarter camera facing screen RIGHT, chest partly visible. Walking in place, alternating legs and counter-swinging arms. Keep the torso root fixed and head nearly level. Six sequential halfway phases are approximately: forward heel settling / trailing toe lift; support leg straightening / other knee rising; passing leg extends toward next contact; opposite heel settling / trailing toe lift; opposite support straightening / other knee rising; passing leg extends into initial contact.\nCRITICAL LAYOUT: preferred canvas1536x1024, grid6x4 of256-square cells. Each of the 24 WHOLE characters must be SHRUNK TO FIT in the central60percent of its cell: at least45px totally empty transparent padding on EVERY side. Feet centered at localx128, plantedfoot baseline localy208 (about80percent cell height); topofhead/horns no higher than localy48. All frames in a row share identical scale and root position. Wide boss and axe must fit completely INSIDE the cell. Character's own arms, claws, horns and axe must not overlap neighbors or enter gutters. Frame full bodies from highest horn to sole.\nTRUE RGBA TRANSPARENT BACKGROUND, alpha zero in every space between figures. No brown background, no gradient, no vignette, no floor, no shadows, no checkerboard pattern, no grid lines, no captions, no numbers, no UI, no trails, no particles. Carefully separated small figures with very LARGE clean transparent gutters. Realistic worn 3D rendered dark fantasy style matching reference. Produce only the atlas image."
+    }
+  ],
+  "selectedSource": "C:\\Users\\seong\\.codex\\generated_images\\01a1523c-73ff-7080-9805-c21e287bf2fb\\exec-05ffc1e5-d82a-4ec4-920d-50c46f064701.png",
+  "validation": {
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      254
+    ],
+    "alphaThreshold": 8,
+    "clearVerticalDividers": [
+      0,
+      257,
+      512,
+      768,
+      1024,
+      1284,
+      1536
+    ],
+    "clearHorizontalDividers": [
+      0,
+      256,
+      512,
+      761,
+      1024
+    ],
+    "maxDividerDeviation": 7,
+    "inspection": "All 24 figures complete and separated at alpha > 8; four identities, equipment, right facing and six distinct poses per row preserved. Sheet uses adaptive transparent gutters; frame registration must use row-common bounds at runtime."
+  }
+}

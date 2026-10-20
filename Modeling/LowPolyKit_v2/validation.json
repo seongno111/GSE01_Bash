@@ -1,0 +1,15 @@
+{
+  "asset_revision": "ashen_v2",
+  "checks": {
+    "unique_part_names": true,
+    "valid_21_slot_references": true,
+    "headwear_hair_exclusion": true,
+    "legacy_ids_preserved": true,
+    "npc_ids_unique": true,
+    "glb_library_names_and_origins": true
+  },
+  "npc_parts": 45,
+  "props": 14,
+  "presets": 40,
+  "residents": 336
+}

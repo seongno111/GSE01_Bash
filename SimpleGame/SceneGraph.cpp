@@ -175,15 +175,36 @@ void SceneGraph::CollectGarbage()
 void SceneGraph::Update(float dt, TickGroup group)
 {
     TraversalScope scope(m_TraversalDepth);
-    const std::vector<ActorId> actors = m_TickActors[static_cast<size_t>(group)];
-    // Each phase uses a stable snapshot: spawned actors join the next phase;
-    // actors destroyed by a callback are skipped without invalidating iteration.
-    for (ActorId id : actors)
+    // Callbacks can append, but collection is deferred while traversing. Indexing
+    // a fixed initial length preserves snapshot semantics without allocating/copying.
+    const auto& actors = m_TickActors[static_cast<size_t>(group)];
+    const size_t count = actors.size();
+    for (size_t i = 0; i < count; ++i)
     {
-        Actor* actor = Find(id);
+        Actor* actor = Find(actors[i]);
         if (actor && actor->EnabledInHierarchy())
         {
             actor->Update(dt);
+        }
+    }
+}
+
+void SceneGraph::UpdateVisuals(float dt)
+{
+    TraversalScope scope(m_TraversalDepth);
+    // Run once after movement, including fixed-rate AI, regardless of visibility.
+    // Terrain/props do not need a per-frame animation traversal.
+    for (TickGroup group : {TickGroup::Player, TickGroup::Enemy, TickGroup::Npc})
+    {
+        const auto& actors = m_TickActors[static_cast<size_t>(group)];
+        const size_t count = actors.size();
+        for (size_t i = 0; i < count; ++i)
+        {
+            Actor* actor = Find(actors[i]);
+            if (actor && actor->EnabledInHierarchy())
+            {
+                actor->UpdateVisual(dt);
+            }
         }
     }
 }
@@ -209,8 +230,8 @@ std::vector<ActorId> SceneGraph::DrawList(bool ui) const
             continue;
         }
         const bool screen = actor->m_Layer >= ActorLayer::Overlay;
-        if ((ui ? screen || actor->HasOverlay() : !screen) && actor->VisibleInHierarchy()
-            && actor->InView())
+        if ((ui ? screen || actor->HasOverlay() : !screen) && actor->InView()
+            && actor->VisibleInHierarchy())
         {
             const WorldPoint point = actor->WorldPosition();
             entries.push_back({id, actor->m_Layer, point.x + point.y, point.x});

@@ -33,6 +33,10 @@ void Prototype::Block(Renderer& r, Point p, float width, float depth, float heig
 
 void Prototype::Tree(Renderer& r, Point p, unsigned seed)
 {
+    if (r.DrawSprite(13, {p.x, p.y + 17 * m_Zoom}, (142 + float(seed % 4) * 5) * m_Zoom))
+    {
+        return;
+    }
     r.DrawCachedMesh(
         "tree/" + std::to_string(seed % 40),
         p,
@@ -65,6 +69,12 @@ void Prototype::Tree(Renderer& r, Point p, unsigned seed)
 
 void Prototype::Chapel(Renderer& r, Point p)
 {
+    // Align the footprint center, not the foreground edge of the building, to p.
+    // 270px tall gives this asset a ~242px width, matching the old footprint.
+    if (r.DrawSprite(10, {p.x, p.y + 32 * m_Zoom}, 270 * m_Zoom))
+    {
+        return;
+    }
     r.DrawCachedMesh(
         "chapel",
         p,
@@ -168,11 +178,14 @@ void Prototype::Shrine(Renderer& r, Point p)
     }
 }
 
-void Prototype::DrawCharacter(Renderer& r, Point p, int corruption, bool hostile)
+void Prototype::DrawCharacter(Renderer& r,
+                              Point p,
+                              int corruption,
+                              bool hostile,
+                              const UnitSpritePose& pose)
 {
     const bool monster = corruption >= MutationThreshold;
     const float z = m_Zoom * (monster ? 1.22f : 1.0f);
-    const float bob = !hostile && m_Player.walking ? std::sin(m_Time * 13) * 2 * z : 0;
     const Color cloak = hostile   ? Color(0.30f, 0.10f, 0.23f)
                         : monster ? Color(0.28f, 0.19f, 0.33f)
                                   : Color(0.28f, 0.34f, 0.35f);
@@ -190,7 +203,15 @@ void Prototype::DrawCharacter(Renderer& r, Point p, int corruption, bool hostile
                    ring);
         }
     }
-    p.y += bob;
+    const float bodyHeight = monster ? 82 * m_Zoom : 74 * m_Zoom;
+    if (r.DrawUnitSprite(monster ? 9 : 0,
+                         p,
+                         bodyHeight,
+                         pose,
+                         hostile ? Color(.82f, .75f, .82f) : Color()))
+    {
+        return;
+    }
     const unsigned variant =
         (monster ? 1u : 0u) | (hostile ? 2u : 0u) | (!hostile && m_Player.attack > 0 ? 4u : 0u);
     r.DrawCachedMesh(
@@ -283,6 +304,11 @@ void Prototype::DrawEnemyMesh(Renderer& r, Point p, const EnemyActor& enemy)
         r.Ellipse(p, 90 * z, 45 * z, Color(0.95f, 0.12f, 0.09f, 0.15f));
         r.Ellipse({p.x, p.y - 32 * z}, 7 * z, 7 * z, Color(1, 0.19f, 0.08f).Radiance(4));
     }
+    const float bodyHeight = enemy.tier == 2 ? 112.0f : enemy.tier == 1 ? 76.0f : 68.0f;
+    if (r.DrawUnitSprite(6 + unsigned(enemy.tier), p, bodyHeight * m_Zoom, enemy.SpritePose()))
+    {
+        return;
+    }
     r.DrawCachedMesh(
         "farm-enemy/" + std::to_string(enemy.tier),
         p,
@@ -321,74 +347,133 @@ void Prototype::DrawEnemyMesh(Renderer& r, Point p, const EnemyActor& enemy)
 void Prototype::DrawTile(Renderer& r, const WorldTileData& tile, Point p)
 {
 
-    const unsigned flags =
-        (tile.road ? 1u : 0u) | (LevelOneCell(tile.x, tile.y) >= 0 ? 2u : 0u)
-        | (tile.taint > 0.56f ? 4u : 0u) | (tile.taint > 0.61f ? 8u : 0u)
-        | (m_Grid && (tile.x % ChunkSize == 0 || tile.y % ChunkSize == 0) ? 16u : 0u);
-    const std::string key = "terrain/" + std::to_string(tile.variant) + "/" + std::to_string(flags);
+    // Color belongs to the instance, never a world-seeded mesh cache key.
+    Color color = tile.road ? Color(.245f, .25f, .23f) : Color(.17f, .195f, .17f);
+    if (LevelOneCell(tile.x, tile.y) >= 0)
+    {
+        color = tile.road ? Color(.28f, .265f, .22f) : Color(.205f, .20f, .155f);
+    }
+    if (!tile.road && tile.taint > .56f)
+    {
+        color = Color(.185f, .16f, .195f);
+    }
+    const float variation = .86f + float(tile.variant % 100) * .002f;
+    const float z = m_Zoom;
+    const float w = 40.35f * z;
+    const float h = 20.25f * z;
     r.DrawCachedMesh(
-        key,
+        "terrain/v2/base",
         p,
-        m_Zoom,
+        z,
         [&]()
         {
-            const float v = 0.86f + float(tile.variant % 100) * 0.002f;
-            Color c = tile.road ? Color(0.27f, 0.285f, 0.25f) : Color(0.16f, 0.215f, 0.20f);
-            if (LevelOneCell(tile.x, tile.y) >= 0)
+            r.Quad({p.x, p.y - h}, {p.x + w, p.y}, {p.x, p.y + h}, {p.x - w, p.y}, Color());
+        },
+        color.Shade(variation));
+    if (tile.road)
+    {
+        const unsigned pattern = tile.variant % 8;
+        r.DrawCachedMesh(
+            "terrain/v3/paving/" + std::to_string(pattern),
+            p,
+            z,
+            [&]()
             {
-                c = tile.road ? Color(0.32f, 0.29f, 0.21f) : Color(0.23f, 0.24f, 0.17f);
-            }
-            if (!tile.road && tile.taint > 0.56f)
-            {
-                c = Color(0.20f, 0.155f, 0.22f);
-            }
-            const float w = 40.35f * m_Zoom;
-            const float h = 20.25f * m_Zoom;
-            r.Quad({p.x, p.y - h}, {p.x + w, p.y}, {p.x, p.y + h}, {p.x - w, p.y}, c.Shade(v));
-            if (tile.road)
-            {
-                r.Line({p.x - w + 2 * m_Zoom, p.y},
-                       {p.x, p.y + h - m_Zoom},
-                       m_Zoom,
-                       Color(0.10f, 0.14f, 0.14f, 0.5f));
-                if (tile.variant % 3 == 0)
+                for (int row = -1; row <= 1; ++row)
                 {
-                    r.Line({p.x - 9 * m_Zoom, p.y - 9 * m_Zoom},
-                           {p.x + 5 * m_Zoom, p.y + 8 * m_Zoom},
-                           m_Zoom,
-                           c.Shade(0.6f));
+                    for (int col = -1; col <= 1; ++col)
+                    {
+                        const auto sample = Hash(col, row, pattern);
+                        const float ox = float(col * 12 + row * 3);
+                        const float oy = float(row * 6);
+                        const float sx = 4.8f + float(sample % 3) * .35f;
+                        const float sy = 2.0f;
+                        const Color stone = Color().Shade(.7f + float(sample % 7) * .08f);
+                        r.Quad({p.x + (ox - sx) * z, p.y + oy * z},
+                               {p.x + ox * z, p.y + (oy - sy) * z},
+                               {p.x + (ox + sx) * z, p.y + oy * z},
+                               {p.x + ox * z, p.y + (oy + sy) * z},
+                               stone);
+                    }
                 }
-            }
-            else
+            },
+            color.Shade(1.12f));
+    }
+    else
+    {
+        // Bound decorative geometry to 64 reusable patterns across the infinite world.
+        const unsigned pattern = tile.variant % 64;
+        r.DrawCachedMesh(
+            "terrain/v3/detail/" + std::to_string(pattern),
+            p,
+            z,
+            [&]()
             {
-                for (int i = 0; i < 3; ++i)
+                for (int i = 0; i < 7; ++i)
                 {
-                    const float ox = float((tile.variant >> (i * 5)) % 29) - 14;
-                    const float oy = float((tile.variant >> (i * 4 + 2)) % 13) - 6;
-                    r.Line({p.x + ox * m_Zoom, p.y + oy * m_Zoom},
-                           {p.x + (ox + 4) * m_Zoom, p.y + (oy - 2) * m_Zoom},
-                           m_Zoom,
-                           c.Shade(1.25f));
+                    const auto stone = static_cast<unsigned>(Hash(pattern, i, 0));
+                    const float ox = float(stone % 43) - 21;
+                    const float oy = float((stone >> 8) % 15) - 7;
+                    const float size = 1.2f + float((stone >> 16) % 3) * .5f;
+                    const Point center{p.x + ox * z, p.y + oy * z};
+                    r.Quad({center.x - size * z, center.y},
+                           {center.x - .4f * z, center.y - .7f * z},
+                           {center.x + size * z, center.y - .2f * z},
+                           {center.x + .5f * z, center.y + .7f * z},
+                           Color(.85f, .87f, .82f));
+                    r.Line({center.x - size * z, center.y + .7f * z},
+                           {center.x + .5f * z, center.y + .8f * z},
+                           .45f * z,
+                           Color(.25f, .27f, .24f));
                 }
-                if (tile.taint > 0.61f && tile.variant % 4 == 0)
-                {
-                    r.Ellipse(p, 24 * m_Zoom, 10 * m_Zoom, Color(0.12f, 0.065f, 0.16f, 0.8f));
-                    r.Line({p.x - 16 * m_Zoom, p.y},
-                           {p.x + 8 * m_Zoom, p.y - 5 * m_Zoom},
-                           m_Zoom,
-                           Color(0.46f, 0.26f, 0.43f, 0.6f));
-                }
-            }
-            if (m_Grid && (tile.x % ChunkSize == 0 || tile.y % ChunkSize == 0))
-            {
-                r.Line({p.x, p.y - h}, {p.x + w, p.y}, m_Zoom, Color(0.5f, 0.78f, 0.7f, 0.6f));
-                r.Line({p.x, p.y - h}, {p.x - w, p.y}, m_Zoom, Color(0.5f, 0.78f, 0.7f, 0.6f));
-            }
-        });
+            },
+            color.Shade(1.25f));
+        if (tile.taint > .61f && tile.variant % 4 == 0)
+        {
+            r.Ellipse(p, 24 * z, 10 * z, Color(.12f, .065f, .16f, .8f));
+            r.Line({p.x - 16 * z, p.y},
+                   {p.x + 8 * z, p.y - 5 * z},
+                   z,
+                   Color(.46f, .26f, .43f, .6f));
+        }
+    }
+    if (m_Grid && (tile.x % ChunkSize == 0 || tile.y % ChunkSize == 0))
+    {
+        r.Line({p.x, p.y - h}, {p.x + w, p.y}, z, Color(.5f, .78f, .7f, .6f));
+        r.Line({p.x, p.y - h}, {p.x - w, p.y}, z, Color(.5f, .78f, .7f, .6f));
+    }
 }
 
 void Prototype::DrawProp(Renderer& r, Point p, int kind, unsigned seed)
 {
+    if (kind == 10)
+    {
+        const float z = m_Zoom;
+        r.DrawCachedMesh(
+            "outpost/beacon-v1",
+            p,
+            z,
+            [&]()
+            {
+                Block(r, p, 16, 8, 12, Color(.25f, .19f, .20f));
+                r.Line({p.x, p.y - 10 * z}, {p.x, p.y - 87 * z}, 3 * z, Color(.35f, .28f, .23f));
+                r.Triangle({p.x, p.y - 85 * z},
+                           {p.x + 27 * z, p.y - 75 * z},
+                           {p.x, p.y - 55 * z},
+                           Color(.48f, .10f, .12f));
+                r.Ellipse({p.x, p.y - 15 * z}, 5 * z, 3 * z, Color(.75f, .18f, .35f).Radiance(4));
+            });
+        return;
+    }
+    // Preserve the existing collider footprints and scene depth anchors.
+    const unsigned sprite = kind == 7 ? 11u : kind == 8 ? 12u : kind == 2 ? 14u : 15u;
+    const float height = kind == 7 ? 140.0f : kind == 8 ? 118.0f : kind == 2 ? 72.0f : 42.0f;
+    const float depth = kind == 7 ? 22.0f : kind == 8 ? 16.0f : kind == 2 ? 12.0f : 7.0f;
+    if ((kind == 7 || kind == 8 || kind == 2 || kind == 3)
+        && r.DrawSprite(sprite, {p.x, p.y + depth * m_Zoom}, height * m_Zoom))
+    {
+        return;
+    }
     if (kind >= 7 && kind <= 9)
     {
         const float z = m_Zoom;

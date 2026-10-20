@@ -21,6 +21,10 @@ EnemyActor::EnemyActor(Prototype& game, int tier)
 
 void EnemyActor::Update(float dt)
 {
+    if (outpost >= 0)
+    {
+        return;
+    }
     auto& enemy = *this;
     Actor* target = &m_Game.m_Player;
     if (m_Game.m_NpcWorld)
@@ -50,6 +54,7 @@ void EnemyActor::Update(float dt)
                    > 3.5)
         {
             enemy.SetWorldPosition(enemy.homeX, enemy.homeY);
+            enemy.ResetAnimation();
             enemy.health = enemy.maxHealth;
             enemy.alive = true;
         }
@@ -175,7 +180,7 @@ void EnemyActor::DrawOverlay(Renderer& r)
     {
         return;
     }
-    const float height = enemy.tier == 2 ? 105.0f : 68.0f;
+    const float height = enemy.tier == 2 ? 133.0f : enemy.tier == 1 ? 97.0f : 89.0f;
     const std::string name = enemy.tier == 0   ? "메마른 망자"
                              : enemy.tier == 1 ? "오염된 약탈자"
                                                : "경작지 수문장";

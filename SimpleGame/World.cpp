@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "Villages.h"
+#include "Outposts.h"
 
 #include <cmath>
 
@@ -12,30 +14,61 @@ WorldTileData Prototype::MakeTile(std::int64_t x, std::int64_t y) const
     const double lx = double(x) - NearestShrine(double(x));
     const double ly = double(y) - NearestShrine(double(y));
     const bool plaza = std::abs(lx) <= 3 && std::abs(ly) <= 3;
-    const bool road = lx == 0 || ly == 0 || plaza;
+    const bool road = std::abs(lx) <= 1 || std::abs(ly) <= 1 || plaza;
     float taint = SmoothNoise(double(x) / 7.0 + 17, double(y) / 7.0 - 29, m_WorldSeed);
     if (plaza)
     {
         taint *= 0.25f;
     }
     int prop = 0;
-    // A compact inhabited hub beside the existing 19x17 encounter area.
+    // Expanded settlements use four-unit blocks and open cardinal gates.
     // Clear the entire village footprint; buildings leave connected streets.
-    if (x >= -10 && x <= 3 && y >= -6 && y <= 10)
+    const int village = VillageAt({double(x), double(y)});
+    if (village >= 0)
     {
-        if ((x == -8 && y == 5) || (x == -8 && y == -3) || (x == -6 && y == -5))
+        const auto vx = x - static_cast<std::int64_t>(Villages[village].center.x);
+        const auto vy = y - static_cast<std::int64_t>(Villages[village].center.y);
+        const bool houseX = std::abs(vx) == 6 || std::abs(vx) == 10 || std::abs(vx) == 14;
+        const bool houseY = std::abs(vy) == 6 || std::abs(vy) == 10 || std::abs(vy) == 14;
+        if (houseX && houseY)
         {
             prop = 7;
         }
-        if (x == -7 && y == 0)
+        if ((std::abs(vx) == 6 || std::abs(vx) == 10) && vy == 2)
         {
             prop = 8;
         }
-        if (x == 1 && y == 8)
+        if (std::abs(vx) == 2 && std::abs(vy) == 10)
         {
             prop = 9;
         }
+        if ((std::abs(vx) == VillageHalfExtent - 1 && std::abs(vy) > 4 && vy % 3 == 0)
+            || (std::abs(vy) == VillageHalfExtent - 1 && std::abs(vx) > 4 && vx % 3 == 0))
+        {
+            prop = 2;
+        }
         return {x, y, taint * 0.15f, static_cast<unsigned>(seed >> 32), prop, true};
+    }
+    for (const auto& camp : Outposts)
+    {
+        const auto ox = x - std::int64_t(camp.center.x);
+        const auto oy = y - std::int64_t(camp.center.y);
+        if (std::abs(ox) <= OutpostHalfExtent && std::abs(oy) <= OutpostHalfExtent)
+        {
+            // Open entrances on every side; the spawn ring remains unobstructed.
+            prop = ox == 0 && oy == 0 ? 10 : 0;
+            if (((std::abs(ox) == OutpostHalfExtent - 1 && oy % 2 == 0)
+                 || (std::abs(oy) == OutpostHalfExtent - 1 && ox % 2 == 0))
+                && std::abs(ox) > 3 && std::abs(oy) > 3)
+            {
+                prop = 2;
+            }
+            if (std::abs(ox) == 9 && std::abs(oy) == 9)
+            {
+                prop = 7;
+            }
+            return {x, y, .75f, static_cast<unsigned>(seed >> 32), prop, false};
+        }
     }
     // Keep the landmark and its approach clear, including the respawn point.
     if (!road && x % 4 != 0 && y % 4 != 0 && !(std::abs(lx) < 6 && std::abs(ly) < 6))
@@ -61,13 +94,14 @@ WorldTileData Prototype::MakeTile(std::int64_t x, std::int64_t y) const
     if (cell >= 0 && !m_LevelWalkable.empty())
     {
         // Connected walkable cells are clear; unreachable pockets become solid terrain.
-        prop = m_LevelWalkable[cell] ? 0 : 2;
+        const bool traversable = road || m_LevelWalkable[cell];
+        prop = traversable ? 0 : 2;
         return {x,
                 y,
                 taint * 0.7f,
                 static_cast<unsigned>(seed >> 32),
                 prop,
-                m_LevelWalkable[cell] && (y == 3 || x % 3 == 0)};
+                road || (traversable && (y == 3 || x % 3 == 0))};
     }
 
     return {x, y, taint, static_cast<unsigned>(seed >> 32), prop, road};
@@ -78,6 +112,12 @@ void Prototype::Stream()
     const auto cx = ChunkOf(m_Player.WorldX());
     const auto cy = ChunkOf(m_Player.WorldY());
     m_Radius = int(std::ceil((m_Width / 160.0 + m_Height / 80.0 + 8) / m_Zoom / ChunkSize)) + 1;
+    if (m_StreamRadius == m_Radius && m_StreamCenter == ChunkKey{cx, cy})
+    {
+        return;
+    }
+    m_StreamCenter = {cx, cy};
+    m_StreamRadius = m_Radius;
     for (auto it = m_Chunks.begin(); it != m_Chunks.end();)
     {
         if (std::abs(it->first.first - cx) > m_Radius || std::abs(it->first.second - cy) > m_Radius)
@@ -198,7 +238,12 @@ void Prototype::Move(double& x, double& y, double dx, double dy, float radius)
 
 void Prototype::MoveActor(::Actor& actor, double dx, double dy, float radius)
 {
-    WorldPoint position = actor.WorldPosition();
+    const WorldPoint previous = actor.WorldPosition();
+    WorldPoint position = previous;
     Move(position.x, position.y, dx, dy, radius);
     actor.SetWorldPosition(position.x, position.y);
+    if (auto* unit = dynamic_cast<GameActor*>(&actor))
+    {
+        unit->RecordMovement(position.x - previous.x, position.y - previous.y);
+    }
 }

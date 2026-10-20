@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <iostream>
 #include <locale>
+#include "Dependencies/wglew.h"
 
 namespace
 {
@@ -22,7 +23,10 @@ namespace
         "bloom_threshold,bloom_knee,bloom_strength,bloom_radius,vignette_strength,"
         "vignette_start,edge_blur_strength,edge_blur_start,edge_blur_radius,"
         "zoom,grid,camera_x,camera_y,player_x,player_y,scene_actors,loaded_chunks,"
-        "world_visible_actors,ui_visible_actors,world_list_cpu_ms,ui_list_cpu_ms\n";
+        "world_visible_actors,ui_visible_actors,world_list_cpu_ms,ui_list_cpu_ms,"
+        "gameplay_cpu_ms,npc_cpu_ms,stream_cpu_ms,npc_export_cpu_ms,path_calls,path_nodes,"
+        "unaccounted_ms,gpu_world_ms,gpu_post_ms,gpu_ui_ms,gpu_sample_age,buffer_orphans,stream_"
+        "capacity_bytes\n";
 
     double Milliseconds(std::chrono::steady_clock::duration duration)
     {
@@ -73,7 +77,7 @@ void FrameProfiler::Initialize(Renderer& renderer)
     m_Summary.open(m_LogDirectory / "session.log");
     m_Summary.imbue(std::locale::classic());
     m_Summary
-        << "Profiling schema=2; renderer=ordered-triangle-instancing; mesh-cache=v1\n"
+        << "Profiling schema=3; renderer=ordered-triangle-instancing; mesh-cache=v1\n"
         << "Build=" << __DATE__ << ' ' << __TIME__ << '\n'
 #ifdef _DEBUG
         << "Configuration=Debug\n"
@@ -85,13 +89,30 @@ void FrameProfiler::Initialize(Renderer& renderer)
         << "GL_VERSION=" << GLText(GL_VERSION) << '\n'
         << "GLSL_VERSION=" << GLText(GL_SHADING_LANGUAGE_VERSION) << '\n'
         << "Initial viewport=" << renderer.Width() << 'x' << renderer.Height() << '\n'
-        << "CPU timings only; GPU work is asynchronous. VSync state is not queried.\n"
-        << "Timer requests 16ms between updates. First frame interval starts at BeginFrame.\n"
+        << "GPU timestamps are read asynchronously; -1 means no ready sample.\n"
+        << "Timer targets absolute 60Hz deadlines, skipping missed updates; simulation dt still "
+           "clamps to 50ms.\n"
         << "CSV: one row/completed frame, buffered 1s, new part after 64MiB.\n"
         << "GPU upload bytes count renderer payload only, not post targets or driver traffic.\n"
         << "logical_instances can include chunks of an oversized mesh; triangles are GL "
            "instances.\n"
         << "Summary percentiles use completed frame intervals in each reporting window.\n";
+    if (wglewInit() == GLEW_OK && WGLEW_EXT_swap_control && wglGetSwapIntervalEXT)
+    {
+        m_Summary << "SwapInterval=" << wglGetSwapIntervalEXT() << '\n';
+    }
+    else
+    {
+        m_Summary << "SwapInterval=unavailable\n";
+    }
+    m_Summary << "GpuTimestampAvailable=" << renderer.GpuTimingAvailable() << '\n';
+    m_Summary << "GPU age is in rendered frames; GPU stage values are delayed and not paired with "
+                 "this row's CPU work.\n"
+              << "GPU timestamps include pipeline idle/submission gaps; not hardware utilization "
+                 "percentages.\n"
+              << "unaccounted_ms=max(0,interval-update-render-swap), includes pacing, event loop, "
+                 "prior logging and scheduling.\n"
+              << "npc_export_cpu_ms is part of npc_cpu_ms; frame logging flush is separate.\n";
     m_FileLogging = true;
     OpenCsv();
     if (m_FileLogging && m_Summary)
@@ -171,9 +192,16 @@ void FrameProfiler::RenderFinished()
     m_RenderEnd = Clock::now();
 }
 
-void FrameProfiler::RecordUpdate(double milliseconds)
+void FrameProfiler::RecordUpdate(double milliseconds, const Prototype& game)
 {
     m_UpdateMs += milliseconds;
+    const auto& stats = game.UpdatingStats();
+    m_GameplayMs += stats.gameplayMs;
+    m_NpcMs += stats.npcMs;
+    m_StreamMs += stats.streamMs;
+    m_NpcExportMs += stats.npcExportMs;
+    m_PathCalls += stats.pathCalls;
+    m_PathNodes += stats.pathNodes;
     ++m_UpdateCount;
 }
 
@@ -203,6 +231,19 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
     m_UpdateTotal += m_UpdateMs;
     m_RenderTotal += renderMs;
     m_SwapTotal += swapMs;
+    const double unaccountedMs = (std::max)(0.0, interval - m_UpdateMs - renderMs - swapMs);
+    m_NpcTotal += m_NpcMs;
+    m_ExportTotal += m_NpcExportMs;
+    m_StreamTotal += m_StreamMs;
+    m_IdleTotal += unaccountedMs;
+    m_DiskTotal += stats.diskReadMs + stats.diskWriteMs;
+    if (stats.gpuWorldMs >= 0)
+    {
+        ++m_GpuSamples;
+        m_GpuWorldTotal += stats.gpuWorldMs;
+        m_GpuPostTotal += stats.gpuPostMs;
+        m_GpuUiTotal += stats.gpuUiMs;
+    }
     m_Builds += stats.meshBuilds;
     m_Loads += stats.diskLoads;
     m_FrameTimes.push_back(interval);
@@ -231,8 +272,18 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
                << camera.x << ',' << camera.y << ',' << player.x << ',' << player.y << ','
                << game.Scene().ActorCount() << ',' << game.LoadedChunkCount() << ','
                << scene.worldActors << ',' << scene.uiActors << ',' << scene.worldListMs << ','
-               << scene.uiListMs << '\n';
+               << scene.uiListMs << ',' << m_GameplayMs << ',' << m_NpcMs << ',' << m_StreamMs
+               << ',' << m_NpcExportMs << ',' << m_PathCalls << ',' << m_PathNodes << ','
+               << unaccountedMs << ',' << stats.gpuWorldMs << ',' << stats.gpuPostMs << ','
+               << stats.gpuUiMs << ',' << stats.gpuSampleAge << ',' << stats.bufferOrphans << ','
+               << stats.streamCapacityBytes << '\n';
     }
+    m_GameplayMs = 0;
+    m_NpcMs = 0;
+    m_StreamMs = 0;
+    m_NpcExportMs = 0;
+    m_PathCalls = 0;
+    m_PathNodes = 0;
     m_UpdateMs = 0;
     m_UpdateCount = 0;
     const double seconds = std::chrono::duration<double>(now - m_WindowStart).count();
@@ -259,7 +310,19 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
             << " p99=" << percentile(0.99) << " max=" << m_FrameTimes.back()
             << " | Mesh/window: built=" << m_Builds << " disk=" << m_Loads
             << " | Last draws: world=" << stats.worldDraws << " ui=" << stats.uiDraws
-            << " post=" << post.DrawCalls();
+            << " post=" << post.DrawCalls() << " | CPU detail avg ms: npc=" << m_NpcTotal / m_Frames
+            << " export=" << m_ExportTotal / m_Frames << " stream=" << m_StreamTotal / m_Frames
+            << " cacheIO=" << m_DiskTotal / m_Frames << " pacing/other=" << m_IdleTotal / m_Frames;
+    if (m_GpuSamples)
+    {
+        message << " | GPU delayed avg ms: world=" << m_GpuWorldTotal / m_GpuSamples
+                << " post=" << m_GpuPostTotal / m_GpuSamples
+                << " ui=" << m_GpuUiTotal / m_GpuSamples << " samples=" << m_GpuSamples;
+    }
+    else
+    {
+        message << (renderer.GpuTimingAvailable() ? " | GPU: pending" : " | GPU: unavailable");
+    }
     std::cout << message.str() << '\n' << std::flush;
     if (m_Summary)
     {
@@ -277,6 +340,15 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
     m_UpdateTotal = 0;
     m_RenderTotal = 0;
     m_SwapTotal = 0;
+    m_NpcTotal = 0;
+    m_ExportTotal = 0;
+    m_StreamTotal = 0;
+    m_IdleTotal = 0;
+    m_DiskTotal = 0;
+    m_GpuSamples = 0;
+    m_GpuWorldTotal = 0;
+    m_GpuPostTotal = 0;
+    m_GpuUiTotal = 0;
     m_Builds = 0;
     m_Loads = 0;
     m_FrameTimes.clear();

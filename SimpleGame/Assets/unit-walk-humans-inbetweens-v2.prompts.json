@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "unit-walk-humans-v1.png",
+  "output": "unit-walk-humans-inbetweens-v2.png",
+  "layout": {
+    "columns": 6,
+    "rows": 6,
+    "slotOrder": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "playback": "Interleave v1[k], intermediate[k] for k=0..5; intermediate[5] joins v1[5] to v1[0].",
+  "prompts": [
+    "Use case: precise-object-edit. Asset: production animation IN-BETWEEN sprite sheet. Reference is the EXISTING SIX-COLUMN SIX-ROW human WALK keyframe sheet. Create SIX NEW intermediate poses per row, NOT copies of the reference poses.\nOutput EXACTLY SIX COLUMNS by SIX ROWS,36 figures. Every NEW column k is anatomically HALF WAY between reference column k and reference column k+1; NEW column6 is halfway from reference column6 back to reference column1 for the seamless loop. The game will play reference1,new1,reference2,new2...reference6,new6 for a smooth twelve-frame walk. Subtle but VISIBLE knee, foot, elbow, lantern, shield and cloak changes at the halfway moments. Draw a SINGLE clean solid body with two legs/two arms per cell, never opacity blending or double-exposure. No duplicated identical keyframes.\nPreserve EXACT character identities and equipment, camera, realistic weathered materials, lighting, right-facing three-quarter orientation. Rows: grayhooded player holding sword and small yellow lantern; ivoryhooded priest with crossstaff; tarnished plate knight with shield/sword; olivehooded archer with bow/quiver; redhooded raider with knife; olivecoat merchant with satchel/cap.\nRegistration: keep each character body's scale, pelvis center and ground contact baseline aligned with its corresponding reference row. Every figure must be SMALL AND FULLY CONTAINED in the central60%of its uniform squarecell, LARGE20%cleartransparentguttersALLSIDES, no overlap. Groundedfeetnear80%cellheight, pelviscenter50%cellwidth. Final1536x1536square orsameaspectasreference, uniform6x6grid. Samebodyheightacrosssixframesinarow. Wholeweaponsandstaffinsideowncell.\nActualtransparentbackgroundALPHA. No floor, shadows,backgroundtexture,grid,text,labels,checkerboard,effects,glowspill. Only36new complete clean in-between walk poses. Changes must progress continuously from the referenced previous frame toward its next frame."
+  ]
+}

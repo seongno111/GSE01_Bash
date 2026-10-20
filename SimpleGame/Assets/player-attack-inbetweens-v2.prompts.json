@@ -1,0 +1,193 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate identity-preserving intermediate poses, then targeted pose and padding correction",
+  "asset": "player-attack-inbetweens-v2.png",
+  "size": [
+    2172,
+    724
+  ],
+  "grid": {
+    "columns": 6,
+    "rows": 2
+  },
+  "rowSprites": [
+    0,
+    9
+  ],
+  "frames": [
+    "halfway from release to full extension",
+    "halfway from full extension to follow-through",
+    "halfway from follow-through to recoil",
+    "halfway from recoil to lower arm",
+    "halfway from lower arm to idle",
+    "settled idle after final original key"
+  ],
+  "playback": "Interleave original column 0, new column 0, original column 1, new column 1, ... original column 5, new column 5. Last new pose is settled recovery, not attack restart.",
+  "references": [
+    "player-attack-v1.png"
+  ],
+  "sourceOutput": "C:\\Users\\seong\\.codex\\generated_images\\01a1523c-a60a-7653-be67-7a8d9e44cfb9\\exec-a1d09469-225d-4b12-9c6e-66d2cecbaf5b.png",
+  "prompts": [
+    "Use case: identity-preserve.\nAsset type: production animation IN-BETWEEN sprite sheet for a 2.5D dark medieval fantasy RPG, transparent RGBA.\nInput image 1 is the existing attack sheet, the exact character identity, rendering style, and chronological key pose reference. Its grid has SIX columns and TWO rows. Create a NEW companion sheet of exactly SIX columns and TWO rows. Each NEW column must be an intermediate pose that falls BETWEEN corresponding original poses, not a copy of an original pose.\nThe new sheet is to interleave in this order in game: original column 1, new column 1, original column 2, new column 2, original column 3, new column 3, original column 4, new column 4, original column 5, new column 5, original column 6, new column 6.\nFor new columns 1 through 5, draw the exact chronological halfway pose from original column k to original column k+1. New column 6 is the final fully settled idle recovery AFTER original column 6, NOT a return to the start of the attack.\n\nEXACT LAYOUT: wide 3:1 canvas preferably 2172 x 724, six equal square columns by two equal-height rows, twelve isolated COMPLETE full-body sprites. Row 1 is the human player, row 2 the corrupted player. ALL figures face screen-RIGHT in a fixed three-quarter isometric camera. All maintain the SAME body height and body/root center and a common feet baseline within each row. Full feet visible. All remain planted while upper bodies animate. Keep the figures SMALL in each cell, inside the MIDDLE 60 percent of BOTH cell width and cell height, with at least 20 percent EMPTY TRANSPARENT padding on all sides. Do not auto-crop the canvas. Wide perfectly transparent vertical and horizontal gutters at every equal cell boundary including the entire outside canvas edge. All extended hands and claws remain wholly in their OWN cell.\n\nHUMAN PLAYER row 1: exactly the reference human with dark grey hood, weathered grey cape, brown leather armor, belts and boots, sword always held downward in the same hand, brass warm glowing lantern in the other hand. Do not change costume or physique. Natural realistic proportions, physically rendered weathered materials. This is the recovery of a lantern-arm ranged cast. New pose 1: lantern arm lengthening from original release towards full reach; new pose 2: small shoulder follow-through as extended arm begins to relax; new pose 3: elbow halfway bending back toward chest, lantern between extended and recoil locations; new pose 4: arm halfway lowering from chest to hip; new pose 5: hand settling into relaxed idle; new pose 6: fully settled grounded idle with cloth relaxed. Make the evolving elbow/shoulder/hand positions precise and visibly intermediate.\n\nCORRUPTED PLAYER row 2: exactly reference mutated grey hooded player with red eyes, weathered grey cape, brown torso leather, dark boots, one pale elongated thorned/bony claw. Keep the SAME elongated claw anatomy, no additional hands. New pose 1: claw lengthening from original release to full extension; new pose 2: shoulder follow-through and slight easing at full extension; new pose 3: claw halfway recoiling toward chest with the elbow bent; new pose 4: claw halfway lowering from bent recoil towards hip; new pose 5: claw settling downward into idle; new pose 6: fully settled grounded idle.\n\nEvery cell must contain ONE crisp anatomically coherent pose, no ghosting, no opacity blending, no double limbs, no motion blur, no extra characters, no new weapons or costume changes. Do not reuse six identical stills or identical adjacent key frames. Preserve natural textures, lighting and readable shading exactly like reference. No projectile, fireball, muzzle flash, large glow, smoke, rays, floor, cast shadow, labels, text, numbered frames, lines, borders, background, checkerboard, watermark. The background is genuinely alpha-transparent. Only the small carried lantern emits its original warm light.",
+    "Use case: precise-object-edit. Edit ONLY this supplied 6-column by 2-row transparent sprite sheet to correct intermediate arm poses and safe spacing. Retain EXACT same two characters, faces, outfits, weapons, colors, realistic rendering, fixed right-facing camera and twelve-cell grid.\nThis is an IN-BETWEEN sheet, not the original six key poses. Important corrections in BOTH rows: column 3 MUST NOT have a straight fully extended arm. Bend the lantern arm / large mutant claw elbow about 70 degrees, with the upper arm pointing forward and the forearm angled back/up to make a half-recoiled pose, hand roughly halfway from full reach to chest. Column 4 MUST have the elbow lowered and hand moving DOWN diagonally from chest toward hip, halfway between recoiled chest-level and original idle. Column 5 MUST be very nearly the idle pose, wrist slightly above its final relaxed position. Column 6 is the complete settled idle. Columns 1 and 2 keep forward casting recovery but slightly varying elbow extension and shoulder roll as already shown.\nDo not swap sword/lantern hands. Human sword remains lowered through all six columns. Mutant has one large bony claw, no extra hand. No duplicate arms, no ghosts, no blur.\nSPACING: Make every complete figure uniformly smaller to fit in the MIDDLE 60 percent of its OWN equal square cell, at least 20 percent transparent on EACH side including every extended claw and sword tip. Torso/root center exactly in the center of its cell. Same body height for every pose of each character. Feet on a common baseline 80 percent down each row. Sheet remains exactly 6 columns by 2 rows on a wide 3:1 canvas. Empty alpha-transparent gutters across the whole canvas at all exact equally spaced column and row boundaries. Do NOT crop away padding or fill the frame with sprites. No other change. No labels, lines, floor, background, shadows or added attack effects. Actual RGBA transparency."
+  ],
+  "validation": {
+    "mode": "RGBA",
+    "allCellsContainArt": true,
+    "nominalColumnDividers": [
+      0,
+      362,
+      724,
+      1086,
+      1448,
+      1810,
+      2172
+    ],
+    "maxAlphaAtNominalColumnDividers": [
+      239,
+      0,
+      0,
+      0,
+      0
+    ],
+    "columnDividers": [
+      0,
+      365,
+      724,
+      1086,
+      1448,
+      1810,
+      2172
+    ],
+    "rowDividers": [
+      0,
+      362,
+      724
+    ],
+    "maxAlphaAtSelectedDividers": 2,
+    "alphaBounds": [
+      {
+        "row": 0,
+        "column": 0,
+        "bounds": [
+          106,
+          120,
+          350,
+          321
+        ]
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "bounds": [
+          94,
+          117,
+          330,
+          321
+        ]
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "bounds": [
+          97,
+          116,
+          307,
+          321
+        ]
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "bounds": [
+          70,
+          115,
+          256,
+          321
+        ]
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "bounds": [
+          59,
+          116,
+          238,
+          321
+        ]
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "bounds": [
+          67,
+          114,
+          231,
+          321
+        ]
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "bounds": [
+          96,
+          66,
+          365,
+          273
+        ]
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "bounds": [
+          79,
+          64,
+          357,
+          274
+        ]
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "bounds": [
+          81,
+          63,
+          319,
+          273
+        ]
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "bounds": [
+          68,
+          65,
+          282,
+          275
+        ]
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "bounds": [
+          55,
+          65,
+          229,
+          275
+        ]
+      },
+      {
+        "row": 1,
+        "column": 5,
+        "bounds": [
+          63,
+          63,
+          227,
+          275
+        ]
+      }
+    ],
+    "imageEditsByPython": false,
+    "gameBuildOrRun": false
+  }
+}

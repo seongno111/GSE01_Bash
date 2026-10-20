@@ -63,6 +63,15 @@ private:
     GLuint m_ExtractProgram = 0;
     GLuint m_BlurProgram = 0;
     GLuint m_CompositeProgram = 0;
+    GLint m_Threshold = -1;
+    GLint m_Knee = -1;
+    GLint m_Direction = -1;
+    GLint m_Exposure = -1;
+    GLint m_BloomStrength = -1;
+    GLint m_VignetteStrength = -1;
+    GLint m_VignetteStart = -1;
+    GLint m_BlurStrength = -1;
+    GLint m_BlurStart = -1;
     GLuint m_VAO = 0;
     int m_Width = 1;
     int m_Height = 1;

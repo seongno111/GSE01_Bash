@@ -5,7 +5,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <queue>
 
 using namespace GameRules;
 
@@ -55,6 +54,8 @@ void Prototype::FireProjectile()
                         m_Player.range);
     m_Player.shotCooldown = ProjectileCooldown();
     m_Player.attack = 0.16f;
+    const float animationDuration = std::clamp(m_Player.shotCooldown * 0.75f, 0.22f, 0.32f);
+    m_Player.BeginAttackAnimation(directionX, directionY, animationDuration);
 }
 
 void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
@@ -65,6 +66,15 @@ void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
     }
 
     enemy.alive = false;
+    enemy.ResetAnimation();
+    if (rewardPlayer && m_NpcWorld)
+    {
+        m_NpcWorld->RecordWorldEvent("hunt",
+                                     "플레이어가 몬스터를 토벌했다",
+                                     enemy.WorldPosition(),
+                                     &m_Player,
+                                     &enemy);
+    }
     enemy.respawn = enemy.tier == 2 ? 45.0f : 25.0f;
     enemy.attackWindup = 0;
     enemy.recovery = 0;
@@ -132,55 +142,39 @@ void Prototype::MoveEnemy(EnemyActor& enemy, double targetX, double targetY, flo
         }
     }
 
-    const int start = LevelOneCell(std::int64_t(std::round(enemy.WorldX())),
-                                   std::int64_t(std::round(enemy.WorldY())));
-    const int goalX = std::clamp(int(std::round(targetX)), 4, 22);
-    const int goalY = std::clamp(int(std::round(targetY)), -3, 13);
-    const int goal = LevelOneCell(goalX, goalY);
-    if (start < 0 || !m_LevelWalkable[start] || !m_LevelWalkable[goal] || start == goal)
+    // Use the same bounded world navigation as NPCs/outposts. The old tutorial
+    // grid clamps used untranslated x=4..22 and could index vector<bool> at -1
+    // after the encounter area moved east during settlement expansion.
+    const WorldPoint target{targetX, targetY};
+    const bool changed = Length(enemy.routeTarget.x - targetX, enemy.routeTarget.y - targetY) > 2;
+    if (m_Time >= enemy.nextRoute || (changed && m_Time >= enemy.nextRoute - .25))
+    {
+        enemy.route.clear();
+        enemy.routeIndex = 0;
+        enemy.routeTarget = target;
+        ++m_UpdateStats.pathCalls;
+        FindRoute(enemy.WorldPosition(), target, enemy.route, m_UpdateStats.pathNodes);
+        enemy.nextRoute = m_Time + .75;
+    }
+    while (enemy.routeIndex < enemy.route.size()
+           && Length(enemy.route[enemy.routeIndex].x - enemy.WorldX(),
+                     enemy.route[enemy.routeIndex].y - enemy.WorldY())
+                  < .18)
+    {
+        ++enemy.routeIndex;
+    }
+    if (enemy.routeIndex >= enemy.route.size())
     {
         return;
     }
-
-    std::vector<int> previous(m_LevelWalkable.size(), -1);
-    std::queue<int> pending;
-    previous[start] = start;
-    pending.push(start);
-    const int offsetsX[] = {1, -1, 0, 0};
-    const int offsetsY[] = {0, 0, 1, -1};
-    while (!pending.empty() && previous[goal] < 0)
-    {
-        const int cell = pending.front();
-        pending.pop();
-        const int x = cell % 19 + 4;
-        const int y = cell / 19 - 3;
-        for (int direction = 0; direction < 4; ++direction)
-        {
-            const int next = LevelOneCell(x + offsetsX[direction], y + offsetsY[direction]);
-            if (next >= 0 && m_LevelWalkable[next] && previous[next] < 0)
-            {
-                previous[next] = cell;
-                pending.push(next);
-            }
-        }
-    }
-    if (previous[goal] < 0)
-    {
-        return;
-    }
-
-    int next = goal;
-    while (previous[next] != start)
-    {
-        next = previous[next];
-    }
-    dx = next % 19 + 4 - enemy.WorldX();
-    dy = next / 19 - 3 - enemy.WorldY();
+    const auto next = enemy.route[enemy.routeIndex];
+    dx = next.x - enemy.WorldX();
+    dy = next.y - enemy.WorldY();
     distance = Length(dx, dy);
-    if (distance > 0.001)
+    if (distance > .001)
     {
         const double step = (std::min)(distance, double(speed * dt));
-        MoveActor(enemy, dx / distance * step, dy / distance * step, 0.18f);
+        MoveActor(enemy, dx / distance * step, dy / distance * step, .18f);
     }
 }
 

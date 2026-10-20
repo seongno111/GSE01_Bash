@@ -68,6 +68,7 @@ public:
     void Destroy();
 
     virtual void Update(float dt);
+    virtual void UpdateVisual(float dt);
     virtual void Draw(Renderer& renderer);
     virtual void DrawOverlay(Renderer& renderer);
     virtual bool InView() const;

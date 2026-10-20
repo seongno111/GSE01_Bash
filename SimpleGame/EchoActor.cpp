@@ -63,7 +63,7 @@ void EchoActor::Draw(Renderer& r)
     const Point p = m_Game.Project(WorldX(), WorldY());
     if (alive)
     {
-        m_Game.DrawCharacter(r, p, corruption, true);
+        m_Game.DrawCharacter(r, p, corruption, true, SpritePose());
     }
     else
     {

@@ -29,7 +29,7 @@ void CombatTextActor::Draw(Renderer& r)
     const auto& message = *this;
 
     Point p = m_Game.Project(message.WorldX(), message.WorldY());
-    p.y -= 65 * m_Game.m_Zoom + (1.1f - message.remaining) * 30;
+    p.y -= 94 * m_Game.m_Zoom + (1.1f - message.remaining) * 30;
     Color color = message.color;
     color.a = (std::min)(1.0f, message.remaining * 2);
     r.Text(p.x - r.TextWidth(message.text, 1.2f) * 0.5f, p.y, message.text, color, 1.2f);

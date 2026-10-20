@@ -48,7 +48,9 @@ bool NpcWorld::RequestInteraction(NpcAction action)
         return false;
     }
     if (action == NpcAction::Trade
-        && (!InVillage(npc->WorldPosition()) || m_Game.Player().gold < 12 || m_MarketMedicine < 1))
+        && (!Villages[npc->profile.village].Contains(npc->WorldPosition())
+            || !Villages[npc->profile.village].Contains(m_Game.Player().WorldPosition())
+            || m_Game.Player().gold < 12 || m_Economies[npc->profile.village].medicine < 1))
     {
         m_Game.Notice("거래에는 마을 내 주민, 금화 12개, 시장의 회복약 재고가 필요합니다.");
         return false;
@@ -149,23 +151,29 @@ void NpcWorld::DrawHUD(Renderer& r)
                                   {{-7, 0}, "시장", 88},
                                   {{-8, 5}, "숙소 · 작업장", 100},
                                   {{1, 8}, "훈련장", 65}};
-    for (const auto& landmark : landmarks)
+    for (const auto& village : Villages)
     {
-        const auto p = m_Game.Project(landmark.position.x, landmark.position.y);
-        if (p.x >= 0 && p.x < width && p.y > 0 && p.y < height)
+        for (const auto& landmark : landmarks)
         {
-            r.Text(p.x - r.TextWidth(landmark.name, 1) * 0.5f,
-                   p.y - landmark.offset * m_Game.Zoom(),
-                   landmark.name,
-                   Gold,
-                   1);
+            const auto p = m_Game.Project(village.center.x + landmark.position.x,
+                                          village.center.y + landmark.position.y);
+            if (p.x >= 0 && p.x < width && p.y > 0 && p.y < height)
+            {
+                r.Text(p.x - r.TextWidth(landmark.name, 1) * 0.5f,
+                       p.y - landmark.offset * m_Game.Zoom(),
+                       landmark.name,
+                       Gold,
+                       1);
+            }
         }
     }
+    const int location = VillageAt(m_Game.Player().WorldPosition());
+    const std::string locationName = location >= 0 ? Villages[location].name : "마을 밖";
     const float stripWidth = (std::min)(660.0f, width - 48);
     r.Rect(24, height - 213, stripWidth, 92, panel);
     r.Text(36,
            height - 204,
-           "성당 마을 · 금화 " + std::to_string(m_Game.Player().gold) + " · PK "
+           locationName + " · 금화 " + std::to_string(m_Game.Player().gold) + " · PK "
                + (m_PK ? "켜짐" : "꺼짐") + " · 주민 " + std::to_string(m_Actors.size()),
            Gold,
            1.2f);
@@ -213,6 +221,15 @@ void NpcWorld::DrawHUD(Renderer& r)
          + std::to_string(int(npc->distanceTravelled)) + " · 완료/실패 "
          + std::to_string(npc->completedActions) + "/" + std::to_string(npc->failedActions));
     const auto& v = npc->vitals;
+    if (npc->mission.type != VillageMission::None)
+    {
+        line(std::string(VillageMissionName(npc->mission.type)) + " → "
+                 + Villages[npc->mission.destination].name
+                 + (npc->mission.returning ? " / 귀환"
+                    : npc->mission.arrived ? " / 활동"
+                                           : " / 이동"),
+             Gold);
+    }
     line("체력 " + std::to_string(int(v.health)) + "/" + std::to_string(int(v.maxHealth))
          + " · 금화 " + std::to_string(v.gold));
     line("무력 " + std::to_string(int(v.strength)) + " · 성력 " + std::to_string(int(v.holyPower))

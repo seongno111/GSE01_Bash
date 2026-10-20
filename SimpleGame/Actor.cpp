@@ -125,6 +125,10 @@ void Actor::Update(float)
 {
 }
 
+void Actor::UpdateVisual(float)
+{
+}
+
 void Actor::Draw(Renderer&)
 {
 }

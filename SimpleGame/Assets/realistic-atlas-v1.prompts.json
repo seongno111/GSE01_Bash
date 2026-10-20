@@ -1,0 +1,54 @@
+{
+  "asset": "SimpleGame/Assets/realistic-atlas-v1.png",
+  "created": "2026-10-13",
+  "tool": "image_gen.imagegen (built-in)",
+  "generation": {
+    "mode": "generate",
+    "transparent_background": true,
+    "prompt": "Production-ready SINGLE 4 by 4 sprite atlas texture sheet for a medieval apocalyptic 2.5D isometric RPG. Canvas square 2048 x 2048 if possible, with EXACTLY sixteen equally sized square cells arranged 4 columns by 4 rows, invisible regular grid. Transparent background (real alpha), no text, no labels, no borders, no floor tiles, no scenery, no contact shadows. Every object isolated and entirely contained inside its own cell with 8 percent transparent padding all sides, centered horizontally, feet/base at 90 percent of cell height. Assets almost fill cell height. Consistent orthographic three-quarter view looking slightly down at 25 degrees, front facing down-right southeast, neutral soft upper-left daylight and realistic physically plausible material shading. High quality realistic 3D pre-rendered game assets, natural human anatomy about 7.5 heads tall, SMALL realistic heads, long proportionate limbs, no chibi, no cartoon, no polygon facets, no illustration outlines. Weathered linen, muddy leather, scratched matte steel, porous stone, moss, worn wood. Restrained charcoal, earth and faded green colors with subtle amber lantern flame. Visually coherent set, clear silhouette at small resolution. Order MUST be exact left to right then top to bottom. ROW 1: (0) human wandering player, dark gray hooded traveling coat, layered leather armor, iron longsword and small warm lantern, full body; (1) human priest in faded ivory long robe, dark stole, hood, thin wooden cross staff, full body; (2) human knight in realistic tarnished plate and chainmail with modest kite shield and longsword, full body; (3) human adventurer archer in brown leather coat with bow and quiver, full body. ROW 2: (4) human outlaw in ragged brown red leather hood and patched armor with short knife, full body; (5) human merchant in worn olive wool coat and leather shoulder satchel, full body; (6) gaunt undead humanoid with gray diseased skin and tattered cloth, bent but anatomically realistic limbs, no gore, full body; (7) corrupted armored raider with dark mottled skin and rusted weapon, full body. ROW 3: (8) imposing emaciated plague guardian monster, grotesque but plausible anatomy, corroded armor, asymmetrical horn growths, no gore, full body; (9) mutated player revenant, ragged dark hooded coat, elongated arm, subtle bone growths and dim crimson eyes, full body; (10) complete small ruined Gothic stone cathedral with tall steeple, pointed doorway, buttresses, slate roof, warm tiny stained windows, isometric isolated building; (11) complete medieval half-timber cottage with steep weathered slate roof, stone foundation, recessed door and tiny amber window, isometric isolated building. ROW 4: (12) medieval market stall of dark wood with worn linen awning, barrels crates and sacks contained in silhouette, isometric; (13) tall leafless gnarled tree with realistic twisted bark, thin intricate dead branches and exposed roots, isolated; (14) partial broken ancient masonry wall ruin with varied stone sizes and moss, no landscape; (15) cluster of three naturally irregular weathered gray rocks with sparse moss and fissures, no floor. All sixteen cutouts cleanly separated. No duplicated figures or extra props outside their cell. This is the final game texture atlas, not a concept sheet mockup."
+  },
+  "refinement": {
+    "mode": "edit",
+    "transparent_background": true,
+    "prompt": "Edit the provided game atlas ONLY to fix placement and padding. Preserve all sixteen exact realistic medieval subjects, their detailed art style, textures, lighting, and the same row-major order. Output a square transparent PNG sprite atlas. Enforce an exact 4x4 equal grid. CRITICAL: scale down and reposition EACH of the 16 complete sprites so its ENTIRE silhouette fits within the CENTER 80 PERCENT of its own square cell. Leave at least 10 percent transparent margin at ALL FOUR sides of EVERY cell. Absolutely no pixels may cross into any neighboring cell. Restore any clipped hood tips/feet/tree branches inside those margins. On a 1280x1280 image each cell is320x320: all row1 art must be y32..288; row2 y352..608; row3 y672..928; row4 y992..1248. All col1 art x32..288; col2 x352..608; col3 x672..928; col4 x992..1248. Similar proportional bounds at other resolutions. Reduce sprite size to fit, do NOT crop bodies or branches. It is essential that the boss horns, cathedral spire and tree crown do not extend into the cell above. Keep the canvas truly transparent without background, gridlines, captions, contact shadows or checkerboard pixels. Do not redesign or rearrange subjects. This is a precisely sliced texture atlas for a game engine, not an illustration layout."
+  },
+  "actual_image": {
+    "width": 1254,
+    "height": 1254,
+    "format": "PNG",
+    "pixel_format": "RGBA",
+    "columns": [
+      0,
+      313,
+      627,
+      940,
+      1254
+    ],
+    "rows": [
+      0,
+      320,
+      627,
+      943,
+      1254
+    ]
+  },
+  "note": "Actual tool output is 1254x1254, not the requested example dimensions. Original PNG pixels are preserved. Runtime detects transparent dividers and trims alpha bounds without changing the source image.",
+  "subjects": [
+    "player",
+    "priest",
+    "knight",
+    "adventurer",
+    "raider",
+    "merchant",
+    "undead",
+    "corrupted_raider",
+    "plague_guardian",
+    "mutated_revenant",
+    "cathedral",
+    "cottage",
+    "market_stall",
+    "dead_tree",
+    "ruined_wall",
+    "mossy_rocks"
+  ]
+}

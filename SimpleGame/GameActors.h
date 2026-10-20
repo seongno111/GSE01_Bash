@@ -1,6 +1,7 @@
 #pragma once
 #include "Actor.h"
 #include "Renderer.h"
+#include "UnitAnimation.h"
 
 class Prototype;
 
@@ -29,10 +30,29 @@ public:
 
     GameActor(Prototype& game, const std::string& name, TickGroup tick, ActorLayer layer);
     bool InView() const override;
+    UnitSpritePose SpritePose() const;
+    void RecordMovement(double dx, double dy);
+    void UpdateVisual(float dt) override;
+    void BeginAttackAnimation(double directionX, double directionY, float duration);
+    void ResetAnimation();
 
 protected:
 
     Prototype& m_Game;
+
+private:
+
+    float m_WalkCycle = 0;
+    float m_TravelWindow = 0;
+    float m_TravelDistance = 0;
+    float m_TargetSpeed = 0;
+    float m_VisualSpeed = 0;
+    float m_LocomotionWeight = 0;
+    float m_LastMovementTime = -1;
+    float m_AttackAnimationStart = -1;
+    float m_AttackAnimationDuration = 0;
+    bool m_FacingLeft = false;
+    bool m_AttackFacingLeft = false;
 };
 
 class PlayerActor final : public GameActor
@@ -60,6 +80,7 @@ public:
     float attack = 0;
     bool autoFire = false;
     bool walking = false;
+    bool running = false;
 };
 
 class EnemyActor : public GameActor
@@ -91,6 +112,16 @@ public:
     float burstCooldown = 5;
     float burstWindup = 0;
     ActorId combatTarget = InvalidActor;
+    int outpost = -1;
+    int raidVillage = -1;
+    bool returningToOutpost = false;
+    float patrolRadius = 6;
+    double raidUntil = 0;
+    double nextTargetScan = 0;
+    double nextRoute = 0;
+    WorldPoint routeTarget;
+    std::vector<WorldPoint> route;
+    size_t routeIndex = 0;
 };
 
 class EchoActor final : public GameActor

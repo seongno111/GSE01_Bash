@@ -1,0 +1,1541 @@
+{
+  "date": "2026-10-20",
+  "scope": "Source assets, atlas packing and motion bounds only; no C++ build, game run, or rendered-result verification.",
+  "assets": [
+    {
+      "file": "realistic-atlas-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f5432cb3af3410fb4235f6200f5c348bd7965c2643ad8c1b5949114c55a3421b",
+      "xDividers": [
+        0,
+        313,
+        627,
+        940,
+        1254
+      ],
+      "yDividers": [
+        0,
+        320,
+        627,
+        943,
+        1254
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "bounds": [
+            81,
+            45,
+            273,
+            318
+          ]
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "bounds": [
+            401,
+            42,
+            561,
+            317
+          ]
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "bounds": [
+            703,
+            42,
+            879,
+            320
+          ]
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "bounds": [
+            1011,
+            46,
+            1210,
+            316
+          ]
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "bounds": [
+            92,
+            350,
+            247,
+            615
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "bounds": [
+            410,
+            351,
+            557,
+            620
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "bounds": [
+            708,
+            360,
+            870,
+            622
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "bounds": [
+            1012,
+            350,
+            1220,
+            622
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "bounds": [
+            48,
+            639,
+            305,
+            936
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "bounds": [
+            379,
+            654,
+            576,
+            931
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "bounds": [
+            644,
+            638,
+            917,
+            943
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "bounds": [
+            971,
+            666,
+            1222,
+            934
+          ]
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "bounds": [
+            48,
+            959,
+            301,
+            1191
+          ]
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "bounds": [
+            356,
+            950,
+            622,
+            1214
+          ]
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "bounds": [
+            666,
+            963,
+            901,
+            1204
+          ]
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "bounds": [
+            983,
+            975,
+            1223,
+            1209
+          ]
+        }
+      ]
+    },
+    {
+      "file": "unit-rigs-humans-v3.png",
+      "width": 1145,
+      "height": 1374,
+      "sha256": "7281ac8cab5d3a3e0991e5bde929a13bca40d13f275f1f98d1a97f16247ce10d",
+      "xDividers": [
+        0,
+        229,
+        458,
+        687,
+        916,
+        1145
+      ],
+      "yDividers": [
+        0,
+        249,
+        458,
+        687,
+        916,
+        1141,
+        1374
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "bounds": [
+            87,
+            101,
+            197,
+            244
+          ]
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "bounds": [
+            348,
+            104,
+            427,
+            246
+          ]
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "bounds": [
+            547,
+            105,
+            602,
+            246
+          ]
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "bounds": [
+            754,
+            103,
+            828,
+            249
+          ]
+        },
+        {
+          "row": 0,
+          "column": 4,
+          "bounds": [
+            960,
+            108,
+            1050,
+            242
+          ]
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "bounds": [
+            79,
+            314,
+            195,
+            456
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "bounds": [
+            346,
+            303,
+            432,
+            455
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "bounds": [
+            537,
+            314,
+            612,
+            453
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "bounds": [
+            753,
+            316,
+            833,
+            454
+          ]
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "bounds": [
+            974,
+            316,
+            1054,
+            447
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "bounds": [
+            77,
+            520,
+            203,
+            674
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "bounds": [
+            341,
+            526,
+            439,
+            683
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "bounds": [
+            546,
+            521,
+            611,
+            676
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "bounds": [
+            761,
+            521,
+            839,
+            674
+          ]
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "bounds": [
+            970,
+            528,
+            1065,
+            674
+          ]
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "bounds": [
+            82,
+            739,
+            200,
+            878
+          ]
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "bounds": [
+            318,
+            743,
+            457,
+            863
+          ]
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "bounds": [
+            547,
+            741,
+            616,
+            877
+          ]
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "bounds": [
+            757,
+            740,
+            838,
+            877
+          ]
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "bounds": [
+            972,
+            744,
+            1055,
+            862
+          ]
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "bounds": [
+            73,
+            940,
+            203,
+            1082
+          ]
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "bounds": [
+            344,
+            941,
+            435,
+            1082
+          ]
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "bounds": [
+            536,
+            942,
+            618,
+            1082
+          ]
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "bounds": [
+            760,
+            941,
+            844,
+            1079
+          ]
+        },
+        {
+          "row": 4,
+          "column": 4,
+          "bounds": [
+            970,
+            939,
+            1055,
+            1067
+          ]
+        },
+        {
+          "row": 5,
+          "column": 0,
+          "bounds": [
+            78,
+            1144,
+            208,
+            1288
+          ]
+        },
+        {
+          "row": 5,
+          "column": 1,
+          "bounds": [
+            343,
+            1144,
+            405,
+            1271
+          ]
+        },
+        {
+          "row": 5,
+          "column": 2,
+          "bounds": [
+            539,
+            1142,
+            618,
+            1282
+          ]
+        },
+        {
+          "row": 5,
+          "column": 3,
+          "bounds": [
+            758,
+            1142,
+            844,
+            1287
+          ]
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "bounds": [
+            976,
+            1146,
+            1066,
+            1284
+          ]
+        }
+      ]
+    },
+    {
+      "file": "unit-rigs-monsters-v3.png",
+      "width": 1402,
+      "height": 1122,
+      "sha256": "783b2f9e18999c927b9de117cf398e9a75d9254afb17d13be732d360b0ed79eb",
+      "xDividers": [
+        0,
+        280,
+        579,
+        841,
+        1121,
+        1402
+      ],
+      "yDividers": [
+        0,
+        280,
+        561,
+        841,
+        1122
+      ],
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "bounds": [
+            109,
+            82,
+            233,
+            261
+          ]
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "bounds": [
+            422,
+            95,
+            499,
+            261
+          ]
+        },
+        {
+          "row": 0,
+          "column": 2,
+          "bounds": [
+            674,
+            83,
+            748,
+            260
+          ]
+        },
+        {
+          "row": 0,
+          "column": 3,
+          "bounds": [
+            934,
+            93,
+            1026,
+            260
+          ]
+        },
+        {
+          "row": 0,
+          "column": 4,
+          "bounds": [
+            1194,
+            99,
+            1302,
+            257
+          ]
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "bounds": [
+            106,
+            344,
+            239,
+            525
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "bounds": [
+            393,
+            355,
+            579,
+            550
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "bounds": [
+            676,
+            351,
+            752,
+            525
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "bounds": [
+            935,
+            361,
+            1030,
+            527
+          ]
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "bounds": [
+            1203,
+            357,
+            1298,
+            513
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "bounds": [
+            95,
+            604,
+            264,
+            795
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "bounds": [
+            413,
+            622,
+            515,
+            794
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "bounds": [
+            670,
+            616,
+            779,
+            795
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "bounds": [
+            935,
+            626,
+            1040,
+            795
+          ]
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "bounds": [
+            1188,
+            621,
+            1296,
+            794
+          ]
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "bounds": [
+            99,
+            852,
+            248,
+            1049
+          ]
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "bounds": [
+            435,
+            872,
+            510,
+            1031
+          ]
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "bounds": [
+            675,
+            867,
+            762,
+            1044
+          ]
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "bounds": [
+            942,
+            879,
+            1043,
+            1044
+          ]
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "bounds": [
+            1192,
+            866,
+            1320,
+            1048
+          ]
+        }
+      ]
+    }
+  ],
+  "rigs": [
+    {
+      "sprite": 0,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            87,
+            101,
+            197,
+            219
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            87,
+            203,
+            197,
+            244
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            348,
+            104,
+            427,
+            246
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            547,
+            105,
+            602,
+            184
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            547,
+            180,
+            602,
+            246
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            754,
+            103,
+            828,
+            185
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            754,
+            181,
+            828,
+            249
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            960,
+            108,
+            1050,
+            242
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 1,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            79,
+            314,
+            195,
+            431
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            79,
+            416,
+            195,
+            456
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            346,
+            303,
+            432,
+            455
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            537,
+            314,
+            612,
+            392
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            537,
+            388,
+            612,
+            453
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            753,
+            316,
+            833,
+            393
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            753,
+            389,
+            833,
+            454
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            974,
+            316,
+            1054,
+            447
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 2,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            77,
+            520,
+            203,
+            647
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            77,
+            630,
+            203,
+            674
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            341,
+            526,
+            439,
+            683
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            546,
+            521,
+            611,
+            608
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            546,
+            604,
+            611,
+            676
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            761,
+            521,
+            839,
+            607
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            761,
+            603,
+            839,
+            674
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            970,
+            528,
+            1065,
+            674
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 3,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            82,
+            739,
+            200,
+            854
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            82,
+            839,
+            200,
+            878
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            318,
+            743,
+            457,
+            863
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            547,
+            741,
+            616,
+            817
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            547,
+            813,
+            616,
+            877
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            757,
+            740,
+            838,
+            817
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            757,
+            813,
+            838,
+            877
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            972,
+            744,
+            1055,
+            862
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 4,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            73,
+            940,
+            203,
+            1057
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            73,
+            1042,
+            203,
+            1082
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            344,
+            941,
+            435,
+            1082
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            536,
+            942,
+            618,
+            1021
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            536,
+            1017,
+            618,
+            1082
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            760,
+            941,
+            844,
+            1018
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            760,
+            1014,
+            844,
+            1079
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            970,
+            939,
+            1055,
+            1067
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 5,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            78,
+            1144,
+            208,
+            1263
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            78,
+            1247,
+            208,
+            1288
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            343,
+            1144,
+            405,
+            1271
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            539,
+            1142,
+            618,
+            1221
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            539,
+            1217,
+            618,
+            1282
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            758,
+            1142,
+            844,
+            1223
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            758,
+            1219,
+            844,
+            1287
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            976,
+            1146,
+            1066,
+            1284
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 6,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            109,
+            82,
+            233,
+            230
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            109,
+            210,
+            233,
+            261
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            422,
+            95,
+            499,
+            261
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            674,
+            83,
+            748,
+            182
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            674,
+            178,
+            748,
+            260
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            934,
+            93,
+            1026,
+            186
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            934,
+            182,
+            1026,
+            260
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            1194,
+            99,
+            1302,
+            257
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 7,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            106,
+            344,
+            239,
+            494
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            106,
+            474,
+            239,
+            525
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            393,
+            355,
+            579,
+            550
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            676,
+            351,
+            752,
+            448
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            676,
+            444,
+            752,
+            525
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            935,
+            361,
+            1030,
+            454
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            935,
+            450,
+            1030,
+            527
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            1203,
+            357,
+            1298,
+            513
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 8,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            95,
+            604,
+            264,
+            762
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            95,
+            741,
+            264,
+            795
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            413,
+            622,
+            515,
+            794
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            670,
+            616,
+            779,
+            716
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            670,
+            712,
+            779,
+            795
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            935,
+            626,
+            1040,
+            720
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            935,
+            716,
+            1040,
+            795
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            1188,
+            621,
+            1296,
+            794
+          ]
+        }
+      ]
+    },
+    {
+      "sprite": 9,
+      "parts": [
+        {
+          "name": "chest",
+          "bounds": [
+            99,
+            852,
+            248,
+            1015
+          ]
+        },
+        {
+          "name": "pelvis",
+          "bounds": [
+            99,
+            993,
+            248,
+            1049
+          ]
+        },
+        {
+          "name": "farArm",
+          "bounds": [
+            435,
+            872,
+            510,
+            1031
+          ]
+        },
+        {
+          "name": "farThigh",
+          "bounds": [
+            675,
+            867,
+            762,
+            966
+          ]
+        },
+        {
+          "name": "farShin",
+          "bounds": [
+            675,
+            962,
+            762,
+            1044
+          ]
+        },
+        {
+          "name": "nearThigh",
+          "bounds": [
+            942,
+            879,
+            1043,
+            971
+          ]
+        },
+        {
+          "name": "nearShin",
+          "bounds": [
+            942,
+            967,
+            1043,
+            1044
+          ]
+        },
+        {
+          "name": "nearArm",
+          "bounds": [
+            1192,
+            866,
+            1320,
+            1048
+          ]
+        }
+      ]
+    }
+  ],
+  "lantern": {
+    "part": "human0.nearArm",
+    "brightPixelCount": 143,
+    "normalizedBounds": [
+      0.6777777777777778,
+      0.753731343283582,
+      0.8555555555555555,
+      0.917910447761194
+    ]
+  },
+  "atlas": {
+    "staticRegions": 16,
+    "rigRegions": 80,
+    "packedWidth": 773,
+    "packedHeight": 2576,
+    "residentBytes": 7964992,
+    "cropBytes": 6799144,
+    "runtimeMaximumTextureSizeNotQueried": true,
+    "packingLimitUsed": 8192
+  },
+  "motionEnvelope": {
+    "phaseSamples": 1441,
+    "blendSamples": 21,
+    "legs": 2,
+    "maximumRequestedLegReach": 0.4742801232862727,
+    "availableLegReachBeforeClamp": 0.484,
+    "plantedFootTargetsAtGround": true,
+    "phaseOffsetCycles": 0.5,
+    "walkCycleHzAtSpeed3_7": 1.027777777777778,
+    "sprintCycleHzAtSpeed6_475": 1.798611111111111,
+    "notes": "Bounds of authored target motion; not execution of C++ or a visual animation test."
+  },
+  "projectRegistration": "Both project and filters reference new renderer and both assets exactly once."
+}

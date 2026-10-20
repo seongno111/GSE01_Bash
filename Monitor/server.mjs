@@ -48,9 +48,14 @@ async function snapshot() {
     const source = files[0];
     if (source.size > 8 * 1024 * 1024) throw new Error('JSON 크기가 8MB 제한을 초과했습니다.');
     const value = JSON.parse(await readFile(source.file, 'utf8'));
-    if (value.schemaVersion !== 1 || value.type !== 'world.snapshot' || !Array.isArray(value.npcs)
+    if (![1, 2, 3, 4].includes(value.schemaVersion) || value.type !== 'world.snapshot' || !Array.isArray(value.npcs)
         || !Array.isArray(value.villages) || !Array.isArray(value.monsters)
-        || !Number.isFinite(value.generatedAtUnixMs) || !value.totals) {
+        || !Number.isFinite(value.generatedAtUnixMs) || !value.totals || !Array.isArray(value.events)
+        || (value.schemaVersion >= 3 && !Array.isArray(value.outposts))
+        || (value.schemaVersion >= 4 && (!Array.isArray(value.carrierPosts)
+            || !Array.isArray(value.villageRoutes) || !value.settlementRules))
+        || (value.schemaVersion >= 2 && (!Array.isArray(value.eventCounts)
+            || !value.events.every(event => event && typeof event.id === 'string' && typeof event.type === 'string')))) {
         throw new Error('지원하지 않는 모니터링 메시지 형식입니다.');
     }
     const ageSeconds = Math.max(0, (Date.now() - value.generatedAtUnixMs) / 1000);

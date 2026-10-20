@@ -30,6 +30,26 @@ bool PostProcessing::Initialize(int width, int height)
     m_ExtractProgram = LoadShaderProgram("Fullscreen.vs", "BloomExtract.fs");
     m_BlurProgram = LoadShaderProgram("Fullscreen.vs", "GaussianBlur.fs");
     m_CompositeProgram = LoadShaderProgram("Fullscreen.vs", "PostComposite.fs");
+    if (m_ExtractProgram && m_BlurProgram && m_CompositeProgram)
+    {
+        for (const GLuint program : {m_ExtractProgram, m_BlurProgram, m_CompositeProgram})
+        {
+            glUseProgram(program);
+            glUniform1i(glGetUniformLocation(program, "u_Source"), 0);
+        }
+        glUseProgram(m_CompositeProgram);
+        glUniform1i(glGetUniformLocation(m_CompositeProgram, "u_Bloom"), 1);
+        glUniform1i(glGetUniformLocation(m_CompositeProgram, "u_BlurredScene"), 2);
+        m_Threshold = glGetUniformLocation(m_ExtractProgram, "u_Threshold");
+        m_Knee = glGetUniformLocation(m_ExtractProgram, "u_Knee");
+        m_Direction = glGetUniformLocation(m_BlurProgram, "u_Direction");
+        m_Exposure = glGetUniformLocation(m_CompositeProgram, "u_Exposure");
+        m_BloomStrength = glGetUniformLocation(m_CompositeProgram, "u_BloomStrength");
+        m_VignetteStrength = glGetUniformLocation(m_CompositeProgram, "u_VignetteStrength");
+        m_VignetteStart = glGetUniformLocation(m_CompositeProgram, "u_VignetteStart");
+        m_BlurStrength = glGetUniformLocation(m_CompositeProgram, "u_BlurStrength");
+        m_BlurStart = glGetUniformLocation(m_CompositeProgram, "u_BlurStart");
+    }
     glGenVertexArrays(1, &m_VAO);
     Resize(width, height);
     return m_Ready;
@@ -126,7 +146,6 @@ void PostProcessing::Draw(GLuint program,
     glUseProgram(program);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, source);
-    glUniform1i(glGetUniformLocation(program, "u_Source"), 0);
     glBindVertexArray(m_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);
     ++m_DrawCalls;
@@ -137,10 +156,10 @@ GLuint PostProcessing::Blur(GLuint source, Target (&targets)[2], int rounds, flo
     glUseProgram(m_BlurProgram);
     for (int i = 0; i < rounds; ++i)
     {
-        glUniform2f(glGetUniformLocation(m_BlurProgram, "u_Direction"), radius, 0);
+        glUniform2f(m_Direction, radius, 0);
         // Start with the second target: source may already be targets[0].
         Draw(m_BlurProgram, source, targets[1], m_HalfWidth, m_HalfHeight);
-        glUniform2f(glGetUniformLocation(m_BlurProgram, "u_Direction"), 0, radius);
+        glUniform2f(m_Direction, 0, radius);
         Draw(m_BlurProgram, targets[1].texture, targets[0], m_HalfWidth, m_HalfHeight);
         source = targets[0].texture;
     }
@@ -161,8 +180,8 @@ void PostProcessing::Composite()
     if (settings.bloom)
     {
         glUseProgram(m_ExtractProgram);
-        glUniform1f(glGetUniformLocation(m_ExtractProgram, "u_Threshold"), settings.bloomThreshold);
-        glUniform1f(glGetUniformLocation(m_ExtractProgram, "u_Knee"), settings.bloomKnee);
+        glUniform1f(m_Threshold, settings.bloomThreshold);
+        glUniform1f(m_Knee, settings.bloomKnee);
         Draw(m_ExtractProgram, m_Scene.texture, m_Bloom[0], m_HalfWidth, m_HalfHeight);
         bloomTexture = Blur(m_Bloom[0].texture, m_Bloom, 3, settings.bloomRadius * resolutionScale);
     }
@@ -171,8 +190,8 @@ void PostProcessing::Composite()
     {
         // The initial copy performs a 2x2 downsample. Threshold zero keeps all light.
         glUseProgram(m_ExtractProgram);
-        glUniform1f(glGetUniformLocation(m_ExtractProgram, "u_Threshold"), 0);
-        glUniform1f(glGetUniformLocation(m_ExtractProgram, "u_Knee"), 0);
+        glUniform1f(m_Threshold, 0);
+        glUniform1f(m_Knee, 0);
         Draw(m_ExtractProgram, m_Scene.texture, m_Blurred[0], m_HalfWidth, m_HalfHeight);
         blurredTexture =
             Blur(m_Blurred[0].texture, m_Blurred, 2, settings.edgeBlurRadius * resolutionScale);
@@ -180,20 +199,14 @@ void PostProcessing::Composite()
     glUseProgram(m_CompositeProgram);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, bloomTexture);
-    glUniform1i(glGetUniformLocation(m_CompositeProgram, "u_Bloom"), 1);
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, blurredTexture);
-    glUniform1i(glGetUniformLocation(m_CompositeProgram, "u_BlurredScene"), 2);
-    glUniform1f(glGetUniformLocation(m_CompositeProgram, "u_Exposure"), settings.exposure);
-    glUniform1f(glGetUniformLocation(m_CompositeProgram, "u_BloomStrength"),
-                settings.bloom ? settings.bloomStrength : 0);
-    glUniform1f(glGetUniformLocation(m_CompositeProgram, "u_VignetteStrength"),
-                settings.vignette ? settings.vignetteStrength : 0);
-    glUniform1f(glGetUniformLocation(m_CompositeProgram, "u_VignetteStart"),
-                settings.vignetteStart);
-    glUniform1f(glGetUniformLocation(m_CompositeProgram, "u_BlurStrength"),
-                settings.edgeBlur ? settings.edgeBlurStrength : 0);
-    glUniform1f(glGetUniformLocation(m_CompositeProgram, "u_BlurStart"), settings.edgeBlurStart);
+    glUniform1f(m_Exposure, settings.exposure);
+    glUniform1f(m_BloomStrength, settings.bloom ? settings.bloomStrength : 0);
+    glUniform1f(m_VignetteStrength, settings.vignette ? settings.vignetteStrength : 0);
+    glUniform1f(m_VignetteStart, settings.vignetteStart);
+    glUniform1f(m_BlurStrength, settings.edgeBlur ? settings.edgeBlurStrength : 0);
+    glUniform1f(m_BlurStart, settings.edgeBlurStart);
     Draw(m_CompositeProgram, m_Scene.texture, Target{}, m_Width, m_Height);
     for (int unit = 2; unit >= 0; --unit)
     {

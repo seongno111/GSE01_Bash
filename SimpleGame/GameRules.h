@@ -6,8 +6,21 @@
 namespace GameRules
 {
     inline constexpr int ChunkSize = 8;
-    inline constexpr int ShrineSpacing = 32;
     inline constexpr int MutationThreshold = 100;
+    inline constexpr double PlayerWalkSpeed = 3.7;
+    inline constexpr double PlayerRunMultiplier = 1.75;
+    inline constexpr int VillageHalfExtent = 18;
+    inline constexpr int VillageInitialPopulation = 56;
+    inline constexpr int VillageMigrationFloor = 50;
+    inline constexpr int VillagePopulationCapacity = 80;
+    inline constexpr double VillageTravelSeconds = 30;
+    inline constexpr int VillageRoadGap = int(PlayerWalkSpeed * VillageTravelSeconds + 0.5);
+    inline constexpr int ShrineSpacing = VillageHalfExtent * 2 + VillageRoadGap;
+    inline constexpr int TutorialOffsetX = VillageHalfExtent + 6;
+    inline constexpr double CarrierPigeonSpeed = 12;
+    static_assert(VillageMigrationFloor <= VillageInitialPopulation
+                      && VillageInitialPopulation <= VillagePopulationCapacity,
+                  "Initial village population must fit settlement policy");
     inline const Color Ink(0.025f, 0.035f, 0.042f);
     inline const Color Gold(0.84f, 0.65f, 0.36f);
     inline const Color Paper(0.78f, 0.79f, 0.73f);
@@ -70,8 +83,8 @@ namespace GameRules
 
     inline bool InsideSanctuary(double x, double y)
     {
-        const double sx = std::round(x / 32.0) * 32.0;
-        const double sy = std::round(y / 32.0) * 32.0;
+        const double sx = NearestShrine(x);
+        const double sy = NearestShrine(y);
         return Length(x - sx, y - sy) < 2.8;
     }
 } // namespace GameRules

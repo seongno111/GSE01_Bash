@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "GameActors.h"
 #include "SceneGraph.h"
+#include "ModelLibrary.h"
 #include <cstdint>
 #include <map>
 #include <string>
@@ -19,6 +20,11 @@ public:
     void Draw(Renderer& renderer);
     void Key(unsigned char key, bool down);
 
+    void SetRunHeld(bool held)
+    {
+        m_RunHeld = held;
+    }
+
     // Shared world services for new actor subclasses and future levels.
     SceneGraph& Scene()
     {
@@ -28,6 +34,16 @@ public:
     const SceneGraph& Scene() const
     {
         return m_Scene;
+    }
+
+    Models::ModelLibrary& ModelAssets()
+    {
+        return m_ModelAssets;
+    }
+
+    const Models::ModelLibrary& ModelAssets() const
+    {
+        return m_ModelAssets;
     }
 
     PlayerActor& Player()
@@ -65,10 +81,29 @@ public:
         return m_Chunks.size();
     }
 
+    struct UpdateStats
+    {
+        double gameplayMs = 0;
+        double npcMs = 0;
+        double streamMs = 0;
+        double npcExportMs = 0;
+        std::uint64_t pathCalls = 0;
+        std::uint64_t pathNodes = 0;
+    };
+
+    const UpdateStats& UpdatingStats() const
+    {
+        return m_UpdateStats;
+    }
+
     Point Project(double x, double y) const;
     bool Blocked(double x, double y) const;
     bool ClearShot(double fromX, double fromY, double toX, double toY) const;
     void MoveActor(::Actor& actor, double dx, double dy, float radius);
+    bool FindRoute(WorldPoint from,
+                   WorldPoint target,
+                   std::vector<WorldPoint>& path,
+                   std::uint64_t& visited) const;
 
     template <class T = EnemyActor, class... Args> T& SpawnEnemy(Args&&... args)
     {
@@ -116,23 +151,28 @@ private:
     void Stream();
     WorldTileData MakeTile(std::int64_t x, std::int64_t y) const;
     void Move(double& x, double& y, double dx, double dy, float radius);
-    void Die();
+    void Die(const ::Actor* killer = nullptr, bool unlawful = false);
     void Notice(const std::string& text);
     void Block(Renderer& r, Point p, float width, float depth, float height, Color color);
     void Tree(Renderer& r, Point p, unsigned seed);
     void Chapel(Renderer& r, Point p);
     void Shrine(Renderer& r, Point p);
-    void DrawCharacter(Renderer& r, Point p, int corruption, bool hostile);
+    void
+    DrawCharacter(Renderer& r, Point p, int corruption, bool hostile, const UnitSpritePose& pose);
     void Interface(Renderer& r);
     void DrawTile(Renderer& r, const WorldTileData& tile, Point p);
     void DrawProp(Renderer& r, Point p, int kind, unsigned seed);
+    Models::ModelLibrary m_ModelAssets;
     SceneGraph m_Scene;
     ActorId m_WorldRoot;
     ActorId m_GameplayRoot;
     ActorId m_EffectsRoot;
     ActorId m_UIRoot;
     PlayerActor& m_Player;
+    UpdateStats m_UpdateStats;
     std::map<ChunkKey, ActorId> m_Chunks;
+    ChunkKey m_StreamCenter{};
+    int m_StreamRadius = -1;
     ActorCollection<EchoActor> m_Echoes;
     ActorCollection<EnemyActor> m_Enemies;
     ActorCollection<ProjectileActor> m_Projectiles;
@@ -151,6 +191,7 @@ private:
     bool m_LevelOneComplete = false;
     bool m_GuardianAnnounced = false;
     bool m_Keys[256] = {};
+    bool m_RunHeld = false;
     double m_CameraX = 2;
     double m_CameraY = 1;
     double m_ShrineX = 0;

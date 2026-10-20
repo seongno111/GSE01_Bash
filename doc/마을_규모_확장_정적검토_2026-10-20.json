@@ -1,0 +1,641 @@
+{
+  "date": "2026-10-20",
+  "scope": "Static layout arithmetic, authored obstacle connectivity, allocation and project references; no C++ compilation or game execution.",
+  "villages": [
+    {
+      "id": "cathedral",
+      "name": "성당 마을",
+      "culture": "자비와 상호부조",
+      "center": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "dawn",
+      "name": "새벽 수도촌",
+      "culture": "신앙과 정화",
+      "center": [
+        -147,
+        0
+      ]
+    },
+    {
+      "id": "iron",
+      "name": "철벽 주둔촌",
+      "culture": "규율과 무력",
+      "center": [
+        0,
+        147
+      ]
+    },
+    {
+      "id": "market",
+      "name": "황금 장터",
+      "culture": "교역과 부의 축적",
+      "center": [
+        147,
+        147
+      ]
+    },
+    {
+      "id": "seekers",
+      "name": "잿빛 탐구촌",
+      "culture": "탐험과 깨달음",
+      "center": [
+        -147,
+        147
+      ]
+    },
+    {
+      "id": "outlaws",
+      "name": "검은 이빨 소굴",
+      "culture": "약탈과 힘의 숭배",
+      "center": [
+        147,
+        0
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "from": "cathedral",
+      "to": "dawn",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    },
+    {
+      "from": "cathedral",
+      "to": "iron",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    },
+    {
+      "from": "cathedral",
+      "to": "outlaws",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    },
+    {
+      "from": "dawn",
+      "to": "seekers",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    },
+    {
+      "from": "iron",
+      "to": "market",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    },
+    {
+      "from": "iron",
+      "to": "seekers",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    },
+    {
+      "from": "market",
+      "to": "outlaws",
+      "gateDistance": 111,
+      "walkingSeconds": 30.0,
+      "pigeonSeconds": 12.25
+    }
+  ],
+  "initialPopulationPerVillage": 56,
+  "totalInitialNpcs": 336,
+  "villageWidth": 36,
+  "villageAreaRelativeToPreviousVillage": 6.230769230769231,
+  "villageAreaRelativeToAllPreviousVillages": 1.0384615384615385,
+  "centerWalkingSeconds": 39.729729729729726,
+  "runningGateTravelSeconds": 17.142857142857142,
+  "villageLayout": {
+    "authoredPropsIncludingShrineAndCathedral": 78,
+    "gridStep": 0.5,
+    "cardinalGatesConnected": true,
+    "freeSamples": 4087,
+    "connectedSamples": 4087,
+    "nominalHomes": 56,
+    "nominalHomesClear": 55,
+    "allHomesHaveReachableFallback": true,
+    "homes": [
+      {
+        "home": [
+          -14,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          -12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -14,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          -8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -14,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          -4
+        ],
+        "nominalPositionClear": false,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          -4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -14,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          0
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -14,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          4
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -14,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          8
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -14,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -10,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -6,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          -2,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          2,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          6,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          10,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      },
+      {
+        "home": [
+          14,
+          12
+        ],
+        "nominalPositionClear": true,
+        "reachableFreeLocationWithin4": true
+      }
+    ]
+  },
+  "outposts": {
+    "definitions": [
+      {
+        "id": "ash",
+        "name": "잿더미 야영지",
+        "center": [
+          74,
+          -32
+        ]
+      },
+      {
+        "id": "crypt",
+        "name": "무너진 납골지",
+        "center": [
+          -74,
+          -32
+        ]
+      },
+      {
+        "id": "thorns",
+        "name": "가시숲 둥지",
+        "center": [
+          -74,
+          74
+        ]
+      },
+      {
+        "id": "quarry",
+        "name": "오염된 채석장",
+        "center": [
+          74,
+          74
+        ]
+      },
+      {
+        "id": "fang",
+        "name": "붉은 이빨 군락",
+        "center": [
+          180,
+          74
+        ]
+      }
+    ],
+    "width": 24,
+    "capacityPerCamp": 36,
+    "initialPerCamp": 12,
+    "waveThreshold": 24,
+    "waveSize": 16,
+    "spawnSlotsClearAndUnique": 36,
+    "neighborRoadCorridorsAvoidCampBounds": true
+  },
+  "projectReferences": "Both new sources registered exactly once in project and filters.",
+  "npcSimulationAndRenderedResultVerified": false,
+  "sourceChecks": {
+    "cppFilesUtf8Crlf": 15,
+    "precompiledHeaderOrder": "pass",
+    "projectXml": "pass",
+    "htmlElementReferences": "pass",
+    "newNpcWorldMethodDefinitions": "pass",
+    "javascriptSyntax": "node --check passed for app.js and server.mjs",
+    "clangFormat": "--dry-run --Werror passed",
+    "buildAndRuntime": "not run per user preference"
+  }
+}

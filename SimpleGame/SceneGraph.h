@@ -32,6 +32,7 @@ public:
     void Destroy(ActorId id);
     void CollectGarbage();
     void Update(float dt, TickGroup group);
+    void UpdateVisuals(float dt);
     void DrawWorld(Renderer& renderer);
     void DrawUI(Renderer& renderer);
     bool Blocked(double x, double y) const;

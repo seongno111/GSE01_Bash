@@ -1,0 +1,23 @@
+{
+  "asset": "unit-rigs-humans-v3.png",
+  "date": "2026-10-20",
+  "purpose": "Continuous articulated locomotion: alternating feet and counter-moving torso, pelvis and shoulders",
+  "tool": "image_gen",
+  "transparent_background": true,
+  "prompts": [
+    "Production 2D SKELETAL ANIMATION PARTS ATLAS, transparent RGBA. Use supplied image only as character identity/style reference. We need SEPARATE DRAWABLE BODY PARTS for continuous joint animation, NOT whole-body animation poses. Exactly FIVE COLUMNS and SIX ROWS, 30 separate clean sprite pieces. One character per ROW, five detachable pieces across each row. Uniform square cells, portrait-ish canvas5:6 (prefer1600x1920). Huge transparent gutters. No labels, numbers, lines, shadows, backgrounds.\nRow1 grayhoodedplayer(darkleather,sword,smallamberlantern).\nRow2 ivoryhoodedpriest(crossstaff).\nRow3 tarnishedplateknight(shieldandsword).\nRow4 olivehoodedadventurer(bowandquiver).\nRow5 redhoodedraider(knife).\nRow6 olivecoatmerchant(capandsatchel).\nALL pieces retain exact realistic costume/materialcolor from reference, right-facing three-quarter side camera.\nCOLUMN1: HEAD+NECK+TORSO+BELT+HIPS/shortcoat as one continuous piece. OMIT BOTH ARMS AND ALL LEGS below the upper thighs. Shoulder sleeves end at upperarm sockets. Cloak/robe body can cover upperthigh but DO NOT include boots, lowerlegs or dangling detached hands. Bodypiece has flat rounded hem beneathhips. Character identity facehoodarmor preserved.\nCOLUMN2: FAR ARM with shoulder sleeve, elbow, forearm, hand and held gear asONEdetachedpiece in relaxed DOWNWARD neutralpose. Rounded shoulder cap at top, upperarm roughlyvertical; handbelow. The player's far arm holds silver sword pointing down; priest's far arm holds tall crossstaff; knightfararmholds shield; adventurerfararmholds bow; raiderfararmholds knife; merchantfararmfreeclosedhand.\nCOLUMN3: FAR LEG complete from roundedhipcap throughthigh/knee/calf/boot, straight relaxed DOWN neutralpose, boot toe facingRIGHT. Narrow leg column, no torso or arms. Darkerfarleglighting.\nCOLUMN4: NEAR LEG samecomplete hip-to-boot anatomy, straight relaxedDOWN neutralpose, toe RIGHT, slightlybrighternearleglighting. Include full upperthigh even if robe covers it whenassembled. Knee halfwaydownleg. No torso.\nCOLUMN5: NEAR ARM shoulderthroughhand asdetached downwardneutralpiece. Playerneararmholdssmall amberlantern, priestfreehand, knightswordpointingdown, adventurerfreehand, raiderfreehand, merchantleathersatchel inhand. Arms includeupperarmnotjusthands.\nEach piece entirelycontainedinsidecentral65%ofitscell with20%cleartransparentborders. Piecesnevercrosscells. Parts must have opaque complete anatomy under overlapping joints, so engine can rotate and hide joint seams. No extra duplicatebodyparts, no skeletonbones, no arrows, no symbols, no gore. Detached clothing/body pieces are game rig assets. Keep samecamera andlightsforallpieces, no perspective changes. NO WHOLE CHARACTERS: each cellcontainsONLYthe specifiedbodycomponent. Realalpha, cleanedges, no glowspill.",
+    "Edit ONLY layout of this 5COLUMN x6ROW game rig parts atlas. Preserve ALL30individualbodyparts exactly: column1torso/head/hips, column2fararm+gear, column3farleg, column4nearleg, column5neararm+gear. Same6rows. SHRINK EVERY PART to60%ofitsCURRENTsize withinitscell. This must visibly create HUGE CLEAR TRANSPARENT GAPS aroundallpieces. Currentrowsnearlytouch. Need exactly5x6uniformsquarecells and NO silhouettecrossingcellboundaries. Center eachpiece in itscell, fullyinsidecentral60%widthand60%height. Keep entirelegs/boots/weapons/staff/lantern/torso. DO NOTaddparts or changeclothingposeanatomy. No wholecharacters. Realtransparentalpha; no backgrounds/shadows/text/grid. Keeporiginalrealisticmaterialsas-is."
+  ],
+  "layout": {
+    "columns": 5,
+    "rows": 6,
+    "columnParts": [
+      "torso",
+      "far arm",
+      "far leg",
+      "near leg",
+      "near arm"
+    ]
+  },
+  "promptProvenance": "Original generation tool-call text recovered from this conversation; monster base prompt applies the recorded substitutions to the human base prompt."
+}

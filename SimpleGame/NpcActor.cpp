@@ -14,6 +14,18 @@ NpcActor::NpcActor(Prototype& game, NpcWorld& world, NpcProfile value, WorldPoin
 {
     SetLocalPosition(home.x, home.y);
     activityAnchor = home;
+    birth = NpcBirthByRole[static_cast<size_t>(profile.role)];
+    const float variation = 0.96f + float(GameRules::Hash(profile.id, 2, world.Seed()) % 9) * .01f;
+    birth.health *= variation;
+    birth.strength *= variation;
+    vitals.health = vitals.maxHealth = birth.health;
+    vitals.strength = birth.strength;
+    vitals.holyPower = birth.holyPower;
+    vitals.wisdom = birth.wisdom;
+    vitals.armor = birth.armor;
+    vitals.moveSpeed = birth.speed;
+    vitals.gold = birth.gold;
+    vitals.goods = profile.role == NpcRole::Merchant ? 3 : 0;
 }
 
 void NpcActor::Update(float dt)
@@ -46,60 +58,64 @@ void NpcActor::Draw(Renderer& r)
     {
         r.Ellipse(p, 35 * z, 18 * z, Color(0.9f, 0.15f, 0.1f, 0.25f));
     }
-    if (execution.phase == NpcPhase::Approach && pathIndex < path.size())
-    {
-        p.y -= float(std::abs(std::sin(m_World.Time() * 9 + profile.id))) * 2.5f * z;
-    }
     const bool mutant = vitals.corruption >= GameRules::MutationThreshold;
-    r.DrawCachedMesh(
-        "npc/v1/" + std::to_string(int(profile.role)) + (mutant ? "/mutant" : "/human"),
-        p,
-        z,
-        [&]()
-        {
-            r.Line({p.x - 5 * z, p.y}, {p.x - 6 * z, p.y - 18 * z}, 5 * z, GameRules::Ink);
-            r.Line({p.x + 5 * z, p.y}, {p.x + 7 * z, p.y - 18 * z}, 5 * z, GameRules::Ink);
-            r.Triangle({p.x - 14 * z, p.y - 7 * z},
-                       {p.x + 14 * z, p.y - 7 * z},
-                       {p.x, p.y - 38 * z},
-                       color);
-            r.Ellipse({p.x, p.y - 39 * z}, 8 * z, 10 * z, Color(0.62f, 0.56f, 0.45f));
-            if (profile.role == NpcRole::Priest)
+    const unsigned sprite = mutant ? 9u : 1u + static_cast<unsigned>(profile.role);
+    const Color tint = vitals.frenzy ? Color(1, 0.55f, 0.7f) : Color();
+    if (!r.DrawUnitSprite(sprite, p, (mutant ? 78.0f : 72.0f) * z, SpritePose(), tint))
+    {
+        r.DrawCachedMesh(
+            "npc/v1/" + std::to_string(int(profile.role)) + (mutant ? "/mutant" : "/human"),
+            p,
+            z,
+            [&]()
             {
-                r.Line({p.x + 16 * z, p.y}, {p.x + 16 * z, p.y - 52 * z}, 3 * z, GameRules::Gold);
-                r.Line({p.x + 10 * z, p.y - 45 * z},
-                       {p.x + 22 * z, p.y - 45 * z},
-                       3 * z,
-                       GameRules::Gold);
-            }
-            else if (profile.role == NpcRole::Knight)
-            {
-                r.Rect(p.x - 18 * z, p.y - 29 * z, 10 * z, 19 * z, Color(0.55f, 0.59f, 0.65f));
-                r.Line({p.x + 13 * z, p.y - 10 * z},
-                       {p.x + 21 * z, p.y - 40 * z},
-                       3 * z,
-                       GameRules::Paper);
-            }
-            else if (profile.role == NpcRole::Merchant)
-            {
-                r.Rect(p.x + 10 * z, p.y - 22 * z, 10 * z, 12 * z, GameRules::Gold.Shade(0.6f));
-            }
-            else
-            {
-                r.Line({p.x + 13 * z, p.y - 8 * z},
-                       {p.x + 20 * z, p.y - 32 * z},
-                       3 * z,
-                       GameRules::Paper);
-            }
-            if (mutant)
-            {
-                r.Triangle({p.x - 8 * z, p.y - 43 * z},
-                           {p.x - 18 * z, p.y - 60 * z},
-                           {p.x - 3 * z, p.y - 47 * z},
-                           GameRules::Violet);
-            }
-        },
-        vitals.frenzy ? Color(1, 0.55f, 0.7f) : Color());
+                r.Line({p.x - 5 * z, p.y}, {p.x - 6 * z, p.y - 18 * z}, 5 * z, GameRules::Ink);
+                r.Line({p.x + 5 * z, p.y}, {p.x + 7 * z, p.y - 18 * z}, 5 * z, GameRules::Ink);
+                r.Triangle({p.x - 14 * z, p.y - 7 * z},
+                           {p.x + 14 * z, p.y - 7 * z},
+                           {p.x, p.y - 38 * z},
+                           color);
+                r.Ellipse({p.x, p.y - 39 * z}, 8 * z, 10 * z, Color(0.62f, 0.56f, 0.45f));
+                if (profile.role == NpcRole::Priest)
+                {
+                    r.Line({p.x + 16 * z, p.y},
+                           {p.x + 16 * z, p.y - 52 * z},
+                           3 * z,
+                           GameRules::Gold);
+                    r.Line({p.x + 10 * z, p.y - 45 * z},
+                           {p.x + 22 * z, p.y - 45 * z},
+                           3 * z,
+                           GameRules::Gold);
+                }
+                else if (profile.role == NpcRole::Knight)
+                {
+                    r.Rect(p.x - 18 * z, p.y - 29 * z, 10 * z, 19 * z, Color(0.55f, 0.59f, 0.65f));
+                    r.Line({p.x + 13 * z, p.y - 10 * z},
+                           {p.x + 21 * z, p.y - 40 * z},
+                           3 * z,
+                           GameRules::Paper);
+                }
+                else if (profile.role == NpcRole::Merchant)
+                {
+                    r.Rect(p.x + 10 * z, p.y - 22 * z, 10 * z, 12 * z, GameRules::Gold.Shade(0.6f));
+                }
+                else
+                {
+                    r.Line({p.x + 13 * z, p.y - 8 * z},
+                           {p.x + 20 * z, p.y - 32 * z},
+                           3 * z,
+                           GameRules::Paper);
+                }
+                if (mutant)
+                {
+                    r.Triangle({p.x - 8 * z, p.y - 43 * z},
+                               {p.x - 18 * z, p.y - 60 * z},
+                               {p.x - 3 * z, p.y - 47 * z},
+                               GameRules::Violet);
+                }
+            },
+            tint);
+    }
 }
 
 void NpcActor::DrawOverlay(Renderer& r)
@@ -107,17 +123,21 @@ void NpcActor::DrawOverlay(Renderer& r)
     const Point p = m_Game.Project(WorldX(), WorldY());
     const float z = m_Game.Zoom();
     const Color color = vitals.frenzy ? GameRules::Violet : GameRules::Paper;
+    const float height = vitals.corruption >= GameRules::MutationThreshold ? 78.0f : 72.0f;
     const std::string title =
         profile.name
         + (!vitals.alive ? " · 사망"
-                         : " · " + std::string(NpcActivityName(profile.role, execution.action))
+                         : " · "
+                               + std::string(mission.type != VillageMission::None
+                                                 ? VillageMissionName(mission.type)
+                                                 : NpcActivityName(profile.role, execution.action))
                                + " / " + NpcPhaseName(execution.phase));
-    r.Text(p.x - r.TextWidth(title, 0.85f) * 0.5f, p.y - 72 * z, title, color, 0.85f);
+    r.Text(p.x - r.TextWidth(title, 0.85f) * 0.5f, p.y - (height + 21) * z, title, color, 0.85f);
     if (vitals.alive)
     {
-        r.Rect(p.x - 20 * z, p.y - 54 * z, 40 * z, 3 * z, GameRules::Ink);
+        r.Rect(p.x - 20 * z, p.y - (height + 6) * z, 40 * z, 3 * z, GameRules::Ink);
         r.Rect(p.x - 20 * z,
-               p.y - 54 * z,
+               p.y - (height + 6) * z,
                40 * z * vitals.health / vitals.maxHealth,
                3 * z,
                Color(0.35f, 0.65f, 0.42f));
@@ -190,8 +210,8 @@ void NpcMissileActor::Draw(Renderer& r)
     Point head = m_Game.Project(WorldX(), WorldY());
     Point tail = m_Game.Project(WorldX() - m_Direction.x * 0.35, WorldY() - m_Direction.y * 0.35);
     const float z = m_Game.Zoom();
-    head.y -= 25 * z;
-    tail.y -= 25 * z;
+    head.y -= 36 * z;
+    tail.y -= 36 * z;
     const Color color = m_Role == NpcRole::Priest       ? GameRules::Gold.Radiance(3.0f)
                         : m_Role == NpcRole::Adventurer ? Color(0.65f, 0.9f, 0.65f)
                         : m_Role == NpcRole::Raider     ? Color(0.9f, 0.4f, 0.35f)

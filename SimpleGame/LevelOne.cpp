@@ -14,6 +14,7 @@ using namespace GameRules;
 
 int Prototype::LevelOneCell(std::int64_t x, std::int64_t y) const
 {
+    x -= TutorialOffsetX;
     if (x < 4 || x > 22 || y < -3 || y > 13)
     {
         return -1;
@@ -37,15 +38,16 @@ void Prototype::GenerateLevelOneMap()
 
     for (int y = -3; y <= 13; ++y)
     {
-        for (int x = 4; x <= 22; ++x)
+        for (int x = TutorialOffsetX + 4; x <= TutorialOffsetX + 22; ++x)
         {
-            const bool perimeter = x == 4 || x == 22 || y == -3 || y == 13;
+            const bool perimeter =
+                x == TutorialOffsetX + 4 || x == TutorialOffsetX + 22 || y == -3 || y == 13;
             m_LevelWalkable[LevelOneCell(x, y)] = perimeter || random() % 100 >= 24;
         }
     }
 
     // A guaranteed trunk connects the starting sanctuary and every encounter.
-    for (int x = 4; x <= 22; ++x)
+    for (int x = TutorialOffsetX + 4; x <= TutorialOffsetX + 22; ++x)
     {
         clear(x, 3);
         clear(x, 4);
@@ -71,8 +73,8 @@ void Prototype::GenerateLevelOneMap()
     // Flood-fill before play: inaccessible pockets are filled, never used as rooms.
     std::vector<bool> reachable(m_LevelWalkable.size(), false);
     std::queue<std::pair<int, int>> pending;
-    pending.push({4, 3});
-    reachable[LevelOneCell(4, 3)] = true;
+    pending.push({TutorialOffsetX + 4, 3});
+    reachable[LevelOneCell(TutorialOffsetX + 4, 3)] = true;
     const int dx[] = {1, -1, 0, 0};
     const int dy[] = {0, 0, 1, -1};
     while (!pending.empty())
@@ -102,6 +104,7 @@ void Prototype::InitializeLevelOne()
     }
 
     m_LevelOneStarted = true;
+    m_ModelAssets.Initialize();
     m_WorldSeed =
         std::uint64_t(std::chrono::high_resolution_clock::now().time_since_epoch().count());
     char* configuredSeed = nullptr;
@@ -121,7 +124,7 @@ void Prototype::InitializeLevelOne()
     std::mt19937_64 random(m_WorldSeed);
     const auto spawn = [this, &random](double x, double y, int tier)
     {
-        x += int(random() % 3) - 1;
+        x += TutorialOffsetX + int(random() % 3) - 1;
         y += int(random() % 3) - 1;
         for (const EnemyActor& existing : m_Enemies)
         {

@@ -4,7 +4,6 @@
 #include "GameRules.h"
 #include <algorithm>
 #include <cmath>
-#include <queue>
 
 using namespace GameRules;
 
@@ -16,97 +15,15 @@ bool NpcWorld::Walkable(double x, double y) const
 
 bool NpcWorld::BuildPath(NpcActor& npc, WorldPoint target)
 {
-    npc.path.clear();
+    ++m_Performance.pathCalls;
     npc.pathIndex = 0;
-    npc.nextPath = m_Time + 1;
-    const auto clearRoute = [&](WorldPoint from, WorldPoint to)
-    {
-        const int steps = (std::max)(1, int(std::ceil(Length(from.x - to.x, from.y - to.y) / 0.2)));
-        for (int i = 1; i <= steps; ++i)
-        {
-            const double t = double(i) / steps;
-            if (!Walkable(from.x + (to.x - from.x) * t, from.y + (to.y - from.y) * t))
-            {
-                return false;
-            }
-        }
-        return true;
-    };
-    if (clearRoute(npc.WorldPosition(), target))
-    {
-        npc.path.push_back(target);
-        return true;
-    }
-    constexpr int Left = -12;
-    constexpr int Top = -8;
-    constexpr int Width = 37;
-    constexpr int Height = 24;
-    const auto cell = [Left, Top, Width, Height](int x, int y)
-    {
-        return x < Left || x >= Left + Width || y < Top || y >= Top + Height
-                   ? -1
-                   : (y - Top) * Width + x - Left;
-    };
-    const int start = cell(int(std::round(npc.WorldX())), int(std::round(npc.WorldY())));
-    if (start < 0)
-    {
-        return false;
-    }
-    std::array<int, Width * Height> previous;
-    previous.fill(-1);
-    std::queue<int> pending;
-    pending.push(start);
-    previous[start] = start;
-    int goal = -1;
-    const int dx[] = {1, -1, 0, 0};
-    const int dy[] = {0, 0, 1, -1};
-    while (!pending.empty())
-    {
-        const int current = pending.front();
-        pending.pop();
-        const int x = current % Width + Left;
-        const int y = current / Width + Top;
-        if (Length(x - target.x, y - target.y) < 0.85 && Walkable(x, y)
-            && clearRoute({double(x), double(y)}, target))
-        {
-            goal = current;
-            break;
-        }
-        for (int direction = 0; direction < 4; ++direction)
-        {
-            const int nx = x + dx[direction];
-            const int ny = y + dy[direction];
-            const int next = cell(nx, ny);
-            const WorldPoint from =
-                current == start ? npc.WorldPosition() : WorldPoint{double(x), double(y)};
-            if (next >= 0 && previous[next] < 0 && Walkable(nx, ny)
-                && clearRoute(from, {double(nx), double(ny)}))
-            {
-                previous[next] = current;
-                pending.push(next);
-            }
-        }
-    }
-    if (goal < 0)
-    {
-        return false;
-    }
-    for (int at = goal; at != start; at = previous[at])
-    {
-        npc.path.push_back({double(at % Width + Left), double(at / Width + Top)});
-    }
-    std::reverse(npc.path.begin(), npc.path.end());
-    const WorldPoint last{double(goal % Width + Left), double(goal / Width + Top)};
-    if (clearRoute(last, target))
-    {
-        npc.path.push_back(target);
-    }
-    return true;
+    npc.nextPath = m_Time + 2.5;
+    return m_Game.FindRoute(npc.WorldPosition(), target, npc.path, m_Performance.pathNodes);
 }
 
 bool NpcWorld::Travel(NpcActor& npc, WorldPoint target, float dt)
 {
-    if (m_Time >= npc.nextPath || npc.path.empty())
+    if (m_Time >= npc.nextPath || npc.pathIndex >= npc.path.size())
     {
         if (!BuildPath(npc, target))
         {
@@ -126,7 +43,8 @@ bool NpcWorld::Travel(NpcActor& npc, WorldPoint target, float dt)
         ++npc.pathIndex;
         return true;
     }
-    const float speed = npc.execution.action == NpcAction::Flee ? 2.8f : 2.0f;
+    const float speed =
+        npc.vitals.moveSpeed * (npc.execution.action == NpcAction::Flee ? 1.4f : 1.0f);
     const double step = (std::min)(distance, double(speed * dt));
     const auto before = npc.WorldPosition();
     m_Game.MoveActor(npc, dx / distance * step, dy / distance * step, 0.2f);
@@ -152,7 +70,7 @@ bool NpcWorld::Start(NpcActor& npc, const NpcCandidate& choice, bool request)
     {
         return false;
     }
-    const auto resource = Resource(choice.action, choice.target);
+    const auto resource = Resource(npc, choice.action, choice.target);
     if (!CanReserve(resource, npc.Entity()))
     {
         return false;
@@ -170,13 +88,19 @@ bool NpcWorld::Start(NpcActor& npc, const NpcCandidate& choice, bool request)
     npc.execution.target = choice.target;
     npc.execution.id = m_NextExecution++;
     npc.execution.startedAt = m_Time;
+    npc.execution.timeBudget =
+        std::clamp(Length(choice.destination.x - npc.WorldX(), choice.destination.y - npc.WorldY())
+                           / (std::max)(0.5f, npc.vitals.moveSpeed) * 1.6
+                       + 12,
+                   15.0,
+                   90.0);
     npc.stalledTime = 0;
     npc.execution.phaseUntil = m_Time + 0.2;
     npc.execution.playerRequest = request;
     npc.execution.reservation = resource;
     if (resource)
     {
-        m_Reservations[resource] = {npc.Entity(), m_Time + 18};
+        m_Reservations[resource] = {npc.Entity(), m_Time + npc.execution.timeBudget + 2};
     }
     npc.nextDecision = m_Time + (npc.mode == NpcMode::Combat ? 0.35 : 2.5);
     if (request)
@@ -245,7 +169,7 @@ void NpcWorld::Execute(NpcActor& npc, float dt)
     {
         return;
     }
-    if (m_Time - run.startedAt > 15)
+    if (m_Time - run.startedAt > run.timeBudget)
     {
         Finish(npc, false, "수행 시간 초과: 경로나 대상을 다시 찾는다");
         return;
@@ -336,6 +260,8 @@ void NpcWorld::Execute(NpcActor& npc, float dt)
 
 bool NpcWorld::Apply(NpcActor& npc)
 {
+    const int location = VillageAt(npc.WorldPosition());
+    auto& economy = m_Economies[location >= 0 ? size_t(location) : npc.profile.village];
     auto& v = npc.vitals;
     const auto& run = npc.execution;
     const auto action = run.action;
@@ -424,7 +350,10 @@ bool NpcWorld::Apply(NpcActor& npc)
         auto* patient = Npc(run.target);
         float& health = patient ? patient->vitals.health : m_Game.Player().health;
         const float maximum = patient ? patient->vitals.maxHealth : m_Game.MaxHealth();
-        if (health >= maximum && !run.playerRequest)
+        const bool canCleanse = action == NpcAction::Bless && patient
+                                && patient->vitals.corruption > 0
+                                && patient->vitals.corruption < MutationThreshold;
+        if (health >= maximum && !run.playerRequest && !canCleanse)
         {
             return false;
         }
@@ -437,59 +366,70 @@ bool NpcWorld::Apply(NpcActor& npc)
             v.holyPower -= 8;
         }
         health = (std::min)(maximum, health + 32);
+        if (canCleanse)
+        {
+            patient->vitals.corruption = (std::max)(0.0f, patient->vitals.corruption - 8);
+        }
         if (patient)
         {
+            VillageIncident(npc.profile.village, patient->profile.village, 3);
             patient->relations[npc.Entity()].trust =
                 (std::min)(1.0f, patient->relations[npc.Entity()].trust + 0.15f);
         }
-        npc.lastResult = "상처를 보살폈다. 오염과 과거의 원한은 별개다";
+        npc.lastResult = canCleanse ? "축복으로 상처와 변이 이전의 오염을 덜었다"
+                                    : "상처를 보살폈다. 과거의 원한은 남아 있다";
         Event(
             npc.profile.name
             + (action == NpcAction::Bless ? "가 성력을 사용해 축복했다" : "가 치료제를 사용했다"));
+        RecordWorldEvent(action == NpcAction::Bless ? "blessing" : "heal",
+                         npc.profile.name + "의 " + NpcActionName(action),
+                         target->WorldPosition(),
+                         &npc,
+                         target);
         return true;
     }
     if (action == NpcAction::Trade)
     {
-        if (!InVillage(npc.WorldPosition())
-            || (run.playerRequest && !InVillage(m_Game.Player().WorldPosition())))
+        if (location < 0
+            || (run.playerRequest && VillageAt(m_Game.Player().WorldPosition()) != location))
         {
             return false;
         }
         if (run.playerRequest)
         {
-            if (Hostile(npc, PlayerEntity) || m_Game.Player().gold < 12 || m_MarketMedicine < 1)
+            if (Hostile(npc, PlayerEntity) || m_Game.Player().gold < 12 || economy.medicine < 1)
             {
                 return false;
             }
             m_Game.Player().gold -= 12;
             ++m_Game.Player().potions;
-            --m_MarketMedicine;
-            m_Treasury += 10;
+            --economy.medicine;
+            economy.treasury += 10;
             v.gold += 2;
             npc.lastResult = "금화 12개로 회복약을 샀습니다";
         }
-        else if (v.goods > 0 && m_Treasury >= 8)
+        else if (v.goods > 0 && economy.treasury >= 8)
         {
             --v.goods;
-            ++m_MarketGoods;
-            m_Treasury -= 8;
+            ++economy.goods;
+            economy.treasury -= 8;
             v.gold += 8;
             npc.lastResult = "전리품을 금화 8개에 판매했다";
         }
-        else if (v.food < 3 && v.gold >= 6 && m_MarketFood > 0)
+        else if (v.food < 3 && v.gold >= 6 && economy.food > 0)
         {
             ++v.food;
-            --m_MarketFood;
+            --economy.food;
             v.gold -= 6;
-            m_Treasury += 6;
+            economy.treasury += 6;
             npc.lastResult = "식량을 구입했다";
         }
-        else if (v.medicine < 2 && v.gold >= 12 && m_MarketMedicine > 0)
+        else if (v.medicine < 2 && v.gold >= 12 && economy.medicine > 0)
         {
             ++v.medicine;
-            --m_MarketMedicine;
+            --economy.medicine;
             v.gold -= 12;
-            m_Treasury += 12;
+            economy.treasury += 12;
             npc.lastResult = "치료제를 구입했다";
         }
         else
@@ -497,6 +437,11 @@ bool NpcWorld::Apply(NpcActor& npc)
             return false;
         }
         Event(npc.profile.name + ": " + npc.lastResult);
+        RecordWorldEvent("trade",
+                         npc.lastResult,
+                         npc.WorldPosition(),
+                         &npc,
+                         run.playerRequest ? &m_Game.Player() : nullptr);
         return true;
     }
     switch (action)
@@ -510,18 +455,18 @@ bool NpcWorld::Apply(NpcActor& npc)
                 : "주변을 관찰했다";
         break;
     case NpcAction::Work:
-        if (m_Treasury < 5)
+        if (economy.treasury < 5)
         {
             return false;
         }
-        m_Treasury -= 5;
+        economy.treasury -= 5;
         v.gold += 5;
-        ++m_MarketFood;
+        ++economy.food;
         v.fatigue = (std::min)(1.0f, v.fatigue + 0.08f);
-        if (m_MarketGoods > 0)
+        if (economy.goods > 0)
         {
-            --m_MarketGoods;
-            ++m_MarketMedicine;
+            --economy.goods;
+            ++economy.medicine;
         }
         npc.lastResult = "식량을 생산하고 마을 예산에서 임금을 받았다";
         break;
@@ -560,7 +505,7 @@ bool NpcWorld::Apply(NpcActor& npc)
             return false;
         }
         v.gold -= 3;
-        m_Treasury += 3;
+        economy.treasury += 3;
         v.corruption = (std::max)(0.0f, v.corruption - 30);
         if (v.corruption < 60)
         {
@@ -585,19 +530,28 @@ bool NpcWorld::Apply(NpcActor& npc)
     return true;
 }
 
-void NpcWorld::Crime(NpcEntity attacker, NpcEntity target)
+bool NpcWorld::Crime(NpcEntity attacker, NpcEntity target)
 {
     const Actor* source = Resolve(attacker);
     if (!source || attacker >= 10000)
     {
-        return;
+        return false;
     }
     const auto* initiator = Npc(attacker);
     const auto* victimNpc = Npc(target);
-    const bool unlawful = initiator ? initiator->vitals.frenzy
-                                          || initiator->profile.role == NpcRole::Raider
-                                          || !Hostile(*initiator, target)
-                                    : victimNpc && !Hostile(*victimNpc, PlayerEntity);
+    const bool beginsCrime = initiator ? initiator->vitals.frenzy
+                                             || initiator->profile.role == NpcRole::Raider
+                                             || !Hostile(*initiator, target)
+                                       : victimNpc && !Hostile(*victimNpc, PlayerEntity);
+    const auto* victimActor = Resolve(target);
+    const auto conflict =
+        std::make_pair(source->Id(), victimActor ? victimActor->Id() : InvalidActor);
+    if (beginsCrime)
+    {
+        m_UnlawfulConflicts.insert(conflict);
+    }
+    const bool unlawful =
+        beginsCrime || m_UnlawfulConflicts.find(conflict) != m_UnlawfulConflicts.end();
     for (auto id : m_Actors)
     {
         auto* witness = dynamic_cast<NpcActor*>(m_Game.Scene().Find(id));
@@ -626,6 +580,7 @@ void NpcWorld::Crime(NpcEntity attacker, NpcEntity target)
             witness->nextDecision = m_Time;
         }
     }
+    return unlawful;
 }
 
 void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool robbery)
@@ -642,7 +597,12 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
         const bool defending = victim->execution.action == NpcAction::Guard
                                && victim->execution.phase == NpcPhase::Perform;
         amount *= defending ? 0.5f : 1.0f;
-        Crime(attacker, target);
+        amount *= 100.0f / (100.0f + victim->vitals.armor * 5.0f);
+        const bool unlawful = Crime(attacker, target);
+        if (source && source->profile.village != victim->profile.village && (unlawful || robbery))
+        {
+            VillageIncident(source->profile.village, victim->profile.village, -4);
+        }
         victim->vitals.health = (std::max)(0.0f, victim->vitals.health - amount);
         victim->vitals.morale = (std::max)(0.0f, victim->vitals.morale - 0.12f);
         victim->lastHurt = m_Time;
@@ -654,6 +614,14 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
             source->vitals.gold += taken;
             Event(source->profile.name + "가 " + victim->profile.name + "에게 금화 "
                   + std::to_string(taken) + "개를 약탈했다");
+            if (taken > 0)
+            {
+                RecordWorldEvent("raid",
+                                 source->profile.name + "의 금화 약탈 " + std::to_string(taken),
+                                 victim->WorldPosition(),
+                                 source,
+                                 victim);
+            }
         }
         if (victim->vitals.health <= 0)
         {
@@ -667,6 +635,14 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
                 victim->vitals.gold = 0;
             }
             Event(victim->profile.name + " 사망. 일반 주민은 귀환자가 아니므로 부활하지 않는다.");
+            const auto* killer = Resolve(attacker);
+            RecordWorldEvent(killer && unlawful ? "murder"
+                             : killer           ? "kill"
+                                                : "death",
+                             victim->profile.name + (killer && unlawful ? " 살해됨" : " 사망"),
+                             victim->WorldPosition(),
+                             killer,
+                             victim);
         }
     }
     else if (target == PlayerEntity)
@@ -677,6 +653,7 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
         }
         m_Game.Player().health -= amount;
         m_Game.Player().hitCooldown = 0.8f;
+        bool unlawful = false;
         if (source)
         {
             source->relations[PlayerEntity].grudge = 1;
@@ -687,12 +664,20 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
                 source->vitals.gold += taken;
                 Event(source->profile.name + "가 플레이어의 금화 " + std::to_string(taken)
                       + "개를 약탈했다");
+                if (taken > 0)
+                {
+                    RecordWorldEvent("raid",
+                                     "플레이어의 금화 약탈 " + std::to_string(taken),
+                                     m_Game.Player().WorldPosition(),
+                                     source,
+                                     &m_Game.Player());
+                }
             }
-            Crime(attacker, target);
+            unlawful = Crime(attacker, target);
         }
         if (m_Game.Player().health <= 0)
         {
-            m_Game.Die();
+            m_Game.Die(source, unlawful);
         }
     }
     else if (auto* enemy = dynamic_cast<EnemyActor*>(actor))
@@ -701,8 +686,14 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
         if (enemy->health <= 0)
         {
             m_Game.DefeatEnemy(*enemy, false);
+            RecordWorldEvent("hunt", "몬스터 토벌", enemy->WorldPosition(), source, enemy);
             if (source)
             {
+                const int village = VillageAt(enemy->WorldPosition());
+                if (village >= 0)
+                {
+                    VillageIncident(source->profile.village, size_t(village), 2);
+                }
                 ++source->vitals.goods;
                 source->vitals.strength = (std::min)(35.0f, source->vitals.strength + 0.3f);
                 Event(source->profile.name + "가 토벌 전리품을 얻었다");

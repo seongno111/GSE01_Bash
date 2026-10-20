@@ -193,7 +193,7 @@ struct Renderer::FontCache
 Renderer::Renderer(int width, int height)
     : m_Font(std::make_unique<FontCache>())
 {
-    static_assert(sizeof(Instance) == 12 * sizeof(float), "Three RGBA32F texels per instance");
+    static_assert(sizeof(Instance) == 20 * sizeof(float), "Five RGBA32F texels per instance");
     static_assert(sizeof(TriangleInstance) == 2 * sizeof(GLuint), "Two integer vertex attributes");
     Resize(width, height);
     m_Program = LoadShaderProgram("SolidRect.vs", "SolidRect.fs");
@@ -206,6 +206,7 @@ Renderer::Renderer(int width, int height)
     glUseProgram(m_Program);
     glUniform1i(glGetUniformLocation(m_Program, "u_Geometry"), 0);
     glUniform1i(glGetUniformLocation(m_Program, "u_Instances"), 1);
+    glUniform1i(glGetUniformLocation(m_Program, "u_SpriteAtlas"), 2);
     glGenVertexArrays(1, &m_VAO);
     glGenBuffers(1, &m_VBO);
     glBindVertexArray(m_VAO);
@@ -218,10 +219,28 @@ Renderer::Renderer(int width, int height)
     glGenTextures(1, &m_InstanceTexture);
     GLint maxTexels = 0;
     glGetIntegerv(GL_MAX_TEXTURE_BUFFER_SIZE, &maxTexels);
-    m_MaxInstances = (std::min)(size_t(maxTexels / 3), size_t(16384));
+    m_MaxInstances = (std::min)(size_t(maxTexels / 5), size_t(16384));
+    m_InstanceCapacity = m_MaxInstances * sizeof(Instance);
+    m_TriangleCapacity = 65536 * sizeof(TriangleInstance);
+    glBindBuffer(GL_TEXTURE_BUFFER, m_InstanceBuffer);
+    glBufferData(GL_TEXTURE_BUFFER, m_InstanceCapacity, nullptr, GL_STREAM_DRAW);
+    glBindTexture(GL_TEXTURE_BUFFER, m_InstanceTexture);
+    glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA32F, m_InstanceBuffer);
+    GLint timestampBits = 0;
+    glGetQueryiv(GL_TIMESTAMP, GL_QUERY_COUNTER_BITS, &timestampBits);
+    m_GpuTimingAvailable = timestampBits >= 64;
+    for (auto& sample : m_GpuSamples)
+    {
+        if (!m_GpuTimingAvailable)
+        {
+            break;
+        }
+        glGenQueries(static_cast<GLsizei>(sample.queries.size()), sample.queries.data());
+    }
     m_Instances.reserve(m_MaxInstances);
     m_Triangles.reserve(262144);
     InitializeMeshCache();
+    InitializeSpriteAtlas();
     if (!m_Post.Initialize(width, height))
     {
         std::cerr << "Post processing unavailable. Using direct rendering.\n";
@@ -231,8 +250,13 @@ Renderer::Renderer(int width, int height)
 Renderer::~Renderer()
 {
     // All GL resources must be released while the renderer's context is alive.
+    for (auto& sample : m_GpuSamples)
+    {
+        glDeleteQueries(static_cast<GLsizei>(sample.queries.size()), sample.queries.data());
+    }
     m_MeshCache.clear();
     glDeleteTextures(1, &m_Atlas);
+    glDeleteTextures(1, &m_SpriteAtlas);
     glDeleteTextures(1, &m_InstanceTexture);
     glDeleteBuffers(1, &m_InstanceBuffer);
     if (m_VBO)
@@ -269,6 +293,7 @@ void Renderer::Begin(Color background)
     m_CacheHits = 0;
     m_CacheMisses = 0;
     TrimMeshCache();
+    BeginGpuSample();
     m_LinearScene = m_Post.BeginScene();
     if (m_LinearScene)
     {
@@ -298,18 +323,26 @@ void Renderer::Flush()
     glBindTexture(GL_TEXTURE_2D, m_Atlas);
     glActiveTexture(GL_TEXTURE1);
     glBindBuffer(GL_TEXTURE_BUFFER, m_InstanceBuffer);
-    glBufferData(GL_TEXTURE_BUFFER,
-                 m_Instances.size() * sizeof(Instance),
-                 m_Instances.data(),
-                 GL_STREAM_DRAW);
+    // Orphan fixed-capacity streaming storage; static geometry stays resident.
+    glBufferData(GL_TEXTURE_BUFFER, m_InstanceCapacity, nullptr, GL_STREAM_DRAW);
+    glBufferSubData(GL_TEXTURE_BUFFER,
+                    0,
+                    m_Instances.size() * sizeof(Instance),
+                    m_Instances.data());
     glBindTexture(GL_TEXTURE_BUFFER, m_InstanceTexture);
-    glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA32F, m_InstanceBuffer);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, m_SpriteAtlas);
     glBindVertexArray(m_VAO);
     glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-    glBufferData(GL_ARRAY_BUFFER,
-                 m_Triangles.size() * sizeof(TriangleInstance),
-                 m_Triangles.data(),
-                 GL_STREAM_DRAW);
+    const size_t triangleBytes = m_Triangles.size() * sizeof(TriangleInstance);
+    while (m_TriangleCapacity < triangleBytes)
+    {
+        m_TriangleCapacity *= 2;
+    }
+    glBufferData(GL_ARRAY_BUFFER, m_TriangleCapacity, nullptr, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, triangleBytes, m_Triangles.data());
+    m_Stats.bufferOrphans += 2;
+    m_Stats.streamCapacityBytes = m_InstanceCapacity + m_TriangleCapacity;
     // Every instance is one triangle. Both triangle and object order match
     // submission order, even across unrelated meshes and transparent glyphs.
     glDrawArraysInstanced(GL_TRIANGLES, 0, 3, static_cast<GLsizei>(m_Triangles.size()));
@@ -327,7 +360,10 @@ void Renderer::Flush()
             .count();
 }
 
-void Renderer::Submit(const CachedMesh& mesh, const Transform& transform, Color tint)
+void Renderer::Submit(const CachedMesh& mesh,
+                      const Transform& transform,
+                      Color tint,
+                      const SpriteRegion* sprite)
 {
     if (mesh.vertices.empty() || !IsInitialized())
     {
@@ -348,8 +384,16 @@ void Renderer::Submit(const CachedMesh& mesh, const Transform& transform, Color 
              {transform.position.x + m_Translation.x,
               transform.position.y + m_Translation.y,
               tint.intensity,
-              0},
-             {tint.r, tint.g, tint.b, tint.a}});
+              sprite ? float(sprite->index + 1) : 0.0f},
+             {tint.r, tint.g, tint.b, tint.a},
+             {sprite ? sprite->uv[0] : 0.0f,
+              sprite ? sprite->uv[1] : 0.0f,
+              sprite ? sprite->uv[2] : 0.0f,
+              sprite ? sprite->uv[3] : 0.0f},
+             {sprite ? sprite->emission[0] : 0.0f,
+              sprite ? sprite->emission[1] : 0.0f,
+              sprite ? sprite->emission[2] : 0.0f,
+              sprite ? sprite->emission[3] : 0.0f}});
         const size_t count =
             (std::min)((mesh.vertices.size() - first) / 3, MaxTriangles - m_Triangles.size());
         for (size_t i = 0; i < count; ++i)
@@ -379,9 +423,17 @@ void Renderer::BeginUI()
 {
     Flush();
     m_DrawingUI = true;
+    if (m_ActiveGpuSample >= 0)
+    {
+        glQueryCounter(m_GpuSamples[m_ActiveGpuSample].queries[1], GL_TIMESTAMP);
+    }
     if (m_LinearScene)
     {
         m_Post.Composite();
+    }
+    if (m_ActiveGpuSample >= 0)
+    {
+        glQueryCounter(m_GpuSamples[m_ActiveGpuSample].queries[2], GL_TIMESTAMP);
     }
     m_LinearScene = false;
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -663,5 +715,64 @@ void Renderer::Text(float x, float y, const std::string& text, Color color, floa
                 color);
         }
         x += glyph.advance;
+    }
+}
+
+void Renderer::BeginGpuSample()
+{
+    m_ActiveGpuSample = -1;
+    if (!m_GpuTimingAvailable)
+    {
+        return;
+    }
+    std::uint64_t newest = 0;
+    for (size_t i = 0; i < m_GpuSamples.size(); ++i)
+    {
+        auto& sample = m_GpuSamples[i];
+        if (sample.pending)
+        {
+            GLint ready = GL_FALSE;
+            glGetQueryObjectiv(sample.queries[3], GL_QUERY_RESULT_AVAILABLE, &ready);
+            if (ready == GL_TRUE)
+            {
+                std::array<GLuint64, 4> times{};
+                for (size_t q = 0; q < times.size(); ++q)
+                {
+                    glGetQueryObjectui64v(sample.queries[q], GL_QUERY_RESULT, &times[q]);
+                }
+                if (sample.frame > newest)
+                {
+                    newest = sample.frame;
+                    m_Stats.gpuWorldMs = double(times[1] - times[0]) / 1e6;
+                    m_Stats.gpuPostMs = double(times[2] - times[1]) / 1e6;
+                    m_Stats.gpuUiMs = double(times[3] - times[2]) / 1e6;
+                    m_Stats.gpuSampleAge = m_CacheFrame - sample.frame;
+                }
+                sample.pending = false;
+            }
+        }
+        if (!sample.pending && m_ActiveGpuSample < 0)
+        {
+            m_ActiveGpuSample = static_cast<int>(i);
+        }
+    }
+    // Never wait for a GPU result or overwrite an in-flight query.
+    if (m_ActiveGpuSample >= 0)
+    {
+        auto& sample = m_GpuSamples[m_ActiveGpuSample];
+        sample.frame = m_CacheFrame;
+        glQueryCounter(sample.queries[0], GL_TIMESTAMP);
+    }
+}
+
+void Renderer::EndFrame()
+{
+    Flush();
+    if (m_ActiveGpuSample >= 0)
+    {
+        auto& sample = m_GpuSamples[m_ActiveGpuSample];
+        glQueryCounter(sample.queries[3], GL_TIMESTAMP);
+        sample.pending = true;
+        m_ActiveGpuSample = -1;
     }
 }

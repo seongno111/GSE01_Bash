@@ -1,0 +1,23 @@
+{
+  "asset": "unit-rigs-monsters-v3.png",
+  "date": "2026-10-20",
+  "purpose": "Continuous articulated locomotion: alternating feet and counter-moving torso, pelvis and shoulders",
+  "tool": "image_gen",
+  "transparent_background": true,
+  "prompts": [
+    "Production 2D SKELETAL ANIMATION PARTS ATLAS, transparent RGBA. Use supplied image only as character identity/style reference. We need SEPARATE DRAWABLE BODY PARTS for continuous joint animation, NOT whole-body animation poses. Exactly FIVE COLUMNS and FOUR ROWS, 20 separate clean sprite pieces. One character per ROW, five detachable pieces across each row. Uniform square cells, portrait-ish canvas5:4 (prefer1600x1280). Huge transparent gutters. No labels, numbers, lines, shadows, backgrounds.\nRow1 gaunt gray UNDEAD with brown ragged loincloth (reference row2col3). Row2 CORRUPTED ARMORED RAIDER rusty plate and twohanded axe(reference row2col4). Row3 horned PLAGUE BOSS brass shoulderarmor, skullhead and massive claws(reference row3col1). Row4 MUTATED grayhoodedplayer red eyes and enormous PALEBONYCLAW (reference row3col2).\nALL pieces retain exact realistic costume/materialcolor from reference, right-facing three-quarter side camera.\nCOLUMN1: HEAD+NECK+TORSO+BELT+HIPS/shortcoat as one continuous piece. OMIT BOTH ARMS AND ALL LEGS below the upper thighs. Shoulder sleeves end at upperarm sockets. Cloak/robe body can cover upperthigh but DO NOT include boots, lowerlegs or dangling detached hands. Bodypiece has flat rounded hem beneathhips. Character identity facehoodarmor preserved.\nCOLUMN2: FAR ARM with shoulder sleeve, elbow, forearm, hand and held gear asONEdetachedpiece in relaxed DOWNWARD neutralpose. Rounded shoulder cap at top, upperarm roughlyvertical; handbelow. Far arms relaxed downward, undead skeletalhand, armoredraiderholdsaxe inthisarm, bossskeletalclawedhand, mutantnormalleatherglovedhand.\nCOLUMN3: FAR LEG complete from roundedhipcap throughthigh/knee/calf/boot, straight relaxed DOWN neutralpose, boot toe facingRIGHT. Narrow leg column, no torso or arms. Darkerfarleglighting.\nCOLUMN4: NEAR LEG samecomplete hip-to-boot anatomy, straight relaxedDOWN neutralpose, toe RIGHT, slightlybrighternearleglighting. Include full upperthigh even if robe covers it whenassembled. Knee halfwaydownleg. No torso.\nCOLUMN5: NEAR ARM shoulderthroughhand asdetached downwardneutralpiece. Near arms: undeadskeletalclaw; armoredraidernormalarm; bossmassiveclawedarm; MUTANTenlargedpaleBONYCLAW arm onthisside. Arms includeupperarmnotjusthands.\nEach piece entirelycontainedinsidecentral55%ofitscell withatleast22%cleartransparentborders. Piecesnevercrosscells. Parts must have opaque complete anatomy under overlapping joints, so engine can rotate and hide joint seams. No extra duplicatebodyparts, no skeletonbones, no arrows, no symbols, no gore. Detached clothing/body pieces are game rig assets. Keep samecamera andlightsforallpieces, no perspective changes. NO WHOLE CHARACTERS: each cellcontainsONLYthe specifiedbodycomponent. Realalpha, cleanedges, no glowspill.",
+    "Edit ONLY the layout of this monster sprite parts sheet. Preserve the same four monster designs and all 20 separate individual pieces. SHRINK EVERY PART to 60 percent of its CURRENT size in its own cell, center the part, and leave HUGE CLEAR TRANSPARENT GAPS between all rows and columns. Exact 5 columns and 4 rows in a regular grid, each piece confined to central 60 percent width and height of its cell. No object or weapon or horn crosses its cell edge. Columns: torso/head without arms or legs; far arm with existing weapon; far complete leg; near complete leg; near arm with existing claw. Rows remain undead, armored axe raider, horned plague boss, mutated hooded player. Preserve art, pose, costume and separate parts exactly. Transparent alpha background, no labels, no shadows, no grid. Main correction is generous padding, especially axe in row 2 column 2 and horns of boss row3 column1."
+  ],
+  "layout": {
+    "columns": 5,
+    "rows": 4,
+    "columnParts": [
+      "torso",
+      "far arm",
+      "far leg",
+      "near leg",
+      "near arm"
+    ]
+  },
+  "promptProvenance": "Original generation tool-call text recovered from this conversation; monster base prompt applies the recorded substitutions to the human base prompt."
+}

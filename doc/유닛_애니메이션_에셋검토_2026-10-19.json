@@ -1,0 +1,1099 @@
+{
+  "date": "2026-10-19",
+  "method": "Read-only PNG alpha/frame audit and source contracts; no game build or execution",
+  "sheets": [
+    {
+      "file": "realistic-atlas-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "f5432cb3af3410fb4235f6200f5c348bd7965c2643ad8c1b5949114c55a3421b",
+      "xDividers": [
+        0,
+        313,
+        627,
+        940,
+        1254
+      ],
+      "yDividers": [
+        0,
+        320,
+        627,
+        943,
+        1254
+      ],
+      "rows": [
+        {
+          "frames": [
+            {
+              "bounds": [
+                81,
+                45,
+                273,
+                318
+              ],
+              "alphaPixels": 29115
+            },
+            {
+              "bounds": [
+                88,
+                42,
+                248,
+                317
+              ],
+              "alphaPixels": 27949
+            },
+            {
+              "bounds": [
+                76,
+                42,
+                252,
+                320
+              ],
+              "alphaPixels": 32310
+            },
+            {
+              "bounds": [
+                71,
+                46,
+                270,
+                316
+              ],
+              "alphaPixels": 26838
+            }
+          ],
+          "bodyHeightMedian": 274.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                92,
+                30,
+                247,
+                295
+              ],
+              "alphaPixels": 25476
+            },
+            {
+              "bounds": [
+                97,
+                31,
+                244,
+                300
+              ],
+              "alphaPixels": 26360
+            },
+            {
+              "bounds": [
+                81,
+                40,
+                243,
+                302
+              ],
+              "alphaPixels": 20548
+            },
+            {
+              "bounds": [
+                72,
+                30,
+                280,
+                302
+              ],
+              "alphaPixels": 32071
+            }
+          ],
+          "bodyHeightMedian": 267.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                48,
+                12,
+                305,
+                309
+              ],
+              "alphaPixels": 43745
+            },
+            {
+              "bounds": [
+                66,
+                27,
+                263,
+                304
+              ],
+              "alphaPixels": 31835
+            },
+            {
+              "bounds": [
+                17,
+                11,
+                290,
+                316
+              ],
+              "alphaPixels": 46045
+            },
+            {
+              "bounds": [
+                31,
+                39,
+                282,
+                307
+              ],
+              "alphaPixels": 45875
+            }
+          ],
+          "bodyHeightMedian": 287.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                48,
+                16,
+                301,
+                248
+              ],
+              "alphaPixels": 41687
+            },
+            {
+              "bounds": [
+                43,
+                7,
+                309,
+                271
+              ],
+              "alphaPixels": 38191
+            },
+            {
+              "bounds": [
+                39,
+                20,
+                274,
+                261
+              ],
+              "alphaPixels": 35155
+            },
+            {
+              "bounds": [
+                43,
+                32,
+                283,
+                266
+              ],
+              "alphaPixels": 35509
+            }
+          ],
+          "bodyHeightMedian": 237.5
+        }
+      ]
+    },
+    {
+      "file": "unit-walk-humans-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "1bda33c7a9e7ede0dbb16301e888223e0b96975d2da6776dab521f4474839e26",
+      "xDividers": [
+        0,
+        209,
+        418,
+        627,
+        836,
+        1045,
+        1254
+      ],
+      "yDividers": [
+        0,
+        222,
+        426,
+        633,
+        836,
+        1045,
+        1254
+      ],
+      "rows": [
+        {
+          "frames": [
+            {
+              "bounds": [
+                52,
+                84,
+                183,
+                222
+              ],
+              "alphaPixels": 9663,
+              "lantern": {
+                "highlightPixels": 23,
+                "localPixelBounds": [
+                  114,
+                  70,
+                  124,
+                  82
+                ]
+              }
+            },
+            {
+              "bounds": [
+                46,
+                82,
+                171,
+                222
+              ],
+              "alphaPixels": 9754,
+              "lantern": {
+                "highlightPixels": 32,
+                "localPixelBounds": [
+                  107,
+                  72,
+                  118,
+                  84
+                ]
+              }
+            },
+            {
+              "bounds": [
+                49,
+                82,
+                175,
+                221
+              ],
+              "alphaPixels": 9425,
+              "lantern": {
+                "highlightPixels": 26,
+                "localPixelBounds": [
+                  109,
+                  66,
+                  119,
+                  79
+                ]
+              }
+            },
+            {
+              "bounds": [
+                40,
+                84,
+                180,
+                221
+              ],
+              "alphaPixels": 10437,
+              "lantern": {
+                "highlightPixels": 18,
+                "localPixelBounds": [
+                  123,
+                  71,
+                  132,
+                  83
+                ]
+              }
+            },
+            {
+              "bounds": [
+                45,
+                81,
+                175,
+                220
+              ],
+              "alphaPixels": 9596,
+              "lantern": {
+                "highlightPixels": 29,
+                "localPixelBounds": [
+                  113,
+                  67,
+                  123,
+                  80
+                ]
+              }
+            },
+            {
+              "bounds": [
+                32,
+                82,
+                168,
+                222
+              ],
+              "alphaPixels": 10366,
+              "lantern": {
+                "highlightPixels": 22,
+                "localPixelBounds": [
+                  118,
+                  72,
+                  128,
+                  84
+                ]
+              }
+            }
+          ],
+          "bodyHeightMedian": 139.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                60,
+                47,
+                183,
+                204
+              ],
+              "alphaPixels": 11948
+            },
+            {
+              "bounds": [
+                61,
+                46,
+                182,
+                204
+              ],
+              "alphaPixels": 11881
+            },
+            {
+              "bounds": [
+                62,
+                47,
+                186,
+                203
+              ],
+              "alphaPixels": 11969
+            },
+            {
+              "bounds": [
+                53,
+                45,
+                180,
+                203
+              ],
+              "alphaPixels": 12233
+            },
+            {
+              "bounds": [
+                57,
+                46,
+                181,
+                202
+              ],
+              "alphaPixels": 11669
+            },
+            {
+              "bounds": [
+                51,
+                46,
+                175,
+                201
+              ],
+              "alphaPixels": 11859
+            }
+          ],
+          "bodyHeightMedian": 156.5
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                29,
+                51,
+                183,
+                206
+              ],
+              "alphaPixels": 14393
+            },
+            {
+              "bounds": [
+                42,
+                53,
+                185,
+                206
+              ],
+              "alphaPixels": 12891
+            },
+            {
+              "bounds": [
+                40,
+                52,
+                184,
+                207
+              ],
+              "alphaPixels": 12974
+            },
+            {
+              "bounds": [
+                45,
+                53,
+                186,
+                207
+              ],
+              "alphaPixels": 13420
+            },
+            {
+              "bounds": [
+                33,
+                53,
+                183,
+                205
+              ],
+              "alphaPixels": 13345
+            },
+            {
+              "bounds": [
+                37,
+                52,
+                179,
+                205
+              ],
+              "alphaPixels": 13200
+            }
+          ],
+          "bodyHeightMedian": 153.5
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                47,
+                42,
+                194,
+                198
+              ],
+              "alphaPixels": 12052
+            },
+            {
+              "bounds": [
+                46,
+                39,
+                201,
+                196
+              ],
+              "alphaPixels": 11985
+            },
+            {
+              "bounds": [
+                48,
+                42,
+                192,
+                198
+              ],
+              "alphaPixels": 11722
+            },
+            {
+              "bounds": [
+                44,
+                42,
+                195,
+                198
+              ],
+              "alphaPixels": 12206
+            },
+            {
+              "bounds": [
+                39,
+                40,
+                193,
+                196
+              ],
+              "alphaPixels": 12224
+            },
+            {
+              "bounds": [
+                31,
+                42,
+                184,
+                198
+              ],
+              "alphaPixels": 12337
+            }
+          ],
+          "bodyHeightMedian": 156.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                48,
+                37,
+                178,
+                184
+              ],
+              "alphaPixels": 10775
+            },
+            {
+              "bounds": [
+                40,
+                35,
+                178,
+                180
+              ],
+              "alphaPixels": 10635
+            },
+            {
+              "bounds": [
+                44,
+                36,
+                180,
+                182
+              ],
+              "alphaPixels": 10907
+            },
+            {
+              "bounds": [
+                39,
+                35,
+                180,
+                183
+              ],
+              "alphaPixels": 11072
+            },
+            {
+              "bounds": [
+                43,
+                35,
+                180,
+                180
+              ],
+              "alphaPixels": 10409
+            },
+            {
+              "bounds": [
+                37,
+                38,
+                172,
+                182
+              ],
+              "alphaPixels": 11016
+            }
+          ],
+          "bodyHeightMedian": 145.5
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                45,
+                14,
+                174,
+                167
+              ],
+              "alphaPixels": 11090
+            },
+            {
+              "bounds": [
+                47,
+                16,
+                178,
+                168
+              ],
+              "alphaPixels": 11249
+            },
+            {
+              "bounds": [
+                50,
+                15,
+                178,
+                166
+              ],
+              "alphaPixels": 11229
+            },
+            {
+              "bounds": [
+                49,
+                16,
+                178,
+                167
+              ],
+              "alphaPixels": 11367
+            },
+            {
+              "bounds": [
+                48,
+                16,
+                178,
+                167
+              ],
+              "alphaPixels": 11560
+            },
+            {
+              "bounds": [
+                40,
+                16,
+                174,
+                168
+              ],
+              "alphaPixels": 11659
+            }
+          ],
+          "bodyHeightMedian": 151.5
+        }
+      ]
+    },
+    {
+      "file": "unit-walk-monsters-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "07118666c7243269be0a829a355045cb996011285180b947c2a525e2f189e21d",
+      "xDividers": [
+        0,
+        256,
+        513,
+        768,
+        1024,
+        1280,
+        1536
+      ],
+      "yDividers": [
+        0,
+        256,
+        512,
+        768,
+        1024
+      ],
+      "rows": [
+        {
+          "frames": [
+            {
+              "bounds": [
+                86,
+                67,
+                218,
+                246
+              ],
+              "alphaPixels": 10905
+            },
+            {
+              "bounds": [
+                96,
+                65,
+                218,
+                247
+              ],
+              "alphaPixels": 10955
+            },
+            {
+              "bounds": [
+                87,
+                67,
+                207,
+                247
+              ],
+              "alphaPixels": 10031
+            },
+            {
+              "bounds": [
+                69,
+                66,
+                204,
+                247
+              ],
+              "alphaPixels": 11440
+            },
+            {
+              "bounds": [
+                75,
+                66,
+                204,
+                247
+              ],
+              "alphaPixels": 10947
+            },
+            {
+              "bounds": [
+                80,
+                65,
+                187,
+                246
+              ],
+              "alphaPixels": 10040
+            }
+          ],
+          "bodyHeightMedian": 181.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                51,
+                41,
+                248,
+                240
+              ],
+              "alphaPixels": 21230
+            },
+            {
+              "bounds": [
+                50,
+                41,
+                246,
+                243
+              ],
+              "alphaPixels": 20441
+            },
+            {
+              "bounds": [
+                53,
+                41,
+                242,
+                241
+              ],
+              "alphaPixels": 20778
+            },
+            {
+              "bounds": [
+                41,
+                41,
+                237,
+                240
+              ],
+              "alphaPixels": 21123
+            },
+            {
+              "bounds": [
+                46,
+                41,
+                236,
+                240
+              ],
+              "alphaPixels": 20756
+            },
+            {
+              "bounds": [
+                41,
+                41,
+                227,
+                240
+              ],
+              "alphaPixels": 20559
+            }
+          ],
+          "bodyHeightMedian": 199.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                24,
+                15,
+                255,
+                230
+              ],
+              "alphaPixels": 28996
+            },
+            {
+              "bounds": [
+                45,
+                14,
+                257,
+                231
+              ],
+              "alphaPixels": 27884
+            },
+            {
+              "bounds": [
+                41,
+                14,
+                249,
+                231
+              ],
+              "alphaPixels": 27977
+            },
+            {
+              "bounds": [
+                26,
+                15,
+                248,
+                228
+              ],
+              "alphaPixels": 28453
+            },
+            {
+              "bounds": [
+                28,
+                14,
+                255,
+                230
+              ],
+              "alphaPixels": 29125
+            },
+            {
+              "bounds": [
+                35,
+                16,
+                239,
+                228
+              ],
+              "alphaPixels": 27529
+            }
+          ],
+          "bodyHeightMedian": 215.5
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                49,
+                18,
+                231,
+                212
+              ],
+              "alphaPixels": 17952
+            },
+            {
+              "bounds": [
+                61,
+                16,
+                230,
+                213
+              ],
+              "alphaPixels": 16682
+            },
+            {
+              "bounds": [
+                61,
+                14,
+                222,
+                213
+              ],
+              "alphaPixels": 16383
+            },
+            {
+              "bounds": [
+                49,
+                13,
+                229,
+                212
+              ],
+              "alphaPixels": 17676
+            },
+            {
+              "bounds": [
+                49,
+                14,
+                212,
+                213
+              ],
+              "alphaPixels": 16805
+            },
+            {
+              "bounds": [
+                58,
+                12,
+                209,
+                213
+              ],
+              "alphaPixels": 15995
+            }
+          ],
+          "bodyHeightMedian": 199.0
+        }
+      ]
+    },
+    {
+      "file": "player-attack-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "deb9af339e63214c1cbe428d547ba9b08618198a2f25784cc7e1ba6d6592ca94",
+      "xDividers": [
+        0,
+        362,
+        724,
+        1086,
+        1448,
+        1810,
+        2172
+      ],
+      "yDividers": [
+        0,
+        362,
+        724
+      ],
+      "rows": [
+        {
+          "frames": [
+            {
+              "bounds": [
+                111,
+                156,
+                307,
+                326
+              ],
+              "alphaPixels": 16164,
+              "lantern": {
+                "highlightPixels": 24,
+                "localPixelBounds": [
+                  177,
+                  60,
+                  188,
+                  72
+                ]
+              }
+            },
+            {
+              "bounds": [
+                106,
+                153,
+                305,
+                326
+              ],
+              "alphaPixels": 16438,
+              "lantern": {
+                "highlightPixels": 34,
+                "localPixelBounds": [
+                  179,
+                  56,
+                  190,
+                  68
+                ]
+              }
+            },
+            {
+              "bounds": [
+                103,
+                152,
+                291,
+                325
+              ],
+              "alphaPixels": 16244,
+              "lantern": {
+                "highlightPixels": 22,
+                "localPixelBounds": [
+                  169,
+                  63,
+                  179,
+                  75
+                ]
+              }
+            },
+            {
+              "bounds": [
+                112,
+                152,
+                256,
+                327
+              ],
+              "alphaPixels": 15233,
+              "lantern": {
+                "highlightPixels": 24,
+                "localPixelBounds": [
+                  122,
+                  67,
+                  133,
+                  79
+                ]
+              }
+            },
+            {
+              "bounds": [
+                114,
+                148,
+                256,
+                327
+              ],
+              "alphaPixels": 15110,
+              "lantern": {
+                "highlightPixels": 25,
+                "localPixelBounds": [
+                  122,
+                  102,
+                  132,
+                  114
+                ]
+              }
+            },
+            {
+              "bounds": [
+                104,
+                144,
+                238,
+                327
+              ],
+              "alphaPixels": 14837,
+              "lantern": {
+                "highlightPixels": 25,
+                "localPixelBounds": [
+                  114,
+                  104,
+                  124,
+                  117
+                ]
+              }
+            }
+          ],
+          "bodyHeightMedian": 174.0
+        },
+        {
+          "frames": [
+            {
+              "bounds": [
+                101,
+                95,
+                312,
+                270
+              ],
+              "alphaPixels": 17023
+            },
+            {
+              "bounds": [
+                96,
+                94,
+                330,
+                270
+              ],
+              "alphaPixels": 18418
+            },
+            {
+              "bounds": [
+                101,
+                90,
+                336,
+                269
+              ],
+              "alphaPixels": 18462
+            },
+            {
+              "bounds": [
+                99,
+                91,
+                266,
+                270
+              ],
+              "alphaPixels": 16951
+            },
+            {
+              "bounds": [
+                107,
+                89,
+                245,
+                271
+              ],
+              "alphaPixels": 15835
+            },
+            {
+              "bounds": [
+                102,
+                85,
+                236,
+                271
+              ],
+              "alphaPixels": 15872
+            }
+          ],
+          "bodyHeightMedian": 179.0
+        }
+      ]
+    }
+  ],
+  "expectedAtlas": {
+    "width": 3714,
+    "height": 2284,
+    "rgbaBytes": 33931104,
+    "staticCells": 16,
+    "walkClips": 10,
+    "attackClips": 2,
+    "animationFrames": 72,
+    "lanternFrames": 12
+  },
+  "staticContracts": "pass: project assets/header, 80-byte instance/five-texel VS stride, waypoint phase continuity"
+}

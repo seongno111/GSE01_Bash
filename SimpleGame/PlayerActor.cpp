@@ -23,11 +23,21 @@ void PlayerActor::Update(float dt)
     const double dx = right + down;
     const double dy = down - right;
     const double length = Distance(dx, dy);
-    walking = length > 0;
-    if (walking)
+    const WorldPoint previous = WorldPosition();
+    if (length > 0)
     {
-        m_Game.MoveActor(*this, dx / length * 3.7 * dt, dy / length * 3.7 * dt, 0.18f);
+        const double speed = PlayerWalkSpeed * (m_Game.m_RunHeld ? PlayerRunMultiplier : 1.0);
+        double remaining = speed * dt;
+        // Keep collision checks close together even while running at a low frame rate.
+        while (remaining > 0)
+        {
+            const double step = (std::min)(remaining, 0.1);
+            m_Game.MoveActor(*this, dx / length * step, dy / length * step, 0.18f);
+            remaining -= step;
+        }
     }
+    walking = Distance(WorldX() - previous.x, WorldY() - previous.y) > 0.00001;
+    running = walking && m_Game.m_RunHeld;
     magnetTime = (std::max)(0.0f, magnetTime - dt);
     shotCooldown = (std::max)(0.0f, shotCooldown - dt);
     m_Game.SelectTarget();
@@ -39,5 +49,5 @@ void PlayerActor::Update(float dt)
 
 void PlayerActor::Draw(Renderer& r)
 {
-    m_Game.DrawCharacter(r, m_Game.Project(WorldX(), WorldY()), corruption, false);
+    m_Game.DrawCharacter(r, m_Game.Project(WorldX(), WorldY()), corruption, false, SpritePose());
 }

@@ -1,0 +1,176 @@
+{
+  "method": "Read-only Python GLB/catalog inspection; engine was not built or executed",
+  "packages": [
+    {
+      "version": 1,
+      "assigned_npcs": 336,
+      "slots": 20,
+      "parts": 39,
+      "props": 14,
+      "files": [
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v1\\npc_parts.glb",
+          "sha256": "2fa05f666e8478b6a939acf013d2c755aa1bd878722e4c48d6655ee3921291d2",
+          "bytes": 203148,
+          "meshes": 39,
+          "nodes": 39,
+          "vertices": 4544,
+          "triangles": 2018,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v1\\props.glb",
+          "sha256": "4f97c888202ee0e77189c2458470e5de75c50b2fe3cc479c3ed5b79048589919",
+          "bytes": 140052,
+          "meshes": 14,
+          "nodes": 14,
+          "vertices": 3132,
+          "triangles": 1442,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "assigned_npcs": 336,
+      "slots": 21,
+      "parts": 45,
+      "props": 14,
+      "files": [
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v2\\npc_parts.glb",
+          "sha256": "dc6d81e5001f843de6086ba6edc8bcbe111d595b21ba6bc2563dcb606470cfde",
+          "bytes": 369320,
+          "meshes": 45,
+          "nodes": 45,
+          "vertices": 7456,
+          "triangles": 3468,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v2\\props.glb",
+          "sha256": "9e36165c4b859f896f38f290f52cb6e1049d56fa5f03d7cdc60b1ebad8fb3bb4",
+          "bytes": 238584,
+          "meshes": 14,
+          "nodes": 14,
+          "vertices": 4728,
+          "triangles": 2234,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "assigned_npcs": 336,
+      "slots": 21,
+      "parts": 51,
+      "props": 33,
+      "files": [
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\npc\\npc_parts_rigged.glb",
+          "sha256": "2daca603431ecba2052e08596dca62400e66917a566653222d4511e3e43b78bf",
+          "bytes": 1583944,
+          "meshes": 51,
+          "nodes": 83,
+          "vertices": 8824,
+          "triangles": 4072,
+          "weighted_vertices": 8824,
+          "skins": 1,
+          "clips": 45,
+          "maximum_bind_palette_identity_error": 6.966287379381816e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\props\\props_library.glb",
+          "sha256": "43e9e22b64f0ebd12de4fad9f1faf30c08ddb0278ba541a465ca0ec6b145b55d",
+          "bytes": 444116,
+          "meshes": 33,
+          "nodes": 33,
+          "vertices": 9895,
+          "triangles": 4515,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\WitheredHollow_rigged.glb",
+          "sha256": "d23be79edff802bc1cc2226c9bfcb8ad2337c8bd5fd0d5adc148b49b93b6f617",
+          "bytes": 459580,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 1968,
+          "triangles": 780,
+          "weighted_vertices": 1968,
+          "skins": 1,
+          "clips": 15,
+          "maximum_bind_palette_identity_error": 6.966287379381816e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\TaintedRaider_rigged.glb",
+          "sha256": "e0b317080b2aa211ca49292ff4c4c729b6185312bd4cff6fb416a53a3542ac8d",
+          "bytes": 469544,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2088,
+          "triangles": 812,
+          "weighted_vertices": 2088,
+          "skins": 1,
+          "clips": 15,
+          "maximum_bind_palette_identity_error": 3.030554915905981e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\FieldWarden_rigged.glb",
+          "sha256": "937ff9ea11eb2afcd2c539553d03d955aed463c9f2329bdfb4473097c1d72850",
+          "bytes": 516668,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2128,
+          "triangles": 834,
+          "weighted_vertices": 2128,
+          "skins": 1,
+          "clips": 17,
+          "maximum_bind_palette_identity_error": 4.094864356485317e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\MutatedHuman_rigged.glb",
+          "sha256": "b5a2627734fe8833f6c22812f06826a5cbb365f73571b703d7d91ca2bd52ca66",
+          "bytes": 487892,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2044,
+          "triangles": 806,
+          "weighted_vertices": 2044,
+          "skins": 1,
+          "clips": 16,
+          "maximum_bind_palette_identity_error": 1.5485251702162089e-06
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\DeathEcho_rigged.glb",
+          "sha256": "ded6af0d4b56358616dd9e440ee23fc2cba5ec6844e5236b50af8d9cafaa4d97",
+          "bytes": 487884,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2044,
+          "triangles": 806,
+          "weighted_vertices": 2044,
+          "skins": 1,
+          "clips": 16,
+          "maximum_bind_palette_identity_error": 1.5485251702162089e-06
+        }
+      ],
+      "unique_clips": 124
+    }
+  ]
+}

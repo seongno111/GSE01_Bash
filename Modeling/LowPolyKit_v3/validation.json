@@ -1,0 +1,124 @@
+{
+  "schema_version": 3,
+  "checks": {
+    "all_vertices_weighted": true,
+    "weights_normalized": true,
+    "all_19_npc_actions_mapped": true,
+    "closed_helmet_keeps_real_head": true,
+    "all_presets_21_slots": true,
+    "all_10_game_prop_kinds_mapped": true,
+    "clip_names_unique": true,
+    "exported_skins_and_animations": true,
+    "loop_endpoints_match": true,
+    "finite_animation_values": true,
+    "npc_attack_event_timing": true,
+    "imported_glb_meshes_really_animate": true,
+    "strafe_labels_match_character_axes": true
+  },
+  "files": [
+    {
+      "file": "npc/adventurer_rigged.glb",
+      "meshes": 18,
+      "skins": 1,
+      "clips": 45,
+      "bytes": 1113492
+    },
+    {
+      "file": "npc/knight_rigged.glb",
+      "meshes": 17,
+      "skins": 1,
+      "clips": 45,
+      "bytes": 1162500
+    },
+    {
+      "file": "npc/merchant_rigged.glb",
+      "meshes": 18,
+      "skins": 1,
+      "clips": 45,
+      "bytes": 1093248
+    },
+    {
+      "file": "npc/npc_parts_rigged.glb",
+      "meshes": 51,
+      "skins": 1,
+      "clips": 45,
+      "bytes": 1583944
+    },
+    {
+      "file": "npc/priest_rigged.glb",
+      "meshes": 13,
+      "skins": 1,
+      "clips": 45,
+      "bytes": 1069688
+    },
+    {
+      "file": "npc/raider_rigged.glb",
+      "meshes": 18,
+      "skins": 1,
+      "clips": 45,
+      "bytes": 1107512
+    },
+    {
+      "file": "monsters/DeathEcho_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 16,
+      "bytes": 487884
+    },
+    {
+      "file": "monsters/FieldWarden_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 17,
+      "bytes": 516668
+    },
+    {
+      "file": "monsters/MutatedHuman_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 16,
+      "bytes": 487892
+    },
+    {
+      "file": "monsters/TaintedRaider_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 15,
+      "bytes": 469544
+    },
+    {
+      "file": "monsters/WitheredHollow_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 15,
+      "bytes": 459580
+    }
+  ],
+  "warnings": [
+    "Runtime integration, arbitrary outfit collisions and animation gameplay sync are separate work."
+  ],
+  "counts": {
+    "npc_parts": 51,
+    "props": 33,
+    "bones": 31,
+    "npc_clips": 45,
+    "monster_clips": 79,
+    "monster_variants": 5
+  },
+  "roundtrip_probes": {
+    "npc_glb_roundtrip": {
+      "file": "npc\\knight_rigged.glb",
+      "clip": "NPC_Run",
+      "max_vertex_motion_m": 0.8934812333458619,
+      "imported_actions": 45,
+      "armature_bones": 31
+    },
+    "monster_glb_roundtrip": {
+      "file": "monsters\\FieldWarden_rigged.glb",
+      "clip": "MON_02_Burst",
+      "max_vertex_motion_m": 1.5407464467429093,
+      "imported_actions": 17,
+      "armature_bones": 31
+    }
+  }
+}

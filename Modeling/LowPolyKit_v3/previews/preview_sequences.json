@@ -1,0 +1,44 @@
+[
+  {
+    "name": "npc_walk",
+    "clip": "NPC_Walk",
+    "seconds": 1,
+    "frames": 16,
+    "path": "previews/npc_walk.gif"
+  },
+  {
+    "name": "npc_run",
+    "clip": "NPC_Run",
+    "seconds": 0.6666666666666666,
+    "frames": 16,
+    "path": "previews/npc_run.gif"
+  },
+  {
+    "name": "npc_attack",
+    "clip": "NPC_AttackKnight",
+    "seconds": 0.85,
+    "frames": 16,
+    "path": "previews/npc_attack.gif"
+  },
+  {
+    "name": "npc_turn",
+    "clip": "NPC_Turn_L90",
+    "seconds": 0.6,
+    "frames": 16,
+    "path": "previews/npc_turn.gif"
+  },
+  {
+    "name": "monster_attack",
+    "clip": "MON_02_Attack",
+    "seconds": 1.8,
+    "frames": 16,
+    "path": "previews/monster_attack.gif"
+  },
+  {
+    "name": "monster_burst",
+    "clip": "MON_02_Burst",
+    "seconds": 1.6,
+    "frames": 16,
+    "path": "previews/monster_burst.gif"
+  }
+]

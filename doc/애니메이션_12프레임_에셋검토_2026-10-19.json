@@ -1,0 +1,480 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Asia/Seoul",
+  "verificationScope": "Read-only PNG inspection and independent reproduction of RendererSprites.cpp crop, packing and frame-index calculations. No game build, game execution, GPU upload or visual playback was performed.",
+  "sheets": [
+    {
+      "file": "SimpleGame/Assets/realistic-atlas-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "f5432cb3af3410fb4235f6200f5c348bd7965c2643ad8c1b5949114c55a3421b",
+      "fileBytes": 1910220,
+      "xDividers": [
+        0,
+        313,
+        627,
+        940,
+        1254
+      ],
+      "yDividers": [
+        0,
+        320,
+        627,
+        943,
+        1254
+      ],
+      "validCells": 16,
+      "medianAlphaBodyHeightByRow": null
+    },
+    {
+      "file": "SimpleGame/Assets/unit-walk-humans-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "1bda33c7a9e7ede0dbb16301e888223e0b96975d2da6776dab521f4474839e26",
+      "fileBytes": 1574552,
+      "xDividers": [
+        0,
+        209,
+        418,
+        627,
+        836,
+        1045,
+        1254
+      ],
+      "yDividers": [
+        0,
+        222,
+        426,
+        633,
+        836,
+        1045,
+        1254
+      ],
+      "validCells": 36,
+      "medianAlphaBodyHeightByRow": [
+        139,
+        156.5,
+        153.5,
+        156,
+        145.5,
+        151.5
+      ]
+    },
+    {
+      "file": "SimpleGame/Assets/unit-walk-monsters-v1.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "07118666c7243269be0a829a355045cb996011285180b947c2a525e2f189e21d",
+      "fileBytes": 2411970,
+      "xDividers": [
+        0,
+        256,
+        513,
+        768,
+        1024,
+        1280,
+        1536
+      ],
+      "yDividers": [
+        0,
+        256,
+        512,
+        768,
+        1024
+      ],
+      "validCells": 24,
+      "medianAlphaBodyHeightByRow": [
+        181,
+        199,
+        215.5,
+        199
+      ]
+    },
+    {
+      "file": "SimpleGame/Assets/player-attack-v1.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "sha256": "deb9af339e63214c1cbe428d547ba9b08618198a2f25784cc7e1ba6d6592ca94",
+      "fileBytes": 669171,
+      "xDividers": [
+        0,
+        362,
+        724,
+        1086,
+        1448,
+        1810,
+        2172
+      ],
+      "yDividers": [
+        0,
+        362,
+        724
+      ],
+      "validCells": 12,
+      "medianAlphaBodyHeightByRow": [
+        174,
+        179
+      ]
+    },
+    {
+      "file": "SimpleGame/Assets/unit-walk-humans-inbetweens-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "51817221d607ed7bd566173417d32a2fe0b671c06e3cce3350ed5ed4a8057d2f",
+      "fileBytes": 1916067,
+      "xDividers": [
+        0,
+        209,
+        432,
+        636,
+        836,
+        1056,
+        1254
+      ],
+      "yDividers": [
+        0,
+        218,
+        424,
+        628,
+        836,
+        1045,
+        1254
+      ],
+      "validCells": 36,
+      "medianAlphaBodyHeightByRow": [
+        153,
+        178,
+        170.5,
+        176,
+        162.5,
+        163.5
+      ]
+    },
+    {
+      "file": "SimpleGame/Assets/unit-walk-monsters-inbetweens-v2.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "d875528e2f1bbc9a69864296831091e60412e4de3664787e8838cfe0e1564ceb",
+      "fileBytes": 2582900,
+      "xDividers": [
+        0,
+        257,
+        512,
+        768,
+        1024,
+        1284,
+        1536
+      ],
+      "yDividers": [
+        0,
+        256,
+        512,
+        761,
+        1024
+      ],
+      "validCells": 24,
+      "medianAlphaBodyHeightByRow": [
+        200.5,
+        217,
+        225,
+        216
+      ]
+    },
+    {
+      "file": "SimpleGame/Assets/player-attack-inbetweens-v2.png",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "sha256": "153f36d9a7ae870e9df1a538e4cfdd5e37a422eb08ff82d0ad1468911c125f30",
+      "fileBytes": 824848,
+      "xDividers": [
+        0,
+        365,
+        724,
+        1086,
+        1448,
+        1810,
+        2172
+      ],
+      "yDividers": [
+        0,
+        362,
+        724
+      ],
+      "validCells": 12,
+      "medianAlphaBodyHeightByRow": [
+        205,
+        210
+      ]
+    }
+  ],
+  "animation": {
+    "walkClipCount": 10,
+    "attackClipCount": 2,
+    "framesPerCompleteClip": 12,
+    "walkFrames": 120,
+    "attackFrames": 24,
+    "totalAnimationFrames": 144,
+    "staticRegions": 16,
+    "totalPackedRegions": 160,
+    "interleave": [
+      "key0",
+      "between0",
+      "key1",
+      "between1",
+      "key2",
+      "between2",
+      "key3",
+      "between3",
+      "key4",
+      "between4",
+      "key5",
+      "between5"
+    ],
+    "fallback": "A missing/invalid in-between row retains the entire original six-frame clip. Attack clips exist only for sprites 0 and 9.",
+    "clips": [
+      {
+        "sprite": 0,
+        "walkFrames": 12,
+        "attackFrames": 12
+      },
+      {
+        "sprite": 1,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 2,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 3,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 4,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 5,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 6,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 7,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 8,
+        "walkFrames": 12,
+        "attackFrames": 0
+      },
+      {
+        "sprite": 9,
+        "walkFrames": 12,
+        "attackFrames": 12
+      }
+    ]
+  },
+  "atlas": {
+    "sourceDecodeBytes": 44033328,
+    "croppedArtworkBytes": 21521140,
+    "gutterPixelsPerEdge": 2,
+    "format": "GL_RGBA8",
+    "textureCount": 1,
+    "mipmaps": false,
+    "uploadPolicy": "Startup only; shared unit quad and existing ordered instancing retained.",
+    "simulatedLimits": [
+      {
+        "maxTextureSize": 2048,
+        "expanded": null,
+        "originalSixFrameFallback": {
+          "dimensions": [
+            1926,
+            1683
+          ],
+          "residentBytes": 12965832,
+          "animationFrames": 72
+        },
+        "staticFallback": {
+          "dimensions": [
+            1741,
+            582
+          ],
+          "residentBytes": 4053048,
+          "animationFrames": 0
+        },
+        "paddedNonoverlapAndBoundsPassed": true
+      },
+      {
+        "maxTextureSize": 4096,
+        "expanded": {
+          "dimensions": [
+            2423,
+            2484
+          ],
+          "residentBytes": 24074928,
+          "animationFrames": 144
+        },
+        "originalSixFrameFallback": {
+          "dimensions": [
+            1926,
+            1683
+          ],
+          "residentBytes": 12965832,
+          "animationFrames": 72
+        },
+        "staticFallback": {
+          "dimensions": [
+            1741,
+            582
+          ],
+          "residentBytes": 4053048,
+          "animationFrames": 0
+        },
+        "paddedNonoverlapAndBoundsPassed": true
+      },
+      {
+        "maxTextureSize": 8192,
+        "expanded": {
+          "dimensions": [
+            2423,
+            2484
+          ],
+          "residentBytes": 24074928,
+          "animationFrames": 144
+        },
+        "originalSixFrameFallback": {
+          "dimensions": [
+            1926,
+            1683
+          ],
+          "residentBytes": 12965832,
+          "animationFrames": 72
+        },
+        "staticFallback": {
+          "dimensions": [
+            1741,
+            582
+          ],
+          "residentBytes": 4053048,
+          "animationFrames": 0
+        },
+        "paddedNonoverlapAndBoundsPassed": true
+      }
+    ]
+  },
+  "lantern": {
+    "method": "Reproduced existing LanternRegion bright-pixel RGB/alpha thresholds, 8-connected components, bounded mask and two-pixel mask expansion. Human player row only.",
+    "detectedFrames": 24,
+    "expectedFrames": 24,
+    "allDetected": true,
+    "sheets": [
+      {
+        "file": "unit-walk-humans-v1.png",
+        "row": 0,
+        "detectedFrames": 6,
+        "brightConnectedPixelCountsByFrame": [
+          23,
+          32,
+          26,
+          18,
+          29,
+          22
+        ]
+      },
+      {
+        "file": "unit-walk-humans-inbetweens-v2.png",
+        "row": 0,
+        "detectedFrames": 6,
+        "brightConnectedPixelCountsByFrame": [
+          54,
+          60,
+          74,
+          51,
+          41,
+          60
+        ]
+      },
+      {
+        "file": "player-attack-v1.png",
+        "row": 0,
+        "detectedFrames": 6,
+        "brightConnectedPixelCountsByFrame": [
+          24,
+          34,
+          22,
+          24,
+          25,
+          25
+        ]
+      },
+      {
+        "file": "player-attack-inbetweens-v2.png",
+        "row": 0,
+        "detectedFrames": 6,
+        "brightConnectedPixelCountsByFrame": [
+          69,
+          88,
+          74,
+          65,
+          82,
+          64
+        ]
+      }
+    ]
+  },
+  "checks": {
+    "allSourceGridsHaveTransparentDividers": true,
+    "all160CropsNonempty": true,
+    "packedCropsWithinAtlas": true,
+    "paddedCropsNonoverlapping": true,
+    "frameIndexEndpoints": {
+      "frameCounts": [
+        6,
+        12
+      ],
+      "sampledProgress": [
+        0,
+        0.01,
+        0.49,
+        0.5,
+        0.999999,
+        1
+      ],
+      "pass": true
+    },
+    "rendererClangFormatDryRun": true,
+    "rendererUtf8Crlf": true,
+    "rendererNoTrailingWhitespace": true,
+    "trackedRendererDiffCheck": true
+  },
+  "alignment": {
+    "bodyScale": "Each source row uses its median alpha-body height; crop dimensions never individually normalize the pose. Different PNG resolution/padding therefore retains a common actor height.",
+    "pivot": "A common nominal cell-center X pivot and bottom Y anchor are preserved, including horizontal mirror. Per-frame foot-centroid recentering is intentionally avoided because the planted leg changes through the gait.",
+    "humanV1V2TorsoMedianDifferenceMaxBodyFraction": 0.033,
+    "humanV1V2TorsoMedianDifferenceAt74PxApprox": 2.4
+  }
+}

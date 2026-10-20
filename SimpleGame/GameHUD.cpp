@@ -40,15 +40,15 @@ void Prototype::Interface(Renderer& r)
     r.Rect(panelX + 263 * 100 / 150.0f, 76, 2, 13, Gold);
     if (m_Help)
     {
-        r.Rect(24, 125, 255, 290, Color(0.025f, 0.035f, 0.042f, 0.86f));
+        r.Rect(24, 125, 255, 315, Color(0.025f, 0.035f, 0.042f, 0.86f));
         r.Text(40, 139, "파밍과 성장", Gold, 1.5f);
-        r.Text(
-            40,
-            171,
-            "WASD   이동\nSPACE 유지   자동 조준\nF   자동 사격 전환\nU   파편 3개로 무기 강화\nQ  "
-            " 회복약 사용\nT   정화석 사용\nE   성소 회복·보고\nR   성물 사용\nH   안내 숨기기",
-            Paper,
-            1.4f);
+        r.Text(40,
+               171,
+               "WASD   이동\nSHIFT 유지   달리기\nSPACE 유지   자동 조준\nF   자동 사격 전환\nU   "
+               "파편 3개로 무기 강화\nQ  "
+               " 회복약 사용\nT   정화석 사용\nE   성소 회복·보고\nR   성물 사용\nH   안내 숨기기",
+               Paper,
+               1.4f);
         const auto& post = r.Post().settings;
         const auto onOff = [](bool value)
         {

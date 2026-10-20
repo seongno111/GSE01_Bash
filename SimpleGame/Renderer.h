@@ -6,9 +6,11 @@
 #include <unordered_map>
 #include <cstdint>
 #include <cstddef>
+#include <array>
 #include <filesystem>
 #include "Dependencies/glew.h"
 #include "PostProcessing.h"
+#include "UnitAnimation.h"
 
 struct Point
 {
@@ -65,9 +67,10 @@ public:
     void Resize(int width, int height);
     void Begin(Color background);
     // Submit queued instances in painter order. BeginUI flushes automatically
-    // before post processing; finish each frame with Flush after drawing UI.
+    // before post processing; EndFrame flushes UI and closes the GPU sample.
     void Flush();
     void BeginUI();
+    void EndFrame();
 
     std::uint64_t DrawCalls() const
     {
@@ -91,12 +94,23 @@ public:
         std::uint64_t diskWriteSkips = 0;
         std::uint64_t worldDraws = 0;
         std::uint64_t uiDraws = 0;
+        std::uint64_t bufferOrphans = 0;
+        std::uint64_t streamCapacityBytes = 0;
+        std::uint64_t gpuSampleAge = 0;
+        double gpuWorldMs = -1;
+        double gpuPostMs = -1;
+        double gpuUiMs = -1;
         double diskReadMs = 0;
         double diskWriteMs = 0;
         double meshBuildMs = 0;
         double geometryUploadMs = 0;
         double batchSubmitMs = 0;
     };
+
+    bool GpuTimingAvailable() const
+    {
+        return m_GpuTimingAvailable;
+    }
 
     const FrameStats& Stats() const
     {
@@ -136,6 +150,17 @@ public:
                         const std::function<void()>& builder,
                         Color tint = Color());
     void InvalidateMesh(const std::string& key);
+    // Atlas cells are indexed left-to-right, then top-to-bottom. The visible
+    // alpha bounds determine the aspect ratio; feet is the bottom-center anchor.
+    // Returns false when unavailable so callers can retain procedural fallbacks.
+    bool DrawSprite(unsigned sprite, Point feet, float height, Color tint = Color());
+    // Unit rigs keep one body scale and a grounded pivot across all poses.
+    // Facing changes only the shared quad transform, never geometry or pixels.
+    bool DrawUnitSprite(unsigned sprite,
+                        Point feet,
+                        float height,
+                        const UnitSpritePose& pose,
+                        Color tint = Color());
     size_t CachedMeshCount() const;
     size_t MeshCacheHits() const;
     size_t MeshCacheMisses() const;
@@ -203,6 +228,46 @@ private:
         float axes[4];
         float placement[4];
         float tint[4];
+        float uv[4];
+        float emission[4];
+    };
+
+    struct SpriteRegion
+    {
+        std::array<float, 4> uv{};
+        std::array<float, 4> emission{};
+        float aspect = 0;
+        float heightScale = 1;
+        Point anchor{0.5f, 1};
+        unsigned index = 0;
+    };
+
+    enum class RigPartId : size_t
+    {
+        Chest,
+        Pelvis,
+        FarArm,
+        FarThigh,
+        FarShin,
+        NearThigh,
+        NearShin,
+        NearArm,
+        Count
+    };
+
+    struct RigPart
+    {
+        SpriteRegion region;
+        // Joint locations in the cropped region's normalized coordinates.
+        Point start{0.5f, 0};
+        Point end{0.5f, 1};
+        float boneLength = 0;
+    };
+
+    struct UnitRig
+    {
+        std::array<RigPart, static_cast<size_t>(RigPartId::Count)> parts{};
+        bool ready = false;
     };
 
     struct TriangleInstance
@@ -215,12 +280,23 @@ private:
                                         Point position,
                                         float scale,
                                         const std::function<void()>& builder);
-    void Submit(const CachedMesh& mesh, const Transform& transform, Color tint);
+    void Submit(const CachedMesh& mesh,
+                const Transform& transform,
+                Color tint,
+                const SpriteRegion* sprite = nullptr);
     void DrawPrimitive(const std::string& key,
                        const Transform& transform,
                        Color tint,
                        const std::function<void()>& builder);
     void InitializeMeshCache();
+    void InitializeSpriteAtlas();
+    bool
+    DrawUnitRig(unsigned sprite, Point feet, float height, const UnitSpritePose& pose, Color tint);
+    bool DrawSpriteRegion(const SpriteRegion& region,
+                          Point feet,
+                          float height,
+                          bool facingLeft,
+                          Color tint);
     bool LoadMeshFile(const std::string& key, std::vector<Vertex>& vertices);
     void SaveMeshFile(const std::string& key, const std::vector<Vertex>& vertices);
     void UploadMesh(CachedMesh& mesh);
@@ -251,9 +327,26 @@ private:
     bool m_DiskCacheEnabled = false;
     bool m_DiskWarning = false;
     GLuint m_Atlas = 0;
+    GLuint m_SpriteAtlas = 0;
+    std::array<SpriteRegion, 16> m_SpriteRegions{};
+    std::array<UnitRig, 10> m_UnitRigs{};
     size_t m_AtlasUsed = 0;
     size_t m_AtlasCapacity = 0;
     int m_AtlasSide = 0;
+
+    struct GpuSample
+    {
+        std::array<GLuint, 4> queries{};
+        std::uint64_t frame = 0;
+        bool pending = false;
+    };
+
+    void BeginGpuSample();
+    std::array<GpuSample, 4> m_GpuSamples{};
+    bool m_GpuTimingAvailable = false;
+    int m_ActiveGpuSample = -1;
+    size_t m_InstanceCapacity = 0;
+    size_t m_TriangleCapacity = 0;
     GLuint m_InstanceBuffer = 0;
     GLuint m_InstanceTexture = 0;
     size_t m_MaxInstances = 0;
