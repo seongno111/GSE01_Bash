@@ -148,6 +148,16 @@ void Prototype::Stream()
                     const WorldTileData tile = MakeTile(x * ChunkSize + tx, y * ChunkSize + ty);
                     auto& terrain = m_Scene.Spawn<TerrainActor>(chunk.Id(), *this, tile);
                     terrain.SetLocalPosition(tx, ty);
+                    const WorldPoint position{double(tile.x), double(tile.y)};
+                    const int village = VillageAt(position);
+                    if (village >= 0 && VillageGateAt(position, Villages[size_t(village)]))
+                    {
+                        const auto& town = Villages[size_t(village)];
+                        m_Scene.Spawn<VillageGateActor>(terrain.Id(),
+                                                        *this,
+                                                        town.id,
+                                                        VillageOutwardYaw(position, town));
+                    }
                     if (tile.prop)
                     {
                         m_Scene.Spawn<PropActor>(terrain.Id(), *this, tile.prop, tile.variant);

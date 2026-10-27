@@ -26,7 +26,7 @@ namespace
         "world_visible_actors,ui_visible_actors,world_list_cpu_ms,ui_list_cpu_ms,"
         "gameplay_cpu_ms,npc_cpu_ms,stream_cpu_ms,npc_export_cpu_ms,path_calls,path_nodes,"
         "unaccounted_ms,gpu_world_ms,gpu_post_ms,gpu_ui_ms,gpu_sample_age,buffer_orphans,stream_"
-        "capacity_bytes\n";
+        "capacity_bytes,model_draws,model_uploads,model_pose_bytes\n";
 
     double Milliseconds(std::chrono::steady_clock::duration duration)
     {
@@ -77,7 +77,7 @@ void FrameProfiler::Initialize(Renderer& renderer)
     m_Summary.open(m_LogDirectory / "session.log");
     m_Summary.imbue(std::locale::classic());
     m_Summary
-        << "Profiling schema=3; renderer=ordered-triangle-instancing; mesh-cache=v1\n"
+        << "Profiling schema=4; renderer=ordered-triangles-and-skinned-models; mesh-cache=v1\n"
         << "Build=" << __DATE__ << ' ' << __TIME__ << '\n'
 #ifdef _DEBUG
         << "Configuration=Debug\n"
@@ -276,7 +276,8 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
                << ',' << m_NpcExportMs << ',' << m_PathCalls << ',' << m_PathNodes << ','
                << unaccountedMs << ',' << stats.gpuWorldMs << ',' << stats.gpuPostMs << ','
                << stats.gpuUiMs << ',' << stats.gpuSampleAge << ',' << stats.bufferOrphans << ','
-               << stats.streamCapacityBytes << '\n';
+               << stats.streamCapacityBytes << ',' << stats.modelDraws << ',' << stats.modelUploads
+               << ',' << stats.modelPoseBytes << '\n';
     }
     m_GameplayMs = 0;
     m_NpcMs = 0;
@@ -313,6 +314,8 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
             << " post=" << post.DrawCalls() << " | CPU detail avg ms: npc=" << m_NpcTotal / m_Frames
             << " export=" << m_ExportTotal / m_Frames << " stream=" << m_StreamTotal / m_Frames
             << " cacheIO=" << m_DiskTotal / m_Frames << " pacing/other=" << m_IdleTotal / m_Frames;
+    message << " | Models/frame: draws=" << stats.modelDraws << " uploads=" << stats.modelUploads
+            << " poseBytes=" << stats.modelPoseBytes;
     if (m_GpuSamples)
     {
         message << " | GPU delayed avg ms: world=" << m_GpuWorldTotal / m_GpuSamples

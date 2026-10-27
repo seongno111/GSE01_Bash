@@ -115,6 +115,14 @@ namespace Models
         std::vector<Matrix> inverseBind;
     };
 
+    struct PointLight
+    {
+        int node = -1;
+        Vector color{1, 1, 1, 1};
+        float intensity = 0;
+        float range = 0;
+    };
+
     enum class ChannelPath
     {
         Translation,
@@ -165,6 +173,7 @@ namespace Models
         std::vector<int> evaluationOrder;
         std::vector<int> sceneRoots;
         std::vector<Skin> skins;
+        std::vector<PointLight> pointLights;
         std::vector<Animation> animations;
         std::unordered_map<std::string, int> nodeByName;
         std::unordered_map<std::string, int> animationByName;
@@ -198,6 +207,7 @@ namespace Models
                   bool preservePhase = false,
                   bool restart = false);
         void Advance(float seconds, std::vector<AnimationEvent>& events);
+        void SetTime(double seconds);
 
         const Pose& CurrentPose() const
         {

@@ -67,6 +67,17 @@ bool PostProcessing::CreateTarget(Target& target, int width, int height)
     glGenFramebuffers(1, &target.fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, target.fbo);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, target.texture, 0);
+    if (&target == &m_Scene)
+    {
+        glGenRenderbuffers(1, &target.depth);
+        glBindRenderbuffer(GL_RENDERBUFFER, target.depth);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, width, height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER,
+                                  GL_DEPTH_ATTACHMENT,
+                                  GL_RENDERBUFFER,
+                                  target.depth);
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    }
     glDrawBuffer(GL_COLOR_ATTACHMENT0);
     return target.fbo && target.texture
            && glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
@@ -84,6 +95,10 @@ void PostProcessing::DestroyTargets()
         if (target->texture)
         {
             glDeleteTextures(1, &target->texture);
+        }
+        if (target->depth)
+        {
+            glDeleteRenderbuffers(1, &target->depth);
         }
         *target = {};
     }

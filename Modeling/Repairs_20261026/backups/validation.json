@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "all_vertices_weighted": true,
+    "glb_has_skin": true,
+    "glb_clips_match": true,
+    "real_head_present": true,
+    "lamp_light_exported": true,
+    "unique_part_names": true,
+    "roundtrip_import_animates": true
+  },
+  "meshes": 25,
+  "bones": 33,
+  "clips": 17,
+  "roundtrip": {
+    "bones": 33,
+    "actions": 17,
+    "max_vertex_motion_m": 0.2105800888093197
+  }
+}

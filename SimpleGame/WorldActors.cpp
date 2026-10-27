@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "Villages.h"
 
 #include <algorithm>
 #include <cmath>
@@ -137,6 +138,48 @@ PropActor::PropActor(Prototype& game, int kind, unsigned seed)
 
 void PropActor::Draw(Renderer& r)
 {
+    if (!m_PropModelChecked)
+    {
+        const auto position = WorldPosition();
+        const int village = VillageAt(position);
+        if (village >= 0)
+        {
+            const auto& town = Villages[size_t(village)];
+            unsigned variant = m_Seed;
+            if (m_Kind == 7)
+            {
+                const auto x = std::int64_t(
+                    std::llround((position.x - town.center.x + VillageHalfExtent) / 4));
+                const auto y = std::int64_t(
+                    std::llround((position.y - town.center.y + VillageHalfExtent) / 4));
+                variant = static_cast<unsigned>((x + y) & 1);
+            }
+            const auto visual = m_Game.ModelAssets().VillageProp(town.id, m_Kind, variant);
+            if (visual.model)
+            {
+                m_PropModel = visual.model;
+                m_PropModelScale = visual.scale;
+                const float outward = VillageOutwardYaw(position, town);
+                m_PropModelYaw = m_Kind == 2 ? outward : outward + 3.141592654f;
+            }
+        }
+        if (!m_PropModel)
+        {
+            m_PropModel = m_Game.ModelAssets().GameProp(m_Kind);
+        }
+        m_PropModelChecked = true;
+    }
+    if (r.DrawModel(m_PropModel,
+                    nullptr,
+                    m_Game.Project(WorldX(), WorldY()),
+                    m_Game.Zoom() * m_PropModelScale,
+                    false,
+                    false,
+                    Color(),
+                    m_PropModelYaw))
+    {
+        return;
+    }
     m_Game.DrawProp(r, m_Game.Project(WorldX(), WorldY()), m_Kind, m_Seed);
 }
 
@@ -159,6 +202,30 @@ double PropActor::ColliderRadius() const
         return 0.55;
     }
     return m_Kind == 2 ? 0.62 : 0.36;
+}
+
+VillageGateActor::VillageGateActor(Prototype& game, const std::string& village, float yaw)
+    : GameActor(game, "VillageGate/" + village, TickGroup::None, ActorLayer::World),
+      m_Village(village),
+      m_Yaw(yaw)
+{
+}
+
+void VillageGateActor::Draw(Renderer& renderer)
+{
+    if (!m_Checked)
+    {
+        m_Visual = m_Game.ModelAssets().VillageGate(m_Village);
+        m_Checked = true;
+    }
+    renderer.DrawModel(m_Visual.model,
+                       nullptr,
+                       m_Game.Project(WorldX(), WorldY()),
+                       m_Game.Zoom() * m_Visual.scale,
+                       false,
+                       false,
+                       Color(),
+                       m_Yaw);
 }
 
 AtmosphereActor::AtmosphereActor(Prototype& game, bool ash, int index)

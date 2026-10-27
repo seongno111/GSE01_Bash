@@ -49,5 +49,25 @@ void PlayerActor::Update(float dt)
 
 void PlayerActor::Draw(Renderer& r)
 {
+    const auto pose = SpritePose();
+    const bool mutant = corruption >= MutationThreshold;
+    const std::string clip = mutant ? (pose.attackProgress >= 0 ? "MON_03_Attack"
+                                       : pose.moving            ? "MON_03_Walk"
+                                                                : "MON_03_Idle")
+                             : pose.attackProgress >= 0 ? "HERO_AttackLongsword"
+                             : pose.moving              ? (running ? "HERO_Run" : "HERO_Walk")
+                                                        : "HERO_Idle";
+    if (DrawModel(
+            r,
+            mutant ? "player/mutated" : "player/hero",
+            [&]()
+            {
+                return mutant ? m_Game.ModelAssets().Monster(3) : m_Game.ModelAssets().Player();
+            },
+            clip,
+            pose.attackProgress))
+    {
+        return;
+    }
     m_Game.DrawCharacter(r, m_Game.Project(WorldX(), WorldY()), corruption, false, SpritePose());
 }

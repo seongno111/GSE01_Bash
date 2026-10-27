@@ -47,6 +47,25 @@ inline int VillageAt(WorldPoint point)
     return -1;
 }
 
+inline bool VillageGateAt(WorldPoint point, const VillageDefinition& village)
+{
+    const double dx = point.x - village.center.x;
+    const double dy = point.y - village.center.y;
+    return (std::abs(dx) == GameRules::VillageHalfExtent && dy == 0)
+           || (std::abs(dy) == GameRules::VillageHalfExtent && dx == 0);
+}
+
+inline float VillageOutwardYaw(WorldPoint point, const VillageDefinition& village)
+{
+    const double dx = point.x - village.center.x;
+    const double dy = point.y - village.center.y;
+    if (std::abs(dx) > std::abs(dy))
+    {
+        return dx > 0 ? 1.570796327f : -1.570796327f;
+    }
+    return dy > 0 ? 0.0f : 3.141592654f;
+}
+
 inline WorldPoint VillageRoadWaypoint(WorldPoint from, WorldPoint target)
 {
     const int destinationVillage = VillageAt(target);

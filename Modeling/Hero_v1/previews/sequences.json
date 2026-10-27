@@ -1,0 +1,16 @@
+[
+  {
+    "name": "hero_walk",
+    "clip": "HERO_Walk",
+    "seconds": 1.0,
+    "frames": 12,
+    "path": "previews/hero_walk.gif"
+  },
+  {
+    "name": "hero_lamp",
+    "clip": "HERO_LampInspect",
+    "seconds": 2.0,
+    "frames": 12,
+    "path": "previews/hero_lamp.gif"
+  }
+]

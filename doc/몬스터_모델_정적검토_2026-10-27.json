@@ -1,0 +1,216 @@
+{
+  "method": "Read-only GLB/catalog/source inspection; no compiler, game or Blender execution",
+  "speciesCount": 6,
+  "clipCount": 123,
+  "models": [
+    {
+      "file": "C:\\GameSoftWare\\Modeling\\Monsters_v1\\AshWolf.glb",
+      "sha256": "6e53f4c3097ee42814705dbafda0fac7c6951bb0dd6c517337dca87d6c4ec501",
+      "bytes": 511588,
+      "meshes": 1,
+      "nodes": 25,
+      "vertices": 2733,
+      "triangles": 1035,
+      "weighted_vertices": 2733,
+      "skins": 1,
+      "clips": 20,
+      "maximum_bind_palette_identity_error": 1.6408798708678063e-07,
+      "modelKey": "AshWolf",
+      "speciesId": "ash_wolf",
+      "monsterKind": 3,
+      "height": 1.2000001668930054,
+      "runtimeScale": 1,
+      "renderMeshNodes": [
+        "MON_AshWolf_Body"
+      ],
+      "basicAttack": {
+        "clip": "AshWolf_Bite",
+        "windup_seconds": 0.35,
+        "recovery_seconds": 0.75
+      },
+      "special": {
+        "prepare": "AshWolf_PouncePrepare",
+        "active": "AshWolf_PounceTravel",
+        "recover": "AshWolf_PounceLand",
+        "activation_seconds": 0.45
+      },
+      "specialPlayback": "phases"
+    },
+    {
+      "file": "C:\\GameSoftWare\\Modeling\\Monsters_v1\\BlightBear.glb",
+      "sha256": "fbca92e65b23829c85bea14dea540aa2cd1a0754877f265c44be9258f791cec3",
+      "bytes": 520612,
+      "meshes": 2,
+      "nodes": 27,
+      "vertices": 3264,
+      "triangles": 1200,
+      "weighted_vertices": 3264,
+      "skins": 1,
+      "clips": 19,
+      "maximum_bind_palette_identity_error": 2.4762589345694863e-07,
+      "modelKey": "BlightBear",
+      "speciesId": "blight_bear",
+      "monsterKind": 4,
+      "height": 1.559999942779541,
+      "runtimeScale": 1,
+      "renderMeshNodes": [
+        "MON_BlightBear_Body",
+        "MON_BlightBear_BackCysts"
+      ],
+      "basicAttack": {
+        "clip": "BlightBear_Swipe",
+        "windup_seconds": 0.8,
+        "recovery_seconds": 1.4
+      },
+      "special": {
+        "prepare": "BlightBear_SlamPrepare",
+        "active": "BlightBear_SlamImpact",
+        "recover": "BlightBear_SlamRecover",
+        "activation_seconds": 0.95
+      },
+      "specialPlayback": "full"
+    },
+    {
+      "file": "C:\\GameSoftWare\\Modeling\\Monsters_v1\\ThornStag.glb",
+      "sha256": "232386948ce4216a04f1e099a9f16cbe0ebe2bec7c30e875d050827fcbbfea5e",
+      "bytes": 480068,
+      "meshes": 2,
+      "nodes": 27,
+      "vertices": 2736,
+      "triangles": 1060,
+      "weighted_vertices": 2736,
+      "skins": 1,
+      "clips": 19,
+      "maximum_bind_palette_identity_error": 3.358726795577027e-07,
+      "modelKey": "ThornStag",
+      "speciesId": "thorn_stag",
+      "monsterKind": 5,
+      "height": 2.2600001096725464,
+      "runtimeScale": 1,
+      "renderMeshNodes": [
+        "MON_ThornStag_Body",
+        "MON_ThornStag_ThornCrown"
+      ],
+      "basicAttack": {
+        "clip": "ThornStag_Gore",
+        "windup_seconds": 0.55,
+        "recovery_seconds": 1.1
+      },
+      "special": {
+        "prepare": "ThornStag_ChargePrepare",
+        "active": "ThornStag_ChargeTravel",
+        "recover": "ThornStag_ChargeStop",
+        "activation_seconds": 0.9
+      },
+      "specialPlayback": "phases"
+    },
+    {
+      "file": "C:\\GameSoftWare\\Modeling\\Monsters_v1\\HighDemonAzar.glb",
+      "sha256": "3b9f94f69901d3d8e4d24d0069ee8c7e346b9d248249200e7e980de839ed7d96",
+      "bytes": 831700,
+      "meshes": 4,
+      "nodes": 42,
+      "vertices": 3045,
+      "triangles": 1241,
+      "weighted_vertices": 3045,
+      "skins": 1,
+      "clips": 23,
+      "maximum_bind_palette_identity_error": 3.901751870483139e-07,
+      "modelKey": "HighDemonAzar",
+      "speciesId": "high_demon",
+      "monsterKind": 6,
+      "height": 2.8457000255584717,
+      "runtimeScale": 1,
+      "renderMeshNodes": [
+        "MON_HighDemonAzar_Body",
+        "MON_HighDemonAzar_FoldedWing_L",
+        "MON_HighDemonAzar_FoldedWing_R",
+        "MON_HighDemonAzar_BlackFlame"
+      ],
+      "basicAttack": {
+        "clip": "HighDemonAzar_Volley",
+        "windup_seconds": 1.1,
+        "recovery_seconds": 1.6
+      },
+      "special": {
+        "prepare": "HighDemonAzar_RiftPrepare",
+        "active": "HighDemonAzar_RiftRelease",
+        "recover": "HighDemonAzar_RiftRecover",
+        "activation_seconds": 1.4
+      },
+      "specialPlayback": "full"
+    },
+    {
+      "file": "C:\\GameSoftWare\\Modeling\\Monsters_v1\\FallenPaladin.glb",
+      "sha256": "8f5e39a802a543b556a9e82ddc0321082322a5f17fe4711eb928f07e60edfebf",
+      "bytes": 628408,
+      "meshes": 3,
+      "nodes": 35,
+      "vertices": 3388,
+      "triangles": 1522,
+      "weighted_vertices": 3388,
+      "skins": 1,
+      "clips": 20,
+      "maximum_bind_palette_identity_error": 1.0670558321719943e-06,
+      "modelKey": "FallenPaladin",
+      "speciesId": "fallen_paladin",
+      "monsterKind": 7,
+      "height": 2.005563974380493,
+      "runtimeScale": 1,
+      "renderMeshNodes": [
+        "MON_FallenPaladin_Body",
+        "MON_FallenPaladin_TowerShield",
+        "MON_FallenPaladin_OathSword"
+      ],
+      "basicAttack": {
+        "clip": "FallenPaladin_Slash",
+        "windup_seconds": 0.7,
+        "recovery_seconds": 1.15
+      },
+      "special": {
+        "prepare": "FallenPaladin_WardPrepare",
+        "active": "FallenPaladin_WardHold",
+        "recover": "FallenPaladin_WardEnd",
+        "activation_seconds": 0.6
+      },
+      "specialPlayback": "phases"
+    },
+    {
+      "file": "C:\\GameSoftWare\\Modeling\\Monsters_v1\\FallenPriest.glb",
+      "sha256": "5a6ee7f10016500b0d279808b8be7b921a73a15f0ffed82e7eddf33aef279c8c",
+      "bytes": 579224,
+      "meshes": 3,
+      "nodes": 35,
+      "vertices": 2131,
+      "triangles": 971,
+      "weighted_vertices": 2131,
+      "skins": 1,
+      "clips": 22,
+      "maximum_bind_palette_identity_error": 6.966287379381816e-07,
+      "modelKey": "FallenPriest",
+      "speciesId": "fallen_priest",
+      "monsterKind": 8,
+      "height": 2.069999933242798,
+      "runtimeScale": 1,
+      "renderMeshNodes": [
+        "MON_FallenPriest_Body",
+        "MON_FallenPriest_Staff",
+        "MON_FallenPriest_StitchingTool"
+      ],
+      "basicAttack": {
+        "clip": "FallenPriest_Curse",
+        "windup_seconds": 0.85,
+        "recovery_seconds": 1.25
+      },
+      "special": {
+        "prepare": "FallenPriest_MendPrepare",
+        "active": "FallenPriest_MendRelease",
+        "recover": "FallenPriest_MendRecover",
+        "activation_seconds": 1.2
+      },
+      "specialPlayback": "full"
+    }
+  ],
+  "legacyModelIndices": "Unchanged; species are bound by separate modelKey lookup",
+  "gameplayEvents": "Existing AI performs damage/healing; animation markers are visual only"
+}

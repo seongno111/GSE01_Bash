@@ -51,6 +51,7 @@ private:
     {
         GLuint fbo = 0;
         GLuint texture = 0;
+        GLuint depth = 0;
     };
 
     bool CreateTarget(Target& target, int width, int height);

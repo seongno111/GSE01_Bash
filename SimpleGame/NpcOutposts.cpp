@@ -5,6 +5,7 @@
 #include "GameRules.h"
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 
 using namespace GameRules;
 
@@ -19,23 +20,31 @@ void NpcWorld::InitializeOutposts()
         camp.radius = OutpostInitialPatrolRadius;
         for (int slot = 0; slot < OutpostCapacity; ++slot)
         {
-            auto& enemy = m_Game.SpawnEnemy(slot % 4 == 0 ? 1 : 0);
             const int location = (slot * 7) % OutpostCapacity;
             const auto center = Outposts[index].center;
-            enemy.homeX = center.x + (location % 6 - 2.5) * 3;
-            enemy.homeY = center.y + (location / 6 - 2.5) * 3;
+            WorldPoint home{center.x + (location % 6 - 2.5) * 3,
+                            center.y + (location / 6 - 2.5) * 3};
+            if (!m_Game.FindMonsterSpawn(home, home))
+            {
+                std::cerr << "[Monster] skipped blocked outpost slot=" << slot << " camp=" << index
+                          << '\n';
+                continue;
+            }
+            auto& enemy = m_Game.SpawnEnemy(OutpostMonster(index, slot));
+            enemy.homeX = home.x;
+            enemy.homeY = home.y;
             enemy.SetWorldPosition(enemy.homeX, enemy.homeY);
             enemy.outpost = int(index);
             enemy.alive = slot < OutpostInitialPopulation;
+            camp.spawned += enemy.alive ? 1 : 0;
             enemy.SetEnabled(enemy.alive);
             enemy.nextTargetScan = index * .03 + slot * .07;
             camp.members.push_back(enemy.Id());
             m_Enemies.push_back(enemy.Id());
         }
-        camp.spawned = OutpostInitialPopulation;
         RecordWorldEvent("outpost",
                          std::string(Outposts[index].name) + " 형성: 초기 병력 "
-                             + std::to_string(OutpostInitialPopulation) + " / 정원 "
+                             + std::to_string(camp.spawned) + " / 정원 "
                              + std::to_string(OutpostCapacity),
                          Outposts[index].center);
     }
@@ -87,6 +96,7 @@ void NpcWorld::UpdateOutposts()
             {
                 vacant->SetWorldPosition(vacant->homeX, vacant->homeY);
                 vacant->ResetAnimation();
+                vacant->ResetCombat();
                 vacant->health = vacant->maxHealth;
                 vacant->alive = true;
                 vacant->SetEnabled(true);
@@ -135,9 +145,21 @@ void NpcWorld::UpdateOutposts()
         {
             continue;
         }
+        std::vector<EnemyActor*> raiders;
+        for (auto* enemy : garrison)
+        {
+            if (enemy->kind != MonsterKind::HighDemon)
+            {
+                raiders.push_back(enemy);
+            }
+        }
+        if (raiders.size() < OutpostWaveSize)
+        {
+            continue;
+        }
         for (int member = 0; member < OutpostWaveSize; ++member)
         {
-            auto& enemy = *garrison[member];
+            auto& enemy = *raiders[member];
             enemy.raidVillage = target;
             enemy.returningToOutpost = false;
             enemy.raidUntil = m_Time
@@ -154,7 +176,7 @@ void NpcWorld::UpdateOutposts()
                              + " 집단 습격: " + std::to_string(OutpostWaveSize) + "마리 / 웨이브 "
                              + std::to_string(camp.waves),
                          center,
-                         garrison.front());
+                         raiders.front());
     }
 }
 
@@ -191,9 +213,11 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     }
     const bool beyondLeash =
         enemy.raidVillage < 0
-        && Length(enemy.WorldX() - center.x, enemy.WorldY() - center.y) > enemy.patrolRadius + 2;
-    enemy.recovery = (std::max)(0.0f, enemy.recovery - dt);
-    if (m_Time >= enemy.nextTargetScan && enemy.attackWindup <= 0)
+        && Length(enemy.WorldX() - center.x, enemy.WorldY() - center.y)
+               > (enemy.kind == MonsterKind::HighDemon ? enemy.Definition().leashRange
+                                                       : enemy.patrolRadius)
+                     + 2;
+    if (m_Time >= enemy.nextTargetScan && !enemy.CommittingAttack())
     {
         enemy.nextTargetScan = m_Time + .5;
         Actor* target = beyondLeash || enemy.returningToOutpost ? nullptr : EnemyTarget(enemy);
@@ -215,6 +239,17 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
         && Length(enemy.WorldX() - enemy.homeX, enemy.WorldY() - enemy.homeY) < 3)
     {
         enemy.health = (std::min)(enemy.maxHealth, enemy.health + dt * 2);
+    }
+    if (enemy.UsesMonsterTactics())
+    {
+        if (enemy.UpdateMonsterTactics(dt, target, beyondLeash || enemy.returningToOutpost))
+        {
+            return true;
+        }
+    }
+    else
+    {
+        enemy.recovery = (std::max)(0.0f, enemy.recovery - dt);
     }
     if (enemy.attackWindup > 0)
     {
@@ -253,7 +288,9 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     {
         const double phase =
             double(Hash(enemy.Id(), std::int64_t(m_Time / 12), m_Seed) % 6283) * .001;
-        const double radius = enemy.Id() % 3 == 0 ? enemy.patrolRadius : 9.0;
+        const double radius = enemy.kind == MonsterKind::HighDemon ? 9.0
+                              : enemy.Id() % 3 == 0                ? enemy.patrolRadius
+                                                                   : 9.0;
         const WorldPoint patrol{center.x + std::cos(phase) * radius,
                                 center.y + std::sin(phase) * radius};
         if (Walkable(patrol.x, patrol.y) && !InsideSanctuary(patrol.x, patrol.y))

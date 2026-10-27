@@ -8,7 +8,7 @@ let data = null;
 let selected = null;
 let paused = false;
 const eventNames = { murder: '살인', kill: '인간 격퇴', death: '사망', rumor: '소문 전달', hunt: '토벌', raid: '약탈', heal: '치료', blessing: '축복', trade: '거래', frenzy: '광폭화' };
-Object.assign(eventNames, { expedition: '원정 출발', expedition_arrival: '원정 도착', expedition_return: '원정 귀환', expedition_failed: '원정 중단', village_rumor: '마을 소문 교환', outpost: '적 거점 형성', outpost_spawn: '거점 증원', outpost_expansion: '행동 반경 확대', monster_wave: '집단 습격', wave_retreat: '습격 철수', pigeon_departure: '전서구 발송', pigeon_arrival: '전서구 도착', pigeon_rumor: '전서구 소식', migration_departure: '이사 출발', migration_arrival: '이사 완료', migration_failed: '이사 보류' });
+Object.assign(eventNames, { monster_ability: '몬스터 특수 행동', monster_heal: '오염 봉합', monster_enrage: '몬스터 광폭화', expedition: '원정 출발', expedition_arrival: '원정 도착', expedition_return: '원정 귀환', expedition_failed: '원정 중단', village_rumor: '마을 소문 교환', outpost: '적 거점 형성', outpost_spawn: '거점 증원', outpost_expansion: '행동 반경 확대', monster_wave: '집단 습격', wave_retreat: '습격 철수', pigeon_departure: '전서구 발송', pigeon_arrival: '전서구 도착', pigeon_rumor: '전서구 소식', migration_departure: '이사 출발', migration_arrival: '이사 완료', migration_failed: '이사 보류' });
 
 function structuredEvents() {
     return (data?.events || []).filter(event => event && typeof event === 'object');
@@ -233,7 +233,7 @@ function renderSnapshot(value) {
     options('event-village', data.villages.map(v => [v.id, v.name]), '<option value="">모든 장소</option><option value="outside">마을 밖</option>');
     const recent = data.schemaVersion >= 2 ? structuredEvents().slice(-5).map(event => `${number(event.time, 1)}초 · ${eventNames[event.type] || event.type} · ${event.text}`) : data.events;
     $('events').innerHTML = [...recent].reverse().map(event => `<li>${escape(event)}</li>`).join('') || '<li>최근 사건 없음</li>';
-    $('monsters').innerHTML = data.monsters.map(m => `<tr><td>${escape(m.name)}<small>${escape(m.id)}</small></td><td>${escape(m.kind)}</td><td>${!m.enabled ? '비활성' : m.alive ? '활성' : '사망'}</td><td>${number(m.health)} / ${number(m.maxHealth)}</td><td>${position(m.position)}</td></tr>`).join('');
+    $('monsters').innerHTML = data.monsters.map(m => `<tr><td>${escape(m.name)}<small>${escape(m.id)}</small></td><td>${escape(m.family || m.kind)}<small>${escape(m.state || '')}${m.enraged ? ' · 광폭화' : ''}</small></td><td>${!m.enabled ? '비활성' : m.alive ? '활성' : '사망'}</td><td>${number(m.health)} / ${number(m.maxHealth)}</td><td>${position(m.position)}</td></tr>`).join('');
     renderResidents();
     renderEvents();
 }

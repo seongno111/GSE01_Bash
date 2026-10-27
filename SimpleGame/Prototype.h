@@ -145,6 +145,10 @@ private:
     float ProjectileCooldown() const;
     int ExperienceRequired() const;
     void DrawEnemyMesh(Renderer& r, Point p, const EnemyActor& enemy);
+    void DrawMonsterProxy(Renderer& r, Point p, const EnemyActor& enemy);
+    void DrawMonsterIndicators(Renderer& r, Point p, const EnemyActor& enemy);
+    void InitializeMonsterEcology();
+    bool FindMonsterSpawn(WorldPoint desired, WorldPoint& result) const;
     void DrawLevelOneUI(Renderer& r);
 
     using ChunkKey = std::pair<std::int64_t, std::int64_t>;

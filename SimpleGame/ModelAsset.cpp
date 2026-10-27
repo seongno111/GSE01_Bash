@@ -335,10 +335,10 @@ namespace Models
         for (size_t i = 0; i < data->extensions_required_count; ++i)
         {
             const std::string extension = data->extensions_required[i];
-            Require(extension == "KHR_materials_emissive_strength"
-                        || extension == "KHR_materials_unlit"
-                        || extension == "KHR_texture_transform",
-                    "Asset requires an unsupported glTF extension");
+            Require(
+                extension == "KHR_materials_emissive_strength" || extension == "KHR_materials_unlit"
+                    || extension == "KHR_texture_transform" || extension == "KHR_lights_punctual",
+                "Asset requires an unsupported glTF extension");
         }
         size_t totalBytes = 0;
         for (size_t i = 0; i < data->buffers_count; ++i)
@@ -448,6 +448,17 @@ namespace Models
                         "Duplicate node name makes catalog selection ambiguous");
             }
             asset->nodes.push_back(std::move(node));
+            if (input.light)
+            {
+                Require(input.light->type == cgltf_light_type_point,
+                        "Only point lights are supported by this model renderer");
+                PointLight light;
+                light.node = static_cast<int>(i);
+                std::copy_n(input.light->color, 3, light.color.begin());
+                light.intensity = input.light->intensity;
+                light.range = input.light->range;
+                asset->pointLights.push_back(light);
+            }
         }
         // The GLB node array and skin palette are not necessarily in parent-first order.
         std::vector<int> marks(asset->nodes.size());

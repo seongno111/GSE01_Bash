@@ -1,0 +1,3132 @@
+{
+  "schema_version": 3,
+  "units": "meter",
+  "blender_axes": "Z up, front -Y, character left +X",
+  "gltf_axes": "Y up, front +Z, character left +X",
+  "origin": "All NPC parts share (0,0,0) at sole center; apply zero local transform when assembling.",
+  "height_m": 1.8,
+  "hair_max_height_m": 1.84,
+  "none_index": -1,
+  "slots": [
+    {
+      "slot_index": 0,
+      "name": "head"
+    },
+    {
+      "slot_index": 1,
+      "name": "hair"
+    },
+    {
+      "slot_index": 2,
+      "name": "torso"
+    },
+    {
+      "slot_index": 3,
+      "name": "upper_arm_l"
+    },
+    {
+      "slot_index": 4,
+      "name": "upper_arm_r"
+    },
+    {
+      "slot_index": 5,
+      "name": "forearm_l"
+    },
+    {
+      "slot_index": 6,
+      "name": "forearm_r"
+    },
+    {
+      "slot_index": 7,
+      "name": "hand_l"
+    },
+    {
+      "slot_index": 8,
+      "name": "hand_r"
+    },
+    {
+      "slot_index": 9,
+      "name": "pelvis"
+    },
+    {
+      "slot_index": 10,
+      "name": "thigh_l"
+    },
+    {
+      "slot_index": 11,
+      "name": "thigh_r"
+    },
+    {
+      "slot_index": 12,
+      "name": "shin_l"
+    },
+    {
+      "slot_index": 13,
+      "name": "shin_r"
+    },
+    {
+      "slot_index": 14,
+      "name": "foot_l"
+    },
+    {
+      "slot_index": 15,
+      "name": "foot_r"
+    },
+    {
+      "slot_index": 16,
+      "name": "skirt"
+    },
+    {
+      "slot_index": 17,
+      "name": "accessory_back"
+    },
+    {
+      "slot_index": 18,
+      "name": "accessory_waist"
+    },
+    {
+      "slot_index": 19,
+      "name": "accessory_hand"
+    },
+    {
+      "slot_index": 20,
+      "name": "headgear"
+    }
+  ],
+  "roles": [
+    {
+      "role_index": 0,
+      "name": "Priest"
+    },
+    {
+      "role_index": 1,
+      "name": "Knight"
+    },
+    {
+      "role_index": 2,
+      "name": "Adventurer"
+    },
+    {
+      "role_index": 3,
+      "name": "Raider"
+    },
+    {
+      "role_index": 4,
+      "name": "Merchant"
+    }
+  ],
+  "sexes": [
+    {
+      "sex_index": 0,
+      "name": "Male"
+    },
+    {
+      "sex_index": 1,
+      "name": "Female"
+    }
+  ],
+  "hair_styles": [
+    {
+      "part_index": 0,
+      "name": "Short"
+    },
+    {
+      "part_index": 1,
+      "name": "Long"
+    }
+  ],
+  "parts": [
+    {
+      "slot": "head",
+      "slot_index": 0,
+      "part_index": 0,
+      "mesh": "NPC_HEAD_00_Male",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "triangles": 220,
+      "vertices": 130,
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ]
+    },
+    {
+      "slot": "head",
+      "slot_index": 0,
+      "part_index": 1,
+      "mesh": "NPC_HEAD_01_Female",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "triangles": 240,
+      "vertices": 142,
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ]
+    },
+    {
+      "slot": "hair",
+      "slot_index": 1,
+      "part_index": 0,
+      "mesh": "NPC_HAIR_00_Short",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "triangles": 152,
+      "vertices": 84,
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ]
+    },
+    {
+      "slot": "hair",
+      "slot_index": 1,
+      "part_index": 1,
+      "mesh": "NPC_HAIR_01_Long",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "triangles": 272,
+      "vertices": 150,
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ]
+    },
+    {
+      "slot": "torso",
+      "slot_index": 2,
+      "part_index": 0,
+      "mesh": "NPC_TORSO_00_Tunic",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.8
+      ],
+      "triangles": 68,
+      "vertices": 40,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.8,
+        0
+      ]
+    },
+    {
+      "slot": "torso",
+      "slot_index": 2,
+      "part_index": 1,
+      "mesh": "NPC_TORSO_01_Armor",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.8
+      ],
+      "triangles": 226,
+      "vertices": 138,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.8,
+        0
+      ]
+    },
+    {
+      "slot": "torso",
+      "slot_index": 2,
+      "part_index": 2,
+      "mesh": "NPC_TORSO_02_Priest",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.8
+      ],
+      "triangles": 140,
+      "vertices": 84,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.8,
+        0
+      ]
+    },
+    {
+      "slot": "upper_arm_l",
+      "slot_index": 3,
+      "part_index": 0,
+      "mesh": "NPC_UPPER_ARM_L_00_Tunic",
+      "joint_pivot_blender_z_up": [
+        0.28,
+        0,
+        1.16
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        0.28,
+        1.16,
+        0
+      ]
+    },
+    {
+      "slot": "forearm_l",
+      "slot_index": 5,
+      "part_index": 0,
+      "mesh": "NPC_FOREARM_L_00_Tunic",
+      "joint_pivot_blender_z_up": [
+        0.43,
+        0,
+        0.965
+      ],
+      "triangles": 60,
+      "vertices": 36,
+      "joint_pivot_gltf_y_up": [
+        0.43,
+        0.965,
+        0
+      ]
+    },
+    {
+      "slot": "upper_arm_l",
+      "slot_index": 3,
+      "part_index": 1,
+      "mesh": "NPC_UPPER_ARM_L_01_Armor",
+      "joint_pivot_blender_z_up": [
+        0.28,
+        0,
+        1.16
+      ],
+      "triangles": 72,
+      "vertices": 44,
+      "joint_pivot_gltf_y_up": [
+        0.28,
+        1.16,
+        0
+      ]
+    },
+    {
+      "slot": "forearm_l",
+      "slot_index": 5,
+      "part_index": 1,
+      "mesh": "NPC_FOREARM_L_01_Armor",
+      "joint_pivot_blender_z_up": [
+        0.43,
+        0,
+        0.965
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        0.43,
+        0.965,
+        0
+      ]
+    },
+    {
+      "slot": "upper_arm_l",
+      "slot_index": 3,
+      "part_index": 2,
+      "mesh": "NPC_UPPER_ARM_L_02_Priest",
+      "joint_pivot_blender_z_up": [
+        0.28,
+        0,
+        1.16
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        0.28,
+        1.16,
+        0
+      ]
+    },
+    {
+      "slot": "forearm_l",
+      "slot_index": 5,
+      "part_index": 2,
+      "mesh": "NPC_FOREARM_L_02_Priest",
+      "joint_pivot_blender_z_up": [
+        0.43,
+        0,
+        0.965
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        0.43,
+        0.965,
+        0
+      ]
+    },
+    {
+      "slot": "hand_l",
+      "slot_index": 7,
+      "part_index": 0,
+      "mesh": "NPC_HAND_L_00_Shared",
+      "joint_pivot_blender_z_up": [
+        0.48,
+        -0.01,
+        0.79
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        0.48,
+        0.79,
+        0.01
+      ]
+    },
+    {
+      "slot": "thigh_l",
+      "slot_index": 10,
+      "part_index": 0,
+      "mesh": "NPC_THIGH_L_00_Pants",
+      "joint_pivot_blender_z_up": [
+        0.125,
+        0,
+        0.65
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        0.125,
+        0.65,
+        0
+      ]
+    },
+    {
+      "slot": "shin_l",
+      "slot_index": 12,
+      "part_index": 0,
+      "mesh": "NPC_SHIN_L_00_Pants",
+      "joint_pivot_blender_z_up": [
+        0.14,
+        0,
+        0.39
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        0.14,
+        0.39,
+        0
+      ]
+    },
+    {
+      "slot": "thigh_l",
+      "slot_index": 10,
+      "part_index": 1,
+      "mesh": "NPC_THIGH_L_01_Armor",
+      "joint_pivot_blender_z_up": [
+        0.125,
+        0,
+        0.65
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        0.125,
+        0.65,
+        0
+      ]
+    },
+    {
+      "slot": "shin_l",
+      "slot_index": 12,
+      "part_index": 1,
+      "mesh": "NPC_SHIN_L_01_Armor",
+      "joint_pivot_blender_z_up": [
+        0.14,
+        0,
+        0.39
+      ],
+      "triangles": 72,
+      "vertices": 44,
+      "joint_pivot_gltf_y_up": [
+        0.14,
+        0.39,
+        0
+      ]
+    },
+    {
+      "slot": "foot_l",
+      "slot_index": 14,
+      "part_index": 0,
+      "mesh": "NPC_FOOT_L_00_Boot",
+      "joint_pivot_blender_z_up": [
+        0.14,
+        0,
+        0.13
+      ],
+      "triangles": 12,
+      "vertices": 8,
+      "joint_pivot_gltf_y_up": [
+        0.14,
+        0.13,
+        0
+      ]
+    },
+    {
+      "slot": "upper_arm_r",
+      "slot_index": 4,
+      "part_index": 0,
+      "mesh": "NPC_UPPER_ARM_R_00_Tunic",
+      "joint_pivot_blender_z_up": [
+        -0.28,
+        0,
+        1.16
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        -0.28,
+        1.16,
+        0
+      ]
+    },
+    {
+      "slot": "forearm_r",
+      "slot_index": 6,
+      "part_index": 0,
+      "mesh": "NPC_FOREARM_R_00_Tunic",
+      "joint_pivot_blender_z_up": [
+        -0.43,
+        0,
+        0.965
+      ],
+      "triangles": 60,
+      "vertices": 36,
+      "joint_pivot_gltf_y_up": [
+        -0.43,
+        0.965,
+        0
+      ]
+    },
+    {
+      "slot": "upper_arm_r",
+      "slot_index": 4,
+      "part_index": 1,
+      "mesh": "NPC_UPPER_ARM_R_01_Armor",
+      "joint_pivot_blender_z_up": [
+        -0.28,
+        0,
+        1.16
+      ],
+      "triangles": 72,
+      "vertices": 44,
+      "joint_pivot_gltf_y_up": [
+        -0.28,
+        1.16,
+        0
+      ]
+    },
+    {
+      "slot": "forearm_r",
+      "slot_index": 6,
+      "part_index": 1,
+      "mesh": "NPC_FOREARM_R_01_Armor",
+      "joint_pivot_blender_z_up": [
+        -0.43,
+        0,
+        0.965
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        -0.43,
+        0.965,
+        0
+      ]
+    },
+    {
+      "slot": "upper_arm_r",
+      "slot_index": 4,
+      "part_index": 2,
+      "mesh": "NPC_UPPER_ARM_R_02_Priest",
+      "joint_pivot_blender_z_up": [
+        -0.28,
+        0,
+        1.16
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        -0.28,
+        1.16,
+        0
+      ]
+    },
+    {
+      "slot": "forearm_r",
+      "slot_index": 6,
+      "part_index": 2,
+      "mesh": "NPC_FOREARM_R_02_Priest",
+      "joint_pivot_blender_z_up": [
+        -0.43,
+        0,
+        0.965
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        -0.43,
+        0.965,
+        0
+      ]
+    },
+    {
+      "slot": "hand_r",
+      "slot_index": 8,
+      "part_index": 0,
+      "mesh": "NPC_HAND_R_00_Shared",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ]
+    },
+    {
+      "slot": "thigh_r",
+      "slot_index": 11,
+      "part_index": 0,
+      "mesh": "NPC_THIGH_R_00_Pants",
+      "joint_pivot_blender_z_up": [
+        -0.125,
+        0,
+        0.65
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        -0.125,
+        0.65,
+        0
+      ]
+    },
+    {
+      "slot": "shin_r",
+      "slot_index": 13,
+      "part_index": 0,
+      "mesh": "NPC_SHIN_R_00_Pants",
+      "joint_pivot_blender_z_up": [
+        -0.14,
+        0,
+        0.39
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        -0.14,
+        0.39,
+        0
+      ]
+    },
+    {
+      "slot": "thigh_r",
+      "slot_index": 11,
+      "part_index": 1,
+      "mesh": "NPC_THIGH_R_01_Armor",
+      "joint_pivot_blender_z_up": [
+        -0.125,
+        0,
+        0.65
+      ],
+      "triangles": 20,
+      "vertices": 12,
+      "joint_pivot_gltf_y_up": [
+        -0.125,
+        0.65,
+        0
+      ]
+    },
+    {
+      "slot": "shin_r",
+      "slot_index": 13,
+      "part_index": 1,
+      "mesh": "NPC_SHIN_R_01_Armor",
+      "joint_pivot_blender_z_up": [
+        -0.14,
+        0,
+        0.39
+      ],
+      "triangles": 72,
+      "vertices": 44,
+      "joint_pivot_gltf_y_up": [
+        -0.14,
+        0.39,
+        0
+      ]
+    },
+    {
+      "slot": "foot_r",
+      "slot_index": 15,
+      "part_index": 0,
+      "mesh": "NPC_FOOT_R_00_Boot",
+      "joint_pivot_blender_z_up": [
+        -0.14,
+        0,
+        0.13
+      ],
+      "triangles": 12,
+      "vertices": 8,
+      "joint_pivot_gltf_y_up": [
+        -0.14,
+        0.13,
+        0
+      ]
+    },
+    {
+      "slot": "pelvis",
+      "slot_index": 9,
+      "part_index": 0,
+      "mesh": "NPC_PELVIS_00_BeltPants",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.72
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.72,
+        0
+      ]
+    },
+    {
+      "slot": "pelvis",
+      "slot_index": 9,
+      "part_index": 1,
+      "mesh": "NPC_PELVIS_01_BeltArmor",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.72
+      ],
+      "triangles": 40,
+      "vertices": 24,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.72,
+        0
+      ]
+    },
+    {
+      "slot": "skirt",
+      "slot_index": 16,
+      "part_index": 0,
+      "mesh": "NPC_SKIRT_00_Priest",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.76
+      ],
+      "triangles": 44,
+      "vertices": 36,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.76,
+        0
+      ]
+    },
+    {
+      "slot": "accessory_back",
+      "slot_index": 17,
+      "part_index": 0,
+      "mesh": "NPC_ACCESSORY_BACK_00_TravelerPack",
+      "joint_pivot_blender_z_up": [
+        0,
+        0.23,
+        1.1
+      ],
+      "triangles": 56,
+      "vertices": 36,
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.1,
+        -0.23
+      ]
+    },
+    {
+      "slot": "accessory_waist",
+      "slot_index": 18,
+      "part_index": 0,
+      "mesh": "NPC_ACCESSORY_WAIST_00_MerchantPouches",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        0.76
+      ],
+      "triangles": 52,
+      "vertices": 32,
+      "joint_pivot_gltf_y_up": [
+        0,
+        0.76,
+        0
+      ]
+    },
+    {
+      "slot": "accessory_back",
+      "slot_index": 17,
+      "part_index": 1,
+      "mesh": "NPC_ACCESSORY_BACK_01_RaiderSpikes",
+      "joint_pivot_blender_z_up": [
+        0,
+        0.23,
+        1.1
+      ],
+      "triangles": 58,
+      "vertices": 37,
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.1,
+        -0.23
+      ]
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 0,
+      "mesh": "NPC_ACCESSORY_HAND_00_PriestStaff",
+      "joint_pivot_blender_z_up": [
+        -0.49,
+        -0.06,
+        0.74
+      ],
+      "triangles": 68,
+      "vertices": 40,
+      "joint_pivot_gltf_y_up": [
+        -0.49,
+        0.74,
+        0.06
+      ]
+    },
+    {
+      "slot": "accessory_waist",
+      "slot_index": 18,
+      "part_index": 1,
+      "mesh": "NPC_ACCESSORY_WAIST_01_KnightSword",
+      "joint_pivot_blender_z_up": [
+        0.3,
+        0,
+        0.76
+      ],
+      "triangles": 60,
+      "vertices": 36,
+      "joint_pivot_gltf_y_up": [
+        0.3,
+        0.76,
+        0
+      ]
+    },
+    {
+      "slot": "headgear",
+      "slot_index": 20,
+      "part_index": 0,
+      "mesh": "NPC_HEADGEAR_00_AshKnightClosed",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ],
+      "hides_hair": true,
+      "hides_head": false,
+      "triangles": 354,
+      "vertices": 226
+    },
+    {
+      "slot": "headgear",
+      "slot_index": 20,
+      "part_index": 1,
+      "mesh": "NPC_HEADGEAR_01_WardenOpenHelm",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ],
+      "hides_hair": true,
+      "hides_head": false,
+      "triangles": 158,
+      "vertices": 100
+    },
+    {
+      "slot": "headgear",
+      "slot_index": 20,
+      "part_index": 2,
+      "mesh": "NPC_HEADGEAR_02_CinderClericMitre",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ],
+      "hides_hair": true,
+      "hides_head": false,
+      "triangles": 108,
+      "vertices": 66
+    },
+    {
+      "slot": "headgear",
+      "slot_index": 20,
+      "part_index": 3,
+      "mesh": "NPC_HEADGEAR_03_PilgrimHood",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ],
+      "hides_hair": true,
+      "hides_head": false,
+      "triangles": 209,
+      "vertices": 125
+    },
+    {
+      "slot": "headgear",
+      "slot_index": 20,
+      "part_index": 4,
+      "mesh": "NPC_HEADGEAR_04_RaggedHood",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ],
+      "hides_hair": true,
+      "hides_head": false,
+      "triangles": 191,
+      "vertices": 119
+    },
+    {
+      "slot": "headgear",
+      "slot_index": 20,
+      "part_index": 5,
+      "mesh": "NPC_HEADGEAR_05_WayfarerCap",
+      "joint_pivot_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "joint_pivot_gltf_y_up": [
+        0,
+        1.2,
+        0
+      ],
+      "hides_hair": true,
+      "hides_head": false,
+      "triangles": 112,
+      "vertices": 64
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 1,
+      "mesh": "NPC_ACCESSORY_HAND_01_DrawnSword",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ],
+      "triangles": 60,
+      "vertices": 36
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 2,
+      "mesh": "NPC_ACCESSORY_HAND_02_HunterBow",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ],
+      "triangles": 140,
+      "vertices": 84
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 3,
+      "mesh": "NPC_ACCESSORY_HAND_03_ThrowingKnife",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ],
+      "triangles": 40,
+      "vertices": 24
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 4,
+      "mesh": "NPC_ACCESSORY_HAND_04_ThrowingStone",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ],
+      "triangles": 20,
+      "vertices": 12
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 5,
+      "mesh": "NPC_ACCESSORY_HAND_05_WorkHammer",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ],
+      "triangles": 32,
+      "vertices": 20
+    },
+    {
+      "slot": "accessory_hand",
+      "slot_index": 19,
+      "part_index": 6,
+      "mesh": "NPC_ACCESSORY_HAND_06_MedicineVial",
+      "joint_pivot_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "joint_pivot_gltf_y_up": [
+        -0.48,
+        0.79,
+        0.01
+      ],
+      "triangles": 40,
+      "vertices": 24
+    }
+  ],
+  "props": [
+    {
+      "prop_index": 0,
+      "mesh": "PROP_000_RefugeHouse",
+      "label": "RefugeHouse",
+      "triangles": 404,
+      "vertices": 262
+    },
+    {
+      "prop_index": 1,
+      "mesh": "PROP_001_SanctuaryChapel",
+      "label": "SanctuaryChapel",
+      "triangles": 434,
+      "vertices": 283
+    },
+    {
+      "prop_index": 2,
+      "mesh": "PROP_002_MarketStall",
+      "label": "MarketStall",
+      "triangles": 160,
+      "vertices": 98
+    },
+    {
+      "prop_index": 3,
+      "mesh": "PROP_003_Gravestone",
+      "label": "Gravestone",
+      "triangles": 108,
+      "vertices": 68
+    },
+    {
+      "prop_index": 4,
+      "mesh": "PROP_004_MemorialStele",
+      "label": "MemorialStele",
+      "triangles": 100,
+      "vertices": 62
+    },
+    {
+      "prop_index": 5,
+      "mesh": "PROP_005_Campfire",
+      "label": "Campfire",
+      "triangles": 252,
+      "vertices": 152
+    },
+    {
+      "prop_index": 6,
+      "mesh": "PROP_006_SanctuaryBrazier",
+      "label": "SanctuaryBrazier",
+      "triangles": 72,
+      "vertices": 44
+    },
+    {
+      "prop_index": 7,
+      "mesh": "PROP_007_SupplyCrate",
+      "label": "SupplyCrate",
+      "triangles": 92,
+      "vertices": 60
+    },
+    {
+      "prop_index": 8,
+      "mesh": "PROP_008_Barrel",
+      "label": "Barrel",
+      "triangles": 108,
+      "vertices": 60
+    },
+    {
+      "prop_index": 9,
+      "mesh": "PROP_009_RuinedWall",
+      "label": "RuinedWall",
+      "triangles": 188,
+      "vertices": 120
+    },
+    {
+      "prop_index": 10,
+      "mesh": "PROP_010_WaySign",
+      "label": "WaySign",
+      "triangles": 44,
+      "vertices": 28
+    },
+    {
+      "prop_index": 11,
+      "mesh": "PROP_011_CorruptedBeacon",
+      "label": "CorruptedBeacon",
+      "triangles": 56,
+      "vertices": 36
+    },
+    {
+      "prop_index": 12,
+      "mesh": "PROP_012_DeadTree",
+      "label": "DeadTree",
+      "triangles": 80,
+      "vertices": 48
+    },
+    {
+      "prop_index": 13,
+      "mesh": "PROP_013_SanctuaryAltar",
+      "label": "SanctuaryAltar",
+      "triangles": 136,
+      "vertices": 84
+    },
+    {
+      "prop_index": 14,
+      "mesh": "PROP_014_FieldBoulder",
+      "label": "FieldBoulder",
+      "triangles": 40,
+      "vertices": 24
+    },
+    {
+      "prop_index": 15,
+      "mesh": "PROP_015_CrossGrave",
+      "label": "CrossGrave",
+      "triangles": 64,
+      "vertices": 40
+    },
+    {
+      "prop_index": 16,
+      "mesh": "PROP_016_TrainingDummy",
+      "label": "TrainingDummy",
+      "triangles": 104,
+      "vertices": 64
+    },
+    {
+      "prop_index": 17,
+      "mesh": "PROP_017_OutpostBanner",
+      "label": "OutpostBanner",
+      "triangles": 55,
+      "vertices": 37
+    },
+    {
+      "prop_index": 18,
+      "mesh": "PROP_018_VillageWorkshop",
+      "label": "VillageWorkshop",
+      "triangles": 106,
+      "vertices": 70
+    },
+    {
+      "prop_index": 19,
+      "mesh": "PROP_019_RuinedChapel",
+      "label": "RuinedChapel",
+      "triangles": 324,
+      "vertices": 205
+    },
+    {
+      "prop_index": 20,
+      "mesh": "PROP_020_WitheredLeafTree",
+      "label": "WitheredLeafTree",
+      "triangles": 260,
+      "vertices": 156
+    },
+    {
+      "prop_index": 21,
+      "mesh": "PROP_021_ThornShrub",
+      "label": "ThornShrub",
+      "triangles": 290,
+      "vertices": 183
+    },
+    {
+      "prop_index": 22,
+      "mesh": "PROP_022_DryGrassClump",
+      "label": "DryGrassClump",
+      "triangles": 42,
+      "vertices": 70
+    },
+    {
+      "prop_index": 23,
+      "mesh": "PROP_023_AshGrassClump",
+      "label": "AshGrassClump",
+      "triangles": 42,
+      "vertices": 70
+    },
+    {
+      "prop_index": 24,
+      "mesh": "PROP_024_TaintedGrassClump",
+      "label": "TaintedGrassClump",
+      "triangles": 42,
+      "vertices": 70
+    },
+    {
+      "prop_index": 25,
+      "mesh": "PROP_025_RubblePile",
+      "label": "RubblePile",
+      "triangles": 180,
+      "vertices": 108
+    },
+    {
+      "prop_index": 26,
+      "mesh": "PROP_026_CobbleRoadTile",
+      "label": "CobbleRoadTile",
+      "triangles": 120,
+      "vertices": 80
+    },
+    {
+      "prop_index": 27,
+      "mesh": "PROP_027_AshEarthTile",
+      "label": "AshEarthTile",
+      "triangles": 152,
+      "vertices": 92
+    },
+    {
+      "prop_index": 28,
+      "mesh": "PROP_028_TaintedEarthTile",
+      "label": "TaintedEarthTile",
+      "triangles": 52,
+      "vertices": 32
+    },
+    {
+      "prop_index": 29,
+      "mesh": "PROP_029_BrokenFence",
+      "label": "BrokenFence",
+      "triangles": 80,
+      "vertices": 48
+    },
+    {
+      "prop_index": 30,
+      "mesh": "PROP_030_TreeStump",
+      "label": "TreeStump",
+      "triangles": 104,
+      "vertices": 62
+    },
+    {
+      "prop_index": 31,
+      "mesh": "PROP_031_HangingLantern",
+      "label": "HangingLantern",
+      "triangles": 56,
+      "vertices": 36
+    },
+    {
+      "prop_index": 32,
+      "mesh": "PROP_032_VillageWell",
+      "label": "VillageWell",
+      "triangles": 168,
+      "vertices": 96
+    }
+  ],
+  "npc_presets": [
+    {
+      "preset_id": "NPC_PRIEST_M_SHORT_GEAR2",
+      "role_index": 0,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        -1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        2
+      ],
+      "headgear_index": 2
+    },
+    {
+      "preset_id": "NPC_PRIEST_M_LONG_GEAR3",
+      "role_index": 0,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        -1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        3
+      ],
+      "headgear_index": 3
+    },
+    {
+      "preset_id": "NPC_PRIEST_F_SHORT_GEAR2",
+      "role_index": 0,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        -1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        2
+      ],
+      "headgear_index": 2
+    },
+    {
+      "preset_id": "NPC_PRIEST_F_LONG_GEAR3",
+      "role_index": 0,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        -1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        3
+      ],
+      "headgear_index": 3
+    },
+    {
+      "preset_id": "NPC_KNIGHT_M_SHORT_GEAR0",
+      "role_index": 1,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "headgear_index": 0
+    },
+    {
+      "preset_id": "NPC_KNIGHT_M_LONG_GEAR1",
+      "role_index": 1,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "headgear_index": 1
+    },
+    {
+      "preset_id": "NPC_KNIGHT_F_SHORT_GEAR0",
+      "role_index": 1,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "headgear_index": 0
+    },
+    {
+      "preset_id": "NPC_KNIGHT_F_LONG_GEAR1",
+      "role_index": 1,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "headgear_index": 1
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_M_SHORT_GEAR3",
+      "role_index": 2,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        3
+      ],
+      "headgear_index": 3
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_M_LONG_GEAR3",
+      "role_index": 2,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        3
+      ],
+      "headgear_index": 3
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_F_SHORT_GEAR3",
+      "role_index": 2,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        3
+      ],
+      "headgear_index": 3
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_F_LONG_GEAR3",
+      "role_index": 2,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        3
+      ],
+      "headgear_index": 3
+    },
+    {
+      "preset_id": "NPC_RAIDER_M_SHORT_GEAR4",
+      "role_index": 3,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        4
+      ],
+      "headgear_index": 4
+    },
+    {
+      "preset_id": "NPC_RAIDER_M_LONG_GEAR4",
+      "role_index": 3,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        4
+      ],
+      "headgear_index": 4
+    },
+    {
+      "preset_id": "NPC_RAIDER_F_SHORT_GEAR4",
+      "role_index": 3,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        4
+      ],
+      "headgear_index": 4
+    },
+    {
+      "preset_id": "NPC_RAIDER_F_LONG_GEAR4",
+      "role_index": 3,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        4
+      ],
+      "headgear_index": 4
+    },
+    {
+      "preset_id": "NPC_MERCHANT_M_SHORT_GEAR5",
+      "role_index": 4,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        5
+      ],
+      "headgear_index": 5
+    },
+    {
+      "preset_id": "NPC_MERCHANT_M_LONG_GEAR5",
+      "role_index": 4,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        5
+      ],
+      "headgear_index": 5
+    },
+    {
+      "preset_id": "NPC_MERCHANT_F_SHORT_GEAR5",
+      "role_index": 4,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        5
+      ],
+      "headgear_index": 5
+    },
+    {
+      "preset_id": "NPC_MERCHANT_F_LONG_GEAR5",
+      "role_index": 4,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        5
+      ],
+      "headgear_index": 5
+    },
+    {
+      "preset_id": "NPC_PRIEST_M_SHORT",
+      "role_index": 0,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_PRIEST_M_LONG",
+      "role_index": 0,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_PRIEST_F_SHORT",
+      "role_index": 0,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_PRIEST_F_LONG",
+      "role_index": 0,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_KNIGHT_M_SHORT",
+      "role_index": 1,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_KNIGHT_M_LONG",
+      "role_index": 1,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_KNIGHT_F_SHORT",
+      "role_index": 1,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_KNIGHT_F_LONG",
+      "role_index": 1,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_M_SHORT",
+      "role_index": 2,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_M_LONG",
+      "role_index": 2,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_F_SHORT",
+      "role_index": 2,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_ADVENTURER_F_LONG",
+      "role_index": 2,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_RAIDER_M_SHORT",
+      "role_index": 3,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_RAIDER_M_LONG",
+      "role_index": 3,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_RAIDER_F_SHORT",
+      "role_index": 3,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_RAIDER_F_LONG",
+      "role_index": 3,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        3,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_MERCHANT_M_SHORT",
+      "role_index": 4,
+      "sex_index": 0,
+      "hair_style_index": 0,
+      "part_indices": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_MERCHANT_M_LONG",
+      "role_index": 4,
+      "sex_index": 0,
+      "hair_style_index": 1,
+      "part_indices": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_MERCHANT_F_SHORT",
+      "role_index": 4,
+      "sex_index": 1,
+      "hair_style_index": 0,
+      "part_indices": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        -1
+      ],
+      "headgear_index": -1
+    },
+    {
+      "preset_id": "NPC_MERCHANT_F_LONG",
+      "role_index": 4,
+      "sex_index": 1,
+      "hair_style_index": 1,
+      "part_indices": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        4,
+        -1
+      ],
+      "headgear_index": -1
+    }
+  ],
+  "rigging_status": "Shared deform skeleton with per-vertex skin weights; authored keyframe actions. No runtime code.",
+  "compatibility": [
+    "Both heads accept both hair styles and all outfits. Shared body silhouette avoids sex-specific outfit copies.",
+    "Priest skirt excludes pelvis, thighs and shins. Feet remain visible.",
+    "One mesh per slot; -1 means empty; indices are scoped to slot and append-only in v1.",
+    "headgear slot 20 is appended; slots 0-19 and original part indices are unchanged.",
+    "All headwear replaces visible hair. Keep hair_style_index as latent identity; restore hair slot from it when unequipping.",
+    "Open helm, cap, mitre and hoods preserve the selected head. Headwear is shared by both sexes.",
+    "Closed helmet keeps the selected real head. Only hair is hidden; head slot must match sex_index."
+  ],
+  "asset_revision": "rigged_v3",
+  "headgear_rules": [
+    {
+      "part_index": 0,
+      "hide_hair": true,
+      "hide_head": false,
+      "compatible_sexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "part_index": 1,
+      "hide_hair": true,
+      "hide_head": false,
+      "compatible_sexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "part_index": 2,
+      "hide_hair": true,
+      "hide_head": false,
+      "compatible_sexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "part_index": 3,
+      "hide_hair": true,
+      "hide_head": false,
+      "compatible_sexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "part_index": 4,
+      "hide_hair": true,
+      "hide_head": false,
+      "compatible_sexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "part_index": 5,
+      "hide_hair": true,
+      "hide_head": false,
+      "compatible_sexes": [
+        0,
+        1
+      ]
+    }
+  ],
+  "monsters": [
+    {
+      "monster_index": 0,
+      "name": "WitheredHollow",
+      "name_ko": "메마른 망자",
+      "mesh": "MON_00_WitheredHollow",
+      "rig": "RIG_MON_WitheredHollow",
+      "height_scale": 1.0
+    },
+    {
+      "monster_index": 1,
+      "name": "TaintedRaider",
+      "name_ko": "오염된 약탈자",
+      "mesh": "MON_01_TaintedRaider",
+      "rig": "RIG_MON_TaintedRaider",
+      "height_scale": 1.16
+    },
+    {
+      "monster_index": 2,
+      "name": "FieldWarden",
+      "name_ko": "경작지 수문장",
+      "mesh": "MON_02_FieldWarden",
+      "rig": "RIG_MON_FieldWarden",
+      "height_scale": 1.65
+    },
+    {
+      "monster_index": 3,
+      "name": "MutatedHuman",
+      "name_ko": "변이체",
+      "mesh": "MON_03_MutatedHuman",
+      "rig": "RIG_MON_MutatedHuman",
+      "height_scale": 1.25
+    },
+    {
+      "monster_index": 4,
+      "name": "DeathEcho",
+      "name_ko": "죽음의 잔재",
+      "mesh": "MON_04_DeathEcho",
+      "rig": "RIG_MON_DeathEcho",
+      "height_scale": 1.25,
+      "shares_geometry_with": 3
+    }
+  ],
+  "bone_schema": [
+    {
+      "name": "root",
+      "head_blender_z_up": [
+        0,
+        0,
+        0
+      ],
+      "tail_blender_z_up": [
+        0,
+        0,
+        0.18
+      ],
+      "parent": null
+    },
+    {
+      "name": "hips",
+      "head_blender_z_up": [
+        0,
+        0,
+        0.72
+      ],
+      "tail_blender_z_up": [
+        0,
+        0,
+        0.82
+      ],
+      "parent": "root"
+    },
+    {
+      "name": "spine",
+      "head_blender_z_up": [
+        0,
+        0,
+        0.82
+      ],
+      "tail_blender_z_up": [
+        0,
+        0,
+        1.0
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "chest",
+      "head_blender_z_up": [
+        0,
+        0,
+        1.0
+      ],
+      "tail_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "parent": "spine"
+    },
+    {
+      "name": "neck",
+      "head_blender_z_up": [
+        0,
+        0,
+        1.2
+      ],
+      "tail_blender_z_up": [
+        0,
+        0,
+        1.28
+      ],
+      "parent": "chest"
+    },
+    {
+      "name": "head",
+      "head_blender_z_up": [
+        0,
+        0,
+        1.28
+      ],
+      "tail_blender_z_up": [
+        0,
+        0,
+        1.8
+      ],
+      "parent": "neck"
+    },
+    {
+      "name": "jaw",
+      "head_blender_z_up": [
+        0,
+        -0.12,
+        1.43
+      ],
+      "tail_blender_z_up": [
+        0,
+        -0.22,
+        1.32
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "clavicle_l",
+      "head_blender_z_up": [
+        0,
+        0,
+        1.17
+      ],
+      "tail_blender_z_up": [
+        0.28,
+        0,
+        1.16
+      ],
+      "parent": "chest"
+    },
+    {
+      "name": "upper_arm_l",
+      "head_blender_z_up": [
+        0.28,
+        0,
+        1.16
+      ],
+      "tail_blender_z_up": [
+        0.43,
+        0,
+        0.965
+      ],
+      "parent": "clavicle_l"
+    },
+    {
+      "name": "forearm_l",
+      "head_blender_z_up": [
+        0.43,
+        0,
+        0.965
+      ],
+      "tail_blender_z_up": [
+        0.48,
+        -0.01,
+        0.79
+      ],
+      "parent": "upper_arm_l"
+    },
+    {
+      "name": "hand_l",
+      "head_blender_z_up": [
+        0.48,
+        -0.01,
+        0.79
+      ],
+      "tail_blender_z_up": [
+        0.485,
+        -0.012,
+        0.68
+      ],
+      "parent": "forearm_l"
+    },
+    {
+      "name": "thigh_l",
+      "head_blender_z_up": [
+        0.125,
+        0,
+        0.65
+      ],
+      "tail_blender_z_up": [
+        0.14,
+        0,
+        0.39
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "shin_l",
+      "head_blender_z_up": [
+        0.14,
+        0,
+        0.39
+      ],
+      "tail_blender_z_up": [
+        0.14,
+        0,
+        0.13
+      ],
+      "parent": "thigh_l"
+    },
+    {
+      "name": "foot_l",
+      "head_blender_z_up": [
+        0.14,
+        0,
+        0.13
+      ],
+      "tail_blender_z_up": [
+        0.14,
+        -0.18,
+        0.075
+      ],
+      "parent": "shin_l"
+    },
+    {
+      "name": "toe_l",
+      "head_blender_z_up": [
+        0.14,
+        -0.18,
+        0.075
+      ],
+      "tail_blender_z_up": [
+        0.14,
+        -0.25,
+        0.075
+      ],
+      "parent": "foot_l"
+    },
+    {
+      "name": "weapon_l",
+      "head_blender_z_up": [
+        0.485,
+        -0.012,
+        0.74
+      ],
+      "tail_blender_z_up": [
+        0.485,
+        -0.012,
+        0.5
+      ],
+      "parent": "hand_l"
+    },
+    {
+      "name": "clavicle_r",
+      "head_blender_z_up": [
+        0,
+        0,
+        1.17
+      ],
+      "tail_blender_z_up": [
+        -0.28,
+        0,
+        1.16
+      ],
+      "parent": "chest"
+    },
+    {
+      "name": "upper_arm_r",
+      "head_blender_z_up": [
+        -0.28,
+        0,
+        1.16
+      ],
+      "tail_blender_z_up": [
+        -0.43,
+        0,
+        0.965
+      ],
+      "parent": "clavicle_r"
+    },
+    {
+      "name": "forearm_r",
+      "head_blender_z_up": [
+        -0.43,
+        0,
+        0.965
+      ],
+      "tail_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "parent": "upper_arm_r"
+    },
+    {
+      "name": "hand_r",
+      "head_blender_z_up": [
+        -0.48,
+        -0.01,
+        0.79
+      ],
+      "tail_blender_z_up": [
+        -0.485,
+        -0.012,
+        0.68
+      ],
+      "parent": "forearm_r"
+    },
+    {
+      "name": "thigh_r",
+      "head_blender_z_up": [
+        -0.125,
+        0,
+        0.65
+      ],
+      "tail_blender_z_up": [
+        -0.14,
+        0,
+        0.39
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "shin_r",
+      "head_blender_z_up": [
+        -0.14,
+        0,
+        0.39
+      ],
+      "tail_blender_z_up": [
+        -0.14,
+        0,
+        0.13
+      ],
+      "parent": "thigh_r"
+    },
+    {
+      "name": "foot_r",
+      "head_blender_z_up": [
+        -0.14,
+        0,
+        0.13
+      ],
+      "tail_blender_z_up": [
+        -0.14,
+        -0.18,
+        0.075
+      ],
+      "parent": "shin_r"
+    },
+    {
+      "name": "toe_r",
+      "head_blender_z_up": [
+        -0.14,
+        -0.18,
+        0.075
+      ],
+      "tail_blender_z_up": [
+        -0.14,
+        -0.25,
+        0.075
+      ],
+      "parent": "foot_r"
+    },
+    {
+      "name": "weapon_r",
+      "head_blender_z_up": [
+        -0.485,
+        -0.012,
+        0.74
+      ],
+      "tail_blender_z_up": [
+        -0.485,
+        -0.012,
+        0.5
+      ],
+      "parent": "hand_r"
+    },
+    {
+      "name": "skirt_front",
+      "head_blender_z_up": [
+        0.0,
+        -0.182,
+        0.72
+      ],
+      "tail_blender_z_up": [
+        0,
+        -0.26,
+        0.15
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "skirt_back",
+      "head_blender_z_up": [
+        0.0,
+        0.182,
+        0.72
+      ],
+      "tail_blender_z_up": [
+        0,
+        0.26,
+        0.15
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "skirt_l",
+      "head_blender_z_up": [
+        0.182,
+        0.0,
+        0.72
+      ],
+      "tail_blender_z_up": [
+        0.26,
+        0,
+        0.15
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "skirt_r",
+      "head_blender_z_up": [
+        -0.182,
+        0.0,
+        0.72
+      ],
+      "tail_blender_z_up": [
+        -0.26,
+        0,
+        0.15
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "tail",
+      "head_blender_z_up": [
+        0,
+        0.18,
+        0.72
+      ],
+      "tail_blender_z_up": [
+        0,
+        0.54,
+        0.6
+      ],
+      "parent": "hips"
+    },
+    {
+      "name": "tail_tip",
+      "head_blender_z_up": [
+        0,
+        0.54,
+        0.6
+      ],
+      "tail_blender_z_up": [
+        0,
+        0.9,
+        0.48
+      ],
+      "parent": "tail"
+    }
+  ],
+  "npc_weapons": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4
+  },
+  "game_prop_mapping": [
+    {
+      "game_kind": 1,
+      "prop_index": 12,
+      "semantic": "dead_tree"
+    },
+    {
+      "game_kind": 2,
+      "prop_index": 9,
+      "semantic": "broken_wall"
+    },
+    {
+      "game_kind": 3,
+      "prop_index": 14,
+      "semantic": "rock"
+    },
+    {
+      "game_kind": 4,
+      "prop_index": 15,
+      "semantic": "grave_marker"
+    },
+    {
+      "game_kind": 5,
+      "prop_index": 19,
+      "semantic": "chapel"
+    },
+    {
+      "game_kind": 6,
+      "prop_index": 6,
+      "semantic": "shrine"
+    },
+    {
+      "game_kind": 7,
+      "prop_index": 0,
+      "semantic": "house"
+    },
+    {
+      "game_kind": 8,
+      "prop_index": 18,
+      "semantic": "workshop"
+    },
+    {
+      "game_kind": 9,
+      "prop_index": 16,
+      "semantic": "training_dummy"
+    },
+    {
+      "game_kind": 10,
+      "prop_index": 17,
+      "semantic": "outpost_beacon"
+    }
+  ],
+  "terrain_mapping": [
+    {
+      "source": "road",
+      "prop_index": 26
+    },
+    {
+      "source": "earth",
+      "prop_index": 27
+    },
+    {
+      "source": "tainted earth",
+      "prop_index": 28
+    },
+    {
+      "source": "grass requested addition; not currently spawned by World.cpp",
+      "prop_indices": [
+        22,
+        23,
+        24
+      ]
+    }
+  ]
+}

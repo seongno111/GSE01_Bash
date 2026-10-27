@@ -34,7 +34,7 @@ void ProjectileActor::Update(float dt)
     {
         auto& shot = *this;
 
-        float movement = (std::min)(shot.remaining, 4.2f * dt);
+        float movement = (std::min)(shot.remaining, shot.travelSpeed * dt);
         while (shot.alive && movement > 0)
         {
             const float step = (std::min)(movement, 0.08f);
@@ -46,7 +46,10 @@ void ProjectileActor::Update(float dt)
                 shot.alive = false;
             }
             else if (m_Game.m_NpcWorld
-                     && m_Game.m_NpcWorld->HitByMonster(shot.WorldX(), shot.WorldY(), shot.damage))
+                     && m_Game.m_NpcWorld->HitByMonster(shot.WorldX(),
+                                                        shot.WorldY(),
+                                                        shot.damage,
+                                                        shot.source))
             {
                 shot.alive = false;
             }
@@ -56,6 +59,13 @@ void ProjectileActor::Update(float dt)
                             < 0.35)
             {
                 shot.alive = false;
+                if (m_Game.m_NpcWorld)
+                {
+                    const auto* owner =
+                        dynamic_cast<const EnemyActor*>(m_Game.Scene().Find(shot.source));
+                    m_Game.m_NpcWorld->MonsterDamage(m_Game.Player(), shot.damage, owner);
+                    continue;
+                }
                 if (m_Game.m_Player.hitCooldown <= 0
                     && !InsideSanctuary(m_Game.m_Player.WorldX(), m_Game.m_Player.WorldY()))
                 {
@@ -98,17 +108,18 @@ void ProjectileActor::Update(float dt)
 
             for (EnemyActor& enemy : m_Game.m_Enemies)
             {
-                const float radius = enemy.tier == 2 ? 0.58f : 0.40f;
+                const float radius = enemy.Definition().hitRadius;
                 if (enemy.alive && enemy.EnabledInHierarchy()
                     && Length(projectile.WorldX() - enemy.WorldX(),
                               projectile.WorldY() - enemy.WorldY())
                            < radius)
                 {
-                    enemy.health -= projectile.damage;
+                    const float applied =
+                        enemy.ReceiveDamage(projectile.damage, m_Game.Player().Id());
                     projectile.alive = false;
                     m_Game.AddCombatText(enemy.WorldX(),
                                          enemy.WorldY(),
-                                         std::to_string(int(projectile.damage)),
+                                         std::to_string(int(applied)),
                                          DamageColor);
                     if (enemy.health <= 0)
                     {
@@ -182,7 +193,7 @@ void ProjectileActor::Draw(Renderer& r)
 
         Point p = m_Game.Project(shot.WorldX(), shot.WorldY());
         p.y -= 39 * m_Game.m_Zoom;
-        r.Ellipse(p, 5 * m_Game.m_Zoom, 5 * m_Game.m_Zoom, Color(1, 0.19f, 0.12f).Radiance(4));
+        r.Ellipse(p, 5 * m_Game.m_Zoom, 5 * m_Game.m_Zoom, tint.Radiance(4));
     }
     else
     {

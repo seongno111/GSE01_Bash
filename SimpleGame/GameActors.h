@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Renderer.h"
 #include "UnitAnimation.h"
+#include "MonsterDefinitions.h"
 
 class Prototype;
 
@@ -35,6 +36,12 @@ public:
     void UpdateVisual(float dt) override;
     void BeginAttackAnimation(double directionX, double directionY, float duration);
     void ResetAnimation();
+    bool DrawModel(Renderer& renderer,
+                   const std::string& binding,
+                   const std::function<Models::ModelInstance()>& factory,
+                   const std::string& clip,
+                   float normalizedTime = -1,
+                   Color tint = Color());
 
 protected:
 
@@ -53,6 +60,12 @@ private:
     float m_AttackAnimationDuration = 0;
     bool m_FacingLeft = false;
     bool m_AttackFacingLeft = false;
+    std::string m_ModelBinding;
+    Models::ModelInstance m_Model;
+    std::unique_ptr<Models::AnimationPlayer> m_ModelAnimation;
+    std::vector<Models::AnimationEvent> m_ModelEvents;
+    float m_ModelLastDraw = -1;
+    bool m_ModelStarted = false;
 };
 
 class PlayerActor final : public GameActor
@@ -88,9 +101,53 @@ class EnemyActor : public GameActor
 public:
 
     explicit EnemyActor(Prototype& game, int tier = 0);
+    EnemyActor(Prototype& game, MonsterKind kind);
     void Update(float dt) override;
     void Draw(Renderer& renderer) override;
     void DrawOverlay(Renderer& renderer) override;
+
+    const MonsterDefinition& Definition() const
+    {
+        return MonsterStats(kind);
+    }
+
+    bool UsesMonsterTactics() const
+    {
+        return kind >= MonsterKind::AshWolf;
+    }
+
+    bool CommittingAttack() const
+    {
+        return attackWindup > 0 || burstWindup > 0 || specialWindup > 0 || chargeRemaining > 0;
+    }
+
+    float ReceiveDamage(float amount, ActorId attacker = InvalidActor);
+    void ResetCombat();
+    bool UpdateMonsterTactics(float dt, Actor* target, bool forcedReturn);
+    void ResolveMonsterSpecial();
+    void DamageInArea(WorldPoint center, float radius, float amount);
+    void ShootMonsterProjectile(const Actor& target, int count, float spread, float amount);
+    bool DrawSpeciesModel(Renderer& renderer);
+
+    MonsterKind kind = MonsterKind::WitheredHollow;
+    MonsterState state = MonsterState::Patrol;
+    float specialCooldown = 0;
+    float specialWindup = 0;
+    float guardRemaining = 0;
+    float chargeRemaining = 0;
+    bool chargeHit = false;
+    bool enraged = false;
+    bool specialRecovery = false;
+    float wardEndedAt = -100;
+    float visualTimerSampleAt = 0;
+    int packNearby = 1;
+    double lastHurtTime = -100;
+    double nextPackScan = 0;
+    double alertUntil = 0;
+    ActorId alertTarget = InvalidActor;
+    ActorId supportTarget = InvalidActor;
+    WorldPoint specialAim;
+    WorldPoint chargeDirection;
 
     bool HasOverlay() const override
     {
@@ -177,6 +234,9 @@ public:
     bool alive = true;
     bool hostile;
     bool allowPK = false;
+    ActorId source = InvalidActor;
+    float travelSpeed = 4.2f;
+    Color tint = Color(1, .19f, .12f);
 };
 
 class LootActor final : public GameActor
@@ -227,6 +287,26 @@ private:
 
     int m_Kind;
     unsigned m_Seed;
+    Models::ModelInstance m_PropModel;
+    bool m_PropModelChecked = false;
+    float m_PropModelScale = 1;
+    float m_PropModelYaw = 0;
+};
+
+// Decorative open portal; existing road/collision rules remain authoritative.
+class VillageGateActor final : public GameActor
+{
+public:
+
+    VillageGateActor(Prototype& game, const std::string& village, float yaw);
+    void Draw(Renderer& renderer) override;
+
+private:
+
+    std::string m_Village;
+    float m_Yaw = 0;
+    Models::BuildingVisual m_Visual;
+    bool m_Checked = false;
 };
 
 class AtmosphereActor final : public GameActor

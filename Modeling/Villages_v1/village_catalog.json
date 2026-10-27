@@ -1,0 +1,1859 @@
+{
+  "schema_version": 1,
+  "authored": "2026-10-26",
+  "units": "meter",
+  "themes": [
+    {
+      "village_id": "cathedral",
+      "name_ko": "성당 마을",
+      "culture": "자비와 상호부조",
+      "file": "cathedral.glb",
+      "game_kind_choices": {
+        "5": [
+          "VIL_CATHEDRAL_CHAPEL"
+        ],
+        "7": [
+          "VIL_CATHEDRAL_HOUSE_A",
+          "VIL_CATHEDRAL_HOUSE_B"
+        ],
+        "8": [
+          "VIL_CATHEDRAL_WORKSHOP"
+        ],
+        "2": [
+          "VIL_CATHEDRAL_WALL"
+        ]
+      },
+      "additional_gate": "VIL_CATHEDRAL_GATE",
+      "landmark_model": "VIL_CATHEDRAL_CHAPEL",
+      "landmark_name_ko": "쌍탑 구호 대성당"
+    },
+    {
+      "village_id": "dawn",
+      "name_ko": "새벽 수도촌",
+      "culture": "신앙과 정화",
+      "file": "dawn.glb",
+      "game_kind_choices": {
+        "5": [
+          "VIL_DAWN_CHAPEL"
+        ],
+        "7": [
+          "VIL_DAWN_HOUSE_A",
+          "VIL_DAWN_HOUSE_B"
+        ],
+        "8": [
+          "VIL_DAWN_WORKSHOP"
+        ],
+        "2": [
+          "VIL_DAWN_WALL"
+        ]
+      },
+      "additional_gate": "VIL_DAWN_GATE",
+      "landmark_model": "VIL_DAWN_CHAPEL",
+      "landmark_name_ko": "태양 첨탑 수도원"
+    },
+    {
+      "village_id": "iron",
+      "name_ko": "철벽 주둔촌",
+      "culture": "규율과 무력",
+      "file": "iron.glb",
+      "game_kind_choices": {
+        "5": [
+          "VIL_IRON_CHAPEL"
+        ],
+        "7": [
+          "VIL_IRON_HOUSE_A",
+          "VIL_IRON_HOUSE_B"
+        ],
+        "8": [
+          "VIL_IRON_WORKSHOP"
+        ],
+        "2": [
+          "VIL_IRON_WALL"
+        ]
+      },
+      "additional_gate": "VIL_IRON_GATE",
+      "landmark_model": "VIL_IRON_CHAPEL",
+      "landmark_name_ko": "철벽 지휘 요새"
+    },
+    {
+      "village_id": "market",
+      "name_ko": "황금 장터",
+      "culture": "교역과 부의 축적",
+      "file": "market.glb",
+      "game_kind_choices": {
+        "5": [
+          "VIL_MARKET_CHAPEL"
+        ],
+        "7": [
+          "VIL_MARKET_HOUSE_A",
+          "VIL_MARKET_HOUSE_B"
+        ],
+        "8": [
+          "VIL_MARKET_WORKSHOP"
+        ],
+        "2": [
+          "VIL_MARKET_WALL"
+        ]
+      },
+      "additional_gate": "VIL_MARKET_GATE",
+      "landmark_model": "VIL_MARKET_CHAPEL",
+      "landmark_name_ko": "황금 저울 상인회관"
+    },
+    {
+      "village_id": "seekers",
+      "name_ko": "잿빛 탐구촌",
+      "culture": "탐험과 깨달음",
+      "file": "seekers.glb",
+      "game_kind_choices": {
+        "5": [
+          "VIL_SEEKERS_CHAPEL"
+        ],
+        "7": [
+          "VIL_SEEKERS_HOUSE_A",
+          "VIL_SEEKERS_HOUSE_B"
+        ],
+        "8": [
+          "VIL_SEEKERS_WORKSHOP"
+        ],
+        "2": [
+          "VIL_SEEKERS_WALL"
+        ]
+      },
+      "additional_gate": "VIL_SEEKERS_GATE",
+      "landmark_model": "VIL_SEEKERS_CHAPEL",
+      "landmark_name_ko": "천구 관측 대서고"
+    },
+    {
+      "village_id": "outlaws",
+      "name_ko": "검은 이빨 소굴",
+      "culture": "약탈과 힘의 숭배",
+      "file": "outlaws.glb",
+      "game_kind_choices": {
+        "5": [
+          "VIL_OUTLAWS_CHAPEL"
+        ],
+        "7": [
+          "VIL_OUTLAWS_HOUSE_A",
+          "VIL_OUTLAWS_HOUSE_B"
+        ],
+        "8": [
+          "VIL_OUTLAWS_WORKSHOP"
+        ],
+        "2": [
+          "VIL_OUTLAWS_WALL"
+        ]
+      },
+      "additional_gate": "VIL_OUTLAWS_GATE",
+      "landmark_model": "VIL_OUTLAWS_CHAPEL",
+      "landmark_name_ko": "검은 송곳니 두목의 전당"
+    }
+  ],
+  "assets": [
+    {
+      "modelKey": "VIL_CATHEDRAL_HOUSE_A",
+      "theme": "cathedral",
+      "type": "HOUSE_A",
+      "game_prop_kind": 7,
+      "triangles": 176,
+      "bounds_min": [
+        -1.7000001668930054,
+        -1.4999998807907104,
+        -0.05999992787837982
+      ],
+      "bounds_max": [
+        1.7000001668930054,
+        1.4999998807907104,
+        3.1500000953674316
+      ]
+    },
+    {
+      "modelKey": "VIL_CATHEDRAL_HOUSE_B",
+      "theme": "cathedral",
+      "type": "HOUSE_B",
+      "game_prop_kind": 7,
+      "triangles": 176,
+      "bounds_min": [
+        -1.5250000953674316,
+        -1.5000001192092896,
+        -0.05999992787837982
+      ],
+      "bounds_max": [
+        1.5250000953674316,
+        1.5000001192092896,
+        3.1500000953674316
+      ]
+    },
+    {
+      "modelKey": "VIL_CATHEDRAL_CHAPEL",
+      "theme": "cathedral",
+      "type": "CHAPEL",
+      "game_prop_kind": 5,
+      "triangles": 3748,
+      "bounds_min": [
+        -3.119999885559082,
+        -3.9749999046325684,
+        0.0
+      ],
+      "bounds_max": [
+        3.119999885559082,
+        3.799999952316284,
+        11.199999809265137
+      ],
+      "role": "village_landmark",
+      "landmark_name_ko": "쌍탑 구호 대성당",
+      "signature_details": [
+        "쌍탑",
+        "장미창",
+        "공중 부벽",
+        "성인상",
+        "십자형 신랑"
+      ],
+      "landmark_revision": "2026-10-27",
+      "suggested_runtime_scale": 0.5408805161213549,
+      "runtime_scaled_height": 6.057861677394404,
+      "runtime_scaled_door_height": 1.8389937548126065
+    },
+    {
+      "modelKey": "VIL_CATHEDRAL_WORKSHOP",
+      "theme": "cathedral",
+      "type": "WORKSHOP",
+      "game_prop_kind": 8,
+      "triangles": 200,
+      "bounds_min": [
+        -1.9500000476837158,
+        -1.649999976158142,
+        -0.060000088065862656
+      ],
+      "bounds_max": [
+        1.9500000476837158,
+        1.649999976158142,
+        3.625
+      ]
+    },
+    {
+      "modelKey": "VIL_CATHEDRAL_GATE",
+      "theme": "cathedral",
+      "type": "GATE",
+      "game_prop_kind": null,
+      "triangles": 72,
+      "bounds_min": [
+        -2.299999952316284,
+        -0.6000000238418579,
+        0.0
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        0.6000000238418579,
+        3.6000001430511475
+      ]
+    },
+    {
+      "modelKey": "VIL_CATHEDRAL_WALL",
+      "theme": "cathedral",
+      "type": "WALL",
+      "game_prop_kind": 2,
+      "triangles": 128,
+      "bounds_min": [
+        -2.0,
+        -0.24000000953674316,
+        0.0
+      ],
+      "bounds_max": [
+        2.0,
+        0.24000000953674316,
+        1.5000001192092896
+      ]
+    },
+    {
+      "modelKey": "VIL_DAWN_HOUSE_A",
+      "theme": "dawn",
+      "type": "HOUSE_A",
+      "game_prop_kind": 7,
+      "triangles": 206,
+      "bounds_min": [
+        -1.4749999046325684,
+        -1.6399999856948853,
+        -0.06000007316470146
+      ],
+      "bounds_max": [
+        1.4749999046325684,
+        1.6299999952316284,
+        4.449999809265137
+      ]
+    },
+    {
+      "modelKey": "VIL_DAWN_HOUSE_B",
+      "theme": "dawn",
+      "type": "HOUSE_B",
+      "game_prop_kind": 7,
+      "triangles": 206,
+      "bounds_min": [
+        -1.3262499570846558,
+        -1.6399999856948853,
+        -0.06000007316470146
+      ],
+      "bounds_max": [
+        1.3262499570846558,
+        1.6299999952316284,
+        4.450000286102295
+      ]
+    },
+    {
+      "modelKey": "VIL_DAWN_CHAPEL",
+      "theme": "dawn",
+      "type": "CHAPEL",
+      "game_prop_kind": 5,
+      "triangles": 2412,
+      "bounds_min": [
+        -2.75,
+        -3.700000047683716,
+        0.0
+      ],
+      "bounds_max": [
+        2.75,
+        3.315000057220459,
+        12.020000457763672
+      ],
+      "role": "village_landmark",
+      "landmark_name_ko": "태양 첨탑 수도원",
+      "signature_details": [
+        "태양 후광",
+        "팔각 종탑",
+        "금속 첨탑",
+        "단차 부벽"
+      ],
+      "landmark_revision": "2026-10-27",
+      "suggested_runtime_scale": 0.5810810735924041,
+      "runtime_scaled_height": 6.984594770578504,
+      "runtime_scaled_door_height": 1.8885134891753135
+    },
+    {
+      "modelKey": "VIL_DAWN_WORKSHOP",
+      "theme": "dawn",
+      "type": "WORKSHOP",
+      "game_prop_kind": 8,
+      "triangles": 206,
+      "bounds_min": [
+        -1.6874998807907104,
+        -1.8050001859664917,
+        -0.060000088065862656
+      ],
+      "bounds_max": [
+        1.6874998807907104,
+        1.7950000762939453,
+        4.549999713897705
+      ]
+    },
+    {
+      "modelKey": "VIL_DAWN_GATE",
+      "theme": "dawn",
+      "type": "GATE",
+      "game_prop_kind": null,
+      "triangles": 80,
+      "bounds_min": [
+        -2.299999952316284,
+        -0.6000000238418579,
+        0.0
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        0.6000000238418579,
+        3.8499999046325684
+      ]
+    },
+    {
+      "modelKey": "VIL_DAWN_WALL",
+      "theme": "dawn",
+      "type": "WALL",
+      "game_prop_kind": 2,
+      "triangles": 84,
+      "bounds_min": [
+        -2.0,
+        -0.22499997913837433,
+        0.0
+      ],
+      "bounds_max": [
+        2.0,
+        0.22499997913837433,
+        2.4499998092651367
+      ]
+    },
+    {
+      "modelKey": "VIL_IRON_HOUSE_A",
+      "theme": "iron",
+      "type": "HOUSE_A",
+      "game_prop_kind": 7,
+      "triangles": 216,
+      "bounds_min": [
+        -1.7599998712539673,
+        -1.459999918937683,
+        -0.059999994933605194
+      ],
+      "bounds_max": [
+        1.7599998712539673,
+        1.4499999284744263,
+        3.1700003147125244
+      ]
+    },
+    {
+      "modelKey": "VIL_IRON_HOUSE_B",
+      "theme": "iron",
+      "type": "HOUSE_B",
+      "game_prop_kind": 7,
+      "triangles": 216,
+      "bounds_min": [
+        -1.567500114440918,
+        -1.4600000381469727,
+        -0.059999994933605194
+      ],
+      "bounds_max": [
+        1.567500114440918,
+        1.4499999284744263,
+        3.1700003147125244
+      ]
+    },
+    {
+      "modelKey": "VIL_IRON_CHAPEL",
+      "theme": "iron",
+      "type": "CHAPEL",
+      "game_prop_kind": 5,
+      "triangles": 4008,
+      "bounds_min": [
+        -3.0999999046325684,
+        -3.575000047683716,
+        0.0
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        3.1600000858306885,
+        10.600000381469727
+      ],
+      "role": "village_landmark",
+      "landmark_name_ko": "철벽 지휘 요새",
+      "signature_details": [
+        "고층 중앙 성채",
+        "네 방어탑",
+        "여장",
+        "철창문",
+        "검과 방패 문장"
+      ],
+      "landmark_revision": "2026-10-27",
+      "suggested_runtime_scale": 0.6013985933770853,
+      "runtime_scaled_height": 6.374825319212461,
+      "runtime_scaled_door_height": 1.8643356394689645
+    },
+    {
+      "modelKey": "VIL_IRON_WORKSHOP",
+      "theme": "iron",
+      "type": "WORKSHOP",
+      "game_prop_kind": 8,
+      "triangles": 240,
+      "bounds_min": [
+        -2.0350000858306885,
+        -1.6100001335144043,
+        -0.06000008061528206
+      ],
+      "bounds_max": [
+        2.0350000858306885,
+        1.600000023841858,
+        3.875
+      ]
+    },
+    {
+      "modelKey": "VIL_IRON_GATE",
+      "theme": "iron",
+      "type": "GATE",
+      "game_prop_kind": null,
+      "triangles": 96,
+      "bounds_min": [
+        -2.174999952316284,
+        -0.4749999940395355,
+        0.0
+      ],
+      "bounds_max": [
+        2.174999952316284,
+        0.4749999940395355,
+        3.7750003337860107
+      ]
+    },
+    {
+      "modelKey": "VIL_IRON_WALL",
+      "theme": "iron",
+      "type": "WALL",
+      "game_prop_kind": 2,
+      "triangles": 72,
+      "bounds_min": [
+        -2.0,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max": [
+        2.0,
+        0.30000001192092896,
+        2.5
+      ]
+    },
+    {
+      "modelKey": "VIL_MARKET_HOUSE_A",
+      "theme": "market",
+      "type": "HOUSE_A",
+      "game_prop_kind": 7,
+      "triangles": 276,
+      "bounds_min": [
+        -1.7500001192092896,
+        -2.2750000953674316,
+        -0.059999942779541016
+      ],
+      "bounds_max": [
+        2.18310809135437,
+        1.5499999523162842,
+        3.8499999046325684
+      ]
+    },
+    {
+      "modelKey": "VIL_MARKET_HOUSE_B",
+      "theme": "market",
+      "type": "HOUSE_B",
+      "game_prop_kind": 7,
+      "triangles": 276,
+      "bounds_min": [
+        -1.5750000476837158,
+        -2.2750000953674316,
+        -0.059999942779541016
+      ],
+      "bounds_max": [
+        1.9451079368591309,
+        1.5499999523162842,
+        3.8499996662139893
+      ]
+    },
+    {
+      "modelKey": "VIL_MARKET_CHAPEL",
+      "theme": "market",
+      "type": "CHAPEL",
+      "game_prop_kind": 5,
+      "triangles": 2864,
+      "bounds_min": [
+        -3.0999999046325684,
+        -3.484999895095825,
+        0.0
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        2.941819906234741,
+        12.229999542236328
+      ],
+      "role": "village_landmark",
+      "landmark_name_ko": "황금 저울 상인회관",
+      "signature_details": [
+        "거대 시계",
+        "다층 지붕",
+        "교역 저울 풍향계",
+        "연속 발코니"
+      ],
+      "landmark_revision": "2026-10-27",
+      "suggested_runtime_scale": 0.6169297172793409,
+      "runtime_scaled_height": 7.545050159918326,
+      "runtime_scaled_door_height": 1.8589764434131315
+    },
+    {
+      "modelKey": "VIL_MARKET_WORKSHOP",
+      "theme": "market",
+      "type": "WORKSHOP",
+      "game_prop_kind": 8,
+      "triangles": 288,
+      "bounds_min": [
+        -2.0,
+        -2.424999713897705,
+        -0.06000007316470146
+      ],
+      "bounds_max": [
+        2.5231082439422607,
+        1.6999999284744263,
+        3.950000524520874
+      ]
+    },
+    {
+      "modelKey": "VIL_MARKET_GATE",
+      "theme": "market",
+      "type": "GATE",
+      "game_prop_kind": null,
+      "triangles": 80,
+      "bounds_min": [
+        -2.299999952316284,
+        -0.699999988079071,
+        0.0
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        0.699999988079071,
+        3.6500000953674316
+      ]
+    },
+    {
+      "modelKey": "VIL_MARKET_WALL",
+      "theme": "market",
+      "type": "WALL",
+      "game_prop_kind": 2,
+      "triangles": 128,
+      "bounds_min": [
+        -2.0,
+        -0.24000000953674316,
+        0.0
+      ],
+      "bounds_max": [
+        2.0,
+        0.24000000953674316,
+        1.5000001192092896
+      ]
+    },
+    {
+      "modelKey": "VIL_SEEKERS_HOUSE_A",
+      "theme": "seekers",
+      "type": "HOUSE_A",
+      "game_prop_kind": 7,
+      "triangles": 242,
+      "bounds_min": [
+        -1.6799999475479126,
+        -1.6799999475479126,
+        -0.060000061988830566
+      ],
+      "bounds_max": [
+        1.6799999475479126,
+        1.6799999475479126,
+        3.9000000953674316
+      ]
+    },
+    {
+      "modelKey": "VIL_SEEKERS_HOUSE_B",
+      "theme": "seekers",
+      "type": "HOUSE_B",
+      "game_prop_kind": 7,
+      "triangles": 200,
+      "bounds_min": [
+        -1.5250000953674316,
+        -1.5000001192092896,
+        -0.05999992787837982
+      ],
+      "bounds_max": [
+        1.8380000591278076,
+        1.5000001192092896,
+        3.700000047683716
+      ]
+    },
+    {
+      "modelKey": "VIL_SEEKERS_CHAPEL",
+      "theme": "seekers",
+      "type": "CHAPEL",
+      "game_prop_kind": 5,
+      "triangles": 2900,
+      "bounds_min": [
+        -3.0,
+        -3.505000114440918,
+        0.0
+      ],
+      "bounds_max": [
+        3.0,
+        3.0,
+        10.56995964050293
+      ],
+      "role": "village_landmark",
+      "landmark_name_ko": "천구 관측 대서고",
+      "signature_details": [
+        "거대한 혼천의",
+        "청동 돔",
+        "관측 회랑",
+        "망원경",
+        "나침반 문양"
+      ],
+      "landmark_revision": "2026-10-27",
+      "suggested_runtime_scale": 0.6134093950929717,
+      "runtime_scaled_height": 6.483712549238026,
+      "runtime_scaled_door_height": 1.9322395945428608
+    },
+    {
+      "modelKey": "VIL_SEEKERS_WORKSHOP",
+      "theme": "seekers",
+      "type": "WORKSHOP",
+      "game_prop_kind": 8,
+      "triangles": 204,
+      "bounds_min": [
+        -1.9500000476837158,
+        -1.78000009059906,
+        -0.060000088065862656
+      ],
+      "bounds_max": [
+        1.9500000476837158,
+        1.649999976158142,
+        3.4000000953674316
+      ]
+    },
+    {
+      "modelKey": "VIL_SEEKERS_GATE",
+      "theme": "seekers",
+      "type": "GATE",
+      "game_prop_kind": null,
+      "triangles": 252,
+      "bounds_min": [
+        -2.299999952316284,
+        -0.6000000238418579,
+        0.0
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        0.6000000238418579,
+        3.90000057220459
+      ]
+    },
+    {
+      "modelKey": "VIL_SEEKERS_WALL",
+      "theme": "seekers",
+      "type": "WALL",
+      "game_prop_kind": 2,
+      "triangles": 128,
+      "bounds_min": [
+        -2.0,
+        -0.24000000953674316,
+        0.0
+      ],
+      "bounds_max": [
+        2.0,
+        0.24000000953674316,
+        1.5000001192092896
+      ]
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_HOUSE_A",
+      "theme": "outlaws",
+      "type": "HOUSE_A",
+      "game_prop_kind": 7,
+      "triangles": 244,
+      "bounds_min": [
+        -1.7249999046325684,
+        -1.6847213506698608,
+        -0.059999942779541016
+      ],
+      "bounds_max": [
+        1.7249999046325684,
+        1.524999976158142,
+        2.799999952316284
+      ]
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_HOUSE_B",
+      "theme": "outlaws",
+      "type": "HOUSE_B",
+      "game_prop_kind": 7,
+      "triangles": 244,
+      "bounds_min": [
+        -1.5499999523162842,
+        -1.6847212314605713,
+        -0.06000000983476639
+      ],
+      "bounds_max": [
+        1.5499999523162842,
+        1.5249998569488525,
+        2.799999952316284
+      ]
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_CHAPEL",
+      "theme": "outlaws",
+      "type": "CHAPEL",
+      "game_prop_kind": 5,
+      "triangles": 2284,
+      "bounds_min": [
+        -3.0999999046325684,
+        -3.6050000190734863,
+        0.0
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        3.200000047683716,
+        10.899999618530273
+      ],
+      "role": "village_landmark",
+      "landmark_name_ko": "검은 송곳니 두목의 전당",
+      "signature_details": [
+        "해골과 굽은 송곳니 문",
+        "비대칭 감시탑",
+        "말뚝",
+        "약탈 깃발"
+      ],
+      "landmark_revision": "2026-10-27",
+      "suggested_runtime_scale": 0.5963938942093451,
+      "runtime_scaled_height": 6.500693219375646,
+      "runtime_scaled_door_height": 1.9084604614699043
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_WORKSHOP",
+      "theme": "outlaws",
+      "type": "WORKSHOP",
+      "game_prop_kind": 8,
+      "triangles": 268,
+      "bounds_min": [
+        -1.9749999046325684,
+        -1.8347214460372925,
+        -0.05999992787837982
+      ],
+      "bounds_max": [
+        1.9749999046325684,
+        1.6749999523162842,
+        3.5250003337860107
+      ]
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_GATE",
+      "theme": "outlaws",
+      "type": "GATE",
+      "game_prop_kind": null,
+      "triangles": 76,
+      "bounds_min": [
+        -2.0250000953674316,
+        -0.375,
+        0.0
+      ],
+      "bounds_max": [
+        2.0250000953674316,
+        0.375,
+        3.700000047683716
+      ]
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_WALL",
+      "theme": "outlaws",
+      "type": "WALL",
+      "game_prop_kind": 2,
+      "triangles": 104,
+      "bounds_min": [
+        -1.899999976158142,
+        -0.12763148546218872,
+        0.0
+      ],
+      "bounds_max": [
+        1.8999998569488525,
+        0.12999999523162842,
+        2.5999999046325684
+      ]
+    }
+  ],
+  "layouts": [
+    {
+      "village_id": "cathedral",
+      "name_ko": "성당 마을",
+      "culture": "자비와 상호부조",
+      "placements": [
+        {
+          "modelKey": "VIL_CATHEDRAL_CHAPEL",
+          "position_blender_z_up": [
+            0,
+            4.2,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            -4.2
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_WORKSHOP",
+          "position_blender_z_up": [
+            -4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_GATE",
+          "position_blender_z_up": [
+            0,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_WALL",
+          "position_blender_z_up": [
+            -5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            -5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_CATHEDRAL_WALL",
+          "position_blender_z_up": [
+            5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        }
+      ],
+      "placement_status": "Art layout example only; existing tile placement and collision are not modified."
+    },
+    {
+      "village_id": "dawn",
+      "name_ko": "새벽 수도촌",
+      "culture": "신앙과 정화",
+      "placements": [
+        {
+          "modelKey": "VIL_DAWN_CHAPEL",
+          "position_blender_z_up": [
+            0,
+            4.2,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            -4.2
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_WORKSHOP",
+          "position_blender_z_up": [
+            -4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_GATE",
+          "position_blender_z_up": [
+            0,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_DAWN_WALL",
+          "position_blender_z_up": [
+            -7,
+            -3,
+            0
+          ],
+          "position_gltf_y_up": [
+            -7,
+            0,
+            3
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_DAWN_WALL",
+          "position_blender_z_up": [
+            7,
+            -3,
+            0
+          ],
+          "position_gltf_y_up": [
+            7,
+            0,
+            3
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_DAWN_WALL",
+          "position_blender_z_up": [
+            -7,
+            1,
+            0
+          ],
+          "position_gltf_y_up": [
+            -7,
+            0,
+            -1
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_DAWN_WALL",
+          "position_blender_z_up": [
+            7,
+            1,
+            0
+          ],
+          "position_gltf_y_up": [
+            7,
+            0,
+            -1
+          ],
+          "yaw_degrees": 90
+        }
+      ],
+      "placement_status": "Art layout example only; existing tile placement and collision are not modified."
+    },
+    {
+      "village_id": "iron",
+      "name_ko": "철벽 주둔촌",
+      "culture": "규율과 무력",
+      "placements": [
+        {
+          "modelKey": "VIL_IRON_CHAPEL",
+          "position_blender_z_up": [
+            0,
+            4.2,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            -4.2
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_WORKSHOP",
+          "position_blender_z_up": [
+            -4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_GATE",
+          "position_blender_z_up": [
+            0,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            -7,
+            -5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -7,
+            0,
+            5
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            -7,
+            -1,
+            0
+          ],
+          "position_gltf_y_up": [
+            -7,
+            0,
+            1
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            -7,
+            3,
+            0
+          ],
+          "position_gltf_y_up": [
+            -7,
+            0,
+            -3
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            7,
+            -5,
+            0
+          ],
+          "position_gltf_y_up": [
+            7,
+            0,
+            5
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            7,
+            -1,
+            0
+          ],
+          "position_gltf_y_up": [
+            7,
+            0,
+            1
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            7,
+            3,
+            0
+          ],
+          "position_gltf_y_up": [
+            7,
+            0,
+            -3
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            -4.5,
+            7.3,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.5,
+            0,
+            -7.3
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_IRON_WALL",
+          "position_blender_z_up": [
+            4.5,
+            7.3,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.5,
+            0,
+            -7.3
+          ],
+          "yaw_degrees": 0
+        }
+      ],
+      "placement_status": "Art layout example only; existing tile placement and collision are not modified."
+    },
+    {
+      "village_id": "market",
+      "name_ko": "황금 장터",
+      "culture": "교역과 부의 축적",
+      "placements": [
+        {
+          "modelKey": "VIL_MARKET_CHAPEL",
+          "position_blender_z_up": [
+            0,
+            4.2,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            -4.2
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_MARKET_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_MARKET_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            0.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -0.7
+          ],
+          "yaw_degrees": -90
+        },
+        {
+          "modelKey": "VIL_MARKET_HOUSE_A",
+          "position_blender_z_up": [
+            -4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": 90
+        },
+        {
+          "modelKey": "VIL_MARKET_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            -3.7,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            3.7
+          ],
+          "yaw_degrees": -90
+        },
+        {
+          "modelKey": "VIL_MARKET_WORKSHOP",
+          "position_blender_z_up": [
+            -4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_MARKET_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_MARKET_GATE",
+          "position_blender_z_up": [
+            0,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_MARKET_WALL",
+          "position_blender_z_up": [
+            -5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            -5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_MARKET_WALL",
+          "position_blender_z_up": [
+            5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        }
+      ],
+      "placement_status": "Art layout example only; existing tile placement and collision are not modified."
+    },
+    {
+      "village_id": "seekers",
+      "name_ko": "잿빛 탐구촌",
+      "culture": "탐험과 깨달음",
+      "placements": [
+        {
+          "modelKey": "VIL_SEEKERS_CHAPEL",
+          "position_blender_z_up": [
+            0,
+            3,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            -3
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_SEEKERS_HOUSE_A",
+          "position_blender_z_up": [
+            -4.8,
+            0.3,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.8,
+            0,
+            -0.3
+          ],
+          "yaw_degrees": 70
+        },
+        {
+          "modelKey": "VIL_SEEKERS_HOUSE_B",
+          "position_blender_z_up": [
+            4.8,
+            0.3,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.8,
+            0,
+            -0.3
+          ],
+          "yaw_degrees": -70
+        },
+        {
+          "modelKey": "VIL_SEEKERS_HOUSE_A",
+          "position_blender_z_up": [
+            -4,
+            -4,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4,
+            0,
+            4
+          ],
+          "yaw_degrees": 25
+        },
+        {
+          "modelKey": "VIL_SEEKERS_HOUSE_B",
+          "position_blender_z_up": [
+            4,
+            -4,
+            0
+          ],
+          "position_gltf_y_up": [
+            4,
+            0,
+            4
+          ],
+          "yaw_degrees": -25
+        },
+        {
+          "modelKey": "VIL_SEEKERS_WORKSHOP",
+          "position_blender_z_up": [
+            -4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": 80
+        },
+        {
+          "modelKey": "VIL_SEEKERS_HOUSE_B",
+          "position_blender_z_up": [
+            4.7,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.7,
+            0,
+            -5
+          ],
+          "yaw_degrees": -80
+        },
+        {
+          "modelKey": "VIL_SEEKERS_GATE",
+          "position_blender_z_up": [
+            0,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            0,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_SEEKERS_WALL",
+          "position_blender_z_up": [
+            -5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            -5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_SEEKERS_WALL",
+          "position_blender_z_up": [
+            5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        }
+      ],
+      "placement_status": "Art layout example only; existing tile placement and collision are not modified."
+    },
+    {
+      "village_id": "outlaws",
+      "name_ko": "검은 이빨 소굴",
+      "culture": "약탈과 힘의 숭배",
+      "placements": [
+        {
+          "modelKey": "VIL_OUTLAWS_CHAPEL",
+          "position_blender_z_up": [
+            1.1,
+            4.5,
+            0
+          ],
+          "position_gltf_y_up": [
+            1.1,
+            0,
+            -4.5
+          ],
+          "yaw_degrees": -8
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_HOUSE_A",
+          "position_blender_z_up": [
+            -4.2,
+            0.8,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.2,
+            0,
+            -0.8
+          ],
+          "yaw_degrees": 22
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_HOUSE_B",
+          "position_blender_z_up": [
+            4.6,
+            1,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.6,
+            0,
+            -1
+          ],
+          "yaw_degrees": -20
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_HOUSE_A",
+          "position_blender_z_up": [
+            -3.5,
+            -3,
+            0
+          ],
+          "position_gltf_y_up": [
+            -3.5,
+            0,
+            3
+          ],
+          "yaw_degrees": 12
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_HOUSE_B",
+          "position_blender_z_up": [
+            4.1,
+            -4,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.1,
+            0,
+            4
+          ],
+          "yaw_degrees": -17
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_WORKSHOP",
+          "position_blender_z_up": [
+            -4.8,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            -4.8,
+            0,
+            -5
+          ],
+          "yaw_degrees": 80
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_HOUSE_B",
+          "position_blender_z_up": [
+            4.8,
+            5,
+            0
+          ],
+          "position_gltf_y_up": [
+            4.8,
+            0,
+            -5
+          ],
+          "yaw_degrees": -70
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_GATE",
+          "position_blender_z_up": [
+            -0.5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            -0.5,
+            0,
+            8
+          ],
+          "yaw_degrees": -7
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_WALL",
+          "position_blender_z_up": [
+            -5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            -5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        },
+        {
+          "modelKey": "VIL_OUTLAWS_WALL",
+          "position_blender_z_up": [
+            5,
+            -8,
+            0
+          ],
+          "position_gltf_y_up": [
+            5,
+            0,
+            8
+          ],
+          "yaw_degrees": 0
+        }
+      ],
+      "placement_status": "Art layout example only; existing tile placement and collision are not modified."
+    }
+  ],
+  "notes": [
+    "Theme lookup uses current village IDs and authored culture, not automatic runtime morality conversion.",
+    "Current society.alignment remains runtime data; no automatic model swapping was added.",
+    "Door/window details sit on solid walls; all gabled/hipped/lean roofs are closed volumes.",
+    "No interiors, collision geometry or gameplay/map edits.",
+    "Library geometry is at origin; layout objects are linked previews.",
+    "2026-10-27: Six CHAPEL keys now contain unique landmark architecture. Other 30 meshes are unchanged. Existing kind 5 / village ID selection remains valid. No runtime code or build changes."
+  ],
+  "revision": "landmarks_20261027",
+  "landmark_revision": {
+    "date": "2026-10-27",
+    "count": 6,
+    "stable_model_keys": true,
+    "game_prop_kind": 5,
+    "unchanged_other_buildings": 30,
+    "component_grouping": "Named vertex groups inside each single mesh. Static, no extra draw nodes required."
+  }
+}

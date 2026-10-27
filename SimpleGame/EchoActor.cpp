@@ -61,6 +61,17 @@ void EchoActor::Update(float dt)
 void EchoActor::Draw(Renderer& r)
 {
     const Point p = m_Game.Project(WorldX(), WorldY());
+    if (DrawModel(
+            r,
+            "echo/death",
+            [&]()
+            {
+                return m_Game.ModelAssets().Monster(4);
+            },
+            alive ? (SpritePose().moving ? "MON_04_Walk" : "MON_04_Idle") : "MON_04_DeadHold"))
+    {
+        return;
+    }
     if (alive)
     {
         m_Game.DrawCharacter(r, p, corruption, true, SpritePose());

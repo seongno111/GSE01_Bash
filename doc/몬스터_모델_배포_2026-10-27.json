@@ -1,0 +1,96 @@
+{
+  "source": "C:\\GameSoftWare\\Modeling\\Monsters_v1",
+  "method": "Copy runtime assets only; no build or game execution",
+  "destinations": [
+    {
+      "path": "C:\\GameSoftWare\\x64\\Debug\\Modeling\\Monsters_v1",
+      "verifiedFiles": [
+        {
+          "file": "AshWolf.glb",
+          "bytes": 511588,
+          "sha256": "6e53f4c3097ee42814705dbafda0fac7c6951bb0dd6c517337dca87d6c4ec501"
+        },
+        {
+          "file": "BlightBear.glb",
+          "bytes": 520612,
+          "sha256": "fbca92e65b23829c85bea14dea540aa2cd1a0754877f265c44be9258f791cec3"
+        },
+        {
+          "file": "FallenPaladin.glb",
+          "bytes": 628408,
+          "sha256": "8f5e39a802a543b556a9e82ddc0321082322a5f17fe4711eb928f07e60edfebf"
+        },
+        {
+          "file": "FallenPriest.glb",
+          "bytes": 579224,
+          "sha256": "5a6ee7f10016500b0d279808b8be7b921a73a15f0ffed82e7eddf33aef279c8c"
+        },
+        {
+          "file": "HighDemonAzar.glb",
+          "bytes": 831700,
+          "sha256": "3b9f94f69901d3d8e4d24d0069ee8c7e346b9d248249200e7e980de839ed7d96"
+        },
+        {
+          "file": "ThornStag.glb",
+          "bytes": 480068,
+          "sha256": "232386948ce4216a04f1e099a9f16cbe0ebe2bec7c30e875d050827fcbbfea5e"
+        },
+        {
+          "file": "monster_catalog.json",
+          "bytes": 114435,
+          "sha256": "c047f44a1c13f6e369fd21c489787beadf55b898524feb573ab77fa7406fff2e"
+        },
+        {
+          "file": "validation.json",
+          "bytes": 2866,
+          "sha256": "40cf81c9fb585e62938cca036d29348c6d735b3352a4e4918544bd7571612961"
+        }
+      ]
+    },
+    {
+      "path": "C:\\GameSoftWare\\x64\\Release\\Modeling\\Monsters_v1",
+      "verifiedFiles": [
+        {
+          "file": "AshWolf.glb",
+          "bytes": 511588,
+          "sha256": "6e53f4c3097ee42814705dbafda0fac7c6951bb0dd6c517337dca87d6c4ec501"
+        },
+        {
+          "file": "BlightBear.glb",
+          "bytes": 520612,
+          "sha256": "fbca92e65b23829c85bea14dea540aa2cd1a0754877f265c44be9258f791cec3"
+        },
+        {
+          "file": "FallenPaladin.glb",
+          "bytes": 628408,
+          "sha256": "8f5e39a802a543b556a9e82ddc0321082322a5f17fe4711eb928f07e60edfebf"
+        },
+        {
+          "file": "FallenPriest.glb",
+          "bytes": 579224,
+          "sha256": "5a6ee7f10016500b0d279808b8be7b921a73a15f0ffed82e7eddf33aef279c8c"
+        },
+        {
+          "file": "HighDemonAzar.glb",
+          "bytes": 831700,
+          "sha256": "3b9f94f69901d3d8e4d24d0069ee8c7e346b9d248249200e7e980de839ed7d96"
+        },
+        {
+          "file": "ThornStag.glb",
+          "bytes": 480068,
+          "sha256": "232386948ce4216a04f1e099a9f16cbe0ebe2bec7c30e875d050827fcbbfea5e"
+        },
+        {
+          "file": "monster_catalog.json",
+          "bytes": 114435,
+          "sha256": "c047f44a1c13f6e369fd21c489787beadf55b898524feb573ab77fa7406fff2e"
+        },
+        {
+          "file": "validation.json",
+          "bytes": 2866,
+          "sha256": "40cf81c9fb585e62938cca036d29348c6d735b3352a4e4918544bd7571612961"
+        }
+      ]
+    }
+  ]
+}

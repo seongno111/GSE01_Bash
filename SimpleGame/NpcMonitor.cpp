@@ -35,9 +35,7 @@ void NpcWorld::RecordWorldEvent(const std::string& type,
         }
         if (const auto* enemy = dynamic_cast<const EnemyActor*>(&value))
         {
-            return std::string(enemy->tier == 2   ? "경작지 수문장"
-                               : enemy->tier == 1 ? "오염된 약탈자"
-                                                  : "메마른 망자");
+            return std::string(enemy->Definition().name);
         }
         if (dynamic_cast<const EchoActor*>(&value))
         {
@@ -466,6 +464,31 @@ bool NpcWorld::ExportMonitor()
             {{"id", S("actor-" + std::to_string(actor.Id()))},
              {"kind", S(kind)},
              {"name", S(name)},
+             {"speciesId", enemy ? S(enemy->Definition().id) : S("mutation_echo")},
+             {"family", enemy ? S(enemy->Definition().family) : S("죽음의 잔재")},
+             {"modelKey", enemy ? S(enemy->Definition().modelKey) : S("DeathEcho")},
+             {"ability", enemy ? S(MonsterAbilityName(enemy->Definition().ability)) : S("없음")},
+             {"combatTargetId",
+              enemy && enemy->combatTarget != InvalidActor
+                  ? S("actor-" + std::to_string(enemy->combatTarget))
+                  : "null"},
+             {"state",
+              enemy ? S(!alive                    ? "사망"
+                        : !active                 ? "비활성"
+                        : enemy->attackWindup > 0 ? "공격 예고"
+                        : enemy->recovery > 0     ? "공격 회복"
+                                                  : MonsterStateName(enemy->state))
+                    : S("추격")},
+             {"damage", enemy ? N(enemy->damage) : "null"},
+             {"armor", enemy ? N(enemy->Definition().armor) : "null"},
+             {"moveSpeed", enemy ? N(enemy->speed * (enemy->enraged ? 1.3f : 1)) : "null"},
+             {"experience", enemy ? N(enemy->experience) : "null"},
+             {"attackRange", enemy ? N(enemy->Definition().attackRange) : "null"},
+             {"specialCooldown", enemy ? N(enemy->specialCooldown) : "null"},
+             {"specialWindup", enemy ? N(enemy->specialWindup) : "null"},
+             {"guardRemaining", enemy ? N(enemy->guardRemaining) : "null"},
+             {"enraged", B(enemy && enemy->enraged)},
+             {"packNearby", enemy ? N(enemy->packNearby) : "null"},
              {"alive", B(alive)},
              {"active", B(active)},
              {"enabled", B(actor.EnabledInHierarchy())},
@@ -484,10 +507,8 @@ bool NpcWorld::ExportMonitor()
     for (const auto& enemy : m_Game.m_Enemies)
     {
         addMonster(enemy,
-                   enemy.tier == 2 ? "boss" : "monster",
-                   enemy.tier == 2   ? "경작지 수문장"
-                   : enemy.tier == 1 ? "오염된 약탈자"
-                                     : "메마른 망자",
+                   enemy.Definition().boss ? "boss" : "monster",
+                   enemy.Definition().name,
                    enemy.alive,
                    enemy.health,
                    enemy.maxHealth);

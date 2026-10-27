@@ -1,0 +1,117 @@
+{
+  "revision": "landmarks_20261027",
+  "source": "C:\\GameSoftWare\\Modeling\\Villages_v1",
+  "buildOrGameRun": false,
+  "destinations": [
+    {
+      "path": "C:\\GameSoftWare\\x64\\Debug\\Modeling\\Villages_v1",
+      "verifiedFiles": [
+        {
+          "file": "cathedral.glb",
+          "bytes": 263432,
+          "sha256": "9615f51b45a1ff0d95dccb2648d23b4d5d225e356626d45b2a68d717f36047fa"
+        },
+        {
+          "file": "dawn.glb",
+          "bytes": 196680,
+          "sha256": "2216c4ec4cb2c52ba4f1b72cadd8b8ae75b395d85a6e12ff709f92036a2507c6"
+        },
+        {
+          "file": "iron.glb",
+          "bytes": 274656,
+          "sha256": "21badfc0595d8eef183ab9cba95125b38cd2da95f862864320ca15be3de77b3c"
+        },
+        {
+          "file": "landmark_delivery.json",
+          "bytes": 6605,
+          "sha256": "3a9027d3a7d2955f51cd9c5e153d39b29cd8a134de2eb77e8e6f9c33604d7329"
+        },
+        {
+          "file": "market.glb",
+          "bytes": 247228,
+          "sha256": "676e5bdee2a514932d8707e408612d7423afa8b325c84fcfcf8bde9e66c684fc"
+        },
+        {
+          "file": "outlaws.glb",
+          "bytes": 204268,
+          "sha256": "2607f274fad2eee4600f52740042a0daafa4c37ed0c4585922a7c168c194233c"
+        },
+        {
+          "file": "seekers.glb",
+          "bytes": 232012,
+          "sha256": "2d3b317e5a259e447d5430db1e31860a44dfcfbfbd30ffd2330450ed932aa3e5"
+        },
+        {
+          "file": "validation.json",
+          "bytes": 20221,
+          "sha256": "d1d8182991c39f5dae8d0dfce8185a9afa60104a056f74c4574a287f22af2186"
+        },
+        {
+          "file": "village_buildings.glb",
+          "bytes": 1395728,
+          "sha256": "a84555f6cbb4edd549125b4a16ca844d69dbdbb66e537654b2c283c3039d6c6c"
+        },
+        {
+          "file": "village_catalog.json",
+          "bytes": 43031,
+          "sha256": "738bad73337955c8786d0b53cf4382e29f1ccc4c64655b8bd5bd68e124ca1226"
+        }
+      ]
+    },
+    {
+      "path": "C:\\GameSoftWare\\x64\\Release\\Modeling\\Villages_v1",
+      "verifiedFiles": [
+        {
+          "file": "cathedral.glb",
+          "bytes": 263432,
+          "sha256": "9615f51b45a1ff0d95dccb2648d23b4d5d225e356626d45b2a68d717f36047fa"
+        },
+        {
+          "file": "dawn.glb",
+          "bytes": 196680,
+          "sha256": "2216c4ec4cb2c52ba4f1b72cadd8b8ae75b395d85a6e12ff709f92036a2507c6"
+        },
+        {
+          "file": "iron.glb",
+          "bytes": 274656,
+          "sha256": "21badfc0595d8eef183ab9cba95125b38cd2da95f862864320ca15be3de77b3c"
+        },
+        {
+          "file": "landmark_delivery.json",
+          "bytes": 6605,
+          "sha256": "3a9027d3a7d2955f51cd9c5e153d39b29cd8a134de2eb77e8e6f9c33604d7329"
+        },
+        {
+          "file": "market.glb",
+          "bytes": 247228,
+          "sha256": "676e5bdee2a514932d8707e408612d7423afa8b325c84fcfcf8bde9e66c684fc"
+        },
+        {
+          "file": "outlaws.glb",
+          "bytes": 204268,
+          "sha256": "2607f274fad2eee4600f52740042a0daafa4c37ed0c4585922a7c168c194233c"
+        },
+        {
+          "file": "seekers.glb",
+          "bytes": 232012,
+          "sha256": "2d3b317e5a259e447d5430db1e31860a44dfcfbfbd30ffd2330450ed932aa3e5"
+        },
+        {
+          "file": "validation.json",
+          "bytes": 20221,
+          "sha256": "d1d8182991c39f5dae8d0dfce8185a9afa60104a056f74c4574a287f22af2186"
+        },
+        {
+          "file": "village_buildings.glb",
+          "bytes": 1395728,
+          "sha256": "a84555f6cbb4edd549125b4a16ca844d69dbdbb66e537654b2c283c3039d6c6c"
+        },
+        {
+          "file": "village_catalog.json",
+          "bytes": 43031,
+          "sha256": "738bad73337955c8786d0b53cf4382e29f1ccc4c64655b8bd5bd68e124ca1226"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "method": "Read-only GLB/catalog/source inspection; game and compiler were not run",
+  "assetAuthored": "2026-10-26",
+  "sharedLibrary": {
+    "file": "C:\\GameSoftWare\\Modeling\\Villages_v1\\village_buildings.glb",
+    "sha256": "a84555f6cbb4edd549125b4a16ca844d69dbdbb66e537654b2c283c3039d6c6c",
+    "bytes": 1395728,
+    "meshes": 36,
+    "nodes": 36,
+    "vertices": 43864,
+    "triangles": 23600,
+    "weighted_vertices": 0,
+    "skins": 0,
+    "clips": 0,
+    "maximum_bind_palette_identity_error": 0
+  },
+  "revision": "landmarks_20261027",
+  "revisionInspection": {
+    "changedLandmarks": [
+      "VIL_CATHEDRAL_CHAPEL",
+      "VIL_DAWN_CHAPEL",
+      "VIL_IRON_CHAPEL",
+      "VIL_MARKET_CHAPEL",
+      "VIL_OUTLAWS_CHAPEL",
+      "VIL_SEEKERS_CHAPEL"
+    ],
+    "unchangedOtherModels": 30,
+    "deliveryFilesVerified": [
+      "cathedral.glb",
+      "dawn.glb",
+      "iron.glb",
+      "market.glb",
+      "outlaws.glb",
+      "seekers.glb",
+      "validation.json",
+      "village_buildings.glb",
+      "village_catalog.json"
+    ]
+  },
+  "themeCount": 6,
+  "modelCount": 36,
+  "themes": [
+    {
+      "villageId": "cathedral",
+      "buildings": [
+        {
+          "kind": 5,
+          "model": "VIL_CATHEDRAL_CHAPEL",
+          "scale": 0.5408805161213549,
+          "groundHalfExtent": 2.15,
+          "scaledHeight": 6.057861677394404,
+          "role": "village_landmark",
+          "triangles": 3748,
+          "revision": "2026-10-27"
+        },
+        {
+          "kind": 7,
+          "model": "VIL_CATHEDRAL_HOUSE_A",
+          "scale": 0.9705881400091931,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 3.115587951991619
+        },
+        {
+          "kind": 7,
+          "model": "VIL_CATHEDRAL_HOUSE_B",
+          "scale": 1.0,
+          "groundHalfExtent": 1.5250000953674316,
+          "scaledHeight": 3.2100000232458115
+        },
+        {
+          "kind": 8,
+          "model": "VIL_CATHEDRAL_WORKSHOP",
+          "scale": 0.8461538254626879,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 3.1180769213472717
+        },
+        {
+          "kind": 2,
+          "model": "VIL_CATHEDRAL_WALL",
+          "scale": 0.6,
+          "groundHalfExtent": 1.2,
+          "scaledHeight": 0.9000000715255737
+        }
+      ],
+      "gate": "VIL_CATHEDRAL_GATE",
+      "nominalHouseVariants": {
+        "VIL_CATHEDRAL_HOUSE_A": 18,
+        "VIL_CATHEDRAL_HOUSE_B": 18
+      },
+      "gatesPerVillage": 4,
+      "centralGatePassageOverlaps": 0
+    },
+    {
+      "villageId": "dawn",
+      "buildings": [
+        {
+          "kind": 5,
+          "model": "VIL_DAWN_CHAPEL",
+          "scale": 0.5810810735924041,
+          "groundHalfExtent": 2.15,
+          "scaledHeight": 6.984594770578504,
+          "role": "village_landmark",
+          "triangles": 2412,
+          "revision": "2026-10-27"
+        },
+        {
+          "kind": 7,
+          "model": "VIL_DAWN_HOUSE_A",
+          "scale": 1.0,
+          "groundHalfExtent": 1.6399999856948853,
+          "scaledHeight": 4.509999882429838
+        },
+        {
+          "kind": 7,
+          "model": "VIL_DAWN_HOUSE_B",
+          "scale": 1.0,
+          "groundHalfExtent": 1.6399999856948853,
+          "scaledHeight": 4.510000359266996
+        },
+        {
+          "kind": 8,
+          "model": "VIL_DAWN_WORKSHOP",
+          "scale": 0.9141273296415221,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 4.214126808616902
+        },
+        {
+          "kind": 2,
+          "model": "VIL_DAWN_WALL",
+          "scale": 0.6,
+          "groundHalfExtent": 1.2,
+          "scaledHeight": 1.469999885559082
+        }
+      ],
+      "gate": "VIL_DAWN_GATE",
+      "nominalHouseVariants": {
+        "VIL_DAWN_HOUSE_A": 18,
+        "VIL_DAWN_HOUSE_B": 18
+      },
+      "gatesPerVillage": 4,
+      "centralGatePassageOverlaps": 0
+    },
+    {
+      "villageId": "iron",
+      "buildings": [
+        {
+          "kind": 5,
+          "model": "VIL_IRON_CHAPEL",
+          "scale": 0.6013985933770853,
+          "groundHalfExtent": 2.15,
+          "scaledHeight": 6.374825319212461,
+          "role": "village_landmark",
+          "triangles": 4008,
+          "revision": "2026-10-27"
+        },
+        {
+          "kind": 7,
+          "model": "VIL_IRON_HOUSE_A",
+          "scale": 0.9375000685792128,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 3.028125511804125
+        },
+        {
+          "kind": 7,
+          "model": "VIL_IRON_HOUSE_B",
+          "scale": 1.0,
+          "groundHalfExtent": 1.567500114440918,
+          "scaledHeight": 3.2300003096461296
+        },
+        {
+          "kind": 8,
+          "model": "VIL_IRON_WORKSHOP",
+          "scale": 0.810810776613048,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 3.1905404713360834
+        },
+        {
+          "kind": 2,
+          "model": "VIL_IRON_WALL",
+          "scale": 0.6,
+          "groundHalfExtent": 1.2,
+          "scaledHeight": 1.5
+        }
+      ],
+      "gate": "VIL_IRON_GATE",
+      "nominalHouseVariants": {
+        "VIL_IRON_HOUSE_A": 18,
+        "VIL_IRON_HOUSE_B": 18
+      },
+      "gatesPerVillage": 4,
+      "centralGatePassageOverlaps": 0
+    },
+    {
+      "villageId": "market",
+      "buildings": [
+        {
+          "kind": 5,
+          "model": "VIL_MARKET_CHAPEL",
+          "scale": 0.6169297172793409,
+          "groundHalfExtent": 2.15,
+          "scaledHeight": 7.545050159918326,
+          "role": "village_landmark",
+          "triangles": 2864,
+          "revision": "2026-10-27"
+        },
+        {
+          "kind": 7,
+          "model": "VIL_MARKET_HOUSE_A",
+          "scale": 0.7252746948713912,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.8358239462790036
+        },
+        {
+          "kind": 7,
+          "model": "VIL_MARKET_HOUSE_B",
+          "scale": 0.7252746948713912,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.8358237733600413
+        },
+        {
+          "kind": 8,
+          "model": "VIL_MARKET_WORKSHOP",
+          "scale": 0.653955296591611,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.622361130192008
+        },
+        {
+          "kind": 2,
+          "model": "VIL_MARKET_WALL",
+          "scale": 0.6,
+          "groundHalfExtent": 1.2,
+          "scaledHeight": 0.9000000715255737
+        }
+      ],
+      "gate": "VIL_MARKET_GATE",
+      "nominalHouseVariants": {
+        "VIL_MARKET_HOUSE_A": 18,
+        "VIL_MARKET_HOUSE_B": 18
+      },
+      "gatesPerVillage": 4,
+      "centralGatePassageOverlaps": 0
+    },
+    {
+      "villageId": "seekers",
+      "buildings": [
+        {
+          "kind": 5,
+          "model": "VIL_SEEKERS_CHAPEL",
+          "scale": 0.6134093950929717,
+          "groundHalfExtent": 2.15,
+          "scaledHeight": 6.483712549238026,
+          "role": "village_landmark",
+          "triangles": 2900,
+          "revision": "2026-10-27"
+        },
+        {
+          "kind": 7,
+          "model": "VIL_SEEKERS_HOUSE_A",
+          "scale": 0.9821428878068122,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 3.8892859902613104
+        },
+        {
+          "kind": 7,
+          "model": "VIL_SEEKERS_HOUSE_B",
+          "scale": 0.897714878628992,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 3.37540792170674
+        },
+        {
+          "kind": 8,
+          "model": "VIL_SEEKERS_WORKSHOP",
+          "scale": 0.8461538254626879,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.927692391313684
+        },
+        {
+          "kind": 2,
+          "model": "VIL_SEEKERS_WALL",
+          "scale": 0.6,
+          "groundHalfExtent": 1.2,
+          "scaledHeight": 0.9000000715255737
+        }
+      ],
+      "gate": "VIL_SEEKERS_GATE",
+      "nominalHouseVariants": {
+        "VIL_SEEKERS_HOUSE_A": 18,
+        "VIL_SEEKERS_HOUSE_B": 18
+      },
+      "gatesPerVillage": 4,
+      "centralGatePassageOverlaps": 0
+    },
+    {
+      "villageId": "outlaws",
+      "buildings": [
+        {
+          "kind": 5,
+          "model": "VIL_OUTLAWS_CHAPEL",
+          "scale": 0.5963938942093451,
+          "groundHalfExtent": 2.15,
+          "scaledHeight": 6.500693219375646,
+          "role": "village_landmark",
+          "triangles": 2284,
+          "revision": "2026-10-27"
+        },
+        {
+          "kind": 7,
+          "model": "VIL_OUTLAWS_HOUSE_A",
+          "scale": 0.9565217920121893,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.7356522248117323
+        },
+        {
+          "kind": 7,
+          "model": "VIL_OUTLAWS_HOUSE_B",
+          "scale": 0.9793905182577477,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.8010568451482563
+        },
+        {
+          "kind": 8,
+          "model": "VIL_OUTLAWS_WORKSHOP",
+          "scale": 0.8354430783159801,
+          "groundHalfExtent": 1.65,
+          "scaledHeight": 2.9950636543684923
+        },
+        {
+          "kind": 2,
+          "model": "VIL_OUTLAWS_WALL",
+          "scale": 0.6315789552936925,
+          "groundHalfExtent": 1.2,
+          "scaledHeight": 1.6421052235315376
+        }
+      ],
+      "gate": "VIL_OUTLAWS_GATE",
+      "nominalHouseVariants": {
+        "VIL_OUTLAWS_HOUSE_A": 18,
+        "VIL_OUTLAWS_HOUSE_B": 18
+      },
+      "gatesPerVillage": 4,
+      "centralGatePassageOverlaps": 0
+    }
+  ],
+  "housingMinimumVisualGap": 0.7000000000000002,
+  "note": "Gate collision is intentionally unchanged: decorative actor with an open center."
+}

@@ -677,12 +677,13 @@ void NpcWorld::Damage(NpcEntity attacker, NpcEntity target, float amount, bool r
         }
         if (m_Game.Player().health <= 0)
         {
-            m_Game.Die(source, unlawful);
+            m_Game.Die(Resolve(attacker), unlawful);
         }
     }
     else if (auto* enemy = dynamic_cast<EnemyActor*>(actor))
     {
-        enemy->health -= amount;
+        const auto* attackerActor = Resolve(attacker);
+        amount = enemy->ReceiveDamage(amount, attackerActor ? attackerActor->Id() : InvalidActor);
         if (enemy->health <= 0)
         {
             m_Game.DefeatEnemy(*enemy, false);
@@ -733,7 +734,7 @@ bool NpcWorld::HitByPlayer(double x, double y, float damage, bool allowPK)
     return false;
 }
 
-bool NpcWorld::HitByMonster(double x, double y, float damage)
+bool NpcWorld::HitByMonster(double x, double y, float damage, ActorId source)
 {
     for (auto id : m_Actors)
     {
@@ -741,7 +742,8 @@ bool NpcWorld::HitByMonster(double x, double y, float damage)
         if (npc && npc->vitals.alive && !InsideSanctuary(npc->WorldX(), npc->WorldY())
             && Length(x - npc->WorldX(), y - npc->WorldY()) < 0.38)
         {
-            Damage(0, npc->Entity(), damage);
+            const auto* enemy = dynamic_cast<const EnemyActor*>(m_Game.Scene().Find(source));
+            MonsterDamage(*npc, damage, enemy);
             return true;
         }
     }
@@ -751,7 +753,7 @@ bool NpcWorld::HitByMonster(double x, double y, float damage)
 Actor* NpcWorld::EnemyTarget(const EnemyActor& enemy) const
 {
     Actor* chosen = nullptr;
-    double nearest = 8;
+    double nearest = enemy.Definition().detectionRange;
     const auto consider = [&](Actor& target, bool alive)
     {
         const double distance =
@@ -765,7 +767,7 @@ Actor* NpcWorld::EnemyTarget(const EnemyActor& enemy) const
         }
     };
     consider(m_Game.Player(), m_Game.Player().health > 0);
-    for (auto id : m_Actors)
+    for (auto id : NearbyNpcs(enemy.WorldPosition(), nearest))
     {
         auto* npc = dynamic_cast<NpcActor*>(m_Game.Scene().Find(id));
         if (npc)
@@ -773,10 +775,26 @@ Actor* NpcWorld::EnemyTarget(const EnemyActor& enemy) const
             consider(*npc, npc->vitals.alive);
         }
     }
+    if (enemy.alertUntil > m_Game.Time())
+    {
+        Actor* alerted = m_Game.Scene().Find(enemy.alertTarget);
+        const auto* npc = dynamic_cast<const NpcActor*>(alerted);
+        if (alerted && alerted->EnabledInHierarchy() && (!npc || npc->vitals.alive)
+            && !InsideSanctuary(alerted->WorldX(), alerted->WorldY())
+            && Length(alerted->WorldX() - enemy.WorldX(), alerted->WorldY() - enemy.WorldY())
+                   < enemy.Definition().detectionRange * 1.5
+            && m_Game.ClearShot(enemy.WorldX(),
+                                enemy.WorldY(),
+                                alerted->WorldX(),
+                                alerted->WorldY()))
+        {
+            return alerted;
+        }
+    }
     return chosen;
 }
 
-void NpcWorld::MonsterDamage(Actor& target, float damage)
+void NpcWorld::MonsterDamage(Actor& target, float damage, const EnemyActor* source)
 {
-    Damage(0, Entity(target), damage);
+    Damage(source ? Entity(*source) : NoNpcEntity, Entity(target), damage);
 }

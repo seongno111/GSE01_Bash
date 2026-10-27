@@ -45,10 +45,13 @@ void NpcActor::Draw(Renderer& r)
     const Color color = clothes[static_cast<size_t>(profile.role)];
     if (!vitals.alive)
     {
+        if (DrawNpcModel(r))
+        {
+            return;
+        }
         r.Ellipse(p, 16 * z, 6 * z, color.Shade(0.3f));
         return;
     }
-    r.Ellipse({p.x, p.y + 2 * z}, 15 * z, 6 * z, Color(0.01f, 0.02f, 0.02f, 0.6f));
     if (m_World.Selected() == this)
     {
         r.Ellipse({p.x, p.y + 1 * z}, 21 * z, 9 * z, Color(0.65f, 0.75f, 0.32f, 0.28f));
@@ -58,6 +61,11 @@ void NpcActor::Draw(Renderer& r)
     {
         r.Ellipse(p, 35 * z, 18 * z, Color(0.9f, 0.15f, 0.1f, 0.25f));
     }
+    if (DrawNpcModel(r))
+    {
+        return;
+    }
+    r.Ellipse({p.x, p.y + 2 * z}, 15 * z, 6 * z, Color(0.01f, 0.02f, 0.02f, 0.6f));
     const bool mutant = vitals.corruption >= GameRules::MutationThreshold;
     const unsigned sprite = mutant ? 9u : 1u + static_cast<unsigned>(profile.role);
     const Color tint = vitals.frenzy ? Color(1, 0.55f, 0.7f) : Color();
@@ -189,7 +197,7 @@ void NpcMissileActor::Update(float dt)
         }
         // Fixed launch direction; only the intended target is eligible (no friendly fire).
         const auto* enemy = dynamic_cast<const EnemyActor*>(target);
-        const double radius = enemy && enemy->tier == 2 ? 0.58 : 0.38;
+        const double radius = enemy ? enemy->Definition().hitRadius : .38;
         if (GameRules::Length(WorldX() - target->WorldX(), WorldY() - target->WorldY()) < radius)
         {
             m_World.Damage(m_Owner, m_Target, m_Damage);

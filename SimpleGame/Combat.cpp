@@ -75,14 +75,12 @@ void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
                                      &m_Player,
                                      &enemy);
     }
-    enemy.respawn = enemy.tier == 2 ? 45.0f : 25.0f;
-    enemy.attackWindup = 0;
-    enemy.recovery = 0;
-    enemy.burstWindup = 0;
+    enemy.respawn = enemy.Definition().respawnSeconds;
+    enemy.ResetCombat();
     enemy.burstCooldown = 5;
     if (!rewardPlayer)
     {
-        if (enemy.tier == 2)
+        if (enemy.Id() == m_GuardianId)
         {
             m_GuardianDefeated = true;
         }
@@ -100,10 +98,10 @@ void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
         }
         m_Loot.Spawn(*this, x, y, amount, type);
     };
-    drop(-0.2, 0, enemy.tier == 2 ? 3 : 1, LootType::Upgrade);
+    drop(-0.2, 0, enemy.Definition().boss ? 3 : 1, LootType::Upgrade);
     const auto bonus = static_cast<LootType>(1 + (m_FarmKills - 1) % 4);
     drop(0.3, 0, bonus == LootType::Essence ? 25 : 1, bonus);
-    if (enemy.tier == 2)
+    if (enemy.Definition().boss)
     {
         drop(0, 0.4, 80, LootType::Essence);
         drop(0, -0.4, 1, LootType::Purification);
@@ -114,7 +112,7 @@ void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
                   "경험치 +" + std::to_string(enemy.experience),
                   ExperienceColor);
 
-    if (enemy.tier == 2)
+    if (enemy.Id() == m_GuardianId)
     {
         m_GuardianDefeated = true;
         Notice("보스 경작지 수문장을 처치했다! 전리품을 챙겨 시작 성소에서 E로 보고하세요.");

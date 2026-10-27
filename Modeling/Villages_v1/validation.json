@@ -1,0 +1,664 @@
+{
+  "revision": "landmarks_20261027",
+  "date": "2026-10-27",
+  "checks": {
+    "six_themes": true,
+    "unique_model_names": true,
+    "all_polygon_roof_volumes_closed": true,
+    "all_landmark_components_closed": true,
+    "all_layout_keys_exist": true,
+    "non_landmark_30_meshes_unchanged": true,
+    "landmarks_visible_after_existing_footprint_scaling": true,
+    "landmark_door_height_fits_1_8m_character_after_scaling": true,
+    "village_glbs_match_catalog": true,
+    "whole_library_has_36_meshes": true,
+    "exported_triangles_have_area_and_matching_normals": true,
+    "exported_buffers_finite_and_materials_opaque": true,
+    "exported_30_ordinary_buildings_match_previous_geometry": true,
+    "exported_bounds_match_y_up_catalog": true,
+    "blender_fresh_import_36_meshes_and_bounds_match": true
+  },
+  "models": 36,
+  "landmarks": 6,
+  "closed_landmark_components_checked": 914,
+  "unchanged_mesh_hashes": {
+    "VIL_CATHEDRAL_GATE": "ffef786b2bbe78696e2f83ba87f594c7bd1d92bc7dc93cdfa9c09efe7850a8de",
+    "VIL_CATHEDRAL_HOUSE_A": "06a7d0728ba98f176195c7ed9f4a5a8b9aed7433a7cc2a130b17dbb4ffa822a0",
+    "VIL_CATHEDRAL_HOUSE_B": "ab1d37f74cd40dfa64f1e6763d160dd9fd9b18b3f2f9a6f05665a25e3e0601f9",
+    "VIL_CATHEDRAL_WALL": "9667688589d71b0b4b3a4c33475914569bff1465c006594df192d89a41807542",
+    "VIL_CATHEDRAL_WORKSHOP": "6d3bfeda0c7ba942ba8647f2b3eb746f2af442b4afaa54805ee7251b8be5cb74",
+    "VIL_DAWN_GATE": "703781355e2b1bfe59c160c56feaa41bac780676cb80dc72c334d637846c6a21",
+    "VIL_DAWN_HOUSE_A": "36c3a4e1be8deebb9f4c5c3682403e478fdccf9d71a7b63f04594554f2cc4eba",
+    "VIL_DAWN_HOUSE_B": "0d1e0f723a07d7ff799aab3cb488d2acb3fbac70a24e8ce9cd5ddb9ae7ae3279",
+    "VIL_DAWN_WALL": "a4827ccf4fd5d12c266a77b8f0b5081a833017233fcdd34afcb3b47f3822034b",
+    "VIL_DAWN_WORKSHOP": "2331189bb181e633c1cabd03a337c1a1902f89caf48b25221f6b5ad7d30f8fd7",
+    "VIL_IRON_GATE": "fb7dec77a9feff44efd58d4cd7339f3bb6975649366244f63c6cc229543837c4",
+    "VIL_IRON_HOUSE_A": "49104d64e24960934c10a7ba479327d5dec91a7a3519db32e3d1df51d5c060ae",
+    "VIL_IRON_HOUSE_B": "047c2103c3e92010f8cec58f4adf2dddfbc84da27b44d2b00d38f07d5b0beea1",
+    "VIL_IRON_WALL": "8efe6af7f752db1016fd7362e465b03f08ffa1f2e1e7257ca3a0872bddc11246",
+    "VIL_IRON_WORKSHOP": "5ee6a55ccea46ac86cdecc06931a2f9f4aaceac885d6c99c3f6b18ecce1cbb1c",
+    "VIL_MARKET_GATE": "058c2e436b1ec2f32b6f429f7335b140f818f874a65770bfaffab61627fda527",
+    "VIL_MARKET_HOUSE_A": "7b573f4b2ba6f2d371255e334ca9010bdc195a8d56ff61069e866bb5c940f428",
+    "VIL_MARKET_HOUSE_B": "91b2286e318f7ac48e505a6b9746fbcf34bb9cc38b710580dd280b94efe1e7ff",
+    "VIL_MARKET_WALL": "9667688589d71b0b4b3a4c33475914569bff1465c006594df192d89a41807542",
+    "VIL_MARKET_WORKSHOP": "0e6cd52573e21e766e86b865a6984633be6eb5618c46e8796da8f7520f9f7068",
+    "VIL_OUTLAWS_GATE": "bb63730e7093673f66022735596629fd969f559f4644bdb384f32997da348293",
+    "VIL_OUTLAWS_HOUSE_A": "daf4612b5c88d3fe4ace777a6427257203b274aa95246999cff86f80e82e4a9f",
+    "VIL_OUTLAWS_HOUSE_B": "077af96381cb7c4c2e0b662162d9058014bce44ff3632ca3d915d7502e039934",
+    "VIL_OUTLAWS_WALL": "57e214f85baa5d904d33d3511117d896600f2a2181e3b96eedcb39fe709ea755",
+    "VIL_OUTLAWS_WORKSHOP": "76504ac62c771b38380578d1512cd71c0783c662d786057501e6e95e51acac31",
+    "VIL_SEEKERS_GATE": "37cdef98316d9561d7991c4520c786dd62e090b93553d6ecf85512798e3c6464",
+    "VIL_SEEKERS_HOUSE_A": "b723c2895b60f531636ae6ed59989b2b8f2dbd5263e2a28747ee8cd993f6a67f",
+    "VIL_SEEKERS_HOUSE_B": "904d6970e30f7aed054f4f5588de97b4c0cc4e8122920f2847d5a28d18e26f55",
+    "VIL_SEEKERS_WALL": "9667688589d71b0b4b3a4c33475914569bff1465c006594df192d89a41807542",
+    "VIL_SEEKERS_WORKSHOP": "d2f5c154939d4d0f6bdd0e77d0bd960ef14b13ee9af7119af9fffd1f5c94c2c0"
+  },
+  "landmark_dimensions": [
+    {
+      "modelKey": "VIL_CATHEDRAL_CHAPEL",
+      "triangles": 3748,
+      "bounds_min": [
+        -3.119999885559082,
+        -3.9749999046325684,
+        0.0
+      ],
+      "bounds_max": [
+        3.119999885559082,
+        3.799999952316284,
+        11.199999809265137
+      ],
+      "suggested_runtime_scale": 0.5408805161213549,
+      "runtime_scaled_height": 6.057861677394404
+    },
+    {
+      "modelKey": "VIL_DAWN_CHAPEL",
+      "triangles": 2412,
+      "bounds_min": [
+        -2.75,
+        -3.700000047683716,
+        0.0
+      ],
+      "bounds_max": [
+        2.75,
+        3.315000057220459,
+        12.020000457763672
+      ],
+      "suggested_runtime_scale": 0.5810810735924041,
+      "runtime_scaled_height": 6.984594770578504
+    },
+    {
+      "modelKey": "VIL_IRON_CHAPEL",
+      "triangles": 4008,
+      "bounds_min": [
+        -3.0999999046325684,
+        -3.575000047683716,
+        0.0
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        3.1600000858306885,
+        10.600000381469727
+      ],
+      "suggested_runtime_scale": 0.6013985933770853,
+      "runtime_scaled_height": 6.374825319212461
+    },
+    {
+      "modelKey": "VIL_MARKET_CHAPEL",
+      "triangles": 2864,
+      "bounds_min": [
+        -3.0999999046325684,
+        -3.484999895095825,
+        0.0
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        2.941819906234741,
+        12.229999542236328
+      ],
+      "suggested_runtime_scale": 0.6169297172793409,
+      "runtime_scaled_height": 7.545050159918326
+    },
+    {
+      "modelKey": "VIL_SEEKERS_CHAPEL",
+      "triangles": 2900,
+      "bounds_min": [
+        -3.0,
+        -3.505000114440918,
+        0.0
+      ],
+      "bounds_max": [
+        3.0,
+        3.0,
+        10.56995964050293
+      ],
+      "suggested_runtime_scale": 0.6134093950929717,
+      "runtime_scaled_height": 6.483712549238026
+    },
+    {
+      "modelKey": "VIL_OUTLAWS_CHAPEL",
+      "triangles": 2284,
+      "bounds_min": [
+        -3.0999999046325684,
+        -3.6050000190734863,
+        0.0
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        3.200000047683716,
+        10.899999618530273
+      ],
+      "suggested_runtime_scale": 0.5963938942093451,
+      "runtime_scaled_height": 6.500693219375646
+    }
+  ],
+  "glb_geometry": {
+    "VIL_CATHEDRAL_CHAPEL": {
+      "triangles": 3748,
+      "bounds_min": [
+        -3.119999885559082,
+        0.0,
+        -3.799999952316284
+      ],
+      "bounds_max": [
+        3.119999885559082,
+        11.199999809265137,
+        3.9749999046325684
+      ],
+      "semantic_geometry_hash": "2a1f443d4d99701c58ab1816706cc4a35bcab5048877a930b4ec702254a9ff6f"
+    },
+    "VIL_CATHEDRAL_GATE": {
+      "triangles": 72,
+      "bounds_min": [
+        -2.299999952316284,
+        0.0,
+        -0.6000000238418579
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        3.6000001430511475,
+        0.6000000238418579
+      ],
+      "semantic_geometry_hash": "33818f4ef78d8f1cd74b164efe7b24cb471c328b4eb7b3e0bb298d4b0b3463ac"
+    },
+    "VIL_CATHEDRAL_HOUSE_A": {
+      "triangles": 176,
+      "bounds_min": [
+        -1.7000001668930054,
+        -0.05999992787837982,
+        -1.4999998807907104
+      ],
+      "bounds_max": [
+        1.7000001668930054,
+        3.1500000953674316,
+        1.4999998807907104
+      ],
+      "semantic_geometry_hash": "c6b4ea60991e4718e13d355b1b65f590a4745a22a7e55b4062f41f90f780af5a"
+    },
+    "VIL_CATHEDRAL_HOUSE_B": {
+      "triangles": 176,
+      "bounds_min": [
+        -1.5250000953674316,
+        -0.05999992787837982,
+        -1.5000001192092896
+      ],
+      "bounds_max": [
+        1.5250000953674316,
+        3.1500000953674316,
+        1.5000001192092896
+      ],
+      "semantic_geometry_hash": "81b30299107b4486b0e33e9e9667bc5f1f45c392d73963d408d895c4df172ac0"
+    },
+    "VIL_CATHEDRAL_WALL": {
+      "triangles": 128,
+      "bounds_min": [
+        -2.0,
+        0.0,
+        -0.24000000953674316
+      ],
+      "bounds_max": [
+        2.0,
+        1.5000001192092896,
+        0.24000000953674316
+      ],
+      "semantic_geometry_hash": "d3230bdbcc16e1d90389f3ebe8274065b190e341ca820cb622cdb30a7a618190"
+    },
+    "VIL_CATHEDRAL_WORKSHOP": {
+      "triangles": 200,
+      "bounds_min": [
+        -1.9500000476837158,
+        -0.060000088065862656,
+        -1.649999976158142
+      ],
+      "bounds_max": [
+        1.9500000476837158,
+        3.625,
+        1.649999976158142
+      ],
+      "semantic_geometry_hash": "2378f2518f5434569191ed8d9006672ebf30e102f34c71ec2fda45848932fc9b"
+    },
+    "VIL_DAWN_CHAPEL": {
+      "triangles": 2412,
+      "bounds_min": [
+        -2.75,
+        0.0,
+        -3.315000057220459
+      ],
+      "bounds_max": [
+        2.75,
+        12.020000457763672,
+        3.700000047683716
+      ],
+      "semantic_geometry_hash": "b36dbf4f01ed203110b71ca28363e622bdacacb195d4558aef833e83d0178a7b"
+    },
+    "VIL_DAWN_GATE": {
+      "triangles": 80,
+      "bounds_min": [
+        -2.299999952316284,
+        0.0,
+        -0.6000000238418579
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        3.8499999046325684,
+        0.6000000238418579
+      ],
+      "semantic_geometry_hash": "d3202144a7ce716d350aa27157718b306b2aa0aeb8287c834aa042c72efb8a1b"
+    },
+    "VIL_DAWN_HOUSE_A": {
+      "triangles": 206,
+      "bounds_min": [
+        -1.4749999046325684,
+        -0.06000007316470146,
+        -1.6299999952316284
+      ],
+      "bounds_max": [
+        1.4749999046325684,
+        4.449999809265137,
+        1.6399999856948853
+      ],
+      "semantic_geometry_hash": "16ae846f895d679261b494649d0c0a32fa7acda2836fca2780073e92d0cfc720"
+    },
+    "VIL_DAWN_HOUSE_B": {
+      "triangles": 206,
+      "bounds_min": [
+        -1.3262499570846558,
+        -0.06000007316470146,
+        -1.6299999952316284
+      ],
+      "bounds_max": [
+        1.3262499570846558,
+        4.450000286102295,
+        1.6399999856948853
+      ],
+      "semantic_geometry_hash": "f013f11411b6750aa1b393d067d41b963eede57e71862a33dcdc4cb85378cdb8"
+    },
+    "VIL_DAWN_WALL": {
+      "triangles": 84,
+      "bounds_min": [
+        -2.0,
+        0.0,
+        -0.22499997913837433
+      ],
+      "bounds_max": [
+        2.0,
+        2.4499998092651367,
+        0.22499997913837433
+      ],
+      "semantic_geometry_hash": "b789cb81cf19f6844ff712f7f6f05ca38911d04189c0884b31f2c671286b6e24"
+    },
+    "VIL_DAWN_WORKSHOP": {
+      "triangles": 206,
+      "bounds_min": [
+        -1.6874998807907104,
+        -0.060000088065862656,
+        -1.7950000762939453
+      ],
+      "bounds_max": [
+        1.6874998807907104,
+        4.549999713897705,
+        1.8050001859664917
+      ],
+      "semantic_geometry_hash": "70ce0f38dfc2071190e339a8d11bdfc0a56d495dd25a34592632148a8757f026"
+    },
+    "VIL_IRON_CHAPEL": {
+      "triangles": 4008,
+      "bounds_min": [
+        -3.0999999046325684,
+        0.0,
+        -3.1600000858306885
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        10.600000381469727,
+        3.575000047683716
+      ],
+      "semantic_geometry_hash": "e3894328cb7c19c9e928b94cc0e4d4beeede289cbfaabe0faaa158f8b1b520ee"
+    },
+    "VIL_IRON_GATE": {
+      "triangles": 96,
+      "bounds_min": [
+        -2.174999952316284,
+        0.0,
+        -0.4749999940395355
+      ],
+      "bounds_max": [
+        2.174999952316284,
+        3.7750003337860107,
+        0.4749999940395355
+      ],
+      "semantic_geometry_hash": "8f4c7a9b46cf988d0bf98aac13d25cf7e65d12a0f05bf007a9e3d957c40021e0"
+    },
+    "VIL_IRON_HOUSE_A": {
+      "triangles": 216,
+      "bounds_min": [
+        -1.7599998712539673,
+        -0.059999994933605194,
+        -1.4499999284744263
+      ],
+      "bounds_max": [
+        1.7599998712539673,
+        3.1700003147125244,
+        1.459999918937683
+      ],
+      "semantic_geometry_hash": "965dcd26afda8707d6233f5b1ee5d3c98e7ea2d6e628649b1b3675ec6b0b3515"
+    },
+    "VIL_IRON_HOUSE_B": {
+      "triangles": 216,
+      "bounds_min": [
+        -1.567500114440918,
+        -0.059999994933605194,
+        -1.4499999284744263
+      ],
+      "bounds_max": [
+        1.567500114440918,
+        3.1700003147125244,
+        1.4600000381469727
+      ],
+      "semantic_geometry_hash": "2923415a725ddecfca057a0aea2a0886abe3b4839282aa9701a36a05c4f9814d"
+    },
+    "VIL_IRON_WALL": {
+      "triangles": 72,
+      "bounds_min": [
+        -2.0,
+        0.0,
+        -0.30000001192092896
+      ],
+      "bounds_max": [
+        2.0,
+        2.5,
+        0.30000001192092896
+      ],
+      "semantic_geometry_hash": "d7f8136bcccb31eafee66c5ec9151682a03b68877ff65d4cbb75581acfa24007"
+    },
+    "VIL_IRON_WORKSHOP": {
+      "triangles": 240,
+      "bounds_min": [
+        -2.0350000858306885,
+        -0.06000008061528206,
+        -1.600000023841858
+      ],
+      "bounds_max": [
+        2.0350000858306885,
+        3.875,
+        1.6100001335144043
+      ],
+      "semantic_geometry_hash": "98392bed036aa844a83bef58dc3094cd9ccdc99330832940cac948ca17924090"
+    },
+    "VIL_MARKET_CHAPEL": {
+      "triangles": 2864,
+      "bounds_min": [
+        -3.0999999046325684,
+        0.0,
+        -2.941819906234741
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        12.229999542236328,
+        3.484999895095825
+      ],
+      "semantic_geometry_hash": "e1de77f2b097429f5fbd4e37fec79b1d66be1a864ec94b3bdbfcc1ac3139d050"
+    },
+    "VIL_MARKET_GATE": {
+      "triangles": 80,
+      "bounds_min": [
+        -2.299999952316284,
+        0.0,
+        -0.699999988079071
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        3.6500000953674316,
+        0.699999988079071
+      ],
+      "semantic_geometry_hash": "9cee1b5721bcc620296e08162393172506a0bef9405732109a8313f437592bba"
+    },
+    "VIL_MARKET_HOUSE_A": {
+      "triangles": 276,
+      "bounds_min": [
+        -1.7500001192092896,
+        -0.059999942779541016,
+        -1.5499999523162842
+      ],
+      "bounds_max": [
+        2.18310809135437,
+        3.8499999046325684,
+        2.2750000953674316
+      ],
+      "semantic_geometry_hash": "a0bc6fbdebe52df996c1488c74c0939711072bdb03ef072cf0b39529271d36ed"
+    },
+    "VIL_MARKET_HOUSE_B": {
+      "triangles": 276,
+      "bounds_min": [
+        -1.5750000476837158,
+        -0.059999942779541016,
+        -1.5499999523162842
+      ],
+      "bounds_max": [
+        1.9451079368591309,
+        3.8499996662139893,
+        2.2750000953674316
+      ],
+      "semantic_geometry_hash": "24da2584506baee8cde5631236ea69deef25c9fcddb8cb57bb00780802312296"
+    },
+    "VIL_MARKET_WALL": {
+      "triangles": 128,
+      "bounds_min": [
+        -2.0,
+        0.0,
+        -0.24000000953674316
+      ],
+      "bounds_max": [
+        2.0,
+        1.5000001192092896,
+        0.24000000953674316
+      ],
+      "semantic_geometry_hash": "83c2d02f7833043ed08f16d572880e952bdac267c53d2c5644ccc92d2a41471b"
+    },
+    "VIL_MARKET_WORKSHOP": {
+      "triangles": 288,
+      "bounds_min": [
+        -2.0,
+        -0.06000007316470146,
+        -1.6999999284744263
+      ],
+      "bounds_max": [
+        2.5231082439422607,
+        3.950000524520874,
+        2.424999713897705
+      ],
+      "semantic_geometry_hash": "0576c706b8beaf6290ded2f85094d7aa7e307c367b63a795014c0d3f25f3000b"
+    },
+    "VIL_OUTLAWS_CHAPEL": {
+      "triangles": 2284,
+      "bounds_min": [
+        -3.0999999046325684,
+        0.0,
+        -3.200000047683716
+      ],
+      "bounds_max": [
+        3.0999999046325684,
+        10.899999618530273,
+        3.6050000190734863
+      ],
+      "semantic_geometry_hash": "5de173b051f86b79844de412dd5ea86bef11805bc04fcea096e894e16c6a9405"
+    },
+    "VIL_OUTLAWS_GATE": {
+      "triangles": 76,
+      "bounds_min": [
+        -2.0250000953674316,
+        0.0,
+        -0.375
+      ],
+      "bounds_max": [
+        2.0250000953674316,
+        3.700000047683716,
+        0.375
+      ],
+      "semantic_geometry_hash": "d39ac22aa0e0e3e1103a52d43ccbf84c56a73f9c5801d9524c96484f491b8ccf"
+    },
+    "VIL_OUTLAWS_HOUSE_A": {
+      "triangles": 244,
+      "bounds_min": [
+        -1.7249999046325684,
+        -0.059999942779541016,
+        -1.524999976158142
+      ],
+      "bounds_max": [
+        1.7249999046325684,
+        2.799999952316284,
+        1.6847213506698608
+      ],
+      "semantic_geometry_hash": "026f3c9a36ed31e8ec4f847724be9e68ee58009e73ec7fe0e1edff23f0ea1ff1"
+    },
+    "VIL_OUTLAWS_HOUSE_B": {
+      "triangles": 244,
+      "bounds_min": [
+        -1.5499999523162842,
+        -0.06000000983476639,
+        -1.5249998569488525
+      ],
+      "bounds_max": [
+        1.5499999523162842,
+        2.799999952316284,
+        1.6847212314605713
+      ],
+      "semantic_geometry_hash": "c8d7f326db7d9e84c9daafec0a4a078e7d4ac19002c86cd934fa9103c4fc9a55"
+    },
+    "VIL_OUTLAWS_WALL": {
+      "triangles": 104,
+      "bounds_min": [
+        -1.899999976158142,
+        0.0,
+        -0.12999999523162842
+      ],
+      "bounds_max": [
+        1.8999998569488525,
+        2.5999999046325684,
+        0.12763148546218872
+      ],
+      "semantic_geometry_hash": "ddc27c3a05afccab5b025f858154cd208a04d8f85d3d323e5a749172c300a5f7"
+    },
+    "VIL_OUTLAWS_WORKSHOP": {
+      "triangles": 268,
+      "bounds_min": [
+        -1.9749999046325684,
+        -0.05999992787837982,
+        -1.6749999523162842
+      ],
+      "bounds_max": [
+        1.9749999046325684,
+        3.5250003337860107,
+        1.8347214460372925
+      ],
+      "semantic_geometry_hash": "06be18e22a8d35d2889b631e3767aeba048ddb4346c179e7518ac8511e2cb6ab"
+    },
+    "VIL_SEEKERS_CHAPEL": {
+      "triangles": 2900,
+      "bounds_min": [
+        -3.0,
+        0.0,
+        -3.0
+      ],
+      "bounds_max": [
+        3.0,
+        10.56995964050293,
+        3.505000114440918
+      ],
+      "semantic_geometry_hash": "34371e9ad0d9d20f4ecb142e9e1f545e5eeda772b11c3ba1393b9cc97775cb8c"
+    },
+    "VIL_SEEKERS_GATE": {
+      "triangles": 252,
+      "bounds_min": [
+        -2.299999952316284,
+        0.0,
+        -0.6000000238418579
+      ],
+      "bounds_max": [
+        2.3000001907348633,
+        3.90000057220459,
+        0.6000000238418579
+      ],
+      "semantic_geometry_hash": "5970dfc4ee364497792f45de1029390dc111ce81d472fa380334657a74987f44"
+    },
+    "VIL_SEEKERS_HOUSE_A": {
+      "triangles": 242,
+      "bounds_min": [
+        -1.6799999475479126,
+        -0.060000061988830566,
+        -1.6799999475479126
+      ],
+      "bounds_max": [
+        1.6799999475479126,
+        3.9000000953674316,
+        1.6799999475479126
+      ],
+      "semantic_geometry_hash": "bd7c983e65dddfa0983322e1f631d859d785335e3b930b6407fb8353156f9e07"
+    },
+    "VIL_SEEKERS_HOUSE_B": {
+      "triangles": 200,
+      "bounds_min": [
+        -1.5250000953674316,
+        -0.05999992787837982,
+        -1.5000001192092896
+      ],
+      "bounds_max": [
+        1.8380000591278076,
+        3.700000047683716,
+        1.5000001192092896
+      ],
+      "semantic_geometry_hash": "36a2903649fbf114d83310a057bd2b34fbd46531d0c68133a852793e4eda5b22"
+    },
+    "VIL_SEEKERS_WALL": {
+      "triangles": 128,
+      "bounds_min": [
+        -2.0,
+        0.0,
+        -0.24000000953674316
+      ],
+      "bounds_max": [
+        2.0,
+        1.5000001192092896,
+        0.24000000953674316
+      ],
+      "semantic_geometry_hash": "540f4274d9c45ba2567ac31181e8e2255d5bd2782706283fcf5287318be93eda"
+    },
+    "VIL_SEEKERS_WORKSHOP": {
+      "triangles": 204,
+      "bounds_min": [
+        -1.9500000476837158,
+        -0.060000088065862656,
+        -1.649999976158142
+      ],
+      "bounds_max": [
+        1.9500000476837158,
+        3.4000000953674316,
+        1.78000009059906
+      ],
+      "semantic_geometry_hash": "938dba3fa8a4bf89f5d2678b1f7646b3ca5498a5d74c97cd936b0aa95aa8f9e4"
+    }
+  },
+  "roundtrip_render_views": [
+    "previews/cathedral_glb_roof_check.png",
+    "previews/seekers_glb_roof_check.png"
+  ]
+}

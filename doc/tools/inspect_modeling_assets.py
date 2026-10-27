@@ -60,12 +60,12 @@ def node_matrix(node):
     return matrix
 
 
-def inspect(path, metadata):
+def inspect(path, metadata, allowed_required=()):
     document, binary, raw = load_glb(path)
     nodes = document["nodes"]
     names = [node.get("name", "") for node in nodes]
     assert len([name for name in names if name]) == len(set(name for name in names if name))
-    assert not document.get("extensionsRequired")
+    assert set(document.get("extensionsRequired", [])) <= set(allowed_required)
     parents = {}
     for index, node in enumerate(nodes):
         for child in node.get("children", []):
@@ -196,6 +196,18 @@ def main():
                 assert all(name in all_clips for name in action.get("perform_by_role", {}).values())
             entry["unique_clips"] = len(all_clips)
         report["packages"].append(entry)
+    hero_package = args.root / "Hero_v1"
+    if (hero_package / "hero_catalog.json").exists():
+        hero_catalog = json.loads((hero_package / "hero_catalog.json").read_text(encoding="utf-8-sig"))
+        metadata = {clip["name"]: clip for clip in hero_catalog["clips"]}
+        hero, hero_report = inspect(hero_package / "hero_rigged.glb", metadata, {"KHR_lights_punctual"})
+        names = {node.get("name") for node in hero["nodes"] if "mesh" in node}
+        assert {part["mesh"] for part in hero_catalog["parts"]} == names
+        assert len(hero["animations"]) == len(metadata) == 17
+        lights = hero["extensions"]["KHR_lights_punctual"]["lights"]
+        assert lights and all(light["type"] == "point" for light in lights)
+        hero_report["point_lights"] = len(lights)
+        report["hero"] = hero_report
     if args.output:
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"passed": True, "packages": [{key: item[key] for key in ("version", "assigned_npcs", "parts", "props")} for item in report["packages"]]}))

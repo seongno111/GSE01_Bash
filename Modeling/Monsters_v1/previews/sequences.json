@@ -1,0 +1,206 @@
+[
+  {
+    "key": "AshWolf",
+    "segments": [
+      [
+        "PouncePrepare",
+        0.45
+      ],
+      [
+        "PounceTravel",
+        0.4
+      ],
+      [
+        "PounceLand",
+        0.75
+      ]
+    ],
+    "frames": 18,
+    "durations_ms": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "path": "previews/AshWolf_special.gif"
+  },
+  {
+    "key": "BlightBear",
+    "segments": [
+      [
+        "Slam",
+        2.35
+      ]
+    ],
+    "frames": 16,
+    "durations_ms": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ],
+    "path": "previews/BlightBear_special.gif"
+  },
+  {
+    "key": "ThornStag",
+    "segments": [
+      [
+        "ChargePrepare",
+        0.9
+      ],
+      [
+        "ChargeTravel",
+        0.45
+      ],
+      [
+        "ChargeStop",
+        1.1
+      ]
+    ],
+    "frames": 18,
+    "durations_ms": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "path": "previews/ThornStag_special.gif"
+  },
+  {
+    "key": "HighDemonAzar",
+    "segments": [
+      [
+        "Rift",
+        3.0
+      ]
+    ],
+    "frames": 16,
+    "durations_ms": [
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190,
+      190
+    ],
+    "path": "previews/HighDemonAzar_special.gif"
+  },
+  {
+    "key": "FallenPaladin",
+    "segments": [
+      [
+        "WardPrepare",
+        0.6
+      ],
+      [
+        "WardHold",
+        2.4
+      ],
+      [
+        "WardEnd",
+        0.35
+      ]
+    ],
+    "frames": 18,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      400,
+      400,
+      400,
+      400,
+      400,
+      400,
+      60,
+      60,
+      60,
+      60,
+      60,
+      60
+    ],
+    "path": "previews/FallenPaladin_special.gif"
+  },
+  {
+    "key": "FallenPriest",
+    "segments": [
+      [
+        "Mend",
+        1.7
+      ]
+    ],
+    "frames": 16,
+    "durations_ms": [
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110,
+      110
+    ],
+    "path": "previews/FallenPriest_special.gif"
+  }
+]

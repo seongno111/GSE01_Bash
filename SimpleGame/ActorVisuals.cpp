@@ -290,6 +290,11 @@ void Prototype::DrawCharacter(Renderer& r,
 
 void Prototype::DrawEnemyMesh(Renderer& r, Point p, const EnemyActor& enemy)
 {
+    if (enemy.UsesMonsterTactics())
+    {
+        DrawMonsterProxy(r, p, enemy);
+        return;
+    }
     const float z = m_Zoom * (enemy.tier == 2 ? 1.45f : 0.92f);
     const Color body = enemy.tier == 0   ? Color(0.32f, 0.40f, 0.29f)
                        : enemy.tier == 1 ? Color(0.38f, 0.28f, 0.24f)

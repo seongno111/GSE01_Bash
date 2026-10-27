@@ -21,6 +21,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MonsterDefinitions.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="ModelAsset.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="ModelLibrary.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="stdafx.h">
@@ -69,6 +70,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ModelVillageBuildings.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="ModelMonsterSpecies.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="MonsterModelVisuals.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="RendererModels.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="ModelActorVisuals.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="MonsterDefinitions.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="MonsterBehavior.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="MonsterVisuals.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="MonsterSpawning.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="ModelAsset.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="ModelAnimation.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="ModelLibrary.cpp"><Filter>소스 파일</Filter></ClCompile>
@@ -181,6 +191,8 @@
     <None Include="Assets\unit-walk-humans-inbetweens-v2.png" />
     <None Include="Assets\unit-walk-monsters-inbetweens-v2.png" />
     <None Include="Assets\player-attack-inbetweens-v2.png" />
+    <None Include="Shaders\Model.vs"><Filter>소스 파일\Shaders</Filter></None>
+    <None Include="Shaders\Model.fs"><Filter>소스 파일\Shaders</Filter></None>
     <None Include="Shaders\SolidRect.fs">
       <Filter>소스 파일\Shaders</Filter>
     </None>

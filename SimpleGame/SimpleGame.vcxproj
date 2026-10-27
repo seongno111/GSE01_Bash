@@ -165,6 +165,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MonsterDefinitions.h" />
     <ClInclude Include="ModelAsset.h" />
     <ClInclude Include="ModelLibrary.h" />
     <ClInclude Include="Actor.h" />
@@ -185,9 +186,18 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MonsterDefinitions.cpp" />
+    <ClCompile Include="MonsterBehavior.cpp" />
+    <ClCompile Include="MonsterVisuals.cpp" />
+    <ClCompile Include="MonsterSpawning.cpp" />
+    <ClCompile Include="RendererModels.cpp" />
+    <ClCompile Include="ModelActorVisuals.cpp" />
     <ClCompile Include="ModelAsset.cpp" />
     <ClCompile Include="ModelAnimation.cpp" />
     <ClCompile Include="ModelLibrary.cpp" />
+    <ClCompile Include="ModelVillageBuildings.cpp" />
+    <ClCompile Include="ModelMonsterSpecies.cpp" />
+    <ClCompile Include="MonsterModelVisuals.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="FrameProfiler.cpp" />
     <ClCompile Include="SceneGraph.cpp" />
@@ -240,6 +250,8 @@
     <None Include="Assets\unit-walk-humans-inbetweens-v2.png" />
     <None Include="Assets\unit-walk-monsters-inbetweens-v2.png" />
     <None Include="Assets\player-attack-inbetweens-v2.png" />
+    <None Include="Shaders\Model.vs" />
+    <None Include="Shaders\Model.fs" />
     <None Include="Shaders\SolidRect.fs" />
     <None Include="Shaders\SolidRect.vs" />
     <None Include="Shaders\Fullscreen.vs" />
@@ -250,7 +262,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Target Name="CopyPrototypeAssets" AfterTargets="Build">
     <ItemGroup>
-      <PrototypeModels Include="$(ProjectDir)..\Modeling\**\*.glb;$(ProjectDir)..\Modeling\**\asset_catalog.json;$(ProjectDir)..\Modeling\**\animation_catalog.json;$(ProjectDir)..\Modeling\**\npc_appearance_assignments.json;$(ProjectDir)..\Modeling\**\validation.json" />
+      <PrototypeModels Include="$(ProjectDir)..\Modeling\**\*.glb;$(ProjectDir)..\Modeling\**\asset_catalog.json;$(ProjectDir)..\Modeling\**\hero_catalog.json;$(ProjectDir)..\Modeling\**\monster_catalog.json;$(ProjectDir)..\Modeling\**\village_catalog.json;$(ProjectDir)..\Modeling\**\landmark_delivery.json;$(ProjectDir)..\Modeling\**\animation_catalog.json;$(ProjectDir)..\Modeling\**\npc_appearance_assignments.json;$(ProjectDir)..\Modeling\**\validation.json" />
       <PrototypeTextures Include="$(ProjectDir)Assets\*.png" />
       <PrototypeShaders Include="$(ProjectDir)Shaders\*.vs;$(ProjectDir)Shaders\*.fs" />
       <PrototypeRuntime Include="$(ProjectDir)Dependencies\x64\*.dll" Condition="'$(Platform)'=='x64'" />

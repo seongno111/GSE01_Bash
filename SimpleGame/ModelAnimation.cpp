@@ -367,6 +367,20 @@ namespace Models
         m_Rate = std::isfinite(rate) ? std::clamp(rate, 0.0f, 8.0f) : 1;
     }
 
+    void AnimationPlayer::SetTime(double seconds)
+    {
+        if (m_Clip < 0 || !std::isfinite(seconds))
+        {
+            return;
+        }
+        m_Time = (std::max)(0.0, seconds);
+        SamplePose(*m_Asset, m_Clip, m_Time, m_Pose);
+        if (m_Fade > 0 && m_FadeElapsed < m_Fade)
+        {
+            BlendPose(*m_Asset, m_From, m_Pose, m_FadeElapsed / m_Fade, m_Pose);
+        }
+    }
+
     void AnimationPlayer::Advance(float seconds, std::vector<AnimationEvent>& events)
     {
         if (m_Clip < 0 || !std::isfinite(seconds) || seconds <= 0)

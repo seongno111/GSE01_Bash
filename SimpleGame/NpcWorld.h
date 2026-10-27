@@ -16,9 +16,9 @@ public:
     void DrawHUD(Renderer& renderer);
     bool PlayerCanTarget(const NpcActor& npc) const;
     bool HitByPlayer(double x, double y, float damage, bool allowPK);
-    bool HitByMonster(double x, double y, float damage);
+    bool HitByMonster(double x, double y, float damage, ActorId source = InvalidActor);
     Actor* EnemyTarget(const EnemyActor& enemy) const;
-    void MonsterDamage(Actor& target, float damage);
+    void MonsterDamage(Actor& target, float damage, const EnemyActor* source = nullptr);
 
     const std::vector<ActorId>& Actors() const
     {

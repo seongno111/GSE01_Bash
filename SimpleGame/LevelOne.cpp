@@ -154,6 +154,7 @@ void Prototype::InitializeLevelOne()
     spawn(16, 6, 1);
     spawn(18, 2, 2);
     GenerateLevelOneMap();
+    InitializeMonsterEcology();
     m_NpcWorld = std::make_unique<NpcWorld>(*this, m_WorldSeed);
 }
 

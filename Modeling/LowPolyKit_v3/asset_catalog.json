@@ -1206,7 +1206,8 @@
       "mesh": "PROP_019_RuinedChapel",
       "label": "RuinedChapel",
       "triangles": 324,
-      "vertices": 205
+      "vertices": 202,
+      "roof_revision": "closed_solid_gable_20261026"
     },
     {
       "prop_index": 20,

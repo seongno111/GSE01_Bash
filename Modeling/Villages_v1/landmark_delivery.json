@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-27",
+  "revision": "landmarks_20261027",
+  "source": "villages_v1.blend",
+  "combined_glb": "village_buildings.glb",
+  "model_count": 36,
+  "upgraded_landmarks": 6,
+  "unchanged_ordinary_models": 30,
+  "landmark_keys": [
+    "VIL_CATHEDRAL_CHAPEL",
+    "VIL_DAWN_CHAPEL",
+    "VIL_IRON_CHAPEL",
+    "VIL_MARKET_CHAPEL",
+    "VIL_SEEKERS_CHAPEL",
+    "VIL_OUTLAWS_CHAPEL"
+  ],
+  "game_mapping_preserved": {
+    "schema_version": 1,
+    "game_prop_kind": 5,
+    "selection": "village_id + game_kind_choices"
+  },
+  "verification_checks_passed": 15,
+  "files": [
+    {
+      "path": "cathedral.glb",
+      "bytes": 263432,
+      "sha256": "9615f51b45a1ff0d95dccb2648d23b4d5d225e356626d45b2a68d717f36047fa"
+    },
+    {
+      "path": "dawn.glb",
+      "bytes": 196680,
+      "sha256": "2216c4ec4cb2c52ba4f1b72cadd8b8ae75b395d85a6e12ff709f92036a2507c6"
+    },
+    {
+      "path": "iron.glb",
+      "bytes": 274656,
+      "sha256": "21badfc0595d8eef183ab9cba95125b38cd2da95f862864320ca15be3de77b3c"
+    },
+    {
+      "path": "LANDMARKS_20261027.md",
+      "bytes": 5575,
+      "sha256": "763262c60ef14d2aeb5243a22e57e863e01ace5754e5fe1716af705c1b0b3227"
+    },
+    {
+      "path": "market.glb",
+      "bytes": 247228,
+      "sha256": "676e5bdee2a514932d8707e408612d7423afa8b325c84fcfcf8bde9e66c684fc"
+    },
+    {
+      "path": "outlaws.glb",
+      "bytes": 204268,
+      "sha256": "2607f274fad2eee4600f52740042a0daafa4c37ed0c4585922a7c168c194233c"
+    },
+    {
+      "path": "previews/cathedral.png",
+      "bytes": 2050703,
+      "sha256": "1ee8217f7368e05206c20831ca80f78cdf3deebe37432cf61e19fd6dfeb1a9d2"
+    },
+    {
+      "path": "previews/cathedral_glb_roof_check.png",
+      "bytes": 1194645,
+      "sha256": "dfcc07b6a10c563b757dc152e45744bdd04ea60e248669b3b5b8ec762d249513"
+    },
+    {
+      "path": "previews/cathedral_landmark.png",
+      "bytes": 1721131,
+      "sha256": "fbc66e4a61e1a17079214fc5591756be2e20c4f33441b94b1c44b64756abe54c"
+    },
+    {
+      "path": "previews/cathedral_scale_comparison.png",
+      "bytes": 1669781,
+      "sha256": "7a5d65bb0fb4bd008278a9f980cafef2061219fe5c395fe6d6a8824fed6f3fe5"
+    },
+    {
+      "path": "previews/dawn.png",
+      "bytes": 2044396,
+      "sha256": "26465970531da860b8037aaf36d2e459733ef1b4bc44f307eccec1b73f94123a"
+    },
+    {
+      "path": "previews/dawn_landmark.png",
+      "bytes": 1676608,
+      "sha256": "eded0a1bd3a448359c2851e2efaaa543dd9131838d6eb8cf7e9c3dfa44aaacc3"
+    },
+    {
+      "path": "previews/dawn_scale_comparison.png",
+      "bytes": 1658344,
+      "sha256": "6b2983c33d2a458ca8c21020355c0ad0657f64e6db6d2c58fb062c46b1f33403"
+    },
+    {
+      "path": "previews/iron.png",
+      "bytes": 2098858,
+      "sha256": "544e041df18cd6b69d45889a9e6ea36ef33a576b621b5c5f3be7ed6f670b0692"
+    },
+    {
+      "path": "previews/iron_landmark.png",
+      "bytes": 1710379,
+      "sha256": "eadc81d21a34bfb4328bd7c3efe46c4991d1ddd79ea5f212cb27622950d8306a"
+    },
+    {
+      "path": "previews/iron_scale_comparison.png",
+      "bytes": 1678254,
+      "sha256": "4474575699580588f576395c3519edb08404b7bf2e26e51bce67f93aa8ed7ba1"
+    },
+    {
+      "path": "previews/landmarks_overview.jpg",
+      "bytes": 352005,
+      "sha256": "03ad2c4241afd396f816676e1aeef9b13ac161cbab211e112c88c6601d9d6177"
+    },
+    {
+      "path": "previews/landmarks_scale_comparison.jpg",
+      "bytes": 277186,
+      "sha256": "83b76512c0e7ed12d8b410424477190b1a7c468604a2c44ea7e82778f7d65ade"
+    },
+    {
+      "path": "previews/market.png",
+      "bytes": 2055514,
+      "sha256": "c056837b590374e23c814508320f1013d2dfc565923e4eae3e5d00ad167bcb67"
+    },
+    {
+      "path": "previews/market_landmark.png",
+      "bytes": 1704542,
+      "sha256": "177b11de1fe66b20dbb339bb32f990e9ce876da8e543b49bf257eff1a06c4c7d"
+    },
+    {
+      "path": "previews/market_scale_comparison.png",
+      "bytes": 1673573,
+      "sha256": "fd13da13acabe8cdcfaf621163b068a9fda70362461723e060262b71388678d3"
+    },
+    {
+      "path": "previews/outlaws.png",
+      "bytes": 2053559,
+      "sha256": "44540459580ddffe26c53f48d7e6e0cc6a94cee982ce564f74b50dc0e17e8de2"
+    },
+    {
+      "path": "previews/outlaws_landmark.png",
+      "bytes": 1684529,
+      "sha256": "58dd7da1989f2761167edfd87f1ad598c2d8b136782ec9b7898b9ef354deb527"
+    },
+    {
+      "path": "previews/outlaws_scale_comparison.png",
+      "bytes": 1669646,
+      "sha256": "7b18528946f2e7dd3e84f5e762705b8725ad0db36a4b973937d005a15368bf9d"
+    },
+    {
+      "path": "previews/seekers.png",
+      "bytes": 2019520,
+      "sha256": "a677ff1fcf0aa9c54f08d478b04ae5ecbc3fe2ada568a046b6fc7b997c3122cb"
+    },
+    {
+      "path": "previews/seekers_glb_roof_check.png",
+      "bytes": 1180548,
+      "sha256": "45c2925167fcd6cbc8c6ebea3f08ba7cf3b9398a64f09a261669cd387fd05119"
+    },
+    {
+      "path": "previews/seekers_landmark.png",
+      "bytes": 1661379,
+      "sha256": "69466001503e8c95eba115974912d60a6331432c6bb32f892ceb23730c406dd6"
+    },
+    {
+      "path": "previews/seekers_scale_comparison.png",
+      "bytes": 1658901,
+      "sha256": "3e23b0cefbc0dce48763d57bd7ac147656783253dc1f747d3a7967ee80088327"
+    },
+    {
+      "path": "previews/themes_overview.jpg",
+      "bytes": 329502,
+      "sha256": "d3fa53d5120df159a2cc9cff22c60928a2f8fd5e2605d2b6646eeb28f8040ce2"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5288,
+      "sha256": "b19b33830301f344c9ce7abb162a11396d6ffdcc7389b6c2cc951d6063ff959b"
+    },
+    {
+      "path": "seekers.glb",
+      "bytes": 232012,
+      "sha256": "2d3b317e5a259e447d5430db1e31860a44dfcfbfbd30ffd2330450ed932aa3e5"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 20221,
+      "sha256": "d1d8182991c39f5dae8d0dfce8185a9afa60104a056f74c4574a287f22af2186"
+    },
+    {
+      "path": "village_buildings.glb",
+      "bytes": 1395728,
+      "sha256": "a84555f6cbb4edd549125b4a16ca844d69dbdbb66e537654b2c283c3039d6c6c"
+    },
+    {
+      "path": "village_catalog.json",
+      "bytes": 43031,
+      "sha256": "738bad73337955c8786d0b53cf4382e29f1ccc4c64655b8bd5bd68e124ca1226"
+    },
+    {
+      "path": "villages_v1.blend",
+      "bytes": 458084,
+      "sha256": "a533ef8b9c1041adc8fe88e8abee4c51c37103867da7fc3e5195924276504102"
+    }
+  ],
+  "scope": "Modeling assets and previews only. No game code, build, collision or runtime deployment changes.",
+  "previous_revision": "revisions/20261027_before_landmarks/"
+}

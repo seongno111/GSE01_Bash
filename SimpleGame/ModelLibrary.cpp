@@ -438,10 +438,64 @@ namespace Models
                 }
             }
         }
+        const auto heroFolder = path.parent_path() / "Hero_v1";
+        if (std::filesystem::is_regular_file(heroFolder / "hero_catalog.json"))
+        {
+            try
+            {
+                const auto heroCatalog = ReadJson(heroFolder / "hero_catalog.json");
+                Check(heroCatalog.at("schema_version") == 1, "Unsupported hero catalog schema");
+                const auto validation = ReadJson(heroFolder / "validation.json");
+                for (const auto& check : validation.at("checks").items())
+                {
+                    Check(check.value().is_boolean() && check.value().get<bool>(),
+                          "Hero export validation failed: " + check.key());
+                }
+                auto hero = ReadCached(heroFolder / "hero_rigged.glb");
+                ApplyMetadata(*hero, heroCatalog);
+                ModelInstance instance;
+                instance.asset = hero;
+                for (const auto& part : heroCatalog.at("parts"))
+                {
+                    instance.nodes.push_back(MeshNode(*hero, part.at("mesh")));
+                }
+                Check(!instance.nodes.empty() && !hero->skins.empty(),
+                      "Hero meshes or skin missing");
+                m_Hero = std::move(instance);
+            }
+            catch (const std::exception& error)
+            {
+                std::cerr << "[ModelAssets] hero unavailable: " << error.what() << '\n';
+            }
+        }
+        const auto species = path.parent_path() / "Monsters_v1";
+        if (std::filesystem::is_regular_file(species / "monster_catalog.json"))
+        {
+            try
+            {
+                LoadMonsterSpecies(species);
+            }
+            catch (const std::exception& error)
+            {
+                std::cerr << "[ModelAssets] monster species unavailable: " << error.what() << '\n';
+            }
+        }
+        const auto villages = path.parent_path() / "Villages_v1";
+        if (std::filesystem::is_regular_file(villages / "village_catalog.json"))
+        {
+            try
+            {
+                LoadVillageBuildings(villages);
+            }
+            catch (const std::exception& error)
+            {
+                std::cerr << "[ModelAssets] village themes unavailable: " << error.what() << '\n';
+            }
+        }
         return true;
     }
 
-    ModelInstance ModelLibrary::Assemble(const Appearance& appearance) const
+    ModelInstance ModelLibrary::Assemble(const Appearance& appearance, int actionIndex) const
     {
         auto parts = appearance.parts;
         const auto hide = [&](const char* name)
@@ -482,6 +536,15 @@ namespace Models
         {
             parts[hand->second] = weapon->second;
         }
+        const auto* action = NpcAction(actionIndex);
+        if (action && action->overridesHand && hand != m_Slots.end())
+        {
+            const int part = action->handEquipment;
+            if (part == -1 || m_PartNodes.count({hand->second, part}) != 0)
+            {
+                parts[hand->second] = part;
+            }
+        }
         if (appearance.role == 1 && !m_Weapons.empty())
         {
             hide("accessory_waist");
@@ -502,22 +565,22 @@ namespace Models
         return instance;
     }
 
-    ModelInstance ModelLibrary::Npc(std::uint64_t id, int role) const
+    ModelInstance ModelLibrary::Npc(std::uint64_t id, int role, int action) const
     {
         const auto found = m_Appearances.find(id);
         if (found != m_Appearances.end() && found->second.role == role)
         {
-            return Assemble(found->second);
+            return Assemble(found->second, action);
         }
         const auto fallback = m_Presets.find(role);
         return fallback == m_Presets.end() || fallback->second.empty()
                    ? ModelInstance{}
-                   : Assemble(fallback->second[id % fallback->second.size()]);
+                   : Assemble(fallback->second[id % fallback->second.size()], action);
     }
 
     ModelInstance ModelLibrary::Player(int role) const
     {
-        return Npc(0, role);
+        return m_Hero ? m_Hero : Npc(0, role);
     }
 
     ModelInstance ModelLibrary::Monster(int index) const

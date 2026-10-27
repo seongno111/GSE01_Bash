@@ -235,6 +235,7 @@ class NpcActor final : public GameActor
 public:
 
     NpcActor(Prototype& game, NpcWorld& world, NpcProfile profile, WorldPoint home);
+    bool DrawNpcModel(Renderer& renderer);
     void Update(float dt) override;
     void Draw(Renderer& renderer) override;
     void DrawOverlay(Renderer& renderer) override;

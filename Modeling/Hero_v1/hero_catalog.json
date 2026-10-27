@@ -1,0 +1,994 @@
+{
+  "schema_version": 1,
+  "asset_id": "HERO_HoodedLantern_v1",
+  "authored": "2026-10-26",
+  "height_without_hood_m": 1.8,
+  "hood_height_m": 1.96,
+  "style": "3-head-tall low-poly dark fantasy",
+  "front_blender": "-Y",
+  "up_blender": "Z",
+  "up_gltf": "Y",
+  "front_gltf": "+Z",
+  "rig": "RIG_HERO_HoodedLantern",
+  "rig_compatibility": "31 v3 bone names preserved; lamp_pivot and lamp_body appended.",
+  "left_hand": [
+    "HERO_WEAPON_L_00_LanternFrame",
+    "HERO_WEAPON_L_01_LanternEmber"
+  ],
+  "right_hand": [
+    "HERO_WEAPON_R_00_LongswordBlade",
+    "HERO_WEAPON_R_01_LongswordHilt"
+  ],
+  "parts": [
+    {
+      "part_id": 0,
+      "mesh": "HERO_TORSO_00_TravelTunic",
+      "binding": "reused_v3_weights",
+      "vertices": 40,
+      "triangles": 68
+    },
+    {
+      "part_id": 1,
+      "mesh": "HERO_PELVIS_00_LeatherBelt",
+      "binding": "reused_v3_weights",
+      "vertices": 24,
+      "triangles": 40
+    },
+    {
+      "part_id": 2,
+      "mesh": "HERO_UPPER_ARM_L_00_Sleeve",
+      "binding": "reused_v3_weights",
+      "vertices": 12,
+      "triangles": 20
+    },
+    {
+      "part_id": 3,
+      "mesh": "HERO_FOREARM_L_00_LeatherBracer",
+      "binding": "reused_v3_weights",
+      "vertices": 36,
+      "triangles": 60
+    },
+    {
+      "part_id": 4,
+      "mesh": "HERO_HAND_L_00_Glove",
+      "binding": "reused_v3_weights",
+      "vertices": 12,
+      "triangles": 20
+    },
+    {
+      "part_id": 5,
+      "mesh": "HERO_THIGH_L_00_LeatherPants",
+      "binding": "reused_v3_weights",
+      "vertices": 12,
+      "triangles": 20
+    },
+    {
+      "part_id": 6,
+      "mesh": "HERO_SHIN_L_00_LeatherPants",
+      "binding": "reused_v3_weights",
+      "vertices": 24,
+      "triangles": 40
+    },
+    {
+      "part_id": 7,
+      "mesh": "HERO_FOOT_L_00_TravelBoot",
+      "binding": "reused_v3_weights",
+      "vertices": 8,
+      "triangles": 12
+    },
+    {
+      "part_id": 8,
+      "mesh": "HERO_UPPER_ARM_R_00_Sleeve",
+      "binding": "reused_v3_weights",
+      "vertices": 12,
+      "triangles": 20
+    },
+    {
+      "part_id": 9,
+      "mesh": "HERO_FOREARM_R_00_LeatherBracer",
+      "binding": "reused_v3_weights",
+      "vertices": 36,
+      "triangles": 60
+    },
+    {
+      "part_id": 10,
+      "mesh": "HERO_HAND_R_00_Glove",
+      "binding": "reused_v3_weights",
+      "vertices": 12,
+      "triangles": 20
+    },
+    {
+      "part_id": 11,
+      "mesh": "HERO_THIGH_R_00_LeatherPants",
+      "binding": "reused_v3_weights",
+      "vertices": 12,
+      "triangles": 20
+    },
+    {
+      "part_id": 12,
+      "mesh": "HERO_SHIN_R_00_LeatherPants",
+      "binding": "reused_v3_weights",
+      "vertices": 24,
+      "triangles": 40
+    },
+    {
+      "part_id": 13,
+      "mesh": "HERO_FOOT_R_00_TravelBoot",
+      "binding": "reused_v3_weights",
+      "vertices": 8,
+      "triangles": 12
+    },
+    {
+      "part_id": 14,
+      "mesh": "HERO_HEAD_00_Human",
+      "binding": "head",
+      "vertices": 134,
+      "triangles": 224
+    },
+    {
+      "part_id": 15,
+      "mesh": "HERO_HEADGEAR_00_AshenHood",
+      "binding": "head",
+      "vertices": 109,
+      "triangles": 181
+    },
+    {
+      "part_id": 16,
+      "mesh": "HERO_CAPE_00_WornMantle",
+      "binding": "weighted",
+      "vertices": 56,
+      "triangles": 108,
+      "description": "Closed thin shell, shoulder-to-calf cape; original mesh ID and attachment retained."
+    },
+    {
+      "part_id": 17,
+      "mesh": "HERO_PAULDRON_L_00_LayeredIron",
+      "binding": "upper_arm_l",
+      "vertices": 96,
+      "triangles": 160
+    },
+    {
+      "part_id": 18,
+      "mesh": "HERO_PAULDRON_R_00_LayeredIron",
+      "binding": "upper_arm_r",
+      "vertices": 96,
+      "triangles": 160
+    },
+    {
+      "part_id": 19,
+      "mesh": "HERO_HARNESS_00_SwordBelt",
+      "binding": "chest",
+      "vertices": 32,
+      "triangles": 38
+    },
+    {
+      "part_id": 20,
+      "mesh": "HERO_WAIST_00_TravelPouch",
+      "binding": "hips",
+      "vertices": 20,
+      "triangles": 32
+    },
+    {
+      "part_id": 21,
+      "mesh": "HERO_WEAPON_R_00_LongswordBlade",
+      "binding": "weapon_r",
+      "vertices": 9,
+      "triangles": 14
+    },
+    {
+      "part_id": 22,
+      "mesh": "HERO_WEAPON_R_01_LongswordHilt",
+      "binding": "weapon_r",
+      "vertices": 100,
+      "triangles": 172
+    },
+    {
+      "part_id": 23,
+      "mesh": "HERO_WEAPON_L_00_LanternFrame",
+      "binding": "lamp_body",
+      "vertices": 164,
+      "triangles": 268
+    },
+    {
+      "part_id": 24,
+      "mesh": "HERO_WEAPON_L_01_LanternEmber",
+      "binding": "lamp_body",
+      "vertices": 24,
+      "triangles": 40
+    }
+  ],
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "head_z_up": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_z_up": [
+        0.0,
+        0.0,
+        0.18000000715255737
+      ]
+    },
+    {
+      "name": "hips",
+      "parent": "root",
+      "head_z_up": [
+        0.0,
+        0.0,
+        0.7200000286102295
+      ],
+      "tail_z_up": [
+        0.0,
+        0.0,
+        0.8199999928474426
+      ]
+    },
+    {
+      "name": "spine",
+      "parent": "hips",
+      "head_z_up": [
+        0.0,
+        0.0,
+        0.8199999928474426
+      ],
+      "tail_z_up": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "chest",
+      "parent": "spine",
+      "head_z_up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tail_z_up": [
+        0.0,
+        0.0,
+        1.2000000476837158
+      ]
+    },
+    {
+      "name": "neck",
+      "parent": "chest",
+      "head_z_up": [
+        0.0,
+        0.0,
+        1.2000000476837158
+      ],
+      "tail_z_up": [
+        0.0,
+        0.0,
+        1.2799999713897705
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "neck",
+      "head_z_up": [
+        0.0,
+        0.0,
+        1.2799999713897705
+      ],
+      "tail_z_up": [
+        0.0,
+        0.0,
+        1.7999999523162842
+      ]
+    },
+    {
+      "name": "jaw",
+      "parent": "head",
+      "head_z_up": [
+        0.0,
+        -0.11999999731779099,
+        1.4299999475479126
+      ],
+      "tail_z_up": [
+        0.0,
+        -0.2199999988079071,
+        1.3200000524520874
+      ]
+    },
+    {
+      "name": "clavicle_l",
+      "parent": "chest",
+      "head_z_up": [
+        0.0,
+        0.0,
+        1.1699999570846558
+      ],
+      "tail_z_up": [
+        0.2800000011920929,
+        0.0,
+        1.159999966621399
+      ]
+    },
+    {
+      "name": "upper_arm_l",
+      "parent": "clavicle_l",
+      "head_z_up": [
+        0.2800000011920929,
+        0.0,
+        1.159999966621399
+      ],
+      "tail_z_up": [
+        0.4300000071525574,
+        0.0,
+        0.9649999737739563
+      ]
+    },
+    {
+      "name": "forearm_l",
+      "parent": "upper_arm_l",
+      "head_z_up": [
+        0.4300000071525574,
+        0.0,
+        0.9649999737739563
+      ],
+      "tail_z_up": [
+        0.47999998927116394,
+        -0.009999999776482582,
+        0.7900000214576721
+      ]
+    },
+    {
+      "name": "hand_l",
+      "parent": "forearm_l",
+      "head_z_up": [
+        0.47999998927116394,
+        -0.009999999776482582,
+        0.7900000214576721
+      ],
+      "tail_z_up": [
+        0.48500001430511475,
+        -0.012000000104308128,
+        0.6800000071525574
+      ]
+    },
+    {
+      "name": "weapon_l",
+      "parent": "hand_l",
+      "head_z_up": [
+        0.48500001430511475,
+        -0.012000000104308128,
+        0.7400000095367432
+      ],
+      "tail_z_up": [
+        0.48500001430511475,
+        -0.012000000104308128,
+        0.5
+      ]
+    },
+    {
+      "name": "lamp_pivot",
+      "parent": "hand_l",
+      "head_z_up": [
+        0.48500001430511475,
+        -0.05000000074505806,
+        0.7400000095367432
+      ],
+      "tail_z_up": [
+        0.48500001430511475,
+        -0.05000000074505806,
+        0.6000000238418579
+      ]
+    },
+    {
+      "name": "lamp_body",
+      "parent": "lamp_pivot",
+      "head_z_up": [
+        0.48500001430511475,
+        -0.05000000074505806,
+        0.6000000238418579
+      ],
+      "tail_z_up": [
+        0.48500001430511475,
+        -0.05000000074505806,
+        0.3799999952316284
+      ]
+    },
+    {
+      "name": "clavicle_r",
+      "parent": "chest",
+      "head_z_up": [
+        0.0,
+        0.0,
+        1.1699999570846558
+      ],
+      "tail_z_up": [
+        -0.2800000011920929,
+        0.0,
+        1.159999966621399
+      ]
+    },
+    {
+      "name": "upper_arm_r",
+      "parent": "clavicle_r",
+      "head_z_up": [
+        -0.2800000011920929,
+        0.0,
+        1.159999966621399
+      ],
+      "tail_z_up": [
+        -0.4300000071525574,
+        0.0,
+        0.9649999737739563
+      ]
+    },
+    {
+      "name": "forearm_r",
+      "parent": "upper_arm_r",
+      "head_z_up": [
+        -0.4300000071525574,
+        0.0,
+        0.9649999737739563
+      ],
+      "tail_z_up": [
+        -0.47999998927116394,
+        -0.009999999776482582,
+        0.7900000214576721
+      ]
+    },
+    {
+      "name": "hand_r",
+      "parent": "forearm_r",
+      "head_z_up": [
+        -0.47999998927116394,
+        -0.009999999776482582,
+        0.7900000214576721
+      ],
+      "tail_z_up": [
+        -0.48500001430511475,
+        -0.012000000104308128,
+        0.6800000071525574
+      ]
+    },
+    {
+      "name": "weapon_r",
+      "parent": "hand_r",
+      "head_z_up": [
+        -0.48500001430511475,
+        -0.012000000104308128,
+        0.7400000095367432
+      ],
+      "tail_z_up": [
+        -0.48500001430511475,
+        -0.012000000104308128,
+        0.5
+      ]
+    },
+    {
+      "name": "thigh_l",
+      "parent": "hips",
+      "head_z_up": [
+        0.125,
+        0.0,
+        0.6499999761581421
+      ],
+      "tail_z_up": [
+        0.14000000059604645,
+        0.0,
+        0.38999998569488525
+      ]
+    },
+    {
+      "name": "shin_l",
+      "parent": "thigh_l",
+      "head_z_up": [
+        0.14000000059604645,
+        0.0,
+        0.38999998569488525
+      ],
+      "tail_z_up": [
+        0.14000000059604645,
+        0.0,
+        0.12999999523162842
+      ]
+    },
+    {
+      "name": "foot_l",
+      "parent": "shin_l",
+      "head_z_up": [
+        0.14000000059604645,
+        0.0,
+        0.12999999523162842
+      ],
+      "tail_z_up": [
+        0.14000000059604645,
+        -0.18000000715255737,
+        0.07500000298023224
+      ]
+    },
+    {
+      "name": "toe_l",
+      "parent": "foot_l",
+      "head_z_up": [
+        0.14000000059604645,
+        -0.18000000715255737,
+        0.07500000298023224
+      ],
+      "tail_z_up": [
+        0.14000000059604645,
+        -0.25,
+        0.07500000298023224
+      ]
+    },
+    {
+      "name": "thigh_r",
+      "parent": "hips",
+      "head_z_up": [
+        -0.125,
+        0.0,
+        0.6499999761581421
+      ],
+      "tail_z_up": [
+        -0.14000000059604645,
+        0.0,
+        0.38999998569488525
+      ]
+    },
+    {
+      "name": "shin_r",
+      "parent": "thigh_r",
+      "head_z_up": [
+        -0.14000000059604645,
+        0.0,
+        0.38999998569488525
+      ],
+      "tail_z_up": [
+        -0.14000000059604645,
+        0.0,
+        0.12999999523162842
+      ]
+    },
+    {
+      "name": "foot_r",
+      "parent": "shin_r",
+      "head_z_up": [
+        -0.14000000059604645,
+        0.0,
+        0.12999999523162842
+      ],
+      "tail_z_up": [
+        -0.14000000059604645,
+        -0.18000000715255737,
+        0.07500000298023224
+      ]
+    },
+    {
+      "name": "toe_r",
+      "parent": "foot_r",
+      "head_z_up": [
+        -0.14000000059604645,
+        -0.18000000715255737,
+        0.07500000298023224
+      ],
+      "tail_z_up": [
+        -0.14000000059604645,
+        -0.25,
+        0.07500000298023224
+      ]
+    },
+    {
+      "name": "skirt_front",
+      "parent": "hips",
+      "head_z_up": [
+        0.0,
+        -0.18199999630451202,
+        0.7200000286102295
+      ],
+      "tail_z_up": [
+        0.0,
+        -0.25999999046325684,
+        0.15000000596046448
+      ]
+    },
+    {
+      "name": "skirt_back",
+      "parent": "hips",
+      "head_z_up": [
+        0.0,
+        0.18199999630451202,
+        0.7200000286102295
+      ],
+      "tail_z_up": [
+        0.0,
+        0.25999999046325684,
+        0.15000000596046448
+      ]
+    },
+    {
+      "name": "skirt_l",
+      "parent": "hips",
+      "head_z_up": [
+        0.18199999630451202,
+        0.0,
+        0.7200000286102295
+      ],
+      "tail_z_up": [
+        0.25999999046325684,
+        0.0,
+        0.15000000596046448
+      ]
+    },
+    {
+      "name": "skirt_r",
+      "parent": "hips",
+      "head_z_up": [
+        -0.18199999630451202,
+        0.0,
+        0.7200000286102295
+      ],
+      "tail_z_up": [
+        -0.25999999046325684,
+        0.0,
+        0.15000000596046448
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "hips",
+      "head_z_up": [
+        0.0,
+        0.18000000715255737,
+        0.7200000286102295
+      ],
+      "tail_z_up": [
+        0.0,
+        0.5400000214576721,
+        0.6000000238418579
+      ]
+    },
+    {
+      "name": "tail_tip",
+      "parent": "tail",
+      "head_z_up": [
+        0.0,
+        0.5400000214576721,
+        0.6000000238418579
+      ],
+      "tail_z_up": [
+        0.0,
+        0.8999999761581421,
+        0.47999998927116394
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "name": "HERO_Idle",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Idle"
+    },
+    {
+      "name": "HERO_Walk",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Walk"
+    },
+    {
+      "name": "HERO_Run",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 41,
+      "duration_seconds": 0.6666666666666666,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Run"
+    },
+    {
+      "name": "HERO_MoveStart",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "start",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_MoveStart"
+    },
+    {
+      "name": "HERO_MoveStop",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "stop",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_MoveStop"
+    },
+    {
+      "name": "HERO_Turn_L45",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "turn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45,
+      "events": [],
+      "tags": [
+        "turn_transition",
+        "non_loop"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Turn_L45"
+    },
+    {
+      "name": "HERO_Turn_L90",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "turn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90,
+      "events": [],
+      "tags": [
+        "turn_transition",
+        "non_loop"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Turn_L90"
+    },
+    {
+      "name": "HERO_Turn_L180",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "turn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180,
+      "events": [],
+      "tags": [
+        "turn_transition",
+        "non_loop"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Turn_L180"
+    },
+    {
+      "name": "HERO_Turn_R45",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "turn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45,
+      "events": [],
+      "tags": [
+        "turn_transition",
+        "non_loop"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Turn_R45"
+    },
+    {
+      "name": "HERO_Turn_R90",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "turn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90,
+      "events": [],
+      "tags": [
+        "turn_transition",
+        "non_loop"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Turn_R90"
+    },
+    {
+      "name": "HERO_Turn_R180",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "turn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180,
+      "events": [],
+      "tags": [
+        "turn_transition",
+        "non_loop"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Turn_R180"
+    },
+    {
+      "name": "HERO_AttackLongsword",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "attack_sword",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 52,
+      "duration_seconds": 0.85,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "tags": [
+        "role_attack"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_AttackKnight"
+    },
+    {
+      "name": "HERO_Guard",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "guard",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Guard"
+    },
+    {
+      "name": "HERO_Hit",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Hit"
+    },
+    {
+      "name": "HERO_Death",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [
+        {
+          "name": "fallen",
+          "time_seconds": 1.2,
+          "frame": 73
+        }
+      ],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Death"
+    },
+    {
+      "name": "HERO_GetUp",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "getup",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_GetUp"
+    },
+    {
+      "name": "HERO_LampInspect",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Idle"
+    }
+  ],
+  "notes": [
+    "All meshes share foot-center origin; assemble with local transform identity.",
+    "Lamp has emissive geometry and an optional KHR_lights_punctual point light; renderer support controls actual light casting.",
+    "Carry clips contain keyed lamp counter-rotation. Not a runtime physics simulation.",
+    "Game code/build/integration not included."
+  ],
+  "revision": "long_cape_20261026"
+}

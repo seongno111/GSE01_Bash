@@ -11,6 +11,7 @@
 #include "Dependencies/glew.h"
 #include "PostProcessing.h"
 #include "UnitAnimation.h"
+#include "ModelLibrary.h"
 
 struct Point
 {
@@ -83,6 +84,9 @@ public:
         std::uint64_t instances = 0;
         std::uint64_t triangles = 0;
         std::uint64_t meshBuilds = 0;
+        std::uint64_t modelDraws = 0;
+        std::uint64_t modelUploads = 0;
+        std::uint64_t modelPoseBytes = 0;
         std::uint64_t diskLoads = 0;
         std::uint64_t geometryBytes = 0;
         std::uint64_t instanceBytes = 0;
@@ -164,6 +168,14 @@ public:
     size_t CachedMeshCount() const;
     size_t MeshCacheHits() const;
     size_t MeshCacheMisses() const;
+    bool DrawModel(const Models::ModelInstance& model,
+                   const Models::Pose* pose,
+                   Point feet,
+                   float scale,
+                   bool facingLeft = false,
+                   bool character = true,
+                   Color tint = Color(),
+                   float yaw = 0);
 
     PostProcessing& Post()
     {
@@ -193,6 +205,9 @@ private:
 
     struct FontCache;
     std::unique_ptr<FontCache> m_Font;
+    struct ModelState;
+    std::shared_ptr<ModelState> m_Models;
+    void InitializeModelRenderer();
 
     struct Vertex
     {

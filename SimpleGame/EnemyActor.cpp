@@ -9,14 +9,25 @@
 using namespace GameRules;
 
 EnemyActor::EnemyActor(Prototype& game, int tier)
-    : GameActor(game, "Enemy", TickGroup::Enemy, ActorLayer::World),
-      tier(tier)
+    : EnemyActor(game,
+                 tier == 2   ? MonsterKind::FieldWarden
+                 : tier == 1 ? MonsterKind::TaintedRaider
+                             : MonsterKind::WitheredHollow)
 {
-    maxHealth = tier == 0 ? 45.0f : tier == 1 ? 75.0f : 380.0f;
+}
+
+EnemyActor::EnemyActor(Prototype& game, MonsterKind species)
+    : GameActor(game, MonsterStats(species).name, TickGroup::Enemy, ActorLayer::World),
+      kind(species)
+{
+    const auto& stats = Definition();
+    tier = kind == MonsterKind::FieldWarden ? 2 : kind == MonsterKind::TaintedRaider ? 1 : 0;
+    maxHealth = stats.health;
     health = maxHealth;
-    damage = tier == 0 ? 8.0f : tier == 1 ? 12.0f : 20.0f;
-    speed = tier == 0 ? 1.15f : tier == 1 ? 1.50f : 1.20f;
-    experience = tier == 0 ? 20 : tier == 1 ? 30 : 80;
+    damage = stats.damage;
+    speed = stats.moveSpeed;
+    experience = stats.experience;
+    specialCooldown = stats.specialCooldown * .5f;
 }
 
 void EnemyActor::Update(float dt)
@@ -29,10 +40,18 @@ void EnemyActor::Update(float dt)
     Actor* target = &m_Game.m_Player;
     if (m_Game.m_NpcWorld)
     {
-        if (attackWindup <= 0 && burstWindup <= 0)
+        if (!CommittingAttack())
         {
-            target = m_Game.m_NpcWorld->EnemyTarget(*this);
-            combatTarget = target ? target->Id() : InvalidActor;
+            if (m_Game.Time() >= nextTargetScan)
+            {
+                nextTargetScan = m_Game.Time() + .4f;
+                target = m_Game.m_NpcWorld->EnemyTarget(*this);
+                combatTarget = target ? target->Id() : InvalidActor;
+            }
+            else
+            {
+                target = m_Game.Scene().Find(combatTarget);
+            }
         }
         else
         {
@@ -55,6 +74,7 @@ void EnemyActor::Update(float dt)
         {
             enemy.SetWorldPosition(enemy.homeX, enemy.homeY);
             enemy.ResetAnimation();
+            enemy.ResetCombat();
             enemy.health = enemy.maxHealth;
             enemy.alive = true;
         }
@@ -64,6 +84,28 @@ void EnemyActor::Update(float dt)
     double dx = targetX - enemy.WorldX();
     double dy = targetY - enemy.WorldY();
     const double distance = Length(dx, dy);
+    if (UsesMonsterTactics())
+    {
+        const bool returnHome =
+            (target && sanctuary)
+            || Length(WorldX() - homeX, WorldY() - homeY) > Definition().leashRange;
+        if (!UpdateMonsterTactics(dt, sanctuary ? nullptr : target, returnHome))
+        {
+            WorldPoint destination{homeX, homeY};
+            if (!returnHome)
+            {
+                const double phase =
+                    double(Hash(Id(), std::int64_t(m_Game.Time() / 8), m_Game.m_WorldSeed) % 6283)
+                    * .001;
+                destination = {homeX + std::cos(phase) * 2.5, homeY + std::sin(phase) * 2.5};
+            }
+            if (Length(WorldX() - destination.x, WorldY() - destination.y) > .5)
+            {
+                m_Game.MoveEnemy(*this, destination.x, destination.y, speed * .65f, dt);
+            }
+        }
+        return;
+    }
     const bool returning =
         sanctuary || distance > 8
         || Length(enemy.WorldX() - enemy.homeX, enemy.WorldY() - enemy.homeY) > 7;
@@ -160,6 +202,47 @@ void EnemyActor::Draw(Renderer& r)
 {
     if (alive)
     {
+        if (UsesMonsterTactics())
+        {
+            m_Game.DrawMonsterIndicators(r, m_Game.Project(WorldX(), WorldY()), *this);
+            if (DrawSpeciesModel(r))
+            {
+                return;
+            }
+        }
+        if (!UsesMonsterTactics())
+        {
+            const int model = kind == MonsterKind::WitheredHollow  ? 0
+                              : kind == MonsterKind::TaintedRaider ? 1
+                                                                   : 2;
+            const std::string prefix = "MON_0" + std::to_string(model) + "_";
+            const std::string clip = burstWindup > 0                    ? prefix + "Burst"
+                                     : attackWindup > 0 || recovery > 0 ? prefix + "Attack"
+                                     : SpritePose().moving              ? prefix + "Walk"
+                                                                        : prefix + "Idle";
+            float progress = -1;
+            if (attackWindup > 0)
+            {
+                progress = (Definition().attackWindup - attackWindup)
+                           / (Definition().attackWindup + Definition().attackRecovery);
+            }
+            else if (recovery > 0)
+            {
+                progress = 1 - recovery / (Definition().attackWindup + Definition().attackRecovery);
+            }
+            if (DrawModel(
+                    r,
+                    prefix,
+                    [&]()
+                    {
+                        return m_Game.ModelAssets().Monster(model);
+                    },
+                    clip,
+                    progress))
+            {
+                return;
+            }
+        }
         m_Game.DrawEnemyMesh(r, m_Game.Project(WorldX(), WorldY()), *this);
     }
 }
@@ -180,10 +263,10 @@ void EnemyActor::DrawOverlay(Renderer& r)
     {
         return;
     }
-    const float height = enemy.tier == 2 ? 133.0f : enemy.tier == 1 ? 97.0f : 89.0f;
-    const std::string name = enemy.tier == 0   ? "메마른 망자"
-                             : enemy.tier == 1 ? "오염된 약탈자"
-                                               : "경작지 수문장";
+    const auto* model = m_Game.ModelAssets().MonsterSpecies(enemy.Definition().modelKey);
+    const float height =
+        (std::max)(enemy.Definition().visualHeight, model ? model->height * 40 : 0.0f) + 24;
+    const std::string name = enemy.Definition().name;
     r.Text(p.x - r.TextWidth(name, 1.0f) * 0.5f, p.y - height * m_Game.m_Zoom, name, text, 1.0f);
     r.Rect(p.x - 24 * m_Game.m_Zoom,
            p.y - (height - 17) * m_Game.m_Zoom,

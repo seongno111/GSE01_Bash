@@ -33,3 +33,6 @@
 **/Profiling/
 **/NpcAI/
 
+# Bytecode caches produced by read-only inspection scripts
+**/__pycache__/
+

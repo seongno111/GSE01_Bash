@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "six_themes": true,
+    "unique_model_names": true,
+    "all_polygon_roof_volumes_closed": true,
+    "all_layout_keys_exist": true,
+    "village_glbs_match_catalog": true,
+    "whole_library_has_36_meshes": true
+  },
+  "models": 36,
+  "roof_volumes_checked": 26
+}

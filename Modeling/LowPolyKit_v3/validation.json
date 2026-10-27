@@ -13,7 +13,8 @@
     "finite_animation_values": true,
     "npc_attack_event_timing": true,
     "imported_glb_meshes_really_animate": true,
-    "strafe_labels_match_character_axes": true
+    "strafe_labels_match_character_axes": true,
+    "chapel_19_roof_closed_volume": true
   },
   "files": [
     {
