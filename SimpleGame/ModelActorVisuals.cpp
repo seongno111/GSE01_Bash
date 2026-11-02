@@ -77,7 +77,7 @@ bool GameActor::DrawModel(Renderer& renderer,
                               &m_ModelAnimation->CurrentPose(),
                               m_Game.Project(WorldX(), WorldY()),
                               m_Game.Zoom(),
-                              sprite.facingLeft,
+                              ModelYaw(),
                               true,
                               tint);
 }
@@ -92,7 +92,8 @@ bool NpcActor::DrawNpcModel(Renderer& renderer)
         && (performing || recovering);
     const auto* action = m_Game.ModelAssets().NpcAction(static_cast<int>(execution.action));
     int equipmentAction = -1;
-    std::string clip = SpritePose().moving ? "NPC_Walk" : "NPC_Idle";
+    const bool running = execution.action == NpcAction::Flee;
+    std::string clip = MovementClip("NPC", running);
     float progress = -1;
     if (!vitals.alive)
     {
@@ -101,7 +102,7 @@ bool NpcActor::DrawNpcModel(Renderer& renderer)
     }
     else if (mutant)
     {
-        clip = attacking ? "MON_03_Attack" : SpritePose().moving ? "MON_03_Walk" : "MON_03_Idle";
+        clip = attacking ? "MON_03_Attack" : MovementClip("MON_03", running);
     }
     else if (action)
     {
@@ -122,6 +123,12 @@ bool NpcActor::DrawNpcModel(Renderer& renderer)
         {
             equipmentAction = static_cast<int>(execution.action);
         }
+    }
+    if (!mutant
+        && (clip == "NPC_Walk" || clip == "NPC_Run" || clip == "NPC_Flee" || clip == "NPC_WalkBack"
+            || clip == "NPC_StrafeL" || clip == "NPC_StrafeR"))
+    {
+        clip = MovementClip("NPC", running);
     }
     if (attacking)
     {

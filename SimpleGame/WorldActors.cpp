@@ -33,6 +33,10 @@ UnitSpritePose GameActor::SpritePose() const
 
 void GameActor::RecordMovement(double dx, double dy)
 {
+    if (!std::isfinite(dx) || !std::isfinite(dy))
+    {
+        return;
+    }
     const double distance = std::hypot(dx, dy);
     if (distance <= 0.00001)
     {
@@ -42,6 +46,8 @@ void GameActor::RecordMovement(double dx, double dy)
     // Accumulate collision-resolved travel. Visual time advances separately every
     // frame, so 20 Hz AI does not make limbs jump from one pose to the next.
     m_TravelDistance += float(distance);
+    m_HeadingTravelX += dx;
+    m_HeadingTravelY += dy;
     m_LastMovementTime = now;
     const double screenX = dx - dy;
     if (std::abs(screenX) > distance * 0.15)
@@ -66,6 +72,29 @@ void GameActor::UpdateVisual(float dt)
 
     // Bridge one skipped path-node tick; settle smoothly when actually stopped.
     const bool active = m_LastMovementTime >= 0 && m_Game.Time() - m_LastMovementTime <= 0.12f;
+    // A frame can contain several collision substeps or fixed AI updates. Use their net travel.
+    const bool hasHeading = std::hypot(m_HeadingTravelX, m_HeadingTravelY) > .00001;
+    if (hasHeading)
+    {
+        // glTF faces +Z: the model forward becomes (sin(yaw), cos(yaw)) on world X/Y.
+        m_TargetModelYaw = static_cast<float>(std::atan2(m_HeadingTravelX, m_HeadingTravelY));
+    }
+    else if (!active && m_AttackAnimationStart >= 0
+             && m_Game.Time() - m_AttackAnimationStart < m_AttackAnimationDuration)
+    {
+        m_TargetModelYaw = m_AttackModelYaw;
+    }
+    m_HeadingTravelX = 0;
+    m_HeadingTravelY = 0;
+    if (m_ModelYaw != m_TargetModelYaw)
+    {
+        // Yaw-only shortest-arc rotation is the ground-plane equivalent of quaternion SLERP.
+        constexpr float TwoPi = 6.283185307f;
+        const float delta = std::remainder(m_TargetModelYaw - m_ModelYaw, TwoPi);
+        m_ModelYaw = std::abs(delta) < .0001f
+                         ? m_TargetModelYaw
+                         : std::remainder(m_ModelYaw + delta * (1 - std::exp(-18 * dt)), TwoPi);
+    }
     const float targetSpeed = active ? m_TargetSpeed : 0;
     m_VisualSpeed += (targetSpeed - m_VisualSpeed) * (1 - std::exp(-12 * dt));
     const float targetWeight = active ? 1.0f : 0.0f;
@@ -85,6 +114,15 @@ void GameActor::UpdateVisual(float dt)
 
 void GameActor::BeginAttackAnimation(double directionX, double directionY, float duration)
 {
+    if (std::isfinite(directionX) && std::isfinite(directionY)
+        && std::hypot(directionX, directionY) > .00001)
+    {
+        m_AttackModelYaw = static_cast<float>(std::atan2(directionX, directionY));
+    }
+    else
+    {
+        m_AttackModelYaw = m_TargetModelYaw;
+    }
     const double screenX = directionX - directionY;
     if (std::abs(screenX) > 0.00001)
     {
@@ -108,6 +146,16 @@ void GameActor::ResetAnimation()
     m_AttackAnimationDuration = 0;
     m_FacingLeft = false;
     m_AttackFacingLeft = false;
+    m_HeadingTravelX = 0;
+    m_HeadingTravelY = 0;
+    m_ModelYaw = 0;
+    m_TargetModelYaw = 0;
+    m_AttackModelYaw = 0;
+}
+
+std::string GameActor::MovementClip(const std::string& prefix, bool running) const
+{
+    return prefix + (SpritePose().moving ? (running ? "_Run" : "_Walk") : "_Idle");
 }
 
 bool GameActor::InView() const
@@ -173,10 +221,8 @@ void PropActor::Draw(Renderer& r)
                     nullptr,
                     m_Game.Project(WorldX(), WorldY()),
                     m_Game.Zoom() * m_PropModelScale,
-                    false,
-                    false,
-                    Color(),
-                    m_PropModelYaw))
+                    m_PropModelYaw,
+                    false))
     {
         return;
     }
@@ -222,10 +268,8 @@ void VillageGateActor::Draw(Renderer& renderer)
                        nullptr,
                        m_Game.Project(WorldX(), WorldY()),
                        m_Game.Zoom() * m_Visual.scale,
-                       false,
-                       false,
-                       Color(),
-                       m_Yaw);
+                       m_Yaw,
+                       false);
 }
 
 AtmosphereActor::AtmosphereActor(Prototype& game, bool ash, int index)

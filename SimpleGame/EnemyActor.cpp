@@ -182,6 +182,7 @@ void EnemyActor::Update(float dt)
     else if (distance < 0.90 && enemy.recovery <= 0)
     {
         enemy.attackWindup = enemy.tier == 2 ? 0.65f : 0.5f;
+        BeginAttackAnimation(dx, dy, enemy.attackWindup + Definition().attackRecovery);
         return;
     }
 
@@ -216,10 +217,10 @@ void EnemyActor::Draw(Renderer& r)
                               : kind == MonsterKind::TaintedRaider ? 1
                                                                    : 2;
             const std::string prefix = "MON_0" + std::to_string(model) + "_";
-            const std::string clip = burstWindup > 0                    ? prefix + "Burst"
-                                     : attackWindup > 0 || recovery > 0 ? prefix + "Attack"
-                                     : SpritePose().moving              ? prefix + "Walk"
-                                                                        : prefix + "Idle";
+            const std::string clip = burstWindup > 0 ? prefix + "Burst"
+                                     : attackWindup > 0 || recovery > 0
+                                         ? prefix + "Attack"
+                                         : MovementClip(prefix.substr(0, prefix.size() - 1));
             float progress = -1;
             if (attackWindup > 0)
             {

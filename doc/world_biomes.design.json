@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "status": "design_only",
+  "consumed_by_game": false,
+  "authored": "2026-11-02",
+  "title_ko": "마을 외부 청크 지형 설정",
+  "source_document": "doc/월드_외곽_청크_지형_설정_2026-11-02.md",
+  "units": {
+    "distance": "current_game_world_unit",
+    "environment_corruption": "normalized_0_to_1_separate_from_player_corruption",
+    "palette": "sRGB_hex_design_reference"
+  },
+  "current_source_snapshot": {
+    "chunk_side": 8,
+    "player_walk_speed": 3.7,
+    "village_half_extent": 18,
+    "village_count": 6,
+    "outpost_half_extent": 12,
+    "outpost_count": 5,
+    "shrine_spacing": 147,
+    "village_gate_gap": 111,
+    "tutorial_bounds": {
+      "min": [
+        28,
+        -3
+      ],
+      "max": [
+        46,
+        13
+      ]
+    }
+  },
+  "generation_proposal": {
+    "region_anchor_spacing_world_units": 64,
+    "typical_region_extent_world_units_range": [
+      48,
+      96
+    ],
+    "transition_total_width_world_units_range": [
+      8,
+      16
+    ],
+    "minimum_main_route_width_world_units": 3,
+    "village_visual_buffer_world_units": 8,
+    "outpost_visual_buffer_world_units": 4,
+    "poi_request_chance_per_region": 0.32,
+    "maximum_poi_requests_per_region": 1,
+    "minimum_poi_center_spacing_world_units": 64,
+    "ambient_monster_requests_per_region_range": [
+      2,
+      4
+    ],
+    "request_is_not_guaranteed_spawn": true,
+    "placement_order": [
+      "protected_gameplay_areas",
+      "existing_roads_and_access",
+      "persistent_poi_layout",
+      "base_biome",
+      "nonblocking_decoration"
+    ],
+    "deterministic_inputs": [
+      "world_seed",
+      "generator_version",
+      "global_coordinates"
+    ],
+    "forbidden_generation_inputs": [
+      "chunk_visit_order",
+      "frame_time",
+      "player_level",
+      "player_corruption"
+    ],
+    "coverage_weights_are_distribution_targets": true,
+    "wet_dry_direct_border_allowed": false,
+    "environmental_player_corruption_enabled": false,
+    "passive_terrain_damage_enabled": false,
+    "terrain_slowdown_enabled": false,
+    "swimming_or_falling_enabled": false,
+    "initial_navigation": "기존 격자 주도로 유지; 탐험 구역의 연결 통로부터 변형",
+    "protected_route_speed_multiplier": 1,
+    "bosses_excluded_from_ambient_requests": [
+      "field_warden",
+      "high_demon"
+    ],
+    "preserve_existing_outpost_rosters": true,
+    "preserve_player_death_echo_records": true,
+    "prop_counts_apply_after_route_and_protection_masks": true,
+    "scene_population": "지역 예산과 영속 ID로 관리; 청크 재로딩으로 개체나 보상을 복제하지 않음",
+    "cache_policy": "지형/패턴/소품 자원을 공유; 전역 좌표와 시드를 무제한 메시 키로 사용하지 않음"
+  },
+  "biomes": [
+    {
+      "id": "ash_grassland",
+      "name_ko": "재바람 초지",
+      "target_coverage_weight": 22,
+      "risk_tier": 1,
+      "environment_corruption_range": [
+        0.08,
+        0.35
+      ],
+      "palette_srgb": {
+        "ground": "#55564B",
+        "detail": "#898775",
+        "accent": "#B49B63"
+      },
+      "space": "밭둑과 넓은 통행로, 낮은 풀과 먼 랜드마크",
+      "existing_prop_indices": [
+        10,
+        14,
+        22,
+        23,
+        29,
+        30
+      ],
+      "prop_placements_per_chunk": [
+        2,
+        6
+      ],
+      "variants": [
+        "fallow_ridges",
+        "dead_orchard",
+        "dry_creek_crossing",
+        "caravan_fork"
+      ],
+      "monster_request_weights": {
+        "withered_hollow": 45,
+        "tainted_raider": 25,
+        "ash_wolf": 30
+      },
+      "npc_activity_candidates": [
+        "외곽 순찰",
+        "물자 회수",
+        "교역",
+        "난민 호송"
+      ],
+      "human_trace": "묘표 옆의 새 밭과 통행자를 위해 채워 둔 표지등",
+      "new_asset_candidates": [
+        "밭둑",
+        "쓰러진 과수",
+        "작은 수레"
+      ],
+      "transition_neighbors": [
+        "dark_canopy_forest",
+        "bell_mire",
+        "glass_ash_desert",
+        "broken_crown_hills",
+        "dead_furnace_wastes"
+      ]
+    },
+    {
+      "id": "dark_canopy_forest",
+      "name_ko": "검은 수관림",
+      "target_coverage_weight": 26,
+      "risk_tier": 3,
+      "environment_corruption_range": [
+        0.3,
+        0.7
+      ],
+      "palette_srgb": {
+        "ground": "#242F2A",
+        "detail": "#4B5B46",
+        "accent": "#87915D"
+      },
+      "space": "굵은 줄기 사이의 굽은 길과 빈터, 수관과 하층 식생",
+      "existing_prop_indices": [
+        12,
+        20,
+        21,
+        22,
+        24,
+        30
+      ],
+      "prop_placements_per_chunk": [
+        10,
+        16
+      ],
+      "variants": [
+        "root_passage",
+        "hunting_glade",
+        "windthrow_patch",
+        "thorn_nest_margin"
+      ],
+      "monster_request_weights": {
+        "ash_wolf": 45,
+        "blight_bear": 25,
+        "thorn_stag": 25,
+        "withered_hollow": 5
+      },
+      "npc_activity_candidates": [
+        "실종자 수색",
+        "야수 토벌",
+        "호송",
+        "길목 감시"
+      ],
+      "human_trace": "나무에 묶여 이어지는 구조 표식과 남겨 둔 빈 식기",
+      "new_asset_candidates": [
+        "넓은 수관목",
+        "큰 뿌리",
+        "옆으로 쓰러진 나무"
+      ],
+      "transition_neighbors": [
+        "ash_grassland",
+        "bell_mire",
+        "broken_crown_hills",
+        "dead_furnace_wastes"
+      ]
+    },
+    {
+      "id": "bell_mire",
+      "name_ko": "종울음 늪지",
+      "target_coverage_weight": 18,
+      "risk_tier": 4,
+      "environment_corruption_range": [
+        0.6,
+        0.9
+      ],
+      "palette_srgb": {
+        "ground": "#283B34",
+        "detail": "#191F24",
+        "accent": "#735C7F"
+      },
+      "space": "얕은 수면 사이의 마른 둑과 솟은 뿌리, 연결된 회수 경로",
+      "existing_prop_indices": [
+        3,
+        12,
+        15,
+        24,
+        28
+      ],
+      "prop_placements_per_chunk": [
+        6,
+        10
+      ],
+      "variants": [
+        "reed_causeway",
+        "sunken_graveyard",
+        "flooded_orchard",
+        "broken_dike_detour"
+      ],
+      "monster_request_weights": {
+        "withered_hollow": 45,
+        "blight_bear": 25,
+        "fallen_priest": 15,
+        "tainted_raider": 15
+      },
+      "npc_activity_candidates": [
+        "매장 기록 회수",
+        "유골 수습",
+        "오염 조사",
+        "밀수"
+      ],
+      "human_trace": "이름판을 묶어 둔 묘표와 계속 보수되는 둑길",
+      "new_asset_candidates": [
+        "갈대 묶음",
+        "평면 수면",
+        "솟은 둑",
+        "나무 발판",
+        "잠긴 종"
+      ],
+      "transition_neighbors": [
+        "ash_grassland",
+        "dark_canopy_forest"
+      ]
+    },
+    {
+      "id": "glass_ash_desert",
+      "name_ko": "유리재 사막",
+      "target_coverage_weight": 14,
+      "risk_tier": 3,
+      "environment_corruption_range": [
+        0.25,
+        0.65
+      ],
+      "palette_srgb": {
+        "ground": "#B5AA8E",
+        "detail": "#3C393B",
+        "accent": "#CEB974"
+      },
+      "space": "열린 모래와 재, 낮은 사구, 묻힌 석조 수로를 이용한 방향 기준",
+      "existing_prop_indices": [
+        9,
+        14,
+        25,
+        27
+      ],
+      "prop_placements_per_chunk": [
+        2,
+        5
+      ],
+      "variants": [
+        "ash_dunes",
+        "black_glass_seam",
+        "buried_aqueduct",
+        "stone_windbreak"
+      ],
+      "monster_request_weights": {
+        "tainted_raider": 55,
+        "withered_hollow": 35,
+        "fallen_paladin": 10
+      },
+      "npc_activity_candidates": [
+        "우회 교역",
+        "상단 호위",
+        "길 안내",
+        "물자 약탈"
+      ],
+      "human_trace": "모래를 퍼내며 지키는 우물과 물을 남긴 그릇",
+      "new_asset_candidates": [
+        "모래와 재 지면",
+        "낮은 사구",
+        "유리화 바위",
+        "반쯤 묻힌 수로"
+      ],
+      "transition_neighbors": [
+        "ash_grassland",
+        "broken_crown_hills",
+        "dead_furnace_wastes"
+      ]
+    },
+    {
+      "id": "broken_crown_hills",
+      "name_ko": "무너진 왕도 구릉",
+      "target_coverage_weight": 12,
+      "risk_tier": 3,
+      "environment_corruption_range": [
+        0.2,
+        0.65
+      ],
+      "palette_srgb": {
+        "ground": "#515961",
+        "detail": "#838A8E",
+        "accent": "#A5A092"
+      },
+      "space": "층암과 석축 사이의 굽은 길, 넓은 돌 마당과 망루 실루엣",
+      "existing_prop_indices": [
+        9,
+        10,
+        14,
+        25,
+        26
+      ],
+      "prop_placements_per_chunk": [
+        6,
+        10
+      ],
+      "variants": [
+        "watchtower_ridge",
+        "exposed_rock_layers",
+        "broken_bridge_abutment",
+        "quarry_cart_track"
+      ],
+      "monster_request_weights": {
+        "tainted_raider": 45,
+        "withered_hollow": 30,
+        "fallen_paladin": 10,
+        "thorn_stag": 15
+      },
+      "npc_activity_candidates": [
+        "정찰",
+        "유적 탐색",
+        "보급로 확보",
+        "운반 호위"
+      ],
+      "human_trace": "보수용 돌과 여러 세대가 덧쓴 이정표",
+      "new_asset_candidates": [
+        "층암",
+        "석교 교대",
+        "망루 잔해"
+      ],
+      "transition_neighbors": [
+        "ash_grassland",
+        "dark_canopy_forest",
+        "glass_ash_desert",
+        "dead_furnace_wastes"
+      ]
+    },
+    {
+      "id": "dead_furnace_wastes",
+      "name_ko": "꺼진 화덕 황무지",
+      "target_coverage_weight": 8,
+      "risk_tier": 4,
+      "environment_corruption_range": [
+        0.5,
+        0.9
+      ],
+      "palette_srgb": {
+        "ground": "#302D2D",
+        "detail": "#62534B",
+        "accent": "#C46A39"
+      },
+      "space": "식은 대형 화덕과 숯 기둥, 드문 발광 균열 사이의 열린 전투 공간",
+      "existing_prop_indices": [
+        7,
+        11,
+        12,
+        23,
+        25,
+        30
+      ],
+      "prop_placements_per_chunk": [
+        4,
+        8
+      ],
+      "variants": [
+        "charcoal_pillars",
+        "cold_furnace",
+        "burnt_supply_camp",
+        "fissure_detour"
+      ],
+      "monster_request_weights": {
+        "tainted_raider": 42,
+        "withered_hollow": 30,
+        "ash_wolf": 20,
+        "fallen_paladin": 8
+      },
+      "npc_activity_candidates": [
+        "봉화 감시",
+        "유골 수습",
+        "보급 물자 회수",
+        "잔여 물자 약탈"
+      ],
+      "human_trace": "양쪽 병사의 이름이 함께 적힌 묘표와 구조용 보급 표식",
+      "new_asset_candidates": [
+        "숯 기둥",
+        "식은 화덕",
+        "국소 발광 균열"
+      ],
+      "transition_neighbors": [
+        "ash_grassland",
+        "dark_canopy_forest",
+        "glass_ash_desert",
+        "broken_crown_hills"
+      ]
+    }
+  ],
+  "points_of_interest": [
+    {
+      "id": "abandoned_village",
+      "name_ko": "빈 종의 폐촌",
+      "selection_weight": 40,
+      "risk_tier_range": [
+        2,
+        4
+      ],
+      "footprint_side_world_units_range": [
+        16,
+        32
+      ],
+      "variants": [
+        "evacuated_funeral_hamlet",
+        "looted_trade_hamlet",
+        "flooded_well_hamlet"
+      ],
+      "allowed_biomes": [
+        "ash_grassland",
+        "dark_canopy_forest",
+        "bell_mire",
+        "glass_ash_desert",
+        "broken_crown_hills",
+        "dead_furnace_wastes"
+      ],
+      "existing_prop_indices": [
+        0,
+        9,
+        18,
+        29,
+        32
+      ],
+      "monster_request_weights": {
+        "withered_hollow": 60,
+        "tainted_raider": 35,
+        "fallen_priest": 5
+      },
+      "required_layout": [
+        "관통 골목",
+        "우물 광장",
+        "열린 후퇴로"
+      ],
+      "story_seed": "피난 기록과 수레 방향, 목격 소문으로 폐촌의 원인을 알아간다",
+      "new_asset_candidates": [
+        "지붕 붕괴 주택",
+        "폐공방",
+        "폐우물"
+      ],
+      "automatic_settlement_registration": false,
+      "automatic_npc_spawning": false
+    },
+    {
+      "id": "ruined_monastery",
+      "name_ko": "마지막 등불 수도원",
+      "selection_weight": 25,
+      "risk_tier_range": [
+        3,
+        4
+      ],
+      "footprint_side_world_units_range": [
+        16,
+        24
+      ],
+      "variants": [
+        "refuge_records",
+        "fallen_guardian_seal",
+        "rootbound_pilgrim_house"
+      ],
+      "allowed_biomes": [
+        "ash_grassland",
+        "dark_canopy_forest",
+        "bell_mire",
+        "broken_crown_hills"
+      ],
+      "existing_prop_indices": [
+        4,
+        13,
+        19
+      ],
+      "monster_request_weights": {
+        "withered_hollow": 50,
+        "fallen_paladin": 30,
+        "fallen_priest": 20
+      },
+      "required_layout": [
+        "정문 접근로",
+        "회랑",
+        "제단 마당",
+        "후퇴로"
+      ],
+      "story_seed": "마지막 관리자의 구호 기록과 피난민에게 남겨 둔 등불",
+      "new_asset_candidates": [
+        "무너진 회랑",
+        "종루 잔해",
+        "구호 기록 소품"
+      ],
+      "automatic_sanctuary_registration": false,
+      "automatic_cleansing": false
+    },
+    {
+      "id": "oath_battlefield",
+      "name_ko": "녹슨 서약의 전장",
+      "selection_weight": 20,
+      "risk_tier_range": [
+        3,
+        4
+      ],
+      "footprint_side_world_units_range": [
+        16,
+        32
+      ],
+      "variants": [
+        "broken_standards",
+        "burnt_field_hospital",
+        "supply_trenches"
+      ],
+      "allowed_biomes": [
+        "ash_grassland",
+        "broken_crown_hills",
+        "dead_furnace_wastes",
+        "glass_ash_desert"
+      ],
+      "existing_prop_indices": [
+        7,
+        15,
+        17,
+        25
+      ],
+      "monster_request_weights": {
+        "withered_hollow": 60,
+        "tainted_raider": 30,
+        "fallen_paladin": 10
+      },
+      "required_layout": [
+        "끊어서 배치한 참호",
+        "보급 통로",
+        "열린 퇴로"
+      ],
+      "story_seed": "서로 다른 군복의 부상자를 실어 나른 구호 수레 자국",
+      "new_asset_candidates": [
+        "꺾인 깃발",
+        "얕은 참호",
+        "파손 방패",
+        "구호 수레"
+      ],
+      "decorative_dead_are_player_echoes": false
+    },
+    {
+      "id": "ossuary_quarry",
+      "name_ko": "봉인된 납골 채석장",
+      "selection_weight": 15,
+      "risk_tier_range": [
+        4,
+        4
+      ],
+      "footprint_side_world_units_range": [
+        16,
+        32
+      ],
+      "variants": [
+        "abandoned_cutting_floor",
+        "collapsed_hauling_works",
+        "sealed_ossuary_entrance"
+      ],
+      "allowed_biomes": [
+        "broken_crown_hills",
+        "dead_furnace_wastes",
+        "bell_mire"
+      ],
+      "existing_prop_indices": [
+        3,
+        9,
+        14,
+        25
+      ],
+      "monster_request_weights": {
+        "withered_hollow": 65,
+        "tainted_raider": 20,
+        "fallen_priest": 10,
+        "fallen_paladin": 5
+      },
+      "required_layout": [
+        "평면 수레길",
+        "석벽 외관",
+        "납골 입구 마당",
+        "후퇴로"
+      ],
+      "story_seed": "석재를 운반하던 길을 관을 운반하는 길로 바꾼 기록",
+      "new_asset_candidates": [
+        "절단 석벽",
+        "운반 장치 잔해",
+        "봉인판"
+      ],
+      "requires_real_elevation_navigation": false,
+      "automatic_dungeon_generation": false
+    }
+  ],
+  "existing_outpost_biome_anchors": [
+    {
+      "outpost_id": "ash",
+      "center": [
+        74,
+        -32
+      ],
+      "biome_id": "dead_furnace_wastes"
+    },
+    {
+      "outpost_id": "crypt",
+      "center": [
+        -74,
+        -32
+      ],
+      "biome_id": "bell_mire"
+    },
+    {
+      "outpost_id": "thorns",
+      "center": [
+        -74,
+        74
+      ],
+      "biome_id": "dark_canopy_forest"
+    },
+    {
+      "outpost_id": "quarry",
+      "center": [
+        74,
+        74
+      ],
+      "biome_id": "broken_crown_hills"
+    },
+    {
+      "outpost_id": "fang",
+      "center": [
+        180,
+        74
+      ],
+      "biome_id": "glass_ash_desert"
+    }
+  ],
+  "introductory_anchor_candidates": [
+    {
+      "biome_id": "glass_ash_desert",
+      "center": [
+        220,
+        -56
+      ],
+      "placement_validated": false
+    },
+    {
+      "poi_id": "abandoned_village",
+      "center": [
+        74,
+        27
+      ],
+      "placement_validated": false
+    }
+  ],
+  "scope_notes": [
+    "기획 데이터이며 현재 게임은 이 파일을 로드하지 않는다.",
+    "소품 label/prop_index는 에셋 카탈로그 기준이다. 게임 prop kind로 직접 사용하지 않는다.",
+    "NPC 활동은 관측과 소문, 기존 직군/욕구/관계 규칙을 거친 행동 후보다.",
+    "소품 외관은 정화·거래·주민 생성·피해 판정을 자동으로 제공하지 않는다.",
+    "기존 성소·마을·튜토리얼·거점·잔재 규칙을 보호한다.",
+    "새 지하 공간·자원 경제·지형 상태 이상·실시간 높이 충돌은 별도 후속 구현이다."
+  ]
+}

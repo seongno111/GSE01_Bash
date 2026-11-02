@@ -62,37 +62,10 @@ bool EnemyActor::DrawSpeciesModel(Renderer& renderer)
     }
     else if (sprite.moving)
     {
-        const char* stateName = "Patrol";
-        switch (state)
-        {
-        case MonsterState::Chase:
-            stateName = "Chase";
-            break;
-        case MonsterState::Flank:
-            stateName = "Flank";
-            break;
-        case MonsterState::Guarding:
-            stateName = "Guarding";
-            break;
-        case MonsterState::Fleeing:
-            stateName = "Fleeing";
-            break;
-        case MonsterState::Returning:
-            stateName = "Returning";
-            break;
-        default:
-            break;
-        }
-        const auto found = visual->states.find(stateName);
-        const auto patrol = visual->states.find("Patrol");
-        clip = found != visual->states.end()    ? found->second
-               : patrol != visual->states.end() ? patrol->second
-                                                : visual->idle;
-        if (kind == MonsterKind::AshWolf && state == MonsterState::Flank && Id() % 2)
-        {
-            clip = std::string(stats.modelKey) + "_FlankR";
-        }
-        // Flank and Backstep also use collision-resolved gait phase, not AI update intervals.
+        const bool running = state == MonsterState::Chase || state == MonsterState::Flank
+                             || state == MonsterState::Fleeing;
+        clip = running ? visual->run : visual->walk;
+        // Direction comes only from actor yaw; all travel shares the same gait phase.
         progress = sprite.walkCycle;
     }
 

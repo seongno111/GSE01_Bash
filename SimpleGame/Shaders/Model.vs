@@ -13,6 +13,7 @@ uniform vec2 u_Viewport;
 uniform vec3 u_Placement;   // screen feet XY, zoom/world scale
 uniform vec4 u_Orientation; // model +X and +Z in world ground coordinates
 out vec3 v_Position;
+out vec2 v_Ground;
 out vec3 v_Normal;
 out vec4 v_Color;
 out vec4 v_Emission;
@@ -51,6 +52,7 @@ void main()
     // Depth is local to one painter-ordered actor, matching the existing scene graph.
     gl_Position = vec4(clip.x, -clip.y, -(ground.x + ground.y + local.y) / 128.0, 1);
     v_Position = local;
+    v_Ground = ground;
     mat3 linear = mat3(skin);
     float determinantValue = determinant(linear);
     v_Normal = abs(determinantValue) > 0.000001 ? transpose(inverse(linear)) * a_Normal : a_Normal;

@@ -1,0 +1,5 @@
+{
+  "status": "historical_not_current",
+  "superseded_by": "../LocomotionShared_20261029/validation.json",
+  "historical_report": "history_before_shared_locomotion/validation.json"
+}

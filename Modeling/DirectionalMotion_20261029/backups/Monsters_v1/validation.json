@@ -1,0 +1,118 @@
+{
+  "checks": {
+    "six_model_keys_unique": true,
+    "all_vertices_weighted": true,
+    "weights_normalized": true,
+    "glb_skins_and_clips": true,
+    "loop_ends_match": true,
+    "finite_keys": true,
+    "basic_attack_events_match": true,
+    "special_events_match": true,
+    "animal_skeletons_are_not_humanoid": true,
+    "roundtrip_all_six_animate": true,
+    "rift_recovery_seconds_1_6": true,
+    "wolf_pounce_end_above_ground": true
+  },
+  "models": [
+    {
+      "key": "AshWolf",
+      "bones": 23,
+      "meshes": 1,
+      "clips": 20,
+      "triangles": 1035,
+      "height_m": 1.2000001668930054
+    },
+    {
+      "key": "BlightBear",
+      "bones": 24,
+      "meshes": 2,
+      "clips": 19,
+      "triangles": 1200,
+      "height_m": 1.5600000619888306
+    },
+    {
+      "key": "ThornStag",
+      "bones": 24,
+      "meshes": 2,
+      "clips": 19,
+      "triangles": 1060,
+      "height_m": 2.259999990463257
+    },
+    {
+      "key": "FallenPaladin",
+      "bones": 31,
+      "meshes": 3,
+      "clips": 20,
+      "triangles": 1522,
+      "height_m": 2.005563974380493
+    },
+    {
+      "key": "FallenPriest",
+      "bones": 31,
+      "meshes": 3,
+      "clips": 22,
+      "triangles": 971,
+      "height_m": 2.069999933242798
+    },
+    {
+      "key": "HighDemonAzar",
+      "bones": 37,
+      "meshes": 4,
+      "clips": 23,
+      "triangles": 1241,
+      "height_m": 2.8457000255584717
+    }
+  ],
+  "total_clips": 123,
+  "roundtrip": [
+    {
+      "file": "Monsters_v1\\AshWolf.glb",
+      "clip": "AshWolf_PouncePrepare",
+      "bones": 23,
+      "actions": 20,
+      "asset_meshes": 1,
+      "vertex_motion_m": 0.12631178016283254,
+      "lowest_vertex_end_m": 0.004999637603759766
+    },
+    {
+      "file": "Monsters_v1\\BlightBear.glb",
+      "clip": "BlightBear_Slam",
+      "bones": 24,
+      "actions": 19,
+      "asset_meshes": 2,
+      "vertex_motion_m": 0.3926212289664444
+    },
+    {
+      "file": "Monsters_v1\\ThornStag.glb",
+      "clip": "ThornStag_ChargePrepare",
+      "bones": 24,
+      "actions": 19,
+      "asset_meshes": 2,
+      "vertex_motion_m": 0.3314885917874947
+    },
+    {
+      "file": "Monsters_v1\\HighDemonAzar.glb",
+      "clip": "HighDemonAzar_Rift",
+      "bones": 37,
+      "actions": 23,
+      "asset_meshes": 4,
+      "vertex_motion_m": 1.4679547288058699
+    },
+    {
+      "file": "Monsters_v1\\FallenPaladin.glb",
+      "clip": "FallenPaladin_WardPrepare",
+      "bones": 31,
+      "actions": 20,
+      "asset_meshes": 3,
+      "vertex_motion_m": 0.3478737547455102
+    },
+    {
+      "file": "Monsters_v1\\FallenPriest.glb",
+      "clip": "FallenPriest_Mend",
+      "bones": 31,
+      "actions": 22,
+      "asset_meshes": 3,
+      "vertex_motion_m": 0.9241611497397489
+    }
+  ]
+}

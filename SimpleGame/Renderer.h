@@ -19,6 +19,12 @@ struct Point
     float y;
 };
 
+struct ModelGroundMask
+{
+    std::array<std::uint32_t, 2> hidden{};
+    Point offset{0, 0};
+};
+
 struct Color
 {
     float r;
@@ -172,10 +178,10 @@ public:
                    const Models::Pose* pose,
                    Point feet,
                    float scale,
-                   bool facingLeft = false,
+                   float yaw = 0,
                    bool character = true,
                    Color tint = Color(),
-                   float yaw = 0);
+                   const ModelGroundMask* groundMask = nullptr);
 
     PostProcessing& Post()
     {

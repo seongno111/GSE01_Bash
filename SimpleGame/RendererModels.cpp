@@ -74,6 +74,9 @@ struct Renderer::ModelState
     GLint linearScene = -1;
     GLint lampPosition = -1;
     GLint lampColor = -1;
+    GLint groundMaskEnabled = -1;
+    GLint groundMask = -1;
+    GLint groundMaskOffset = -1;
     std::map<const Models::Asset*, std::unique_ptr<Mesh>> meshes;
     std::vector<Models::Matrix> matrices;
 
@@ -271,6 +274,9 @@ void Renderer::InitializeModelRenderer()
     state->linearScene = glGetUniformLocation(state->program, "u_LinearScene");
     state->lampPosition = glGetUniformLocation(state->program, "u_LampPosition");
     state->lampColor = glGetUniformLocation(state->program, "u_LampColor");
+    state->groundMaskEnabled = glGetUniformLocation(state->program, "u_GroundMaskEnabled");
+    state->groundMask = glGetUniformLocation(state->program, "u_GroundMask");
+    state->groundMaskOffset = glGetUniformLocation(state->program, "u_GroundMaskOffset");
     glUseProgram(state->program);
     glUniform1i(glGetUniformLocation(state->program, "u_Pose"), 3);
     glGenBuffers(1, &state->poseBuffer);
@@ -288,12 +294,13 @@ bool Renderer::DrawModel(const Models::ModelInstance& model,
                          const Models::Pose* suppliedPose,
                          Point feet,
                          float scale,
-                         bool facingLeft,
+                         float yaw,
                          bool character,
                          Color tint,
-                         float yaw)
+                         const ModelGroundMask* groundMask)
 {
-    if (!model || !m_Models || m_DrawingUI || m_Capturing || !std::isfinite(scale) || scale <= 0)
+    if (!model || !m_Models || m_DrawingUI || m_Capturing || !std::isfinite(scale) || scale <= 0
+        || !std::isfinite(yaw))
     {
         return false;
     }
@@ -389,13 +396,14 @@ bool Renderer::DrawModel(const Models::ModelInstance& model,
     glUniform2f(state.viewport, float(m_Width), float(m_Height));
     glUniform3f(state.placement, feet.x + m_Translation.x, feet.y + m_Translation.y, scale);
     // A proper yaw rotation, not negative scale: winding/normals and equipment handedness stay intact.
-    const float angle = character ? (facingLeft ? -.44f : 2.01f) : yaw;
-    glUniform4f(state.orientation,
-                std::cos(angle),
-                -std::sin(angle),
-                std::sin(angle),
-                std::cos(angle));
+    glUniform4f(state.orientation, std::cos(yaw), -std::sin(yaw), std::sin(yaw), std::cos(yaw));
     glUniform4f(state.tint, tint.r, tint.g, tint.b, tint.a);
+    glUniform1i(state.groundMaskEnabled, groundMask ? 1 : 0);
+    if (groundMask)
+    {
+        glUniform2ui(state.groundMask, groundMask->hidden[0], groundMask->hidden[1]);
+        glUniform2f(state.groundMaskOffset, groundMask->offset.x, groundMask->offset.y);
+    }
     glUniform1i(state.linearScene, m_LinearScene ? 1 : 0);
     glUniform4f(state.lampPosition, 0, 0, 0, 0);
     glUniform4f(state.lampColor, 0, 0, 0, 0);

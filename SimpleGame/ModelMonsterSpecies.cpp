@@ -150,6 +150,14 @@ namespace Models
                 return name;
             };
             visual.idle = clip(key + "_Idle");
+            visual.walk = clip(key + "_Walk");
+            visual.run = clip(key + "_Run");
+            for (const auto& name : {visual.walk, visual.run})
+            {
+                const auto& animation = asset->animations.at(asset->animationByName.at(name));
+                Require(animation.loop && std::abs(animation.rootYawDegrees) < .001f,
+                        "Shared locomotion must loop without baked root yaw: " + name);
+            }
             visual.attack = clip(attack.at("clip"));
             Require(std::abs(Duration(*asset, visual.attack) - windup - recovery) < .04f,
                     "Monster basic attack length differs from gameplay");
@@ -169,15 +177,6 @@ namespace Models
                 Require(std::abs(Duration(*asset, visual.special) - activation - expectedRecovery)
                             < .04f,
                         "Monster special length differs from gameplay");
-            }
-            for (const std::string state :
-                 {"Patrol", "Chase", "Flank", "Guarding", "Fleeing", "Returning"})
-            {
-                const auto& value = entry.at("state_map").at(state);
-                if (!value.is_null())
-                {
-                    visual.states.emplace(state, clip(value));
-                }
             }
             Require(visuals.emplace(key, std::move(visual)).second,
                     "Duplicate monster species: " + key);

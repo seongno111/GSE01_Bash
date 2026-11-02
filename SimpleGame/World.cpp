@@ -5,6 +5,9 @@
 #include "Outposts.h"
 
 #include <cmath>
+#include <iostream>
+#include <limits>
+#include <utility>
 
 using namespace GameRules;
 
@@ -104,6 +107,11 @@ WorldTileData Prototype::MakeTile(std::int64_t x, std::int64_t y) const
                 road || (traversable && (y == 3 || x % 3 == 0))};
     }
 
+    if (m_Terrain && !Terrain::LegacyTile(x, y))
+    {
+        // Authored ground and shared prop anchors replace the old generic wilderness props.
+        prop = 0;
+    }
     return {x, y, taint, static_cast<unsigned>(seed >> 32), prop, road};
 }
 
@@ -118,6 +126,11 @@ void Prototype::Stream()
     }
     m_StreamCenter = {cx, cy};
     m_StreamRadius = m_Radius;
+    size_t grounds = 0;
+    size_t legacyTiles = 0;
+    size_t decorations = 0;
+    size_t transitions = 0;
+    size_t placeParts = 0;
     for (auto it = m_Chunks.begin(); it != m_Chunks.end();)
     {
         if (std::abs(it->first.first - cx) > m_Radius || std::abs(it->first.second - cy) > m_Radius)
@@ -141,11 +154,23 @@ void Prototype::Stream()
             }
             ::Actor& chunk = m_Scene.Spawn<::Actor>(m_WorldRoot, "Chunk");
             chunk.SetLocalPosition(double(x * ChunkSize), double(y * ChunkSize));
+            Terrain::ChunkPlan plan;
+            if (m_Terrain)
+            {
+                plan = m_Terrain->Chunk(x, y);
+            }
+            std::array<WorldTileData, 64> tiles{};
             for (int ty = 0; ty < ChunkSize; ++ty)
             {
                 for (int tx = 0; tx < ChunkSize; ++tx)
                 {
                     const WorldTileData tile = MakeTile(x * ChunkSize + tx, y * ChunkSize + ty);
+                    tiles[size_t(ty * ChunkSize + tx)] = tile;
+                    if (m_Terrain && !Terrain::LegacyTile(tile.x, tile.y))
+                    {
+                        continue;
+                    }
+                    ++legacyTiles;
                     auto& terrain = m_Scene.Spawn<TerrainActor>(chunk.Id(), *this, tile);
                     terrain.SetLocalPosition(tx, ty);
                     const WorldPoint position{double(tile.x), double(tile.y)};
@@ -170,8 +195,37 @@ void Prototype::Stream()
                     }
                 }
             }
+            if (m_Terrain && plan.hiddenTiles != (std::numeric_limits<std::uint64_t>::max)())
+            {
+                for (const auto& prop : plan.ground.props)
+                {
+                    m_Scene.Spawn<TerrainPropActor>(chunk.Id(), *this, prop);
+                    ++decorations;
+                }
+                transitions += plan.transition ? 1 : 0;
+                placeParts += plan.placeId.empty() ? 0 : 1;
+                if (!plan.placeId.empty())
+                {
+                    std::cout << "[WorldChunks] place=" << plan.placeId << " chunk=" << x << ','
+                              << y << " model=" << plan.ground.key << '\n';
+                }
+                m_Scene.Spawn<WorldChunkActor>(chunk.Id(),
+                                               *this,
+                                               std::move(plan),
+                                               std::move(tiles));
+                ++grounds;
+            }
             m_Chunks.emplace(key, chunk.Id());
         }
+    }
+    if (m_Terrain)
+    {
+        std::cout << "[WorldChunks] streamCreatedGrounds=" << grounds
+                  << " keptTileCells=" << legacyTiles << " sharedPropInstances=" << decorations
+                  << " transitions=" << transitions << " placeParts=" << placeParts
+                  << " loadedChunks=" << m_Chunks.size() << " planCache=" << m_Terrain->CacheSize()
+                  << "/1024 hits=" << m_Terrain->CacheHits()
+                  << " misses=" << m_Terrain->CacheMisses() << '\n';
     }
 }
 
@@ -197,6 +251,10 @@ bool Prototype::Blocked(double x, double y) const
     if (loaded)
     {
         return false;
+    }
+    if (m_Terrain && m_Terrain->Blocked(x, y))
+    {
+        return true;
     }
     // A reproducible query independent of whether a chunk is currently loaded.
     const double sx = NearestShrine(x);

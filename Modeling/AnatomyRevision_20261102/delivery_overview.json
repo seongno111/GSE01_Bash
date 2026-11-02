@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-02",
+  "quadrupeds": {
+    "models": 3,
+    "retargeted_clips": 40,
+    "source": "Monsters_v1/monsters_v1.blend",
+    "manifest": "AnatomyRevision_20261102/delivery_files.json"
+  },
+  "weapons": {
+    "weapon_types": 7,
+    "ammo_types": 1,
+    "source": "HeroWeapons_v1/hero_weapons_v1.blend",
+    "manifest": "HeroWeapons_v1/delivery_files.json"
+  },
+  "terrain": {
+    "source_document": "doc/월드_외곽_청크_지형_설정_2026-11-02.md",
+    "base_variants": 24,
+    "place_variants": 12,
+    "ground_chunk_meshes": 88,
+    "transition_pairs": 8,
+    "chunk_side": 8,
+    "source": "WorldChunks_v1/world_chunks_v1.blend",
+    "manifest": "WorldChunks_v1/delivery_files.json"
+  },
+  "scope": "Modeling assets, rigs, baked keyframes, previews and integration catalogs only."
+}

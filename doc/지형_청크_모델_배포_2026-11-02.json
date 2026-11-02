@@ -1,0 +1,87 @@
+{
+  "source": "C:\\GameSoftWare\\Modeling\\WorldChunks_v1",
+  "buildOrGameRun": false,
+  "copiedShaderInterface": true,
+  "destinations": [
+    {
+      "path": "C:\\GameSoftWare\\x64\\Debug\\Modeling\\WorldChunks_v1",
+      "modelFiles": [
+        {
+          "file": "world_chunk_library.glb",
+          "bytes": 19337008,
+          "sha256": "89c764e24535ac59db43924f9bebe212cc4d22698a8a4010e82315a22ab045fe"
+        },
+        {
+          "file": "chunk_shared_props.glb",
+          "bytes": 182592,
+          "sha256": "4113caa21a19ecba792ddba3111d73b963ea60933ce6d47b53b67265558fbc2f"
+        },
+        {
+          "file": "chunk_catalog.json",
+          "bytes": 145833,
+          "sha256": "bc4dd23b6ee4372445f52b605906d396052a134e8d3d2629838c36e62cf306c7"
+        },
+        {
+          "file": "validation.json",
+          "bytes": 31203,
+          "sha256": "aca5bd351d6e4cb22edf3547942596d0330eec55ce5057389f5d2c0f8a04bd97"
+        },
+        {
+          "file": "delivery_files.json",
+          "bytes": 26483,
+          "sha256": "91f1bf1f59102b4d050bdd75b4a7790f69b7978528199af4f79fd04eb62375eb"
+        }
+      ],
+      "shaders": [
+        {
+          "file": "Model.vs",
+          "sha256": "1541221620864b2e96372e6ebfcccbc842efd4877452c3aa3c78b114d08f2415"
+        },
+        {
+          "file": "Model.fs",
+          "sha256": "56a376863788c316b692fd7bfccd323baa2aedacc1b0ecaa114fd72c51a420eb"
+        }
+      ]
+    },
+    {
+      "path": "C:\\GameSoftWare\\x64\\Release\\Modeling\\WorldChunks_v1",
+      "modelFiles": [
+        {
+          "file": "world_chunk_library.glb",
+          "bytes": 19337008,
+          "sha256": "89c764e24535ac59db43924f9bebe212cc4d22698a8a4010e82315a22ab045fe"
+        },
+        {
+          "file": "chunk_shared_props.glb",
+          "bytes": 182592,
+          "sha256": "4113caa21a19ecba792ddba3111d73b963ea60933ce6d47b53b67265558fbc2f"
+        },
+        {
+          "file": "chunk_catalog.json",
+          "bytes": 145833,
+          "sha256": "bc4dd23b6ee4372445f52b605906d396052a134e8d3d2629838c36e62cf306c7"
+        },
+        {
+          "file": "validation.json",
+          "bytes": 31203,
+          "sha256": "aca5bd351d6e4cb22edf3547942596d0330eec55ce5057389f5d2c0f8a04bd97"
+        },
+        {
+          "file": "delivery_files.json",
+          "bytes": 26483,
+          "sha256": "91f1bf1f59102b4d050bdd75b4a7790f69b7978528199af4f79fd04eb62375eb"
+        }
+      ],
+      "shaders": [
+        {
+          "file": "Model.vs",
+          "sha256": "1541221620864b2e96372e6ebfcccbc842efd4877452c3aa3c78b114d08f2415"
+        },
+        {
+          "file": "Model.fs",
+          "sha256": "56a376863788c316b692fd7bfccd323baa2aedacc1b0ecaa114fd72c51a420eb"
+        }
+      ]
+    }
+  ]
+}

@@ -271,6 +271,9 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     if (target && distance < .9 && enemy.recovery <= 0)
     {
         enemy.attackWindup = .55f;
+        enemy.BeginAttackAnimation(target->WorldX() - enemy.WorldX(),
+                                   target->WorldY() - enemy.WorldY(),
+                                   enemy.attackWindup + enemy.Definition().attackRecovery);
         return true;
     }
     WorldPoint destination{enemy.homeX, enemy.homeY};

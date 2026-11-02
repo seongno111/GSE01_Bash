@@ -1,0 +1,190 @@
+{
+  "method": "Read-only Python GLB/catalog inspection; engine was not built or executed",
+  "packages": [
+    {
+      "version": 1,
+      "assigned_npcs": 336,
+      "slots": 20,
+      "parts": 39,
+      "props": 14,
+      "files": [
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v1\\npc_parts.glb",
+          "sha256": "2fa05f666e8478b6a939acf013d2c755aa1bd878722e4c48d6655ee3921291d2",
+          "bytes": 203148,
+          "meshes": 39,
+          "nodes": 39,
+          "vertices": 4544,
+          "triangles": 2018,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v1\\props.glb",
+          "sha256": "4f97c888202ee0e77189c2458470e5de75c50b2fe3cc479c3ed5b79048589919",
+          "bytes": 140052,
+          "meshes": 14,
+          "nodes": 14,
+          "vertices": 3132,
+          "triangles": 1442,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "assigned_npcs": 336,
+      "slots": 21,
+      "parts": 45,
+      "props": 14,
+      "files": [
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v2\\npc_parts.glb",
+          "sha256": "dc6d81e5001f843de6086ba6edc8bcbe111d595b21ba6bc2563dcb606470cfde",
+          "bytes": 369320,
+          "meshes": 45,
+          "nodes": 45,
+          "vertices": 7456,
+          "triangles": 3468,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v2\\props.glb",
+          "sha256": "9e36165c4b859f896f38f290f52cb6e1049d56fa5f03d7cdc60b1ebad8fb3bb4",
+          "bytes": 238584,
+          "meshes": 14,
+          "nodes": 14,
+          "vertices": 4728,
+          "triangles": 2234,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "assigned_npcs": 336,
+      "slots": 21,
+      "parts": 51,
+      "props": 33,
+      "files": [
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\npc\\npc_parts_rigged.glb",
+          "sha256": "cbcf4d7e2e9f5153fea7ada6aebd50a37244191a57c01bb63339452894789f64",
+          "bytes": 3719396,
+          "meshes": 51,
+          "nodes": 83,
+          "vertices": 8824,
+          "triangles": 4072,
+          "weighted_vertices": 8824,
+          "skins": 1,
+          "clips": 39,
+          "maximum_bind_palette_identity_error": 6.966287379381816e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\props\\props_library.glb",
+          "sha256": "d8ec9a97b4f032bb5245a15a51bd5e994270bd2c44f02016b9cf5765bc3fbeb9",
+          "bytes": 444096,
+          "meshes": 33,
+          "nodes": 33,
+          "vertices": 9893,
+          "triangles": 4515,
+          "weighted_vertices": 0,
+          "skins": 0,
+          "clips": 0,
+          "maximum_bind_palette_identity_error": 0
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\WitheredHollow_rigged.glb",
+          "sha256": "3e795e3255fd291bae7c6ba11ecf44f3724ce3e84d2b29c5fa06c9413e332802",
+          "bytes": 985088,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 1968,
+          "triangles": 780,
+          "weighted_vertices": 1968,
+          "skins": 1,
+          "clips": 9,
+          "maximum_bind_palette_identity_error": 6.966287379381816e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\TaintedRaider_rigged.glb",
+          "sha256": "90769afd6245fd4845f1a39553025e7143e03d717593afc97fc8c6fdcc3545e9",
+          "bytes": 997932,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2088,
+          "triangles": 812,
+          "weighted_vertices": 2088,
+          "skins": 1,
+          "clips": 9,
+          "maximum_bind_palette_identity_error": 3.030554915905981e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\FieldWarden_rigged.glb",
+          "sha256": "00c167e8e2714f04a2d96ff869379a921221c3240db4e49daeb455ff240ecb92",
+          "bytes": 1213004,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2128,
+          "triangles": 834,
+          "weighted_vertices": 2128,
+          "skins": 1,
+          "clips": 11,
+          "maximum_bind_palette_identity_error": 4.094864356485317e-07
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\MutatedHuman_rigged.glb",
+          "sha256": "5755ae99144703690bcfdbc762908172b9230fcfe8a8bd1d7fd0aaa3acdd565a",
+          "bytes": 1118556,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2044,
+          "triangles": 806,
+          "weighted_vertices": 2044,
+          "skins": 1,
+          "clips": 10,
+          "maximum_bind_palette_identity_error": 1.5485251702162089e-06
+        },
+        {
+          "file": "C:\\GameSoftWare\\Modeling\\LowPolyKit_v3\\monsters\\DeathEcho_rigged.glb",
+          "sha256": "c0247369850c8217b047aeca9f6d2e9217f7366e31d2058bfb23b446f292fd68",
+          "bytes": 1118548,
+          "meshes": 1,
+          "nodes": 33,
+          "vertices": 2044,
+          "triangles": 806,
+          "weighted_vertices": 2044,
+          "skins": 1,
+          "clips": 10,
+          "maximum_bind_palette_identity_error": 1.5485251702162089e-06
+        }
+      ],
+      "unique_clips": 88
+    }
+  ],
+  "hero": {
+    "file": "C:\\GameSoftWare\\Modeling\\Hero_v1\\hero_rigged.glb",
+    "sha256": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259",
+    "bytes": 1161772,
+    "meshes": 25,
+    "nodes": 60,
+    "vertices": 4009,
+    "triangles": 1849,
+    "weighted_vertices": 4009,
+    "skins": 1,
+    "clips": 11,
+    "maximum_bind_palette_identity_error": 6.966287379381816e-07,
+    "point_lights": 1
+  }
+}

@@ -24,6 +24,7 @@
     <ClInclude Include="MonsterDefinitions.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="ModelAsset.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="ModelLibrary.h"><Filter>헤더 파일</Filter></ClInclude>
+    <ClInclude Include="WorldTerrain.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -71,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModelVillageBuildings.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="ModelWorldChunks.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="WorldTerrain.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="WorldTerrainActors.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="ModelMonsterSpecies.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="MonsterModelVisuals.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="RendererModels.cpp"><Filter>소스 파일</Filter></ClCompile>

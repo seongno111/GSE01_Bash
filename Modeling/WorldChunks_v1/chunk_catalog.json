@@ -1,0 +1,6260 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-02",
+  "source_document": "doc/월드_외곽_청크_지형_설정_2026-11-02.md",
+  "source_document_sha256": "45c4dcfbee617611d665eab3d05693656b23a0209d8c3a5b7963289a4c14a4e6",
+  "source_design_json_sha256": "4807c6c66235864d49eca14d019b2d044e5db5ab6c4c0218729696d991ded41e",
+  "chunk_side": 8,
+  "units": "meter-compatible game world unit",
+  "minimum_main_route_width": 3,
+  "axes": "Blender X=world X, Blender -Y=world Y; GLB X=world X, GLB +Z=world Y; Z/Y up",
+  "chunk_placement": "Mesh origin matches tile (0,0) center. Place at world (8*cx,8*cy). Footprint -0.5..7.5 on each world axis.",
+  "assets": [
+    {
+      "modelKey": "CHUNK_ash_grassland__fallow_ridges",
+      "biome_id": "ash_grassland",
+      "variant_id": "fallow_ridges",
+      "mesh": "CHUNK_ash_grassland__fallow_ridges",
+      "file": "CHUNK_ash_grassland__fallow_ridges.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2308,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            3.3,
+            3
+          ],
+          [
+            4.6,
+            5
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_FallenOrchard",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ash_grassland__dead_orchard",
+      "biome_id": "ash_grassland",
+      "variant_id": "dead_orchard",
+      "mesh": "CHUNK_ash_grassland__dead_orchard",
+      "file": "CHUNK_ash_grassland__dead_orchard.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2485,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            4.5
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_FallenOrchard",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ash_grassland__dry_creek_crossing",
+      "biome_id": "ash_grassland",
+      "variant_id": "dry_creek_crossing",
+      "mesh": "CHUNK_ash_grassland__dry_creek_crossing",
+      "file": "CHUNK_ash_grassland__dry_creek_crossing.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2693,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            3.7
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_ash_grassland__caravan_fork",
+      "biome_id": "ash_grassland",
+      "variant_id": "caravan_fork",
+      "mesh": "CHUNK_ash_grassland__caravan_fork",
+      "file": "CHUNK_ash_grassland__caravan_fork.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2284,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ],
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_BrokenStandard",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_dark_canopy_forest__root_passage",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "root_passage",
+      "mesh": "CHUNK_dark_canopy_forest__root_passage",
+      "file": "CHUNK_dark_canopy_forest__root_passage.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2413,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            3.3,
+            3
+          ],
+          [
+            4.6,
+            5
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_CanopyTree_Trunk",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        },
+        {
+          "asset": "ENV_CanopyTree_Canopy",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "canopy_occlusion_group": true,
+          "blocking_candidate": false
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_dark_canopy_forest__hunting_glade",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "hunting_glade",
+      "mesh": "CHUNK_dark_canopy_forest__hunting_glade",
+      "file": "CHUNK_dark_canopy_forest__hunting_glade.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1883,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            4.5
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_CanopyTree_Trunk",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        },
+        {
+          "asset": "ENV_CanopyTree_Canopy",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "canopy_occlusion_group": true,
+          "blocking_candidate": false
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_dark_canopy_forest__windthrow_patch",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "windthrow_patch",
+      "mesh": "CHUNK_dark_canopy_forest__windthrow_patch",
+      "file": "CHUNK_dark_canopy_forest__windthrow_patch.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1907,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            3.7
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_FallenOrchard",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_dark_canopy_forest__thorn_nest_margin",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "thorn_nest_margin",
+      "mesh": "CHUNK_dark_canopy_forest__thorn_nest_margin",
+      "file": "CHUNK_dark_canopy_forest__thorn_nest_margin.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2204,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_CanopyTree_Trunk",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        },
+        {
+          "asset": "ENV_CanopyTree_Canopy",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "canopy_occlusion_group": true,
+          "blocking_candidate": false
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_bell_mire__reed_causeway",
+      "biome_id": "bell_mire",
+      "variant_id": "reed_causeway",
+      "mesh": "CHUNK_bell_mire__reed_causeway",
+      "file": "CHUNK_bell_mire__reed_causeway.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2213,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            3.3,
+            3
+          ],
+          [
+            4.6,
+            5
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_bell_mire__sunken_graveyard",
+      "biome_id": "bell_mire",
+      "variant_id": "sunken_graveyard",
+      "mesh": "CHUNK_bell_mire__sunken_graveyard",
+      "file": "CHUNK_bell_mire__sunken_graveyard.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2165,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            4.5
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_SunkenBell",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_bell_mire__flooded_orchard",
+      "biome_id": "bell_mire",
+      "variant_id": "flooded_orchard",
+      "mesh": "CHUNK_bell_mire__flooded_orchard",
+      "file": "CHUNK_bell_mire__flooded_orchard.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2199,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            3.7
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_FallenOrchard",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_bell_mire__broken_dike_detour",
+      "biome_id": "bell_mire",
+      "variant_id": "broken_dike_detour",
+      "mesh": "CHUNK_bell_mire__broken_dike_detour",
+      "file": "CHUNK_bell_mire__broken_dike_detour.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2091,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_glass_ash_desert__ash_dunes",
+      "biome_id": "glass_ash_desert",
+      "variant_id": "ash_dunes",
+      "mesh": "CHUNK_glass_ash_desert__ash_dunes",
+      "file": "CHUNK_glass_ash_desert__ash_dunes.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1648,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            3.3,
+            3
+          ],
+          [
+            4.6,
+            5
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_glass_ash_desert__black_glass_seam",
+      "biome_id": "glass_ash_desert",
+      "variant_id": "black_glass_seam",
+      "mesh": "CHUNK_glass_ash_desert__black_glass_seam",
+      "file": "CHUNK_glass_ash_desert__black_glass_seam.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1706,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            4.5
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_glass_ash_desert__buried_aqueduct",
+      "biome_id": "glass_ash_desert",
+      "variant_id": "buried_aqueduct",
+      "mesh": "CHUNK_glass_ash_desert__buried_aqueduct",
+      "file": "CHUNK_glass_ash_desert__buried_aqueduct.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2347,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            3.7
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_BuriedAqueductArch",
+          "position_uvz": [
+            4,
+            4,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": false
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_glass_ash_desert__stone_windbreak",
+      "biome_id": "glass_ash_desert",
+      "variant_id": "stone_windbreak",
+      "mesh": "CHUNK_glass_ash_desert__stone_windbreak",
+      "file": "CHUNK_glass_ash_desert__stone_windbreak.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1802,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_broken_crown_hills__watchtower_ridge",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "watchtower_ridge",
+      "mesh": "CHUNK_broken_crown_hills__watchtower_ridge",
+      "file": "CHUNK_broken_crown_hills__watchtower_ridge.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1735,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            3.3,
+            3
+          ],
+          [
+            4.6,
+            5
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_WatchtowerRuin",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_broken_crown_hills__exposed_rock_layers",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "exposed_rock_layers",
+      "mesh": "CHUNK_broken_crown_hills__exposed_rock_layers",
+      "file": "CHUNK_broken_crown_hills__exposed_rock_layers.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1729,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            4.5
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_broken_crown_hills__broken_bridge_abutment",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "broken_bridge_abutment",
+      "mesh": "CHUNK_broken_crown_hills__broken_bridge_abutment",
+      "file": "CHUNK_broken_crown_hills__broken_bridge_abutment.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1820,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            3.7
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_BuriedAqueductArch",
+          "position_uvz": [
+            4,
+            4,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": false
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_broken_crown_hills__quarry_cart_track",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "quarry_cart_track",
+      "mesh": "CHUNK_broken_crown_hills__quarry_cart_track",
+      "file": "CHUNK_broken_crown_hills__quarry_cart_track.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2445,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_dead_furnace_wastes__charcoal_pillars",
+      "biome_id": "dead_furnace_wastes",
+      "variant_id": "charcoal_pillars",
+      "mesh": "CHUNK_dead_furnace_wastes__charcoal_pillars",
+      "file": "CHUNK_dead_furnace_wastes__charcoal_pillars.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1725,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            3.3,
+            3
+          ],
+          [
+            4.6,
+            5
+          ],
+          [
+            4,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_dead_furnace_wastes__cold_furnace",
+      "biome_id": "dead_furnace_wastes",
+      "variant_id": "cold_furnace",
+      "mesh": "CHUNK_dead_furnace_wastes__cold_furnace",
+      "file": "CHUNK_dead_furnace_wastes__cold_furnace.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1946,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            4.5
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": [
+        {
+          "asset": "ENV_ColdFurnace",
+          "position_uvz": [
+            1.0,
+            0.9,
+            0
+          ],
+          "optional": true,
+          "ownership": "this_chunk_once",
+          "blocking_candidate": true
+        }
+      ]
+    },
+    {
+      "modelKey": "CHUNK_dead_furnace_wastes__burnt_supply_camp",
+      "biome_id": "dead_furnace_wastes",
+      "variant_id": "burnt_supply_camp",
+      "mesh": "CHUNK_dead_furnace_wastes__burnt_supply_camp",
+      "file": "CHUNK_dead_furnace_wastes__burnt_supply_camp.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2049,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            3.7
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_dead_furnace_wastes__fissure_detour",
+      "biome_id": "dead_furnace_wastes",
+      "variant_id": "fissure_detour",
+      "mesh": "CHUNK_dead_furnace_wastes__fissure_detour",
+      "file": "CHUNK_dead_furnace_wastes__fissure_detour.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1990,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "optional_shared_props": []
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "evacuated_funeral_hamlet",
+      "mesh": "CHUNK_abandoned_village__evacuated_funeral_hamlet__00",
+      "file": "CHUNK_abandoned_village__evacuated_funeral_hamlet__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3809,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "evacuated_funeral_hamlet",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "evacuated_funeral_hamlet",
+      "mesh": "CHUNK_abandoned_village__evacuated_funeral_hamlet__10",
+      "file": "CHUNK_abandoned_village__evacuated_funeral_hamlet__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2287,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "evacuated_funeral_hamlet",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "evacuated_funeral_hamlet",
+      "mesh": "CHUNK_abandoned_village__evacuated_funeral_hamlet__01",
+      "file": "CHUNK_abandoned_village__evacuated_funeral_hamlet__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2281,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "evacuated_funeral_hamlet",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "evacuated_funeral_hamlet",
+      "mesh": "CHUNK_abandoned_village__evacuated_funeral_hamlet__11",
+      "file": "CHUNK_abandoned_village__evacuated_funeral_hamlet__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2540,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "evacuated_funeral_hamlet",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "looted_trade_hamlet",
+      "mesh": "CHUNK_abandoned_village__looted_trade_hamlet__00",
+      "file": "CHUNK_abandoned_village__looted_trade_hamlet__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3653,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "looted_trade_hamlet",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "looted_trade_hamlet",
+      "mesh": "CHUNK_abandoned_village__looted_trade_hamlet__10",
+      "file": "CHUNK_abandoned_village__looted_trade_hamlet__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2339,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "looted_trade_hamlet",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "looted_trade_hamlet",
+      "mesh": "CHUNK_abandoned_village__looted_trade_hamlet__01",
+      "file": "CHUNK_abandoned_village__looted_trade_hamlet__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2295,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "looted_trade_hamlet",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "looted_trade_hamlet",
+      "mesh": "CHUNK_abandoned_village__looted_trade_hamlet__11",
+      "file": "CHUNK_abandoned_village__looted_trade_hamlet__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2495,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "looted_trade_hamlet",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__00",
+      "biome_id": "bell_mire",
+      "variant_id": "flooded_well_hamlet",
+      "mesh": "CHUNK_abandoned_village__flooded_well_hamlet__00",
+      "file": "CHUNK_abandoned_village__flooded_well_hamlet__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3327,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "flooded_well_hamlet",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__10",
+      "biome_id": "bell_mire",
+      "variant_id": "flooded_well_hamlet",
+      "mesh": "CHUNK_abandoned_village__flooded_well_hamlet__10",
+      "file": "CHUNK_abandoned_village__flooded_well_hamlet__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2471,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "flooded_well_hamlet",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__01",
+      "biome_id": "bell_mire",
+      "variant_id": "flooded_well_hamlet",
+      "mesh": "CHUNK_abandoned_village__flooded_well_hamlet__01",
+      "file": "CHUNK_abandoned_village__flooded_well_hamlet__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1937,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "flooded_well_hamlet",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__11",
+      "biome_id": "bell_mire",
+      "variant_id": "flooded_well_hamlet",
+      "mesh": "CHUNK_abandoned_village__flooded_well_hamlet__11",
+      "file": "CHUNK_abandoned_village__flooded_well_hamlet__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2058,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "abandoned_village",
+      "place_variant": "flooded_well_hamlet",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__refuge_records__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "refuge_records",
+      "mesh": "CHUNK_ruined_monastery__refuge_records__00",
+      "file": "CHUNK_ruined_monastery__refuge_records__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3668,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "refuge_records",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__refuge_records__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "refuge_records",
+      "mesh": "CHUNK_ruined_monastery__refuge_records__10",
+      "file": "CHUNK_ruined_monastery__refuge_records__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2401,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "refuge_records",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__refuge_records__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "refuge_records",
+      "mesh": "CHUNK_ruined_monastery__refuge_records__01",
+      "file": "CHUNK_ruined_monastery__refuge_records__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2032,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "refuge_records",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__refuge_records__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "refuge_records",
+      "mesh": "CHUNK_ruined_monastery__refuge_records__11",
+      "file": "CHUNK_ruined_monastery__refuge_records__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2401,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "refuge_records",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "fallen_guardian_seal",
+      "mesh": "CHUNK_ruined_monastery__fallen_guardian_seal__00",
+      "file": "CHUNK_ruined_monastery__fallen_guardian_seal__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3495,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "fallen_guardian_seal",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "fallen_guardian_seal",
+      "mesh": "CHUNK_ruined_monastery__fallen_guardian_seal__10",
+      "file": "CHUNK_ruined_monastery__fallen_guardian_seal__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2111,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "fallen_guardian_seal",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "fallen_guardian_seal",
+      "mesh": "CHUNK_ruined_monastery__fallen_guardian_seal__01",
+      "file": "CHUNK_ruined_monastery__fallen_guardian_seal__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2547,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "fallen_guardian_seal",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "fallen_guardian_seal",
+      "mesh": "CHUNK_ruined_monastery__fallen_guardian_seal__11",
+      "file": "CHUNK_ruined_monastery__fallen_guardian_seal__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2395,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "fallen_guardian_seal",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__00",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "rootbound_pilgrim_house",
+      "mesh": "CHUNK_ruined_monastery__rootbound_pilgrim_house__00",
+      "file": "CHUNK_ruined_monastery__rootbound_pilgrim_house__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3513,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "rootbound_pilgrim_house",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__10",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "rootbound_pilgrim_house",
+      "mesh": "CHUNK_ruined_monastery__rootbound_pilgrim_house__10",
+      "file": "CHUNK_ruined_monastery__rootbound_pilgrim_house__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2219,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "rootbound_pilgrim_house",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__01",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "rootbound_pilgrim_house",
+      "mesh": "CHUNK_ruined_monastery__rootbound_pilgrim_house__01",
+      "file": "CHUNK_ruined_monastery__rootbound_pilgrim_house__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2187,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "rootbound_pilgrim_house",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__11",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "rootbound_pilgrim_house",
+      "mesh": "CHUNK_ruined_monastery__rootbound_pilgrim_house__11",
+      "file": "CHUNK_ruined_monastery__rootbound_pilgrim_house__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2191,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ruined_monastery",
+      "place_variant": "rootbound_pilgrim_house",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__broken_standards__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "broken_standards",
+      "mesh": "CHUNK_oath_battlefield__broken_standards__00",
+      "file": "CHUNK_oath_battlefield__broken_standards__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3706,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "broken_standards",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__broken_standards__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "broken_standards",
+      "mesh": "CHUNK_oath_battlefield__broken_standards__10",
+      "file": "CHUNK_oath_battlefield__broken_standards__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2402,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "broken_standards",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__broken_standards__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "broken_standards",
+      "mesh": "CHUNK_oath_battlefield__broken_standards__01",
+      "file": "CHUNK_oath_battlefield__broken_standards__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2391,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "broken_standards",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__broken_standards__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "broken_standards",
+      "mesh": "CHUNK_oath_battlefield__broken_standards__11",
+      "file": "CHUNK_oath_battlefield__broken_standards__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2433,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "broken_standards",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "burnt_field_hospital",
+      "mesh": "CHUNK_oath_battlefield__burnt_field_hospital__00",
+      "file": "CHUNK_oath_battlefield__burnt_field_hospital__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3708,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "burnt_field_hospital",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "burnt_field_hospital",
+      "mesh": "CHUNK_oath_battlefield__burnt_field_hospital__10",
+      "file": "CHUNK_oath_battlefield__burnt_field_hospital__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2473,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "burnt_field_hospital",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "burnt_field_hospital",
+      "mesh": "CHUNK_oath_battlefield__burnt_field_hospital__01",
+      "file": "CHUNK_oath_battlefield__burnt_field_hospital__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2379,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "burnt_field_hospital",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "burnt_field_hospital",
+      "mesh": "CHUNK_oath_battlefield__burnt_field_hospital__11",
+      "file": "CHUNK_oath_battlefield__burnt_field_hospital__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2318,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "burnt_field_hospital",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__supply_trenches__00",
+      "biome_id": "ash_grassland",
+      "variant_id": "supply_trenches",
+      "mesh": "CHUNK_oath_battlefield__supply_trenches__00",
+      "file": "CHUNK_oath_battlefield__supply_trenches__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 4450,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "supply_trenches",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__supply_trenches__10",
+      "biome_id": "ash_grassland",
+      "variant_id": "supply_trenches",
+      "mesh": "CHUNK_oath_battlefield__supply_trenches__10",
+      "file": "CHUNK_oath_battlefield__supply_trenches__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2766,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "supply_trenches",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__supply_trenches__01",
+      "biome_id": "ash_grassland",
+      "variant_id": "supply_trenches",
+      "mesh": "CHUNK_oath_battlefield__supply_trenches__01",
+      "file": "CHUNK_oath_battlefield__supply_trenches__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2373,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "supply_trenches",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_oath_battlefield__supply_trenches__11",
+      "biome_id": "ash_grassland",
+      "variant_id": "supply_trenches",
+      "mesh": "CHUNK_oath_battlefield__supply_trenches__11",
+      "file": "CHUNK_oath_battlefield__supply_trenches__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2419,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            9
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "oath_battlefield",
+      "place_variant": "supply_trenches",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__00",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "abandoned_cutting_floor",
+      "mesh": "CHUNK_ossuary_quarry__abandoned_cutting_floor__00",
+      "file": "CHUNK_ossuary_quarry__abandoned_cutting_floor__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3377,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "abandoned_cutting_floor",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__10",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "abandoned_cutting_floor",
+      "mesh": "CHUNK_ossuary_quarry__abandoned_cutting_floor__10",
+      "file": "CHUNK_ossuary_quarry__abandoned_cutting_floor__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2001,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "abandoned_cutting_floor",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__01",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "abandoned_cutting_floor",
+      "mesh": "CHUNK_ossuary_quarry__abandoned_cutting_floor__01",
+      "file": "CHUNK_ossuary_quarry__abandoned_cutting_floor__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1869,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "abandoned_cutting_floor",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__11",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "abandoned_cutting_floor",
+      "mesh": "CHUNK_ossuary_quarry__abandoned_cutting_floor__11",
+      "file": "CHUNK_ossuary_quarry__abandoned_cutting_floor__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1902,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "abandoned_cutting_floor",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__00",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "collapsed_hauling_works",
+      "mesh": "CHUNK_ossuary_quarry__collapsed_hauling_works__00",
+      "file": "CHUNK_ossuary_quarry__collapsed_hauling_works__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2940,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "collapsed_hauling_works",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__10",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "collapsed_hauling_works",
+      "mesh": "CHUNK_ossuary_quarry__collapsed_hauling_works__10",
+      "file": "CHUNK_ossuary_quarry__collapsed_hauling_works__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1875,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "collapsed_hauling_works",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__01",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "collapsed_hauling_works",
+      "mesh": "CHUNK_ossuary_quarry__collapsed_hauling_works__01",
+      "file": "CHUNK_ossuary_quarry__collapsed_hauling_works__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1803,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "collapsed_hauling_works",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__11",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "collapsed_hauling_works",
+      "mesh": "CHUNK_ossuary_quarry__collapsed_hauling_works__11",
+      "file": "CHUNK_ossuary_quarry__collapsed_hauling_works__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1870,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "collapsed_hauling_works",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__00",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "sealed_ossuary_entrance",
+      "mesh": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__00",
+      "file": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__00.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 3069,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "sealed_ossuary_entrance",
+      "place_chunk_offset": [
+        0,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__10",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "sealed_ossuary_entrance",
+      "mesh": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__10",
+      "file": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__10.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1954,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "sealed_ossuary_entrance",
+      "place_chunk_offset": [
+        1,
+        0
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__01",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "sealed_ossuary_entrance",
+      "mesh": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__01",
+      "file": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__01.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1790,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "sealed_ossuary_entrance",
+      "place_chunk_offset": [
+        0,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__11",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "sealed_ossuary_entrance",
+      "mesh": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__11",
+      "file": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__11.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1984,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        [
+          [
+            0,
+            8
+          ],
+          [
+            16,
+            8
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        8
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "place_id": "ossuary_quarry",
+      "place_variant": "sealed_ossuary_entrance",
+      "place_chunk_offset": [
+        1,
+        1
+      ],
+      "place_span_chunks": [
+        2,
+        2
+      ]
+    },
+    {
+      "modelKey": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__0",
+      "biome_id": "ash_grassland",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__0",
+      "file": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2699,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "ash_grassland",
+      "transition_to": "dark_canopy_forest",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__1",
+      "biome_id": "ash_grassland",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__1",
+      "file": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2699,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "ash_grassland",
+      "transition_to": "dark_canopy_forest",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_ash_grassland__bell_mire__0",
+      "biome_id": "ash_grassland",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_ash_grassland__bell_mire__0",
+      "file": "CHUNK_TRANS_ash_grassland__bell_mire__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2599,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "ash_grassland",
+      "transition_to": "bell_mire",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_ash_grassland__bell_mire__1",
+      "biome_id": "ash_grassland",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_ash_grassland__bell_mire__1",
+      "file": "CHUNK_TRANS_ash_grassland__bell_mire__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2599,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "ash_grassland",
+      "transition_to": "bell_mire",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_dark_canopy_forest__bell_mire__0",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_dark_canopy_forest__bell_mire__0",
+      "file": "CHUNK_TRANS_dark_canopy_forest__bell_mire__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1927,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "dark_canopy_forest",
+      "transition_to": "bell_mire",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_dark_canopy_forest__bell_mire__1",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_dark_canopy_forest__bell_mire__1",
+      "file": "CHUNK_TRANS_dark_canopy_forest__bell_mire__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1927,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "dark_canopy_forest",
+      "transition_to": "bell_mire",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0",
+      "file": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1989,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "dark_canopy_forest",
+      "transition_to": "broken_crown_hills",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1",
+      "biome_id": "dark_canopy_forest",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1",
+      "file": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1989,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "dark_canopy_forest",
+      "transition_to": "broken_crown_hills",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_ash_grassland__glass_ash_desert__0",
+      "biome_id": "ash_grassland",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_ash_grassland__glass_ash_desert__0",
+      "file": "CHUNK_TRANS_ash_grassland__glass_ash_desert__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2437,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "ash_grassland",
+      "transition_to": "glass_ash_desert",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_ash_grassland__glass_ash_desert__1",
+      "biome_id": "ash_grassland",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_ash_grassland__glass_ash_desert__1",
+      "file": "CHUNK_TRANS_ash_grassland__glass_ash_desert__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 2437,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "ash_grassland",
+      "transition_to": "glass_ash_desert",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0",
+      "file": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1858,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "broken_crown_hills",
+      "transition_to": "glass_ash_desert",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1",
+      "file": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1858,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "broken_crown_hills",
+      "transition_to": "glass_ash_desert",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0",
+      "biome_id": "glass_ash_desert",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0",
+      "file": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1915,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "glass_ash_desert",
+      "transition_to": "dead_furnace_wastes",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1",
+      "biome_id": "glass_ash_desert",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1",
+      "file": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1915,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "glass_ash_desert",
+      "transition_to": "dead_furnace_wastes",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0",
+      "file": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1717,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        0,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "broken_crown_hills",
+      "transition_to": "dead_furnace_wastes",
+      "transition_span_world": 16
+    },
+    {
+      "modelKey": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1",
+      "biome_id": "broken_crown_hills",
+      "variant_id": "transition",
+      "mesh": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1",
+      "file": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1.glb",
+      "chunk_size": [
+        8,
+        8
+      ],
+      "origin": "game tile (0,0) center; bounds X -0.5..7.5, Blender Y -7.5..0.5",
+      "triangles": 1717,
+      "material_primitives": 1,
+      "safe_route_width": 3,
+      "route_centerlines_uv": [
+        [
+          [
+            0,
+            4
+          ],
+          [
+            16,
+            4
+          ]
+        ]
+      ],
+      "uv_origin_in_world_xy": [
+        -0.5,
+        -0.5
+      ],
+      "recipe_world_offset": [
+        8,
+        0
+      ],
+      "boundary_height": 0,
+      "walk_surface_height": 0,
+      "decor_is_collision_logic": false,
+      "transition_from": "broken_crown_hills",
+      "transition_to": "dead_furnace_wastes",
+      "transition_span_world": 16
+    }
+  ],
+  "base_and_place_recipes": [
+    {
+      "variant_id": "fallow_ridges",
+      "biome_id": "ash_grassland",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_ash_grassland__fallow_ridges",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "dead_orchard",
+      "biome_id": "ash_grassland",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_ash_grassland__dead_orchard",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "dry_creek_crossing",
+      "biome_id": "ash_grassland",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_ash_grassland__dry_creek_crossing",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "caravan_fork",
+      "biome_id": "ash_grassland",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_ash_grassland__caravan_fork",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "root_passage",
+      "biome_id": "dark_canopy_forest",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dark_canopy_forest__root_passage",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "hunting_glade",
+      "biome_id": "dark_canopy_forest",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dark_canopy_forest__hunting_glade",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "windthrow_patch",
+      "biome_id": "dark_canopy_forest",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dark_canopy_forest__windthrow_patch",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "thorn_nest_margin",
+      "biome_id": "dark_canopy_forest",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dark_canopy_forest__thorn_nest_margin",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "reed_causeway",
+      "biome_id": "bell_mire",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_bell_mire__reed_causeway",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "sunken_graveyard",
+      "biome_id": "bell_mire",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_bell_mire__sunken_graveyard",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "flooded_orchard",
+      "biome_id": "bell_mire",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_bell_mire__flooded_orchard",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "broken_dike_detour",
+      "biome_id": "bell_mire",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_bell_mire__broken_dike_detour",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "ash_dunes",
+      "biome_id": "glass_ash_desert",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_glass_ash_desert__ash_dunes",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "black_glass_seam",
+      "biome_id": "glass_ash_desert",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_glass_ash_desert__black_glass_seam",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "buried_aqueduct",
+      "biome_id": "glass_ash_desert",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_glass_ash_desert__buried_aqueduct",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "stone_windbreak",
+      "biome_id": "glass_ash_desert",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_glass_ash_desert__stone_windbreak",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "watchtower_ridge",
+      "biome_id": "broken_crown_hills",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_broken_crown_hills__watchtower_ridge",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "exposed_rock_layers",
+      "biome_id": "broken_crown_hills",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_broken_crown_hills__exposed_rock_layers",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "broken_bridge_abutment",
+      "biome_id": "broken_crown_hills",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_broken_crown_hills__broken_bridge_abutment",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "quarry_cart_track",
+      "biome_id": "broken_crown_hills",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_broken_crown_hills__quarry_cart_track",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "charcoal_pillars",
+      "biome_id": "dead_furnace_wastes",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dead_furnace_wastes__charcoal_pillars",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "cold_furnace",
+      "biome_id": "dead_furnace_wastes",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dead_furnace_wastes__cold_furnace",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "burnt_supply_camp",
+      "biome_id": "dead_furnace_wastes",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dead_furnace_wastes__burnt_supply_camp",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "fissure_detour",
+      "biome_id": "dead_furnace_wastes",
+      "kind": "base_biome",
+      "parts": [
+        {
+          "modelKey": "CHUNK_dead_furnace_wastes__fissure_detour",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "variant_id": "evacuated_funeral_hamlet",
+      "place_id": "abandoned_village",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__evacuated_funeral_hamlet__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_RuinedWell",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "looted_trade_hamlet",
+      "place_id": "abandoned_village",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__looted_trade_hamlet__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_RuinedWell",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "flooded_well_hamlet",
+      "place_id": "abandoned_village",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_abandoned_village__flooded_well_hamlet__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_RuinedWell",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "bell_mire",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "refuge_records",
+      "place_id": "ruined_monastery",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_ruined_monastery__refuge_records__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__refuge_records__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__refuge_records__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__refuge_records__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_MonasteryArcade",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "fallen_guardian_seal",
+      "place_id": "ruined_monastery",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__fallen_guardian_seal__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_MonasteryArcade",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "rootbound_pilgrim_house",
+      "place_id": "ruined_monastery",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ruined_monastery__rootbound_pilgrim_house__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_MonasteryArcade",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "dark_canopy_forest",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "broken_standards",
+      "place_id": "oath_battlefield",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_oath_battlefield__broken_standards__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__broken_standards__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__broken_standards__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__broken_standards__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_BrokenStandard",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "burnt_field_hospital",
+      "place_id": "oath_battlefield",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__burnt_field_hospital__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_BrokenStandard",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "supply_trenches",
+      "place_id": "oath_battlefield",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_oath_battlefield__supply_trenches__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__supply_trenches__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__supply_trenches__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_oath_battlefield__supply_trenches__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_BrokenStandard",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "ash_grassland",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "abandoned_cutting_floor",
+      "place_id": "ossuary_quarry",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__abandoned_cutting_floor__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_QuarrySeal",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "broken_crown_hills",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "collapsed_hauling_works",
+      "place_id": "ossuary_quarry",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__collapsed_hauling_works__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_QuarrySeal",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "broken_crown_hills",
+      "can_overlay_biomes": true
+    },
+    {
+      "variant_id": "sealed_ossuary_entrance",
+      "place_id": "ossuary_quarry",
+      "kind": "multi_chunk_place",
+      "span_world": [
+        16,
+        16
+      ],
+      "parts": [
+        {
+          "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__00",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__10",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__01",
+          "chunk_offset": [
+            0,
+            1
+          ]
+        },
+        {
+          "modelKey": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__11",
+          "chunk_offset": [
+            1,
+            1
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_QuarrySeal",
+          "position_uvz": [
+            4.5,
+            8,
+            0
+          ],
+          "owner_chunk": [
+            0,
+            1
+          ],
+          "place_instance_ownership": "one persistent place ID across all four chunks"
+        }
+      ],
+      "base_biome_example": "broken_crown_hills",
+      "can_overlay_biomes": true
+    }
+  ],
+  "transitions": [
+    {
+      "from": "ash_grassland",
+      "to": "dark_canopy_forest",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_CanopyTree_Trunk",
+          "position_uvz": [
+            13,
+            1.2,
+            0
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ]
+        },
+        {
+          "asset": "ENV_CanopyTree_Canopy",
+          "position_uvz": [
+            13,
+            1.2,
+            0
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ],
+          "canopy_occlusion_group": true
+        }
+      ]
+    },
+    {
+      "from": "ash_grassland",
+      "to": "bell_mire",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_ash_grassland__bell_mire__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_ash_grassland__bell_mire__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_SunkenBell",
+          "position_uvz": [
+            13,
+            1.2,
+            -0.12
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "from": "dark_canopy_forest",
+      "to": "bell_mire",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_dark_canopy_forest__bell_mire__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_dark_canopy_forest__bell_mire__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_SunkenBell",
+          "position_uvz": [
+            13,
+            1.2,
+            -0.12
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "from": "dark_canopy_forest",
+      "to": "broken_crown_hills",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_WatchtowerRuin",
+          "position_uvz": [
+            13,
+            1.2,
+            0
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "from": "ash_grassland",
+      "to": "glass_ash_desert",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_ash_grassland__glass_ash_desert__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_ash_grassland__glass_ash_desert__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": []
+    },
+    {
+      "from": "broken_crown_hills",
+      "to": "glass_ash_desert",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": []
+    },
+    {
+      "from": "glass_ash_desert",
+      "to": "dead_furnace_wastes",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_ColdFurnace",
+          "position_uvz": [
+            13,
+            1.2,
+            0
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "from": "broken_crown_hills",
+      "to": "dead_furnace_wastes",
+      "transition_width_world": 16,
+      "parts": [
+        {
+          "modelKey": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0",
+          "chunk_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "modelKey": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1",
+          "chunk_offset": [
+            1,
+            0
+          ]
+        }
+      ],
+      "optional_shared_props": [
+        {
+          "asset": "ENV_ColdFurnace",
+          "position_uvz": [
+            13,
+            1.2,
+            0
+          ],
+          "owner_chunk": [
+            1,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "shared_prop_file": "chunk_shared_props.glb",
+  "shared_props": [
+    "ENV_CanopyTree_Trunk",
+    "ENV_CanopyTree_Canopy",
+    "ENV_FallenOrchard",
+    "ENV_SunkenBell",
+    "ENV_BuriedAqueductArch",
+    "ENV_WatchtowerRuin",
+    "ENV_ColdFurnace",
+    "ENV_RuinedWell",
+    "ENV_MonasteryArcade",
+    "ENV_QuarrySeal",
+    "ENV_BrokenStandard"
+  ],
+  "region_policy": {
+    "region_anchor_spacing_world_units": 64,
+    "typical_region_extent_world_units_range": [
+      48,
+      96
+    ],
+    "transition_total_width_world_units_range": [
+      8,
+      16
+    ],
+    "minimum_main_route_width_world_units": 3,
+    "village_visual_buffer_world_units": 8,
+    "outpost_visual_buffer_world_units": 4,
+    "poi_request_chance_per_region": 0.32,
+    "maximum_poi_requests_per_region": 1,
+    "minimum_poi_center_spacing_world_units": 64,
+    "ambient_monster_requests_per_region_range": [
+      2,
+      4
+    ],
+    "request_is_not_guaranteed_spawn": true,
+    "placement_order": [
+      "protected_gameplay_areas",
+      "existing_roads_and_access",
+      "persistent_poi_layout",
+      "base_biome",
+      "nonblocking_decoration"
+    ],
+    "deterministic_inputs": [
+      "world_seed",
+      "generator_version",
+      "global_coordinates"
+    ],
+    "forbidden_generation_inputs": [
+      "chunk_visit_order",
+      "frame_time",
+      "player_level",
+      "player_corruption"
+    ],
+    "coverage_weights_are_distribution_targets": true,
+    "wet_dry_direct_border_allowed": false,
+    "environmental_player_corruption_enabled": false,
+    "passive_terrain_damage_enabled": false,
+    "terrain_slowdown_enabled": false,
+    "swimming_or_falling_enabled": false,
+    "initial_navigation": "기존 격자 주도로 유지; 탐험 구역의 연결 통로부터 변형",
+    "protected_route_speed_multiplier": 1,
+    "bosses_excluded_from_ambient_requests": [
+      "field_warden",
+      "high_demon"
+    ],
+    "preserve_existing_outpost_rosters": true,
+    "preserve_player_death_echo_records": true,
+    "prop_counts_apply_after_route_and_protection_masks": true,
+    "scene_population": "지역 예산과 영속 ID로 관리; 청크 재로딩으로 개체나 보상을 복제하지 않음",
+    "cache_policy": "지형/패턴/소품 자원을 공유; 전역 좌표와 시드를 무제한 메시 키로 사용하지 않음"
+  },
+  "integration_notes": [
+    "One ground mesh and one OPAQUE vertex-color material/primitive per chunk. Grass, gravel and ground debris are merged into that chunk. Large shared props are optional instances, canopy separately addressable.",
+    "Base variants represent scenes within 48-96-unit regions; do not randomize biome per chunk. Place variants span 2x2 chunks, share a persistent place ID.",
+    "Preserve existing villages, tutorial, outposts, 147-unit main-road grid and access paths. Example ports are centered; fit/arbitrate actual global road masks during later integration, never replace protected roads blindly.",
+    "No terrain slowdown, damage, corruption, swimming, cliffs, spawns or rewards are implemented by these models.",
+    "Place examples are authored for the listed base biome; palette changes for another biome require a separate baked material/vertex-color variant in later authoring, not one new actor per tile."
+  ],
+  "status": "authored_models_not_game_integrated",
+  "consumed_by_game": false
+}

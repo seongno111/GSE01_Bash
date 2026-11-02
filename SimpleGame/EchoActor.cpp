@@ -68,7 +68,7 @@ void EchoActor::Draw(Renderer& r)
             {
                 return m_Game.ModelAssets().Monster(4);
             },
-            alive ? (SpritePose().moving ? "MON_04_Walk" : "MON_04_Idle") : "MON_04_DeadHold"))
+            alive ? MovementClip("MON_04") : "MON_04_DeadHold"))
     {
         return;
     }

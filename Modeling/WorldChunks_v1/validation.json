@@ -1,0 +1,1437 @@
+{
+  "checks": {
+    "base_biome_24_variants": true,
+    "place_12_variants": true,
+    "all_places_span_2x2_chunks": true,
+    "eight_16_unit_transition_pairs": true,
+    "88_whole_chunk_meshes": true,
+    "all_chunk_boundary_heights_zero": true,
+    "all_chunks_single_material": true,
+    "no_swamp_desert_direct_transition": true,
+    "all_90_glbs_valid": true,
+    "every_chunk_exact_8x8_footprint": true,
+    "every_chunk_one_primitive_with_color0": true,
+    "all_ground_edges_share_zero_height": true,
+    "all_36_variants_match_design_ids": true,
+    "source_md_hash_unchanged": true,
+    "static_opaque_finite_geometry": true,
+    "six_biome_and_four_place_previews_rendered": true,
+    "unit_scale_comparison_rendered": true
+  },
+  "ground_meshes": 88,
+  "base_variants": 24,
+  "place_variants": 12,
+  "transition_assemblies": 8,
+  "shared_prop_meshes": 11,
+  "source_document_sha256": "45c4dcfbee617611d665eab3d05693656b23a0209d8c3a5b7963289a4c14a4e6",
+  "glb_results": [
+    {
+      "key": "CHUNK_ash_grassland__fallow_ridges",
+      "primitives": 1,
+      "vertices": 5636,
+      "triangles": 2308,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3519549071788788,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ash_grassland__dead_orchard",
+      "primitives": 1,
+      "vertices": 6011,
+      "triangles": 2485,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.359001100063324,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ash_grassland__dry_creek_crossing",
+      "primitives": 1,
+      "vertices": 6375,
+      "triangles": 2693,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3510189652442932,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ash_grassland__caravan_fork",
+      "primitives": 1,
+      "vertices": 5564,
+      "triangles": 2284,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3616044819355011,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dark_canopy_forest__root_passage",
+      "primitives": 1,
+      "vertices": 5863,
+      "triangles": 2413,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3656423091888428,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dark_canopy_forest__hunting_glade",
+      "primitives": 1,
+      "vertices": 4881,
+      "triangles": 1883,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.37151646614074707,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dark_canopy_forest__windthrow_patch",
+      "primitives": 1,
+      "vertices": 4953,
+      "triangles": 1907,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3657192885875702,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dark_canopy_forest__thorn_nest_margin",
+      "primitives": 1,
+      "vertices": 5508,
+      "triangles": 2204,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.47041580080986023,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_bell_mire__reed_causeway",
+      "primitives": 1,
+      "vertices": 5359,
+      "triangles": 2213,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6730607748031616,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_bell_mire__sunken_graveyard",
+      "primitives": 1,
+      "vertices": 5351,
+      "triangles": 2165,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6756498217582703,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_bell_mire__flooded_orchard",
+      "primitives": 1,
+      "vertices": 5369,
+      "triangles": 2199,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6748176217079163,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_bell_mire__broken_dike_detour",
+      "primitives": 1,
+      "vertices": 5181,
+      "triangles": 2091,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6629971861839294,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_glass_ash_desert__ash_dunes",
+      "primitives": 1,
+      "vertices": 4124,
+      "triangles": 1648,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.4047526717185974,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_glass_ash_desert__black_glass_seam",
+      "primitives": 1,
+      "vertices": 4254,
+      "triangles": 1706,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.42746567726135254,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_glass_ash_desert__buried_aqueduct",
+      "primitives": 1,
+      "vertices": 5429,
+      "triangles": 2347,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.42746567726135254,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_glass_ash_desert__stone_windbreak",
+      "primitives": 1,
+      "vertices": 4422,
+      "triangles": 1802,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5199999809265137,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_broken_crown_hills__watchtower_ridge",
+      "primitives": 1,
+      "vertices": 4313,
+      "triangles": 1735,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_broken_crown_hills__exposed_rock_layers",
+      "primitives": 1,
+      "vertices": 4295,
+      "triangles": 1729,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_broken_crown_hills__broken_bridge_abutment",
+      "primitives": 1,
+      "vertices": 4464,
+      "triangles": 1820,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_broken_crown_hills__quarry_cart_track",
+      "primitives": 1,
+      "vertices": 5623,
+      "triangles": 2445,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dead_furnace_wastes__charcoal_pillars",
+      "primitives": 1,
+      "vertices": 4279,
+      "triangles": 1725,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        1.0050299167633057,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dead_furnace_wastes__cold_furnace",
+      "primitives": 1,
+      "vertices": 4686,
+      "triangles": 1946,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        1.0050299167633057,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dead_furnace_wastes__burnt_supply_camp",
+      "primitives": 1,
+      "vertices": 4879,
+      "triangles": 2049,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        1.0050299167633057,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_dead_furnace_wastes__fissure_detour",
+      "primitives": 1,
+      "vertices": 4766,
+      "triangles": 1990,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        1.0050299167633057,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__evacuated_funeral_hamlet__00",
+      "primitives": 1,
+      "vertices": 8691,
+      "triangles": 3809,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6299999952316284,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__evacuated_funeral_hamlet__10",
+      "primitives": 1,
+      "vertices": 5705,
+      "triangles": 2287,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6299999952316284,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__evacuated_funeral_hamlet__01",
+      "primitives": 1,
+      "vertices": 5723,
+      "triangles": 2281,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6299999952316284,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__evacuated_funeral_hamlet__11",
+      "primitives": 1,
+      "vertices": 6156,
+      "triangles": 2540,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.4099999964237213,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__looted_trade_hamlet__00",
+      "primitives": 1,
+      "vertices": 8415,
+      "triangles": 3653,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6299999952316284,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__looted_trade_hamlet__10",
+      "primitives": 1,
+      "vertices": 5817,
+      "triangles": 2339,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6299999952316284,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__looted_trade_hamlet__01",
+      "primitives": 1,
+      "vertices": 5701,
+      "triangles": 2295,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.35633230209350586,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__looted_trade_hamlet__11",
+      "primitives": 1,
+      "vertices": 6069,
+      "triangles": 2495,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6299999952316284,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__flooded_well_hamlet__00",
+      "primitives": 1,
+      "vertices": 7665,
+      "triangles": 3327,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6776549816131592,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__flooded_well_hamlet__10",
+      "primitives": 1,
+      "vertices": 5897,
+      "triangles": 2471,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6789496541023254,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__flooded_well_hamlet__01",
+      "primitives": 1,
+      "vertices": 4943,
+      "triangles": 1937,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6772230267524719,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_abandoned_village__flooded_well_hamlet__11",
+      "primitives": 1,
+      "vertices": 5146,
+      "triangles": 2058,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.6706315279006958,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__refuge_records__00",
+      "primitives": 1,
+      "vertices": 8424,
+      "triangles": 3668,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__refuge_records__10",
+      "primitives": 1,
+      "vertices": 5891,
+      "triangles": 2401,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__refuge_records__01",
+      "primitives": 1,
+      "vertices": 5228,
+      "triangles": 2032,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__refuge_records__11",
+      "primitives": 1,
+      "vertices": 5891,
+      "triangles": 2401,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__fallen_guardian_seal__00",
+      "primitives": 1,
+      "vertices": 8113,
+      "triangles": 3495,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__fallen_guardian_seal__10",
+      "primitives": 1,
+      "vertices": 5385,
+      "triangles": 2111,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__fallen_guardian_seal__01",
+      "primitives": 1,
+      "vertices": 6201,
+      "triangles": 2547,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__fallen_guardian_seal__11",
+      "primitives": 1,
+      "vertices": 5873,
+      "triangles": 2395,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__rootbound_pilgrim_house__00",
+      "primitives": 1,
+      "vertices": 8123,
+      "triangles": 3513,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__rootbound_pilgrim_house__10",
+      "primitives": 1,
+      "vertices": 5553,
+      "triangles": 2219,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__rootbound_pilgrim_house__01",
+      "primitives": 1,
+      "vertices": 5509,
+      "triangles": 2187,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ruined_monastery__rootbound_pilgrim_house__11",
+      "primitives": 1,
+      "vertices": 5529,
+      "triangles": 2191,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9599999785423279,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__broken_standards__00",
+      "primitives": 1,
+      "vertices": 8480,
+      "triangles": 3706,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9514479041099548,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__broken_standards__10",
+      "primitives": 1,
+      "vertices": 5936,
+      "triangles": 2402,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9514479041099548,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__broken_standards__01",
+      "primitives": 1,
+      "vertices": 5941,
+      "triangles": 2391,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3598043620586395,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__broken_standards__11",
+      "primitives": 1,
+      "vertices": 5911,
+      "triangles": 2433,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3540094196796417,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__burnt_field_hospital__00",
+      "primitives": 1,
+      "vertices": 8524,
+      "triangles": 3708,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3672875463962555,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__burnt_field_hospital__10",
+      "primitives": 1,
+      "vertices": 6071,
+      "triangles": 2473,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3594372868537903,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__burnt_field_hospital__01",
+      "primitives": 1,
+      "vertices": 5905,
+      "triangles": 2379,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3643907308578491,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__burnt_field_hospital__11",
+      "primitives": 1,
+      "vertices": 5670,
+      "triangles": 2318,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.36261773109436035,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__supply_trenches__00",
+      "primitives": 1,
+      "vertices": 9866,
+      "triangles": 4450,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3606514632701874,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__supply_trenches__10",
+      "primitives": 1,
+      "vertices": 6574,
+      "triangles": 2766,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3651573061943054,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__supply_trenches__01",
+      "primitives": 1,
+      "vertices": 5923,
+      "triangles": 2373,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.4099999964237213,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_oath_battlefield__supply_trenches__11",
+      "primitives": 1,
+      "vertices": 5873,
+      "triangles": 2419,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.4099999964237213,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__abandoned_cutting_floor__00",
+      "primitives": 1,
+      "vertices": 7503,
+      "triangles": 3377,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__abandoned_cutting_floor__10",
+      "primitives": 1,
+      "vertices": 4783,
+      "triangles": 2001,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__abandoned_cutting_floor__01",
+      "primitives": 1,
+      "vertices": 4543,
+      "triangles": 1869,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__abandoned_cutting_floor__11",
+      "primitives": 1,
+      "vertices": 4606,
+      "triangles": 1902,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__collapsed_hauling_works__00",
+      "primitives": 1,
+      "vertices": 6712,
+      "triangles": 2940,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__collapsed_hauling_works__10",
+      "primitives": 1,
+      "vertices": 4561,
+      "triangles": 1875,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__collapsed_hauling_works__01",
+      "primitives": 1,
+      "vertices": 4429,
+      "triangles": 1803,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.9775397777557373,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__collapsed_hauling_works__11",
+      "primitives": 1,
+      "vertices": 4562,
+      "triangles": 1870,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__00",
+      "primitives": 1,
+      "vertices": 6943,
+      "triangles": 3069,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__10",
+      "primitives": 1,
+      "vertices": 4694,
+      "triangles": 1954,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__01",
+      "primitives": 1,
+      "vertices": 4398,
+      "triangles": 1790,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_ossuary_quarry__sealed_ossuary_entrance__11",
+      "primitives": 1,
+      "vertices": 4748,
+      "triangles": 1984,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.7149999737739563,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__0",
+      "primitives": 1,
+      "vertices": 6393,
+      "triangles": 2699,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3659209907054901,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_ash_grassland__dark_canopy_forest__1",
+      "primitives": 1,
+      "vertices": 6393,
+      "triangles": 2699,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.36904376745224,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_ash_grassland__bell_mire__0",
+      "primitives": 1,
+      "vertices": 6197,
+      "triangles": 2599,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3526739180088043,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_ash_grassland__bell_mire__1",
+      "primitives": 1,
+      "vertices": 6197,
+      "triangles": 2599,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.35179007053375244,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_dark_canopy_forest__bell_mire__0",
+      "primitives": 1,
+      "vertices": 4961,
+      "triangles": 1927,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.35414430499076843,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_dark_canopy_forest__bell_mire__1",
+      "primitives": 1,
+      "vertices": 4961,
+      "triangles": 1927,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3553954064846039,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0",
+      "primitives": 1,
+      "vertices": 5095,
+      "triangles": 1989,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.36698368191719055,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1",
+      "primitives": 1,
+      "vertices": 5095,
+      "triangles": 1989,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.36674803495407104,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_ash_grassland__glass_ash_desert__0",
+      "primitives": 1,
+      "vertices": 5867,
+      "triangles": 2437,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3679664433002472,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_ash_grassland__glass_ash_desert__1",
+      "primitives": 1,
+      "vertices": 5867,
+      "triangles": 2437,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.3657884895801544,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0",
+      "primitives": 1,
+      "vertices": 4526,
+      "triangles": 1858,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1",
+      "primitives": 1,
+      "vertices": 4526,
+      "triangles": 1858,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0",
+      "primitives": 1,
+      "vertices": 4613,
+      "triangles": 1915,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.46325013041496277,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1",
+      "primitives": 1,
+      "vertices": 4613,
+      "triangles": 1915,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.4814205765724182,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0",
+      "primitives": 1,
+      "vertices": 4259,
+      "triangles": 1717,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    },
+    {
+      "key": "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1",
+      "primitives": 1,
+      "vertices": 4259,
+      "triangles": 1717,
+      "bounds_gltf_min": [
+        -0.5,
+        -0.20000000298023224,
+        -0.5
+      ],
+      "bounds_gltf_max": [
+        7.5,
+        0.5,
+        7.5
+      ]
+    }
+  ]
+}

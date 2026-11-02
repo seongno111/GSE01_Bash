@@ -1,0 +1,1184 @@
+{
+  "method": "Read-only actual GLB, catalog, delivery hash and source contract inspection; no C++/GLSL compilation, game or Blender execution",
+  "groundLibrary": {
+    "file": "C:\\GameSoftWare\\Modeling\\WorldChunks_v1\\world_chunk_library.glb",
+    "sha256": "89c764e24535ac59db43924f9bebe212cc4d22698a8a4010e82315a22ab045fe",
+    "bytes": 19337008,
+    "meshes": 88,
+    "nodes": 88,
+    "vertices": 500211,
+    "triangles": 206973,
+    "weighted_vertices": 0,
+    "skins": 0,
+    "clips": 0,
+    "maximum_bind_palette_identity_error": 0
+  },
+  "sharedPropLibrary": {
+    "file": "C:\\GameSoftWare\\Modeling\\WorldChunks_v1\\chunk_shared_props.glb",
+    "sha256": "4113caa21a19ecba792ddba3111d73b963ea60933ce6d47b53b67265558fbc2f",
+    "bytes": 182592,
+    "meshes": 11,
+    "nodes": 11,
+    "vertices": 4422,
+    "triangles": 2352,
+    "weighted_vertices": 0,
+    "skins": 0,
+    "clips": 0,
+    "maximum_bind_palette_identity_error": 0
+  },
+  "baseBiomes": {
+    "ash_grassland": 4,
+    "dark_canopy_forest": 4,
+    "bell_mire": 4,
+    "glass_ash_desert": 4,
+    "broken_crown_hills": 4,
+    "dead_furnace_wastes": 4
+  },
+  "placeVariants": {
+    "abandoned_village": 3,
+    "ruined_monastery": 3,
+    "oath_battlefield": 3,
+    "ossuary_quarry": 3
+  },
+  "transitionPairs": [
+    [
+      "ash_grassland",
+      "bell_mire"
+    ],
+    [
+      "ash_grassland",
+      "dark_canopy_forest"
+    ],
+    [
+      "ash_grassland",
+      "glass_ash_desert"
+    ],
+    [
+      "broken_crown_hills",
+      "dead_furnace_wastes"
+    ],
+    [
+      "broken_crown_hills",
+      "glass_ash_desert"
+    ],
+    [
+      "dark_canopy_forest",
+      "bell_mire"
+    ],
+    [
+      "dark_canopy_forest",
+      "broken_crown_hills"
+    ],
+    [
+      "glass_ash_desert",
+      "dead_furnace_wastes"
+    ]
+  ],
+  "groundModels": {
+    "CHUNK_ash_grassland__fallow_ridges": {
+      "biome": "ash_grassland",
+      "variant": "fallow_ridges",
+      "triangles": 2308,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ash_grassland__dead_orchard": {
+      "biome": "ash_grassland",
+      "variant": "dead_orchard",
+      "triangles": 2485,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ash_grassland__dry_creek_crossing": {
+      "biome": "ash_grassland",
+      "variant": "dry_creek_crossing",
+      "triangles": 2693,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ash_grassland__caravan_fork": {
+      "biome": "ash_grassland",
+      "variant": "caravan_fork",
+      "triangles": 2284,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dark_canopy_forest__root_passage": {
+      "biome": "dark_canopy_forest",
+      "variant": "root_passage",
+      "triangles": 2413,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dark_canopy_forest__hunting_glade": {
+      "biome": "dark_canopy_forest",
+      "variant": "hunting_glade",
+      "triangles": 1883,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dark_canopy_forest__windthrow_patch": {
+      "biome": "dark_canopy_forest",
+      "variant": "windthrow_patch",
+      "triangles": 1907,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dark_canopy_forest__thorn_nest_margin": {
+      "biome": "dark_canopy_forest",
+      "variant": "thorn_nest_margin",
+      "triangles": 2204,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_bell_mire__reed_causeway": {
+      "biome": "bell_mire",
+      "variant": "reed_causeway",
+      "triangles": 2213,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_bell_mire__sunken_graveyard": {
+      "biome": "bell_mire",
+      "variant": "sunken_graveyard",
+      "triangles": 2165,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_bell_mire__flooded_orchard": {
+      "biome": "bell_mire",
+      "variant": "flooded_orchard",
+      "triangles": 2199,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_bell_mire__broken_dike_detour": {
+      "biome": "bell_mire",
+      "variant": "broken_dike_detour",
+      "triangles": 2091,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_glass_ash_desert__ash_dunes": {
+      "biome": "glass_ash_desert",
+      "variant": "ash_dunes",
+      "triangles": 1648,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_glass_ash_desert__black_glass_seam": {
+      "biome": "glass_ash_desert",
+      "variant": "black_glass_seam",
+      "triangles": 1706,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_glass_ash_desert__buried_aqueduct": {
+      "biome": "glass_ash_desert",
+      "variant": "buried_aqueduct",
+      "triangles": 2347,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_glass_ash_desert__stone_windbreak": {
+      "biome": "glass_ash_desert",
+      "variant": "stone_windbreak",
+      "triangles": 1802,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_broken_crown_hills__watchtower_ridge": {
+      "biome": "broken_crown_hills",
+      "variant": "watchtower_ridge",
+      "triangles": 1735,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_broken_crown_hills__exposed_rock_layers": {
+      "biome": "broken_crown_hills",
+      "variant": "exposed_rock_layers",
+      "triangles": 1729,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_broken_crown_hills__broken_bridge_abutment": {
+      "biome": "broken_crown_hills",
+      "variant": "broken_bridge_abutment",
+      "triangles": 1820,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_broken_crown_hills__quarry_cart_track": {
+      "biome": "broken_crown_hills",
+      "variant": "quarry_cart_track",
+      "triangles": 2445,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dead_furnace_wastes__charcoal_pillars": {
+      "biome": "dead_furnace_wastes",
+      "variant": "charcoal_pillars",
+      "triangles": 1725,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dead_furnace_wastes__cold_furnace": {
+      "biome": "dead_furnace_wastes",
+      "variant": "cold_furnace",
+      "triangles": 1946,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dead_furnace_wastes__burnt_supply_camp": {
+      "biome": "dead_furnace_wastes",
+      "variant": "burnt_supply_camp",
+      "triangles": 2049,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_dead_furnace_wastes__fissure_detour": {
+      "biome": "dead_furnace_wastes",
+      "variant": "fissure_detour",
+      "triangles": 1990,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__evacuated_funeral_hamlet__00": {
+      "biome": "ash_grassland",
+      "variant": "evacuated_funeral_hamlet",
+      "triangles": 3809,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__evacuated_funeral_hamlet__10": {
+      "biome": "ash_grassland",
+      "variant": "evacuated_funeral_hamlet",
+      "triangles": 2287,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__evacuated_funeral_hamlet__01": {
+      "biome": "ash_grassland",
+      "variant": "evacuated_funeral_hamlet",
+      "triangles": 2281,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__evacuated_funeral_hamlet__11": {
+      "biome": "ash_grassland",
+      "variant": "evacuated_funeral_hamlet",
+      "triangles": 2540,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__looted_trade_hamlet__00": {
+      "biome": "ash_grassland",
+      "variant": "looted_trade_hamlet",
+      "triangles": 3653,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__looted_trade_hamlet__10": {
+      "biome": "ash_grassland",
+      "variant": "looted_trade_hamlet",
+      "triangles": 2339,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__looted_trade_hamlet__01": {
+      "biome": "ash_grassland",
+      "variant": "looted_trade_hamlet",
+      "triangles": 2295,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__looted_trade_hamlet__11": {
+      "biome": "ash_grassland",
+      "variant": "looted_trade_hamlet",
+      "triangles": 2495,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__flooded_well_hamlet__00": {
+      "biome": "bell_mire",
+      "variant": "flooded_well_hamlet",
+      "triangles": 3327,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__flooded_well_hamlet__10": {
+      "biome": "bell_mire",
+      "variant": "flooded_well_hamlet",
+      "triangles": 2471,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__flooded_well_hamlet__01": {
+      "biome": "bell_mire",
+      "variant": "flooded_well_hamlet",
+      "triangles": 1937,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_abandoned_village__flooded_well_hamlet__11": {
+      "biome": "bell_mire",
+      "variant": "flooded_well_hamlet",
+      "triangles": 2058,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__refuge_records__00": {
+      "biome": "ash_grassland",
+      "variant": "refuge_records",
+      "triangles": 3668,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__refuge_records__10": {
+      "biome": "ash_grassland",
+      "variant": "refuge_records",
+      "triangles": 2401,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__refuge_records__01": {
+      "biome": "ash_grassland",
+      "variant": "refuge_records",
+      "triangles": 2032,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__refuge_records__11": {
+      "biome": "ash_grassland",
+      "variant": "refuge_records",
+      "triangles": 2401,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__fallen_guardian_seal__00": {
+      "biome": "ash_grassland",
+      "variant": "fallen_guardian_seal",
+      "triangles": 3495,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__fallen_guardian_seal__10": {
+      "biome": "ash_grassland",
+      "variant": "fallen_guardian_seal",
+      "triangles": 2111,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__fallen_guardian_seal__01": {
+      "biome": "ash_grassland",
+      "variant": "fallen_guardian_seal",
+      "triangles": 2547,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__fallen_guardian_seal__11": {
+      "biome": "ash_grassland",
+      "variant": "fallen_guardian_seal",
+      "triangles": 2395,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__rootbound_pilgrim_house__00": {
+      "biome": "dark_canopy_forest",
+      "variant": "rootbound_pilgrim_house",
+      "triangles": 3513,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__rootbound_pilgrim_house__10": {
+      "biome": "dark_canopy_forest",
+      "variant": "rootbound_pilgrim_house",
+      "triangles": 2219,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__rootbound_pilgrim_house__01": {
+      "biome": "dark_canopy_forest",
+      "variant": "rootbound_pilgrim_house",
+      "triangles": 2187,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ruined_monastery__rootbound_pilgrim_house__11": {
+      "biome": "dark_canopy_forest",
+      "variant": "rootbound_pilgrim_house",
+      "triangles": 2191,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__broken_standards__00": {
+      "biome": "ash_grassland",
+      "variant": "broken_standards",
+      "triangles": 3706,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__broken_standards__10": {
+      "biome": "ash_grassland",
+      "variant": "broken_standards",
+      "triangles": 2402,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__broken_standards__01": {
+      "biome": "ash_grassland",
+      "variant": "broken_standards",
+      "triangles": 2391,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__broken_standards__11": {
+      "biome": "ash_grassland",
+      "variant": "broken_standards",
+      "triangles": 2433,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__burnt_field_hospital__00": {
+      "biome": "ash_grassland",
+      "variant": "burnt_field_hospital",
+      "triangles": 3708,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__burnt_field_hospital__10": {
+      "biome": "ash_grassland",
+      "variant": "burnt_field_hospital",
+      "triangles": 2473,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__burnt_field_hospital__01": {
+      "biome": "ash_grassland",
+      "variant": "burnt_field_hospital",
+      "triangles": 2379,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__burnt_field_hospital__11": {
+      "biome": "ash_grassland",
+      "variant": "burnt_field_hospital",
+      "triangles": 2318,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__supply_trenches__00": {
+      "biome": "ash_grassland",
+      "variant": "supply_trenches",
+      "triangles": 4450,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__supply_trenches__10": {
+      "biome": "ash_grassland",
+      "variant": "supply_trenches",
+      "triangles": 2766,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__supply_trenches__01": {
+      "biome": "ash_grassland",
+      "variant": "supply_trenches",
+      "triangles": 2373,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_oath_battlefield__supply_trenches__11": {
+      "biome": "ash_grassland",
+      "variant": "supply_trenches",
+      "triangles": 2419,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__abandoned_cutting_floor__00": {
+      "biome": "broken_crown_hills",
+      "variant": "abandoned_cutting_floor",
+      "triangles": 3377,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__abandoned_cutting_floor__10": {
+      "biome": "broken_crown_hills",
+      "variant": "abandoned_cutting_floor",
+      "triangles": 2001,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__abandoned_cutting_floor__01": {
+      "biome": "broken_crown_hills",
+      "variant": "abandoned_cutting_floor",
+      "triangles": 1869,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__abandoned_cutting_floor__11": {
+      "biome": "broken_crown_hills",
+      "variant": "abandoned_cutting_floor",
+      "triangles": 1902,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__collapsed_hauling_works__00": {
+      "biome": "broken_crown_hills",
+      "variant": "collapsed_hauling_works",
+      "triangles": 2940,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__collapsed_hauling_works__10": {
+      "biome": "broken_crown_hills",
+      "variant": "collapsed_hauling_works",
+      "triangles": 1875,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__collapsed_hauling_works__01": {
+      "biome": "broken_crown_hills",
+      "variant": "collapsed_hauling_works",
+      "triangles": 1803,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__collapsed_hauling_works__11": {
+      "biome": "broken_crown_hills",
+      "variant": "collapsed_hauling_works",
+      "triangles": 1870,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__sealed_ossuary_entrance__00": {
+      "biome": "broken_crown_hills",
+      "variant": "sealed_ossuary_entrance",
+      "triangles": 3069,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__sealed_ossuary_entrance__10": {
+      "biome": "broken_crown_hills",
+      "variant": "sealed_ossuary_entrance",
+      "triangles": 1954,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__sealed_ossuary_entrance__01": {
+      "biome": "broken_crown_hills",
+      "variant": "sealed_ossuary_entrance",
+      "triangles": 1790,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_ossuary_quarry__sealed_ossuary_entrance__11": {
+      "biome": "broken_crown_hills",
+      "variant": "sealed_ossuary_entrance",
+      "triangles": 1984,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_ash_grassland__dark_canopy_forest__0": {
+      "biome": "ash_grassland",
+      "variant": "transition",
+      "triangles": 2699,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_ash_grassland__dark_canopy_forest__1": {
+      "biome": "ash_grassland",
+      "variant": "transition",
+      "triangles": 2699,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_ash_grassland__bell_mire__0": {
+      "biome": "ash_grassland",
+      "variant": "transition",
+      "triangles": 2599,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_ash_grassland__bell_mire__1": {
+      "biome": "ash_grassland",
+      "variant": "transition",
+      "triangles": 2599,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_dark_canopy_forest__bell_mire__0": {
+      "biome": "dark_canopy_forest",
+      "variant": "transition",
+      "triangles": 1927,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_dark_canopy_forest__bell_mire__1": {
+      "biome": "dark_canopy_forest",
+      "variant": "transition",
+      "triangles": 1927,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0": {
+      "biome": "dark_canopy_forest",
+      "variant": "transition",
+      "triangles": 1989,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1": {
+      "biome": "dark_canopy_forest",
+      "variant": "transition",
+      "triangles": 1989,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_ash_grassland__glass_ash_desert__0": {
+      "biome": "ash_grassland",
+      "variant": "transition",
+      "triangles": 2437,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_ash_grassland__glass_ash_desert__1": {
+      "biome": "ash_grassland",
+      "variant": "transition",
+      "triangles": 2437,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0": {
+      "biome": "broken_crown_hills",
+      "variant": "transition",
+      "triangles": 1858,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1": {
+      "biome": "broken_crown_hills",
+      "variant": "transition",
+      "triangles": 1858,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0": {
+      "biome": "glass_ash_desert",
+      "variant": "transition",
+      "triangles": 1915,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1": {
+      "biome": "glass_ash_desert",
+      "variant": "transition",
+      "triangles": 1915,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0": {
+      "biome": "broken_crown_hills",
+      "variant": "transition",
+      "triangles": 1717,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    },
+    "CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1": {
+      "biome": "broken_crown_hills",
+      "variant": "transition",
+      "triangles": 1717,
+      "primitives": 1,
+      "boundsXZ": [
+        -0.5,
+        7.5
+      ],
+      "boundaryTopHeight": 0
+    }
+  },
+  "deliveryFilesVerified": [
+    "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__00.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__01.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__10.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__11.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__00.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__01.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__10.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__11.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__00.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__01.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__10.glb",
+    "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__11.glb",
+    "WorldChunks_v1/CHUNK_ash_grassland__caravan_fork.glb",
+    "WorldChunks_v1/CHUNK_ash_grassland__dead_orchard.glb",
+    "WorldChunks_v1/CHUNK_ash_grassland__dry_creek_crossing.glb",
+    "WorldChunks_v1/CHUNK_ash_grassland__fallow_ridges.glb",
+    "WorldChunks_v1/CHUNK_bell_mire__broken_dike_detour.glb",
+    "WorldChunks_v1/CHUNK_bell_mire__flooded_orchard.glb",
+    "WorldChunks_v1/CHUNK_bell_mire__reed_causeway.glb",
+    "WorldChunks_v1/CHUNK_bell_mire__sunken_graveyard.glb",
+    "WorldChunks_v1/CHUNK_broken_crown_hills__broken_bridge_abutment.glb",
+    "WorldChunks_v1/CHUNK_broken_crown_hills__exposed_rock_layers.glb",
+    "WorldChunks_v1/CHUNK_broken_crown_hills__quarry_cart_track.glb",
+    "WorldChunks_v1/CHUNK_broken_crown_hills__watchtower_ridge.glb",
+    "WorldChunks_v1/chunk_catalog.json",
+    "WorldChunks_v1/CHUNK_dark_canopy_forest__hunting_glade.glb",
+    "WorldChunks_v1/CHUNK_dark_canopy_forest__root_passage.glb",
+    "WorldChunks_v1/CHUNK_dark_canopy_forest__thorn_nest_margin.glb",
+    "WorldChunks_v1/CHUNK_dark_canopy_forest__windthrow_patch.glb",
+    "WorldChunks_v1/CHUNK_dead_furnace_wastes__burnt_supply_camp.glb",
+    "WorldChunks_v1/CHUNK_dead_furnace_wastes__charcoal_pillars.glb",
+    "WorldChunks_v1/CHUNK_dead_furnace_wastes__cold_furnace.glb",
+    "WorldChunks_v1/CHUNK_dead_furnace_wastes__fissure_detour.glb",
+    "WorldChunks_v1/CHUNK_glass_ash_desert__ash_dunes.glb",
+    "WorldChunks_v1/CHUNK_glass_ash_desert__black_glass_seam.glb",
+    "WorldChunks_v1/CHUNK_glass_ash_desert__buried_aqueduct.glb",
+    "WorldChunks_v1/CHUNK_glass_ash_desert__stone_windbreak.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__00.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__01.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__10.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__11.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__00.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__01.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__10.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__11.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__00.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__01.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__10.glb",
+    "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__11.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__00.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__01.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__10.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__11.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__00.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__01.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__10.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__11.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__00.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__01.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__10.glb",
+    "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__11.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__00.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__01.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__10.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__11.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__00.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__01.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__10.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__11.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__00.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__01.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__10.glb",
+    "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__11.glb",
+    "WorldChunks_v1/chunk_shared_props.glb",
+    "WorldChunks_v1/CHUNK_TRANS_ash_grassland__bell_mire__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_ash_grassland__bell_mire__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_ash_grassland__dark_canopy_forest__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_ash_grassland__dark_canopy_forest__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_ash_grassland__glass_ash_desert__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_ash_grassland__glass_ash_desert__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__bell_mire__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__bell_mire__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1.glb",
+    "WorldChunks_v1/CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0.glb",
+    "WorldChunks_v1/CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1.glb",
+    "WorldChunks_v1/previews/abandoned_village_assembly.png",
+    "WorldChunks_v1/previews/ash_dunes.png",
+    "WorldChunks_v1/previews/ash_grassland_variants.jpg",
+    "WorldChunks_v1/previews/bell_mire_variants.jpg",
+    "WorldChunks_v1/previews/biomes_overview.jpg",
+    "WorldChunks_v1/previews/black_glass_seam.png",
+    "WorldChunks_v1/previews/broken_bridge_abutment.png",
+    "WorldChunks_v1/previews/broken_crown_hills_variants.jpg",
+    "WorldChunks_v1/previews/broken_dike_detour.png",
+    "WorldChunks_v1/previews/buried_aqueduct.png",
+    "WorldChunks_v1/previews/burnt_supply_camp.png",
+    "WorldChunks_v1/previews/caravan_fork.png",
+    "WorldChunks_v1/previews/charcoal_pillars.png",
+    "WorldChunks_v1/previews/cold_furnace.png",
+    "WorldChunks_v1/previews/dark_canopy_forest_variants.jpg",
+    "WorldChunks_v1/previews/dead_furnace_wastes_variants.jpg",
+    "WorldChunks_v1/previews/dead_orchard.png",
+    "WorldChunks_v1/previews/dry_creek_crossing.png",
+    "WorldChunks_v1/previews/exposed_rock_layers.png",
+    "WorldChunks_v1/previews/fallow_ridges.png",
+    "WorldChunks_v1/previews/fissure_detour.png",
+    "WorldChunks_v1/previews/flooded_orchard.png",
+    "WorldChunks_v1/previews/glass_ash_desert_variants.jpg",
+    "WorldChunks_v1/previews/hunting_glade.png",
+    "WorldChunks_v1/previews/oath_battlefield_assembly.png",
+    "WorldChunks_v1/previews/ossuary_quarry_assembly.png",
+    "WorldChunks_v1/previews/places_overview.jpg",
+    "WorldChunks_v1/previews/quarry_cart_track.png",
+    "WorldChunks_v1/previews/reed_causeway.png",
+    "WorldChunks_v1/previews/root_passage.png",
+    "WorldChunks_v1/previews/ruined_monastery_assembly.png",
+    "WorldChunks_v1/previews/stone_windbreak.png",
+    "WorldChunks_v1/previews/sunken_graveyard.png",
+    "WorldChunks_v1/previews/thorn_nest_margin.png",
+    "WorldChunks_v1/previews/unit_ground_scale.png",
+    "WorldChunks_v1/previews/watchtower_ridge.png",
+    "WorldChunks_v1/previews/windthrow_patch.png",
+    "WorldChunks_v1/README.md",
+    "WorldChunks_v1/source_document_snapshot.md",
+    "WorldChunks_v1/validation.json",
+    "WorldChunks_v1/world_chunk_library.glb",
+    "WorldChunks_v1/world_chunks_v1.blend"
+  ],
+  "shaderVaryingContract": true,
+  "nativeAndCenteredQuarterTurnFootprints": "verified on actual vertices",
+  "runtimeNavigationAndPerformance": "not executed; require user build/play validation"
+}

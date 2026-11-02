@@ -51,12 +51,10 @@ void PlayerActor::Draw(Renderer& r)
 {
     const auto pose = SpritePose();
     const bool mutant = corruption >= MutationThreshold;
-    const std::string clip = mutant ? (pose.attackProgress >= 0 ? "MON_03_Attack"
-                                       : pose.moving            ? "MON_03_Walk"
-                                                                : "MON_03_Idle")
-                             : pose.attackProgress >= 0 ? "HERO_AttackLongsword"
-                             : pose.moving              ? (running ? "HERO_Run" : "HERO_Walk")
-                                                        : "HERO_Idle";
+    const std::string clip =
+        mutant ? (pose.attackProgress >= 0 ? "MON_03_Attack" : MovementClip("MON_03", running))
+        : pose.attackProgress >= 0 ? "HERO_AttackLongsword"
+                                   : MovementClip("HERO", running);
     if (DrawModel(
             r,
             mutant ? "player/mutated" : "player/hero",

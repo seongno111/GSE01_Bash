@@ -79,7 +79,7 @@ const std::array<MonsterDefinition, static_cast<size_t>(MonsterKind::Count)> Mon
       true},
      {MonsterKind::AshWolf,
       "ash_wolf",
-      "잿니 늑대",
+      "잿빛 늑대",
       "오염된 야수",
       "AshWolf",
       58,
@@ -266,7 +266,7 @@ const char* MonsterAbilityName(MonsterAbility ability)
     switch (ability)
     {
     case MonsterAbility::Pounce:
-        return "잿니 도약";
+        return "잿빛 도약";
     case MonsterAbility::Slam:
         return "역병 내려찍기";
     case MonsterAbility::Charge:

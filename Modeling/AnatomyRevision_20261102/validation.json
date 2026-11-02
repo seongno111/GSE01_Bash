@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-02",
+  "checks": {
+    "three_species_rebuilt": true,
+    "all_40_clips_retargeted": true,
+    "other_three_monster_glbs_unchanged": true,
+    "one_walk_one_run_no_directional_copies": true,
+    "source_samples_above_floor": true,
+    "actual_glb_weights_normalized": true,
+    "actual_glb_all_40_clips_finite_and_durations_match": true,
+    "actual_glb_loops_seamless": true,
+    "knees_forward_hocks_rearward_during_gaits": true,
+    "articulated_segment_lengths_preserved": true,
+    "actual_glb_floor_error_below_2mm": true,
+    "all_three_fresh_glb_rigs_and_clips_import": true,
+    "walk_run_and_specials_rendered": true
+  },
+  "models": [
+    {
+      "key": "AshWolf",
+      "bones": 25,
+      "clips": 14,
+      "meshes": 1,
+      "triangle_count": 1679,
+      "foot_posture": "digitigrade",
+      "new_bones": [
+        "hind_l_metatarsal",
+        "hind_r_metatarsal"
+      ],
+      "maximum_foot_target_adjustment_m": 0,
+      "maximum_floor_correction_m": 0.023107315361499785,
+      "minimum_sampled_vertex_z": 0.005999930202960968
+    },
+    {
+      "key": "BlightBear",
+      "bones": 26,
+      "clips": 13,
+      "meshes": 2,
+      "triangle_count": 1940,
+      "foot_posture": "plantigrade",
+      "new_bones": [
+        "hind_l_metatarsal",
+        "hind_r_metatarsal"
+      ],
+      "maximum_foot_target_adjustment_m": 0,
+      "maximum_floor_correction_m": 0.03155027790367603,
+      "minimum_sampled_vertex_z": 0.005999834276735783
+    },
+    {
+      "key": "ThornStag",
+      "bones": 26,
+      "clips": 13,
+      "meshes": 2,
+      "triangle_count": 1348,
+      "foot_posture": "unguligrade",
+      "new_bones": [
+        "hind_l_metatarsal",
+        "hind_r_metatarsal"
+      ],
+      "maximum_foot_target_adjustment_m": 0,
+      "maximum_floor_correction_m": 0.03147299861907959,
+      "minimum_sampled_vertex_z": 0.005999825894832611
+    }
+  ],
+  "untouched_glb_sha256": {
+    "HighDemonAzar": "68f104aa72032e9d3d276994fed156edb091b825601f737edf78be043954e5fb",
+    "FallenPaladin": "d8a8536db64e2886ce19d762b85f32393d7b33679df4c333f28eedc7772b061c",
+    "FallenPriest": "a8b61e714df772a4044facbf25a92c4315e8696cfdf270bc5bc29b940ed62e0f"
+  },
+  "skinning_probes": [
+    {
+      "key": "AshWolf",
+      "bones": 25,
+      "clips": 14,
+      "minimum_skinned_z": 0.005448535084724426,
+      "loop_endpoint_matrix_error": 0,
+      "minimum_knee_forward_of_hock_m": 0.04500018060207367,
+      "minimum_hock_above_foot_m": 0.17232102155685425,
+      "maximum_segment_length_error": 3.1085531387864407e-07
+    },
+    {
+      "key": "BlightBear",
+      "bones": 26,
+      "clips": 13,
+      "minimum_skinned_z": 0.003814930096268654,
+      "loop_endpoint_matrix_error": 0,
+      "minimum_knee_forward_of_hock_m": 0.06015411764383316,
+      "minimum_hock_above_foot_m": 0.09665808081626892,
+      "maximum_segment_length_error": 4.931393867702027e-07
+    },
+    {
+      "key": "ThornStag",
+      "bones": 26,
+      "clips": 13,
+      "minimum_skinned_z": -0.0008538146503269672,
+      "loop_endpoint_matrix_error": 0,
+      "minimum_knee_forward_of_hock_m": 0.04500102996826172,
+      "minimum_hock_above_foot_m": 0.33265024423599243,
+      "maximum_segment_length_error": 5.90864569771643e-07
+    }
+  ]
+}

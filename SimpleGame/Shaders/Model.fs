@@ -1,5 +1,6 @@
 #version 330 core
 in vec3 v_Position;
+in vec2 v_Ground;
 in vec3 v_Normal;
 in vec4 v_Color;
 in vec4 v_Emission;
@@ -9,6 +10,9 @@ uniform vec4 u_Orientation;
 uniform bool u_LinearScene;
 uniform vec4 u_LampPosition; // xyz, range (0 means no range cutoff)
 uniform vec4 u_LampColor;    // linear RGB, photometric intensity
+uniform bool u_GroundMaskEnabled;
+uniform uvec2 u_GroundMask;
+uniform vec2 u_GroundMaskOffset;
 out vec4 o_Color;
 
 vec3 linearToSrgb(vec3 value)
@@ -20,6 +24,16 @@ vec3 linearToSrgb(vec3 value)
 
 void main()
 {
+    if (u_GroundMaskEnabled)
+    {
+        ivec2 tile =
+            clamp(ivec2(floor(v_Ground + u_GroundMaskOffset + vec2(0.5))), ivec2(0), ivec2(7));
+        uint bit = uint(tile.y * 8 + tile.x);
+        if ((u_GroundMask[int(bit >> 5u)] & (1u << (bit & 31u))) != 0u)
+        {
+            discard;
+        }
+    }
     if (v_Color.a < max(v_Surface.x, 0.001))
     {
         discard;

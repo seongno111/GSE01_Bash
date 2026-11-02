@@ -122,6 +122,7 @@ private:
     friend class LootActor;
     friend class CombatTextActor;
     friend class TerrainActor;
+    friend class WorldChunkActor;
     friend class PropActor;
     friend class AtmosphereActor;
     friend class RangeIndicatorActor;
@@ -167,6 +168,7 @@ private:
     void DrawTile(Renderer& r, const WorldTileData& tile, Point p);
     void DrawProp(Renderer& r, Point p, int kind, unsigned seed);
     Models::ModelLibrary m_ModelAssets;
+    std::unique_ptr<Terrain::Sampler> m_Terrain;
     SceneGraph m_Scene;
     ActorId m_WorldRoot;
     ActorId m_GameplayRoot;

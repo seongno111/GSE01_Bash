@@ -480,6 +480,18 @@ namespace Models
                 std::cerr << "[ModelAssets] monster species unavailable: " << error.what() << '\n';
             }
         }
+        const auto chunks = path.parent_path() / "WorldChunks_v1";
+        if (std::filesystem::is_regular_file(chunks / "chunk_catalog.json"))
+        {
+            try
+            {
+                LoadWorldChunks(chunks);
+            }
+            catch (const std::exception& error)
+            {
+                std::cerr << "[WorldChunks] unavailable: " << error.what() << '\n';
+            }
+        }
         const auto villages = path.parent_path() / "Villages_v1";
         if (std::filesystem::is_regular_file(villages / "village_catalog.json"))
         {

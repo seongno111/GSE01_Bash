@@ -1,0 +1,194 @@
+{
+  "date": "2026-10-29",
+  "policy": "shared_walk_run_actor_rotation",
+  "rigs": 13,
+  "glbs": 18,
+  "current_checks": 10,
+  "files": [
+    {
+      "path": "Hero_v1/hero_rigged.glb",
+      "bytes": 1161772,
+      "sha256": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/npc_parts_rigged.glb",
+      "bytes": 3719396,
+      "sha256": "cbcf4d7e2e9f5153fea7ada6aebd50a37244191a57c01bb63339452894789f64"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/priest_rigged.glb",
+      "bytes": 3205116,
+      "sha256": "7339a1ec09e92ba3989c4ae414308ecf057a94f227b501bccfaefb5c72edf6fe"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/knight_rigged.glb",
+      "bytes": 3297796,
+      "sha256": "5b53cf0a3688286cd014f3defb0962da0b9e451800facdce88a2f0f26c032074"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/adventurer_rigged.glb",
+      "bytes": 3248724,
+      "sha256": "9e2d2f1db0b1cf8b1ba4fde7590e7be56b96278441f7e4f987338fdf02bdb4a1"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/raider_rigged.glb",
+      "bytes": 3242732,
+      "sha256": "fddc65b773c18aaabc5b18ddcbca895f7e0eb10d1d231d83be43494bbe4febb5"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/merchant_rigged.glb",
+      "bytes": 3228456,
+      "sha256": "4b89ad0fdfb0a206b948579124eb748ab860c0665880ecd2f348153f8cf011b8"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/WitheredHollow_rigged.glb",
+      "bytes": 985088,
+      "sha256": "3e795e3255fd291bae7c6ba11ecf44f3724ce3e84d2b29c5fa06c9413e332802"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/TaintedRaider_rigged.glb",
+      "bytes": 997932,
+      "sha256": "90769afd6245fd4845f1a39553025e7143e03d717593afc97fc8c6fdcc3545e9"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/FieldWarden_rigged.glb",
+      "bytes": 1213004,
+      "sha256": "00c167e8e2714f04a2d96ff869379a921221c3240db4e49daeb455ff240ecb92"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/MutatedHuman_rigged.glb",
+      "bytes": 1118556,
+      "sha256": "5755ae99144703690bcfdbc762908172b9230fcfe8a8bd1d7fd0aaa3acdd565a"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/DeathEcho_rigged.glb",
+      "bytes": 1118548,
+      "sha256": "c0247369850c8217b047aeca9f6d2e9217f7366e31d2058bfb23b446f292fd68"
+    },
+    {
+      "path": "Monsters_v1/AshWolf.glb",
+      "bytes": 909792,
+      "sha256": "0f068dd2207a35aa24eca145f43ecae8b84f703eee34700401930da1f4b06fec"
+    },
+    {
+      "path": "Monsters_v1/BlightBear.glb",
+      "bytes": 1076012,
+      "sha256": "6524bc56677a96cfc922283c067c0f35d7e3137e97b77791d7bf031cc143922c"
+    },
+    {
+      "path": "Monsters_v1/ThornStag.glb",
+      "bytes": 934480,
+      "sha256": "5b7922bba7451608ed7c131070d4bdd9250bced8f54fda0f02555a440804ffad"
+    },
+    {
+      "path": "Monsters_v1/HighDemonAzar.glb",
+      "bytes": 2226248,
+      "sha256": "68f104aa72032e9d3d276994fed156edb091b825601f737edf78be043954e5fb"
+    },
+    {
+      "path": "Monsters_v1/FallenPaladin.glb",
+      "bytes": 1474328,
+      "sha256": "d8a8536db64e2886ce19d762b85f32393d7b33679df4c333f28eedc7772b061c"
+    },
+    {
+      "path": "Monsters_v1/FallenPriest.glb",
+      "bytes": 1496204,
+      "sha256": "a8b61e714df772a4044facbf25a92c4315e8696cfdf270bc5bc29b940ed62e0f"
+    },
+    {
+      "path": "Hero_v1/hero_v1.blend",
+      "bytes": 1023596,
+      "sha256": "05d2636114cf81628a4ff9961614b0b16d4057934a0d8c39d90989e478d5cd06"
+    },
+    {
+      "path": "Hero_v1/hero_catalog.json",
+      "bytes": 19642,
+      "sha256": "0fd029e1ec08b44fda99235edb7528a291c29e5ea02b648f7870374f6e9f927c"
+    },
+    {
+      "path": "Hero_v1/validation.json",
+      "bytes": 2287,
+      "sha256": "855348084eca94a762d68f52dde6436ecbd67feb1a13728b7fe32c243ed97103"
+    },
+    {
+      "path": "Hero_v1/README.md",
+      "bytes": 5779,
+      "sha256": "32d31ebc6995b051ef381b2e5e0227a8831c1ecca6252371516862255fd40035"
+    },
+    {
+      "path": "LowPolyKit_v3/lowpoly_kit_v3.blend",
+      "bytes": 1840740,
+      "sha256": "8ba57802b043c4d33eab9566da8d7f5ce9054161ef1be3a8142521ae5f49fdcb"
+    },
+    {
+      "path": "LowPolyKit_v3/animation_catalog.json",
+      "bytes": 45978,
+      "sha256": "1813fde1f0ca65fe1a9d64498468374e45187534613286fbccc17a50c315c01f"
+    },
+    {
+      "path": "LowPolyKit_v3/validation.json",
+      "bytes": 15827,
+      "sha256": "5b6d5e8c990a7a7c9ed227d7529fa1e09c74db16a1e0f2ee316db773fee4de76"
+    },
+    {
+      "path": "LowPolyKit_v3/README.md",
+      "bytes": 12725,
+      "sha256": "4f59bdcc6373ce88a25169b0c0f5487e74f49fbb5fa9d8116b951ff0c5f67fcc"
+    },
+    {
+      "path": "Monsters_v1/monsters_v1.blend",
+      "bytes": 3353148,
+      "sha256": "00c6e40a2bbc083c4c525757cf36d0f80603be954fe5686d85cb9a371948514a"
+    },
+    {
+      "path": "Monsters_v1/monster_catalog.json",
+      "bytes": 88951,
+      "sha256": "9004e520ff655bf441349c1d44a42593c02f9a21cd50c4942c24710d802c7db5"
+    },
+    {
+      "path": "Monsters_v1/validation.json",
+      "bytes": 11010,
+      "sha256": "8c4405f0f6e37f552eb85ce03e6447601f4826b9643f2ab727ac270d3e9c19e5"
+    },
+    {
+      "path": "Monsters_v1/README.md",
+      "bytes": 6598,
+      "sha256": "133e596780f0cea16c81cb3b14e36d0558c299a90005770a851d1fcaa060b403"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2854,
+      "sha256": "a6f56de737048549eb6fef5d61d25acf739788e49768532bbde5646278080eab"
+    },
+    {
+      "path": "LocomotionShared_20261029/README.md",
+      "bytes": 4620,
+      "sha256": "9bab54f92f62c4406dc895824154fdb64ece620ef22ba70adcd8da65d0571a42"
+    },
+    {
+      "path": "LocomotionShared_20261029/validation.json",
+      "bytes": 25623,
+      "sha256": "cb09637d43de8bffa6ba0b633826617e41289a9e21def08a947fc0223fb70d86"
+    },
+    {
+      "path": "LocomotionShared_20261029/locomotion_catalog.json",
+      "bytes": 25231,
+      "sha256": "6d1df1283fcc05a4f36976e57f72868671add490d09cff4766c9edfb0db63a3c"
+    },
+    {
+      "path": "LocomotionShared_20261029/removed_clips.json",
+      "bytes": 24766,
+      "sha256": "24348da75166a61fe64e72d35ea173cdbd41ff139f32a80a5941417a4b1d923f"
+    },
+    {
+      "path": "LocomotionShared_20261029/previews/hero_walk_run.gif",
+      "bytes": 5312456,
+      "sha256": "9c1d82fe8368866b115f296815901d66d214478dc85058e82d668a5a07967d84"
+    },
+    {
+      "path": "LocomotionShared_20261029/previews/hero_walk_run.jpg",
+      "bytes": 43720,
+      "sha256": "6ee6132bec9bde036cd462300ffbeffffb3fd694d2b056f714b4cf13fb4210a8"
+    }
+  ]
+}

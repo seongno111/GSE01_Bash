@@ -203,7 +203,8 @@ def main():
         hero, hero_report = inspect(hero_package / "hero_rigged.glb", metadata, {"KHR_lights_punctual"})
         names = {node.get("name") for node in hero["nodes"] if "mesh" in node}
         assert {part["mesh"] for part in hero_catalog["parts"]} == names
-        assert len(hero["animations"]) == len(metadata) == 17
+        assert len(hero["animations"]) == len(metadata)
+        assert {"HERO_Idle", "HERO_Walk", "HERO_Run", "HERO_AttackLongsword"} <= set(metadata)
         lights = hero["extensions"]["KHR_lights_punctual"]["lights"]
         assert lights and all(light["type"] == "point" for light in lights)
         hero_report["point_lights"] = len(lights)

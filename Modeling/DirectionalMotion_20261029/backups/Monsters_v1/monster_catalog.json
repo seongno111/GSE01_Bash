@@ -1,0 +1,4372 @@
+{
+  "schema_version": 1,
+  "authored": "2026-10-26",
+  "source_definitions": "SimpleGame/MonsterDefinitions.cpp",
+  "up_blender": "Z",
+  "front_blender": "-Y",
+  "up_gltf": "Y",
+  "front_gltf": "+Z",
+  "units": "meter",
+  "origin": "Foot-center, zero local transform",
+  "monsters": [
+    {
+      "monster_kind": 3,
+      "modelKey": "AshWolf",
+      "speciesId": "ash_wolf",
+      "name_ko": "잿니 늑대",
+      "rig": "RIG_AshWolf",
+      "rig_family": "quadruped",
+      "file": "AshWolf.glb",
+      "meshes": [
+        "MON_AshWolf_Body"
+      ],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null
+        },
+        {
+          "name": "hips",
+          "parent": "root"
+        },
+        {
+          "name": "spine",
+          "parent": "hips"
+        },
+        {
+          "name": "chest",
+          "parent": "spine"
+        },
+        {
+          "name": "neck",
+          "parent": "chest"
+        },
+        {
+          "name": "head",
+          "parent": "neck"
+        },
+        {
+          "name": "jaw",
+          "parent": "head"
+        },
+        {
+          "name": "socket_bite",
+          "parent": "head"
+        },
+        {
+          "name": "front_l_upper",
+          "parent": "chest"
+        },
+        {
+          "name": "front_l_lower",
+          "parent": "front_l_upper"
+        },
+        {
+          "name": "front_l_paw",
+          "parent": "front_l_lower"
+        },
+        {
+          "name": "front_r_upper",
+          "parent": "chest"
+        },
+        {
+          "name": "front_r_lower",
+          "parent": "front_r_upper"
+        },
+        {
+          "name": "front_r_paw",
+          "parent": "front_r_lower"
+        },
+        {
+          "name": "tail",
+          "parent": "hips"
+        },
+        {
+          "name": "tail_tip",
+          "parent": "tail"
+        },
+        {
+          "name": "hind_l_upper",
+          "parent": "hips"
+        },
+        {
+          "name": "hind_l_lower",
+          "parent": "hind_l_upper"
+        },
+        {
+          "name": "hind_l_paw",
+          "parent": "hind_l_lower"
+        },
+        {
+          "name": "hind_r_upper",
+          "parent": "hips"
+        },
+        {
+          "name": "hind_r_lower",
+          "parent": "hind_r_upper"
+        },
+        {
+          "name": "hind_r_paw",
+          "parent": "hind_r_lower"
+        },
+        {
+          "name": "socket_slam",
+          "parent": "root"
+        }
+      ],
+      "clips": [
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Idle",
+          "label": "Idle",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Walk",
+          "label": "Walk",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Run",
+          "label": "Run",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 43,
+          "duration_seconds": 0.7,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Turn_L45",
+          "label": "Turn_L45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 45.0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Turn_L90",
+          "label": "Turn_L90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 90.0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Turn_L180",
+          "label": "Turn_L180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 180.0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Turn_R45",
+          "label": "Turn_R45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -45.0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Turn_R90",
+          "label": "Turn_R90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -90.0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Turn_R180",
+          "label": "Turn_R180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -180.0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Hit",
+          "label": "Hit",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Death",
+          "label": "Death",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 79,
+          "duration_seconds": 1.3,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_DeadHold",
+          "label": "DeadHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Spawn",
+          "label": "Spawn",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Alert",
+          "label": "Alert",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_Bite",
+          "label": "Bite",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 67,
+          "duration_seconds": 1.1,
+          "loop": false,
+          "events": [
+            {
+              "name": "bite_contact",
+              "time_seconds": 0.35,
+              "frame": 22
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_PouncePrepare",
+          "label": "PouncePrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 28,
+          "duration_seconds": 0.45,
+          "loop": false,
+          "events": [
+            {
+              "name": "pounce_start",
+              "time_seconds": 0.45,
+              "frame": 28
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_PounceTravel",
+          "label": "PounceTravel",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_PounceLand",
+          "label": "PounceLand",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 46,
+          "duration_seconds": 0.75,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_FlankL",
+          "label": "FlankL",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "AshWolf",
+          "name": "AshWolf_FlankR",
+          "label": "FlankR",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        }
+      ],
+      "height_m": 1.2000001668930054,
+      "triangle_count": 1035,
+      "basic_attack": {
+        "clip": "AshWolf_Bite",
+        "windup_seconds": 0.35,
+        "recovery_seconds": 0.75
+      },
+      "special": {
+        "prepare": "AshWolf_PouncePrepare",
+        "active": "AshWolf_PounceTravel",
+        "recover": "AshWolf_PounceLand",
+        "activation_seconds": 0.45
+      },
+      "state_map": {
+        "Patrol": "AshWolf_Walk",
+        "Chase": "AshWolf_Run",
+        "Flank": "AshWolf_FlankL",
+        "Windup": "basic_attack or special.prepare, selected by current AI timer",
+        "Charging": "AshWolf_PounceTravel",
+        "Guarding": null,
+        "Recovering": "basic_attack recovery segment or special.recover",
+        "Fleeing": "AshWolf_Run",
+        "Returning": "AshWolf_Walk",
+        "Supporting": null
+      }
+    },
+    {
+      "monster_kind": 4,
+      "modelKey": "BlightBear",
+      "speciesId": "blight_bear",
+      "name_ko": "역병 등곰",
+      "rig": "RIG_BlightBear",
+      "rig_family": "quadruped",
+      "file": "BlightBear.glb",
+      "meshes": [
+        "MON_BlightBear_Body",
+        "MON_BlightBear_BackCysts"
+      ],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null
+        },
+        {
+          "name": "hips",
+          "parent": "root"
+        },
+        {
+          "name": "spine",
+          "parent": "hips"
+        },
+        {
+          "name": "chest",
+          "parent": "spine"
+        },
+        {
+          "name": "neck",
+          "parent": "chest"
+        },
+        {
+          "name": "head",
+          "parent": "neck"
+        },
+        {
+          "name": "jaw",
+          "parent": "head"
+        },
+        {
+          "name": "socket_bite",
+          "parent": "head"
+        },
+        {
+          "name": "front_l_upper",
+          "parent": "chest"
+        },
+        {
+          "name": "front_l_lower",
+          "parent": "front_l_upper"
+        },
+        {
+          "name": "front_l_paw",
+          "parent": "front_l_lower"
+        },
+        {
+          "name": "front_r_upper",
+          "parent": "chest"
+        },
+        {
+          "name": "front_r_lower",
+          "parent": "front_r_upper"
+        },
+        {
+          "name": "front_r_paw",
+          "parent": "front_r_lower"
+        },
+        {
+          "name": "cysts",
+          "parent": "chest"
+        },
+        {
+          "name": "tail",
+          "parent": "hips"
+        },
+        {
+          "name": "tail_tip",
+          "parent": "tail"
+        },
+        {
+          "name": "hind_l_upper",
+          "parent": "hips"
+        },
+        {
+          "name": "hind_l_lower",
+          "parent": "hind_l_upper"
+        },
+        {
+          "name": "hind_l_paw",
+          "parent": "hind_l_lower"
+        },
+        {
+          "name": "hind_r_upper",
+          "parent": "hips"
+        },
+        {
+          "name": "hind_r_lower",
+          "parent": "hind_r_upper"
+        },
+        {
+          "name": "hind_r_paw",
+          "parent": "hind_r_lower"
+        },
+        {
+          "name": "socket_slam",
+          "parent": "root"
+        }
+      ],
+      "clips": [
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Idle",
+          "label": "Idle",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Walk",
+          "label": "Walk",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Run",
+          "label": "Run",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Turn_L45",
+          "label": "Turn_L45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 45.0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Turn_L90",
+          "label": "Turn_L90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 90.0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Turn_L180",
+          "label": "Turn_L180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 180.0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Turn_R45",
+          "label": "Turn_R45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -45.0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Turn_R90",
+          "label": "Turn_R90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -90.0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Turn_R180",
+          "label": "Turn_R180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -180.0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Hit",
+          "label": "Hit",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Death",
+          "label": "Death",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 79,
+          "duration_seconds": 1.3,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_DeadHold",
+          "label": "DeadHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Spawn",
+          "label": "Spawn",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Swipe",
+          "label": "Swipe",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 133,
+          "duration_seconds": 2.2,
+          "loop": false,
+          "events": [
+            {
+              "name": "swipe_contact",
+              "time_seconds": 0.8,
+              "frame": 49
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Slam",
+          "label": "Slam",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 142,
+          "duration_seconds": 2.35,
+          "loop": false,
+          "events": [
+            {
+              "name": "slam_impact",
+              "time_seconds": 0.95,
+              "frame": 58
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_SlamPrepare",
+          "label": "SlamPrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 58,
+          "duration_seconds": 0.95,
+          "loop": false,
+          "events": [
+            {
+              "name": "slam_impact",
+              "time_seconds": 0.95,
+              "frame": 58
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_SlamImpact",
+          "label": "SlamImpact",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 10,
+          "duration_seconds": 0.15,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_SlamRecover",
+          "label": "SlamRecover",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 85,
+          "duration_seconds": 1.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "BlightBear",
+          "name": "BlightBear_Enrage",
+          "label": "Enrage",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        }
+      ],
+      "height_m": 1.5600000619888306,
+      "triangle_count": 1200,
+      "basic_attack": {
+        "clip": "BlightBear_Swipe",
+        "windup_seconds": 0.8,
+        "recovery_seconds": 1.4
+      },
+      "special": {
+        "prepare": "BlightBear_SlamPrepare",
+        "active": "BlightBear_SlamImpact",
+        "recover": "BlightBear_SlamRecover",
+        "activation_seconds": 0.95
+      },
+      "state_map": {
+        "Patrol": "BlightBear_Walk",
+        "Chase": "BlightBear_Run",
+        "Flank": "BlightBear_Walk",
+        "Windup": "basic_attack or special.prepare, selected by current AI timer",
+        "Charging": "BlightBear_SlamImpact",
+        "Guarding": null,
+        "Recovering": "basic_attack recovery segment or special.recover",
+        "Fleeing": "BlightBear_Run",
+        "Returning": "BlightBear_Walk",
+        "Supporting": null
+      }
+    },
+    {
+      "monster_kind": 5,
+      "modelKey": "ThornStag",
+      "speciesId": "thorn_stag",
+      "name_ko": "가시관 사슴",
+      "rig": "RIG_ThornStag",
+      "rig_family": "quadruped",
+      "file": "ThornStag.glb",
+      "meshes": [
+        "MON_ThornStag_Body",
+        "MON_ThornStag_ThornCrown"
+      ],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null
+        },
+        {
+          "name": "hips",
+          "parent": "root"
+        },
+        {
+          "name": "spine",
+          "parent": "hips"
+        },
+        {
+          "name": "chest",
+          "parent": "spine"
+        },
+        {
+          "name": "neck",
+          "parent": "chest"
+        },
+        {
+          "name": "head",
+          "parent": "neck"
+        },
+        {
+          "name": "jaw",
+          "parent": "head"
+        },
+        {
+          "name": "socket_bite",
+          "parent": "head"
+        },
+        {
+          "name": "antlers",
+          "parent": "head"
+        },
+        {
+          "name": "front_l_upper",
+          "parent": "chest"
+        },
+        {
+          "name": "front_l_lower",
+          "parent": "front_l_upper"
+        },
+        {
+          "name": "front_l_paw",
+          "parent": "front_l_lower"
+        },
+        {
+          "name": "front_r_upper",
+          "parent": "chest"
+        },
+        {
+          "name": "front_r_lower",
+          "parent": "front_r_upper"
+        },
+        {
+          "name": "front_r_paw",
+          "parent": "front_r_lower"
+        },
+        {
+          "name": "tail",
+          "parent": "hips"
+        },
+        {
+          "name": "tail_tip",
+          "parent": "tail"
+        },
+        {
+          "name": "hind_l_upper",
+          "parent": "hips"
+        },
+        {
+          "name": "hind_l_lower",
+          "parent": "hind_l_upper"
+        },
+        {
+          "name": "hind_l_paw",
+          "parent": "hind_l_lower"
+        },
+        {
+          "name": "hind_r_upper",
+          "parent": "hips"
+        },
+        {
+          "name": "hind_r_lower",
+          "parent": "hind_r_upper"
+        },
+        {
+          "name": "hind_r_paw",
+          "parent": "hind_r_lower"
+        },
+        {
+          "name": "socket_slam",
+          "parent": "root"
+        }
+      ],
+      "clips": [
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Idle",
+          "label": "Idle",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Walk",
+          "label": "Walk",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Run",
+          "label": "Run",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Turn_L45",
+          "label": "Turn_L45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 45.0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Turn_L90",
+          "label": "Turn_L90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 90.0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Turn_L180",
+          "label": "Turn_L180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 180.0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Turn_R45",
+          "label": "Turn_R45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -45.0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Turn_R90",
+          "label": "Turn_R90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -90.0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Turn_R180",
+          "label": "Turn_R180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -180.0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Hit",
+          "label": "Hit",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Death",
+          "label": "Death",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 79,
+          "duration_seconds": 1.3,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_DeadHold",
+          "label": "DeadHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Spawn",
+          "label": "Spawn",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Alert",
+          "label": "Alert",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Flee",
+          "label": "Flee",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 40,
+          "duration_seconds": 0.65,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_Gore",
+          "label": "Gore",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 100,
+          "duration_seconds": 1.65,
+          "loop": false,
+          "events": [
+            {
+              "name": "gore_contact",
+              "time_seconds": 0.55,
+              "frame": 34
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_ChargePrepare",
+          "label": "ChargePrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [
+            {
+              "name": "charge_start",
+              "time_seconds": 0.9,
+              "frame": 55
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_ChargeTravel",
+          "label": "ChargeTravel",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 28,
+          "duration_seconds": 0.45,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "ThornStag",
+          "name": "ThornStag_ChargeStop",
+          "label": "ChargeStop",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 67,
+          "duration_seconds": 1.1,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        }
+      ],
+      "height_m": 2.259999990463257,
+      "triangle_count": 1060,
+      "basic_attack": {
+        "clip": "ThornStag_Gore",
+        "windup_seconds": 0.55,
+        "recovery_seconds": 1.1
+      },
+      "special": {
+        "prepare": "ThornStag_ChargePrepare",
+        "active": "ThornStag_ChargeTravel",
+        "recover": "ThornStag_ChargeStop",
+        "activation_seconds": 0.9
+      },
+      "state_map": {
+        "Patrol": "ThornStag_Walk",
+        "Chase": "ThornStag_Run",
+        "Flank": "ThornStag_Walk",
+        "Windup": "basic_attack or special.prepare, selected by current AI timer",
+        "Charging": "ThornStag_ChargeTravel",
+        "Guarding": null,
+        "Recovering": "basic_attack recovery segment or special.recover",
+        "Fleeing": "ThornStag_Flee",
+        "Returning": "ThornStag_Walk",
+        "Supporting": null
+      }
+    },
+    {
+      "monster_kind": 6,
+      "modelKey": "HighDemonAzar",
+      "speciesId": "high_demon",
+      "name_ko": "검은 성화의 대공 아자르",
+      "rig": "RIG_HighDemonAzar",
+      "rig_family": "humanoid_extended",
+      "file": "HighDemonAzar.glb",
+      "meshes": [
+        "MON_HighDemonAzar_Body",
+        "MON_HighDemonAzar_FoldedWing_L",
+        "MON_HighDemonAzar_FoldedWing_R",
+        "MON_HighDemonAzar_BlackFlame"
+      ],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null
+        },
+        {
+          "name": "hips",
+          "parent": "root"
+        },
+        {
+          "name": "spine",
+          "parent": "hips"
+        },
+        {
+          "name": "chest",
+          "parent": "spine"
+        },
+        {
+          "name": "neck",
+          "parent": "chest"
+        },
+        {
+          "name": "head",
+          "parent": "neck"
+        },
+        {
+          "name": "jaw",
+          "parent": "head"
+        },
+        {
+          "name": "clavicle_l",
+          "parent": "chest"
+        },
+        {
+          "name": "upper_arm_l",
+          "parent": "clavicle_l"
+        },
+        {
+          "name": "forearm_l",
+          "parent": "upper_arm_l"
+        },
+        {
+          "name": "hand_l",
+          "parent": "forearm_l"
+        },
+        {
+          "name": "weapon_l",
+          "parent": "hand_l"
+        },
+        {
+          "name": "clavicle_r",
+          "parent": "chest"
+        },
+        {
+          "name": "upper_arm_r",
+          "parent": "clavicle_r"
+        },
+        {
+          "name": "forearm_r",
+          "parent": "upper_arm_r"
+        },
+        {
+          "name": "hand_r",
+          "parent": "forearm_r"
+        },
+        {
+          "name": "weapon_r",
+          "parent": "hand_r"
+        },
+        {
+          "name": "socket_cast",
+          "parent": "hand_r"
+        },
+        {
+          "name": "wing_l",
+          "parent": "chest"
+        },
+        {
+          "name": "wing_tip_l",
+          "parent": "wing_l"
+        },
+        {
+          "name": "wing_r",
+          "parent": "chest"
+        },
+        {
+          "name": "wing_tip_r",
+          "parent": "wing_r"
+        },
+        {
+          "name": "socket_chest",
+          "parent": "chest"
+        },
+        {
+          "name": "thigh_l",
+          "parent": "hips"
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l"
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l"
+        },
+        {
+          "name": "toe_l",
+          "parent": "foot_l"
+        },
+        {
+          "name": "thigh_r",
+          "parent": "hips"
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r"
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r"
+        },
+        {
+          "name": "toe_r",
+          "parent": "foot_r"
+        },
+        {
+          "name": "skirt_front",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_back",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_l",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_r",
+          "parent": "hips"
+        },
+        {
+          "name": "tail",
+          "parent": "hips"
+        },
+        {
+          "name": "tail_tip",
+          "parent": "tail"
+        }
+      ],
+      "clips": [
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Idle",
+          "label": "Idle",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Walk",
+          "label": "Walk",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Run",
+          "label": "Run",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Turn_L45",
+          "label": "Turn_L45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 45.0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Turn_L90",
+          "label": "Turn_L90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 90.0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Turn_L180",
+          "label": "Turn_L180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 180.0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Turn_R45",
+          "label": "Turn_R45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -45.0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Turn_R90",
+          "label": "Turn_R90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -90.0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Turn_R180",
+          "label": "Turn_R180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -180.0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Hit",
+          "label": "Hit",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Death",
+          "label": "Death",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 79,
+          "duration_seconds": 1.3,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_DeadHold",
+          "label": "DeadHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Spawn",
+          "label": "Spawn",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Volley",
+          "label": "Volley",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 163,
+          "duration_seconds": 2.7,
+          "loop": false,
+          "events": [
+            {
+              "name": "volley_release",
+              "time_seconds": 1.1,
+              "frame": 67
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_VolleyPrepare",
+          "label": "VolleyPrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 67,
+          "duration_seconds": 1.1,
+          "loop": false,
+          "events": [
+            {
+              "name": "volley_release",
+              "time_seconds": 1.1,
+              "frame": 67
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_VolleyRelease",
+          "label": "VolleyRelease",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 13,
+          "duration_seconds": 0.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_VolleyRecover",
+          "label": "VolleyRecover",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 97,
+          "duration_seconds": 1.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Rift",
+          "label": "Rift",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 181,
+          "duration_seconds": 3.0,
+          "loop": false,
+          "events": [
+            {
+              "name": "rift_release",
+              "time_seconds": 1.4,
+              "frame": 85
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_RiftPrepare",
+          "label": "RiftPrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 85,
+          "duration_seconds": 1.4,
+          "loop": false,
+          "events": [
+            {
+              "name": "rift_release",
+              "time_seconds": 1.4,
+              "frame": 85
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_RiftRelease",
+          "label": "RiftRelease",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 13,
+          "duration_seconds": 0.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_RiftRecover",
+          "label": "RiftRecover",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 97,
+          "duration_seconds": 1.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Enrage",
+          "label": "Enrage",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "HighDemonAzar",
+          "name": "HighDemonAzar_Roar",
+          "label": "Roar",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 91,
+          "duration_seconds": 1.5,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        }
+      ],
+      "height_m": 2.8457000255584717,
+      "triangle_count": 1241,
+      "basic_attack": {
+        "clip": "HighDemonAzar_Volley",
+        "windup_seconds": 1.1,
+        "recovery_seconds": 1.6
+      },
+      "special": {
+        "prepare": "HighDemonAzar_RiftPrepare",
+        "active": "HighDemonAzar_RiftRelease",
+        "recover": "HighDemonAzar_RiftRecover",
+        "activation_seconds": 1.4
+      },
+      "state_map": {
+        "Patrol": "HighDemonAzar_Walk",
+        "Chase": "HighDemonAzar_Run",
+        "Flank": "HighDemonAzar_Walk",
+        "Windup": "basic_attack or special.prepare, selected by current AI timer",
+        "Charging": "HighDemonAzar_RiftRelease",
+        "Guarding": null,
+        "Recovering": "basic_attack recovery segment or special.recover",
+        "Fleeing": "HighDemonAzar_Run",
+        "Returning": "HighDemonAzar_Walk",
+        "Supporting": null
+      }
+    },
+    {
+      "monster_kind": 7,
+      "modelKey": "FallenPaladin",
+      "speciesId": "fallen_paladin",
+      "name_ko": "서약을 삼킨 성기사",
+      "rig": "RIG_FallenPaladin",
+      "rig_family": "npc31_compatible",
+      "file": "FallenPaladin.glb",
+      "meshes": [
+        "MON_FallenPaladin_Body",
+        "MON_FallenPaladin_TowerShield",
+        "MON_FallenPaladin_OathSword"
+      ],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null
+        },
+        {
+          "name": "hips",
+          "parent": "root"
+        },
+        {
+          "name": "spine",
+          "parent": "hips"
+        },
+        {
+          "name": "chest",
+          "parent": "spine"
+        },
+        {
+          "name": "neck",
+          "parent": "chest"
+        },
+        {
+          "name": "head",
+          "parent": "neck"
+        },
+        {
+          "name": "jaw",
+          "parent": "head"
+        },
+        {
+          "name": "clavicle_l",
+          "parent": "chest"
+        },
+        {
+          "name": "upper_arm_l",
+          "parent": "clavicle_l"
+        },
+        {
+          "name": "forearm_l",
+          "parent": "upper_arm_l"
+        },
+        {
+          "name": "hand_l",
+          "parent": "forearm_l"
+        },
+        {
+          "name": "weapon_l",
+          "parent": "hand_l"
+        },
+        {
+          "name": "clavicle_r",
+          "parent": "chest"
+        },
+        {
+          "name": "upper_arm_r",
+          "parent": "clavicle_r"
+        },
+        {
+          "name": "forearm_r",
+          "parent": "upper_arm_r"
+        },
+        {
+          "name": "hand_r",
+          "parent": "forearm_r"
+        },
+        {
+          "name": "weapon_r",
+          "parent": "hand_r"
+        },
+        {
+          "name": "thigh_l",
+          "parent": "hips"
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l"
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l"
+        },
+        {
+          "name": "toe_l",
+          "parent": "foot_l"
+        },
+        {
+          "name": "thigh_r",
+          "parent": "hips"
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r"
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r"
+        },
+        {
+          "name": "toe_r",
+          "parent": "foot_r"
+        },
+        {
+          "name": "skirt_front",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_back",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_l",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_r",
+          "parent": "hips"
+        },
+        {
+          "name": "tail",
+          "parent": "hips"
+        },
+        {
+          "name": "tail_tip",
+          "parent": "tail"
+        }
+      ],
+      "clips": [
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Idle",
+          "label": "Idle",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Walk",
+          "label": "Walk",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Run",
+          "label": "Run",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Turn_L45",
+          "label": "Turn_L45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 45.0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Turn_L90",
+          "label": "Turn_L90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 90.0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Turn_L180",
+          "label": "Turn_L180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 180.0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Turn_R45",
+          "label": "Turn_R45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -45.0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Turn_R90",
+          "label": "Turn_R90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -90.0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Turn_R180",
+          "label": "Turn_R180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -180.0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Hit",
+          "label": "Hit",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Death",
+          "label": "Death",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 79,
+          "duration_seconds": 1.3,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_DeadHold",
+          "label": "DeadHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Spawn",
+          "label": "Spawn",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_Slash",
+          "label": "Slash",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 112,
+          "duration_seconds": 1.85,
+          "loop": false,
+          "events": [
+            {
+              "name": "slash_contact",
+              "time_seconds": 0.7,
+              "frame": 43
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_SlashPrepare",
+          "label": "SlashPrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 43,
+          "duration_seconds": 0.7,
+          "loop": false,
+          "events": [
+            {
+              "name": "slash_contact",
+              "time_seconds": 0.7,
+              "frame": 43
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_SlashStrike",
+          "label": "SlashStrike",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 13,
+          "duration_seconds": 0.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_SlashRecover",
+          "label": "SlashRecover",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 70,
+          "duration_seconds": 1.15,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_WardPrepare",
+          "label": "WardPrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [
+            {
+              "name": "ward_activate",
+              "time_seconds": 0.6,
+              "frame": 37
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_WardHold",
+          "label": "WardHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 145,
+          "duration_seconds": 2.4,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPaladin",
+          "name": "FallenPaladin_WardEnd",
+          "label": "WardEnd",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 22,
+          "duration_seconds": 0.35,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        }
+      ],
+      "height_m": 2.005563974380493,
+      "triangle_count": 1522,
+      "basic_attack": {
+        "clip": "FallenPaladin_Slash",
+        "windup_seconds": 0.7,
+        "recovery_seconds": 1.15
+      },
+      "special": {
+        "prepare": "FallenPaladin_WardPrepare",
+        "active": "FallenPaladin_WardHold",
+        "recover": "FallenPaladin_WardEnd",
+        "activation_seconds": 0.6
+      },
+      "state_map": {
+        "Patrol": "FallenPaladin_Walk",
+        "Chase": "FallenPaladin_Run",
+        "Flank": "FallenPaladin_Walk",
+        "Windup": "basic_attack or special.prepare, selected by current AI timer",
+        "Charging": "FallenPaladin_WardHold",
+        "Guarding": "FallenPaladin_WardHold",
+        "Recovering": "basic_attack recovery segment or special.recover",
+        "Fleeing": "FallenPaladin_Run",
+        "Returning": "FallenPaladin_Walk",
+        "Supporting": null
+      }
+    },
+    {
+      "monster_kind": 8,
+      "modelKey": "FallenPriest",
+      "speciesId": "fallen_priest",
+      "name_ko": "잿빛 고해 사제",
+      "rig": "RIG_FallenPriest",
+      "rig_family": "npc31_compatible",
+      "file": "FallenPriest.glb",
+      "meshes": [
+        "MON_FallenPriest_Body",
+        "MON_FallenPriest_Staff",
+        "MON_FallenPriest_StitchingTool"
+      ],
+      "bones": [
+        {
+          "name": "root",
+          "parent": null
+        },
+        {
+          "name": "hips",
+          "parent": "root"
+        },
+        {
+          "name": "spine",
+          "parent": "hips"
+        },
+        {
+          "name": "chest",
+          "parent": "spine"
+        },
+        {
+          "name": "neck",
+          "parent": "chest"
+        },
+        {
+          "name": "head",
+          "parent": "neck"
+        },
+        {
+          "name": "jaw",
+          "parent": "head"
+        },
+        {
+          "name": "clavicle_l",
+          "parent": "chest"
+        },
+        {
+          "name": "upper_arm_l",
+          "parent": "clavicle_l"
+        },
+        {
+          "name": "forearm_l",
+          "parent": "upper_arm_l"
+        },
+        {
+          "name": "hand_l",
+          "parent": "forearm_l"
+        },
+        {
+          "name": "weapon_l",
+          "parent": "hand_l"
+        },
+        {
+          "name": "clavicle_r",
+          "parent": "chest"
+        },
+        {
+          "name": "upper_arm_r",
+          "parent": "clavicle_r"
+        },
+        {
+          "name": "forearm_r",
+          "parent": "upper_arm_r"
+        },
+        {
+          "name": "hand_r",
+          "parent": "forearm_r"
+        },
+        {
+          "name": "weapon_r",
+          "parent": "hand_r"
+        },
+        {
+          "name": "thigh_l",
+          "parent": "hips"
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l"
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l"
+        },
+        {
+          "name": "toe_l",
+          "parent": "foot_l"
+        },
+        {
+          "name": "thigh_r",
+          "parent": "hips"
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r"
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r"
+        },
+        {
+          "name": "toe_r",
+          "parent": "foot_r"
+        },
+        {
+          "name": "skirt_front",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_back",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_l",
+          "parent": "hips"
+        },
+        {
+          "name": "skirt_r",
+          "parent": "hips"
+        },
+        {
+          "name": "tail",
+          "parent": "hips"
+        },
+        {
+          "name": "tail_tip",
+          "parent": "tail"
+        }
+      ],
+      "clips": [
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Idle",
+          "label": "Idle",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 121,
+          "duration_seconds": 2.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Walk",
+          "label": "Walk",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Run",
+          "label": "Run",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Turn_L45",
+          "label": "Turn_L45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 45.0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Turn_L90",
+          "label": "Turn_L90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 90.0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Turn_L180",
+          "label": "Turn_L180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 180.0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Turn_R45",
+          "label": "Turn_R45",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -45.0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Turn_R90",
+          "label": "Turn_R90",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 37,
+          "duration_seconds": 0.6,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -90.0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Turn_R180",
+          "label": "Turn_R180",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 55,
+          "duration_seconds": 0.9,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": -180.0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Hit",
+          "label": "Hit",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 25,
+          "duration_seconds": 0.4,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Death",
+          "label": "Death",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 79,
+          "duration_seconds": 1.3,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_DeadHold",
+          "label": "DeadHold",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Spawn",
+          "label": "Spawn",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 49,
+          "duration_seconds": 0.8,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Backstep",
+          "label": "Backstep",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 61,
+          "duration_seconds": 1.0,
+          "loop": true,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Curse",
+          "label": "Curse",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 127,
+          "duration_seconds": 2.1,
+          "loop": false,
+          "events": [
+            {
+              "name": "curse_release",
+              "time_seconds": 0.85,
+              "frame": 52
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_CursePrepare",
+          "label": "CursePrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 52,
+          "duration_seconds": 0.85,
+          "loop": false,
+          "events": [
+            {
+              "name": "curse_release",
+              "time_seconds": 0.85,
+              "frame": 52
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_CurseRelease",
+          "label": "CurseRelease",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 13,
+          "duration_seconds": 0.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_CurseRecover",
+          "label": "CurseRecover",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 76,
+          "duration_seconds": 1.25,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_Mend",
+          "label": "Mend",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 103,
+          "duration_seconds": 1.7,
+          "loop": false,
+          "events": [
+            {
+              "name": "mend_apply",
+              "time_seconds": 1.2,
+              "frame": 73
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_MendPrepare",
+          "label": "MendPrepare",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 73,
+          "duration_seconds": 1.2,
+          "loop": false,
+          "events": [
+            {
+              "name": "mend_apply",
+              "time_seconds": 1.2,
+              "frame": 73
+            }
+          ],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_MendRelease",
+          "label": "MendRelease",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 13,
+          "duration_seconds": 0.2,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        },
+        {
+          "modelKey": "FallenPriest",
+          "name": "FallenPriest_MendRecover",
+          "label": "MendRecover",
+          "fps": 60,
+          "start_frame": 1,
+          "end_frame": 31,
+          "duration_seconds": 0.5,
+          "loop": false,
+          "events": [],
+          "root_translation": "in_place",
+          "root_yaw_degrees": 0
+        }
+      ],
+      "height_m": 2.069999933242798,
+      "triangle_count": 971,
+      "basic_attack": {
+        "clip": "FallenPriest_Curse",
+        "windup_seconds": 0.85,
+        "recovery_seconds": 1.25
+      },
+      "special": {
+        "prepare": "FallenPriest_MendPrepare",
+        "active": "FallenPriest_MendRelease",
+        "recover": "FallenPriest_MendRecover",
+        "activation_seconds": 1.2
+      },
+      "state_map": {
+        "Patrol": "FallenPriest_Walk",
+        "Chase": "FallenPriest_Run",
+        "Flank": "FallenPriest_Walk",
+        "Windup": "basic_attack or special.prepare, selected by current AI timer",
+        "Charging": "FallenPriest_MendRelease",
+        "Guarding": null,
+        "Recovering": "basic_attack recovery segment or special.recover",
+        "Fleeing": "FallenPriest_Backstep",
+        "Returning": "FallenPriest_Walk",
+        "Supporting": "FallenPriest_MendPrepare"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Idle",
+      "label": "Idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Walk",
+      "label": "Walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Run",
+      "label": "Run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 0.7,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Turn_L45",
+      "label": "Turn_L45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45.0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Turn_L90",
+      "label": "Turn_L90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90.0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Turn_L180",
+      "label": "Turn_L180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180.0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Turn_R45",
+      "label": "Turn_R45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45.0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Turn_R90",
+      "label": "Turn_R90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90.0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Turn_R180",
+      "label": "Turn_R180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180.0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Hit",
+      "label": "Hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Death",
+      "label": "Death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_DeadHold",
+      "label": "DeadHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Spawn",
+      "label": "Spawn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Idle",
+      "label": "Idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Walk",
+      "label": "Walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Run",
+      "label": "Run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Turn_L45",
+      "label": "Turn_L45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45.0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Turn_L90",
+      "label": "Turn_L90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90.0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Turn_L180",
+      "label": "Turn_L180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180.0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Turn_R45",
+      "label": "Turn_R45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45.0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Turn_R90",
+      "label": "Turn_R90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90.0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Turn_R180",
+      "label": "Turn_R180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180.0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Hit",
+      "label": "Hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Death",
+      "label": "Death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_DeadHold",
+      "label": "DeadHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Spawn",
+      "label": "Spawn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Idle",
+      "label": "Idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Walk",
+      "label": "Walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Run",
+      "label": "Run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Turn_L45",
+      "label": "Turn_L45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45.0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Turn_L90",
+      "label": "Turn_L90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90.0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Turn_L180",
+      "label": "Turn_L180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180.0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Turn_R45",
+      "label": "Turn_R45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45.0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Turn_R90",
+      "label": "Turn_R90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90.0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Turn_R180",
+      "label": "Turn_R180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180.0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Hit",
+      "label": "Hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Death",
+      "label": "Death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_DeadHold",
+      "label": "DeadHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Spawn",
+      "label": "Spawn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Idle",
+      "label": "Idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Walk",
+      "label": "Walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Run",
+      "label": "Run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Turn_L45",
+      "label": "Turn_L45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45.0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Turn_L90",
+      "label": "Turn_L90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90.0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Turn_L180",
+      "label": "Turn_L180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180.0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Turn_R45",
+      "label": "Turn_R45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45.0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Turn_R90",
+      "label": "Turn_R90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90.0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Turn_R180",
+      "label": "Turn_R180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180.0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Hit",
+      "label": "Hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Death",
+      "label": "Death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_DeadHold",
+      "label": "DeadHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Spawn",
+      "label": "Spawn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Idle",
+      "label": "Idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Walk",
+      "label": "Walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Run",
+      "label": "Run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Turn_L45",
+      "label": "Turn_L45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45.0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Turn_L90",
+      "label": "Turn_L90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90.0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Turn_L180",
+      "label": "Turn_L180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180.0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Turn_R45",
+      "label": "Turn_R45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45.0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Turn_R90",
+      "label": "Turn_R90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90.0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Turn_R180",
+      "label": "Turn_R180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180.0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Hit",
+      "label": "Hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Death",
+      "label": "Death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_DeadHold",
+      "label": "DeadHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Spawn",
+      "label": "Spawn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Idle",
+      "label": "Idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Walk",
+      "label": "Walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Run",
+      "label": "Run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Turn_L45",
+      "label": "Turn_L45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 45.0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Turn_L90",
+      "label": "Turn_L90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 90.0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Turn_L180",
+      "label": "Turn_L180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 180.0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Turn_R45",
+      "label": "Turn_R45",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -45.0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Turn_R90",
+      "label": "Turn_R90",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -90.0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Turn_R180",
+      "label": "Turn_R180",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": -180.0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Hit",
+      "label": "Hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Death",
+      "label": "Death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "duration_seconds": 1.3,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_DeadHold",
+      "label": "DeadHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Spawn",
+      "label": "Spawn",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 0.8,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Alert",
+      "label": "Alert",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_Bite",
+      "label": "Bite",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 67,
+      "duration_seconds": 1.1,
+      "loop": false,
+      "events": [
+        {
+          "name": "bite_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_PouncePrepare",
+      "label": "PouncePrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 28,
+      "duration_seconds": 0.45,
+      "loop": false,
+      "events": [
+        {
+          "name": "pounce_start",
+          "time_seconds": 0.45,
+          "frame": 28
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_PounceTravel",
+      "label": "PounceTravel",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_PounceLand",
+      "label": "PounceLand",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 46,
+      "duration_seconds": 0.75,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_FlankL",
+      "label": "FlankL",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "AshWolf",
+      "name": "AshWolf_FlankR",
+      "label": "FlankR",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Swipe",
+      "label": "Swipe",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 133,
+      "duration_seconds": 2.2,
+      "loop": false,
+      "events": [
+        {
+          "name": "swipe_contact",
+          "time_seconds": 0.8,
+          "frame": 49
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Slam",
+      "label": "Slam",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 142,
+      "duration_seconds": 2.35,
+      "loop": false,
+      "events": [
+        {
+          "name": "slam_impact",
+          "time_seconds": 0.95,
+          "frame": 58
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_SlamPrepare",
+      "label": "SlamPrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 58,
+      "duration_seconds": 0.95,
+      "loop": false,
+      "events": [
+        {
+          "name": "slam_impact",
+          "time_seconds": 0.95,
+          "frame": 58
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_SlamImpact",
+      "label": "SlamImpact",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 10,
+      "duration_seconds": 0.15,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_SlamRecover",
+      "label": "SlamRecover",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 85,
+      "duration_seconds": 1.4,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "BlightBear",
+      "name": "BlightBear_Enrage",
+      "label": "Enrage",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Alert",
+      "label": "Alert",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Flee",
+      "label": "Flee",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 40,
+      "duration_seconds": 0.65,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_Gore",
+      "label": "Gore",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 100,
+      "duration_seconds": 1.65,
+      "loop": false,
+      "events": [
+        {
+          "name": "gore_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_ChargePrepare",
+      "label": "ChargePrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 55,
+      "duration_seconds": 0.9,
+      "loop": false,
+      "events": [
+        {
+          "name": "charge_start",
+          "time_seconds": 0.9,
+          "frame": 55
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_ChargeTravel",
+      "label": "ChargeTravel",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 28,
+      "duration_seconds": 0.45,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "ThornStag",
+      "name": "ThornStag_ChargeStop",
+      "label": "ChargeStop",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 67,
+      "duration_seconds": 1.1,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Volley",
+      "label": "Volley",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 163,
+      "duration_seconds": 2.7,
+      "loop": false,
+      "events": [
+        {
+          "name": "volley_release",
+          "time_seconds": 1.1,
+          "frame": 67
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_VolleyPrepare",
+      "label": "VolleyPrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 67,
+      "duration_seconds": 1.1,
+      "loop": false,
+      "events": [
+        {
+          "name": "volley_release",
+          "time_seconds": 1.1,
+          "frame": 67
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_VolleyRelease",
+      "label": "VolleyRelease",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 13,
+      "duration_seconds": 0.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_VolleyRecover",
+      "label": "VolleyRecover",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 97,
+      "duration_seconds": 1.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Rift",
+      "label": "Rift",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 181,
+      "duration_seconds": 3.0,
+      "loop": false,
+      "events": [
+        {
+          "name": "rift_release",
+          "time_seconds": 1.4,
+          "frame": 85
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_RiftPrepare",
+      "label": "RiftPrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 85,
+      "duration_seconds": 1.4,
+      "loop": false,
+      "events": [
+        {
+          "name": "rift_release",
+          "time_seconds": 1.4,
+          "frame": 85
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_RiftRelease",
+      "label": "RiftRelease",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 13,
+      "duration_seconds": 0.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_RiftRecover",
+      "label": "RiftRecover",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 97,
+      "duration_seconds": 1.6,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Enrage",
+      "label": "Enrage",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "HighDemonAzar",
+      "name": "HighDemonAzar_Roar",
+      "label": "Roar",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 91,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_Slash",
+      "label": "Slash",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 112,
+      "duration_seconds": 1.85,
+      "loop": false,
+      "events": [
+        {
+          "name": "slash_contact",
+          "time_seconds": 0.7,
+          "frame": 43
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_SlashPrepare",
+      "label": "SlashPrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 0.7,
+      "loop": false,
+      "events": [
+        {
+          "name": "slash_contact",
+          "time_seconds": 0.7,
+          "frame": 43
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_SlashStrike",
+      "label": "SlashStrike",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 13,
+      "duration_seconds": 0.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_SlashRecover",
+      "label": "SlashRecover",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 70,
+      "duration_seconds": 1.15,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_WardPrepare",
+      "label": "WardPrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 0.6,
+      "loop": false,
+      "events": [
+        {
+          "name": "ward_activate",
+          "time_seconds": 0.6,
+          "frame": 37
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_WardHold",
+      "label": "WardHold",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 145,
+      "duration_seconds": 2.4,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPaladin",
+      "name": "FallenPaladin_WardEnd",
+      "label": "WardEnd",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 22,
+      "duration_seconds": 0.35,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Backstep",
+      "label": "Backstep",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Curse",
+      "label": "Curse",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 127,
+      "duration_seconds": 2.1,
+      "loop": false,
+      "events": [
+        {
+          "name": "curse_release",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_CursePrepare",
+      "label": "CursePrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 52,
+      "duration_seconds": 0.85,
+      "loop": false,
+      "events": [
+        {
+          "name": "curse_release",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_CurseRelease",
+      "label": "CurseRelease",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 13,
+      "duration_seconds": 0.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_CurseRecover",
+      "label": "CurseRecover",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 76,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_Mend",
+      "label": "Mend",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 103,
+      "duration_seconds": 1.7,
+      "loop": false,
+      "events": [
+        {
+          "name": "mend_apply",
+          "time_seconds": 1.2,
+          "frame": 73
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_MendPrepare",
+      "label": "MendPrepare",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "events": [
+        {
+          "name": "mend_apply",
+          "time_seconds": 1.2,
+          "frame": 73
+        }
+      ],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_MendRelease",
+      "label": "MendRelease",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 13,
+      "duration_seconds": 0.2,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "modelKey": "FallenPriest",
+      "name": "FallenPriest_MendRecover",
+      "label": "MendRecover",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 0.5,
+      "loop": false,
+      "events": [],
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    }
+  ],
+  "integration_notes": [
+    "modelKey/speciesId are stable lookup keys; MonsterKind 3-8 must never be used as legacy ModelLibrary::Monster indices 3-4.",
+    "Basic attack and special event times match current simulation windups. Events are visual notifications only; do not apply damage/heal twice.",
+    "Choose a full action OR its prepare/release/recover clips, never both.",
+    "Travel/charge/pounce are in-place; AI remains responsible for world translation and hit tests.",
+    "Demon wings are folded ground-animation appendages; no flight gameplay or summoning implemented.",
+    "Existing v3 base assets and game source are not changed by this new pack."
+  ]
+}

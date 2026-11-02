@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "UnitAnimation.h"
 #include "MonsterDefinitions.h"
+#include "WorldTerrain.h"
 
 class Prototype;
 
@@ -36,6 +37,13 @@ public:
     void UpdateVisual(float dt) override;
     void BeginAttackAnimation(double directionX, double directionY, float duration);
     void ResetAnimation();
+    std::string MovementClip(const std::string& prefix, bool running = false) const;
+
+    float ModelYaw() const
+    {
+        return m_ModelYaw;
+    }
+
     bool DrawModel(Renderer& renderer,
                    const std::string& binding,
                    const std::function<Models::ModelInstance()>& factory,
@@ -60,6 +68,11 @@ private:
     float m_AttackAnimationDuration = 0;
     bool m_FacingLeft = false;
     bool m_AttackFacingLeft = false;
+    double m_HeadingTravelX = 0;
+    double m_HeadingTravelY = 0;
+    float m_ModelYaw = 0;
+    float m_TargetModelYaw = 0;
+    float m_AttackModelYaw = 0;
     std::string m_ModelBinding;
     Models::ModelInstance m_Model;
     std::unique_ptr<Models::AnimationPlayer> m_ModelAnimation;
@@ -261,6 +274,33 @@ public:
     std::string text;
     Color color;
     float remaining = 1.1f;
+};
+
+class WorldChunkActor final : public GameActor
+{
+public:
+
+    WorldChunkActor(Prototype& game, Terrain::ChunkPlan plan, std::array<WorldTileData, 64> tiles);
+    bool InView() const override;
+    void Draw(Renderer& renderer) override;
+
+private:
+
+    Terrain::ChunkPlan m_Plan;
+    std::array<WorldTileData, 64> m_Tiles;
+};
+
+class TerrainPropActor final : public GameActor
+{
+public:
+
+    TerrainPropActor(Prototype& game, Terrain::Prop prop);
+    void Draw(Renderer& renderer) override;
+    double ColliderRadius() const override;
+
+private:
+
+    Terrain::Prop m_Prop;
 };
 
 class TerrainActor final : public GameActor

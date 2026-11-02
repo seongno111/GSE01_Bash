@@ -112,7 +112,8 @@ def verify(root):
                        "basicAttack": basic, "special": special,
                        "specialPlayback": "full" if full_suffix else "phases"})
         reports.append(report)
-    assert sum(item["clips"] for item in reports) == len(flattened) == 123
+    clip_count = sum(item["clips"] for item in reports)
+    assert clip_count == len(flattened) == validation["total_clips"]
     ns = {"m": "http://schemas.microsoft.com/developer/msbuild/2003"}
     for project in ["SimpleGame.vcxproj", "SimpleGame.vcxproj.filters"]:
         xml = ET.parse(root / "SimpleGame" / project)
@@ -122,7 +123,7 @@ def verify(root):
     xml = ET.parse(root / "SimpleGame/SimpleGame.vcxproj")
     assert "**\\monster_catalog.json" in xml.find(".//m:PrototypeModels", ns).get("Include")
     return {"method": "Read-only GLB/catalog/source inspection; no compiler, game or Blender execution",
-            "speciesCount": len(reports), "clipCount": 123, "models": reports,
+            "speciesCount": len(reports), "clipCount": clip_count, "models": reports,
             "legacyModelIndices": "Unchanged; species are bound by separate modelKey lookup",
             "gameplayEvents": "Existing AI performs damage/healing; animation markers are visual only"}
 

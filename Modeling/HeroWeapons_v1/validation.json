@@ -1,0 +1,58 @@
+{
+  "checks": {
+    "seven_weapons_plus_arrow": true,
+    "unique_named_roots": true,
+    "all_grip_origins_zero": true,
+    "bow_string_separate": true,
+    "hero_mount_offsets_included": true,
+    "all_9_glbs_match_catalog": true,
+    "static_opaque_finite_geometry": true,
+    "actual_hero_glb_rest_mounts_verified": true,
+    "weapon_detail_previews_rendered": true
+  },
+  "weapon_count": 7,
+  "ammo_count": 1,
+  "mesh_count": 9,
+  "glb_results": [
+    {
+      "key": "WPN_Staff_00_CinderCrook",
+      "meshes": 1,
+      "triangles": 1116
+    },
+    {
+      "key": "WPN_Bow_00_ThornRecurve",
+      "meshes": 2,
+      "triangles": 788
+    },
+    {
+      "key": "WPN_Mace_00_FlangedIron",
+      "meshes": 1,
+      "triangles": 828
+    },
+    {
+      "key": "WPN_Axe_00_Riven",
+      "meshes": 1,
+      "triangles": 612
+    },
+    {
+      "key": "WPN_Hammer_00_Warden",
+      "meshes": 1,
+      "triangles": 732
+    },
+    {
+      "key": "WPN_Spear_00_AshPike",
+      "meshes": 1,
+      "triangles": 596
+    },
+    {
+      "key": "WPN_Dagger_00_Rondel",
+      "meshes": 1,
+      "triangles": 564
+    },
+    {
+      "key": "AMMO_Arrow_00_Iron",
+      "meshes": 1,
+      "triangles": 68
+    }
+  ]
+}

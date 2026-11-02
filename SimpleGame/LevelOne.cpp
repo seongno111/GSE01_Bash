@@ -121,6 +121,11 @@ void Prototype::InitializeLevelOne()
     }
     std::free(configuredSeed);
 
+    if (const auto* catalog = m_ModelAssets.WorldChunks())
+    {
+        m_Terrain = std::make_unique<Terrain::Sampler>(*catalog, m_WorldSeed);
+    }
+
     std::mt19937_64 random(m_WorldSeed);
     const auto spawn = [this, &random](double x, double y, int tier)
     {

@@ -231,6 +231,12 @@ void NpcWorld::Execute(NpcActor& npc, float dt)
                                     ? 4.0
                                     : 2.0;
         run.phaseUntil = m_Time + duration;
+        if (attack)
+        {
+            npc.BeginAttackAnimation(run.destination.x - npc.WorldX(),
+                                     run.destination.y - npc.WorldY(),
+                                     static_cast<float>(weapon.windup + weapon.recovery));
+        }
         return;
     }
     if (run.phase == NpcPhase::Perform && m_Time >= run.phaseUntil)

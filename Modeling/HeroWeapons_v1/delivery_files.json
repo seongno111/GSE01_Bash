@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-02",
+  "package": "HeroWeapons_v1",
+  "checks_passed": 9,
+  "files": [
+    {
+      "path": "HeroWeapons_v1/AMMO_Arrow_00_Iron.glb",
+      "bytes": 6392,
+      "sha256": "4f460570ea3935ee1b18ee4343ab6a4eefaea75f5206abace812dd8f577b1281"
+    },
+    {
+      "path": "HeroWeapons_v1/hero_weapons_library.glb",
+      "bytes": 301920,
+      "sha256": "2bd9f65576f273696b316afca9a8679398ef5880bf2cd3927a5c982c11d982b8"
+    },
+    {
+      "path": "HeroWeapons_v1/hero_weapons_v1.blend",
+      "bytes": 134140,
+      "sha256": "b378fe18807286a6ac7281899ec17f7596f18300b2cf0418acec4ad26fdd5bfa"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/AMMO_Arrow_00_Iron.png",
+      "bytes": 462262,
+      "sha256": "c9e05548143810c51a642bcf1b313777b22ebc4ffe49ef6864cee2800ab3ff75"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/weapons_lineup.png",
+      "bytes": 1559409,
+      "sha256": "84fb42ac2a2a6da2ba5e670cf95c18ad660cf3b92aa6a4047133abe99cb42cb6"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/weapons_overview.jpg",
+      "bytes": 120807,
+      "sha256": "ace179038ae8098823c36a2f2124bb190f647a891177cc5ad8a852d578a00e22"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Axe_00_Riven.png",
+      "bytes": 461596,
+      "sha256": "38b6804882fafcfc72ee7ea48f841034bd095dbcbb0260093c2435897a5b5aa6"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Bow_00_ThornRecurve.png",
+      "bytes": 464887,
+      "sha256": "2d88ac3ff2acc67fb4204eab4c6b39db74d290275078c8aae17342d76b054b93"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Dagger_00_Rondel.png",
+      "bytes": 461037,
+      "sha256": "32cd8e0ad905c6ddd30ba4b44d7b6188869ed6b96b0af52aa8cb86b93d276e3f"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Hammer_00_Warden.png",
+      "bytes": 464920,
+      "sha256": "7217dbbb578404f6b754ab383404809826ff6feed2a03deb56355a3ff69af532"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Mace_00_FlangedIron.png",
+      "bytes": 462899,
+      "sha256": "671ede30f79fe811978b0e892e5711844ceef3b449f6453d08b31c1640bf50a3"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Spear_00_AshPike.png",
+      "bytes": 448640,
+      "sha256": "3292084a135a724898bf4322f1edd96688bd6d37eaec919a9e36e7fe50baef56"
+    },
+    {
+      "path": "HeroWeapons_v1/previews/WPN_Staff_00_CinderCrook.png",
+      "bytes": 458893,
+      "sha256": "4e7ff6ef6d6b21403bcd0d3c7f0eff635f7167c213041a2d2c7f7f2be6ce03fa"
+    },
+    {
+      "path": "HeroWeapons_v1/README.md",
+      "bytes": 3263,
+      "sha256": "80804e31e29f8c7ebfb39c21b0b3970c63a5ea9eaaa75257723cc9c6849ffb0e"
+    },
+    {
+      "path": "HeroWeapons_v1/validation.json",
+      "bytes": 1254,
+      "sha256": "c8ec3b0308e59ca04ddec11fc75d104210afa85b09abce0324717c0ad2dae97b"
+    },
+    {
+      "path": "HeroWeapons_v1/weapon_catalog.json",
+      "bytes": 9503,
+      "sha256": "6e1e9c6b9d09817b8fcb0e1adabd18a6cbd50bf6aaf814a0d43ad5eecb0d3e97"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Axe_00_Riven.glb",
+      "bytes": 36320,
+      "sha256": "eb6d12ce2122d81eae14f58f58b941290424856d711a08028cefa48cf425b0c5"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Bow_00_ThornRecurve.glb",
+      "bytes": 45476,
+      "sha256": "ad30abbfa4ad4154404accdde02690bf49e4c8cb7f0dc471e9abdccafc97df2e"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Dagger_00_Rondel.glb",
+      "bytes": 33672,
+      "sha256": "6c6bb2723d85027ffb8fa382ec0ca39e52fb2835b2541ad81ddde82f98c78e41"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Hammer_00_Warden.glb",
+      "bytes": 42636,
+      "sha256": "9cf9d752f3f05842ae3b33ccd42c1329afe9af4c7b91cc2c04da0a0266ac0f45"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Mace_00_FlangedIron.glb",
+      "bytes": 47660,
+      "sha256": "6c3e940f9c538bea15f345618a0d869340469cac32f6623aa10be450635878ed"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Spear_00_AshPike.glb",
+      "bytes": 35468,
+      "sha256": "d7f37c19098c9fd00022c66c4b597547bee59bd48a2f36e8de19ed64208dfaa6"
+    },
+    {
+      "path": "HeroWeapons_v1/WPN_Staff_00_CinderCrook.glb",
+      "bytes": 64000,
+      "sha256": "8434954207f724c6e97bb32e0cbcdf386bcfe0d5b9987ef7887baf3e31ba102d"
+    }
+  ],
+  "game_code_or_build_included": false
+}

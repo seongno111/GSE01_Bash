@@ -1,0 +1,189 @@
+{
+  "checks": {
+    "six_model_keys_unique": true,
+    "all_vertices_weighted": true,
+    "weights_normalized": true,
+    "glb_skins_and_clips": true,
+    "loop_ends_match": true,
+    "finite_keys": true,
+    "basic_attack_events_match": true,
+    "special_events_match": true,
+    "animal_skeletons_are_not_humanoid": true,
+    "roundtrip_all_six_animate": true,
+    "rift_recovery_seconds_1_6": true,
+    "wolf_pounce_end_above_ground": true,
+    "directional_keyframes_authored": true,
+    "model_meshes_and_bind_unchanged": true,
+    "directional_sampled_vertices_above_floor": true,
+    "directional_glb_clips_and_timings_verified": true,
+    "directional_loop_seams_and_headings_verified": true,
+    "directional_actual_skinning_floor_verified": true,
+    "directional_fresh_import_render_and_previews_verified": true
+  },
+  "models": [
+    {
+      "key": "AshWolf",
+      "bones": 23,
+      "meshes": 1,
+      "clips": 36,
+      "triangles": 1035,
+      "height_m": 1.2000001668930054
+    },
+    {
+      "key": "BlightBear",
+      "bones": 24,
+      "meshes": 2,
+      "clips": 35,
+      "triangles": 1200,
+      "height_m": 1.5600000619888306
+    },
+    {
+      "key": "ThornStag",
+      "bones": 24,
+      "meshes": 2,
+      "clips": 35,
+      "triangles": 1060,
+      "height_m": 2.259999990463257
+    },
+    {
+      "key": "FallenPaladin",
+      "bones": 31,
+      "meshes": 3,
+      "clips": 36,
+      "triangles": 1522,
+      "height_m": 2.005563974380493
+    },
+    {
+      "key": "FallenPriest",
+      "bones": 31,
+      "meshes": 3,
+      "clips": 38,
+      "triangles": 971,
+      "height_m": 2.069999933242798
+    },
+    {
+      "key": "HighDemonAzar",
+      "bones": 37,
+      "meshes": 4,
+      "clips": 39,
+      "triangles": 1241,
+      "height_m": 2.8457000255584717
+    }
+  ],
+  "total_clips": 219,
+  "directional_revision": "2026-10-29",
+  "directional_validation_report": "../DirectionalMotion_20261029/validation.json",
+  "prior_roundtrip_probe_before_directional_revision": [
+    {
+      "file": "Monsters_v1\\AshWolf.glb",
+      "clip": "AshWolf_PouncePrepare",
+      "bones": 23,
+      "actions": 20,
+      "asset_meshes": 1,
+      "vertex_motion_m": 0.12631178016283254,
+      "lowest_vertex_end_m": 0.004999637603759766
+    },
+    {
+      "file": "Monsters_v1\\BlightBear.glb",
+      "clip": "BlightBear_Slam",
+      "bones": 24,
+      "actions": 19,
+      "asset_meshes": 2,
+      "vertex_motion_m": 0.3926212289664444
+    },
+    {
+      "file": "Monsters_v1\\ThornStag.glb",
+      "clip": "ThornStag_ChargePrepare",
+      "bones": 24,
+      "actions": 19,
+      "asset_meshes": 2,
+      "vertex_motion_m": 0.3314885917874947
+    },
+    {
+      "file": "Monsters_v1\\HighDemonAzar.glb",
+      "clip": "HighDemonAzar_Rift",
+      "bones": 37,
+      "actions": 23,
+      "asset_meshes": 4,
+      "vertex_motion_m": 1.4679547288058699
+    },
+    {
+      "file": "Monsters_v1\\FallenPaladin.glb",
+      "clip": "FallenPaladin_WardPrepare",
+      "bones": 31,
+      "actions": 20,
+      "asset_meshes": 3,
+      "vertex_motion_m": 0.3478737547455102
+    },
+    {
+      "file": "Monsters_v1\\FallenPriest.glb",
+      "clip": "FallenPriest_Mend",
+      "bones": 31,
+      "actions": 22,
+      "asset_meshes": 3,
+      "vertex_motion_m": 0.9241611497397489
+    }
+  ],
+  "directional_export_validation": [
+    {
+      "file": "Monsters_v1/AshWolf.glb",
+      "clips": 36,
+      "new_clips": 16,
+      "mesh_count": 1,
+      "old_clip_world_matrix_max_error": 9.689771512944034e-07,
+      "minimum_skinned_vertex_y": 0.002445548923385869,
+      "loop_endpoint_matrix_max_error": 1.6858749407600016e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "Monsters_v1/BlightBear.glb",
+      "clips": 35,
+      "new_clips": 16,
+      "mesh_count": 2,
+      "old_clip_world_matrix_max_error": 4.975985155031282e-07,
+      "minimum_skinned_vertex_y": 0.003796071750735158,
+      "loop_endpoint_matrix_max_error": 0,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "Monsters_v1/ThornStag.glb",
+      "clips": 35,
+      "new_clips": 16,
+      "mesh_count": 2,
+      "old_clip_world_matrix_max_error": 6.545839911220597e-07,
+      "minimum_skinned_vertex_y": 0.003703506013569192,
+      "loop_endpoint_matrix_max_error": 2.1316286307967742e-14,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "Monsters_v1/HighDemonAzar.glb",
+      "clips": 39,
+      "new_clips": 16,
+      "mesh_count": 4,
+      "old_clip_world_matrix_max_error": 6.986505105555096e-07,
+      "minimum_skinned_vertex_y": -0.0012727506925530952,
+      "loop_endpoint_matrix_max_error": 2.5485332189045806e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "Monsters_v1/FallenPaladin.glb",
+      "clips": 36,
+      "new_clips": 16,
+      "mesh_count": 3,
+      "old_clip_world_matrix_max_error": 9.239878725475492e-07,
+      "minimum_skinned_vertex_y": -0.00041487811687351427,
+      "loop_endpoint_matrix_max_error": 1.1055004516779913e-08,
+      "heading_vector_max_error": 3.8767313415011273e-07
+    },
+    {
+      "file": "Monsters_v1/FallenPriest.glb",
+      "clips": 38,
+      "new_clips": 16,
+      "mesh_count": 3,
+      "old_clip_world_matrix_max_error": 6.588932492945787e-07,
+      "minimum_skinned_vertex_y": -0.00028792831220071836,
+      "loop_endpoint_matrix_max_error": 2.538597997370218e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-02",
+  "units": "meter",
+  "blender_axes": "Z up; grip origin; +Z shaft/head, -Y projectile direction",
+  "gltf_axes": "Y up; grip origin; +Y shaft/head, +Z projectile direction",
+  "weapons": [
+    {
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "name_ko": "재의 순례 지팡이",
+      "kind": "staff",
+      "file": "WPN_Staff_00_CinderCrook.glb",
+      "root_node": "WPN_Staff_00_CinderCrook",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Staff_00_CinderCrook__Body"
+        }
+      ],
+      "sockets": [
+        "WPN_Staff_00_CinderCrook__Cast"
+      ],
+      "preferred_hand": "right",
+      "hero_bone": "weapon_r",
+      "triangles": 1116,
+      "bounds_min": [
+        -0.1486038714647293,
+        -0.06499999761581421,
+        -0.686784029006958
+      ],
+      "bounds_max": [
+        0.1486038714647293,
+        0.06499999761581421,
+        1.3600000143051147
+      ],
+      "forward_blender": null,
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "name_ko": "가시 사냥 활",
+      "kind": "bow",
+      "file": "WPN_Bow_00_ThornRecurve.glb",
+      "root_node": "WPN_Bow_00_ThornRecurve",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Bow_00_ThornRecurve__Body"
+        },
+        {
+          "part_index": 1,
+          "mesh": "WPN_Bow_00_ThornRecurve__String"
+        }
+      ],
+      "sockets": [
+        "WPN_Bow_00_ThornRecurve__Nock"
+      ],
+      "preferred_hand": "left",
+      "hero_bone": "weapon_l",
+      "triangles": 788,
+      "bounds_min": [
+        -0.033799998462200165,
+        -0.07489105314016342,
+        -0.6578201651573181
+      ],
+      "bounds_max": [
+        0.033799998462200165,
+        0.20299965143203735,
+        0.6578201651573181
+      ],
+      "forward_blender": "-Y",
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "name_ko": "흑철 날개 철퇴",
+      "kind": "mace",
+      "file": "WPN_Mace_00_FlangedIron.glb",
+      "root_node": "WPN_Mace_00_FlangedIron",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Mace_00_FlangedIron__Body"
+        }
+      ],
+      "sockets": [],
+      "preferred_hand": "right",
+      "hero_bone": "weapon_r",
+      "triangles": 828,
+      "bounds_min": [
+        -0.15000000596046448,
+        -0.13640381395816803,
+        -0.3216240108013153
+      ],
+      "bounds_max": [
+        0.15000000596046448,
+        0.13640381395816803,
+        0.75
+      ],
+      "forward_blender": null,
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "WPN_Axe_00_Riven",
+      "name_ko": "갈라진 전투 도끼",
+      "kind": "axe",
+      "file": "WPN_Axe_00_Riven.glb",
+      "root_node": "WPN_Axe_00_Riven",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Axe_00_Riven__Body"
+        }
+      ],
+      "sockets": [],
+      "preferred_hand": "right",
+      "hero_bone": "weapon_r",
+      "triangles": 612,
+      "bounds_min": [
+        -0.19033247232437134,
+        -0.03999999538064003,
+        -0.36775198578834534
+      ],
+      "bounds_max": [
+        0.38999998569488525,
+        0.03999999538064003,
+        0.6899999976158142
+      ],
+      "forward_blender": null,
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "name_ko": "수문장 전투 망치",
+      "kind": "warhammer",
+      "file": "WPN_Hammer_00_Warden.glb",
+      "root_node": "WPN_Hammer_00_Warden",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Hammer_00_Warden__Body"
+        }
+      ],
+      "sockets": [],
+      "preferred_hand": "right",
+      "hero_bone": "weapon_r",
+      "triangles": 732,
+      "bounds_min": [
+        -0.2524999976158142,
+        -0.10999999940395355,
+        -0.393559992313385
+      ],
+      "bounds_max": [
+        0.2524999976158142,
+        0.10999999940395355,
+        0.75
+      ],
+      "forward_blender": null,
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "name_ko": "잿빛 장창",
+      "kind": "spear",
+      "file": "WPN_Spear_00_AshPike.glb",
+      "root_node": "WPN_Spear_00_AshPike",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Spear_00_AshPike__Body"
+        }
+      ],
+      "sockets": [],
+      "preferred_hand": "right",
+      "hero_bone": "weapon_r",
+      "triangles": 596,
+      "bounds_min": [
+        -0.12999999523162842,
+        -0.03500000014901161,
+        -0.800000011920929
+      ],
+      "bounds_max": [
+        0.12999999523162842,
+        0.03500000014901161,
+        1.5700000524520874
+      ],
+      "forward_blender": null,
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "name_ko": "황동 가드 단검",
+      "kind": "dagger",
+      "file": "WPN_Dagger_00_Rondel.glb",
+      "root_node": "WPN_Dagger_00_Rondel",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "WPN_Dagger_00_Rondel__Body"
+        }
+      ],
+      "sockets": [],
+      "preferred_hand": "right",
+      "hero_bone": "weapon_r",
+      "triangles": 564,
+      "bounds_min": [
+        -0.08500000089406967,
+        -0.029999999329447746,
+        -0.1690399944782257
+      ],
+      "bounds_max": [
+        0.08500000089406967,
+        0.029999999329447746,
+        0.4699999988079071
+      ],
+      "forward_blender": null,
+      "tip_axis_blender": "+Z"
+    },
+    {
+      "weapon_key": "AMMO_Arrow_00_Iron",
+      "name_ko": "철촉 화살",
+      "kind": "arrow",
+      "file": "AMMO_Arrow_00_Iron.glb",
+      "root_node": "AMMO_Arrow_00_Iron",
+      "grip_origin": [
+        0,
+        0,
+        0
+      ],
+      "parts": [
+        {
+          "part_index": 0,
+          "mesh": "AMMO_Arrow_00_Iron__Body"
+        }
+      ],
+      "sockets": [],
+      "preferred_hand": null,
+      "hero_bone": null,
+      "triangles": 68,
+      "bounds_min": [
+        -0.028462812304496765,
+        -0.7699999809265137,
+        -0.01899999938905239
+      ],
+      "bounds_max": [
+        0.028462812304496765,
+        0.0,
+        0.03200000151991844
+      ],
+      "forward_blender": "-Y",
+      "tip_axis_blender": "-Y"
+    }
+  ],
+  "hero_rest_mounts_gltf": {
+    "weapon_l": {
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation_xyzw": [
+        0.999999999999998,
+        -1.7009572221344616e-08,
+        5.7859355163976684e-09,
+        6.009490943720162e-08
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "matrix_column_major": [
+        0.9999999999999849,
+        7.307680726843939e-08,
+        1.2407162543624123e-07,
+        0.0,
+        -1.4111509615381711e-07,
+        -0.9999999999999971,
+        2.2655925400750967e-07,
+        0.0,
+        -1.009278833706508e-07,
+        -1.3820383741294233e-08,
+        -0.9999999999999667,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "basis_source": "Actual hero GLB rest-joint global rotation, not an assumed DCC bone orientation"
+    },
+    "weapon_r": {
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation_xyzw": [
+        0.999999999999998,
+        1.7009572221344616e-08,
+        -5.7859355163976684e-09,
+        6.009490943720162e-08
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "matrix_column_major": [
+        0.9999999999999849,
+        -7.307680726843939e-08,
+        -1.2407162543624123e-07,
+        0.0,
+        1.4111509615381711e-07,
+        -0.9999999999999971,
+        2.2655925400750967e-07,
+        0.0,
+        1.009278833706508e-07,
+        -1.3820383741294233e-08,
+        -0.9999999999999667,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "basis_source": "Actual hero GLB rest-joint global rotation, not an assumed DCC bone orientation"
+    }
+  },
+  "equipment_notes": [
+    "Attach weapon root once to the selected hand bone using the rest mount rotation. No world-position offset is baked into weapon vertices.",
+    "Bow is held in the left hand; hide current left-hand lantern meshes/light when equipping it. Bowstring is separate; neutral shape only, no draw animation included.",
+    "Combat poses, weapon switching, damage and projectiles are implemented later in another chat. Existing hero model and default sword/lantern files are unchanged."
+  ],
+  "hero_binding_source_sha256": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259",
+  "runtime_weapon_switching_implemented": false,
+  "weapon_attack_animations_included": false
+}

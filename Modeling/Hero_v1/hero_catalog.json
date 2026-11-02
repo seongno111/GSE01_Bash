@@ -748,126 +748,6 @@
       "source_clip": "NPC_MoveStop"
     },
     {
-      "name": "HERO_Turn_L45",
-      "rig": "RIG_HERO_HoodedLantern",
-      "kind": "turn",
-      "fps": 60,
-      "start_frame": 1,
-      "end_frame": 25,
-      "duration_seconds": 0.4,
-      "loop": false,
-      "root_translation": "in_place",
-      "root_yaw_degrees": 45,
-      "events": [],
-      "tags": [
-        "turn_transition",
-        "non_loop"
-      ],
-      "blend_in_seconds": 0.12,
-      "blend_out_seconds": 0.12,
-      "source_clip": "NPC_Turn_L45"
-    },
-    {
-      "name": "HERO_Turn_L90",
-      "rig": "RIG_HERO_HoodedLantern",
-      "kind": "turn",
-      "fps": 60,
-      "start_frame": 1,
-      "end_frame": 37,
-      "duration_seconds": 0.6,
-      "loop": false,
-      "root_translation": "in_place",
-      "root_yaw_degrees": 90,
-      "events": [],
-      "tags": [
-        "turn_transition",
-        "non_loop"
-      ],
-      "blend_in_seconds": 0.12,
-      "blend_out_seconds": 0.12,
-      "source_clip": "NPC_Turn_L90"
-    },
-    {
-      "name": "HERO_Turn_L180",
-      "rig": "RIG_HERO_HoodedLantern",
-      "kind": "turn",
-      "fps": 60,
-      "start_frame": 1,
-      "end_frame": 55,
-      "duration_seconds": 0.9,
-      "loop": false,
-      "root_translation": "in_place",
-      "root_yaw_degrees": 180,
-      "events": [],
-      "tags": [
-        "turn_transition",
-        "non_loop"
-      ],
-      "blend_in_seconds": 0.12,
-      "blend_out_seconds": 0.12,
-      "source_clip": "NPC_Turn_L180"
-    },
-    {
-      "name": "HERO_Turn_R45",
-      "rig": "RIG_HERO_HoodedLantern",
-      "kind": "turn",
-      "fps": 60,
-      "start_frame": 1,
-      "end_frame": 25,
-      "duration_seconds": 0.4,
-      "loop": false,
-      "root_translation": "in_place",
-      "root_yaw_degrees": -45,
-      "events": [],
-      "tags": [
-        "turn_transition",
-        "non_loop"
-      ],
-      "blend_in_seconds": 0.12,
-      "blend_out_seconds": 0.12,
-      "source_clip": "NPC_Turn_R45"
-    },
-    {
-      "name": "HERO_Turn_R90",
-      "rig": "RIG_HERO_HoodedLantern",
-      "kind": "turn",
-      "fps": 60,
-      "start_frame": 1,
-      "end_frame": 37,
-      "duration_seconds": 0.6,
-      "loop": false,
-      "root_translation": "in_place",
-      "root_yaw_degrees": -90,
-      "events": [],
-      "tags": [
-        "turn_transition",
-        "non_loop"
-      ],
-      "blend_in_seconds": 0.12,
-      "blend_out_seconds": 0.12,
-      "source_clip": "NPC_Turn_R90"
-    },
-    {
-      "name": "HERO_Turn_R180",
-      "rig": "RIG_HERO_HoodedLantern",
-      "kind": "turn",
-      "fps": 60,
-      "start_frame": 1,
-      "end_frame": 55,
-      "duration_seconds": 0.9,
-      "loop": false,
-      "root_translation": "in_place",
-      "root_yaw_degrees": -180,
-      "events": [],
-      "tags": [
-        "turn_transition",
-        "non_loop"
-      ],
-      "blend_in_seconds": 0.12,
-      "blend_out_seconds": 0.12,
-      "source_clip": "NPC_Turn_R180"
-    },
-    {
       "name": "HERO_AttackLongsword",
       "rig": "RIG_HERO_HoodedLantern",
       "kind": "attack_sword",
@@ -990,5 +870,7 @@
     "Carry clips contain keyed lamp counter-rotation. Not a runtime physics simulation.",
     "Game code/build/integration not included."
   ],
-  "revision": "long_cape_20261026"
+  "revision": "long_cape_20261026",
+  "locomotion_revision": "shared_walk_run_20261029",
+  "locomotion_manifest": "../LocomotionShared_20261029/locomotion_catalog.json"
 }

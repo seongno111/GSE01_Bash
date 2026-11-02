@@ -1,0 +1,246 @@
+{
+  "schema_version": 3,
+  "checks": {
+    "all_vertices_weighted": true,
+    "weights_normalized": true,
+    "all_19_npc_actions_mapped": true,
+    "closed_helmet_keeps_real_head": true,
+    "all_presets_21_slots": true,
+    "all_10_game_prop_kinds_mapped": true,
+    "clip_names_unique": true,
+    "exported_skins_and_animations": true,
+    "loop_endpoints_match": true,
+    "finite_animation_values": true,
+    "npc_attack_event_timing": true,
+    "imported_glb_meshes_really_animate": true,
+    "strafe_labels_match_character_axes": true,
+    "chapel_19_roof_closed_volume": true,
+    "directional_keyframes_authored": true,
+    "model_meshes_and_bind_unchanged": true,
+    "directional_sampled_vertices_above_floor": true,
+    "directional_glb_clips_and_timings_verified": true,
+    "directional_loop_seams_and_headings_verified": true,
+    "directional_actual_skinning_floor_verified": true,
+    "directional_fresh_import_render_and_previews_verified": true
+  },
+  "files": [
+    {
+      "file": "npc/adventurer_rigged.glb",
+      "meshes": 18,
+      "skins": 1,
+      "clips": 61,
+      "bytes": 5174428
+    },
+    {
+      "file": "npc/knight_rigged.glb",
+      "meshes": 17,
+      "skins": 1,
+      "clips": 61,
+      "bytes": 5223496
+    },
+    {
+      "file": "npc/merchant_rigged.glb",
+      "meshes": 18,
+      "skins": 1,
+      "clips": 61,
+      "bytes": 5154160
+    },
+    {
+      "file": "npc/npc_parts_rigged.glb",
+      "meshes": 51,
+      "skins": 1,
+      "clips": 61,
+      "bytes": 5645692
+    },
+    {
+      "file": "npc/priest_rigged.glb",
+      "meshes": 13,
+      "skins": 1,
+      "clips": 61,
+      "bytes": 5130636
+    },
+    {
+      "file": "npc/raider_rigged.glb",
+      "meshes": 18,
+      "skins": 1,
+      "clips": 61,
+      "bytes": 5168440
+    },
+    {
+      "file": "monsters/DeathEcho_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 32,
+      "bytes": 3139372
+    },
+    {
+      "file": "monsters/FieldWarden_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 33,
+      "bytes": 3231820
+    },
+    {
+      "file": "monsters/MutatedHuman_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 32,
+      "bytes": 3139384
+    },
+    {
+      "file": "monsters/TaintedRaider_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 31,
+      "bytes": 3007148
+    },
+    {
+      "file": "monsters/WitheredHollow_rigged.glb",
+      "meshes": 1,
+      "skins": 1,
+      "clips": 31,
+      "bytes": 2994632
+    }
+  ],
+  "warnings": [
+    "Runtime integration, arbitrary outfit collisions and animation gameplay sync are separate work."
+  ],
+  "counts": {
+    "npc_parts": 51,
+    "props": 33,
+    "bones": 31,
+    "npc_clips": 61,
+    "monster_clips": 159,
+    "monster_variants": 5
+  },
+  "directional_revision": "2026-10-29",
+  "directional_validation_report": "../DirectionalMotion_20261029/validation.json",
+  "prior_roundtrip_probes_before_directional_revision": {
+    "npc_glb_roundtrip": {
+      "file": "npc\\knight_rigged.glb",
+      "clip": "NPC_Run",
+      "max_vertex_motion_m": 0.8934812333458619,
+      "imported_actions": 45,
+      "armature_bones": 31
+    },
+    "monster_glb_roundtrip": {
+      "file": "monsters\\FieldWarden_rigged.glb",
+      "clip": "MON_02_Burst",
+      "max_vertex_motion_m": 1.5407464467429093,
+      "imported_actions": 17,
+      "armature_bones": 31
+    }
+  },
+  "directional_export_validation": [
+    {
+      "file": "LowPolyKit_v3/npc/npc_parts_rigged.glb",
+      "clips": 61,
+      "new_clips": 16,
+      "mesh_count": 51,
+      "old_clip_world_matrix_max_error": 5.854412610251103e-07,
+      "minimum_skinned_vertex_y": -0.000569460667003824,
+      "loop_endpoint_matrix_max_error": 2.53189289201039e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/npc/priest_rigged.glb",
+      "clips": 61,
+      "new_clips": 16,
+      "mesh_count": 13,
+      "old_clip_world_matrix_max_error": 5.854412610251103e-07,
+      "minimum_skinned_vertex_y": -0.000569460667003824,
+      "loop_endpoint_matrix_max_error": 2.53189289201039e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/npc/knight_rigged.glb",
+      "clips": 61,
+      "new_clips": 16,
+      "mesh_count": 17,
+      "old_clip_world_matrix_max_error": 5.854412610251103e-07,
+      "minimum_skinned_vertex_y": -0.000569460667003824,
+      "loop_endpoint_matrix_max_error": 2.53189289201039e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/npc/adventurer_rigged.glb",
+      "clips": 61,
+      "new_clips": 16,
+      "mesh_count": 18,
+      "old_clip_world_matrix_max_error": 5.854412610251103e-07,
+      "minimum_skinned_vertex_y": -0.000569460667003824,
+      "loop_endpoint_matrix_max_error": 2.53189289201039e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/npc/raider_rigged.glb",
+      "clips": 61,
+      "new_clips": 16,
+      "mesh_count": 18,
+      "old_clip_world_matrix_max_error": 5.854412610251103e-07,
+      "minimum_skinned_vertex_y": -0.000569460667003824,
+      "loop_endpoint_matrix_max_error": 2.53189289201039e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/npc/merchant_rigged.glb",
+      "clips": 61,
+      "new_clips": 16,
+      "mesh_count": 18,
+      "old_clip_world_matrix_max_error": 5.854412610251103e-07,
+      "minimum_skinned_vertex_y": -0.000569460667003824,
+      "loop_endpoint_matrix_max_error": 2.53189289201039e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/WitheredHollow_rigged.glb",
+      "clips": 31,
+      "new_clips": 16,
+      "mesh_count": 1,
+      "old_clip_world_matrix_max_error": 6.135333254775333e-07,
+      "minimum_skinned_vertex_y": -0.00024836818821384615,
+      "loop_endpoint_matrix_max_error": 2.6046568013526894e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/TaintedRaider_rigged.glb",
+      "clips": 31,
+      "new_clips": 16,
+      "mesh_count": 1,
+      "old_clip_world_matrix_max_error": 7.308775338277229e-07,
+      "minimum_skinned_vertex_y": -0.0006079907516878243,
+      "loop_endpoint_matrix_max_error": 2.384185791015625e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/FieldWarden_rigged.glb",
+      "clips": 33,
+      "new_clips": 16,
+      "mesh_count": 1,
+      "old_clip_world_matrix_max_error": 7.886320250172218e-07,
+      "minimum_skinned_vertex_y": -0.0017096362310843659,
+      "loop_endpoint_matrix_max_error": 2.384185791015625e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/MutatedHuman_rigged.glb",
+      "clips": 32,
+      "new_clips": 16,
+      "mesh_count": 1,
+      "old_clip_world_matrix_max_error": 7.208301180394727e-07,
+      "minimum_skinned_vertex_y": -0.000810257070582033,
+      "loop_endpoint_matrix_max_error": 2.526231138721968e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/DeathEcho_rigged.glb",
+      "clips": 32,
+      "new_clips": 16,
+      "mesh_count": 1,
+      "old_clip_world_matrix_max_error": 7.208301180394727e-07,
+      "minimum_skinned_vertex_y": -0.000810257070582033,
+      "loop_endpoint_matrix_max_error": 2.526231138721968e-07,
+      "heading_vector_max_error": 3.45526251388506e-07
+    }
+  ]
+}

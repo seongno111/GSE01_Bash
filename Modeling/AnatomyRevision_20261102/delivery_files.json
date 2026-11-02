@@ -1,0 +1,228 @@
+{
+  "date": "2026-11-02",
+  "package": "AnatomyRevision_20261102",
+  "checks_passed": 13,
+  "files": [
+    {
+      "path": "AnatomyRevision_20261102/delivery_overview.json",
+      "bytes": 830,
+      "sha256": "c6de8fae130e7a44e16492625202f512134670b45781769423577daeb963e22b"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_after.png",
+      "bytes": 406031,
+      "sha256": "1e9ea4321cf24a5ff962a940e7b63a68889ebc1f5cd55dde644d4763b9b37081"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_before.png",
+      "bytes": 404730,
+      "sha256": "268f051a4cb1c3fe031460ca167fcf1edb14e53e26fe385ecb39c2edb40ddab8"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_PouncePrepare.gif",
+      "bytes": 1275846,
+      "sha256": "a33f019b2d3ab6cd8effdbd0d7a70a5a33fd95bd6bb1198aa7b45bf21436b87f"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_PouncePrepare_keyframes.jpg",
+      "bytes": 53680,
+      "sha256": "ac9ff83009b25fc461b478ef56f343785cdc3d9877d23da11746ba406055ee63"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_Run.gif",
+      "bytes": 1249416,
+      "sha256": "d8f8893d8ab687434c837853ac200433829082eb334ca058b53a6eea35b6dd4d"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_Run_keyframes.jpg",
+      "bytes": 55535,
+      "sha256": "0642287b112e00e3889dc02eb58dff957e381e274d30a6f4ea7de4ed8dde40ad"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_Walk.gif",
+      "bytes": 1263138,
+      "sha256": "b9676de91ef4505c0f8429ccb8b4ad1bf7f97359c88e5c7464c2b35472c4d655"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/AshWolf_Walk_keyframes.jpg",
+      "bytes": 54602,
+      "sha256": "528c1ad5156b3760144cf7c2e45bcee7783bfdb91d70d3c7874a8f672a6d73b6"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/before_after.jpg",
+      "bytes": 260692,
+      "sha256": "0ce0722fda72732b5f93ee5676779be7b2965ee6ae7ce87434cc131f21358410"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_after.png",
+      "bytes": 439188,
+      "sha256": "881bcda0da051437ac89399426d3b8ebc2d7960a7b1db7817d5a48c7f01fa6ee"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_before.png",
+      "bytes": 432998,
+      "sha256": "e97bfb31103f22cec9943e2d18beaff8266af0224f1dbac5e3e8c3b3f33c0924"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_Run.gif",
+      "bytes": 1351672,
+      "sha256": "798bcc5152981592e94ce2e63cdfc4f271a54a150bcea2888476fd864af67b33"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_Run_keyframes.jpg",
+      "bytes": 70858,
+      "sha256": "f50117b2a99559ff823bae07755765d002360b221e823f16a5bb0cf686399919"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_Slam.gif",
+      "bytes": 1395694,
+      "sha256": "81095f0a0913496777fd739892846bbd73a5e493bfb65fa77fbabb9cc5df0413"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_Slam_keyframes.jpg",
+      "bytes": 71549,
+      "sha256": "3805b914a608e278dae8038a43618be78aea25f58309b57406f15181d73db04b"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_Walk.gif",
+      "bytes": 1395444,
+      "sha256": "1f2cfe3a115d0e130b6b128d518cc132f5d5f24a46d9ee4388ace39868cf5e29"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/BlightBear_Walk_keyframes.jpg",
+      "bytes": 72825,
+      "sha256": "9a282b0eb2cd5e756ccef4e7ea1575af63de4928847fde57e9da553d5c0b5cc5"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_after.png",
+      "bytes": 399631,
+      "sha256": "acf8cef652406d097e0b5accb9bea95f1341874014e359472ed134b852600766"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_before.png",
+      "bytes": 400364,
+      "sha256": "ed000be9e5d2c28cf5ede537df1cb7189ed1cf174aff7ed2c32377dedcb5c8f5"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_Gore.gif",
+      "bytes": 1065119,
+      "sha256": "2fc9f5a6b910fe383b1401199d3bfa4ddb4deea586983c9d316577eb0775a0fc"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_Gore_keyframes.jpg",
+      "bytes": 49225,
+      "sha256": "d6073f8e5682f14a191de3f13e0257b02671f54cbded84139f8e0ea020dcee8a"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_Run.gif",
+      "bytes": 1085572,
+      "sha256": "6a721bff537e85e28f6eae6ba865d0dd4811a86b369e10fdbbf3492cd607e91a"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_Run_keyframes.jpg",
+      "bytes": 49607,
+      "sha256": "3a617785f0d42bd6f7eaf33705f7dd5b71160f63b5ca06a6eb744050395ece1f"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_Walk.gif",
+      "bytes": 1141570,
+      "sha256": "94096c36731988aad5ac23524c84868af91ab8d7e330895a0f99aa9956d9f892"
+    },
+    {
+      "path": "AnatomyRevision_20261102/previews/ThornStag_Walk_keyframes.jpg",
+      "bytes": 50399,
+      "sha256": "c778a0d330dde3431d40ac8b655a6a0bd4df4188cba65a10cfab04dc2302d613"
+    },
+    {
+      "path": "AnatomyRevision_20261102/README.md",
+      "bytes": 4351,
+      "sha256": "fdb96daa3ce21272ec56110414aaa011b4be46de9df6ee4123d23f73b74b923b"
+    },
+    {
+      "path": "AnatomyRevision_20261102/validation.json",
+      "bytes": 3345,
+      "sha256": "b6b4ada3b45fb24a1bed2c7f6bd8116abca919abdf47e0b22dd83145a8c3c7a5"
+    },
+    {
+      "path": "Monsters_v1/AshWolf.glb",
+      "bytes": 1022348,
+      "sha256": "7072824c5ed023248a63cf80debae6020fc687f94e9b41e6341e0178e0c8a0c4"
+    },
+    {
+      "path": "Monsters_v1/BlightBear.glb",
+      "bytes": 1197540,
+      "sha256": "9712caa1c1e8aa4006925b6f3644aeb1e96e12826e3c449c83f11510cda35738"
+    },
+    {
+      "path": "Monsters_v1/monster_catalog.json",
+      "bytes": 101128,
+      "sha256": "3e2e30559dc00ee885c50b25bbb03bedcdf917ca9115135b8e0691189c7d5d07"
+    },
+    {
+      "path": "Monsters_v1/monsters_v1.blend",
+      "bytes": 4747174,
+      "sha256": "a9332504ae0bf948faa107b73cafa4712ad0c329663ac37d84eb1c3b6762a187"
+    },
+    {
+      "path": "Monsters_v1/previews/AshWolf.png",
+      "bytes": 406031,
+      "sha256": "1e9ea4321cf24a5ff962a940e7b63a68889ebc1f5cd55dde644d4763b9b37081"
+    },
+    {
+      "path": "Monsters_v1/previews/AshWolf_keyframes.jpg",
+      "bytes": 53680,
+      "sha256": "ac9ff83009b25fc461b478ef56f343785cdc3d9877d23da11746ba406055ee63"
+    },
+    {
+      "path": "Monsters_v1/previews/AshWolf_special.gif",
+      "bytes": 1275846,
+      "sha256": "a33f019b2d3ab6cd8effdbd0d7a70a5a33fd95bd6bb1198aa7b45bf21436b87f"
+    },
+    {
+      "path": "Monsters_v1/previews/BlightBear.png",
+      "bytes": 439188,
+      "sha256": "881bcda0da051437ac89399426d3b8ebc2d7960a7b1db7817d5a48c7f01fa6ee"
+    },
+    {
+      "path": "Monsters_v1/previews/BlightBear_keyframes.jpg",
+      "bytes": 71549,
+      "sha256": "3805b914a608e278dae8038a43618be78aea25f58309b57406f15181d73db04b"
+    },
+    {
+      "path": "Monsters_v1/previews/BlightBear_special.gif",
+      "bytes": 1395694,
+      "sha256": "81095f0a0913496777fd739892846bbd73a5e493bfb65fa77fbabb9cc5df0413"
+    },
+    {
+      "path": "Monsters_v1/previews/ThornStag.png",
+      "bytes": 399631,
+      "sha256": "acf8cef652406d097e0b5accb9bea95f1341874014e359472ed134b852600766"
+    },
+    {
+      "path": "Monsters_v1/previews/ThornStag_keyframes.jpg",
+      "bytes": 49225,
+      "sha256": "d6073f8e5682f14a191de3f13e0257b02671f54cbded84139f8e0ea020dcee8a"
+    },
+    {
+      "path": "Monsters_v1/previews/ThornStag_special.gif",
+      "bytes": 1065119,
+      "sha256": "2fc9f5a6b910fe383b1401199d3bfa4ddb4deea586983c9d316577eb0775a0fc"
+    },
+    {
+      "path": "Monsters_v1/README.md",
+      "bytes": 7105,
+      "sha256": "53ae9c58b5c68bb0d052c4061bb7d3c6cf512cbf6a0ccb3e5237d018f23fe77d"
+    },
+    {
+      "path": "Monsters_v1/ThornStag.glb",
+      "bytes": 1003232,
+      "sha256": "7ebc2d1650265b797571d9753dca8a4069ef8bb52b17cee7264cd3e7ca535b34"
+    },
+    {
+      "path": "Monsters_v1/validation.json",
+      "bytes": 12091,
+      "sha256": "79b178f03ba0bd294bd48916f22b6fb1096932d4c6aa97ced1bca3018ceae4b4"
+    }
+  ],
+  "game_code_or_build_included": false
+}

@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "all_vertices_weighted": true,
+    "glb_has_skin": true,
+    "glb_clips_match": true,
+    "real_head_present": true,
+    "lamp_light_exported": true,
+    "unique_part_names": true,
+    "roundtrip_import_animates": true,
+    "long_cape_weights_normalized": true,
+    "long_cape_glb_roundtrip_animates": true
+  },
+  "meshes": 25,
+  "bones": 33,
+  "clips": 17,
+  "roundtrip": {
+    "file": "Hero_v1\\hero_rigged.glb",
+    "clip": "HERO_Walk",
+    "bones": 33,
+    "actions": 17,
+    "asset_meshes": 25,
+    "vertex_motion_m": 0.32629180246396017
+  },
+  "cape_bounds": {
+    "min_z": 0.1899999976158142,
+    "width_m": 0.9399999976158142
+  }
+}

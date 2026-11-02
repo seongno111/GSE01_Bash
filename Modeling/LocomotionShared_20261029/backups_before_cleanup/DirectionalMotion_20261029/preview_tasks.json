@@ -1,0 +1,172 @@
+[
+  {
+    "prefix": "HERO",
+    "clip": "HERO_WalkScreenUp",
+    "frame_folder": "HERO_WalkScreenUp",
+    "duration_seconds": 1.0,
+    "frames": 16,
+    "source": "Hero_v1/hero_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/HERO_WalkScreenUp.gif"
+  },
+  {
+    "prefix": "HERO",
+    "clip": "HERO_WalkScreenDown",
+    "frame_folder": "HERO_WalkScreenDown",
+    "duration_seconds": 1.0,
+    "frames": 16,
+    "source": "Hero_v1/hero_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/HERO_WalkScreenDown.gif"
+  },
+  {
+    "prefix": "HERO",
+    "clip": "HERO_RunScreenDown",
+    "frame_folder": "HERO_RunScreenDown",
+    "duration_seconds": 0.6666666666666666,
+    "frames": 16,
+    "source": "Hero_v1/hero_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/HERO_RunScreenDown.gif"
+  },
+  {
+    "prefix": "HERO",
+    "clip": "HERO_TurnStep_R90",
+    "frame_folder": "HERO_TurnStep_R90",
+    "duration_seconds": 0.8,
+    "frames": 16,
+    "source": "Hero_v1/hero_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/HERO_TurnStep_R90.gif"
+  },
+  {
+    "prefix": "HERO",
+    "clip": "HERO_TurnScreenUpToDown_L",
+    "frame_folder": "HERO_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "Hero_v1/hero_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/HERO_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "NPC",
+    "clip": "NPC_TurnScreenUpToDown_L",
+    "frame_folder": "NPC_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "LowPolyKit_v3/npc/knight_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/NPC_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "MON_00",
+    "clip": "MON_00_TurnScreenUpToDown_L",
+    "frame_folder": "MON_00_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "LowPolyKit_v3/monsters/WitheredHollow_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/MON_00_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "MON_01",
+    "clip": "MON_01_TurnScreenUpToDown_L",
+    "frame_folder": "MON_01_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "LowPolyKit_v3/monsters/TaintedRaider_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/MON_01_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "MON_02",
+    "clip": "MON_02_TurnScreenUpToDown_L",
+    "frame_folder": "MON_02_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "LowPolyKit_v3/monsters/FieldWarden_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/MON_02_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "MON_03",
+    "clip": "MON_03_TurnScreenUpToDown_L",
+    "frame_folder": "MON_03_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "LowPolyKit_v3/monsters/MutatedHuman_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/MON_03_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "MON_04",
+    "clip": "MON_04_TurnScreenUpToDown_L",
+    "frame_folder": "MON_04_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "LowPolyKit_v3/monsters/DeathEcho_rigged.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/MON_04_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "AshWolf",
+    "clip": "AshWolf_TurnScreenUpToDown_L",
+    "frame_folder": "AshWolf_TurnScreenUpToDown_L",
+    "duration_seconds": 1.5333333333333334,
+    "frames": 16,
+    "source": "Monsters_v1/AshWolf.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/AshWolf_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "BlightBear",
+    "clip": "BlightBear_TurnScreenUpToDown_L",
+    "frame_folder": "BlightBear_TurnScreenUpToDown_L",
+    "duration_seconds": 1.95,
+    "frames": 16,
+    "source": "Monsters_v1/BlightBear.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/BlightBear_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "ThornStag",
+    "clip": "ThornStag_TurnScreenUpToDown_L",
+    "frame_folder": "ThornStag_TurnScreenUpToDown_L",
+    "duration_seconds": 1.7,
+    "frames": 16,
+    "source": "Monsters_v1/ThornStag.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/ThornStag_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "HighDemonAzar",
+    "clip": "HighDemonAzar_TurnScreenUpToDown_L",
+    "frame_folder": "HighDemonAzar_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "Monsters_v1/HighDemonAzar.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/HighDemonAzar_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "FallenPaladin",
+    "clip": "FallenPaladin_TurnScreenUpToDown_L",
+    "frame_folder": "FallenPaladin_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "Monsters_v1/FallenPaladin.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/FallenPaladin_TurnScreenUpToDown_L.gif"
+  },
+  {
+    "prefix": "FallenPriest",
+    "clip": "FallenPriest_TurnScreenUpToDown_L",
+    "frame_folder": "FallenPriest_TurnScreenUpToDown_L",
+    "duration_seconds": 1.2,
+    "frames": 16,
+    "source": "Monsters_v1/FallenPriest.glb",
+    "sampling": "16 normalized phase samples of actual GLB import",
+    "preview_file": "previews/FallenPriest_TurnScreenUpToDown_L.gif"
+  }
+]

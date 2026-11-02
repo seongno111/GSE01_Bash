@@ -3,6 +3,11 @@
 #include "ModelAsset.h"
 #include <map>
 
+namespace Terrain
+{
+    struct Catalog;
+}
+
 namespace Models
 {
     struct ModelInstance
@@ -41,12 +46,13 @@ namespace Models
     {
         ModelInstance model;
         std::string idle;
+        std::string walk;
+        std::string run;
         std::string attack;
         std::string prepare;
         std::string active;
         std::string recover;
         std::string special;
-        std::map<std::string, std::string> states;
         float height = 0;
     };
 
@@ -81,6 +87,12 @@ namespace Models
         BuildingVisual
         VillageProp(const std::string& village, int gameKind, unsigned variant) const;
         BuildingVisual VillageGate(const std::string& village) const;
+
+        const Terrain::Catalog* WorldChunks() const
+        {
+            return m_WorldChunks.get();
+        }
+
         const ActionVisual* NpcAction(int action) const;
         std::string MonsterClip(int index, const std::string& state) const;
         std::shared_ptr<const Asset> Load(const std::filesystem::path& path);
@@ -96,6 +108,7 @@ namespace Models
         bool LoadPackage(const std::filesystem::path& path);
         void LoadVillageBuildings(const std::filesystem::path& path);
         void LoadMonsterSpecies(const std::filesystem::path& path);
+        void LoadWorldChunks(const std::filesystem::path& path);
         ModelInstance Assemble(const Appearance& appearance, int action = -1) const;
         std::shared_ptr<Asset> ReadCached(const std::filesystem::path& path);
         int m_Schema = 0;
@@ -103,6 +116,7 @@ namespace Models
         std::shared_ptr<const Asset> m_NpcParts;
         std::shared_ptr<const Asset> m_Props;
         ModelInstance m_Hero;
+        std::shared_ptr<const Terrain::Catalog> m_WorldChunks;
         std::map<std::filesystem::path, std::shared_ptr<Asset>> m_Cache;
         std::map<std::pair<int, int>, int> m_PartNodes;
         std::map<std::string, int> m_Slots;

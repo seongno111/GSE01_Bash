@@ -1,0 +1,668 @@
+{
+  "date": "2026-11-02",
+  "package": "WorldChunks_v1",
+  "checks_passed": 17,
+  "files": [
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__00.glb",
+      "bytes": 337108,
+      "sha256": "e73e1865f6be860e84be286ac621ada86f4b57e8b5f9eb0f5e9efdc60fab5c2d"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__01.glb",
+      "bytes": 221084,
+      "sha256": "b6f6b56c93b06479de1fad50edcf7553fb9dea457fe956f5dcc237c0622f9af8"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__10.glb",
+      "bytes": 220472,
+      "sha256": "1ff2936a0a2a12e2df076a6bc1e863517ffaed892e5edcd9d0de21451870eea7"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__evacuated_funeral_hamlet__11.glb",
+      "bytes": 238224,
+      "sha256": "44fd7f5475c46ffa1d0df50d17de9f7ef78984ac6c3c809bbaa78d33e0353b47"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__00.glb",
+      "bytes": 297256,
+      "sha256": "7ea04e46dfdf345659e91e34f02943ae6f51e6bdfeae5880f954889f5b1f044f"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__01.glb",
+      "bytes": 190924,
+      "sha256": "846a6d6c847b0e3f971f7a229533d4fc524e4257d4098f97b253b12363e4a855"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__10.glb",
+      "bytes": 228472,
+      "sha256": "e7288a7cf6b1856ceec7a1a03eb6bba00a0e425fd9a509c11f653f756b2a3320"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__flooded_well_hamlet__11.glb",
+      "bytes": 198956,
+      "sha256": "d004279d07a57d10d8424c6623d45b77c57247c5f54c6e419307ab1601476233"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__00.glb",
+      "bytes": 326220,
+      "sha256": "e62030e0ed03cd469274f9317eb42a0ec714794ffeb10b0cdbd46ea6acdc459c"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__01.glb",
+      "bytes": 220364,
+      "sha256": "470852be5530621a79a67f0ce576adada0c08680dc0700730ceeed4b335cf115"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__10.glb",
+      "bytes": 224804,
+      "sha256": "7665d6eba6aadb563ac159fb04eae2354aa0864bba96c664bbe53c4e5777927c"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_abandoned_village__looted_trade_hamlet__11.glb",
+      "bytes": 234812,
+      "sha256": "4f53e9320a09ad31a4bf6febe8b74a82d79d35119fed95f0501f5249ca0022c6"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ash_grassland__caravan_fork.glb",
+      "bytes": 215324,
+      "sha256": "db93449bc4013e87322b60dbde23591dac997c147cddc9d3e2784fe914112537"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ash_grassland__dead_orchard.glb",
+      "bytes": 232624,
+      "sha256": "118691f3230b3230f477904f5d7a51694026a7759518b8168994f39039cbe491"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ash_grassland__dry_creek_crossing.glb",
+      "bytes": 246996,
+      "sha256": "6bc7b0de8b418cb312f007f1a5f38c6bcb66c224f126135ad3591048367f2527"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ash_grassland__fallow_ridges.glb",
+      "bytes": 218064,
+      "sha256": "9592f948cf314e99da52cc5a1aa5c08bc09d56582b5e9d546b3e10c8dfcc0f17"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_bell_mire__broken_dike_detour.glb",
+      "bytes": 200388,
+      "sha256": "7f7234102a8a8661c9019000b90a2792f4ff5a5ce8291e6ce5cff305fc2e4c8e"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_bell_mire__flooded_orchard.glb",
+      "bytes": 207796,
+      "sha256": "f21ba28769ec8e6a5f849567ebcef3c328857d50a8750f5827cd4fb55051a605"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_bell_mire__reed_causeway.glb",
+      "bytes": 207512,
+      "sha256": "3287e46c93825c310f7f46edffc7f0b01a09265c9a95b40349bc463d5c166f28"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_bell_mire__sunken_graveyard.glb",
+      "bytes": 206944,
+      "sha256": "965607bfc143b42aa9a48b27d572a3e146e0bdd560f3b70f85fe6489655377b5"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_broken_crown_hills__broken_bridge_abutment.glb",
+      "bytes": 172972,
+      "sha256": "eafd9504c790e6650c174c9d491bbb4a9d17d3fea6ae2c6f3e46a4270e2a802e"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_broken_crown_hills__exposed_rock_layers.glb",
+      "bytes": 166336,
+      "sha256": "a560753656e2839f70b20c7d853af7e7aa45dfdfbf5126f191ba4747bf6c9d0b"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_broken_crown_hills__quarry_cart_track.glb",
+      "bytes": 218432,
+      "sha256": "b4fc1cf19b7f33befabfc858c89745d9e72ae22a4305d59bf039966da2af4893"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_broken_crown_hills__watchtower_ridge.glb",
+      "bytes": 167008,
+      "sha256": "01f68da7187c4cbe8da21514c0c9866cceebb1c46f979fca23fb17e4e2761a02"
+    },
+    {
+      "path": "WorldChunks_v1/chunk_catalog.json",
+      "bytes": 145833,
+      "sha256": "bc4dd23b6ee4372445f52b605906d396052a134e8d3d2629838c36e62cf306c7"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dark_canopy_forest__hunting_glade.glb",
+      "bytes": 188352,
+      "sha256": "c688865f6c7162a6035d3fef4bb6ca0ae90343000c5140c3840a2fb9d5c7b784"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dark_canopy_forest__root_passage.glb",
+      "bytes": 226880,
+      "sha256": "3e84acb329759afed4f2f62609a78fdcb6ad8236a89400040824b47e72174a62"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dark_canopy_forest__thorn_nest_margin.glb",
+      "bytes": 212860,
+      "sha256": "03c5d7c040061169b789a9e36032b6781a52aa0ec996834c9f4749f0c653ec21"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dark_canopy_forest__windthrow_patch.glb",
+      "bytes": 191092,
+      "sha256": "efea067ab9fa7fd70740f2c62667e687342da326f41c8671d32dacbe536f4086"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dead_furnace_wastes__burnt_supply_camp.glb",
+      "bytes": 189292,
+      "sha256": "f6fd08181ad744238e67902e72c0865c46ed92e0cc5dde9504d0cf8a3dfabbc1"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dead_furnace_wastes__charcoal_pillars.glb",
+      "bytes": 165744,
+      "sha256": "c79e85a6eb6719e89bcf6965553feb7d777dbc5c9da20717395e47114c25b738"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dead_furnace_wastes__cold_furnace.glb",
+      "bytes": 181708,
+      "sha256": "a31985fda9d260775647bdd1335bb0d1fe65066529da97637fbaef6c4932668b"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_dead_furnace_wastes__fissure_detour.glb",
+      "bytes": 184856,
+      "sha256": "966b31bd73e46248cf5fbe926a8842b75fb5b69b42009c5d2e3ef952cc926306"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_glass_ash_desert__ash_dunes.glb",
+      "bytes": 159668,
+      "sha256": "28ce58cca44d90063cad765b0f86bb69c6f731ef4387d793e152063c27471bc2"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_glass_ash_desert__black_glass_seam.glb",
+      "bytes": 164720,
+      "sha256": "2f726cd21d8b47476a86b08d1bb627580ac4eaf91ad82b490953d1ac05fa9272"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_glass_ash_desert__buried_aqueduct.glb",
+      "bytes": 210864,
+      "sha256": "6510f7d799cfdae584d250c3abedccbab46df9297cc653c0877dc2b01a3bbe6f"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_glass_ash_desert__stone_windbreak.glb",
+      "bytes": 171340,
+      "sha256": "d62810fed280ab85573144baf3be1f7fd4a64506b69da41eb17754c8fc3a88d0"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__00.glb",
+      "bytes": 328864,
+      "sha256": "2d2517bdd46cd5cca71bd45c71ef20a6a66a6100ec489e5ebb141687f3686b3e"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__01.glb",
+      "bytes": 229568,
+      "sha256": "8022bc8ea02f82a22d1ecfb6a228d89fcaf0df9705e704bdb1fb848d8cda5ac7"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__10.glb",
+      "bytes": 229452,
+      "sha256": "5ad1694933bd46e87f0b51b69678b74e8a47a4c2bdf2cac2348dd619f0e782fd"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__broken_standards__11.glb",
+      "bytes": 228740,
+      "sha256": "fe741ce480447405cbb21704a8adf269a2467eff9493dc210d6bd73fde50598f"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__00.glb",
+      "bytes": 330472,
+      "sha256": "fb2f43c1d4d7022fddce3a22a82e7586864b23f0f5f9dbfb4f5a033b029a6413"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__01.glb",
+      "bytes": 228212,
+      "sha256": "49ea27764e8d2df28f152195b96c520237914ae63975ba61392dcbb299b895e7"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__10.glb",
+      "bytes": 234752,
+      "sha256": "1d135f848b27727f206cd329a66d8c2307deebc8e8397b9c224c9b4a01081dd1"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__burnt_field_hospital__11.glb",
+      "bytes": 219384,
+      "sha256": "37d5e1ac698951d0107f60b89ab21c0d4b8497e7d93962684320ca383639fecc"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__00.glb",
+      "bytes": 383220,
+      "sha256": "d8104d6fd2011fab082f91180b55a20dab036e16cf1bd3815be9f9cac090adcc"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__01.glb",
+      "bytes": 228808,
+      "sha256": "c3842e5316cdbcee62d106dadb90f3c99a21489b6f7a3f004690b999d3fff996"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__10.glb",
+      "bytes": 254600,
+      "sha256": "e8f817af500add5d637100a6e52299b33b315ba85440e54564204152acc29830"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_oath_battlefield__supply_trenches__11.glb",
+      "bytes": 227284,
+      "sha256": "0b4a0404ddfbcbd7b2e56f857cb1b8414cf09b29d27e61fc3bfcb263fcdc3a38"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__00.glb",
+      "bytes": 291740,
+      "sha256": "c1d3a0f294ca6724664e84d030f6d30cde288a9dd8442530a6995ca757bcc9cc"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__01.glb",
+      "bytes": 176128,
+      "sha256": "cc151991e41e3b16499a1ee6f822cd28d0fcd5acf9e1d8d061d675aeb572c34c"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__10.glb",
+      "bytes": 185560,
+      "sha256": "90070898f3af4e5c61760e78fa43ad2eadbcebd437620ad5a86aebce78b9bb6a"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__abandoned_cutting_floor__11.glb",
+      "bytes": 178592,
+      "sha256": "455aab2bfffec8c69e9c127a0dce9ac01a4e5a443bc9613f3e025223316bf21c"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__00.glb",
+      "bytes": 260636,
+      "sha256": "d64d7fc6745cccf188e57120b71cfa23cc88a0f5cffad2acd462466ac12c7b51"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__01.glb",
+      "bytes": 171628,
+      "sha256": "ffbdb8e8b105e975d383831407b4a9f05936a5ee4490a845e57c1441c4be4fa0"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__10.glb",
+      "bytes": 176812,
+      "sha256": "e4b16d8b55551dadff5b85f8983c3e40277b0fc8f51115fdbf186efa234cd632"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__collapsed_hauling_works__11.glb",
+      "bytes": 176816,
+      "sha256": "96afba16999831226b083fe5f53557db85fd51f72d55dda8dcafa173918aa135"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__00.glb",
+      "bytes": 269728,
+      "sha256": "74b8b49d57b431bf1023433f1022fe851298f23548cb275c9cd43fb539c7ce5a"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__01.glb",
+      "bytes": 170432,
+      "sha256": "b422e502967a81958e81c86bd56198a3d1d21532ae9ae3b0b40083d40e291f04"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__10.glb",
+      "bytes": 182072,
+      "sha256": "cd83245cb8367179ca2cd8389e084ffda2178a9d20465efe0cd6eff3d68f9636"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ossuary_quarry__sealed_ossuary_entrance__11.glb",
+      "bytes": 184196,
+      "sha256": "43ca15d4d91696ec56a0022428600a96d63d440ab9a3a7283d04efa92699b51f"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__00.glb",
+      "bytes": 314396,
+      "sha256": "dd82a8f5979faafaea00c9757b64253328a7a7e9ce809a82ee78f9c7e6cd1bfd"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__01.glb",
+      "bytes": 239876,
+      "sha256": "473908ab98660eb0b50464a1b246f7f7fd5e501d12f9c50cc1dfdc23d2f19e10"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__10.glb",
+      "bytes": 207884,
+      "sha256": "0feeae4ffe4438fb7e6d248abfbb7d680cb777e3aefded3dafe77a6ebbca9912"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__fallen_guardian_seal__11.glb",
+      "bytes": 227156,
+      "sha256": "250faeca1d41e9c9b96a00eab9c5cf4f099383c11d9948552f804cddee5ee649"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__00.glb",
+      "bytes": 326616,
+      "sha256": "4522703041a41df2c5415121472b0d93f3645f28ad025d1acd0ff83e47e373c8"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__01.glb",
+      "bytes": 201736,
+      "sha256": "b2998bb0bb05849dd2541955cfda85f591fdcfa79648e412928d71a23fdfd335"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__10.glb",
+      "bytes": 227820,
+      "sha256": "44bec457f443ca3f8a988e8e8c7313954204949af0145113349c16688d1204be"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__refuge_records__11.glb",
+      "bytes": 227820,
+      "sha256": "624c054e8f60e32e5c3327c0dcd8770e3cc0ef9441fd4eba73036630e7ecf8f3"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__00.glb",
+      "bytes": 314880,
+      "sha256": "e73b1df385ced10fe40024904fae3ac68dcfafb7c735ca19808d42b5fe9c4216"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__01.glb",
+      "bytes": 212816,
+      "sha256": "68ea0dd146f40fe0f8e1927df25fd1a5705a33ab6cab33cb52654aa8be4bc4d5"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__10.glb",
+      "bytes": 214592,
+      "sha256": "2835db55b51d5c98203c47445ec152de2a98952cf5c86310c468c4ab026457d6"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_ruined_monastery__rootbound_pilgrim_house__11.glb",
+      "bytes": 213560,
+      "sha256": "2d2626d2a9edb17f874e7a05d468033124b2e426728f524ba1bd28307fe7cceb"
+    },
+    {
+      "path": "WorldChunks_v1/chunk_shared_props.glb",
+      "bytes": 182592,
+      "sha256": "4113caa21a19ecba792ddba3111d73b963ea60933ce6d47b53b67265558fbc2f"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_ash_grassland__bell_mire__0.glb",
+      "bytes": 240016,
+      "sha256": "758f8233dd657e8409c3ae4460bd641c5b6b69b174c2a3cfa2b5ea126521f2f1"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_ash_grassland__bell_mire__1.glb",
+      "bytes": 240016,
+      "sha256": "0f8877667c5871ec4798b3003c57ef5002e096fe12dc5c45e50e635235ecd13b"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_ash_grassland__dark_canopy_forest__0.glb",
+      "bytes": 247688,
+      "sha256": "9d9559e7df3a6258777c03302f31718003cf23d352b4895793d6f3d405b20880"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_ash_grassland__dark_canopy_forest__1.glb",
+      "bytes": 247688,
+      "sha256": "0dddb29a633a804485101159ffd6c2e4f7f47c69018b738d6a3649cd86690c93"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_ash_grassland__glass_ash_desert__0.glb",
+      "bytes": 227176,
+      "sha256": "2f123b77ec88f9436121067f5f485d1e77dba48137437e88c6b3b3e19b445e04"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_ash_grassland__glass_ash_desert__1.glb",
+      "bytes": 227176,
+      "sha256": "079eea7a22918a3f1999d5a7858f3c7dc6e6c43531d7021c738acea81d0b1920"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__0.glb",
+      "bytes": 164976,
+      "sha256": "283f1f0723313d129a83f4ab2ecb1e5a9c58e807ec2b4d9850884235ffc58748"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__dead_furnace_wastes__1.glb",
+      "bytes": 164976,
+      "sha256": "40dbdc82ef820a182420b76335eb724f365623e620a9e15efbce250da471431d"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__glass_ash_desert__0.glb",
+      "bytes": 175424,
+      "sha256": "86ba7866f6b7de7fb1ccbd8a46cf0c7b8538fc78f8ddc9e4cca7a69d2bedffa3"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_broken_crown_hills__glass_ash_desert__1.glb",
+      "bytes": 175424,
+      "sha256": "91388fbc755255aa17d70e2be233adbf1f17e47685237404fdb98f2f93c3e516"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__bell_mire__0.glb",
+      "bytes": 191504,
+      "sha256": "0bc631c80963168c3f3e1570a86404f4770d0b2535bcc44adf381f054715cb89"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__bell_mire__1.glb",
+      "bytes": 191504,
+      "sha256": "545b012b02112cc9105f81e4569cf84a326f139711b69a85c0415db739377fa9"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__0.glb",
+      "bytes": 196716,
+      "sha256": "c02944758f9550449fc9d5176d602041da3c033976763bb3f5e0f74979a37738"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_dark_canopy_forest__broken_crown_hills__1.glb",
+      "bytes": 196716,
+      "sha256": "865267dea08728da9721aad889a3560009d7d16e000dfe69c04eba5190dd246e"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__0.glb",
+      "bytes": 178916,
+      "sha256": "3888751783af838dd169ea8b461345b68c5f02dff622bd62db483829877c0fe5"
+    },
+    {
+      "path": "WorldChunks_v1/CHUNK_TRANS_glass_ash_desert__dead_furnace_wastes__1.glb",
+      "bytes": 178916,
+      "sha256": "a55941253d2268721d3061d3da0f1d74f4c30ec45b468608eb7e34bba2f08285"
+    },
+    {
+      "path": "WorldChunks_v1/previews/abandoned_village_assembly.png",
+      "bytes": 1373447,
+      "sha256": "1ac76b9be363d0973fb95a7214e4b28788c83fae2c2770a2644285c638da46df"
+    },
+    {
+      "path": "WorldChunks_v1/previews/ash_dunes.png",
+      "bytes": 688784,
+      "sha256": "0d972b15ffd420f0dce66e1bf68e06b6bf1dcfd8b249ae8e77f4da355457a7e1"
+    },
+    {
+      "path": "WorldChunks_v1/previews/ash_grassland_variants.jpg",
+      "bytes": 123084,
+      "sha256": "46d779c8ebcbc2aad6934ae9da14c9709fa17b60521b363d4abf181c99176aeb"
+    },
+    {
+      "path": "WorldChunks_v1/previews/bell_mire_variants.jpg",
+      "bytes": 112640,
+      "sha256": "8a279ad2bebed2038b2209b68e357636c30c82ff14ae6cd52dfd0b990f69351a"
+    },
+    {
+      "path": "WorldChunks_v1/previews/biomes_overview.jpg",
+      "bytes": 195021,
+      "sha256": "e4acd7e2cd687c94c0fe097194fbd73ccf1e32cebef80974549eab016998afac"
+    },
+    {
+      "path": "WorldChunks_v1/previews/black_glass_seam.png",
+      "bytes": 693433,
+      "sha256": "4c02070c64729a1f0876402b79a7a6a6de181fb4f8c96ba62b421fe691ebb275"
+    },
+    {
+      "path": "WorldChunks_v1/previews/broken_bridge_abutment.png",
+      "bytes": 723592,
+      "sha256": "889352044d1212a95c2848fd8897a3cc6db264d631a4dd8580eac1c000e0fded"
+    },
+    {
+      "path": "WorldChunks_v1/previews/broken_crown_hills_variants.jpg",
+      "bytes": 117609,
+      "sha256": "07628be31005eefdbdcc35a4ba1b89192418124cb6c828d86b7862c7f2250b6b"
+    },
+    {
+      "path": "WorldChunks_v1/previews/broken_dike_detour.png",
+      "bytes": 735708,
+      "sha256": "2c5bae19e53ac12fbd53ecd1d575c7dbf5769dd20ed0cc840cfb17df151886fe"
+    },
+    {
+      "path": "WorldChunks_v1/previews/buried_aqueduct.png",
+      "bytes": 719672,
+      "sha256": "c5a5c006030a985dda2a9f62fc3ce0a3deba938aa15add15bce2606dabcea148"
+    },
+    {
+      "path": "WorldChunks_v1/previews/burnt_supply_camp.png",
+      "bytes": 709087,
+      "sha256": "be8e80829442da4665be10391945e42b338d2babe70c7d6e579f8fc2c18c278a"
+    },
+    {
+      "path": "WorldChunks_v1/previews/caravan_fork.png",
+      "bytes": 742177,
+      "sha256": "22dd551d44a2748f574b45f8311582e91d078654e16f61e82867d3fbff1f17ef"
+    },
+    {
+      "path": "WorldChunks_v1/previews/charcoal_pillars.png",
+      "bytes": 707080,
+      "sha256": "545aff7e9b1294b66d8d71fb19b694ca2ae75bdb12c864b712277b7cbcd7fd74"
+    },
+    {
+      "path": "WorldChunks_v1/previews/cold_furnace.png",
+      "bytes": 717395,
+      "sha256": "9bc0de12eba895b31d746c06f21f661e56c483093493cbd5edaa10e85522f8a7"
+    },
+    {
+      "path": "WorldChunks_v1/previews/dark_canopy_forest_variants.jpg",
+      "bytes": 112716,
+      "sha256": "bb6e906901e1c8ec4e1f4f29d3e9438ca2d99bf595417d0b8fe9f650bbb8e0f5"
+    },
+    {
+      "path": "WorldChunks_v1/previews/dead_furnace_wastes_variants.jpg",
+      "bytes": 106500,
+      "sha256": "5ba4a842a5a2be1647e15bae0aadd701413594e3cb07c1f36615956042f7694e"
+    },
+    {
+      "path": "WorldChunks_v1/previews/dead_orchard.png",
+      "bytes": 749174,
+      "sha256": "787fb0a5ca478ca98546fa09ed34a7811092d891b422e10ad37a4b36d927131a"
+    },
+    {
+      "path": "WorldChunks_v1/previews/dry_creek_crossing.png",
+      "bytes": 749569,
+      "sha256": "ece9969c951d1e8b29d1439296ca75732987a285292069e994f3f3ec2e5c8340"
+    },
+    {
+      "path": "WorldChunks_v1/previews/exposed_rock_layers.png",
+      "bytes": 701954,
+      "sha256": "4dbc1bbba89c9b3a03bd5147dbf39e4ed90d35f15683ea0d246c00ab0b2ab332"
+    },
+    {
+      "path": "WorldChunks_v1/previews/fallow_ridges.png",
+      "bytes": 741584,
+      "sha256": "678b6a8db3440913560aeb8387d748f412339d1065044c84410bb00ed414f5c2"
+    },
+    {
+      "path": "WorldChunks_v1/previews/fissure_detour.png",
+      "bytes": 704018,
+      "sha256": "db91134ab43b41a2d90551d747a6aabe6e4111d8aaea74967db1c5f09940651d"
+    },
+    {
+      "path": "WorldChunks_v1/previews/flooded_orchard.png",
+      "bytes": 743987,
+      "sha256": "0a5bde03c86e08193534e0e0180aec6bd17d515890b1f224d5db4f108b9ebd58"
+    },
+    {
+      "path": "WorldChunks_v1/previews/glass_ash_desert_variants.jpg",
+      "bytes": 108812,
+      "sha256": "cc0dc93432fe0664955400769ad996011be448d5118d48309d33c306e794f59a"
+    },
+    {
+      "path": "WorldChunks_v1/previews/hunting_glade.png",
+      "bytes": 910726,
+      "sha256": "8dc6946301ccf11b3ad26853e46148321362397741513a4a54b5efd5b92a8d28"
+    },
+    {
+      "path": "WorldChunks_v1/previews/oath_battlefield_assembly.png",
+      "bytes": 1363526,
+      "sha256": "4c57d3884da2dac447d345bb3921f1d810f4607e14af78dfe1bc4f5ba09bcb84"
+    },
+    {
+      "path": "WorldChunks_v1/previews/ossuary_quarry_assembly.png",
+      "bytes": 1276654,
+      "sha256": "ac54f6a05b438b27ec74368dab1c8db07c0ddef57197c190d67f64c903c21eb4"
+    },
+    {
+      "path": "WorldChunks_v1/previews/places_overview.jpg",
+      "bytes": 195969,
+      "sha256": "cdf5791910d71332e5a9af2993397942dbbe235a86ec0c4d2a57d4973b2cc90b"
+    },
+    {
+      "path": "WorldChunks_v1/previews/quarry_cart_track.png",
+      "bytes": 704994,
+      "sha256": "85c4fcceafeb2d91194ca3334ce6056f76997e72ef5878abb26b279e7dd0df54"
+    },
+    {
+      "path": "WorldChunks_v1/previews/reed_causeway.png",
+      "bytes": 733335,
+      "sha256": "2d20ba68efbf184e34c100b76a33647be0b6f0acaab332d586a77c93feab21d9"
+    },
+    {
+      "path": "WorldChunks_v1/previews/root_passage.png",
+      "bytes": 914283,
+      "sha256": "a54bb7fb7a13f5405bcb216a48ad2e514fb64dd60e7f5b5aaab0cd77373028a2"
+    },
+    {
+      "path": "WorldChunks_v1/previews/ruined_monastery_assembly.png",
+      "bytes": 1357514,
+      "sha256": "1349398545768f7dd7b96431268baba9e3947471ebf22c6ec41147f993a5c330"
+    },
+    {
+      "path": "WorldChunks_v1/previews/stone_windbreak.png",
+      "bytes": 697406,
+      "sha256": "68ba9d0cb9b22ab4ae6fb0aef2917478f3733c4bf1a2dcfe4aab83497aafa354"
+    },
+    {
+      "path": "WorldChunks_v1/previews/sunken_graveyard.png",
+      "bytes": 743844,
+      "sha256": "9923db4d414ec9c74d1df2b055d08a994d32f2333a49dc93c96c501510571e93"
+    },
+    {
+      "path": "WorldChunks_v1/previews/thorn_nest_margin.png",
+      "bytes": 915355,
+      "sha256": "74d2c91dfca031c31a4272561071fdbe3bff863a8fb919726365f0e2ce61d3cd"
+    },
+    {
+      "path": "WorldChunks_v1/previews/unit_ground_scale.png",
+      "bytes": 1283050,
+      "sha256": "87bdd7cfbd86f942ce244186351d1a3fdc59df978f07177f8b6eaa0a738e8e12"
+    },
+    {
+      "path": "WorldChunks_v1/previews/watchtower_ridge.png",
+      "bytes": 724278,
+      "sha256": "f00462f29f4f12511abc2324f3d614a28fa96c440e1222c5ff0f05f389ed3f08"
+    },
+    {
+      "path": "WorldChunks_v1/previews/windthrow_patch.png",
+      "bytes": 899076,
+      "sha256": "c62a245e7de147258b54a94a02277b782b1e1256e5ba3f2e7f24929750e93660"
+    },
+    {
+      "path": "WorldChunks_v1/README.md",
+      "bytes": 6277,
+      "sha256": "4438d445970b74948ccab9c0713c1e63509035353e0995349421eb1b6d6a57a9"
+    },
+    {
+      "path": "WorldChunks_v1/source_document_snapshot.md",
+      "bytes": 31834,
+      "sha256": "418088a4fa708eb62c0b0da6169b5a5de01d63f5adeda91c43662884aaedc366"
+    },
+    {
+      "path": "WorldChunks_v1/validation.json",
+      "bytes": 31203,
+      "sha256": "aca5bd351d6e4cb22edf3547942596d0330eec55ce5057389f5d2c0f8a04bd97"
+    },
+    {
+      "path": "WorldChunks_v1/world_chunk_library.glb",
+      "bytes": 19337008,
+      "sha256": "89c764e24535ac59db43924f9bebe212cc4d22698a8a4010e82315a22ab045fe"
+    },
+    {
+      "path": "WorldChunks_v1/world_chunks_v1.blend",
+      "bytes": 5052710,
+      "sha256": "29813529dd4af689da4c89e184f6a6a39416528624cddcae6643ed5e3e947dae"
+    }
+  ],
+  "game_code_or_build_included": false
+}

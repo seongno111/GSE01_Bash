@@ -1,0 +1,358 @@
+{
+  "date": "2026-10-29",
+  "new_clips": 208,
+  "rigs": 13,
+  "glbs": 18,
+  "files": [
+    {
+      "path": "Hero_v1/hero_rigged.glb",
+      "bytes": 3234328,
+      "sha256": "c1a3646ed4bec3ccfaabdaf2e6db148da985f78c900fe07eae6a93b6cbdebcfe"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/npc_parts_rigged.glb",
+      "bytes": 5645692,
+      "sha256": "2fea2ae1af26e440223f9021d3754d940ce3b65456003b6d268fe813bda9ca6c"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/priest_rigged.glb",
+      "bytes": 5130636,
+      "sha256": "8cc0f5b0da6dbd58821505854ee935198918040810f095498c7cd93ead3b53d3"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/knight_rigged.glb",
+      "bytes": 5223496,
+      "sha256": "92c609be2b8780cae029bb7d6d755e302f00059080d091a1885177f9a808145c"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/adventurer_rigged.glb",
+      "bytes": 5174428,
+      "sha256": "2926b573c1f041d79d2a3e4c007605fd72e156aede9a6111fb234321ca0aeb65"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/raider_rigged.glb",
+      "bytes": 5168440,
+      "sha256": "cbc105acbe0b00594602c2024ba3c99d1532538a27cddf8beb389e9cc12e0b4e"
+    },
+    {
+      "path": "LowPolyKit_v3/npc/merchant_rigged.glb",
+      "bytes": 5154160,
+      "sha256": "0c1d7e988dc2d154187db28274eb23a2e381ac0c35841ff63c06fde5e31dd7bc"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/WitheredHollow_rigged.glb",
+      "bytes": 2994632,
+      "sha256": "6a6c7c2f99d58832df208419c67f209cdd4d3eb134da1336f1f9546e81337dd3"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/TaintedRaider_rigged.glb",
+      "bytes": 3007148,
+      "sha256": "d5d3675585170583a2275d59579e11fef5b9d65ad13a1daaff88ce3cb27571a7"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/FieldWarden_rigged.glb",
+      "bytes": 3231820,
+      "sha256": "34d38af02aab4176a5c31ee271c8adaa7fbb6fb2c0b638d9c0017cd393c25578"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/MutatedHuman_rigged.glb",
+      "bytes": 3139384,
+      "sha256": "e7a1bf0f003007c10f27c626341a068cf17310d2a0c543033e3fecea726c7441"
+    },
+    {
+      "path": "LowPolyKit_v3/monsters/DeathEcho_rigged.glb",
+      "bytes": 3139372,
+      "sha256": "bf09c186d056a38a187f869396e077378e51513b27399784f4e4f98d205e021c"
+    },
+    {
+      "path": "Monsters_v1/AshWolf.glb",
+      "bytes": 2476140,
+      "sha256": "6e560ec38e14c5e33a1c46e0f22124bd1debdb702c60ce8c6775f14b93e6f635"
+    },
+    {
+      "path": "Monsters_v1/BlightBear.glb",
+      "bytes": 2931700,
+      "sha256": "bbcd02c3340009490f3eb7b5875bb38362a96cd00f544b938c8a02d5b4713b05"
+    },
+    {
+      "path": "Monsters_v1/ThornStag.glb",
+      "bytes": 2663988,
+      "sha256": "2c29b71e0815b1692fb5a6362aff3774b1e1b269f10c7f7c3117e5e52ac7a072"
+    },
+    {
+      "path": "Monsters_v1/HighDemonAzar.glb",
+      "bytes": 4599020,
+      "sha256": "c74c9821c18e9874581d0bfbfce08977b9676375f71ec8b1e87c13b75d0930a0"
+    },
+    {
+      "path": "Monsters_v1/FallenPaladin.glb",
+      "bytes": 3488872,
+      "sha256": "7e78afddd1e6b6c40fff6f248bbd9953e8a51d424f43d24cf42d632c7f17411e"
+    },
+    {
+      "path": "Monsters_v1/FallenPriest.glb",
+      "bytes": 3451592,
+      "sha256": "18eb0c33ef2fd2ceba70fe1c375595ceb7f78c9f1c8707677de67b6dffbfaa8f"
+    },
+    {
+      "path": "Hero_v1/hero_v1.blend",
+      "bytes": 1692134,
+      "sha256": "4c989722015ae4b971558df48574f97e5772c10002b28bec1cf316bc1e0519cf"
+    },
+    {
+      "path": "LowPolyKit_v3/lowpoly_kit_v3.blend",
+      "bytes": 5302729,
+      "sha256": "64e782cf404128adbdb87fee3fde5dd79cdca067eb3abdbc9772d4b03c681954"
+    },
+    {
+      "path": "Monsters_v1/monsters_v1.blend",
+      "bytes": 8421938,
+      "sha256": "e7242f9836b92997c78b6e28aebbe090e796282d680e947295fe4616cde6d633"
+    },
+    {
+      "path": "Hero_v1/hero_catalog.json",
+      "bytes": 36578,
+      "sha256": "5af7d81169f5fd76b9d76eadb489495656118ff2e8735cf7bb219be2be73280b"
+    },
+    {
+      "path": "LowPolyKit_v3/animation_catalog.json",
+      "bytes": 144559,
+      "sha256": "3b71c572922d138b013c88ef2b924038c2290925ef0a66a9ea0da6d5bee2e59c"
+    },
+    {
+      "path": "Monsters_v1/monster_catalog.json",
+      "bytes": 292911,
+      "sha256": "97dfcb443cfd3a7cf9cf508415883ccab8a2ace34f0fd1cfbf8213260a107e37"
+    },
+    {
+      "path": "Hero_v1/validation.json",
+      "bytes": 1653,
+      "sha256": "c16dbd734812b19b779bd53512e51f15fbc36aa1c54bfc4c2e2fd22e84624610"
+    },
+    {
+      "path": "LowPolyKit_v3/validation.json",
+      "bytes": 7805,
+      "sha256": "30411b208b61c45ff788337d2b4c12e43dfbf54ada62562c6a49e0b13fb6182e"
+    },
+    {
+      "path": "Monsters_v1/validation.json",
+      "bytes": 5680,
+      "sha256": "af10b72bb9c8612e46769dc20ce3125f4b5c1d3b586bbc72ce28b9a1cae2c94b"
+    },
+    {
+      "path": "Hero_v1/README.md",
+      "bytes": 6059,
+      "sha256": "f71fe5870843d17dc7d491c2307955707d7f03e2e0cce8704a3ef98eaaf30319"
+    },
+    {
+      "path": "LowPolyKit_v3/README.md",
+      "bytes": 12915,
+      "sha256": "9023a0555c018ec3f4c3a4b9389dcd6a2e3d7985a875f25526d02d493928b5ca"
+    },
+    {
+      "path": "Monsters_v1/README.md",
+      "bytes": 6642,
+      "sha256": "c567b96d17e63af7adf8bfb8f66ebf5df3a0df2b3c7d42e517968d2ae930389e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2874,
+      "sha256": "c8e69fb598794f91b95e7fffe86823fc8c7ec985a7fc1f613ac5769731a2d585"
+    },
+    {
+      "path": "DirectionalMotion_20261029/README.md",
+      "bytes": 6539,
+      "sha256": "987d62bee7380525670daae69aaf5203e9f9858a65165802f3701cf454a5b7f1"
+    },
+    {
+      "path": "DirectionalMotion_20261029/motion_catalog.json",
+      "bytes": 210887,
+      "sha256": "221628a556fc2ca0931726e2500957e80e40c6bfc86ab8c8f1d4ddd0e414e4cc"
+    },
+    {
+      "path": "DirectionalMotion_20261029/validation.json",
+      "bytes": 36869,
+      "sha256": "bc5c01241c217470196f0fcac41fe1078cece47c2bd593ae641647d27a10cfb5"
+    },
+    {
+      "path": "DirectionalMotion_20261029/preview_tasks.json",
+      "bytes": 6207,
+      "sha256": "3616e3a4b123e29cdf955739d13f5cb380b146063ddd7d1f61efd8138a1359db"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/AshWolf_TurnScreenUpToDown_L.gif",
+      "bytes": 924950,
+      "sha256": "16dabbe0149459af2365c309499baf269aefcabfdd2427901184f4369a8bc90f"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/BlightBear_TurnScreenUpToDown_L.gif",
+      "bytes": 944132,
+      "sha256": "9d844da5e894c8a9b853e1c9e887403784868fe1f61b3bc309baf05bd3d7baa9"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/FallenPaladin_TurnScreenUpToDown_L.gif",
+      "bytes": 998923,
+      "sha256": "e8e92f4107bfab20983dffa997e0fff95b16cce3647ac371a9f28970dad4c9b4"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/FallenPriest_TurnScreenUpToDown_L.gif",
+      "bytes": 915286,
+      "sha256": "bf7ee9700b376d3ed27d8656d40911854874a827ca66c27292b32e63f5ce355a"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_RunScreenDown.gif",
+      "bytes": 966127,
+      "sha256": "d1160413f92f51c66915f5f3c23a6a2e8e71a8cba43f30fca6180de02aaafdaf"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_TurnScreenUpToDown_L.gif",
+      "bytes": 943388,
+      "sha256": "cb80c6ef32a7b2fcc9f67054a3a184d44e4596365b4043f92f738e17206c12af"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_TurnStep_R90.gif",
+      "bytes": 940042,
+      "sha256": "2cd48f8a3563b46e5ed09f2f53dbc5eb362fc60075b705cd48172468af2349cb"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/hero_up_down.gif",
+      "bytes": 1792843,
+      "sha256": "6e62d2184dfb55dd1b49be5a1c94061c8e489e0c82a8f1792ada992abc282949"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_WalkScreenDown.gif",
+      "bytes": 953909,
+      "sha256": "de26ebe878b0b972d79a0d3d62827d54db71568399b0f90c280412fdf28a4474"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_WalkScreenUp.gif",
+      "bytes": 919403,
+      "sha256": "7080787da179ac5351ee92e6e2bc3bdf52b33e9097c1130565d4899b09501d1c"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HighDemonAzar_TurnScreenUpToDown_L.gif",
+      "bytes": 952804,
+      "sha256": "ac5a237e0b15972c94ec76c452228de0d98cdd1a70de81c584d0017b9c4c0ab2"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_00_TurnScreenUpToDown_L.gif",
+      "bytes": 906653,
+      "sha256": "b312c128249e9093e7403f687c94c679dfd38a72cad4be8b8d6091be3e0abe06"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_01_TurnScreenUpToDown_L.gif",
+      "bytes": 911603,
+      "sha256": "61e9b09724b5ec398424a120fa2de3055e58f54955ea3cbf8ad7e749e4df89cf"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_02_TurnScreenUpToDown_L.gif",
+      "bytes": 905271,
+      "sha256": "02f75fbe680f153ab0898a40e43da55be26de3aef422270d66112cbe5b6e3d2b"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_03_TurnScreenUpToDown_L.gif",
+      "bytes": 926849,
+      "sha256": "f2fce7791a68da69f56bd87bc5916c3fb37467eabb326aa1e987eddd5ee9376e"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_04_TurnScreenUpToDown_L.gif",
+      "bytes": 921599,
+      "sha256": "e89d5c830c2169f16f3fa1685fe0e36fd8d15d8b2a0f9bc43f3ecce49bc556b5"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/NPC_TurnScreenUpToDown_L.gif",
+      "bytes": 972337,
+      "sha256": "9331aa8c44cd79618f1081682aa54f2c38a3e36fc29f82e0f3d923f78c6bfb57"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/ThornStag_TurnScreenUpToDown_L.gif",
+      "bytes": 911172,
+      "sha256": "12afafa703c80c7044cb83574a28ece499fcb03b5136155c797ce6ff85cc9f24"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/turns_overview.gif",
+      "bytes": 2912619,
+      "sha256": "ac4d00ff9abe6aa9f38831c648aa0e162569574c4d13323801831b24df810a46"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/AshWolf_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 99685,
+      "sha256": "2b4225b42a98a7b6c9dfb517a177178efbc9fc59f3dfe0a43835cc8e0f927e6a"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/BlightBear_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 116778,
+      "sha256": "c4713635024c8a858ba7cfe1be6894ecc8df0fd064b2f03c8ebdad3ef2b26548"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/FallenPaladin_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 109562,
+      "sha256": "60bf7a7560ba810d4cf23b978e6119ccdd7779d6bcd07be4e729b6de19a1661d"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/FallenPriest_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 104739,
+      "sha256": "dcc64f1f897a04930e11de66b18a1555a168bdc8ed99ec8ceda675785b5c996f"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 105459,
+      "sha256": "9126ff19684e200094c0528d58baca8e1055c0e71bc15eadbf5354d58a94427d"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HERO_TurnStep_R90_keyframes.jpg",
+      "bytes": 100285,
+      "sha256": "bb2256c534b6dff6182d1b5e5777098b00ad49d9fae19002cd3de04de54c30c7"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/HighDemonAzar_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 122264,
+      "sha256": "9de956a1a02f67bc69c8cd7a84364d7c031bc1300e022439c04657f8af4dd943"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_00_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 101353,
+      "sha256": "d3bbc2f1679557918e33499b9f662028b98ad500f667c54fff16404350e8c4c9"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_01_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 107786,
+      "sha256": "d607413669db310167d4eff0304c6087308f2d5f63332520a7a2f7cfa03ff725"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_02_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 111145,
+      "sha256": "fd56cb28e6d228b7978a99d82cb55b1229a2ba986cdffdc151c2acb4798b3e25"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_03_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 104457,
+      "sha256": "c21a93e3cc9efe1c86dfc5beee8340a6b7b6f4528861077e471ead9ec34f36ce"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/MON_04_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 106532,
+      "sha256": "c66aa45fb7a44884d602416905bbc0911dce4bb09e336d70abb665b9523b2703"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/NPC_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 103791,
+      "sha256": "b8c443e11a0c75ad1e350ebb5d7b018c7c856b1c5581cfb59c1ba2033881e9eb"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/ThornStag_TurnScreenUpToDown_L_keyframes.jpg",
+      "bytes": 102231,
+      "sha256": "014dd4329bb0f63094bb4a0e0d48df31cbc84daf01085f406348639d5ca06e94"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/turn_contact_sheet.jpg",
+      "bytes": 308413,
+      "sha256": "7203758aa68f2b728257e1d4b6a2632b4dfaff9a869873ba8529e8b51ff2fd06"
+    },
+    {
+      "path": "DirectionalMotion_20261029/previews/turns_overview.png",
+      "bytes": 562975,
+      "sha256": "253e9ceda36ac1d02dcc37c6cbdace196c69f0e38c728803a39cd9b36d259a76"
+    }
+  ]
+}

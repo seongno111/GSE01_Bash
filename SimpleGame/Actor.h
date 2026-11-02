@@ -29,6 +29,7 @@ enum class TickGroup
 enum class ActorLayer
 {
     None,
+    Terrain,
     Ground,
     World,
     Effects,
