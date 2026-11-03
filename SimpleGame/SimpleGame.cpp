@@ -11,171 +11,214 @@ but WITHOUT ANY WARRANTY.
 #include "Renderer.h"
 #include "Prototype.h"
 #include "FrameProfiler.h"
-#include "Dependencies/freeglut.h"
+#define GLFW_INCLUDE_NONE
+#define GLFW_DLL
+#include "Dependencies/GLFW/include/GLFW/glfw3.h"
 #include <Windows.h>
+#include <mmsystem.h>
 #include <algorithm>
 #include <chrono>
 #include <iostream>
 #include <memory>
-#include <cctype>
-#include <cmath>
 
 namespace
 {
-    std::unique_ptr<Renderer> renderer;
-    Prototype game;
-    HWND gameWindow = nullptr;
-    FrameProfiler profiler;
     using FrameClock = std::chrono::steady_clock;
-    auto lastFrame = FrameClock::now();
-    auto nextTick = lastFrame;
     const auto framePeriod =
         std::chrono::duration_cast<FrameClock::duration>(std::chrono::duration<double>(1.0 / 60.0));
 
-    void Display()
+    std::unique_ptr<Renderer> renderer;
+    Prototype game;
+    FrameProfiler profiler;
+
+    void GlfwError(int code, const char* message)
     {
-        if (!renderer)
+        std::cerr << "GLFW error " << code << " - " << message << '\n';
+    }
+
+    void KeyChanged(GLFWwindow* window, int key, int, int action, int)
+    {
+        if (action == GLFW_REPEAT)
         {
             return;
         }
-        profiler.BeginFrame();
-        game.Draw(*renderer);
-        profiler.RenderFinished();
-        glutSwapBuffers();
-        profiler.EndFrame(*renderer, game);
-    }
 
-    void Tick(int)
-    {
-        if (!renderer)
-        {
-            return;
-        }
-        const auto now = std::chrono::steady_clock::now();
-        const float elapsed = std::chrono::duration<float>(now - lastFrame).count();
-        lastFrame = now;
-        const auto updateStart = std::chrono::steady_clock::now();
-        // Poll both Shift keys independently of letter events: pressing/releasing
-        // Shift while already moving must take effect, including after focus loss.
-        game.SetRunHeld(gameWindow && GetForegroundWindow() == gameWindow
-                        && (GetAsyncKeyState(VK_SHIFT) & 0x8000) != 0);
-        game.Update((std::min)(0.05f, elapsed));
-        profiler.RecordUpdate(std::chrono::duration<double, std::milli>(
-                                  std::chrono::steady_clock::now() - updateStart)
-                                  .count(),
-                              game);
-        glutPostRedisplay();
-        // Reserve against an absolute deadline so update work does not add a
-        // fresh 16 ms delay each tick. Missed deadlines are skipped, not replayed.
-        nextTick += framePeriod;
-        const auto finished = FrameClock::now();
-        if (nextTick <= finished)
-        {
-            nextTick = finished + framePeriod;
-        }
-        const double remaining =
-            std::chrono::duration<double, std::milli>(nextTick - finished).count();
-        glutTimerFunc(static_cast<unsigned>((std::max)(1.0, std::ceil(remaining))), Tick, 0);
-    }
-
-    void Reshape(int width, int height)
-    {
-        if (renderer)
-        {
-            renderer->Resize(width, height);
-        }
-    }
-
-    void KeyDown(unsigned char key, int, int)
-    {
-        if (key == 27)
-        {
-            glutLeaveMainLoop();
-            return;
-        }
-        if (renderer)
+        const bool pressed = action == GLFW_PRESS;
+        if (pressed)
         {
             auto& post = renderer->Post().settings;
-            switch (std::tolower(key))
+            switch (key)
             {
-            case 'p':
+            case GLFW_KEY_ESCAPE:
+                glfwSetWindowShouldClose(window, GLFW_TRUE);
+                return;
+            case GLFW_KEY_P:
                 post.enabled = !post.enabled;
                 return;
-            case 'b':
+            case GLFW_KEY_B:
                 post.bloom = !post.bloom;
                 return;
-            case 'v':
+            case GLFW_KEY_V:
                 post.vignette = !post.vignette;
                 return;
-            case 'n':
+            case GLFW_KEY_N:
                 post.edgeBlur = !post.edgeBlur;
                 return;
-            case '[':
+            case GLFW_KEY_LEFT_BRACKET:
                 post.exposure = (std::max)(0.25f, post.exposure - 0.1f);
                 return;
-            case ']':
+            case GLFW_KEY_RIGHT_BRACKET:
                 post.exposure = (std::min)(3.0f, post.exposure + 0.1f);
                 return;
-            case '0':
+            case GLFW_KEY_0:
+            case GLFW_KEY_KP_0:
                 post = PostProcessSettings{};
                 return;
             }
         }
-        game.Key(key, true);
-    }
 
-    void KeyUp(unsigned char key, int, int)
-    {
-        game.Key(key, false);
-    }
-
-    void Close()
-    {
-        // The close callback runs while the OpenGL context is still current.
-        renderer.reset();
-    }
-
-    void Entry(int state)
-    {
-        if (state == GLUT_LEFT)
+        // GLFW emits release events for held keys when the window loses focus.
+        if (key == GLFW_KEY_KP_ADD)
         {
-            game.SetRunHeld(false);
-            for (int key = 0; key < 256; ++key)
+            game.Key('+', pressed);
+            return;
+        }
+        if (key == GLFW_KEY_KP_SUBTRACT || key == GLFW_KEY_MINUS)
+        {
+            const bool zoomOutHeld = glfwGetKey(window, GLFW_KEY_KP_SUBTRACT) == GLFW_PRESS
+                                     || glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS;
+            game.Key('-', zoomOutHeld);
+            return;
+        }
+        if (key >= GLFW_KEY_SPACE && key <= GLFW_KEY_GRAVE_ACCENT)
+        {
+            game.Key(static_cast<unsigned char>(key), pressed);
+        }
+    }
+
+    void RunFrames(GLFWwindow* window, int width, int height)
+    {
+        // Win32 event waits use the system timer resolution.
+        const bool preciseTimer = timeBeginPeriod(1) == TIMERR_NOERROR;
+        auto lastFrame = FrameClock::now();
+        auto nextFrame = lastFrame + framePeriod;
+
+        while (!glfwWindowShouldClose(window))
+        {
+            const auto now = FrameClock::now();
+            if (now < nextFrame)
             {
-                game.Key(static_cast<unsigned char>(key), false);
+                // GLFW truncates the Win32 timeout to milliseconds. Round up to avoid spinning.
+                const auto delay = std::chrono::ceil<std::chrono::milliseconds>(nextFrame - now);
+                glfwWaitEventsTimeout((delay.count() + 0.5) / 1000.0);
+                continue;
             }
+
+            glfwPollEvents();
+            if (glfwWindowShouldClose(window))
+            {
+                break;
+            }
+
+            int pixelWidth;
+            int pixelHeight;
+            glfwGetFramebufferSize(window, &pixelWidth, &pixelHeight);
+            if (pixelWidth <= 0 || pixelHeight <= 0 || glfwGetWindowAttrib(window, GLFW_ICONIFIED))
+            {
+                glfwWaitEvents();
+                lastFrame = FrameClock::now();
+                nextFrame = lastFrame;
+                continue;
+            }
+
+            if (pixelWidth != width || pixelHeight != height)
+            {
+                width = pixelWidth;
+                height = pixelHeight;
+                renderer->Resize(width, height);
+            }
+
+            const auto updateStart = FrameClock::now();
+            const float elapsed = std::chrono::duration<float>(updateStart - lastFrame).count();
+            lastFrame = updateStart;
+
+            // Keep the 60 Hz deadline and skip missed slots after an overrun.
+            nextFrame += framePeriod;
+            if (nextFrame <= updateStart)
+            {
+                nextFrame = updateStart + framePeriod;
+            }
+
+            game.SetRunHeld(glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS
+                            || glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS);
+            game.Update((std::min)(0.05f, elapsed));
+            profiler.RecordUpdate(
+                std::chrono::duration<double, std::milli>(FrameClock::now() - updateStart).count(),
+                game);
+
+            profiler.BeginFrame();
+            game.Draw(*renderer);
+            profiler.RenderFinished();
+            glfwSwapBuffers(window);
+            profiler.EndFrame(*renderer, game);
+        }
+
+        if (preciseTimer)
+        {
+            timeEndPeriod(1);
         }
     }
 } // namespace
 
-int main(int argc, char** argv)
+int main()
 {
-    glutInit(&argc, argv);
-    glutInitContextVersion(3, 3);
-    glutInitContextProfile(GLUT_CORE_PROFILE);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize(1280, 800);
-    glutInitWindowPosition(70, 45);
-    const int window = glutCreateWindow("The Last Ember - 2.5D Prototype");
-    gameWindow = GetActiveWindow();
-    glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+    glfwSetErrorCallback(GlfwError);
+    if (!glfwInit())
+    {
+        return 1;
+    }
+
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    GLFWwindow* window =
+        glfwCreateWindow(1280, 800, "The Last Ember - 2.5D Prototype", nullptr, nullptr);
+    if (!window)
+    {
+        glfwTerminate();
+        return 1;
+    }
+
+    glfwSetWindowPos(window, 70, 45);
+    glfwMakeContextCurrent(window);
+    // The frame loop owns pacing. Avoid a second limit at buffer swap.
+    glfwSwapInterval(0);
+
     glewExperimental = GL_TRUE;
     const GLenum result = glewInit();
     if (result != GLEW_OK || !GLEW_VERSION_3_3)
     {
         std::cerr << "OpenGL 3.3 is required. GLEW: " << glewGetErrorString(result) << "\n";
-        glutDestroyWindow(window);
+        glfwDestroyWindow(window);
+        glfwTerminate();
         return 1;
     }
-    renderer = std::make_unique<Renderer>(1280, 800);
+
+    int width;
+    int height;
+    glfwGetFramebufferSize(window, &width, &height);
+    renderer = std::make_unique<Renderer>(width, height);
     if (!renderer->IsInitialized())
     {
         std::cerr << "Renderer initialization failed. See shader diagnostics above.\n";
         renderer.reset();
-        glutDestroyWindow(window);
+        glfwDestroyWindow(window);
+        glfwTerminate();
         return 1;
     }
+
     profiler.Initialize(*renderer);
+
     std::cout << "The Last Ember / rendering prototype\n"
               << "WASD move | Hold Shift run | Hold Space auto aim | F auto fire | U upgrade | Q "
                  "potion | T "
@@ -188,18 +231,13 @@ int main(int argc, char** argv)
               << "Mesh files: MeshCache/ | Performance captures: Profiling/\n"
               << "[Profile] Logs every second: FPS and glDraw calls per frame "
                  "(scene + UI + post processing; last/avg/min/max).\n";
-    glutIgnoreKeyRepeat(1);
-    glutDisplayFunc(Display);
-    glutReshapeFunc(Reshape);
-    glutKeyboardFunc(KeyDown);
-    glutKeyboardUpFunc(KeyUp);
-    glutEntryFunc(Entry);
-    glutCloseFunc(Close);
+    glfwSetKeyCallback(window, KeyChanged);
     game.Update(0);
-    lastFrame = FrameClock::now();
-    nextTick = lastFrame;
-    glutTimerFunc(0, Tick, 0);
-    glutMainLoop();
-    // Freeglut closes its windows before returning from the main loop.
+    RunFrames(window, width, height);
+
+    // Release GPU resources while their context is current.
+    renderer.reset();
+    glfwDestroyWindow(window);
+    glfwTerminate();
     return 0;
 }

@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -104,8 +104,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\Dependencies;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);opengl32.lib;freeglut.lib;glew32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies;$(ProjectDir)Dependencies\GLFW\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);opengl32.lib;glfw3dll.lib;glew32.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,8 +119,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\Dependencies\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);freeglut.lib;glew32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\x64;$(ProjectDir)Dependencies\GLFW\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);glfw3dll.lib;glew32.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,8 +138,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\Dependencies;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);freeglut.lib;glew32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies;$(ProjectDir)Dependencies\GLFW\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);glfw3dll.lib;glew32.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -157,8 +157,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);freeglut.lib;glew32.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\Dependencies\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);glfw3dll.lib;glew32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\x64;$(ProjectDir)Dependencies\GLFW\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -269,8 +269,9 @@
       <PrototypeModels Include="$(ProjectDir)..\Modeling\**\*.glb;$(ProjectDir)..\Modeling\**\asset_catalog.json;$(ProjectDir)..\Modeling\**\hero_catalog.json;$(ProjectDir)..\Modeling\**\monster_catalog.json;$(ProjectDir)..\Modeling\**\locomotion_catalog.json;$(ProjectDir)..\Modeling\**\village_catalog.json;$(ProjectDir)..\Modeling\**\chunk_catalog.json;$(ProjectDir)..\Modeling\**\landmark_delivery.json;$(ProjectDir)..\Modeling\**\animation_catalog.json;$(ProjectDir)..\Modeling\**\npc_appearance_assignments.json;$(ProjectDir)..\Modeling\**\validation.json" Exclude="$(ProjectDir)..\Modeling\WorldChunks_v1\CHUNK_*__*.glb" />
       <PrototypeTextures Include="$(ProjectDir)Assets\*.png" />
       <PrototypeShaders Include="$(ProjectDir)Shaders\*.vs;$(ProjectDir)Shaders\*.fs" />
-      <PrototypeRuntime Include="$(ProjectDir)Dependencies\x64\*.dll" Condition="'$(Platform)'=='x64'" />
-      <PrototypeRuntime Include="$(ProjectDir)Dependencies\*.dll" Condition="'$(Platform)'=='Win32'" />
+      <PrototypeRuntime Include="$(ProjectDir)Dependencies\x64\glew32.dll" Condition="'$(Platform)'=='x64'" />
+      <PrototypeRuntime Include="$(ProjectDir)Dependencies\glew32.dll" Condition="'$(Platform)'=='Win32'" />
+      <PrototypeRuntime Include="$(ProjectDir)Dependencies\GLFW\lib\$(Platform)\glfw3.dll" />
     </ItemGroup>
     <MakeDir Directories="$(OutDir)Shaders;$(OutDir)Assets" />
     <Copy SourceFiles="@(PrototypeModels)" DestinationFiles="@(PrototypeModels->'$(OutDir)Modeling\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
