@@ -26,7 +26,9 @@ namespace
         "world_visible_actors,ui_visible_actors,world_list_cpu_ms,ui_list_cpu_ms,"
         "gameplay_cpu_ms,npc_cpu_ms,stream_cpu_ms,npc_export_cpu_ms,path_calls,path_nodes,"
         "unaccounted_ms,gpu_world_ms,gpu_post_ms,gpu_ui_ms,gpu_sample_age,buffer_orphans,stream_"
-        "capacity_bytes,model_draws,model_uploads,model_pose_bytes\n";
+        "capacity_bytes,model_draws,model_uploads,model_pose_bytes,"
+        "target_fps,path_cpu_ms,path_pending,path_deferred,path_completed,"
+        "monitor_capture_cpu_ms,monitor_worker_ms,monitor_age_ms,monitor_skipped,monitor_pending\n";
 
     double Milliseconds(std::chrono::steady_clock::duration duration)
     {
@@ -77,7 +79,7 @@ void FrameProfiler::Initialize(Renderer& renderer)
     m_Summary.open(m_LogDirectory / "session.log");
     m_Summary.imbue(std::locale::classic());
     m_Summary
-        << "Profiling schema=4; renderer=ordered-triangles-and-skinned-models; mesh-cache=v1\n"
+        << "Profiling schema=5; renderer=ordered-triangles-and-skinned-models; mesh-cache=v1\n"
         << "Build=" << __DATE__ << ' ' << __TIME__ << '\n'
 #ifdef _DEBUG
         << "Configuration=Debug\n"
@@ -90,7 +92,7 @@ void FrameProfiler::Initialize(Renderer& renderer)
         << "GLSL_VERSION=" << GLText(GL_SHADING_LANGUAGE_VERSION) << '\n'
         << "Initial viewport=" << renderer.Width() << 'x' << renderer.Height() << '\n'
         << "GPU timestamps are read asynchronously; -1 means no ready sample.\n"
-        << "Timer targets absolute 60Hz deadlines, skipping missed updates; simulation dt still "
+        << "Timer uses absolute frame deadlines, skipping missed slots; simulation dt still "
            "clamps to 50ms.\n"
         << "CSV: one row/completed frame, buffered 1s, new part after 64MiB.\n"
         << "GPU upload bytes count renderer payload only, not post targets or driver traffic.\n"
@@ -112,7 +114,14 @@ void FrameProfiler::Initialize(Renderer& renderer)
                  "percentages.\n"
               << "unaccounted_ms=max(0,interval-update-render-swap), includes pacing, event loop, "
                  "prior logging and scheduling.\n"
-              << "npc_export_cpu_ms is part of npc_cpu_ms; frame logging flush is separate.\n";
+              << "npc_export_cpu_ms and path_cpu_ms are part of npc_cpu_ms.\n"
+              << "monitor_capture_cpu_ms is main-thread snapshot copying; monitor_worker_ms is the "
+                 "last finished background export, not part of frame CPU time.\n"
+              << "monitor_age_ms is wall age since the last successful snapshot was captured; -1 "
+                 "means no successful export. monitor_skipped is cumulative.\n"
+              << "Navigation resumes across frames under a 1.5ms soft/192-operation budget. "
+                 "path_calls counts searches started, path_nodes counts expanded nodes, "
+                 "path_deferred counts callers waiting, path_completed counts finished searches.\n";
     m_FileLogging = true;
     OpenCsv();
     if (m_FileLogging && m_Summary)
@@ -123,6 +132,16 @@ void FrameProfiler::Initialize(Renderer& renderer)
     {
         std::cerr
             << "[Profile] Could not open all capture files. Console logging remains active.\n";
+    }
+}
+
+void FrameProfiler::RecordFrameLimit(int fps)
+{
+    m_TargetFps = fps;
+    std::cout << "[Profile] Target FPS=" << fps << '\n';
+    if (m_FileLogging)
+    {
+        m_Summary << "TargetFPS=" << fps << " after_frame=" << m_FrameNumber << '\n';
     }
 }
 
@@ -218,6 +237,7 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
     m_PreviousEnd = now;
     const auto& stats = renderer.Stats();
     const auto& scene = game.Scene().RenderingStats();
+    const auto& update = game.UpdatingStats();
     const auto camera = game.CameraPosition();
     const auto player = game.Player().WorldPosition();
     const auto& post = renderer.Post();
@@ -277,7 +297,11 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
                << unaccountedMs << ',' << stats.gpuWorldMs << ',' << stats.gpuPostMs << ','
                << stats.gpuUiMs << ',' << stats.gpuSampleAge << ',' << stats.bufferOrphans << ','
                << stats.streamCapacityBytes << ',' << stats.modelDraws << ',' << stats.modelUploads
-               << ',' << stats.modelPoseBytes << '\n';
+               << ',' << stats.modelPoseBytes << ',' << m_TargetFps << ',' << update.pathMs << ','
+               << update.pathPending << ',' << update.pathDeferred << ',' << update.pathCompleted
+               << ',' << update.monitorCaptureMs << ',' << update.monitorWorkerMs << ','
+               << update.monitorAgeMs << ',' << update.monitorSkipped << ','
+               << update.monitorPending << '\n';
     }
     m_GameplayMs = 0;
     m_NpcMs = 0;
@@ -303,7 +327,7 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
     std::ostringstream message;
     message.imbue(std::locale::classic());
     message << std::fixed << std::setprecision(1) << "[Profile] FPS=" << double(m_Frames) / seconds
-            << " | DrawCalls/frame: last=" << drawCalls
+            << " target=" << m_TargetFps << " | DrawCalls/frame: last=" << drawCalls
             << " avg=" << double(m_TotalDrawCalls) / m_Frames << " min=" << m_MinDrawCalls
             << " max=" << m_MaxDrawCalls << " | CPU ms avg: update=" << m_UpdateTotal / m_Frames
             << " render=" << m_RenderTotal / m_Frames << " swap=" << m_SwapTotal / m_Frames
@@ -316,6 +340,11 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
             << " cacheIO=" << m_DiskTotal / m_Frames << " pacing/other=" << m_IdleTotal / m_Frames;
     message << " | Models/frame: draws=" << stats.modelDraws << " uploads=" << stats.modelUploads
             << " poseBytes=" << stats.modelPoseBytes;
+    message << " | Navigation last: ms=" << update.pathMs << " pending=" << update.pathPending
+            << " deferred=" << update.pathDeferred << " completed=" << update.pathCompleted
+            << " | Monitor last: capture=" << update.monitorCaptureMs
+            << " worker=" << update.monitorWorkerMs << " age=" << update.monitorAgeMs
+            << " pending=" << update.monitorPending << " skipped=" << update.monitorSkipped;
     if (m_GpuSamples)
     {
         message << " | GPU delayed avg ms: world=" << m_GpuWorldTotal / m_GpuSamples

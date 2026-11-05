@@ -287,18 +287,19 @@ bool Prototype::Blocked(double x, double y) const
     return false;
 }
 
+bool Prototype::CanOccupy(double x, double y, double radius) const
+{
+    return !Blocked(x - radius, y) && !Blocked(x + radius, y) && !Blocked(x, y - radius)
+           && !Blocked(x, y + radius);
+}
+
 void Prototype::Move(double& x, double& y, double dx, double dy, float radius)
 {
-    const auto free = [this, radius](double px, double py)
-    {
-        return !Blocked(px - radius, py) && !Blocked(px + radius, py) && !Blocked(px, py - radius)
-               && !Blocked(px, py + radius);
-    };
-    if (free(x + dx, y))
+    if (CanOccupy(x + dx, y, radius))
     {
         x += dx;
     }
-    if (free(x, y + dy))
+    if (CanOccupy(x, y + dy, radius))
     {
         y += dy;
     }

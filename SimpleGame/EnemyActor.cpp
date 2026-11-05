@@ -84,11 +84,23 @@ void EnemyActor::Update(float dt)
     double dx = targetX - enemy.WorldX();
     double dy = targetY - enemy.WorldY();
     const double distance = Length(dx, dy);
+    const double homeDistance = Length(WorldX() - homeX, WorldY() - homeY);
+    const double leash = UsesMonsterTactics() ? Definition().leashRange : 7;
+    if (!returningHome && homeDistance > leash)
+    {
+        returningHome = true;
+        m_Game.CancelRoute(Id());
+        route.clear();
+        nextRoute = 0;
+    }
+    else if (returningHome && homeDistance <= .7)
+    {
+        returningHome = false;
+    }
+
     if (UsesMonsterTactics())
     {
-        const bool returnHome =
-            (target && sanctuary)
-            || Length(WorldX() - homeX, WorldY() - homeY) > Definition().leashRange;
+        const bool returnHome = (target && sanctuary) || returningHome;
         if (!UpdateMonsterTactics(dt, sanctuary ? nullptr : target, returnHome))
         {
             WorldPoint destination{homeX, homeY};
@@ -106,9 +118,7 @@ void EnemyActor::Update(float dt)
         }
         return;
     }
-    const bool returning =
-        sanctuary || distance > 8
-        || Length(enemy.WorldX() - enemy.homeX, enemy.WorldY() - enemy.homeY) > 7;
+    const bool returning = sanctuary || distance > 8 || returningHome;
     const bool enraged = enemy.tier == 2 && enemy.health <= enemy.maxHealth * 0.4f;
     if (enemy.tier == 2)
     {
@@ -140,7 +150,8 @@ void EnemyActor::Update(float dt)
             }
             return;
         }
-        else if (enemy.burstCooldown <= 0 && distance < 8)
+        else if (enemy.burstCooldown <= 0 && distance < 8
+                 && m_Game.ClearShot(WorldX(), WorldY(), targetX, targetY))
         {
             enemy.burstWindup = 0.9f;
             return;
@@ -179,7 +190,8 @@ void EnemyActor::Update(float dt)
         dx = enemy.homeX - enemy.WorldX();
         dy = enemy.homeY - enemy.WorldY();
     }
-    else if (distance < 0.90 && enemy.recovery <= 0)
+    else if (distance < 0.90 && enemy.recovery <= 0
+             && m_Game.ClearShot(WorldX(), WorldY(), targetX, targetY))
     {
         enemy.attackWindup = enemy.tier == 2 ? 0.65f : 0.5f;
         BeginAttackAnimation(dx, dy, enemy.attackWindup + Definition().attackRecovery);
@@ -188,7 +200,7 @@ void EnemyActor::Update(float dt)
 
     const double travel = Length(dx, dy);
     const double aggro = enemy.tier == 0 ? 4.5 : 6.5;
-    if (travel > 0.7 && (returning || distance < aggro) && enemy.recovery <= 0)
+    if (travel > (returning ? .7 : .05) && (returning || distance < aggro) && enemy.recovery <= 0)
     {
         const float speed = enemy.speed * (enraged ? 1.3f : 1.0f);
         m_Game.MoveEnemy(enemy,

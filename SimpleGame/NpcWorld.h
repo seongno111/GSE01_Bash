@@ -4,12 +4,16 @@
 #include <filesystem>
 #include <chrono>
 #include <set>
+#include <future>
+#include <memory>
+#include <memory>
 
 class NpcWorld
 {
 public:
 
     NpcWorld(Prototype& game, std::uint64_t seed);
+    ~NpcWorld();
     void Update(float dt);
     void UpdateActor(NpcActor& npc, float dt);
     bool Key(unsigned char key);
@@ -47,6 +51,11 @@ public:
         std::uint64_t pathCalls = 0;
         std::uint64_t pathNodes = 0;
         double exportMs = 0;
+        double monitorCaptureMs = 0;
+        double monitorWorkerMs = 0;
+        double monitorAgeMs = -1;
+        std::uint64_t monitorSkipped = 0;
+        bool monitorPending = false;
     };
 
     const PerformanceStats& Performance() const
@@ -114,8 +123,15 @@ private:
     void Execute(NpcActor& npc, float dt);
     bool Apply(NpcActor& npc);
     void Finish(NpcActor& npc, bool success, const std::string& reason);
-    bool Travel(NpcActor& npc, WorldPoint target, float dt);
-    bool BuildPath(NpcActor& npc, WorldPoint target);
+    enum class TravelResult
+    {
+        Pending,
+        Moving,
+        Unreachable
+    };
+
+    TravelResult Travel(NpcActor& npc, WorldPoint target, float dt);
+    TravelResult BuildPath(NpcActor& npc, WorldPoint target);
     bool Walkable(double x, double y) const;
     bool CanReserve(std::uint64_t resource, NpcEntity owner) const;
     std::uint64_t Resource(const NpcActor& npc, NpcAction action, NpcEntity target) const;
@@ -127,7 +143,20 @@ private:
     void LogDecision(const NpcActor& npc);
     bool RequestInteraction(NpcAction action);
     bool InVillage(WorldPoint p) const;
+    struct MonitorSnapshot;
+
+    struct MonitorExportResult
+    {
+        bool monitorWritten = false;
+        bool logWritten = true;
+        double workerMs = 0;
+    };
+
     bool ExportMonitor();
+    void PollMonitorExport();
+    std::shared_ptr<MonitorSnapshot> CaptureMonitorSnapshot();
+    static MonitorExportResult WriteMonitorSnapshot(const MonitorSnapshot& snapshot);
+    static bool WriteDiagnosticSnapshot(const MonitorSnapshot& snapshot);
     void InitializeSociety();
     void UpdateSociety();
     bool UpdateMission(NpcActor& npc, float dt);
@@ -235,4 +264,10 @@ private:
     std::string m_MonitorSession;
     std::uint64_t m_MonitorSequence = 0;
     std::chrono::steady_clock::time_point m_NextMonitor{};
+    bool m_DiagnosticLogRequested = false;
+    std::chrono::steady_clock::time_point m_MonitorCapturedAt{};
+    std::chrono::steady_clock::time_point m_LastMonitorCompletedAt{};
+    double m_LastMonitorWorkerMs = 0;
+    std::uint64_t m_MonitorSkipped = 0;
+    std::future<MonitorExportResult> m_MonitorExport;
 };

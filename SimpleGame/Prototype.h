@@ -3,6 +3,7 @@
 #include "GameActors.h"
 #include "SceneGraph.h"
 #include "ModelLibrary.h"
+#include "WorldNavigation.h"
 #include <cstdint>
 #include <map>
 #include <string>
@@ -87,8 +88,17 @@ public:
         double npcMs = 0;
         double streamMs = 0;
         double npcExportMs = 0;
+        double monitorCaptureMs = 0;
+        double monitorWorkerMs = 0;
+        double monitorAgeMs = -1;
+        std::uint64_t monitorSkipped = 0;
+        bool monitorPending = false;
         std::uint64_t pathCalls = 0;
         std::uint64_t pathNodes = 0;
+        std::uint64_t pathDeferred = 0;
+        std::uint64_t pathCompleted = 0;
+        size_t pathPending = 0;
+        double pathMs = 0;
     };
 
     const UpdateStats& UpdatingStats() const
@@ -100,10 +110,16 @@ public:
     bool Blocked(double x, double y) const;
     bool ClearShot(double fromX, double fromY, double toX, double toY) const;
     void MoveActor(::Actor& actor, double dx, double dy, float radius);
-    bool FindRoute(WorldPoint from,
-                   WorldPoint target,
-                   std::vector<WorldPoint>& path,
-                   std::uint64_t& visited) const;
+    enum class RouteStatus
+    {
+        Pending,
+        Found,
+        Unreachable
+    };
+
+    RouteStatus
+    RequestRoute(const ::Actor& actor, WorldPoint target, std::vector<WorldPoint>& path);
+    void CancelRoute(ActorId actor);
 
     template <class T = EnemyActor, class... Args> T& SpawnEnemy(Args&&... args)
     {
@@ -128,6 +144,7 @@ private:
     friend class RangeIndicatorActor;
     friend class HUDActor;
 
+    void ProcessNavigation();
     void InitializeLevelOne();
     void GenerateLevelOneMap();
     int LevelOneCell(std::int64_t x, std::int64_t y) const;
@@ -155,6 +172,8 @@ private:
     using ChunkKey = std::pair<std::int64_t, std::int64_t>;
     void Stream();
     WorldTileData MakeTile(std::int64_t x, std::int64_t y) const;
+    bool CanOccupy(double x, double y, double radius) const;
+    bool ClearMovement(WorldPoint from, WorldPoint to, double radius) const;
     void Move(double& x, double& y, double dx, double dy, float radius);
     void Die(const ::Actor* killer = nullptr, bool unlawful = false);
     void Notice(const std::string& text);
@@ -176,6 +195,7 @@ private:
     ActorId m_UIRoot;
     PlayerActor& m_Player;
     UpdateStats m_UpdateStats;
+    NavigationState m_Navigation;
     std::map<ChunkKey, ActorId> m_Chunks;
     ChunkKey m_StreamCenter{};
     int m_StreamRadius = -1;

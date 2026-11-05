@@ -263,9 +263,15 @@ void Prototype::Update(float dt)
         m_NpcWorld->Update(dt);
         const auto& stats = m_NpcWorld->Performance();
         m_UpdateStats.npcExportMs = stats.exportMs;
+        m_UpdateStats.monitorCaptureMs = stats.monitorCaptureMs;
+        m_UpdateStats.monitorWorkerMs = stats.monitorWorkerMs;
+        m_UpdateStats.monitorAgeMs = stats.monitorAgeMs;
+        m_UpdateStats.monitorSkipped = stats.monitorSkipped;
+        m_UpdateStats.monitorPending = stats.monitorPending;
         m_UpdateStats.pathCalls += stats.pathCalls;
         m_UpdateStats.pathNodes += stats.pathNodes;
     }
+    ProcessNavigation();
     m_Scene.UpdateVisuals(dt);
     const auto streamStart = std::chrono::steady_clock::now();
     m_UpdateStats.npcMs = std::chrono::duration<double, std::milli>(streamStart - npcStart).count();

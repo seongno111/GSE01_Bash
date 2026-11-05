@@ -390,6 +390,7 @@ void NpcWorld::Sense(NpcActor& npc)
 void NpcWorld::Update(float dt)
 {
     m_Performance = {};
+    PollMonitorExport();
     m_Accumulator += dt;
     while (m_Accumulator >= 0.05)
     {
@@ -446,7 +447,7 @@ void NpcWorld::Update(float dt)
     if (m_Time >= m_NextExport)
     {
         m_NextExport = m_Time + 10;
-        ExportLog();
+        m_DiagnosticLogRequested = true;
     }
     const auto monitorNow = std::chrono::steady_clock::now();
     if (monitorNow >= m_NextMonitor)
@@ -856,12 +857,6 @@ void NpcWorld::BuildCandidates(NpcActor& npc)
         require(failed == npc.failedUntil.end() || failed->second <= m_Time,
                 "실패한 행동/대상 대기 3초");
         require(CanReserve(Resource(npc, c.action, c.target), npc.Entity()), "시설/대상 예약 경쟁");
-        if (c.allowed && !BuildPath(npc, c.destination))
-        {
-            c.allowed = false;
-            c.reason = "접근 경로 없음";
-            npc.failedUntil[{c.action, c.target}] = m_Time + 3;
-        }
         c.cost = float((std::min)(20.0, Separation(npc.WorldPosition(), c.destination) * 1.5));
         if (c.allowed)
         {
@@ -970,136 +965,4 @@ void NpcWorld::LogDecision(const NpcActor& npc)
     {
         m_Log.pop_front();
     }
-}
-
-bool NpcWorld::ExportLog()
-{
-    if (m_LogDirectory.empty())
-    {
-        return false;
-    }
-    std::error_code error;
-    std::filesystem::create_directories(m_LogDirectory, error);
-    const auto temporary = m_LogDirectory / "latest.log.tmp";
-    std::ofstream file(temporary, std::ios::trunc);
-    if (error || !file)
-    {
-        if (!m_LogWarning)
-        {
-            std::cerr << "[NpcAI] Cannot write diagnostic snapshot.\n";
-            m_LogWarning = true;
-        }
-        return false;
-    }
-    file << "NPC AI schema=4 seed=" << m_Seed << " fixed_step=0.05 time=" << m_Time
-         << " villages=" << Villages.size()
-         << "\nBounded diagnostic snapshot; not a loadable save.\n";
-    file << "WORLD_SCALE villageHalfExtent=" << VillageHalfExtent
-         << " initialResidents=" << VillageInitialPopulation << " totalNpcs=" << m_Actors.size()
-         << " roadGap=" << VillageRoadGap << " spacing=" << ShrineSpacing
-         << " walkingSeconds=" << VillageRoadGap / PlayerWalkSpeed
-         << " pigeonSpeed=" << CarrierPigeonSpeed << " migrationFloor=" << VillageMigrationFloor
-         << " populationCapacity=" << VillagePopulationCapacity
-         << " spatialBuckets=" << m_NpcSpatialIndex.size() << '\n';
-    for (size_t i = 0; i < Villages.size(); ++i)
-    {
-        const auto& economy = m_Economies[i];
-        file << "VILLAGE " << Villages[i].id << " name=" << Villages[i].name
-             << " culture=" << Villages[i].culture << " center=" << Villages[i].center.x << ','
-             << Villages[i].center.y << " treasury=" << economy.treasury << " food=" << economy.food
-             << " medicine=" << economy.medicine << " goods=" << economy.goods << '\n';
-    }
-    for (const auto actor : m_Actors)
-    {
-        const auto* n = dynamic_cast<const NpcActor*>(m_Game.Scene().Find(actor));
-        if (!n)
-        {
-            continue;
-        }
-        file << "NPC " << n->profile.id << ' ' << n->profile.name
-             << " village=" << Villages[n->profile.village].id
-             << " role=" << NpcRoleName(n->profile.role) << " goal=" << NpcGoalName(n->profile.goal)
-             << " position=" << n->WorldX() << ',' << n->WorldY() << " hp=" << n->vitals.health
-             << '/' << n->vitals.maxHealth << " gold=" << n->vitals.gold
-             << " holy=" << n->vitals.holyPower << " strength=" << n->vitals.strength
-             << " armor=" << n->vitals.armor << " moveSpeed=" << n->vitals.moveSpeed
-             << " birthHp=" << n->birth.health << " birthStrength=" << n->birth.strength
-             << " mission=" << VillageMissionName(n->mission.type)
-             << " missionVillage=" << Villages[n->mission.destination].id
-             << " returning=" << n->mission.returning << " missionDeadline=" << n->mission.deadline
-             << " wisdom=" << n->vitals.wisdom << " corruption=" << n->vitals.corruption
-             << " raidWeight=" << n->profile.raidWeight
-             << " corruptionWeight=" << n->profile.corruptionWeight << " rng=" << n->randomState
-             << " seq=" << n->decisions << " alive=" << n->vitals.alive
-             << " phase=" << NpcPhaseName(n->execution.phase) << " effect=" << n->execution.applied
-             << " reservation=" << n->execution.reservation << " distant=" << n->distant
-             << " weapon=" << NpcWeaponFor(n->profile.role).name
-             << " stationary=" << n->stationaryTime << " distance=" << n->distanceTravelled
-             << " migrations=" << n->migrations << " migrationReason=" << n->migrationReason
-             << " migrationHome=" << n->migrationHome.x << ',' << n->migrationHome.y
-             << " completed=" << n->completedActions << " failed=" << n->failedActions
-             << " destination=" << n->execution.destination.x << ',' << n->execution.destination.y
-             << '\n';
-        for (const auto& memory : n->knowledge)
-        {
-            file << "  knowledge " << memory.entity << " at=" << memory.seenAt
-                 << " source=" << memory.source << " last=" << memory.position.x << ','
-                 << memory.position.y << " hostile=" << memory.hostile << '\n';
-        }
-        for (const auto& relation : n->relations)
-        {
-            file << "  relation " << relation.first << " trust=" << relation.second.trust
-                 << " grudge=" << relation.second.grudge << '\n';
-        }
-        for (size_t i = 0; i < NpcActionCount; ++i)
-        {
-            if (n->cooldown[i] > m_Time)
-            {
-                file << "  cooldown " << NpcActionId(static_cast<NpcAction>(i)) << '='
-                     << n->cooldown[i] - m_Time << '\n';
-            }
-        }
-    }
-    for (size_t village = 0; village < m_Societies.size(); ++village)
-    {
-        const auto& society = m_Societies[village];
-        file << "SOCIETY village=" << Villages[village].id << " alignment=" << society.alignment
-             << " threatened=" << society.threatened << " dispatches=" << society.dispatches
-             << " nextDispatch=" << society.nextDispatch << " postsSent=" << society.postsSent
-             << " postsReceived=" << society.postsReceived << " immigrants=" << society.immigrants
-             << " emigrants=" << society.emigrants << '\n';
-        for (const auto& item : society.known)
-        {
-            file << "  villageKnowledge target=" << Villages[item.first].id
-                 << " observedAt=" << item.second.observedAt
-                 << " alignment=" << item.second.alignment << " position=" << item.second.position.x
-                 << ',' << item.second.position.y
-                 << " source=" << Villages[item.second.sourceVillage].id
-                 << " geographicRisk=" << item.second.geographicRisk
-                 << " relation=" << society.relations[item.first] << '\n';
-        }
-    }
-    for (size_t i = 0; i < m_Outposts.size(); ++i)
-    {
-        const auto& camp = m_Outposts[i];
-        file << "OUTPOST id=" << Outposts[i].id << " radius=" << camp.radius
-             << " spawned=" << camp.spawned << " waves=" << camp.waves
-             << " nextSpawn=" << camp.nextSpawn << " nextWave=" << camp.nextWave << '\n';
-    }
-    for (const auto& line : m_Log)
-    {
-        file << line << '\n';
-    }
-    for (const auto& post : m_CarrierPosts)
-    {
-        file << "PIGEON id=" << post.id << " from=" << Villages[post.source].id
-             << " to=" << Villages[post.destination].id << " departed=" << post.departedAt
-             << " arrives=" << post.arrivesAt << " reports=" << post.reports.size()
-             << " events=" << post.events.size() << '\n';
-    }
-    file.close();
-    return bool(file)
-           && MoveFileExW(temporary.c_str(),
-                          (m_LogDirectory / "latest.log").c_str(),
-                          MOVEFILE_REPLACE_EXISTING);
 }

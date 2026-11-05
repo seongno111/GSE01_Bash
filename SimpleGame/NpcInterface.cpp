@@ -122,7 +122,7 @@ bool NpcWorld::Key(unsigned char key)
     }
     if (key == 'l')
     {
-        m_Game.Notice(ExportLog() ? "NpcAI/latest.log에 최근 판단과 현재 상태를 기록했습니다."
+        m_Game.Notice(ExportLog() ? "NpcAI/latest.log 기록을 예약했습니다."
                                   : "NPC 로그 저장에 실패했습니다. 콘솔과 쓰기 권한을 확인하세요.");
         return true;
     }

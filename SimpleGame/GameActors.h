@@ -184,7 +184,7 @@ public:
     ActorId combatTarget = InvalidActor;
     int outpost = -1;
     int raidVillage = -1;
-    bool returningToOutpost = false;
+    bool returningHome = false;
     float patrolRadius = 6;
     double raidUntil = 0;
     double nextTargetScan = 0;

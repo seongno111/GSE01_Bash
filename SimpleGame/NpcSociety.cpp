@@ -356,6 +356,9 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
         mission.arrived = false;
         mission.deadline =
             m_Time + JourneyBudget(npc.WorldPosition(), npc.home, npc.vitals.moveSpeed);
+        m_Game.CancelRoute(npc.Id());
+        npc.path.clear();
+        npc.pathIndex = 0;
         npc.nextPath = 0;
     }
     if (mission.returning && m_Time > mission.deadline)
@@ -422,6 +425,9 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
     if (mission.arrived && VillageAt(npc.WorldPosition()) != int(destination))
     {
         mission.arrived = false;
+        m_Game.CancelRoute(npc.Id());
+        npc.path.clear();
+        npc.pathIndex = 0;
         npc.nextPath = 0;
     }
     const auto center = Villages[destination].center;
@@ -447,7 +453,8 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
         {
             return true;
         }
-        if (!Travel(npc, goal, dt))
+        const auto travel = Travel(npc, goal, dt);
+        if (travel == TravelResult::Unreachable)
         {
             ++mission.pathFailures;
             mission.nextService = m_Time + 2;
@@ -455,6 +462,11 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
             if (mission.pathFailures >= 4 && !mission.returning)
             {
                 mission.returning = true;
+                mission.arrived = false;
+                m_Game.CancelRoute(npc.Id());
+                npc.path.clear();
+                npc.pathIndex = 0;
+                npc.nextPath = 0;
                 mission.deadline =
                     m_Time + JourneyBudget(npc.WorldPosition(), npc.home, npc.vitals.moveSpeed);
                 mission.pathFailures = 0;
@@ -464,7 +476,7 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
                                  &npc);
             }
         }
-        else
+        else if (travel == TravelResult::Moving)
         {
             mission.pathFailures = 0;
         }
@@ -479,6 +491,7 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
                          npc.WorldPosition(),
                          &npc);
         mission = {};
+        m_Game.CancelRoute(npc.Id());
         npc.path.clear();
         npc.nextDecision = m_Time;
         return true;
@@ -500,6 +513,7 @@ bool NpcWorld::UpdateMission(NpcActor& npc, float dt)
         mission.deadline =
             m_Time + JourneyBudget(npc.WorldPosition(), npc.home, npc.vitals.moveSpeed);
         mission.nextService = 0;
+        m_Game.CancelRoute(npc.Id());
         npc.path.clear();
         npc.nextPath = 0;
         return true;

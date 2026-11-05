@@ -12,6 +12,7 @@
 #include <initializer_list>
 #include <utility>
 #include <algorithm>
+#include <exception>
 
 void NpcWorld::RecordWorldEvent(const std::string& type,
                                 const std::string& text,
@@ -244,19 +245,331 @@ namespace
     }
 } // namespace
 
+// Values owned by the export job. The worker never reads actors or the scene graph.
+struct NpcWorld::MonitorSnapshot
+{
+    struct Npc
+    {
+        ActorId id = InvalidActor;
+        NpcEntity entity = NoNpcEntity;
+        WorldPoint position;
+        bool active = false;
+        NpcProfile profile;
+        NpcVitals vitals;
+        NpcBirthStats birth{};
+        NpcMission mission;
+        NpcExecution execution;
+        WorldPoint home;
+        WorldPoint migrationHome;
+        NpcMode mode = NpcMode::Daily;
+        double nextMigration = 0;
+        unsigned migrations = 0;
+        std::string migrationReason;
+        bool distant = false;
+        double stationaryTime = 0;
+        double distanceTravelled = 0;
+        std::uint64_t completedActions = 0;
+        std::uint64_t failedActions = 0;
+        std::uint64_t decisions = 0;
+        std::string lastResult;
+        std::vector<NpcCandidate> candidates;
+        // Diagnostic details are copied only when latest.log is requested.
+        std::vector<NpcMemory> knowledge;
+        std::map<NpcEntity, NpcRelation> relations;
+        std::array<double, NpcActionCount> cooldown{};
+        std::uint64_t randomState = 0;
+    };
+
+    struct Monster
+    {
+        ActorId id = InvalidActor;
+        WorldPoint position;
+        bool enabled = false;
+        bool echo = false;
+        bool alive = false;
+        float health = 0;
+        float maxHealth = 0;
+        MonsterKind kind = MonsterKind::WitheredHollow;
+        ActorId combatTarget = InvalidActor;
+        MonsterState state = MonsterState::Patrol;
+        float attackWindup = 0;
+        float recovery = 0;
+        float damage = 0;
+        float speed = 0;
+        int experience = 0;
+        float specialCooldown = 0;
+        float specialWindup = 0;
+        float guardRemaining = 0;
+        bool enraged = false;
+        int packNearby = 0;
+        int outpost = -1;
+        int raidVillage = -1;
+        WorldPoint routeTarget;
+        bool returningHome = false;
+    };
+
+    struct Carrier
+    {
+        std::uint64_t id = 0;
+        size_t source = 0;
+        size_t destination = 0;
+        double departedAt = 0;
+        double arrivesAt = 0;
+        size_t reports = 0;
+        size_t events = 0;
+        WorldPoint position;
+    };
+
+    std::vector<Npc> npcs;
+    std::vector<Monster> monsters;
+    std::vector<Carrier> carrierPosts;
+    std::array<VillageSociety, Villages.size()> societies;
+    std::array<VillageEconomy, Villages.size()> economies;
+    std::vector<EnemyOutpost> outposts;
+    std::deque<WorldEvent> worldEvents;
+    std::map<std::string, std::uint64_t> eventCounts;
+    std::map<ActorId, Conduct> conduct;
+    std::deque<std::string> events;
+    std::deque<std::string> log;
+    std::filesystem::path directory;
+    std::string session;
+    std::uint64_t sequence = 0;
+    std::uint64_t nextWorldEvent = 0;
+    std::uint64_t seed = 0;
+    double time = 0;
+    long long timestamp = 0;
+    size_t spatialBuckets = 0;
+    bool diagnosticLog = false;
+};
+
+NpcWorld::~NpcWorld()
+{
+    // A job owns all serialized state, and joins before world members are destroyed.
+    if (m_MonitorExport.valid())
+    {
+        m_MonitorExport.wait();
+    }
+}
+
+std::shared_ptr<NpcWorld::MonitorSnapshot> NpcWorld::CaptureMonitorSnapshot()
+{
+    auto snapshot = std::make_shared<MonitorSnapshot>();
+    snapshot->timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
+                              std::chrono::system_clock::now().time_since_epoch())
+                              .count();
+    if (m_MonitorSession.empty())
+    {
+        m_MonitorSession =
+            std::to_string(snapshot->timestamp) + "-" + std::to_string(GetCurrentProcessId());
+    }
+    snapshot->session = m_MonitorSession;
+    snapshot->sequence = ++m_MonitorSequence;
+    snapshot->time = m_Time;
+    snapshot->seed = m_Seed;
+    snapshot->nextWorldEvent = m_NextWorldEvent;
+    snapshot->directory = m_LogDirectory;
+    snapshot->societies = m_Societies;
+    snapshot->economies = m_Economies;
+    snapshot->outposts = m_Outposts;
+    snapshot->worldEvents = m_WorldEvents;
+    snapshot->eventCounts = m_EventCounts;
+    snapshot->conduct = m_Conduct;
+    snapshot->events = m_Events;
+    snapshot->diagnosticLog = m_DiagnosticLogRequested;
+    if (snapshot->diagnosticLog)
+    {
+        snapshot->log = m_Log;
+        snapshot->spatialBuckets = m_NpcSpatialIndex.size();
+    }
+    snapshot->npcs.reserve(m_Actors.size());
+    for (const auto id : m_Actors)
+    {
+        const auto* npc = dynamic_cast<const NpcActor*>(m_Game.Scene().Find(id));
+        if (!npc)
+        {
+            continue;
+        }
+        MonitorSnapshot::Npc record;
+        record.id = id;
+        record.entity = npc->Entity();
+        record.position = npc->WorldPosition();
+        record.active = npc->EnabledInHierarchy();
+        record.profile = npc->profile;
+        record.vitals = npc->vitals;
+        record.birth = npc->birth;
+        record.mission = npc->mission;
+        record.execution = npc->execution;
+        record.home = npc->home;
+        record.migrationHome = npc->migrationHome;
+        record.mode = npc->mode;
+        record.nextMigration = npc->nextMigration;
+        record.migrations = npc->migrations;
+        record.migrationReason = npc->migrationReason;
+        record.distant = npc->distant;
+        record.stationaryTime = npc->stationaryTime;
+        record.distanceTravelled = npc->distanceTravelled;
+        record.completedActions = npc->completedActions;
+        record.failedActions = npc->failedActions;
+        record.decisions = npc->decisions;
+        record.lastResult = npc->lastResult;
+        record.candidates = npc->candidates;
+        if (snapshot->diagnosticLog)
+        {
+            record.knowledge = npc->knowledge;
+            record.relations = npc->relations;
+            record.cooldown = npc->cooldown;
+            record.randomState = npc->randomState;
+        }
+        snapshot->npcs.push_back(std::move(record));
+    }
+    for (const auto& enemy : m_Game.m_Enemies)
+    {
+        MonitorSnapshot::Monster record;
+        record.id = enemy.Id();
+        record.position = enemy.WorldPosition();
+        record.enabled = enemy.EnabledInHierarchy();
+        record.alive = enemy.alive;
+        record.health = enemy.health;
+        record.maxHealth = enemy.maxHealth;
+        record.kind = enemy.kind;
+        record.combatTarget = enemy.combatTarget;
+        record.state = enemy.state;
+        record.attackWindup = enemy.attackWindup;
+        record.recovery = enemy.recovery;
+        record.damage = enemy.damage;
+        record.speed = enemy.speed;
+        record.experience = enemy.experience;
+        record.specialCooldown = enemy.specialCooldown;
+        record.specialWindup = enemy.specialWindup;
+        record.guardRemaining = enemy.guardRemaining;
+        record.enraged = enemy.enraged;
+        record.packNearby = enemy.packNearby;
+        record.outpost = enemy.outpost;
+        record.raidVillage = enemy.raidVillage;
+        record.routeTarget = enemy.routeTarget;
+        record.returningHome = enemy.returningHome;
+        snapshot->monsters.push_back(std::move(record));
+    }
+    for (const auto& echo : m_Game.m_Echoes)
+    {
+        MonitorSnapshot::Monster record;
+        record.id = echo.Id();
+        record.position = echo.WorldPosition();
+        record.enabled = echo.EnabledInHierarchy();
+        record.echo = true;
+        record.alive = echo.alive;
+        record.health = echo.health;
+        record.maxHealth = echo.maxHealth;
+        snapshot->monsters.push_back(std::move(record));
+    }
+    for (const auto& post : m_CarrierPosts)
+    {
+        const auto* bird = m_Game.Scene().Find(post.bird);
+        snapshot->carrierPosts.push_back(
+            {post.id,
+             post.source,
+             post.destination,
+             post.departedAt,
+             post.arrivesAt,
+             post.reports.size(),
+             post.events.size(),
+             bird ? bird->WorldPosition() : Villages[post.source].center});
+    }
+    return snapshot;
+}
+
+void NpcWorld::PollMonitorExport()
+{
+    if (m_MonitorExport.valid()
+        && m_MonitorExport.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
+    {
+        try
+        {
+            const auto result = m_MonitorExport.get();
+            m_LastMonitorWorkerMs = result.workerMs;
+            if (!result.monitorWritten && !m_MonitorWarning)
+            {
+                std::cerr << "[NpcMonitor] Snapshot write failed: " << m_LogDirectory << '\n';
+            }
+            if (!result.logWritten && !m_LogWarning)
+            {
+                std::cerr << "[NpcAI] Diagnostic snapshot write failed.\n";
+            }
+            m_MonitorWarning = !result.monitorWritten;
+            m_LogWarning = !result.logWritten;
+            if (result.monitorWritten)
+            {
+                m_LastMonitorCompletedAt = m_MonitorCapturedAt;
+            }
+        }
+        catch (const std::exception& error)
+        {
+            std::cerr << "[NpcMonitor] Export job failed: " << error.what() << '\n';
+        }
+    }
+    m_Performance.monitorWorkerMs = m_LastMonitorWorkerMs;
+    m_Performance.monitorAgeMs =
+        m_LastMonitorCompletedAt == std::chrono::steady_clock::time_point{}
+            ? -1
+            : std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now()
+                                                        - m_LastMonitorCompletedAt)
+                  .count();
+    m_Performance.monitorPending = m_MonitorExport.valid();
+    m_Performance.monitorSkipped = m_MonitorSkipped;
+}
+
 bool NpcWorld::ExportMonitor()
 {
     if (m_LogDirectory.empty())
     {
         return false;
     }
-    const auto timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
-                               std::chrono::system_clock::now().time_since_epoch())
-                               .count();
-    if (m_MonitorSession.empty())
+    PollMonitorExport();
+    if (m_MonitorExport.valid())
     {
-        m_MonitorSession = std::to_string(timestamp) + "-" + std::to_string(GetCurrentProcessId());
+        // Bound the exporter to one job. A later tick captures the newest world.
+        ++m_MonitorSkipped;
+        m_Performance.monitorSkipped = m_MonitorSkipped;
+        return true;
     }
+
+    const auto start = std::chrono::steady_clock::now();
+    try
+    {
+        auto snapshot = CaptureMonitorSnapshot();
+        m_MonitorExport = std::async(std::launch::async,
+                                     [snapshot]()
+                                     {
+                                         const auto start = std::chrono::steady_clock::now();
+                                         auto result = WriteMonitorSnapshot(*snapshot);
+                                         result.workerMs =
+                                             std::chrono::duration<double, std::milli>(
+                                                 std::chrono::steady_clock::now() - start)
+                                                 .count();
+                                         return result;
+                                     });
+        m_MonitorCapturedAt = start;
+        m_DiagnosticLogRequested = false;
+        m_Performance.monitorPending = true;
+    }
+    catch (const std::exception& error)
+    {
+        std::cerr << "[NpcMonitor] Cannot start export job: " << error.what() << '\n';
+        return false;
+    }
+    m_Performance.monitorCaptureMs +=
+        std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - start).count();
+    return true;
+}
+
+bool NpcWorld::ExportLog()
+{
+    m_DiagnosticLogRequested = true;
+    return ExportMonitor();
+}
+
+NpcWorld::MonitorExportResult NpcWorld::WriteMonitorSnapshot(const MonitorSnapshot& snapshot)
+{
     const auto villageAt = [](WorldPoint p)
     {
         const int index = VillageAt(p);
@@ -292,19 +605,17 @@ bool NpcWorld::ExportMonitor()
     std::vector<std::string> npcs;
     int npcAlive = 0;
     int npcCombat = 0;
-    for (const auto id : m_Actors)
+    for (const auto& record : snapshot.npcs)
     {
-        const auto* npc = dynamic_cast<const NpcActor*>(m_Game.Scene().Find(id));
-        if (!npc)
-        {
-            continue;
-        }
+        const auto* npc = &record;
+        const auto id = record.id;
         const auto& v = npc->vitals;
         const auto& run = npc->execution;
         const bool combat = npc->mode == NpcMode::Combat || npc->mode == NpcMode::Evacuate;
-        const bool active = v.alive && npc->EnabledInHierarchy();
-        const auto foundConduct = m_Conduct.find(id);
-        const auto conduct = foundConduct == m_Conduct.end() ? Conduct{} : foundConduct->second;
+        const bool active = v.alive && npc->active;
+        const auto foundConduct = snapshot.conduct.find(id);
+        const auto conduct =
+            foundConduct == snapshot.conduct.end() ? Conduct{} : foundConduct->second;
         const auto& p = npc->profile;
         const double disposition = std::clamp(
             100.0 * (0.55 * p.compassion + 0.45 * p.duty - 0.45 * p.greed - 0.65 * p.raidWeight)
@@ -330,7 +641,7 @@ bool NpcWorld::ExportMonitor()
             homeStats.residentHealth += v.maxHealth > 0 ? v.health / v.maxHealth : 0;
             homeStats.residentCorruption += v.corruption;
         }
-        const int location = VillageAt(npc->WorldPosition());
+        const int location = VillageAt(npc->position);
         if (active && location >= 0)
         {
             auto& town = villageStats[location];
@@ -357,7 +668,7 @@ bool NpcWorld::ExportMonitor()
         const auto& mission = npc->mission;
         const auto& birth = npc->birth;
         npcs.push_back(
-            O({{"id", S(std::to_string(npc->Entity()))},
+            O({{"id", S(std::to_string(npc->entity))},
                {"name", S(npc->profile.name)},
                {"role", S(NpcRoleName(npc->profile.role))},
                {"goal", S(NpcGoalName(npc->profile.goal))},
@@ -375,8 +686,8 @@ bool NpcWorld::ExportMonitor()
                    {"courage", N(p.courage)},
                    {"faith", N(p.faith)}})},
                {"homeVillageId", S(Villages[p.village].id)},
-               {"currentVillageId", villageAt(npc->WorldPosition())},
-               {"position", Position(npc->WorldPosition())},
+               {"currentVillageId", villageAt(npc->position)},
+               {"position", Position(npc->position)},
                {"home", Position(npc->home)},
                {"migration",
                 O({{"active", B(npc->mission.type == VillageMission::Relocate)},
@@ -442,32 +753,34 @@ bool NpcWorld::ExportMonitor()
     int mobDead = 0;
     int mobInactive = 0;
     int echoActive = 0;
-    const auto addMonster = [&](const Actor& actor,
-                                const std::string& kind,
-                                const std::string& name,
-                                bool alive,
-                                float health,
-                                float maxHealth)
+    const auto addMonster = [&](const MonitorSnapshot::Monster& actor)
     {
-        const bool active = alive && actor.EnabledInHierarchy();
+        const auto* enemy = actor.echo ? nullptr : &actor;
+        const auto& stats = MonsterStats(actor.kind);
+        const std::string kind = actor.echo ? "echo" : stats.boss ? "boss" : "monster";
+        const std::string name = actor.echo ? "변이 잔재" : stats.name;
+        const bool alive = actor.alive;
+        const float health = actor.health;
+        const float maxHealth = actor.maxHealth;
+        const bool active = alive && actor.enabled;
         mobActive += active;
-        mobDead += !alive && actor.EnabledInHierarchy();
-        mobInactive += !actor.EnabledInHierarchy();
-        const int village = VillageAt(actor.WorldPosition());
+        mobDead += !alive && actor.enabled;
+        mobInactive += !actor.enabled;
+        const int village = VillageAt(actor.position);
         if (active && village >= 0)
         {
             ++villageStats[village].villageMobs;
         }
-        const auto location = villageAt(actor.WorldPosition());
-        const auto* enemy = dynamic_cast<const EnemyActor*>(&actor);
+        const auto location = villageAt(actor.position);
         monsters.push_back(O(
-            {{"id", S("actor-" + std::to_string(actor.Id()))},
+            {{"id", S("actor-" + std::to_string(actor.id))},
              {"kind", S(kind)},
              {"name", S(name)},
-             {"speciesId", enemy ? S(enemy->Definition().id) : S("mutation_echo")},
-             {"family", enemy ? S(enemy->Definition().family) : S("죽음의 잔재")},
-             {"modelKey", enemy ? S(enemy->Definition().modelKey) : S("DeathEcho")},
-             {"ability", enemy ? S(MonsterAbilityName(enemy->Definition().ability)) : S("없음")},
+             {"speciesId", enemy ? S(MonsterStats(enemy->kind).id) : S("mutation_echo")},
+             {"family", enemy ? S(MonsterStats(enemy->kind).family) : S("죽음의 잔재")},
+             {"modelKey", enemy ? S(MonsterStats(enemy->kind).modelKey) : S("DeathEcho")},
+             {"ability",
+              enemy ? S(MonsterAbilityName(MonsterStats(enemy->kind).ability)) : S("없음")},
              {"combatTargetId",
               enemy && enemy->combatTarget != InvalidActor
                   ? S("actor-" + std::to_string(enemy->combatTarget))
@@ -480,10 +793,10 @@ bool NpcWorld::ExportMonitor()
                                                   : MonsterStateName(enemy->state))
                     : S("추격")},
              {"damage", enemy ? N(enemy->damage) : "null"},
-             {"armor", enemy ? N(enemy->Definition().armor) : "null"},
+             {"armor", enemy ? N(MonsterStats(enemy->kind).armor) : "null"},
              {"moveSpeed", enemy ? N(enemy->speed * (enemy->enraged ? 1.3f : 1)) : "null"},
              {"experience", enemy ? N(enemy->experience) : "null"},
-             {"attackRange", enemy ? N(enemy->Definition().attackRange) : "null"},
+             {"attackRange", enemy ? N(MonsterStats(enemy->kind).attackRange) : "null"},
              {"specialCooldown", enemy ? N(enemy->specialCooldown) : "null"},
              {"specialWindup", enemy ? N(enemy->specialWindup) : "null"},
              {"guardRemaining", enemy ? N(enemy->guardRemaining) : "null"},
@@ -491,10 +804,10 @@ bool NpcWorld::ExportMonitor()
              {"packNearby", enemy ? N(enemy->packNearby) : "null"},
              {"alive", B(alive)},
              {"active", B(active)},
-             {"enabled", B(actor.EnabledInHierarchy())},
+             {"enabled", B(actor.enabled)},
              {"health", N(health)},
              {"maxHealth", N(maxHealth)},
-             {"position", Position(actor.WorldPosition())},
+             {"position", Position(actor.position)},
              {"outpostId",
               enemy && enemy->outpost >= 0 ? S(Outposts[size_t(enemy->outpost)].id) : "null"},
              {"raidVillageId",
@@ -503,26 +816,16 @@ bool NpcWorld::ExportMonitor()
              {"destination", enemy && enemy->outpost >= 0 ? Position(enemy->routeTarget) : "null"},
              {"currentVillageId", location}}));
     };
-    // Enumerate current collections, including later spawns and mutation remnants.
-    for (const auto& enemy : m_Game.m_Enemies)
+    for (const auto& monster : snapshot.monsters)
     {
-        addMonster(enemy,
-                   enemy.Definition().boss ? "boss" : "monster",
-                   enemy.Definition().name,
-                   enemy.alive,
-                   enemy.health,
-                   enemy.maxHealth);
-    }
-    for (const auto& echo : m_Game.m_Echoes)
-    {
-        echoActive += echo.alive && echo.EnabledInHierarchy();
-        addMonster(echo, "echo", "변이 잔재", echo.alive, echo.health, echo.maxHealth);
+        echoActive += monster.echo && monster.alive && monster.enabled;
+        addMonster(monster);
     }
     std::vector<std::string> structuredEvents;
-    for (const auto& event : m_WorldEvents)
+    for (const auto& event : snapshot.worldEvents)
     {
         const int village = VillageAt(event.position);
-        if (m_Time - event.time <= 60 && village >= 0)
+        if (snapshot.time - event.time <= 60 && village >= 0)
         {
             auto& town = villageStats[village];
             town.recentMurders += event.type == "murder";
@@ -555,7 +858,7 @@ bool NpcWorld::ExportMonitor()
     for (size_t i = 0; i < Villages.size(); ++i)
     {
         std::vector<std::string> knowledge;
-        const auto& society = m_Societies[i];
+        const auto& society = snapshot.societies[i];
         for (const auto& entry : society.known)
         {
             if (entry.first == i)
@@ -580,7 +883,7 @@ bool NpcWorld::ExportMonitor()
         }
         const auto& definition = Villages[i];
         const auto& town = villageStats[i];
-        const auto& economy = m_Economies[i];
+        const auto& economy = snapshot.economies[i];
         const double morale = town.present ? town.presentMorale / town.present : 0;
         const char* atmosphere =
             town.villageMobs || town.presentCombat || town.presentFrenzy ? "전투와 위협"
@@ -629,8 +932,8 @@ bool NpcWorld::ExportMonitor()
                    {"hunt", N(town.recentHunts)},
                    {"rumor", N(town.recentRumors)},
                    {"windowComplete",
-                    B(m_WorldEvents.empty() || m_WorldEvents.front().id == 1
-                      || m_WorldEvents.front().time <= m_Time - 60)}})},
+                    B(snapshot.worldEvents.empty() || snapshot.worldEvents.front().id == 1
+                      || snapshot.worldEvents.front().time <= snapshot.time - 60)}})},
                {"residents", N(town.residents)},
                {"aliveResidents", N(town.residentAlive)},
                {"deadResidents", N(town.residents - town.residentAlive)},
@@ -649,26 +952,32 @@ bool NpcWorld::ExportMonitor()
                {"goods", N(economy.goods)}}));
     }
     std::vector<std::string> events;
-    for (const auto& event : m_Events)
+    for (const auto& event : snapshot.events)
     {
         events.push_back(S(event));
     }
     std::vector<std::string> eventCounts;
-    for (const auto& count : m_EventCounts)
+    for (const auto& count : snapshot.eventCounts)
     {
         eventCounts.push_back(O({{"type", S(count.first)}, {"count", N(double(count.second))}}));
     }
     std::vector<std::string> outposts;
-    for (size_t i = 0; i < m_Outposts.size(); ++i)
+    for (size_t i = 0; i < snapshot.outposts.size(); ++i)
     {
-        const auto& camp = m_Outposts[i];
+        const auto& camp = snapshot.outposts[i];
         int alive = 0;
         int raiding = 0;
         int garrison = 0;
         int target = -1;
         for (auto id : camp.members)
         {
-            const auto* enemy = dynamic_cast<const EnemyActor*>(m_Game.Scene().Find(id));
+            const auto found = std::find_if(snapshot.monsters.begin(),
+                                            snapshot.monsters.end(),
+                                            [id](const auto& monster)
+                                            {
+                                                return monster.id == id && !monster.echo;
+                                            });
+            const auto* enemy = found == snapshot.monsters.end() ? nullptr : &*found;
             if (enemy && enemy->alive)
             {
                 ++alive;
@@ -677,9 +986,9 @@ bool NpcWorld::ExportMonitor()
                     ++raiding;
                     target = enemy->raidVillage;
                 }
-                else if (!enemy->returningToOutpost
-                         && std::hypot(enemy->WorldX() - Outposts[i].center.x,
-                                       enemy->WorldY() - Outposts[i].center.y)
+                else if (!enemy->returningHome
+                         && std::hypot(enemy->position.x - Outposts[i].center.x,
+                                       enemy->position.y - Outposts[i].center.y)
                                 < OutpostGarrisonRadius)
                 {
                     ++garrison;
@@ -706,18 +1015,16 @@ bool NpcWorld::ExportMonitor()
                {"targetVillageId", target < 0 ? "null" : S(Villages[size_t(target)].id)}}));
     }
     std::vector<std::string> carrierPosts;
-    for (const auto& post : m_CarrierPosts)
+    for (const auto& post : snapshot.carrierPosts)
     {
-        const auto* bird = m_Game.Scene().Find(post.bird);
-        carrierPosts.push_back(O(
-            {{"id", S(std::to_string(post.id))},
-             {"sourceVillageId", S(Villages[post.source].id)},
-             {"destinationVillageId", S(Villages[post.destination].id)},
-             {"departedAt", N(post.departedAt)},
-             {"arrivesAt", N(post.arrivesAt)},
-             {"speed", N(GameRules::CarrierPigeonSpeed)},
-             {"reports", N(double(post.reports.size()))},
-             {"position", Position(bird ? bird->WorldPosition() : Villages[post.source].center)}}));
+        carrierPosts.push_back(O({{"id", S(std::to_string(post.id))},
+                                  {"sourceVillageId", S(Villages[post.source].id)},
+                                  {"destinationVillageId", S(Villages[post.destination].id)},
+                                  {"departedAt", N(post.departedAt)},
+                                  {"arrivesAt", N(post.arrivesAt)},
+                                  {"speed", N(GameRules::CarrierPigeonSpeed)},
+                                  {"reports", N(double(post.reports))},
+                                  {"position", Position(post.position)}}));
     }
     std::vector<std::string> routes;
     for (size_t from = 0; from < Villages.size(); ++from)
@@ -740,11 +1047,11 @@ bool NpcWorld::ExportMonitor()
     const auto json =
         O({{"schemaVersion", N(4)},
            {"type", S("world.snapshot")},
-           {"sessionId", S(m_MonitorSession)},
-           {"sequence", N(double(++m_MonitorSequence))},
-           {"generatedAtUnixMs", std::to_string(timestamp)},
-           {"simulationTime", N(m_Time)},
-           {"worldSeed", S(std::to_string(m_Seed))},
+           {"sessionId", S(snapshot.session)},
+           {"sequence", N(double(snapshot.sequence))},
+           {"generatedAtUnixMs", std::to_string(snapshot.timestamp)},
+           {"simulationTime", N(snapshot.time)},
+           {"worldSeed", S(std::to_string(snapshot.seed))},
            {"scope", S("현재 등록된 Actor")},
            {"totals",
             O({{"npcs", N(double(npcs.size()))},
@@ -776,22 +1083,145 @@ bool NpcWorld::ExportMonitor()
            {"eventRetention",
             O({{"capacity", N(2048)},
                {"firstId",
-                m_WorldEvents.empty() ? "null" : S(std::to_string(m_WorldEvents.front().id))},
-               {"nextId", S(std::to_string(m_NextWorldEvent))}})}});
+                snapshot.worldEvents.empty() ? "null"
+                                             : S(std::to_string(snapshot.worldEvents.front().id))},
+               {"nextId", S(std::to_string(snapshot.nextWorldEvent))}})}});
+
+    MonitorExportResult result;
     std::error_code error;
-    std::filesystem::create_directories(m_LogDirectory, error);
-    const auto temporary = m_LogDirectory / "monitor.json.tmp";
+    std::filesystem::create_directories(snapshot.directory, error);
+    const auto temporary = snapshot.directory / "monitor.json.tmp";
     std::ofstream file(temporary, std::ios::binary | std::ios::trunc);
     file << json;
     file.close();
-    const bool success = !error && bool(file)
-                         && MoveFileExW(temporary.c_str(),
-                                        (m_LogDirectory / "monitor.json").c_str(),
-                                        MOVEFILE_REPLACE_EXISTING);
-    if (!success && !m_MonitorWarning)
+    result.monitorWritten = !error && bool(file)
+                            && MoveFileExW(temporary.c_str(),
+                                           (snapshot.directory / "monitor.json").c_str(),
+                                           MOVEFILE_REPLACE_EXISTING);
+    if (snapshot.diagnosticLog)
     {
-        std::cerr << "[NpcMonitor] Snapshot write failed: " << m_LogDirectory << '\n';
+        result.logWritten = WriteDiagnosticSnapshot(snapshot);
     }
-    m_MonitorWarning = !success;
-    return success;
+    return result;
+}
+
+bool NpcWorld::WriteDiagnosticSnapshot(const MonitorSnapshot& snapshot)
+{
+    std::error_code error;
+    std::filesystem::create_directories(snapshot.directory, error);
+    const auto temporary = snapshot.directory / "latest.log.tmp";
+    std::ofstream file(temporary, std::ios::trunc);
+    if (error || !file)
+    {
+        return false;
+    }
+    file << "NPC AI schema=4 seed=" << snapshot.seed << " fixed_step=0.05 time=" << snapshot.time
+         << " villages=" << Villages.size()
+         << "\nBounded diagnostic snapshot; not a loadable save.\n";
+    file << "WORLD_SCALE villageHalfExtent=" << GameRules::VillageHalfExtent
+         << " initialResidents=" << GameRules::VillageInitialPopulation
+         << " totalNpcs=" << snapshot.npcs.size() << " roadGap=" << GameRules::VillageRoadGap
+         << " spacing=" << GameRules::ShrineSpacing
+         << " walkingSeconds=" << GameRules::VillageRoadGap / GameRules::PlayerWalkSpeed
+         << " pigeonSpeed=" << GameRules::CarrierPigeonSpeed
+         << " migrationFloor=" << GameRules::VillageMigrationFloor
+         << " populationCapacity=" << GameRules::VillagePopulationCapacity
+         << " spatialBuckets=" << snapshot.spatialBuckets << '\n';
+    for (size_t i = 0; i < Villages.size(); ++i)
+    {
+        const auto& economy = snapshot.economies[i];
+        file << "VILLAGE " << Villages[i].id << " name=" << Villages[i].name
+             << " culture=" << Villages[i].culture << " center=" << Villages[i].center.x << ','
+             << Villages[i].center.y << " treasury=" << economy.treasury << " food=" << economy.food
+             << " medicine=" << economy.medicine << " goods=" << economy.goods << '\n';
+    }
+    for (const auto& record : snapshot.npcs)
+    {
+        const auto* n = &record;
+        file << "NPC " << n->profile.id << ' ' << n->profile.name
+             << " village=" << Villages[n->profile.village].id
+             << " role=" << NpcRoleName(n->profile.role) << " goal=" << NpcGoalName(n->profile.goal)
+             << " position=" << n->position.x << ',' << n->position.y << " hp=" << n->vitals.health
+             << '/' << n->vitals.maxHealth << " gold=" << n->vitals.gold
+             << " holy=" << n->vitals.holyPower << " strength=" << n->vitals.strength
+             << " armor=" << n->vitals.armor << " moveSpeed=" << n->vitals.moveSpeed
+             << " birthHp=" << n->birth.health << " birthStrength=" << n->birth.strength
+             << " mission=" << VillageMissionName(n->mission.type)
+             << " missionVillage=" << Villages[n->mission.destination].id
+             << " returning=" << n->mission.returning << " missionDeadline=" << n->mission.deadline
+             << " wisdom=" << n->vitals.wisdom << " corruption=" << n->vitals.corruption
+             << " raidWeight=" << n->profile.raidWeight
+             << " corruptionWeight=" << n->profile.corruptionWeight << " rng=" << n->randomState
+             << " seq=" << n->decisions << " alive=" << n->vitals.alive
+             << " phase=" << NpcPhaseName(n->execution.phase) << " effect=" << n->execution.applied
+             << " reservation=" << n->execution.reservation << " distant=" << n->distant
+             << " weapon=" << NpcWeaponFor(n->profile.role).name
+             << " stationary=" << n->stationaryTime << " distance=" << n->distanceTravelled
+             << " migrations=" << n->migrations << " migrationReason=" << n->migrationReason
+             << " migrationHome=" << n->migrationHome.x << ',' << n->migrationHome.y
+             << " completed=" << n->completedActions << " failed=" << n->failedActions
+             << " destination=" << n->execution.destination.x << ',' << n->execution.destination.y
+             << '\n';
+        for (const auto& memory : n->knowledge)
+        {
+            file << "  knowledge " << memory.entity << " at=" << memory.seenAt
+                 << " source=" << memory.source << " last=" << memory.position.x << ','
+                 << memory.position.y << " hostile=" << memory.hostile << '\n';
+        }
+        for (const auto& relation : n->relations)
+        {
+            file << "  relation " << relation.first << " trust=" << relation.second.trust
+                 << " grudge=" << relation.second.grudge << '\n';
+        }
+        for (size_t i = 0; i < NpcActionCount; ++i)
+        {
+            if (n->cooldown[i] > snapshot.time)
+            {
+                file << "  cooldown " << NpcActionId(static_cast<NpcAction>(i)) << '='
+                     << n->cooldown[i] - snapshot.time << '\n';
+            }
+        }
+    }
+    for (size_t village = 0; village < snapshot.societies.size(); ++village)
+    {
+        const auto& society = snapshot.societies[village];
+        file << "SOCIETY village=" << Villages[village].id << " alignment=" << society.alignment
+             << " threatened=" << society.threatened << " dispatches=" << society.dispatches
+             << " nextDispatch=" << society.nextDispatch << " postsSent=" << society.postsSent
+             << " postsReceived=" << society.postsReceived << " immigrants=" << society.immigrants
+             << " emigrants=" << society.emigrants << '\n';
+        for (const auto& item : society.known)
+        {
+            file << "  villageKnowledge target=" << Villages[item.first].id
+                 << " observedAt=" << item.second.observedAt
+                 << " alignment=" << item.second.alignment << " position=" << item.second.position.x
+                 << ',' << item.second.position.y
+                 << " source=" << Villages[item.second.sourceVillage].id
+                 << " geographicRisk=" << item.second.geographicRisk
+                 << " relation=" << society.relations[item.first] << '\n';
+        }
+    }
+    for (size_t i = 0; i < snapshot.outposts.size(); ++i)
+    {
+        const auto& camp = snapshot.outposts[i];
+        file << "OUTPOST id=" << Outposts[i].id << " radius=" << camp.radius
+             << " spawned=" << camp.spawned << " waves=" << camp.waves
+             << " nextSpawn=" << camp.nextSpawn << " nextWave=" << camp.nextWave << '\n';
+    }
+    for (const auto& line : snapshot.log)
+    {
+        file << line << '\n';
+    }
+    for (const auto& post : snapshot.carrierPosts)
+    {
+        file << "PIGEON id=" << post.id << " from=" << Villages[post.source].id
+             << " to=" << Villages[post.destination].id << " departed=" << post.departedAt
+             << " arrives=" << post.arrivesAt << " reports=" << post.reports
+             << " events=" << post.events << '\n';
+    }
+    file.close();
+    return bool(file)
+           && MoveFileExW(temporary.c_str(),
+                          (snapshot.directory / "latest.log").c_str(),
+                          MOVEFILE_REPLACE_EXISTING);
 }

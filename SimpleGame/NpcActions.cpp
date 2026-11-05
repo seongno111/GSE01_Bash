@@ -13,26 +13,33 @@ bool NpcWorld::Walkable(double x, double y) const
            && !m_Game.Blocked(x, y + 0.2);
 }
 
-bool NpcWorld::BuildPath(NpcActor& npc, WorldPoint target)
+NpcWorld::TravelResult NpcWorld::BuildPath(NpcActor& npc, WorldPoint target)
 {
-    ++m_Performance.pathCalls;
+    const auto result = m_Game.RequestRoute(npc, target, npc.path);
+    if (result == Prototype::RouteStatus::Pending)
+    {
+        return TravelResult::Pending;
+    }
     npc.pathIndex = 0;
-    npc.nextPath = m_Time + 2.5;
-    return m_Game.FindRoute(npc.WorldPosition(), target, npc.path, m_Performance.pathNodes);
+    npc.nextPath = m_Time + 2.5 + double(npc.Id() % 11) * .025;
+    return result == Prototype::RouteStatus::Found ? TravelResult::Moving
+                                                   : TravelResult::Unreachable;
 }
 
-bool NpcWorld::Travel(NpcActor& npc, WorldPoint target, float dt)
+NpcWorld::TravelResult NpcWorld::Travel(NpcActor& npc, WorldPoint target, float dt)
 {
+    TravelResult result = TravelResult::Moving;
     if (m_Time >= npc.nextPath || npc.pathIndex >= npc.path.size())
     {
-        if (!BuildPath(npc, target))
+        result = BuildPath(npc, target);
+        if (result == TravelResult::Unreachable)
         {
-            return false;
+            return TravelResult::Unreachable;
         }
     }
     if (npc.pathIndex >= npc.path.size())
     {
-        return true;
+        return result;
     }
     const auto point = npc.path[npc.pathIndex];
     const double dx = point.x - npc.WorldX();
@@ -41,7 +48,7 @@ bool NpcWorld::Travel(NpcActor& npc, WorldPoint target, float dt)
     if (distance < 0.18)
     {
         ++npc.pathIndex;
-        return true;
+        return result;
     }
     const float speed =
         npc.vitals.moveSpeed * (npc.execution.action == NpcAction::Flee ? 1.4f : 1.0f);
@@ -54,10 +61,10 @@ bool NpcWorld::Travel(NpcActor& npc, WorldPoint target, float dt)
     if (npc.stalledTime > 1.5)
     {
         npc.stalledTime = 0;
-        return false;
+        return TravelResult::Unreachable;
     }
     npc.vitals.fatigue = (std::min)(1.0f, npc.vitals.fatigue + dt * 0.003f);
-    return true;
+    return moved > .00001 ? TravelResult::Moving : result;
 }
 
 bool NpcWorld::Start(NpcActor& npc, const NpcCandidate& choice, bool request)
@@ -75,11 +82,12 @@ bool NpcWorld::Start(NpcActor& npc, const NpcCandidate& choice, bool request)
     {
         return false;
     }
-    if (!BuildPath(npc, choice.destination))
-    {
-        npc.failedUntil[{choice.action, choice.target}] = m_Time + 3;
-        return false;
-    }
+    // The selected action validates its path during Approach. Candidates no longer
+    // perform a separate full search each, or overwrite the currently followed path.
+    m_Game.CancelRoute(npc.Id());
+    npc.path.clear();
+    npc.pathIndex = 0;
+    npc.nextPath = 0;
     Release(npc);
     npc.execution = {};
     npc.execution.action = choice.action;
@@ -113,6 +121,7 @@ bool NpcWorld::Start(NpcActor& npc, const NpcCandidate& choice, bool request)
 void NpcWorld::Finish(NpcActor& npc, bool success, const std::string& reason)
 {
     const auto action = npc.execution.action;
+    m_Game.CancelRoute(npc.Id());
     Release(npc);
     npc.lastResult = reason;
     npc.path.clear();
@@ -218,12 +227,13 @@ void NpcWorld::Execute(NpcActor& npc, float dt)
             && !m_Game.ClearShot(npc.WorldX(), npc.WorldY(), run.destination.x, run.destination.y);
         if (distance > reach || mustLeaveSanctuary || obstructed)
         {
-            if (!Travel(npc, run.destination, dt))
+            if (Travel(npc, run.destination, dt) == TravelResult::Unreachable)
             {
                 Finish(npc, false, "도달할 수 없는 경로");
             }
             return;
         }
+        m_Game.CancelRoute(npc.Id());
         run.phase = NpcPhase::Perform;
         const double duration = attack ? weapon.windup
                                 : run.action == NpcAction::Rest || run.action == NpcAction::Pray
@@ -797,7 +807,30 @@ Actor* NpcWorld::EnemyTarget(const EnemyActor& enemy) const
             return alerted;
         }
     }
-    return chosen;
+    if (chosen)
+    {
+        return chosen;
+    }
+
+    // Keep an acquired target while navigating around cover. A blocked line of sight
+    // should prevent attacks, but should not send a pursuing monster back to patrol.
+    Actor* previous = m_Game.Scene().Find(enemy.combatTarget);
+    if (!previous || !previous->EnabledInHierarchy()
+        || InsideSanctuary(previous->WorldX(), previous->WorldY()))
+    {
+        return nullptr;
+    }
+    const auto* npc = dynamic_cast<const NpcActor*>(previous);
+    const bool alive = npc ? npc->vitals.alive : m_Game.Player().health > 0;
+    const double range =
+        enemy.Definition().detectionRange
+        * (enemy.alertUntil > m_Game.Time() && enemy.alertTarget == previous->Id() ? 1.5 : 1.0);
+    return alive
+                   && Length(previous->WorldX() - enemy.WorldX(),
+                             previous->WorldY() - enemy.WorldY())
+                          < range
+               ? previous
+               : nullptr;
 }
 
 void NpcWorld::MonsterDamage(Actor& target, float damage, const EnemyActor* source)

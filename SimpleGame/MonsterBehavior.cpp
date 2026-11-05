@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "NpcWorld.h"
+#include "Outposts.h"
 #include "GameRules.h"
 
 #include <algorithm>
@@ -30,6 +31,8 @@ void EnemyActor::ResetCombat()
     nextTargetScan = 0;
     nextPackScan = 0;
     lastHurtTime = -100;
+    returningHome = false;
+    m_Game.CancelRoute(Id());
     route.clear();
     routeIndex = 0;
     nextRoute = 0;
@@ -368,7 +371,8 @@ bool EnemyActor::UpdateMonsterTactics(float dt, Actor* target, bool forcedReturn
         beginSpecial();
         return true;
     }
-    if (distance <= stats.attackRange && (kind != MonsterKind::FallenPriest || distance >= 3))
+    if (distance <= stats.attackRange && (kind != MonsterKind::FallenPriest || distance >= 3)
+        && m_Game.ClearShot(WorldX(), WorldY(), target->WorldX(), target->WorldY()))
     {
         attackWindup = stats.attackWindup;
         specialRecovery = false;
@@ -404,12 +408,21 @@ bool EnemyActor::UpdateMonsterTactics(float dt, Actor* target, bool forcedReturn
                        target->WorldY() + std::sin(angle) * 1.4};
         state = MonsterState::Flank;
     }
-    // Respect the tactical tether even when kiting. Outpost raids own a larger strategic tether.
-    const double leash = outpost >= 0 ? patrolRadius + 2 : stats.leashRange;
-    if (raidVillage < 0 && Length(destination.x - homeX, destination.y - homeY) > leash)
+    if (raidVillage < 0)
     {
-        destination = {homeX, homeY};
-        state = MonsterState::Returning;
+        const WorldPoint center =
+            outpost >= 0 ? Outposts[size_t(outpost)].center : WorldPoint{homeX, homeY};
+        const double leash = outpost >= 0 && kind != MonsterKind::HighDemon
+                                 ? patrolRadius + 2
+                                 : stats.leashRange + (outpost >= 0 ? 2 : 0);
+        const double dx = destination.x - center.x;
+        const double dy = destination.y - center.y;
+        const double distanceFromCenter = Length(dx, dy);
+        if (distanceFromCenter > leash - .5)
+        {
+            const double fraction = (leash - .5) / distanceFromCenter;
+            destination = {center.x + dx * fraction, center.y + dy * fraction};
+        }
     }
     m_Game.MoveEnemy(*this, destination.x, destination.y, travelSpeed, dt);
     return true;

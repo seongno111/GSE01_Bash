@@ -82,7 +82,7 @@ void NpcWorld::UpdateOutposts()
             {
                 vacant = enemy;
             }
-            if (enemy->alive && enemy->raidVillage < 0 && !enemy->returningToOutpost
+            if (enemy->alive && enemy->raidVillage < 0 && !enemy->returningHome
                 && Length(enemy->WorldX() - center.x, enemy->WorldY() - center.y)
                        < OutpostGarrisonRadius)
             {
@@ -101,10 +101,11 @@ void NpcWorld::UpdateOutposts()
                 vacant->alive = true;
                 vacant->SetEnabled(true);
                 vacant->raidVillage = -1;
-                vacant->returningToOutpost = false;
+                vacant->returningHome = false;
                 vacant->combatTarget = InvalidActor;
                 vacant->attackWindup = 0;
                 vacant->recovery = 0;
+                m_Game.CancelRoute(vacant->Id());
                 vacant->route.clear();
                 vacant->nextRoute = 0;
                 ++camp.spawned;
@@ -161,11 +162,12 @@ void NpcWorld::UpdateOutposts()
         {
             auto& enemy = *raiders[member];
             enemy.raidVillage = target;
-            enemy.returningToOutpost = false;
+            enemy.returningHome = false;
             enemy.raidUntil = m_Time
                               + JourneyBudget(enemy.WorldPosition(),
                                               Villages[size_t(target)].center,
                                               enemy.speed);
+            m_Game.CancelRoute(enemy.Id());
             enemy.route.clear();
             enemy.nextRoute = 0;
         }
@@ -190,7 +192,7 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     {
         enemy.respawn = (std::max)(0.0f, enemy.respawn - dt);
         enemy.raidVillage = -1;
-        enemy.returningToOutpost = false;
+        enemy.returningHome = false;
         return true;
     }
     if (enemy.raidVillage >= 0
@@ -201,15 +203,16 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
                          enemy.WorldPosition(),
                          &enemy);
         enemy.raidVillage = -1;
-        enemy.returningToOutpost = true;
+        enemy.returningHome = true;
+        m_Game.CancelRoute(enemy.Id());
         enemy.route.clear();
         enemy.nextRoute = 0;
     }
     const auto center = Outposts[size_t(enemy.outpost)].center;
-    if (enemy.returningToOutpost
+    if (enemy.returningHome
         && Length(enemy.WorldX() - enemy.homeX, enemy.WorldY() - enemy.homeY) < 1.2)
     {
-        enemy.returningToOutpost = false;
+        enemy.returningHome = false;
     }
     const bool beyondLeash =
         enemy.raidVillage < 0
@@ -217,10 +220,17 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
                > (enemy.kind == MonsterKind::HighDemon ? enemy.Definition().leashRange
                                                        : enemy.patrolRadius)
                      + 2;
+    if (beyondLeash && !enemy.returningHome)
+    {
+        enemy.returningHome = true;
+        m_Game.CancelRoute(enemy.Id());
+        enemy.route.clear();
+        enemy.nextRoute = 0;
+    }
     if (m_Time >= enemy.nextTargetScan && !enemy.CommittingAttack())
     {
         enemy.nextTargetScan = m_Time + .5;
-        Actor* target = beyondLeash || enemy.returningToOutpost ? nullptr : EnemyTarget(enemy);
+        Actor* target = beyondLeash || enemy.returningHome ? nullptr : EnemyTarget(enemy);
         enemy.combatTarget = target ? target->Id() : InvalidActor;
     }
     Actor* target = m_Game.Scene().Find(enemy.combatTarget);
@@ -228,7 +238,7 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     if (target
         && (!target->EnabledInHierarchy() || (npc && !npc->vitals.alive)
             || InsideSanctuary(target->WorldX(), target->WorldY()) || beyondLeash
-            || enemy.returningToOutpost))
+            || enemy.returningHome))
     {
         target = nullptr;
         enemy.combatTarget = InvalidActor;
@@ -242,7 +252,7 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     }
     if (enemy.UsesMonsterTactics())
     {
-        if (enemy.UpdateMonsterTactics(dt, target, beyondLeash || enemy.returningToOutpost))
+        if (enemy.UpdateMonsterTactics(dt, target, beyondLeash || enemy.returningHome))
         {
             return true;
         }
@@ -268,7 +278,8 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
         }
         return true;
     }
-    if (target && distance < .9 && enemy.recovery <= 0)
+    if (target && distance < .9 && enemy.recovery <= 0
+        && m_Game.ClearShot(enemy.WorldX(), enemy.WorldY(), target->WorldX(), target->WorldY()))
     {
         enemy.attackWindup = .55f;
         enemy.BeginAttackAnimation(target->WorldX() - enemy.WorldX(),
@@ -287,7 +298,7 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
         const double phase = double(enemy.Id() % 6) * 1.047197551;
         destination = {town.x - 4 + std::cos(phase) * 2, town.y + 4 + std::sin(phase) * 2};
     }
-    else if (!beyondLeash && !enemy.returningToOutpost)
+    else if (!beyondLeash && !enemy.returningHome)
     {
         const double phase =
             double(Hash(enemy.Id(), std::int64_t(m_Time / 12), m_Seed) % 6283) * .001;
@@ -302,36 +313,12 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
         }
     }
     if (enemy.recovery > 0
-        || Length(destination.x - enemy.WorldX(), destination.y - enemy.WorldY()) < .4)
+        || Length(destination.x - enemy.WorldX(), destination.y - enemy.WorldY())
+               < (target ? .05 : .4))
     {
         return true;
     }
-    if (m_Time >= enemy.nextRoute
-        || (enemy.routeIndex >= enemy.route.size() && m_Time >= enemy.nextRoute - .5))
-    {
-        ++m_Performance.pathCalls;
-        enemy.routeIndex = 0;
-        enemy.routeTarget = destination;
-        m_Game.FindRoute(enemy.WorldPosition(), destination, enemy.route, m_Performance.pathNodes);
-        enemy.nextRoute = m_Time + (target ? 1.0 : 3.0);
-    }
-    if (enemy.routeIndex < enemy.route.size())
-    {
-        const auto point = enemy.route[enemy.routeIndex];
-        const double dx = point.x - enemy.WorldX();
-        const double dy = point.y - enemy.WorldY();
-        const double travel = Length(dx, dy);
-        if (travel < .15)
-        {
-            ++enemy.routeIndex;
-        }
-        else
-        {
-            const double step =
-                (std::min)(travel,
-                           double(enemy.speed * dt * (enemy.raidVillage >= 0 ? 1.25f : 1.0f)));
-            m_Game.MoveActor(enemy, dx / travel * step, dy / travel * step, .18f);
-        }
-    }
+    const float travelSpeed = enemy.speed * (enemy.raidVillage >= 0 ? 1.25f : 1.0f);
+    m_Game.MoveEnemy(enemy, destination.x, destination.y, travelSpeed, dt);
     return true;
 }

@@ -18,6 +18,7 @@ public:
 
     ~FrameProfiler();
     void Initialize(Renderer& renderer);
+    void RecordFrameLimit(int fps);
     void BeginFrame();
     void RenderFinished();
     void RecordUpdate(double milliseconds, const Prototype& game);
@@ -32,6 +33,7 @@ private:
     Clock::time_point m_RenderEnd;
     Clock::time_point m_PreviousEnd;
     bool m_Started = false;
+    int m_TargetFps = 120;
     std::uint64_t m_Frames = 0;
     std::uint64_t m_TotalDrawCalls = 0;
     std::uint64_t m_MinDrawCalls = (std::numeric_limits<std::uint64_t>::max)();

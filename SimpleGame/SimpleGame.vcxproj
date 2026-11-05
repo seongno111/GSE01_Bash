@@ -176,6 +176,7 @@
     <ClInclude Include="UnitAnimation.h" />
     <ClInclude Include="GameRules.h" />
     <ClInclude Include="Prototype.h" />
+    <ClInclude Include="WorldNavigation.h" />
     <ClInclude Include="PostProcessing.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="NpcAI.h" />

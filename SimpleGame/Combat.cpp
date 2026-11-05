@@ -121,58 +121,60 @@ void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
 
 void Prototype::MoveEnemy(EnemyActor& enemy, double targetX, double targetY, float speed, float dt)
 {
-    double dx = targetX - enemy.WorldX();
-    double dy = targetY - enemy.WorldY();
-    double distance = Length(dx, dy);
-    if (distance < 0.05)
+    const auto from = enemy.WorldPosition();
+    if (dt <= 0 || Length(targetX - from.x, targetY - from.y) < .05)
     {
+        CancelRoute(enemy.Id());
         return;
     }
-    if (ClearShot(enemy.WorldX(), enemy.WorldY(), targetX, targetY))
+
+    // Follow the cached detour even if the center line to the goal becomes visible.
+    // Replacing it every tick can pull the monster back into the same corner.
+    const bool changed = Length(enemy.routeTarget.x - targetX, enemy.routeTarget.y - targetY) > .6;
+    if (m_Time >= enemy.nextRoute && (changed || enemy.routeIndex >= enemy.route.size()))
     {
-        const double previousX = enemy.WorldX();
-        const double previousY = enemy.WorldY();
-        const double step = (std::min)(distance, double(speed * dt));
-        MoveActor(enemy, dx / distance * step, dy / distance * step, 0.18f);
-        if (Length(enemy.WorldX() - previousX, enemy.WorldY() - previousY) > 0.001)
+        const WorldPoint target{targetX, targetY};
+        const auto result = RequestRoute(enemy, target, enemy.route);
+        if (result != RouteStatus::Pending)
         {
-            return;
+            enemy.routeIndex = 0;
+            enemy.routeTarget = target;
+            enemy.nextRoute = m_Time + (result == RouteStatus::Found ? .35 : 1.0);
         }
     }
 
-    // Use the same bounded world navigation as NPCs/outposts. The old tutorial
-    // grid clamps used untranslated x=4..22 and could index vector<bool> at -1
-    // after the encounter area moved east during settlement expansion.
-    const WorldPoint target{targetX, targetY};
-    const bool changed = Length(enemy.routeTarget.x - targetX, enemy.routeTarget.y - targetY) > 2;
-    if (m_Time >= enemy.nextRoute || (changed && m_Time >= enemy.nextRoute - .25))
+    while (enemy.routeIndex < enemy.route.size())
     {
-        enemy.route.clear();
-        enemy.routeIndex = 0;
-        enemy.routeTarget = target;
-        ++m_UpdateStats.pathCalls;
-        FindRoute(enemy.WorldPosition(), target, enemy.route, m_UpdateStats.pathNodes);
-        enemy.nextRoute = m_Time + .75;
-    }
-    while (enemy.routeIndex < enemy.route.size()
-           && Length(enemy.route[enemy.routeIndex].x - enemy.WorldX(),
-                     enemy.route[enemy.routeIndex].y - enemy.WorldY())
-                  < .18)
-    {
-        ++enemy.routeIndex;
-    }
-    if (enemy.routeIndex >= enemy.route.size())
-    {
+        const auto next = enemy.route[enemy.routeIndex];
+        const double dx = next.x - from.x;
+        const double dy = next.y - from.y;
+        const double distance = Length(dx, dy);
+        if (distance < .001)
+        {
+            ++enemy.routeIndex;
+            continue;
+        }
+
+        const double fraction = (std::min)(1.0, double(speed * dt) / distance);
+        const WorldPoint position{from.x + dx * fraction, from.y + dy * fraction};
+        // Use the same straight segment as pathfinding. Axis sliding here
+        // would take the monster off the segment and back into the obstacle.
+        if (!ClearMovement(from, position, .18))
+        {
+            CancelRoute(enemy.Id());
+            enemy.route.clear();
+            enemy.routeIndex = 0;
+            enemy.nextRoute = (std::max)(enemy.nextRoute, m_Time + .35);
+            return;
+        }
+
+        enemy.SetWorldPosition(position.x, position.y);
+        enemy.RecordMovement(position.x - from.x, position.y - from.y);
+        if (fraction == 1)
+        {
+            ++enemy.routeIndex;
+        }
         return;
-    }
-    const auto next = enemy.route[enemy.routeIndex];
-    dx = next.x - enemy.WorldX();
-    dy = next.y - enemy.WorldY();
-    distance = Length(dx, dy);
-    if (distance > .001)
-    {
-        const double step = (std::min)(distance, double(speed * dt));
-        MoveActor(enemy, dx / distance * step, dy / distance * step, .18f);
     }
 }
 

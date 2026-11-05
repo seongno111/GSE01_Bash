@@ -24,8 +24,7 @@ but WITHOUT ANY WARRANTY.
 namespace
 {
     using FrameClock = std::chrono::steady_clock;
-    const auto framePeriod =
-        std::chrono::duration_cast<FrameClock::duration>(std::chrono::duration<double>(1.0 / 60.0));
+    int frameLimit = 120;
 
     std::unique_ptr<Renderer> renderer;
     Prototype game;
@@ -49,6 +48,10 @@ namespace
             auto& post = renderer->Post().settings;
             switch (key)
             {
+            case GLFW_KEY_F8:
+                frameLimit = frameLimit == 120 ? 60 : 120;
+                profiler.RecordFrameLimit(frameLimit);
+                return;
             case GLFW_KEY_ESCAPE:
                 glfwSetWindowShouldClose(window, GLFW_TRUE);
                 return;
@@ -96,21 +99,60 @@ namespace
         }
     }
 
+    void WaitForFrame(HANDLE& timer, bool& preciseTimer, FrameClock::duration remaining)
+    {
+        if (timer)
+        {
+            using TimerTicks = std::chrono::duration<LONGLONG, std::ratio<1, 10000000>>;
+            LARGE_INTEGER due{};
+            due.QuadPart = -std::chrono::ceil<TimerTicks>(remaining).count();
+            if (SetWaitableTimer(timer, &due, 0, nullptr, nullptr, FALSE)
+                && MsgWaitForMultipleObjectsEx(1,
+                                               &timer,
+                                               INFINITE,
+                                               QS_ALLINPUT,
+                                               MWMO_INPUTAVAILABLE)
+                       != WAIT_FAILED)
+            {
+                glfwPollEvents();
+                return;
+            }
+            CloseHandle(timer);
+            timer = nullptr;
+            preciseTimer = timeBeginPeriod(1) == TIMERR_NOERROR;
+            std::cerr << "[Profile] High-resolution wait failed, using GLFW event wait.\n";
+        }
+
+        // GLFW truncates the Win32 timeout to milliseconds.
+        const auto delay = std::chrono::ceil<std::chrono::milliseconds>(remaining);
+        glfwWaitEventsTimeout((delay.count() + 0.5) / 1000.0);
+    }
+
     void RunFrames(GLFWwindow* window, int width, int height)
     {
-        // Win32 event waits use the system timer resolution.
-        const bool preciseTimer = timeBeginPeriod(1) == TIMERR_NOERROR;
+        HANDLE timer = CreateWaitableTimerExW(nullptr,
+                                              nullptr,
+                                              CREATE_WAITABLE_TIMER_HIGH_RESOLUTION,
+                                              TIMER_MODIFY_STATE | SYNCHRONIZE);
+        bool preciseTimer = !timer && timeBeginPeriod(1) == TIMERR_NOERROR;
         auto lastFrame = FrameClock::now();
-        auto nextFrame = lastFrame + framePeriod;
+        auto nextFrame = lastFrame;
+        int scheduledLimit = 0;
+        FrameClock::duration framePeriod{};
 
         while (!glfwWindowShouldClose(window))
         {
             const auto now = FrameClock::now();
+            if (scheduledLimit != frameLimit)
+            {
+                scheduledLimit = frameLimit;
+                framePeriod = std::chrono::duration_cast<FrameClock::duration>(
+                    std::chrono::duration<double>(1.0 / scheduledLimit));
+                nextFrame = lastFrame + framePeriod;
+            }
             if (now < nextFrame)
             {
-                // GLFW truncates the Win32 timeout to milliseconds. Round up to avoid spinning.
-                const auto delay = std::chrono::ceil<std::chrono::milliseconds>(nextFrame - now);
-                glfwWaitEventsTimeout((delay.count() + 0.5) / 1000.0);
+                WaitForFrame(timer, preciseTimer, nextFrame - now);
                 continue;
             }
 
@@ -142,7 +184,7 @@ namespace
             const float elapsed = std::chrono::duration<float>(updateStart - lastFrame).count();
             lastFrame = updateStart;
 
-            // Keep the 60 Hz deadline and skip missed slots after an overrun.
+            // Skip missed render slots after an overrun.
             nextFrame += framePeriod;
             if (nextFrame <= updateStart)
             {
@@ -163,6 +205,10 @@ namespace
             profiler.EndFrame(*renderer, game);
         }
 
+        if (timer)
+        {
+            CloseHandle(timer);
+        }
         if (preciseTimer)
         {
             timeEndPeriod(1);
@@ -218,6 +264,7 @@ int main()
     }
 
     profiler.Initialize(*renderer);
+    profiler.RecordFrameLimit(frameLimit);
 
     std::cout << "The Last Ember / rendering prototype\n"
               << "WASD move | Hold Shift run | Hold Space auto aim | F auto fire | U upgrade | Q "
@@ -225,7 +272,7 @@ int main()
                  "cleansing stone\n"
               << "E sanctuary/report | R relic | K demo death\n"
               << "NPC: C select | I inspector | J PK | Y trade | O blessing | L AI log\n"
-              << "H help | G chunk grid | +/- zoom | Esc exit\n"
+              << "H help | G chunk grid | +/- zoom | F8 60/120 FPS | Esc exit\n"
               << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
               << "Session only: no gameplay saves, no AI dialogue service.\n"
               << "Mesh files: MeshCache/ | Performance captures: Profiling/\n"

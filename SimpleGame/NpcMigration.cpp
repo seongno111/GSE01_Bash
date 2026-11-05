@@ -159,6 +159,7 @@ void NpcWorld::UpdateMigrationChoices()
         }
         Release(*chosen);
         chosen->execution = {};
+        m_Game.CancelRoute(chosen->Id());
         chosen->path.clear();
         chosen->nextPath = 0;
         chosen->migrationHome = newHome;
@@ -195,6 +196,7 @@ bool NpcWorld::UpdateMigration(NpcActor& npc, float dt)
         Release(npc);
         npc.mission = {};
         npc.execution = {};
+        m_Game.CancelRoute(npc.Id());
         npc.path.clear();
         npc.nextDecision = m_Time;
         npc.nextMigration = m_Time + 120;
@@ -221,7 +223,8 @@ bool NpcWorld::UpdateMigration(NpcActor& npc, float dt)
         npc.execution.action = NpcAction::Patrol;
         npc.execution.phase = NpcPhase::Approach;
         npc.execution.destination = npc.migrationHome;
-        if (!Travel(npc, npc.migrationHome, dt))
+        const auto travel = Travel(npc, npc.migrationHome, dt);
+        if (travel == TravelResult::Unreachable)
         {
             npc.nextPath = 0;
             npc.mission.nextService = m_Time + 2;
@@ -231,7 +234,7 @@ bool NpcWorld::UpdateMigration(NpcActor& npc, float dt)
                 return false;
             }
         }
-        else
+        else if (travel == TravelResult::Moving)
         {
             npc.mission.pathFailures = 0;
         }
@@ -250,6 +253,7 @@ bool NpcWorld::UpdateMigration(NpcActor& npc, float dt)
     npc.home = npc.migrationHome;
     npc.activityAnchor = npc.WorldPosition();
     npc.stationaryTime = 0;
+    m_Game.CancelRoute(npc.Id());
     npc.path.clear();
     Release(npc);
     npc.execution = {};
