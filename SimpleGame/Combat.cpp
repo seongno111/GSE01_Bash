@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "HeroWeapons.h"
 #include "NpcWorld.h"
 
 #include <algorithm>
@@ -38,24 +39,110 @@ void Prototype::FireProjectile()
     const double dx = targetX - m_Player.WorldX();
     const double dy = targetY - m_Player.WorldY();
     const double distance = Length(dx, dy);
-    if (distance > m_Player.range)
+    if (distance > m_Player.range
+        || !ClearShot(m_Player.WorldX(), m_Player.WorldY(), targetX, targetY))
     {
         return;
     }
 
     const double directionX = distance > 0.0001 ? dx / distance : 1.0;
     const double directionY = distance > 0.0001 ? dy / distance : 0.0;
-    m_Projectiles.Spawn(*this,
-                        m_Player.WorldX(),
-                        m_Player.WorldY(),
-                        directionX,
-                        directionY,
-                        ProjectileDamage(),
-                        m_Player.range);
+    m_Player.weaponAttack = nullptr;
+    const bool mutant = m_Player.corruption >= MutationThreshold;
+    if (!mutant)
+    {
+        if (const auto* visual = m_ModelAssets.HeroWeaponActions(HeroWeapons[m_Player.weapon].key))
+        {
+            m_Player.weaponAttack =
+                &visual->attacks[m_Player.nextAttack++ % visual->attacks.size()];
+        }
+    }
     m_Player.shotCooldown = ProjectileCooldown();
-    m_Player.attack = 0.16f;
-    const float animationDuration = std::clamp(m_Player.shotCooldown * 0.75f, 0.22f, 0.32f);
-    m_Player.BeginAttackAnimation(directionX, directionY, animationDuration);
+    m_Player.weaponAttackStart = m_Time;
+    m_Player.weaponAttackDuration = m_Player.shotCooldown;
+    m_Player.attackTarget = m_TargetId;
+    m_Player.attackWeapon = m_Player.weapon;
+    m_Player.attackMutant = mutant;
+    m_Player.attackDamage = ProjectileDamage();
+    const auto* action = m_Player.weaponAttack;
+    const float contact = action ? action->contact / action->duration : .45f;
+    m_Player.attackReleaseAt = m_Time + m_Player.weaponAttackDuration * contact;
+    m_Player.BeginAttackAnimation(directionX, directionY, m_Player.weaponAttackDuration, true);
+}
+
+void Prototype::ResolvePlayerAttack()
+{
+    // Simulation owns the contact event. Render frequency and visibility cannot duplicate hits.
+    m_Player.attackReleaseAt = -1;
+    if (m_Player.health <= 0 || m_Player.attackWeapon != m_Player.weapon
+        || m_Player.attackMutant != (m_Player.corruption >= MutationThreshold))
+    {
+        return;
+    }
+    double targetX = 0;
+    double targetY = 0;
+    if (m_Player.attackTarget == InvalidActor
+        || !TargetPosition(targetX, targetY, m_Player.attackTarget))
+    {
+        return;
+    }
+    const double dx = targetX - m_Player.WorldX();
+    const double dy = targetY - m_Player.WorldY();
+    const double distance = Length(dx, dy);
+    if (distance > m_Player.range
+        || !ClearShot(m_Player.WorldX(), m_Player.WorldY(), targetX, targetY))
+    {
+        return;
+    }
+    const double directionX = distance > .0001 ? dx / distance : 1.0;
+    const double directionY = distance > .0001 ? dy / distance : 0.0;
+    m_Player.attack = .16f;
+    if (!HeroWeapons[m_Player.weapon].ranged)
+    {
+        auto* target = m_Scene.Find(m_Player.attackTarget);
+        const float damage = m_Player.attackDamage;
+        if (auto* enemy = dynamic_cast<EnemyActor*>(target))
+        {
+            const float applied = enemy->ReceiveDamage(damage, m_Player.Id());
+            AddCombatText(targetX, targetY, std::to_string(int(applied)), DamageColor);
+            if (enemy->health <= 0)
+            {
+                DefeatEnemy(*enemy);
+            }
+        }
+        else if (auto* echo = dynamic_cast<EchoActor*>(target))
+        {
+            echo->health -= damage;
+            AddCombatText(targetX, targetY, std::to_string(int(damage)), DamageColor);
+            if (echo->health <= 0)
+            {
+                echo->alive = false;
+                if (m_NpcWorld)
+                {
+                    m_NpcWorld->RecordWorldEvent("hunt",
+                                                 "플레이어가 변이 잔재를 토벌했다",
+                                                 echo->WorldPosition(),
+                                                 &m_Player,
+                                                 echo);
+                }
+            }
+        }
+        else if (m_NpcWorld && target)
+        {
+            m_NpcWorld->HitByPlayer(targetX, targetY, damage, m_NpcWorld->PKEnabled());
+        }
+    }
+    else
+    {
+        auto& projectile = m_Projectiles.Spawn(*this,
+                                               m_Player.WorldX(),
+                                               m_Player.WorldY(),
+                                               directionX,
+                                               directionY,
+                                               m_Player.attackDamage,
+                                               m_Player.range);
+        projectile.arrow = m_Player.weapon == 1;
+    }
 }
 
 void Prototype::DefeatEnemy(EnemyActor& enemy, bool rewardPlayer)
@@ -228,9 +315,9 @@ void Prototype::SelectTarget()
     }
 }
 
-bool Prototype::TargetPosition(double& x, double& y) const
+bool Prototype::TargetPosition(double& x, double& y, ActorId target) const
 {
-    const ::Actor* actor = m_Scene.Find(m_TargetId);
+    const ::Actor* actor = m_Scene.Find(target == InvalidActor ? m_TargetId : target);
     const auto* enemy = dynamic_cast<const EnemyActor*>(actor);
     const auto* echo = dynamic_cast<const EchoActor*>(actor);
     const auto* npc = dynamic_cast<const NpcActor*>(actor);

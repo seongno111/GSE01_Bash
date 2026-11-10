@@ -20,6 +20,7 @@ struct Renderer::ModelState
         GLuint joints[8];
         float weights[8];
         float surface[3];
+        GLuint morph[3]; // Delta texel, target count, weight texel in the pose buffer.
     };
 
     struct Range
@@ -41,6 +42,9 @@ struct Renderer::ModelState
         GLuint vertices = 0;
         GLuint staticPoseBuffer = 0;
         GLuint staticPoseTexture = 0;
+        GLuint morphBuffer = 0;
+        GLuint morphTexture = 0;
+        std::vector<int> morphNodes;
         std::vector<std::uint32_t> indices;
         std::vector<Range> nodes;
         std::vector<size_t> skinOffsets;
@@ -56,6 +60,8 @@ struct Renderer::ModelState
                 glDeleteBuffers(1, &selection.second.buffer);
             }
             glDeleteBuffers(1, &vertices);
+            glDeleteBuffers(1, &morphBuffer);
+            glDeleteTextures(1, &morphTexture);
             glDeleteTextures(1, &staticPoseTexture);
             glDeleteBuffers(1, &staticPoseBuffer);
             glDeleteVertexArrays(1, &vao);
@@ -114,11 +120,19 @@ struct Renderer::ModelState
                 result->skinOffsets.push_back(palette);
                 palette += skin.joints.size();
             }
-            if (palette * 4 > static_cast<size_t>(maxPoseTexels))
+            for (size_t i = 0; i < asset->nodes.size(); ++i)
+            {
+                if (asset->nodes[i].morphCount)
+                {
+                    result->morphNodes.push_back(int(i));
+                }
+            }
+            if ((palette + result->morphNodes.size()) * 4 > static_cast<size_t>(maxPoseTexels))
             {
                 throw std::runtime_error("Model skeleton exceeds GPU pose capacity");
             }
             std::vector<Vertex> vertices;
+            std::vector<Models::Vector> morphDeltas;
             for (const auto& node : asset->nodes)
             {
                 Range range{result->indices.size(), 0};
@@ -140,9 +154,27 @@ struct Renderer::ModelState
                                 "Textured models require an image upload path");
                         }
                         const size_t first = vertices.size();
+                        const auto morphNode = std::find(result->morphNodes.begin(),
+                                                         result->morphNodes.end(),
+                                                         int(result->nodes.size()));
                         for (const auto& source : primitive.vertices)
                         {
                             Vertex vertex{};
+                            if (!primitive.morphTargets.empty())
+                            {
+                                const size_t vertexIndex = vertices.size() - first;
+                                vertex.morph[0] = GLuint(morphDeltas.size());
+                                vertex.morph[1] = GLuint(primitive.morphTargets.size());
+                                vertex.morph[2] = GLuint(
+                                    (palette + (morphNode - result->morphNodes.begin())) * 4);
+                                for (const auto& target : primitive.morphTargets)
+                                {
+                                    const auto& p = target.positions[vertexIndex];
+                                    const auto& n = target.normals[vertexIndex];
+                                    morphDeltas.push_back({p[0], p[1], p[2], 0});
+                                    morphDeltas.push_back({n[0], n[1], n[2], 0});
+                                }
+                            }
                             std::copy_n(source.position.begin(), 3, vertex.position);
                             std::copy_n(source.normal.begin(), 3, vertex.normal);
                             for (size_t i = 0; i < 4; ++i)
@@ -186,6 +218,25 @@ struct Renderer::ModelState
                 throw std::runtime_error(
                     "Model has no drawable triangles or exceeds the index limit");
             }
+            if (!morphDeltas.empty())
+            {
+                if (morphDeltas.size() > size_t(maxPoseTexels))
+                {
+                    throw std::runtime_error("Model morph data exceeds GPU texture capacity");
+                }
+                glGenBuffers(1, &result->morphBuffer);
+                glGenTextures(1, &result->morphTexture);
+                glBindBuffer(GL_TEXTURE_BUFFER, result->morphBuffer);
+                glBufferData(GL_TEXTURE_BUFFER,
+                             morphDeltas.size() * sizeof(Models::Vector),
+                             morphDeltas.data(),
+                             GL_STATIC_DRAW);
+                glActiveTexture(GL_TEXTURE4);
+                glBindTexture(GL_TEXTURE_BUFFER, result->morphTexture);
+                glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA32F, result->morphBuffer);
+                glActiveTexture(GL_TEXTURE0);
+                stats.geometryBytes += morphDeltas.size() * sizeof(Models::Vector);
+            }
             glGenVertexArrays(1, &result->vao);
             glGenBuffers(1, &result->vertices);
             glBindVertexArray(result->vao);
@@ -225,8 +276,9 @@ struct Renderer::ModelState
             attribute(6, 4, offsetof(Vertex, joints) + 4 * sizeof(GLuint), true);
             attribute(7, 4, offsetof(Vertex, weights) + 4 * sizeof(float));
             attribute(8, 3, offsetof(Vertex, surface));
+            attribute(9, 3, offsetof(Vertex, morph), true);
             glBindVertexArray(0);
-            if (asset->skins.empty() && asset->animations.empty())
+            if (asset->skins.empty() && asset->animations.empty() && result->morphNodes.empty())
             {
                 glGenBuffers(1, &result->staticPoseBuffer);
                 glGenTextures(1, &result->staticPoseTexture);
@@ -279,6 +331,7 @@ void Renderer::InitializeModelRenderer()
     state->groundMaskOffset = glGetUniformLocation(state->program, "u_GroundMaskOffset");
     glUseProgram(state->program);
     glUniform1i(glGetUniformLocation(state->program, "u_Pose"), 3);
+    glUniform1i(glGetUniformLocation(state->program, "u_Morph"), 4);
     glGenBuffers(1, &state->poseBuffer);
     glGenTextures(1, &state->poseTexture);
     glBindBuffer(GL_TEXTURE_BUFFER, state->poseBuffer);
@@ -299,7 +352,7 @@ bool Renderer::DrawModel(const Models::ModelInstance& model,
                          Color tint,
                          const ModelGroundMask* groundMask)
 {
-    if (!model || !m_Models || m_DrawingUI || m_Capturing || !std::isfinite(scale) || scale <= 0
+    if (!model || !m_Models || m_Capturing || !std::isfinite(scale) || scale <= 0
         || !std::isfinite(yaw))
     {
         return false;
@@ -361,6 +414,13 @@ bool Renderer::DrawModel(const Models::ModelInstance& model,
                     Models::Multiply(pose.world[skin.joints[i]], skin.inverseBind[i]));
             }
         }
+        for (int node : mesh.morphNodes)
+        {
+            Models::Matrix weights{};
+            const auto& value = pose.morphWeights.at(node);
+            std::copy(value.begin(), value.end(), weights.begin());
+            state.matrices.push_back(weights);
+        }
         bytes = state.matrices.size() * sizeof(Models::Matrix);
     }
     if (character)
@@ -393,6 +453,8 @@ bool Renderer::DrawModel(const Models::ModelInstance& model,
         ++m_Stats.bufferOrphans;
     }
     glUseProgram(state.program);
+    glActiveTexture(GL_TEXTURE4);
+    glBindTexture(GL_TEXTURE_BUFFER, mesh.morphTexture ? mesh.morphTexture : state.poseTexture);
     glUniform2f(state.viewport, float(m_Width), float(m_Height));
     glUniform3f(state.placement, feet.x + m_Translation.x, feet.y + m_Translation.y, scale);
     // A proper yaw rotation, not negative scale: winding/normals and equipment handedness stay intact.
@@ -433,7 +495,14 @@ bool Renderer::DrawModel(const Models::ModelInstance& model,
     glActiveTexture(GL_TEXTURE0);
     ++m_DrawCalls;
     ++m_Stats.modelDraws;
-    ++m_Stats.worldDraws;
+    if (m_DrawingUI)
+    {
+        ++m_Stats.uiDraws;
+    }
+    else
+    {
+        ++m_Stats.worldDraws;
+    }
     ++m_Stats.batches;
     ++m_Stats.instances;
     m_Stats.triangles += found->second.count / 3;

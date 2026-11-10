@@ -1,0 +1,928 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-05",
+  "asset_id": "HERO_WeaponActions_v1",
+  "rig": "RIG_HERO_HoodedLantern",
+  "bones": [
+    "root",
+    "hips",
+    "spine",
+    "chest",
+    "neck",
+    "head",
+    "jaw",
+    "clavicle_l",
+    "upper_arm_l",
+    "forearm_l",
+    "hand_l",
+    "weapon_l",
+    "lamp_pivot",
+    "lamp_body",
+    "clavicle_r",
+    "upper_arm_r",
+    "forearm_r",
+    "hand_r",
+    "weapon_r",
+    "thigh_l",
+    "shin_l",
+    "foot_l",
+    "toe_l",
+    "thigh_r",
+    "shin_r",
+    "foot_r",
+    "toe_r",
+    "skirt_front",
+    "skirt_back",
+    "skirt_l",
+    "skirt_r",
+    "tail",
+    "tail_tip"
+  ],
+  "hero_source_hashes": {
+    "Hero_v1\\hero_v1.blend": "05d2636114cf81628a4ff9961614b0b16d4057934a0d8c39d90989e478d5cd06",
+    "Hero_v1\\hero_rigged.glb": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259",
+    "HeroWeapons_v1\\hero_weapons_v1.blend": "b378fe18807286a6ac7281899ec17f7596f18300b2cf0418acec4ad26fdd5bfa",
+    "HeroWeapons_v1\\weapon_catalog.json": "6e1e9c6b9d09817b8fcb0e1adabd18a6cbd50bf6aaf814a0d43ad5eecb0d3e97"
+  },
+  "source_rig_unchanged": true,
+  "animation_sample_fps": 60,
+  "axes": {
+    "blender": "Z up, -Y front",
+    "gltf": "Y up, +Z front"
+  },
+  "library_file": "hero_weapon_animation_library.glb",
+  "original_clips": [
+    "HERO_Idle",
+    "HERO_Walk",
+    "HERO_Run",
+    "HERO_MoveStart",
+    "HERO_MoveStop",
+    "HERO_AttackLongsword",
+    "HERO_Guard",
+    "HERO_Hit",
+    "HERO_Death",
+    "HERO_GetUp",
+    "HERO_LampInspect"
+  ],
+  "new_clip_count": 30,
+  "new_clips": [
+    {
+      "name": "HERO_Staff_Ready",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Ready",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Ready",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Hammer_Ready",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Ready",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Ready",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Ready",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_CastBolt",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.3,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "loop": false,
+      "events": [
+        {
+          "name": "cast_release",
+          "time_seconds": 0.6166666666666667,
+          "frame": 38
+        }
+      ],
+      "description": "Anticipate, point crook crystal forward, release and recover",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_CastSweep",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.65,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 100,
+      "loop": false,
+      "events": [
+        {
+          "name": "cast_release",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ],
+      "description": "Broad lateral ritual sweep; no spell VFX",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_Channel",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [
+        {
+          "name": "channel_tick",
+          "time_seconds": 0.5,
+          "frame": 31
+        },
+        {
+          "name": "channel_tick",
+          "time_seconds": 1.5,
+          "frame": 91
+        }
+      ],
+      "description": "Continuous focus loop",
+      "start_pose": "Channel",
+      "end_pose": "Channel",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Strike",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 1.25,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 76,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.6166666666666667,
+          "frame": 38
+        }
+      ],
+      "description": "Compact weighted downward flanged-head strike",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Sweep",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 1.15,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 70,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "Short waist-height crushing arc",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Guard",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Raised head guards chest",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Chop",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.3,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.6666666666666666,
+          "frame": 41
+        }
+      ],
+      "description": "High diagonal axe chop with delayed recovery",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Cleave",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.5,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 91,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.7833333333333333,
+          "frame": 48
+        }
+      ],
+      "description": "Broad edge-leading heavy cleave",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Guard",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Axe haft and head raised",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Hammer_Smash",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.8,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 109,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 1.0,
+          "frame": 61
+        }
+      ],
+      "description": "Two-handed overhead smash, weight settles then recovers",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Hammer_Uppercut",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.65,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 100,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ],
+      "description": "Low wind-up into rising hammer head",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Hammer_Guard",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Two hands brace hammer vertically",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Thrust",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 1.1,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 67,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.5166666666666667,
+          "frame": 32
+        }
+      ],
+      "description": "Two-handed straight thrust and recoil",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Sweep",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 1.5,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 91,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.75,
+          "frame": 46
+        }
+      ],
+      "description": "Wide spear sweep with support hand retained on shaft",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Guard",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Diagonal two-handed shaft guard",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Stab",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.75,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 46,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        }
+      ],
+      "description": "Fast direct point-first stab",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Slash",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.85,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 52,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.4166666666666667,
+          "frame": 26
+        }
+      ],
+      "description": "Quick close-range diagonal slice",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Guard",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Compact close-quarters guard",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Nock",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.75,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 46,
+      "loop": false,
+      "events": [
+        {
+          "name": "arrow_show",
+          "time_seconds": 0.25,
+          "frame": 16
+        }
+      ],
+      "description": "Bring arrow to resting nocking point",
+      "start_pose": "Ready",
+      "end_pose": "Nocked",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Draw",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.8,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "loop": false,
+      "events": [
+        {
+          "name": "draw_complete",
+          "time_seconds": 0.8,
+          "frame": 49
+        }
+      ],
+      "description": "Extend bow arm, draw nock back; synchronized bow morph",
+      "start_pose": "Nocked",
+      "end_pose": "Aim",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Aim",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Full draw aim loop",
+      "start_pose": "Aim",
+      "end_pose": "Aim",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Release",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.55,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 34,
+      "loop": false,
+      "events": [
+        {
+          "name": "projectile_release",
+          "time_seconds": 0.1,
+          "frame": 7
+        },
+        {
+          "name": "arrow_hide",
+          "time_seconds": 0.1,
+          "frame": 7
+        }
+      ],
+      "description": "Release string, small recoil and lower; projectile motion belongs to game",
+      "start_pose": "Aim",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Lower",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.65,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 40,
+      "loop": false,
+      "events": [
+        {
+          "name": "arrow_hide",
+          "time_seconds": 0.5,
+          "frame": 31
+        }
+      ],
+      "description": "Controlled undraw and lower without firing",
+      "start_pose": "Aim",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    }
+  ],
+  "locomotion": {
+    "walk": "HERO_Walk",
+    "run": "HERO_Run",
+    "direction": "actor rotation in game",
+    "weapon_locomotion_duplicates": false,
+    "layering": "For moving with two-handed equipment, use shared Walk/Run lower-body and weapon Ready upper-body mask; no runtime blending implemented."
+  },
+  "upper_body_mask": [
+    "spine",
+    "chest",
+    "neck",
+    "head",
+    "jaw",
+    "clavicle_l",
+    "upper_arm_l",
+    "forearm_l",
+    "hand_l",
+    "weapon_l",
+    "lamp_pivot",
+    "lamp_body",
+    "clavicle_r",
+    "upper_arm_r",
+    "forearm_r",
+    "hand_r",
+    "weapon_r"
+  ],
+  "equipment": [
+    {
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "file": "hero_staff_actions.glb",
+      "clip_names": [
+        "HERO_Staff_Ready",
+        "HERO_Staff_CastBolt",
+        "HERO_Staff_CastSweep",
+        "HERO_Staff_Channel"
+      ],
+      "hand": "right",
+      "two_handed": false,
+      "hide_original_meshes": [
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": false,
+      "weapon_parts": [
+        "WPN_Staff_00_CinderCrook__Body"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": null,
+      "arrow_mesh": null
+    },
+    {
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "file": "hero_mace_actions.glb",
+      "clip_names": [
+        "HERO_Mace_Ready",
+        "HERO_Mace_Strike",
+        "HERO_Mace_Sweep",
+        "HERO_Mace_Guard"
+      ],
+      "hand": "right",
+      "two_handed": false,
+      "hide_original_meshes": [
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": false,
+      "weapon_parts": [
+        "WPN_Mace_00_FlangedIron__Body"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": null,
+      "arrow_mesh": null
+    },
+    {
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "file": "hero_axe_actions.glb",
+      "clip_names": [
+        "HERO_Axe_Ready",
+        "HERO_Axe_Chop",
+        "HERO_Axe_Cleave",
+        "HERO_Axe_Guard"
+      ],
+      "hand": "right",
+      "two_handed": false,
+      "hide_original_meshes": [
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": false,
+      "weapon_parts": [
+        "WPN_Axe_00_Riven__Body"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": null,
+      "arrow_mesh": null
+    },
+    {
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "file": "hero_warhammer_actions.glb",
+      "clip_names": [
+        "HERO_Hammer_Ready",
+        "HERO_Hammer_Smash",
+        "HERO_Hammer_Uppercut",
+        "HERO_Hammer_Guard"
+      ],
+      "hand": "right",
+      "two_handed": true,
+      "hide_original_meshes": [
+        "HERO_WEAPON_L_00_LanternFrame",
+        "HERO_WEAPON_L_01_LanternEmber",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": true,
+      "weapon_parts": [
+        "WPN_Hammer_00_Warden__Body"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": null,
+      "arrow_mesh": null
+    },
+    {
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "file": "hero_spear_actions.glb",
+      "clip_names": [
+        "HERO_Spear_Ready",
+        "HERO_Spear_Thrust",
+        "HERO_Spear_Sweep",
+        "HERO_Spear_Guard"
+      ],
+      "hand": "right",
+      "two_handed": true,
+      "hide_original_meshes": [
+        "HERO_WEAPON_L_00_LanternFrame",
+        "HERO_WEAPON_L_01_LanternEmber",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": true,
+      "weapon_parts": [
+        "WPN_Spear_00_AshPike__Body"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": null,
+      "arrow_mesh": null
+    },
+    {
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "file": "hero_dagger_actions.glb",
+      "clip_names": [
+        "HERO_Dagger_Ready",
+        "HERO_Dagger_Stab",
+        "HERO_Dagger_Slash",
+        "HERO_Dagger_Guard"
+      ],
+      "hand": "right",
+      "two_handed": false,
+      "hide_original_meshes": [
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": false,
+      "weapon_parts": [
+        "WPN_Dagger_00_Rondel__Body"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": null,
+      "arrow_mesh": null
+    },
+    {
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "file": "hero_bow_actions.glb",
+      "clip_names": [
+        "HERO_Bow_Ready",
+        "HERO_Bow_Nock",
+        "HERO_Bow_Draw",
+        "HERO_Bow_Aim",
+        "HERO_Bow_Release",
+        "HERO_Bow_Lower"
+      ],
+      "hand": "left",
+      "two_handed": true,
+      "hide_original_meshes": [
+        "HERO_WEAPON_L_00_LanternFrame",
+        "HERO_WEAPON_L_01_LanternEmber",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "hide_lamp_light": true,
+      "weapon_parts": [
+        "WPN_Bow_00_ThornRecurve__Body",
+        "WPN_Bow_00_ThornRecurve__String"
+      ],
+      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "bow_morph": "Draw 0..1, baked per action on Body and String",
+      "arrow_mesh": "AMMO_Arrow_00_Iron__Body"
+    }
+  ],
+  "runtime_integration": false
+}

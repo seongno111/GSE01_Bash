@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "HeroWeapons.h"
 
 #include <algorithm>
 #include <cmath>
@@ -54,13 +55,31 @@ float Prototype::MaxHealth() const
 
 float Prototype::ProjectileDamage() const
 {
-    return 24.0f + 5.0f * (m_Player.level - 1) + 4.0f * m_Player.weaponRank
-           + 0.3f * m_Player.corruption;
+    return HeroWeapons[m_Player.weapon].Damage(m_Player.level,
+                                               m_Player.weaponRank,
+                                               m_Player.corruption);
 }
 
 float Prototype::ProjectileCooldown() const
 {
-    return (std::max)(0.22f, 0.90f * std::pow(0.94f, float(m_Player.level - 1)));
+    return WeaponCooldown(m_Player.weapon);
+}
+
+float Prototype::WeaponCooldown(int weapon) const
+{
+    float cooldown = HeroWeapons[weapon].Cooldown(m_Player.level);
+    if (m_Player.corruption < MutationThreshold)
+    {
+        if (const auto* visual = m_ModelAssets.HeroWeaponActions(HeroWeapons[weapon].key))
+        {
+            // Keep the complete anticipation/contact/recovery instead of skipping poses.
+            for (const auto& action : visual->attacks)
+            {
+                cooldown = (std::max)(cooldown, action.duration / 3.0f);
+            }
+        }
+    }
+    return cooldown;
 }
 
 int Prototype::ExperienceRequired() const

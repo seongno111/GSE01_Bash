@@ -20,6 +20,8 @@ public:
     void Update(float dt);
     void Draw(Renderer& renderer);
     void Key(unsigned char key, bool down);
+    void WeaponShopClick(float x, float y);
+    bool CloseWeaponShop();
 
     void SetRunHeld(bool held)
     {
@@ -144,6 +146,9 @@ private:
     friend class RangeIndicatorActor;
     friend class HUDActor;
 
+    bool NearBlacksmith() const;
+    void DrawWeaponShop(Renderer& renderer);
+    bool m_WeaponShopOpen = false;
     void ProcessNavigation();
     void InitializeLevelOne();
     void GenerateLevelOneMap();
@@ -152,8 +157,10 @@ private:
     void UpdateGameplay(float dt);
     void MoveEnemy(EnemyActor& enemy, double targetX, double targetY, float speed, float dt);
     void SelectTarget();
-    bool TargetPosition(double& x, double& y) const;
+    bool TargetPosition(double& x, double& y, ActorId target = InvalidActor) const;
     void FireProjectile();
+    void ResolvePlayerAttack();
+    float WeaponCooldown(int weapon) const;
     void DefeatEnemy(EnemyActor& enemy, bool rewardPlayer = true);
     void AddExperience(int amount);
     void AddCombatText(double x, double y, const std::string& text, Color color);

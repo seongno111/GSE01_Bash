@@ -56,6 +56,28 @@ namespace Models
         float height = 0;
     };
 
+    struct HeroAttackStage
+    {
+        std::string clip;
+        float duration = 0;
+        float clipDuration = 0;
+    };
+
+    struct HeroAttackVisual
+    {
+        std::vector<HeroAttackStage> stages;
+        float duration = 0;
+        float contact = 0;
+    };
+
+    struct HeroWeaponVisual
+    {
+        std::string prefix;
+        std::vector<HeroAttackVisual> attacks;
+        HeroAttackVisual cancel;
+        float cancelAfter = 0;
+    };
+
     // Main-thread resource service. File I/O happens on load/reload, never on animation advance.
     class ModelLibrary
     {
@@ -79,7 +101,15 @@ namespace Models
         }
 
         ModelInstance Npc(std::uint64_t id, int role, int action = -1) const;
+
+        ModelInstance Arrow() const
+        {
+            return m_Arrow;
+        }
+
         ModelInstance Player(int role = 2) const;
+        ModelInstance HeroWeaponModel(const std::string& key, bool equipped) const;
+        const HeroWeaponVisual* HeroWeaponActions(const std::string& key) const;
         ModelInstance Monster(int index) const;
         const MonsterVisual* MonsterSpecies(const std::string& modelKey) const;
         ModelInstance Prop(int propIndex) const;
@@ -115,7 +145,13 @@ namespace Models
         std::filesystem::path m_Package;
         std::shared_ptr<const Asset> m_NpcParts;
         std::shared_ptr<const Asset> m_Props;
+        void LoadHeroWeapons(const std::filesystem::path& folder);
+        void LoadHeroWeaponAnimations(const std::filesystem::path& folder);
+        std::map<std::string, HeroWeaponVisual> m_HeroWeaponActions;
         ModelInstance m_Hero;
+        ModelInstance m_Arrow;
+        std::map<std::string, ModelInstance> m_WeaponPreviews;
+        std::map<std::string, ModelInstance> m_EquippedHeroes;
         std::shared_ptr<const Terrain::Catalog> m_WorldChunks;
         std::map<std::filesystem::path, std::shared_ptr<Asset>> m_Cache;
         std::map<std::pair<int, int>, int> m_PartNodes;

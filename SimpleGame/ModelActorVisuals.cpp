@@ -11,7 +11,8 @@ bool GameActor::DrawModel(Renderer& renderer,
                           const std::function<Models::ModelInstance()>& factory,
                           const std::string& requestedClip,
                           float normalizedTime,
-                          Color tint)
+                          Color tint,
+                          float fadeSeconds)
 {
     if (binding != m_ModelBinding)
     {
@@ -53,7 +54,7 @@ bool GameActor::DrawModel(Renderer& renderer,
     if (clip != m_Model.asset->animationByName.end())
     {
         const auto& animation = m_Model.asset->animations[clip->second];
-        m_ModelAnimation->Play(animation.name, m_ModelStarted ? .12f : 0, animation.loop);
+        m_ModelAnimation->Play(animation.name, m_ModelStarted ? fadeSeconds : 0, animation.loop);
         m_ModelStarted = true;
         const float elapsed =
             m_ModelLastDraw >= 0 ? (std::max)(0.0f, m_Game.Time() - m_ModelLastDraw) : 0;

@@ -84,12 +84,19 @@ namespace Models
         TextureSlot emissiveTexture;
     };
 
+    struct MorphTarget
+    {
+        std::vector<std::array<float, 3>> positions;
+        std::vector<std::array<float, 3>> normals;
+    };
+
     struct Primitive
     {
         std::vector<Vertex> vertices;
         std::vector<std::uint32_t> indices;
         int material = -1;
         bool skinned = false;
+        std::vector<MorphTarget> morphTargets;
     };
 
     struct Mesh
@@ -105,6 +112,8 @@ namespace Models
         int mesh = -1;
         int skin = -1;
         Transform bind;
+        Vector morphWeights{};
+        size_t morphCount = 0;
     };
 
     struct Skin
@@ -127,7 +136,8 @@ namespace Models
     {
         Translation,
         Rotation,
-        Scale
+        Scale,
+        Weights
     };
     enum class Interpolation
     {
@@ -186,6 +196,7 @@ namespace Models
     {
         std::vector<Transform> local;
         std::vector<Matrix> world;
+        std::vector<Vector> morphWeights;
     };
 
     void SamplePose(const Asset& asset, int clip, double seconds, Pose& pose);

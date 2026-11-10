@@ -53,6 +53,10 @@ namespace
                 profiler.RecordFrameLimit(frameLimit);
                 return;
             case GLFW_KEY_ESCAPE:
+                if (game.CloseWeaponShop())
+                {
+                    return;
+                }
                 glfwSetWindowShouldClose(window, GLFW_TRUE);
                 return;
             case GLFW_KEY_P:
@@ -96,6 +100,27 @@ namespace
         if (key >= GLFW_KEY_SPACE && key <= GLFW_KEY_GRAVE_ACCENT)
         {
             game.Key(static_cast<unsigned char>(key), pressed);
+        }
+    }
+
+    void MouseButton(GLFWwindow* window, int button, int action, int)
+    {
+        if (button != GLFW_MOUSE_BUTTON_LEFT || action != GLFW_PRESS)
+        {
+            return;
+        }
+        double x;
+        double y;
+        int width;
+        int height;
+        int pixelsX;
+        int pixelsY;
+        glfwGetCursorPos(window, &x, &y);
+        glfwGetWindowSize(window, &width, &height);
+        glfwGetFramebufferSize(window, &pixelsX, &pixelsY);
+        if (width > 0 && height > 0)
+        {
+            game.WeaponShopClick(float(x * pixelsX / width), float(y * pixelsY / height));
         }
     }
 
@@ -279,6 +304,7 @@ int main()
               << "[Profile] Logs every second: FPS and glDraw calls per frame "
                  "(scene + UI + post processing; last/avg/min/max).\n";
     glfwSetKeyCallback(window, KeyChanged);
+    glfwSetMouseButtonCallback(window, MouseButton);
     game.Update(0);
     RunFrames(window, width, height);
 

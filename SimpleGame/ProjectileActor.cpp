@@ -204,6 +204,16 @@ void ProjectileActor::Draw(Renderer& r)
                                     projectile.WorldY() - projectile.directionY * 0.35);
         head.y -= 39 * m_Game.m_Zoom;
         tail.y -= 39 * m_Game.m_Zoom;
+        if (arrow
+            && r.DrawModel(m_Game.ModelAssets().Arrow(),
+                           nullptr,
+                           head,
+                           m_Game.m_Zoom,
+                           float(std::atan2(directionX, directionY)),
+                           false))
+        {
+            return;
+        }
         r.Line(tail, head, 3 * m_Game.m_Zoom, Color(1.0f, 0.62f, 0.24f).Radiance(5));
         r.Ellipse(head,
                   3 * m_Game.m_Zoom,

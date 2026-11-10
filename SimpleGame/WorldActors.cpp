@@ -74,7 +74,13 @@ void GameActor::UpdateVisual(float dt)
     const bool active = m_LastMovementTime >= 0 && m_Game.Time() - m_LastMovementTime <= 0.12f;
     // A frame can contain several collision substeps or fixed AI updates. Use their net travel.
     const bool hasHeading = std::hypot(m_HeadingTravelX, m_HeadingTravelY) > .00001;
-    if (hasHeading)
+    const bool attacking = m_AttackAnimationStart >= 0
+                           && m_Game.Time() - m_AttackAnimationStart < m_AttackAnimationDuration;
+    if (attacking && m_LockAttackHeading)
+    {
+        m_TargetModelYaw = m_AttackModelYaw;
+    }
+    else if (hasHeading)
     {
         // glTF faces +Z: the model forward becomes (sin(yaw), cos(yaw)) on world X/Y.
         m_TargetModelYaw = static_cast<float>(std::atan2(m_HeadingTravelX, m_HeadingTravelY));
@@ -112,7 +118,7 @@ void GameActor::UpdateVisual(float dt)
     m_WalkCycle = std::fmod(m_WalkCycle + cyclesPerSecond * dt, 1.0f);
 }
 
-void GameActor::BeginAttackAnimation(double directionX, double directionY, float duration)
+void GameActor::AimAttackAnimation(double directionX, double directionY)
 {
     if (std::isfinite(directionX) && std::isfinite(directionY)
         && std::hypot(directionX, directionY) > .00001)
@@ -129,7 +135,16 @@ void GameActor::BeginAttackAnimation(double directionX, double directionY, float
         m_FacingLeft = screenX < 0;
     }
     m_AttackFacingLeft = m_FacingLeft;
+}
+
+void GameActor::BeginAttackAnimation(double directionX,
+                                     double directionY,
+                                     float duration,
+                                     bool lockHeading)
+{
+    AimAttackAnimation(directionX, directionY);
     m_AttackAnimationStart = m_Game.Time();
+    m_LockAttackHeading = lockHeading;
     m_AttackAnimationDuration = (std::max)(0.01f, duration);
 }
 
@@ -144,6 +159,7 @@ void GameActor::ResetAnimation()
     m_LastMovementTime = -1;
     m_AttackAnimationStart = -1;
     m_AttackAnimationDuration = 0;
+    m_LockAttackHeading = false;
     m_FacingLeft = false;
     m_AttackFacingLeft = false;
     m_HeadingTravelX = 0;

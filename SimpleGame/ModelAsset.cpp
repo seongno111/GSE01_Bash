@@ -153,8 +153,8 @@ namespace Models
         {
             Require(source.type == cgltf_primitive_type_triangles,
                     "Only triangle primitives are supported; export triangulated meshes");
-            Require(!source.has_draco_mesh_compression && source.targets_count == 0,
-                    "Draco and morph targets require a separate decoder");
+            Require(!source.has_draco_mesh_compression, "Draco requires a separate decoder");
+            Require(source.targets_count <= 4, "More than four morph targets are unsupported");
             const cgltf_accessor* positions = nullptr;
             for (size_t i = 0; i < source.attributes_count; ++i)
             {
@@ -167,6 +167,30 @@ namespace Models
             Primitive result;
             result.material = Index(source.material, data.materials);
             result.vertices.resize(positions->count);
+            for (size_t target = 0; target < source.targets_count; ++target)
+            {
+                MorphTarget morph;
+                morph.positions.resize(positions->count);
+                morph.normals.resize(positions->count);
+                const auto& input = source.targets[target];
+                for (size_t a = 0; a < input.attributes_count; ++a)
+                {
+                    const auto& attribute = input.attributes[a];
+                    Require(attribute.type == cgltf_attribute_type_position
+                                || attribute.type == cgltf_attribute_type_normal,
+                            "Only position and normal morph deltas are supported");
+                    Require(attribute.data->count == positions->count,
+                            "Morph vertex count mismatch");
+                    const auto values = Floats(attribute.data, 3);
+                    auto& output = attribute.type == cgltf_attribute_type_position ? morph.positions
+                                                                                   : morph.normals;
+                    for (size_t v = 0; v < output.size(); ++v)
+                    {
+                        std::copy_n(values.data() + v * 3, 3, output[v].begin());
+                    }
+                }
+                result.morphTargets.push_back(std::move(morph));
+            }
             for (size_t i = 0; i < result.vertices.size(); ++i)
             {
                 std::copy_n(positionValues.data() + i * 3, 3, result.vertices[i].position.begin());
@@ -437,6 +461,23 @@ namespace Models
             node.parent = Index(input.parent, data->nodes);
             node.mesh = Index(input.mesh, data->meshes);
             node.skin = Index(input.skin, data->skins);
+            if (input.mesh && input.mesh->primitives_count)
+            {
+                node.morphCount = input.mesh->primitives[0].targets_count;
+                for (size_t p = 0; p < input.mesh->primitives_count; ++p)
+                {
+                    Require(input.mesh->primitives[p].targets_count == node.morphCount,
+                            "Mesh primitives have different morph counts");
+                }
+                const auto count =
+                    input.weights_count ? input.weights_count : input.mesh->weights_count;
+                const auto* weights = input.weights_count ? input.weights : input.mesh->weights;
+                Require(count == 0 || count == node.morphCount, "Morph default count mismatch");
+                if (count)
+                {
+                    std::copy_n(weights, count, node.morphWeights.begin());
+                }
+            }
             std::copy_n(input.translation, 3, node.bind.translation.begin());
             std::copy_n(input.rotation, 4, node.bind.rotation.begin());
             std::copy_n(input.scale, 3, node.bind.scale.begin());
@@ -552,17 +593,18 @@ namespace Models
             {
                 const auto& source = input.channels[j];
                 Require(source.target_node && source.sampler, "Animation has no target or sampler");
-                Require(source.target_path != cgltf_animation_path_type_weights,
-                        "Morph animation is unsupported");
                 Require(source.target_path == cgltf_animation_path_type_translation
                             || source.target_path == cgltf_animation_path_type_rotation
-                            || source.target_path == cgltf_animation_path_type_scale,
+                            || source.target_path == cgltf_animation_path_type_scale
+                            || source.target_path == cgltf_animation_path_type_weights,
                         "Unsupported animation target path");
                 Channel channel;
                 channel.node = Index(source.target_node, data->nodes);
-                Require(!asset->nodes[channel.node].bind.matrixAuthored,
+                const bool morph = source.target_path == cgltf_animation_path_type_weights;
+                Require(morph || !asset->nodes[channel.node].bind.matrixAuthored,
                         "Animated node must use TRS");
-                channel.path = source.target_path == cgltf_animation_path_type_rotation
+                channel.path = morph ? ChannelPath::Weights
+                               : source.target_path == cgltf_animation_path_type_rotation
                                    ? ChannelPath::Rotation
                                : source.target_path == cgltf_animation_path_type_scale
                                    ? ChannelPath::Scale
@@ -582,13 +624,16 @@ namespace Models
                     Require(channel.times[k] > channel.times[k - 1],
                             "Animation keys must increase strictly");
                 }
-                const size_t components = channel.path == ChannelPath::Rotation ? 4 : 3;
-                const auto values = Floats(sampler.output, components);
+                const size_t components = morph ? asset->nodes[channel.node].morphCount
+                                          : channel.path == ChannelPath::Rotation ? 4
+                                                                                  : 3;
+                Require(components > 0 && components <= 4, "Invalid animated morph count");
+                const auto values = Floats(sampler.output, morph ? 1 : components);
                 const size_t multiplier =
                     channel.interpolation == Interpolation::CubicSpline ? 3 : 1;
-                Require(sampler.output->count == channel.times.size() * multiplier,
+                Require(values.size() == channel.times.size() * multiplier * components,
                         "Animation key and output count mismatch");
-                channel.values.resize(sampler.output->count);
+                channel.values.resize(channel.times.size() * multiplier);
                 for (size_t k = 0; k < channel.values.size(); ++k)
                 {
                     std::copy_n(values.data() + k * components,

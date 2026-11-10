@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-05",
+  "new_weapon_actions": 30,
+  "weapon_types": 7,
+  "common_original_actions": 11,
+  "total_library_actions": 41,
+  "glb_files": 8,
+  "blender_source": 1,
+  "checks_passed": 23,
+  "game_code_changed": false,
+  "build_run": false,
+  "delivery_files": 68,
+  "delivery_bytes": 39478906
+}

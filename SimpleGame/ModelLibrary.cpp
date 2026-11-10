@@ -462,6 +462,7 @@ namespace Models
                 Check(!instance.nodes.empty() && !hero->skins.empty(),
                       "Hero meshes or skin missing");
                 m_Hero = std::move(instance);
+                LoadHeroWeapons(path.parent_path() / "HeroWeapons_v1");
             }
             catch (const std::exception& error)
             {

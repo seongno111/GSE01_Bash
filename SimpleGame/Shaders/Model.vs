@@ -8,7 +8,9 @@ layout(location = 5) in vec4 a_Weights0;
 layout(location = 6) in uvec4 a_Joints1;
 layout(location = 7) in vec4 a_Weights1;
 layout(location = 8) in vec3 a_Surface;
+layout(location = 9) in uvec3 a_Morph;
 uniform samplerBuffer u_Pose;
+uniform samplerBuffer u_Morph;
 uniform vec2 u_Viewport;
 uniform vec3 u_Placement;   // screen feet XY, zoom/world scale
 uniform vec4 u_Orientation; // model +X and +Z in world ground coordinates
@@ -42,7 +44,19 @@ void main()
             skin += bone(a_Joints1[i]) * a_Weights1[i];
         }
     }
-    vec3 local = (skin * vec4(a_Position, 1)).xyz;
+    vec3 position = a_Position;
+    vec3 normal = a_Normal;
+    if (a_Morph.y > 0u)
+    {
+        vec4 weights = texelFetch(u_Pose, int(a_Morph.z));
+        for (uint i = 0u; i < a_Morph.y; ++i)
+        {
+            int offset = int(a_Morph.x + i * 2u);
+            position += texelFetch(u_Morph, offset).xyz * weights[i];
+            normal += texelFetch(u_Morph, offset + 1).xyz * weights[i];
+        }
+    }
+    vec3 local = (skin * vec4(position, 1)).xyz;
     vec2 ground = u_Orientation.xy * local.x + u_Orientation.zw * local.z;
     vec2 screen =
         u_Placement.xy
@@ -55,7 +69,7 @@ void main()
     v_Ground = ground;
     mat3 linear = mat3(skin);
     float determinantValue = determinant(linear);
-    v_Normal = abs(determinantValue) > 0.000001 ? transpose(inverse(linear)) * a_Normal : a_Normal;
+    v_Normal = abs(determinantValue) > 0.000001 ? transpose(inverse(linear)) * normal : normal;
     v_Color = a_Color;
     v_Emission = a_Emission;
     v_Surface = a_Surface;

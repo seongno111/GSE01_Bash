@@ -35,8 +35,12 @@ public:
     UnitSpritePose SpritePose() const;
     void RecordMovement(double dx, double dy);
     void UpdateVisual(float dt) override;
-    void BeginAttackAnimation(double directionX, double directionY, float duration);
-    void ResetAnimation();
+    void AimAttackAnimation(double directionX, double directionY);
+    void BeginAttackAnimation(double directionX,
+                              double directionY,
+                              float duration,
+                              bool lockHeading = false);
+    virtual void ResetAnimation();
     std::string MovementClip(const std::string& prefix, bool running = false) const;
 
     float ModelYaw() const
@@ -49,7 +53,8 @@ public:
                    const std::function<Models::ModelInstance()>& factory,
                    const std::string& clip,
                    float normalizedTime = -1,
-                   Color tint = Color());
+                   Color tint = Color(),
+                   float fadeSeconds = .12f);
 
 protected:
 
@@ -73,6 +78,7 @@ private:
     float m_ModelYaw = 0;
     float m_TargetModelYaw = 0;
     float m_AttackModelYaw = 0;
+    bool m_LockAttackHeading = false;
     std::string m_ModelBinding;
     Models::ModelInstance m_Model;
     std::unique_ptr<Models::AnimationPlayer> m_ModelAnimation;
@@ -88,10 +94,21 @@ public:
     explicit PlayerActor(Prototype& game);
     void Update(float dt) override;
     void Draw(Renderer& renderer) override;
+    void ResetAnimation() override;
+    const Models::HeroAttackVisual* weaponAttack = nullptr;
+    float weaponAttackStart = -1;
+    float weaponAttackDuration = 0;
+    float attackReleaseAt = -1;
+    ActorId attackTarget = InvalidActor;
+    int attackWeapon = -1;
+    bool attackMutant = false;
+    size_t nextAttack = 0;
+    float attackDamage = 0;
     int level = 1;
     int experience = 0;
     int shards = 0;
     int weaponRank = 0;
+    int weapon = 0;
     int purificationStones = 0;
     int potions = 2;
     int gold = 35;
@@ -247,6 +264,7 @@ public:
     bool alive = true;
     bool hostile;
     bool allowPK = false;
+    bool arrow = false;
     ActorId source = InvalidActor;
     float travelSpeed = 4.2f;
     Color tint = Color(1, .19f, .12f);

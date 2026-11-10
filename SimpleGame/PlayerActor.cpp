@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "HeroWeapons.h"
 
 #include <algorithm>
 #include <cmath>
@@ -18,6 +19,18 @@ void PlayerActor::Update(float dt)
     attack = (std::max)(0.0f, attack - dt);
     hitCooldown = (std::max)(0.0f, hitCooldown - dt);
 
+    shotCooldown = (std::max)(0.0f, shotCooldown - dt);
+    magnetTime = (std::max)(0.0f, magnetTime - dt);
+    if (m_Game.m_WeaponShopOpen)
+    {
+        if (weaponAttackStart >= 0)
+        {
+            ResetAnimation();
+        }
+        walking = false;
+        running = false;
+        return;
+    }
     const float right = float(m_Game.m_Keys['d']) - float(m_Game.m_Keys['a']);
     const float down = float(m_Game.m_Keys['s']) - float(m_Game.m_Keys['w']);
     const double dx = right + down;
@@ -38,8 +51,48 @@ void PlayerActor::Update(float dt)
     }
     walking = Distance(WorldX() - previous.x, WorldY() - previous.y) > 0.00001;
     running = walking && m_Game.m_RunHeld;
-    magnetTime = (std::max)(0.0f, magnetTime - dt);
-    shotCooldown = (std::max)(0.0f, shotCooldown - dt);
+    if (weaponAttackStart >= 0 && attackMutant != (corruption >= MutationThreshold))
+    {
+        ResetAnimation();
+    }
+    if (attackReleaseAt >= 0)
+    {
+        double x = 0;
+        double y = 0;
+        if (m_Game.TargetPosition(x, y, attackTarget))
+        {
+            AimAttackAnimation(x - WorldX(), y - WorldY());
+        }
+    }
+    if (weapon == 1 && weaponAttack && attackReleaseAt >= 0)
+    {
+        const auto* visual = m_Game.ModelAssets().HeroWeaponActions(HeroWeapons[weapon].key);
+        const float rate = weaponAttack->duration / weaponAttackDuration;
+        if (visual && (m_Game.Time() - weaponAttackStart) * rate >= visual->cancelAfter)
+        {
+            double x = 0;
+            double y = 0;
+            if (!m_Game.TargetPosition(x, y, attackTarget)
+                || Distance(x - WorldX(), y - WorldY()) > range
+                || !m_Game.ClearShot(WorldX(), WorldY(), x, y))
+            {
+                // Lower from the drawn pose when the locked target can no longer be hit.
+                weaponAttack = &visual->cancel;
+                weaponAttackStart = m_Game.Time();
+                weaponAttackDuration = visual->cancel.duration / rate;
+                attackReleaseAt = -1;
+                shotCooldown = (std::max)(shotCooldown, weaponAttackDuration);
+                BeginAttackAnimation(std::sin(ModelYaw()),
+                                     std::cos(ModelYaw()),
+                                     weaponAttackDuration,
+                                     true);
+            }
+        }
+    }
+    if (attackReleaseAt >= 0 && m_Game.Time() >= attackReleaseAt)
+    {
+        m_Game.ResolvePlayerAttack();
+    }
     m_Game.SelectTarget();
     if ((autoFire || m_Game.m_Keys[' ']) && shotCooldown <= 0)
     {
@@ -51,21 +104,68 @@ void PlayerActor::Draw(Renderer& r)
 {
     const auto pose = SpritePose();
     const bool mutant = corruption >= MutationThreshold;
-    const std::string clip =
+    std::string clip =
         mutant ? (pose.attackProgress >= 0 ? "MON_03_Attack" : MovementClip("MON_03", running))
         : pose.attackProgress >= 0 ? "HERO_AttackLongsword"
                                    : MovementClip("HERO", running);
+    float progress = pose.attackProgress;
+    if (!mutant)
+    {
+        if (const auto* visual = m_Game.ModelAssets().HeroWeaponActions(HeroWeapons[weapon].key))
+        {
+            clip = visual->prefix + (pose.moving ? (running ? "_Run" : "_Walk") : "_Ready");
+            if (progress >= 0 && weaponAttack)
+            {
+                float time = progress * weaponAttack->duration;
+                for (const auto& stage : weaponAttack->stages)
+                {
+                    clip = stage.clip;
+                    // Aim is a short hold from a longer loop, not an accelerated full loop.
+                    progress = std::clamp(time / stage.clipDuration, 0.0f, 1.0f);
+                    if (time < stage.duration)
+                    {
+                        break;
+                    }
+                    time -= stage.duration;
+                }
+            }
+            else
+            {
+                progress = -1;
+            }
+        }
+    }
     if (DrawModel(
             r,
-            mutant ? "player/mutated" : "player/hero",
+            mutant ? "player/mutated" : std::string("player/") + HeroWeapons[weapon].key,
             [&]()
             {
-                return mutant ? m_Game.ModelAssets().Monster(3) : m_Game.ModelAssets().Player();
+                if (mutant)
+                {
+                    return m_Game.ModelAssets().Monster(3);
+                }
+                const auto equipped =
+                    m_Game.ModelAssets().HeroWeaponModel(HeroWeapons[weapon].key, true);
+                return equipped ? equipped : m_Game.ModelAssets().Player();
             },
             clip,
-            pose.attackProgress))
+            progress,
+            Color(),
+            progress >= 0 ? 0.0f : .12f))
     {
         return;
     }
     m_Game.DrawCharacter(r, m_Game.Project(WorldX(), WorldY()), corruption, false, SpritePose());
+}
+
+void PlayerActor::ResetAnimation()
+{
+    GameActor::ResetAnimation();
+    weaponAttack = nullptr;
+    weaponAttackStart = -1;
+    weaponAttackDuration = 0;
+    attackReleaseAt = -1;
+    attackTarget = InvalidActor;
+    attackWeapon = -1;
+    nextAttack = 0;
 }

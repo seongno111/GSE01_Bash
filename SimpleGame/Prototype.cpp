@@ -45,6 +45,7 @@ void Prototype::Notice(const std::string& text)
 
 void Prototype::Die(const ::Actor* killer, bool unlawful)
 {
+    CloseWeaponShop();
     if (m_NpcWorld)
     {
         m_NpcWorld->RecordWorldEvent(unlawful ? "murder" : "death",
@@ -115,6 +116,19 @@ void Prototype::Key(unsigned char key, bool down)
     const bool pressed = down && !m_Keys[key];
     m_Keys[key] = down;
     if (!pressed)
+    {
+        return;
+    }
+    if (key == 'e' && (m_WeaponShopOpen || NearBlacksmith()))
+    {
+        m_WeaponShopOpen = !m_WeaponShopOpen;
+        if (m_WeaponShopOpen)
+        {
+            m_Player.ResetAnimation();
+        }
+        return;
+    }
+    if (m_WeaponShopOpen)
     {
         return;
     }
@@ -250,6 +264,10 @@ void Prototype::Update(float dt)
     const auto updateStart = std::chrono::steady_clock::now();
     InitializeLevelOne();
     m_Time += dt;
+    if (m_WeaponShopOpen && (!NearBlacksmith() || m_Player.health <= 0))
+    {
+        CloseWeaponShop();
+    }
     m_MessageTime = (std::max)(0.0f, m_MessageTime - dt);
     m_Scene.Update(dt, TickGroup::Player);
     m_ShrineX = NearestShrine(m_Player.WorldX());
@@ -301,5 +319,6 @@ void Prototype::Draw(Renderer& r)
     m_Scene.DrawWorld(r);
     r.BeginUI();
     m_Scene.DrawUI(r);
+    DrawWeaponShop(r);
     r.EndFrame();
 }

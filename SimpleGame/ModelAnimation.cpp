@@ -238,9 +238,11 @@ namespace Models
     void SamplePose(const Asset& asset, int clipIndex, double seconds, Pose& pose)
     {
         pose.local.resize(asset.nodes.size());
+        pose.morphWeights.resize(asset.nodes.size());
         for (size_t i = 0; i < asset.nodes.size(); ++i)
         {
             pose.local[i] = asset.nodes[i].bind;
+            pose.morphWeights[i] = asset.nodes[i].morphWeights;
         }
         if (clipIndex >= 0)
         {
@@ -252,7 +254,11 @@ namespace Models
             {
                 const auto value = Sample(channel, static_cast<float>(time));
                 auto& target = pose.local[channel.node];
-                if (channel.path == ChannelPath::Translation)
+                if (channel.path == ChannelPath::Weights)
+                {
+                    pose.morphWeights[channel.node] = value;
+                }
+                else if (channel.path == ChannelPath::Translation)
                 {
                     target.translation = value;
                 }
@@ -277,6 +283,7 @@ namespace Models
         }
         weight = std::clamp(weight, 0.0f, 1.0f);
         result.local.resize(asset.nodes.size());
+        result.morphWeights.resize(asset.nodes.size());
         for (size_t i = 0; i < asset.nodes.size(); ++i)
         {
             const Transform a = from.local[i];
@@ -286,6 +293,7 @@ namespace Models
             target.translation = Lerp(a.translation, b.translation, weight);
             target.rotation = Slerp(a.rotation, b.rotation, weight);
             target.scale = Lerp(a.scale, b.scale, weight);
+            result.morphWeights[i] = Lerp(from.morphWeights[i], to.morphWeights[i], weight);
         }
         UpdateWorldPose(asset, result);
     }

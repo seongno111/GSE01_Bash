@@ -1,0 +1,286 @@
+{
+  "staff": {
+    "HERO_Staff_Ready": {
+      "minimum_boot_z_m": -5.781532763649011e-08,
+      "max_foot_anchor_deviation_m": 2.752829385302789e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 8.024520884654677e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Staff_CastBolt": {
+      "minimum_boot_z_m": -2.2436108793044696e-07,
+      "max_foot_anchor_deviation_m": 3.1189783336977875e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.039829707008569255,
+      "loop_matrix_error": null
+    },
+    "HERO_Staff_CastSweep": {
+      "minimum_boot_z_m": -1.557133373353281e-07,
+      "max_foot_anchor_deviation_m": 3.4582674760812405e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.026137129254849546,
+      "loop_matrix_error": null
+    },
+    "HERO_Staff_Channel": {
+      "minimum_boot_z_m": -5.781532763649011e-08,
+      "max_foot_anchor_deviation_m": 2.752829385302789e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 9.924665573445984e-07,
+      "loop_matrix_error": 0.0
+    }
+  },
+  "mace": {
+    "HERO_Mace_Ready": {
+      "minimum_boot_z_m": -5.781532763649011e-08,
+      "max_foot_anchor_deviation_m": 2.752829385302789e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 6.551429014498177e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Mace_Strike": {
+      "minimum_boot_z_m": -1.2044677077938104e-07,
+      "max_foot_anchor_deviation_m": 2.53568684544532e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.05626661332961035,
+      "loop_matrix_error": null
+    },
+    "HERO_Mace_Sweep": {
+      "minimum_boot_z_m": -1.0178976594943379e-07,
+      "max_foot_anchor_deviation_m": 2.193429090222287e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.047530411061227996,
+      "loop_matrix_error": null
+    },
+    "HERO_Mace_Guard": {
+      "minimum_boot_z_m": -7.856255024307757e-08,
+      "max_foot_anchor_deviation_m": 2.5405368253973674e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 7.952251472548446e-07,
+      "loop_matrix_error": 0.0
+    }
+  },
+  "axe": {
+    "HERO_Axe_Ready": {
+      "minimum_boot_z_m": -5.781532763649011e-08,
+      "max_foot_anchor_deviation_m": 2.752829385302789e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 6.551429014498177e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Axe_Chop": {
+      "minimum_boot_z_m": -2.719073677326378e-08,
+      "max_foot_anchor_deviation_m": 2.2065630813404147e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.050228337921687155,
+      "loop_matrix_error": null
+    },
+    "HERO_Axe_Cleave": {
+      "minimum_boot_z_m": -4.365652728210989e-08,
+      "max_foot_anchor_deviation_m": 2.700881796314066e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.034925031188002324,
+      "loop_matrix_error": null
+    },
+    "HERO_Axe_Guard": {
+      "minimum_boot_z_m": -8.976634546797868e-08,
+      "max_foot_anchor_deviation_m": 2.456833269001155e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 1.0978424821134724e-06,
+      "loop_matrix_error": 0.0
+    }
+  },
+  "warhammer": {
+    "HERO_Hammer_Ready": {
+      "minimum_boot_z_m": -8.018307084967091e-08,
+      "max_foot_anchor_deviation_m": 3.0923094154105134e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 8.497582333912404e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 7.970380258748729e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Hammer_Smash": {
+      "minimum_boot_z_m": -1.2950590644322801e-07,
+      "max_foot_anchor_deviation_m": 2.2631456310958452e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 7.835517421445195e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.0388557236266316,
+      "loop_matrix_error": null
+    },
+    "HERO_Hammer_Uppercut": {
+      "minimum_boot_z_m": -1.1169899494234414e-07,
+      "max_foot_anchor_deviation_m": 2.4678104920990375e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 6.731961368367981e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.028820634402772754,
+      "loop_matrix_error": null
+    },
+    "HERO_Hammer_Guard": {
+      "minimum_boot_z_m": -1.5453976232038258e-07,
+      "max_foot_anchor_deviation_m": 2.7367467448084245e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 6.494517725304202e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 6.613833016506477e-07,
+      "loop_matrix_error": 0.0
+    }
+  },
+  "spear": {
+    "HERO_Spear_Ready": {
+      "minimum_boot_z_m": -7.40177625857541e-08,
+      "max_foot_anchor_deviation_m": 2.7778245468759715e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 7.766135835327736e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 8.732449166549947e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Spear_Thrust": {
+      "minimum_boot_z_m": -8.900265413558373e-08,
+      "max_foot_anchor_deviation_m": 2.5700264332778655e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 7.254662120481942e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.022798946625568157,
+      "loop_matrix_error": null
+    },
+    "HERO_Spear_Sweep": {
+      "minimum_boot_z_m": -1.0497487323846144e-07,
+      "max_foot_anchor_deviation_m": 2.1555141718908036e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 7.554536026842163e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.029665688605466124,
+      "loop_matrix_error": null
+    },
+    "HERO_Spear_Guard": {
+      "minimum_boot_z_m": -1.5453976232038258e-07,
+      "max_foot_anchor_deviation_m": 2.7367467448084245e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 9.037342353067612e-07,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 7.656717757324701e-07,
+      "loop_matrix_error": 0.0
+    }
+  },
+  "dagger": {
+    "HERO_Dagger_Ready": {
+      "minimum_boot_z_m": -7.40177625857541e-08,
+      "max_foot_anchor_deviation_m": 2.7778245468759715e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 7.077659420393656e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Dagger_Stab": {
+      "minimum_boot_z_m": -8.900265413558373e-08,
+      "max_foot_anchor_deviation_m": 2.050368971313794e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.05251397199801377,
+      "loop_matrix_error": null
+    },
+    "HERO_Dagger_Slash": {
+      "minimum_boot_z_m": -8.468134637951152e-08,
+      "max_foot_anchor_deviation_m": 1.8732908308532854e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.04734570260592987,
+      "loop_matrix_error": null
+    },
+    "HERO_Dagger_Guard": {
+      "minimum_boot_z_m": -2.474021130183246e-07,
+      "max_foot_anchor_deviation_m": 3.0234512554032613e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 6.48157691089259e-07,
+      "loop_matrix_error": 0.0
+    }
+  },
+  "bow": {
+    "HERO_Bow_Ready": {
+      "minimum_boot_z_m": -1.2592960274560028e-07,
+      "max_foot_anchor_deviation_m": 2.0901018221353999e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 9.182066025140223e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Bow_Nock": {
+      "minimum_boot_z_m": 1.4793144487157406e-08,
+      "max_foot_anchor_deviation_m": 6.149955129499687e-08,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.034767496236208,
+      "loop_matrix_error": null
+    },
+    "HERO_Bow_Draw": {
+      "minimum_boot_z_m": -3.601971343414334e-08,
+      "max_foot_anchor_deviation_m": 2.1689185519466706e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 6.848964196810613e-07,
+      "maximum_hand_step_per_60fps_frame_m": 0.012327613843990136,
+      "loop_matrix_error": null
+    },
+    "HERO_Bow_Aim": {
+      "minimum_boot_z_m": -7.463241047389602e-08,
+      "max_foot_anchor_deviation_m": 2.824793465865481e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 9.79269633608531e-07,
+      "maximum_hand_step_per_60fps_frame_m": 9.325139055465359e-07,
+      "loop_matrix_error": 0.0
+    },
+    "HERO_Bow_Release": {
+      "minimum_boot_z_m": -4.836904565763689e-08,
+      "max_foot_anchor_deviation_m": 2.5255570930266084e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.04904948305898009,
+      "loop_matrix_error": null
+    },
+    "HERO_Bow_Lower": {
+      "minimum_boot_z_m": -6.084881931656128e-08,
+      "max_foot_anchor_deviation_m": 2.640254007867426e-07,
+      "max_root_translation_m": 0,
+      "maximum_support_grip_gap_m": 0,
+      "maximum_bow_draw_hand_to_nock_m": 0,
+      "maximum_hand_step_per_60fps_frame_m": 0.0406178362993814,
+      "loop_matrix_error": null
+    }
+  }
+}

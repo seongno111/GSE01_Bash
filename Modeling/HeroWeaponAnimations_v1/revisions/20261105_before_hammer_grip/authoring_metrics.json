@@ -1,0 +1,92 @@
+{
+  "HERO_Staff_Ready": {
+    "maximum_authored_target_reach_projection_m": 7.300048299977713e-08
+  },
+  "HERO_Mace_Ready": {
+    "maximum_authored_target_reach_projection_m": 7.300048299977713e-08
+  },
+  "HERO_Axe_Ready": {
+    "maximum_authored_target_reach_projection_m": 7.300048299977713e-08
+  },
+  "HERO_Hammer_Ready": {
+    "maximum_authored_target_reach_projection_m": 4.712160915387242e-08
+  },
+  "HERO_Spear_Ready": {
+    "maximum_authored_target_reach_projection_m": 5.960464477539063e-08
+  },
+  "HERO_Dagger_Ready": {
+    "maximum_authored_target_reach_projection_m": 4.2146848510894035e-08
+  },
+  "HERO_Bow_Ready": {
+    "maximum_authored_target_reach_projection_m": 4.470348358154297e-08
+  },
+  "HERO_Staff_CastBolt": {
+    "maximum_authored_target_reach_projection_m": 6.828569911354542e-08
+  },
+  "HERO_Staff_CastSweep": {
+    "maximum_authored_target_reach_projection_m": 0.019988122335064015
+  },
+  "HERO_Staff_Channel": {
+    "maximum_authored_target_reach_projection_m": 6.828569911354542e-08
+  },
+  "HERO_Mace_Strike": {
+    "maximum_authored_target_reach_projection_m": 0.01496957448181151
+  },
+  "HERO_Mace_Sweep": {
+    "maximum_authored_target_reach_projection_m": 0.048471253262995694
+  },
+  "HERO_Mace_Guard": {
+    "maximum_authored_target_reach_projection_m": 7.300048299977713e-08
+  },
+  "HERO_Axe_Chop": {
+    "maximum_authored_target_reach_projection_m": 0.019881196185965625
+  },
+  "HERO_Axe_Cleave": {
+    "maximum_authored_target_reach_projection_m": 0.03687811781658054
+  },
+  "HERO_Axe_Guard": {
+    "maximum_authored_target_reach_projection_m": 6.828569911354542e-08
+  },
+  "HERO_Hammer_Smash": {
+    "maximum_authored_target_reach_projection_m": 6.664001874625056e-08
+  },
+  "HERO_Hammer_Uppercut": {
+    "maximum_authored_target_reach_projection_m": 7.487740830422111e-08
+  },
+  "HERO_Hammer_Guard": {
+    "maximum_authored_target_reach_projection_m": 4.470348358154297e-08
+  },
+  "HERO_Spear_Thrust": {
+    "maximum_authored_target_reach_projection_m": 5.963374150388733e-08
+  },
+  "HERO_Spear_Sweep": {
+    "maximum_authored_target_reach_projection_m": 6.664001874625056e-08
+  },
+  "HERO_Spear_Guard": {
+    "maximum_authored_target_reach_projection_m": 4.470348358154297e-08
+  },
+  "HERO_Dagger_Stab": {
+    "maximum_authored_target_reach_projection_m": 0.05658584484612726
+  },
+  "HERO_Dagger_Slash": {
+    "maximum_authored_target_reach_projection_m": 0.05794840145527149
+  },
+  "HERO_Dagger_Guard": {
+    "maximum_authored_target_reach_projection_m": 7.300048299977713e-08
+  },
+  "HERO_Bow_Nock": {
+    "maximum_authored_target_reach_projection_m": 2.6863450374185958e-08
+  },
+  "HERO_Bow_Draw": {
+    "maximum_authored_target_reach_projection_m": 3.7255813253986855e-08
+  },
+  "HERO_Bow_Aim": {
+    "maximum_authored_target_reach_projection_m": 6.064333243705223e-08
+  },
+  "HERO_Bow_Release": {
+    "maximum_authored_target_reach_projection_m": 5.972094663188382e-08
+  },
+  "HERO_Bow_Lower": {
+    "maximum_authored_target_reach_projection_m": 4.012260442327338e-08
+  }
+}
