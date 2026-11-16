@@ -2,7 +2,7 @@
 import bpy
 from math import sin, cos, pi
 from mathutils import Quaternion, Vector
-from dynamic_motion import ease, window, pace
+from dynamic_motion import ease, footwork, pace
 
 
 def blend(a, b, weight):
@@ -11,11 +11,13 @@ def blend(a, b, weight):
     return a + (b - a) * weight
 
 
-def key_pose(keys, phase, contacts=()):
+def key_pose(keys, phase, contacts=(), attack=False):
     for i,((start, a), (end, b)) in enumerate(zip(keys, keys[1:])):
         if phase <= end:
             mode=('strike' if end in contacts else 'carry' if start in contacts else
                   'settle' if i==len(keys)-2 else 'gather')
+            if attack:
+                mode={'strike':'accelerate','carry':'brake'}.get(mode,mode)
             weight=pace((phase-start)/(end-start),mode)
             return {name:blend(a[name],b[name],weight) for name in a}
     return keys[-1][1]
@@ -114,24 +116,22 @@ def bake_common_actions(rig, scene, original, metadata, hero, pose, animate_pose
         p['feet'] = tuple(feet)
         return p
 
-    sword_stance = ((.153,-.025,0,0),(-.153,.03,0,0))
-    wind = make(rp=(-.431,-.10,1.25),rd=(-.50,.21,.84),lp=(.459,-.19,.90),
-                feet=sword_stance,crouch=.079,yaw=-20,pitch=-5,twist=-10,
-                shift=(-.063,.052),look=-6,head_pitch=-5,cape=(-3,12),lamp_swing=12)
-    strike = make(rp=(-.195,-.383,1.06),rd=(.43,-.90,.03),lp=(.397,-.18,.82),
-                  feet=((.161,-.15,0,0),(-.153,.03,0,0)),crouch=.112,yaw=19,
-                  pitch=18,twist=8,shift=(.06,-.116),head_pitch=5,cape=(16,-14),lamp_swing=-21)
-    through = make(rp=(-.13,-.28,.97),rd=(.78,-.56,-.27),lp=(.410,-.16,.83),
-                   feet=strike['feet'],crouch=.118,yaw=33,pitch=20,twist=14,
-                   shift=(.07,-.105),head_pitch=8,cape=(24,-16),lamp_swing=-13)
+    wind = make(rp=(-.445,-.025,1.29),rd=(-.63,.36,.69),lp=(.435,-.33,.98),
+                crouch=.109,yaw=-37,pitch=-7,twist=-19,hip_roll=-9,
+                shift=(-.091,.068),head_pitch=-4,cape=(-5,16),lamp_swing=19)
+    plant = dict(wind, shift=(.036,-.089), crouch=.144, twist=8, hip_roll=7, pitch=9)
+    strike = make(rp=(-.192,-.390,1.04),rd=(.22,-.97,.06),lp=(.459,-.085,.86),
+                  crouch=.154,yaw=26,pitch=23,twist=17,hip_roll=10,
+                  shift=(.084,-.149),head_pitch=5,cape=(14,-11),lamp_swing=-26)
+    through = make(rp=(-.102,-.265,.93),rd=(.83,-.45,-.32),lp=(.434,-.075,.82),
+                   crouch=.181,yaw=47,pitch=22,twist=24,hip_roll=8,
+                   shift=(.095,-.121),head_pitch=8,cape=(27,-22),lamp_swing=-9)
 
     def sword(u):
         t = u*.85
-        p = key_pose([(0,standing),(.12,make(feet=sword_stance,crouch=.046,shift=(-.018,.01))),
-                      (.255,wind),(.40,strike),(.51,through),(.85,standing)],t,contacts=(.40,))
-        x,y,z,rock = p['feet'][0]
-        p['feet'] = ((x,y,z+.071*window(t,.255,.32,.397)+.052*window(t,.51,.66,.85),rock),p['feet'][1])
-        return p
+        p = key_pose([(0,standing),(.24,wind),(.337,plant),(.40,strike),
+                      (.49,through),(.55,through),(.85,standing)],t,contacts=(.40,),attack=True)
+        return footwork(p, t, .21, .347, .55, .85, .198, .082, 22)
 
     def guard(u):
         breath=(1-cos(2*pi*u))/2

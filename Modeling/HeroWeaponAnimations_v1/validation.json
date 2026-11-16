@@ -197,25 +197,25 @@
         }
       }
     },
-    "minimum_boot_z_m": -0.0001497291959822178,
-    "minimum_visible_mesh_z_m": -0.0001497291959822178,
-    "maximum_chain_gap_m": 5.697745959484361e-06,
+    "minimum_boot_z_m": -0.000873960554599762,
+    "minimum_visible_mesh_z_m": -0.000873960554599762,
+    "maximum_chain_gap_m": 5.679713003653409e-06,
     "maximum_hammer_wrist_bend_degrees": 0,
-    "maximum_elbow_step_m": 0.14195145328071224,
-    "maximum_hammer_elbow_step_m": 0.12456471773773801,
-    "maximum_foot_anchor_deviation_m": 0.0007405811352556011,
-    "maximum_support_grip_gap_m": 0.004817604002417851,
+    "maximum_elbow_step_m": 0.21999058272626446,
+    "maximum_hammer_elbow_step_m": 0.16128748402472148,
+    "maximum_foot_anchor_deviation_m": 0.0008215980147831146,
+    "maximum_support_grip_gap_m": 0.0018755766967479745,
     "maximum_bow_draw_hand_to_nock_m": 1.4108230634405537e-06,
-    "maximum_bow_hand_step_per_60fps_frame_m": 0.05923781676213293,
-    "maximum_baked_support_grip_gap_m": 1.5827971689398549e-06,
-    "attack_and_bow_transition_pose_error": 2.980232238769531e-07,
+    "maximum_bow_hand_step_per_60fps_frame_m": 0.05424629730795638,
+    "maximum_baked_support_grip_gap_m": 1.4123174444257793e-06,
+    "attack_and_bow_transition_pose_error": 4.76837158203125e-07,
     "per_clip_pose_change": {
       "HERO_Idle": 0.20697999000549316,
       "HERO_Walk": 0.20845712939008576,
       "HERO_Run": 0.20622877661946803,
       "HERO_MoveStart": 0.20697999000549316,
       "HERO_MoveStop": 0.20697999000549316,
-      "HERO_AttackLongsword": 0.9999478758075635,
+      "HERO_AttackLongsword": 0.9805419326696118,
       "HERO_Guard": 0.18726998567581177,
       "HERO_Hit": 0.21051761933735436,
       "HERO_Death": 0.21427435321439858,
@@ -228,73 +228,73 @@
       "HERO_Spear_Ready": 0.1959107007308286,
       "HERO_Dagger_Ready": 0.1959107007308286,
       "HERO_Bow_Ready": 0.970697269163722,
-      "HERO_Staff_CastBolt": 0.5260667465060038,
-      "HERO_Staff_CastSweep": 0.9912714592301918,
+      "HERO_Staff_CastBolt": 0.9978166513183907,
+      "HERO_Staff_CastSweep": 0.9995969133579381,
       "HERO_Staff_Channel": 0.20147603751252063,
-      "HERO_Mace_Strike": 0.9898175378878659,
-      "HERO_Mace_Sweep": 0.9892782347714576,
+      "HERO_Mace_Strike": 0.9706917375076969,
+      "HERO_Mace_Sweep": 0.9746217076680505,
       "HERO_Mace_Guard": 0.1945599913597107,
-      "HERO_Axe_Chop": 0.624494633625569,
-      "HERO_Axe_Cleave": 0.7839805530378521,
+      "HERO_Axe_Chop": 0.7450711121827068,
+      "HERO_Axe_Cleave": 0.9853897201844628,
       "HERO_Axe_Guard": 0.19321000576019287,
-      "HERO_Hammer_Smash": 0.998574006271403,
-      "HERO_Hammer_Uppercut": 0.9895554377026,
+      "HERO_Hammer_Smash": 0.9887084974056081,
+      "HERO_Hammer_Uppercut": 0.9833755611779335,
       "HERO_Hammer_Guard": 0.19050997495651245,
-      "HERO_Spear_Thrust": 0.23894537562264306,
-      "HERO_Spear_Sweep": 0.5320112798667895,
+      "HERO_Spear_Thrust": 0.9691454366182675,
+      "HERO_Spear_Sweep": 0.9969086082873013,
       "HERO_Spear_Guard": 0.33073964062021877,
-      "HERO_Dagger_Stab": 0.9870235752423774,
-      "HERO_Dagger_Slash": 0.9894346432892546,
+      "HERO_Dagger_Stab": 0.9433186499552016,
+      "HERO_Dagger_Slash": 0.9956743530405195,
       "HERO_Dagger_Guard": 0.19186002016067505,
-      "HERO_Bow_Nock": 0.9860041817415948,
-      "HERO_Bow_Draw": 0.5759502334602189,
+      "HERO_Bow_Nock": 0.8841150236968475,
+      "HERO_Bow_Draw": 0.6469148086302665,
       "HERO_Bow_Aim": 0.3197049747015831,
       "HERO_Bow_Release": 0.8117737078757223,
       "HERO_Bow_Lower": 0.9624018252020689,
-      "HERO_Staff_SkillAshField": 0.20953261852264404,
-      "HERO_Bow_SkillArrowFan": 0.9971158647882801,
-      "HERO_Mace_SkillGuardBreak": 0.9947208258552236,
-      "HERO_Axe_SkillExecution": 0.9956583346234015,
-      "HERO_Hammer_SkillGroundSlam": 0.8272905839768954,
-      "HERO_Spear_SkillLongThrust": 0.19831293560643182,
-      "HERO_Dagger_SkillFlurry": 0.7771673961160281,
-      "HERO_Sword_SkillWhirlwind": 0.2114761971387885
+      "HERO_Staff_SkillAshField": 0.23481289758097357,
+      "HERO_Bow_SkillArrowFan": 0.9964653176592161,
+      "HERO_Mace_SkillGuardBreak": 0.7949019849970739,
+      "HERO_Axe_SkillExecution": 0.9940049015791965,
+      "HERO_Hammer_SkillGroundSlam": 0.9607453644672164,
+      "HERO_Spear_SkillLongThrust": 0.2748482986667059,
+      "HERO_Dagger_SkillFlurry": 0.9427799437073026,
+      "HERO_Sword_SkillWhirlwind": 0.9665898200149102
     },
     "whirlwind_turns": 2.0,
     "weapon_floor_at_skill_contacts_m": {
       "HERO_Staff_SkillAshField": {
-        "0.45": 0.0009995698928833008,
-        "0.8": 0.0009995698928833008,
-        "1.15": 0.0009995698928833008
+        "0.45": 0.0009996742010116577,
+        "0.8": 0.0009996742010116577,
+        "1.15": 0.0009996742010116577
       },
       "HERO_Hammer_SkillGroundSlam": {
-        "0.72": 0.0009996891021728516
+        "0.72": 0.001000046730041504
       }
     },
     "grip_speed_profile": {
       "HERO_AttackLongsword": {
-        "contact_m_per_s": 4.128880381841475,
-        "settle_m_per_s": 0.6401059630374216
+        "contact_m_per_s": 11.390105229751757,
+        "settle_m_per_s": 1.3706041772879938
       },
       "HERO_Mace_SkillGuardBreak": {
-        "contact_m_per_s": 4.524922141486244,
-        "settle_m_per_s": 0.5937779740905399
+        "contact_m_per_s": 16.061082951738292,
+        "settle_m_per_s": 0.7016324057161527
       },
       "HERO_Axe_SkillExecution": {
-        "contact_m_per_s": 2.1014866441591464,
-        "settle_m_per_s": 0.5062041627239826
+        "contact_m_per_s": 9.05661171218933,
+        "settle_m_per_s": 0.5322194154484018
       },
       "HERO_Hammer_SkillGroundSlam": {
-        "contact_m_per_s": 6.47945837898895,
-        "settle_m_per_s": 1.0165690115660804
+        "contact_m_per_s": 18.32179292319858,
+        "settle_m_per_s": 0.8665205520848778
       },
       "HERO_Spear_SkillLongThrust": {
-        "contact_m_per_s": 3.6619746916561446,
-        "settle_m_per_s": 0.18428761813945457
+        "contact_m_per_s": 7.363818480503671,
+        "settle_m_per_s": 0.20575039470481182
       },
       "HERO_Dagger_SkillFlurry": {
-        "contact_m_per_s": 7.104580179646662,
-        "settle_m_per_s": 0.5610373452705396
+        "contact_m_per_s": 17.618783506571443,
+        "settle_m_per_s": 0.6926367630864879
       }
     }
   },

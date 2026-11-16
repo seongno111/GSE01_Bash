@@ -40,8 +40,8 @@
     "tail_tip"
   ],
   "hero_source_hashes": {
-    "Hero_v1\\hero_v1.blend": "81b3a0bbc495553d151d93ade798ea15b88eec116dee09917b055d1844bdb817",
-    "Hero_v1\\hero_rigged.glb": "b07f3f36fed04bb5cd2fab7cf3641c3a1f073f1b1a375c0d527938b00469954a",
+    "Hero_v1\\hero_v1.blend": "792e9b09f00c5504f5714ccc167de0ef7fc324014fe021fbdce843875368df2a",
+    "Hero_v1\\hero_rigged.glb": "95f1e51b53155bd9e0541ecd5c10d9cd58c74c84e34c2a440899d77625a91bd2",
     "HeroWeapons_v1\\hero_weapons_v1.blend": "b378fe18807286a6ac7281899ec17f7596f18300b2cf0418acec4ad26fdd5bfa",
     "HeroWeapons_v1\\weapon_catalog.json": "6e1e9c6b9d09817b8fcb0e1adabd18a6cbd50bf6aaf814a0d43ad5eecb0d3e97"
   },
@@ -299,7 +299,8 @@
       "kind": "weapon_skill",
       "tags": [
         "weapon_skill"
-      ]
+      ],
+      "sample_divisions": 3
     }
   ],
   "new_clip_count": 37,
@@ -1110,7 +1111,7 @@
       "tags": [
         "weapon_skill"
       ],
-      "sample_divisions": 4
+      "sample_divisions": 8
     },
     {
       "name": "HERO_Spear_SkillLongThrust",
@@ -1178,7 +1179,8 @@
       "kind": "weapon_skill",
       "tags": [
         "weapon_skill"
-      ]
+      ],
+      "sample_divisions": 3
     }
   ],
   "skills": [
@@ -1336,7 +1338,7 @@
       "tags": [
         "weapon_skill"
       ],
-      "sample_divisions": 4
+      "sample_divisions": 8
     },
     {
       "name": "HERO_Spear_SkillLongThrust",
@@ -1404,7 +1406,8 @@
       "kind": "weapon_skill",
       "tags": [
         "weapon_skill"
-      ]
+      ],
+      "sample_divisions": 3
     },
     {
       "name": "HERO_Sword_SkillWhirlwind",
@@ -1438,7 +1441,8 @@
       "kind": "weapon_skill",
       "tags": [
         "weapon_skill"
-      ]
+      ],
+      "sample_divisions": 3
     }
   ],
   "locomotion": {
@@ -1726,7 +1730,7 @@
       ]
     }
   ],
-  "active_common_hero_sha256": "95f1e51b53155bd9e0541ecd5c10d9cd58c74c84e34c2a440899d77625a91bd2",
+  "active_common_hero_sha256": "fe6cfa1c03077c306f0d1cc3db44c5875d75c512b121d04368771a92c0f22716",
   "hero_source_snapshot": "revisions/20261110_before_five_head",
   "proportions": {
     "height_without_hood_m": 1.840000033378601,

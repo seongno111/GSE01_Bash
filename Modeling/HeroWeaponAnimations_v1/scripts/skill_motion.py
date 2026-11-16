@@ -1,6 +1,6 @@
 """Eight skill performances based on the project's weapon skill specification."""
-from math import pi, sin
-from dynamic_motion import direct_weapon, ease
+from math import cos, pi, radians, sin
+from dynamic_motion import direct_weapon, ease, footwork, window
 
 
 def register_skills(clip, ready, change, pose):
@@ -10,7 +10,7 @@ def register_skills(clip, ready, change, pose):
             start = make_hero_pose(pose)
         else:
             start = direct_weapon(dict(weapon_kind=kind,name='_Ready',duration_seconds=1,loop=True),ready[kind],0)
-        return dict(start,ground=0,head_pitch=start.get('head_pitch',0))
+        return dict(start, ground=0, hip_roll=0, head_pitch=start.get('head_pitch',0))
 
     def add(kind, action, label, duration, contacts, poses):
         clip(kind, 'Skill'+action, duration, poses,
@@ -18,101 +18,110 @@ def register_skills(clip, ready, change, pose):
              skill_label=label)
 
     p=base('staff')
-    raised=change(p,rp=(-.38,-.22,1.26),rd=(-.22,-.12,1),pitch=0,yaw=-22,twist=-8,
-                  shift=(-.043,.035),crouch=.058,look=-8,head_pitch=-7,cape=(3,8),lamp_swing=12)
-    planted=change(p,rp=(-.32,-.33,.69),rd=(-.07,-.13,1),shift=(.018,-.064),crouch=.18,
-                   yaw=17,twist=8,pitch=19,head_pitch=13,cape=(15,-6),lamp_swing=-19,ground=1)
-    pulse=change(planted,rp=(-.32,-.33,.70),shift=(.009,-.04),pitch=9,crouch=.138,
-                 head_pitch=5,cape=(9,-3),lamp_swing=4)
+    raised=change(p,rp=(-.36,-.18,1.30),rd=(-.22,-.12,1),lp=(.43,-.30,1.0),
+                  pitch=-7,yaw=-30,twist=-15,hip_roll=-8,shift=(-.076,.046),crouch=.062,
+                  head_pitch=-7,cape=(3,10),lamp_swing=17)
+    planted=change(p,rp=(-.32,-.33,.69),rd=(-.07,-.13,1),lp=(.44,-.10,.79),
+                   shift=(.056,-.111),crouch=.213,yaw=24,twist=15,hip_roll=7,
+                   pitch=27,head_pitch=13,cape=(22,-12),lamp_swing=-24,ground=1)
+    pulse=change(planted,rp=(-.35,-.30,.91),shift=(-.008,-.032),pitch=5,crouch=.114,
+                 yaw=-9,twist=-6,hip_roll=-3,head_pitch=5,cape=(9,5),lamp_swing=8,ground=0)
     add('staff','AshField','잔불의 문양',1.40,[.45,.80,1.15],
-        [(0,p),(.30,raised),(.45,planted),(.66,pulse),(.80,planted),
-         (1.01,pulse),(1.15,planted),(1.40,p)])
+        [(0,p),(.35,raised),(.45,planted),(.52,planted),(.72,pulse),(.80,planted),
+         (.86,planted),(1.065,pulse),(1.15,planted),(1.21,planted),(1.40,p)])
 
     p=base('bow')
     nocked=change(p,lp=(.08,-.21,1.04),yaw=-28,twist=-5,head_pitch=7,crouch=.066)
     loaded=change(p,lp=(.045,-.555,1.245),rp=(.045,-.065,1.245),ld=(0,0,1),
-                  yaw=-67,twist=-11,shift=(.03,-.03),crouch=.075,draw=1,
+                  yaw=-67,twist=-21,shift=(.054,-.054),crouch=.095,hip_roll=5,draw=1,
                   pitch=4,look=0,cape=(9,-7))
-    snap=change(loaded,rp=(.031,-.026,1.252),draw=0,shift=(.014,.001),
+    snap=change(loaded,rp=(.041,-.062,1.245),draw=0,shift=(.014,.001),
                 pitch=-3,cape=(14,-4))
-    recoil=change(snap,lp=(.065,-.48,1.24),rp=(.005,.082,1.25),yaw=-54,
-                  twist=-7,crouch=.086,cape=(18,3),head_pitch=-4)
+    recoil=change(snap,lp=(.065,-.48,1.24),rp=(.005,.082,1.25),yaw=-48,
+                  twist=-3,crouch=.086,hip_roll=-4,cape=(18,3),head_pitch=-4)
     add('bow','ArrowFan','가시 부채살',.95,[.55],
-        [(0,p),(.22,nocked),(.465,loaded),(32/60,loaded),(.55,snap),(.66,recoil),(.95,p)])
+        [(0,p),(.22,nocked),(.487,loaded),(32/60,loaded),(.55,snap),(.646,recoil),(.95,p)])
 
     p=base('mace')
-    tucked=change(p,rp=(-.27,-.09,1.075),rd=(-.28,.06,1),yaw=-25,twist=-10,
-                  shift=(-.055,.047),crouch=.118,pitch=1,head_pitch=-5,cape=(4,7))
-    drive=change(p,rp=(-.22,-.383,1.01),rd=(.07,-.91,-.41),yaw=23,twist=12,
-                 shift=(.038,-.105),crouch=.123,pitch=23,cape=(18,-8),lamp_swing=-22)
+    tucked=change(p,rp=(-.42,-.012,1.20),rd=(-.36,.31,1),lp=(.42,-.29,.97),
+                  yaw=-37,twist=-16,hip_roll=-8,shift=(-.084,.063),
+                  crouch=.135,pitch=-4,head_pitch=-5,cape=(4,12))
+    drive=change(p,rp=(-.22,-.399,1.01),rd=(.07,-.91,-.41),lp=(.47,-.10,.84),
+                 yaw=33,twist=18,hip_roll=9,shift=(.082,-.144),
+                 crouch=.170,pitch=27,cape=(18,-8),lamp_swing=-27)
     checked=change(drive,rp=(-.19,-.337,.95),rd=(.23,-.78,-.58),shift=(.035,-.084),
                    crouch=.142,pitch=18,lamp_swing=8)
-    add('mace','GuardBreak','방패 분쇄',.82,[.38],[(0,p),(.25,tucked),(.38,drive),(.49,checked),(.82,p)])
+    add('mace','GuardBreak','방패 분쇄',.82,[.38],
+        [(0,p),(.28,tucked),(.38,drive),(.46,checked),(.52,checked),(.82,p)])
 
     p=base('axe')
-    coiled=change(p,rp=(-.44,-.06,1.16),rd=(-.93,.19,.31),yaw=-39,twist=-15,
-                  shift=(-.074,.051),crouch=.121,pitch=7,look=-9,cape=(-2,14),roll=-68)
-    across=change(p,rp=(-.30,-.348,1.04),rd=(.06,-.995,.07),yaw=3,twist=4,
-                  shift=(.003,-.079),crouch=.142,pitch=16,cape=(13,5),roll=-69)
-    cut=change(p,rp=(-.17,-.36,.97),rd=(.88,-.47,-.09),yaw=30,twist=15,
-               shift=(.071,-.104),crouch=.148,pitch=22,cape=(22,-16),lamp_swing=-22,roll=-64)
+    coiled=change(p,rp=(-.42,-.044,1.19),rd=(-.93,.29,.31),lp=(.42,-.27,.95),
+                  yaw=-46,twist=-22,hip_roll=-10,shift=(-.097,.066),
+                  crouch=.139,pitch=3,look=-4,cape=(-3,17),roll=-68)
+    across=change(coiled,shift=(.023,-.078),twist=3,hip_roll=6,crouch=.166,pitch=13)
+    cut=change(p,rp=(-.17,-.40,1.02),rd=(.42,-.90,-.12),lp=(.47,-.07,.82),
+               yaw=34,twist=19,hip_roll=11,shift=(.088,-.146),crouch=.169,
+               pitch=26,cape=(22,-16),lamp_swing=-28,roll=-64)
     through=change(cut,rp=(-.14,-.23,.93),rd=(.94,.07,-.28),yaw=40,twist=17,
                    shift=(.078,-.055),crouch=.133,cape=(23,-19),lamp_swing=7)
     add('axe','Execution','사형 집행',1.05,[.55],
-        [(0,p),(.33,coiled),(.46,across),(.55,cut),(.69,through),(1.05,p)])
+        [(0,p),(.35,coiled),(.463,across),(.55,cut),(.635,through),(.70,through),(1.05,p)])
 
     p=base('warhammer')
-    raised=change(p,rp=(-.35,-.258,1.39),rd=(-.61,-.03,.79),yaw=-10,twist=-7,
-                  shift=(-.045,.02),crouch=.039,pitch=-8,head_pitch=-8,cape=(-3,10))
+    raised=change(p,rp=(-.35,-.258,1.39),rd=(-.61,-.03,.79),yaw=-15,twist=-11,
+                  hip_roll=-7,shift=(-.067,.040),crouch=.043,pitch=-10,head_pitch=-8,cape=(-3,10))
     swinging=change(p,rp=(-.246,-.37,1.055),rd=(-.69,-.68,.24),yaw=-7,twist=-5,
                     shift=(.003,-.038),crouch=.162,pitch=13,cape=(12,-2))
     drop=change(p,rp=(-.19,-.38,.79),rd=(-.56,-.61,-.55),yaw=-6,twist=-3,
                 shift=(.012,-.035),crouch=.268,pitch=21,cape=(15,-5))
-    ground=change(p,rp=(-.115,-.468,.635),rd=(-.53,-.45,-.72),yaw=-6,twist=-2,
-                  shift=(.025,-.048),crouch=.399,pitch=25,head_pitch=16,cape=(25,-8),ground=1)
+    ground=change(p,rp=(-.115,-.468,.635),rd=(-.53,-.45,-.72),yaw=-6,twist=7,
+                  hip_roll=6,shift=(.057,-.092),crouch=.399,pitch=29,
+                  head_pitch=16,cape=(25,-8),ground=1)
     absorb=change(ground,rp=(-.117,-.465,.635),crouch=.405,pitch=26,head_pitch=17,cape=(26,-10))
     heave=change(p,rp=(-.215,-.412,.84),rd=(-.67,-.61,-.38),yaw=-6,twist=-3,
                  shift=(.019,-.042),crouch=.243,pitch=23,head_pitch=9,cape=(18,-5))
     reset=change(p,rp=(-.244,-.33,1.045),rd=(-.76,-.30,.58),yaw=-8,twist=-2,
                  shift=(.013,-.036),crouch=.119,pitch=12,head_pitch=4,cape=(12,-2))
     add('warhammer','GroundSlam','대지 강타',1.35,[.72],
-        [(0,p),(.37,raised),(.53,swinging),(.64,drop),(.72,ground),(.83,absorb),
+        [(0,p),(.43,raised),(.55,swinging),(.646,drop),(.72,ground),(.83,absorb),
          (.99,heave),(1.19,reset),(1.35,p)])
 
     p=base('spear')
-    chamber=change(p,rp=(-.24,.078,.96),rd=(.26,-.96,.04),yaw=-46,twist=-14,
-                   shift=(-.037,.069),crouch=.103,pitch=5,cape=(1,9))
-    reach=change(p,rp=(-.115,-.30,1.01),rd=(.05,-1,.02),yaw=-36,twist=-6,
-                 shift=(.055,-.115),crouch=.145,pitch=24,cape=(18,-10),
-                 feet=((.163,-.255,0,0),p['feet'][1]))
+    chamber=change(p,rp=(-.25,.109,.96),rd=(.26,-.96,.04),yaw=-53,twist=-23,
+                   shift=(-.055,.092),hip_roll=-8,crouch=.103,pitch=0,cape=(1,12))
+    reach=change(p,rp=(-.115,-.36,1.01),rd=(.02,-1,.02),yaw=-33,twist=5,
+                 shift=(.071,-.169),hip_roll=9,crouch=.177,pitch=28,cape=(18,-10))
     retract=change(p,rp=(-.17,-.10,.99),rd=(.13,-.99,.055),yaw=-40,twist=-7,
                    shift=(.031,-.072),crouch=.121,pitch=15,cape=(12,-6),feet=reach['feet'])
     add('spear','LongThrust','잿빛 관통',.86,[.40],
-        [(0,p),(.23,chamber),(.40,reach),(.53,retract),(.86,p)])
+        [(0,p),(.289,chamber),(.40,reach),(.49,retract),(.55,retract),(.86,p)])
 
     p=base('dagger')
-    low=change(p,rp=(-.36,-.18,.96),rd=(-.17,-.90,.35),yaw=-16,twist=-9,
-               shift=(-.045,.031),crouch=.132,pitch=13,cape=(4,7))
-    first=change(p,rp=(-.24,-.422,.981),rd=(.06,-1,.02),yaw=18,twist=11,
-                 shift=(.029,-.084),crouch=.143,pitch=21,cape=(13,-7),lamp_swing=-13)
-    second=change(first,rp=(-.29,-.36,.985),rd=(-.91,-.40,.025),yaw=-17,twist=-9,
-                  shift=(-.019,-.071),cape=(15,9),lamp_swing=11)
-    final=change(first,rp=(-.218,-.452,.982),rd=(.025,-1,.015),yaw=23,twist=13,
-                 shift=(.036,-.105),crouch=.157,cape=(20,-11),lamp_swing=-19)
+    low=change(p,rp=(-.41,-.087,1.018),rd=(-.17,-.90,.35),yaw=-28,twist=-16,
+               shift=(-.053,.024),hip_roll=-7,crouch=.148,pitch=9,cape=(4,7))
+    first=change(p,rp=(-.24,-.422,.981),rd=(.06,-1,.02),yaw=30,twist=15,
+                 shift=(.050,-.103),hip_roll=7,crouch=.148,pitch=24,cape=(13,-7),lamp_swing=-18)
+    second=change(first,rp=(-.27,-.352,1.04),rd=(-.52,-.84,.025),yaw=-27,twist=-13,
+                  shift=(-.052,-.105),hip_roll=-7,pitch=16,cape=(15,12),lamp_swing=18)
+    final=change(first,rp=(-.207,-.463,.975),rd=(.025,-1,.015),yaw=39,twist=21,
+                 shift=(.072,-.146),hip_roll=11,crouch=.187,cape=(20,-14),lamp_swing=-28)
     add('dagger','Flurry','세 번의 상흔',.67,[.14,.27,.40],
-        [(0,p),(.073,low),(.14,first),(.20,change(first,rp=(-.19,-.29,1.0),rd=(.73,-.68,.07))),
-         (.27,second),(.335,low),(.40,final),(.49,change(final,rp=(-.26,-.31,.96))),(.67,p)])
+        [(0,p),(.083,low),(.14,first),(.211,change(first,rp=(-.18,-.27,1.055),rd=(.85,-.52,.07))),
+         (.27,second),(.344,change(low,shift=(-.041,-.074))),(.40,final),
+         (.475,change(final,rp=(-.23,-.322,.94),pitch=28)),(.67,p)])
 
     p=base('longsword')
     coil=change(p,rp=(-.411,-.17,1.08),rd=(-.73,-.61,.22),yaw=-28,twist=-11,
                 shift=(-.019,.008),crouch=.105,pitch=6,cape=(1,14))
-    edge=change(p,rp=(-.37,-.244,1.032),rd=(-.82,-.57,.04),yaw=15,twist=7,
-                shift=(.014,-.03),crouch=.104,pitch=12,lp=(.386,-.15,.92),
+    edge=change(p,rp=(-.29,-.19,1.00),rd=(-.98,-.19,.04),yaw=17,twist=9,
+                shift=(.035,-.021),hip_roll=5,crouch=.108,pitch=12,lp=(.39,-.070,.92),
                 cape=(23,-16),lamp_swing=21)
-    decel=change(edge,rp=(-.36,-.23,.91),rd=(-.70,-.70,.18),crouch=.128,
-                 yaw=23,twist=9,cape=(25,-13),lamp_swing=-13)
+    collect=change(coil,rp=(-.33,-.16,1.08),rd=(-.79,-.37,.23),yaw=-17,crouch=.096)
+    decel=change(edge,rp=(-.32,-.20,.93),rd=(-.70,-.70,.18),crouch=.115,
+                 yaw=19,twist=9,cape=(25,-13),lamp_swing=-13)
     add('longsword','Whirlwind','잿바람 회전베기',1.12,[.35,.75],
-        [(0,p),(.15,coil),(.28,edge),(.95,decel),(1.12,p)])
+        [(0,p),(.15,coil),(.28,collect),(.35,edge),(.53,collect),
+         (.66,collect),(.75,edge),(.91,decel),(1.02,decel),(1.12,p)])
 
 
 def skill_time(spec, frame):
@@ -143,24 +152,68 @@ def bow_arrow_visible(name,t):
             or (name=='HERO_Bow_Lower' and t<.5))
 
 
+SKILL_STEPS = {
+    # Start and land before impact. Hold the lead anchor through the follow-through.
+    'staff': (.219, .411, 1.215, .094, .063, 13),
+    'mace': (.207, .338, .523, .163, .076, 23),
+    'axe': (.294, .489, .702, .149, .081, 24),
+    'warhammer': (.368, .603, 1.030, .111, .080, 15),
+    'spear': (.201, .359, .557, .242, .094, 23),
+    'dagger': (.018, .120, .475, .153, .062, 18),
+}
+
+
+def whirlwind_turns(t):
+    # The blade crosses the facing direction at the same angle on both contacts.
+    # Slopes in turns per second keep the rotation continuous through each cut.
+    knots = [(.13, 0, 0), (.35, .23, 2.65), (.55, .73, 1.68),
+             (.75, 1.23, 2.65), (.93, 1.78, 2.82), (1.05, 2, 0)]
+    if t <= knots[0][0]:
+        return 0
+    for (start, a, va), (end, b, vb) in zip(knots, knots[1:]):
+        if t <= end:
+            span = end - start
+            u = (t - start) / span
+            return (a + ease(u) * (b - a)
+                    + span * u * (1 - u) * ((1 - u) * va - u * vb))
+    return 2
+
+
+def whirlwind_feet(feet, angle):
+    # Alternate the support leg every sixth of a revolution. Undo the root turn
+    # below each ankle to keep its world anchor fixed while it bears the weight.
+    result = []
+    for side, (x, y, z, rock) in enumerate(feet):
+        heading = 0
+        air = 0
+        for step in range(side, 12, 2):
+            start = step * 60
+            if angle < start:
+                break
+            target = 720 if step >= 10 else start + 90
+            travel = ease((angle - start) / 60)
+            heading += (target - heading) * travel
+            if angle < start + 60:
+                air = sin(pi * travel)
+                break
+        offset = radians(heading - angle)
+        # Rotate in final rig dimensions, then undo the stance scaling applied by retarget_pose.
+        result.append((x * cos(offset) - y * 1.23 / .90 * sin(offset),
+                       x * .90 / 1.23 * sin(offset) + y * cos(offset),
+                       z + .079 * air, rock - 11 * air))
+    return tuple(result)
+
+
 def direct_skill(spec, p, t):
-    if spec['name']=='HERO_Spear_SkillLongThrust':
-        x,y,z,rock=p['feet'][0]
-        step=ease((t-.23)/.17)
-        recover=ease((t-.53)/.33)
-        p['feet']=((x,y,.105*sin(pi*step)+.071*sin(pi*recover),rock),p['feet'][1])
-    elif spec['name']=='HERO_Sword_SkillWhirlwind' and .15<=t<=.95:
-        u=(t-.15)/.8
-        if u<.25:
-            x=u/.25
-            arc=.25*x*x*(2-x)
-        elif u>.75:
-            x=(1-u)/.25
-            arc=1-.25*x*x*(2-x)
-        else:
-            arc=u
-        p['spin']=4*pi*arc
-        lift=.075*sin(pi*u)**2
-        p['feet']=((.157,-.027,lift*max(0,sin(4*pi*arc)),3),
-                   (-.157,.030,lift*max(0,-sin(4*pi*arc)),3))
+    kind = spec['weapon_kind']
+    if kind in SKILL_STEPS:
+        start, plant, recover, distance, lift, rock = SKILL_STEPS[kind]
+        p = footwork(p, t, start, plant, recover, spec['duration_seconds'], distance, lift, rock)
+    elif kind == 'longsword':
+        turns = whirlwind_turns(t)
+        p['spin'] = 2 * pi * turns
+        p['feet'] = whirlwind_feet(p['feet'], 360 * turns)
+    elif kind == 'bow':
+        brace = window(t, .13, .38, .65)
+        p['hip_roll'] += 3 * brace
     return p

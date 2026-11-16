@@ -895,7 +895,8 @@
       "kind": "weapon_skill",
       "tags": [
         "weapon_skill"
-      ]
+      ],
+      "sample_divisions": 3
     }
   ],
   "notes": [

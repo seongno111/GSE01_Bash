@@ -1,4 +1,4 @@
-"""Pose and timing direction for the 2026-11-10 animation revision."""
+"""Pose and timing direction for the hero's weapon actions."""
 from math import cos, sin, pi
 
 
@@ -15,6 +15,10 @@ def pace(u, phase='gather'):
         a,b=.22,1.34
     elif phase=='carry':
         a,b=1.44,.22
+    elif phase=='accelerate':
+        a,b=.12,1.70
+    elif phase=='brake':
+        a,b=1.72,.12
     else:
         a,b=1.13,0
     return ease(u)+a*u*(1-u)**2-b*u*u*(1-u)
@@ -24,18 +28,13 @@ def segment_progress(spec, keys, index, u):
     if spec is None or spec['loop']:
         return pace(u)
     start,end=keys[index][0],keys[index+1][0]
-    events=[e['time_seconds'] for e in spec['events']]
-    if spec['weapon_kind']=='warhammer':
-        u=max(0,min(1,u))
-        if any(abs(end-e)<.009 for e in events):
-            return ease(u)+.40*u*(1-u)**2-1.10*u*u*(1-u)
-        if any(abs(start-e)<.009 for e in events):
-            return ease(u)+1.10*u*(1-u)**2-.30*u*u*(1-u)
-        return ease(u)
-    if any(abs(end-e)<.009 for e in events):
-        return pace(u,'strike')
-    if any(abs(start-e)<.009 for e in events):
-        return pace(u,'carry')
+    # Apply impact pacing to the strike, cast release, or skill contact.
+    contacts=[e['time_seconds'] for e in spec['events']
+              if e['name'] in ('melee_contact','cast_release','skill_contact')]
+    if any(abs(end-e)<.009 for e in contacts):
+        return pace(u,'accelerate')
+    if any(abs(start-e)<.009 for e in contacts):
+        return pace(u,'brake')
     return pace(u,'settle' if index==len(keys)-2 else 'gather')
 
 
@@ -73,6 +72,47 @@ STANCE = {
 }
 
 
+def footwork(p, t, step_start, plant, recover, finish, distance, lift, rear_rock):
+    """Move the lead foot in the air and keep both anchors fixed during the strike."""
+    lead, rear = p['feet']
+    advance = ease((t - step_start) / (plant - step_start))
+    retreat = ease((t - recover) / (finish - recover))
+    air = sin(pi * advance) + .72 * sin(pi * retreat)
+    x, y, z, rock = lead
+    rx, ry, rz, rr = rear
+    p['feet'] = (
+        (x, y - distance * (advance - retreat), z + lift * air, rock - 8 * air),
+        (rx, ry, rz, rr + rear_rock * window(t, step_start, plant, recover)),
+    )
+    return p
+
+
+# Lead step, forward hip shift, torso rotation, and compression at the plant.
+ATTACK_DRIVE = {
+    'CastBolt': (.065, .098, 24, .039),
+    'CastSweep': (.095, .089, 38, .046),
+    'Strike': (.129, .126, 34, .081),
+    'Sweep': (.098, .100, 46, .064),
+    'Chop': (.145, .138, 36, .087),
+    'Cleave': (.151, .121, 48, .080),
+    'Smash': (.133, .124, 17, .098),
+    'Uppercut': (.110, .098, 17, .035),
+    'Thrust': (.217, .150, 14, .058),
+    'Stab': (.142, .131, 32, .055),
+    'Slash': (.087, .092, 39, .043),
+}
+
+
+def weapon_step(kind, name, keys, contact):
+    profile = ATTACK_DRIVE[name]
+    if kind == 'spear' and name == 'Sweep':
+        profile = (.120, .104, 24, .060)
+    wind = keys[1][0]
+    start = wind - (contact - wind) * .56
+    plant = contact - (contact - wind) * .24
+    return profile, (start, plant, keys[-2][0] + .035, profile[0], .073, 21)
+
+
 def direct_weapon(spec, p, t):
     """Layer grounded body mechanics over the authored grip targets."""
     kind = spec['weapon_kind']
@@ -104,57 +144,59 @@ def direct_weapon(spec, p, t):
         return p
     if kind == 'bow':
         if name == 'Draw':
-            load = sin(pi * phase) ** 2
-            p['shift'] = (.008 + .021 * load, -.016 - .026 * load)
-            p['twist'] -= 5 * load
+            brace = window(t, 0, .52, duration)
+            p['shift'] = (.008 + .042 * brace, -.016 - .043 * brace)
+            p['twist'] -= 10 * brace
+            p['hip_roll'] = 6 * brace
+            p['crouch'] += .025 * brace
         elif name == 'Nock':
             load = sin(pi * phase) ** 2
             p['look'] += 12 * load
             p['head_pitch'] = 7 * load
             p['crouch'] += .016 * load
         elif name == 'Release':
-            load = window(t, .10, .17, .40)
-            p['shift'] = (.008 - .028 * load, -.016 + .034 * load)
-            p['pitch'] -= 6 * load
-            p['cape'] = (2 + 7 * load, 4 * load)
+            recoil = window(t, .10, .18, .42)
+            p['shift'] = (.008 - .038 * recoil, -.016 + .045 * recoil)
+            p['twist'] += 8 * recoil
+            p['hip_roll'] = -6 * recoil
+            p['pitch'] -= 8 * recoil
+            p['cape'] = (2 + 10 * recoil, 5 * recoil)
         else:
             p['head_pitch'] = 5 * sin(pi * phase) ** 2
         return p
     contact = spec['events'][0]['time_seconds']
     keys = spec['keyposes']
-    wind_time = keys[1][0]
-    load = window(t, 0, wind_time, contact)
-    drive = window(t, wind_time, contact, duration)
-    follow = window(t, contact, min(contact + .17, duration - .04), duration)
-    heavy = {'warhammer':1.25, 'axe':1.08, 'mace':.9, 'spear':.83,
-             'dagger':.72, 'staff':.8}[kind]
-    p['shift'] = (.008 - .060 * load * heavy + .052 * drive * heavy,
-                  -.016 + .058 * load * heavy - .105 * drive * heavy)
-    p['crouch'] += .028 * load + .033 * follow * heavy
-    if kind == 'warhammer':
-        p['twist'] += -5 * load + 8 * drive
-        p['yaw'] += 5 * load + 20 * drive
-    else:
-        p['twist'] += (14 * load - 12 * drive) * heavy
-        p['yaw'] += (13 * load - 14 * drive) * heavy
+    wind = keys[1][0]
+    follow_time = keys[-2][0]
+    (_, forward, turn, compression), step = weapon_step(kind, name, keys, contact)
+    step_start, plant, recover, distance, lift, rock = step
+    load = window(t, 0, step_start, plant)
+    drive = window(t, step_start, plant, duration)
+    follow = window(t, plant, follow_time, duration)
+    shoulder = window(t, wind, contact, duration)
+    p['shift'] = (.008 - .087 * load + .070 * drive,
+                  -.016 + .074 * load - forward * drive)
+    p['hip_roll'] = -8 * load + 8 * drive
+    p['crouch'] += .050 * load + compression * drive + .022 * follow
+    if name == 'Uppercut':
+        p['crouch'] += .066 * load - .042 * shoulder
     if kind in ('mace', 'axe', 'staff', 'dagger'):
-        amount = max(load, drive, follow)
-        shoulder_turn = -23 * load + 23 * drive + 14 * follow
-        p['yaw'] = p['yaw'] * (1 - amount) + shoulder_turn
-        p['twist'] = p['twist'] * (1 - amount) + .45 * shoulder_turn
-    p['pitch'] += (-6 * load + 11 * drive) * heavy
-    p['head_pitch'] = -4 * load + 5 * follow
-    p['cape'] = (2 - 5 * load + 14 * follow, 10 * (load - drive))
-    p['lamp_swing'] = (12 * load - 18 * drive + 12 * follow) * heavy
-    if name in ('Stab', 'Thrust'):
-        land = contact - .025
-        retrieve = min(contact + .11, duration - .075)
-        progress = ease((t - wind_time) / (land - wind_time))
-        back = ease((t - retrieve) / (duration - retrieve))
-        lift = .075 * (sin(pi * progress) + .65 * sin(pi * back))
-        step = (.15 if name == 'Thrust' else .12) * (progress - back)
-        p['feet'] = ((.155, -left - step, lift, -4 * sin(pi * progress)), (-.155, right, 0, 0))
-    return p
+        attack_weight = max(load, shoulder, follow)
+        p['yaw'] = p['yaw'] * (1 - attack_weight) - .85 * turn * load
+        p['yaw'] += turn * shoulder + .33 * turn * follow
+        p['twist'] = p['twist'] * (1 - attack_weight) - 12 * load + .42 * turn * drive
+        x, y, z = p['lp']
+        p['lp'] = (x + .062 * shoulder, y - .082 * load + .094 * shoulder,
+                   z + .058 * load - .061 * follow)
+    else:
+        p['twist'] += -13 * load + .55 * turn * drive
+        p['yaw'] += -9 * load + turn * shoulder
+    p['pitch'] += -8 * load + (14 if name != 'Uppercut' else -11) * drive
+    p['look'] += 4 * load - 4 * follow
+    p['head_pitch'] = -3 * load + 6 * follow
+    p['cape'] = (2 - 7 * load + 21 * follow, 15 * load - 17 * follow)
+    p['lamp_swing'] = 17 * load - 27 * shoulder + 17 * follow
+    return footwork(p, t, step_start, plant, recover, duration, distance, lift, rock)
 
 
 def sharpen_weapon_keys(spec):
@@ -164,7 +206,8 @@ def sharpen_weapon_keys(spec):
         return
     start, wind, contact, follow, finish = keys
     peak = contact[0]
-    fraction = {'warhammer':.88, 'axe':.72, 'mace':.70,
-                'spear':.62, 'dagger':.58, 'staff':.67}[spec['weapon_kind']]
-    fast_wind = peak - (peak - wind[0]) * fraction
-    spec['keyposes'] = [start, (fast_wind, wind[1]), contact, follow, finish]
+    fraction = {'warhammer':.69, 'axe':.55, 'mace':.57,
+                'spear':.55, 'dagger':.54, 'staff':.60}[spec['weapon_kind']]
+    wind_time = peak - (peak - wind[0]) * fraction
+    follow_time = peak + (follow[0] - peak) * .71
+    spec['keyposes'] = [start, (wind_time, wind[1]), contact, (follow_time, follow[1]), finish]

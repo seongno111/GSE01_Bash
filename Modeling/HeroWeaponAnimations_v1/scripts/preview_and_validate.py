@@ -4,8 +4,10 @@ from mathutils import Vector
 PACKAGE=Path(__file__).resolve().parents[1]
 P=next((Path(a.split('=',1)[1]).resolve() for a in sys.argv if a.startswith('out=')),PACKAGE)
 sys.path.insert(0,str(PACKAGE/'scripts'))
-from skill_motion import skill_time
+from dynamic_motion import ATTACK_DRIVE, weapon_step
+from skill_motion import SKILL_STEPS, skill_time
 cat=json.loads((P/'animation_catalog.json').read_text('utf-8'))
+keyposes={s['name']:s['keyposes'] for s in json.loads((P/'authoring_keyposes.json').read_text('utf-8'))}
 quick='quick' in sys.argv
 frames='frames' in sys.argv
 poses='poses' in sys.argv
@@ -26,6 +28,30 @@ def activate(name):
                 tr.mute=True
                 if tr.name==name:
                     strip=tr.strips[0];ad.action=strip.action;ad.action_slot=strip.action_slot
+
+
+def planted_foot_anchor(eq, spec, side, time):
+    if 'ready_foot_anchors_blender_xy' not in eq:
+        return None
+    x, y = eq['ready_foot_anchors_blender_xy'][0 if side == 'l' else 1]
+    kind = eq['weapon_kind']
+    name = spec['name'].rsplit('_', 1)[-1]
+    if side == 'l':
+        step = None
+        if 'skill_label' in spec:
+            step = SKILL_STEPS.get(kind)
+        elif name in ATTACK_DRIVE:
+            _, step = weapon_step(kind, name, keyposes[spec['name']], spec['events'][0]['time_seconds'])
+        if step:
+            start, plant, recover, distance, _, _ = step
+            duration = spec['duration_seconds']
+            # Sample a full frame inside the planted intervals to exclude airborne interpolation.
+            if plant + 1/60 <= time <= recover - 1/60:
+                y -= distance * 1.23
+            elif start - 1/60 < time < duration - 1e-6:
+                return None
+    return x, y
+
 
 def stage(kind):
     s=bpy.context.scene;s.render.engine='CYCLES';s.cycles.samples=6 if frames or skill_frames else 12;s.cycles.use_denoising=True
@@ -122,8 +148,9 @@ for eq in [{'weapon_kind':'common','file':'hero_rigged.glb'}]+cat['equipment'] i
                 last_elbows=elbows
                 for side in ['l','r']:
                     pb=rig.pose.bones['foot_'+side];p=rig.matrix_world@pb.head
-                    if 'ready_foot_anchors_blender_xy' in eq and not (side=='l' and spec['name'].endswith(('_Thrust','_Stab','SkillLongThrust'))):
-                        x,y=eq['ready_foot_anchors_blender_xy'][0 if side=='l' else 1]
+                    anchor = planted_foot_anchor(eq, spec, side, sample_frame / 60)
+                    if anchor is not None:
+                        x,y=anchor
                         footmove=max(footmove,math.hypot(p.x-x,p.y-y))
                     if kind=='warhammer':
                         fore=rig.pose.bones['forearm_'+side];hand=rig.pose.bones['hand_'+side]

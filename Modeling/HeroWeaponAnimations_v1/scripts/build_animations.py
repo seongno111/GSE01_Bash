@@ -71,14 +71,17 @@ ready={
 def change(p,**kw): q={k:(v[:] if isinstance(v,list) else v) for k,v in p.items()}; q.update(kw); return q
 
 specs=[]
+SKILL_SAMPLE_DIVISIONS = {'warhammer': 8, 'dagger': 3, 'longsword': 3}
+
+
 def clip(kind,action,duration,poses,loop=False,events=(),description='',start='Ready',end='Ready',skill_label=None):
     prefix={'warhammer':'Hammer','longsword':'Sword'}.get(kind,kind.title())
     n='HERO_'+prefix+'_'+action
     spec=dict(name=n,weapon_kind=kind,weapon_key=keys[kind],duration_seconds=duration,fps=60,start_frame=1,end_frame=round(duration*60)+1,loop=loop,keyposes=poses,events=[dict(name=a,time_seconds=t if skill_label else round(t*60)/60,frame=round(t*60)+1) for a,t in events],description=description,start_pose=start,end_pose=end,blend_in_seconds=.12,blend_out_seconds=.12,root_translation='in_place',root_yaw_degrees=0)
     if skill_label:
         spec.update(skill_label=skill_label,kind='weapon_skill',tags=['weapon_skill'])
-    if n=='HERO_Hammer_SkillGroundSlam':
-        spec['sample_divisions']=4
+        if kind in SKILL_SAMPLE_DIVISIONS:
+            spec['sample_divisions']=SKILL_SAMPLE_DIVISIONS[kind]
     if kind=='longsword':
         spec.update(root_yaw_degrees=720,start_pose='Idle',end_pose='Idle')
     specs.append(spec)
@@ -92,13 +95,13 @@ clip('staff','Channel',2,[(0,c),(.5,change(c,pitch=2,crouch=.04)),(1,c),(1.5,cha
 
 p=ready['mace']
 clip('mace','Strike',1.25,[(0,p),(.4,change(p,rp=(-.4,.025,1.30),rd=(-.3,.35,.88),yaw=22,crouch=.065)),(.62,change(p,rp=(-.27,-.34,.99),rd=(.15,-.9,-.4),yaw=-15,pitch=9,crouch=.08)),(.8,change(p,rp=(-.24,-.29,.96),rd=(.4,-.8,-.25),yaw=-18,crouch=.08)),(1.25,p)],events=[('melee_contact',.62)],description='Compact weighted downward flanged-head strike')
-clip('mace','Sweep',1.15,[(0,p),(.35,change(p,rp=(-.43,-.07,1.1),rd=(-.8,-.25,.35),yaw=28)),(.55,change(p,rp=(-.15,-.32,1.02),rd=(.75,-.65,.08),yaw=-20,crouch=.07)),(.74,change(p,rp=(-.12,-.27,1.03),rd=(.85,-.25,.3),yaw=-25)),(1.15,p)],events=[('melee_contact',.55)],description='Short waist-height crushing arc')
+clip('mace','Sweep',1.15,[(0,p),(.35,change(p,rp=(-.43,-.07,1.1),rd=(-.86,.04,.35),yaw=28)),(.55,change(p,rp=(-.17,-.39,1.02),rd=(.28,-.96,.08),yaw=-20,crouch=.07)),(.74,change(p,rp=(-.12,-.27,1.03),rd=(.85,-.25,.3),yaw=-25)),(1.15,p)],events=[('melee_contact',.55)],description='Short waist-height crushing arc')
 g=change(p,rp=(-.25,-.29,1.12),rd=(.12,-.12,1),yaw=-5,crouch=.06)
 clip('mace','Guard',2,[(0,g),(1,change(g,crouch=.066)),(2,g)],True,description='Raised head guards chest',start='Guard',end='Guard')
 
 p=ready['axe']
 clip('axe','Chop',1.3,[(0,p),(.43,change(p,rp=(-.35,.005,1.33),rd=(-.2,.25,1),yaw=23,crouch=.065)),(.67,change(p,rp=(-.23,-.33,1.0),rd=(.15,-.88,-.45),yaw=-17,pitch=9,crouch=.085)),(.86,change(p,rp=(-.20,-.26,.96),rd=(.4,-.7,-.6),yaw=-21)),(1.3,p)],events=[('melee_contact',.67)],description='High diagonal axe chop with delayed recovery')
-clip('axe','Cleave',1.5,[(0,p),(.48,change(p,rp=(-.43,.02,1.16),rd=(-.8,-.05,.6),yaw=30,crouch=.07)),(.78,change(p,rp=(-.17,-.30,1.08),rd=(.6,-.78,.05),yaw=-23,crouch=.075)),(1.02,change(p,rp=(-.13,-.22,1.02),rd=(.85,-.25,.2),yaw=-30)),(1.5,p)],events=[('melee_contact',.78)],description='Broad edge-leading heavy cleave')
+clip('axe','Cleave',1.5,[(0,p),(.48,change(p,rp=(-.43,.02,1.16),rd=(-.8,.22,.6),yaw=30,crouch=.07)),(.78,change(p,rp=(-.17,-.36,1.08),rd=(.30,-.95,.05),yaw=-23,crouch=.075)),(1.02,change(p,rp=(-.13,-.22,1.02),rd=(.85,-.25,.2),yaw=-30)),(1.5,p)],events=[('melee_contact',.78)],description='Broad edge-leading heavy cleave')
 g=change(p,rp=(-.24,-.29,1.13),rd=(.22,-.12,1),yaw=-7,crouch=.065)
 clip('axe','Guard',2,[(0,g),(1,change(g,crouch=.071)),(2,g)],True,description='Axe haft and head raised',start='Guard',end='Guard')
 
@@ -355,7 +358,7 @@ def animate_pose(p,kind,t=0):
         root=rest['root']
         set_world('root',transform(root.translation,Quaternion((0,0,1),p['spin'])@root.to_quaternion()))
     update()
-    if p['crouch']>.15 or kind=='warhammer' and p.get('ground',0):
+    if p['crouch']>.15 or p.get('spin',0) or kind=='warhammer' and p.get('ground',0):
         raise_cape_hem(rig,cape,hem_weights,set_world)
     return max(err,err2)
 
@@ -369,6 +372,18 @@ old_actions=bake_common_actions(rig,scene,old_actions,common_source,hero,pose,an
 for spec in specs:
     sharpen_weapon_keys(spec)
 register_skills(clip,ready,change,pose)
+
+
+def scale_action_frames(action, scale):
+    for layer in action.layers:
+        for strip in layer.strips:
+            for bag in strip.channelbags:
+                for curve in bag.fcurves:
+                    for key in curve.keyframe_points:
+                        key.co.x = 1 + (key.co.x - 1) * scale
+                    curve.update()
+
+
 existing_actions={}
 if only_kind:
     metrics=json.loads((OUT/'authoring_metrics.json').read_text('utf-8'))
@@ -380,7 +395,12 @@ if only_kind:
     existing_actions={a.name:a for a in dst.actions}
 for spec in specs:
     if only_kind and spec['weapon_kind']!=only_kind:
-        new_actions[spec['name']]=existing_actions[spec['name']];continue
+        action = existing_actions[spec['name']]
+        divisions = spec.get('sample_divisions', 1)
+        if divisions > 1:
+            scale_action_frames(action, divisions)
+        new_actions[spec['name']] = action
+        continue
     name=spec['name']; act=bpy.data.actions.new(name);act.use_fake_user=True;rig.animation_data.action=act
     max_reach=0;first=None;last_q={}
     divisions=spec.get('sample_divisions',1)
@@ -516,17 +536,17 @@ for kind in ready:
     export(path,selected)
     timed_exports.append(path)
 
+common_names=list(old_actions)+[s['name'] for s in specs if s['weapon_kind']=='longsword']
+tracks(rig,{name:all_actions[name] for name in common_names})
+common_path=OUT/'hero_rigged.glb'
+export(common_path,base_objects)
+timed_exports.append(common_path)
+
+# Keep the dense bake for GLB exports. Restore the nominal action timeline for editing.
 for spec in specs:
     divisions=spec.get('sample_divisions',1)
-    if divisions==1 or only_kind and spec['weapon_kind']!=only_kind:continue
-    action=new_actions[spec['name']]
-    for layer in action.layers:
-        for strip in layer.strips:
-            for bag in strip.channelbags:
-                for curve in bag.fcurves:
-                    for key in curve.keyframe_points:
-                        key.co.x=1+(key.co.x-1)/divisions
-                    curve.update()
+    if divisions > 1:
+        scale_action_frames(new_actions[spec['name']], 1 / divisions)
 
 tracks(rig,all_actions)
 for group in equipment.values():
@@ -548,15 +568,11 @@ for kind in ready:
     catalog['equipment'][-1]['ready_foot_anchors_blender_xy']=[[.155*.90,-STANCE[kind][0]*1.23],[-.155*.90,STANCE[kind][1]*1.23]]
     catalog['equipment'][-1]['shared_bone_bind']='Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.'
 
-common_names=list(old_actions)+[s['name'] for s in common_skill]
 tracks(rig,{name:all_actions[name] for name in common_names})
 for obj in list(bpy.data.objects):
     if obj not in keep:bpy.data.objects.remove(obj,do_unlink=True)
 for name,action in new_actions.items():
     if name not in common_names:bpy.data.actions.remove(action)
-common_path=OUT/'hero_rigged.glb'
-export(common_path,base_objects)
-timed_exports.append(common_path)
 rig.animation_data.action=old_actions['HERO_Idle']
 scene.frame_set(1)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'hero_v1.blend'))
