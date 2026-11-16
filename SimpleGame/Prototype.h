@@ -10,6 +10,7 @@
 #include <vector>
 
 class NpcWorld;
+class ProgressSave;
 
 class Prototype
 {
@@ -22,6 +23,7 @@ public:
     void Key(unsigned char key, bool down);
     void WeaponShopClick(float x, float y);
     bool CloseWeaponShop();
+    void SaveOnExit();
 
     void SetRunHeld(bool held)
     {
@@ -131,6 +133,7 @@ public:
 private:
 
     friend class NpcWorld;
+    friend class ProgressSave;
 
     friend class GameActor;
     friend class PlayerActor;
@@ -160,6 +163,12 @@ private:
     bool TargetPosition(double& x, double& y, ActorId target = InvalidActor) const;
     void FireProjectile();
     void ResolvePlayerAttack();
+    void BeginWeaponSkill();
+    bool UpdateWeaponSkill();
+    void ResolveWeaponSkill();
+    void DrawWeaponSkill(Renderer& renderer);
+    std::vector<ActorId> WeaponSkillTargets() const;
+    void ApplyPlayerHit(::Actor& target, float damage, float stun = 0);
     float WeaponCooldown(int weapon) const;
     void DefeatEnemy(EnemyActor& enemy, bool rewardPlayer = true);
     void AddExperience(int amount);
@@ -213,6 +222,7 @@ private:
     ActorCollection<LootActor> m_Loot;
     ActorCollection<CombatTextActor> m_CombatText;
     std::unique_ptr<NpcWorld> m_NpcWorld;
+    std::unique_ptr<ProgressSave> m_ProgressSave;
     int m_FarmKills = 0;
     int m_CollectedItems = 0;
     std::uint64_t m_WorldSeed = 0;

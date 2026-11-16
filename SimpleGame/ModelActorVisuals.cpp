@@ -12,7 +12,9 @@ bool GameActor::DrawModel(Renderer& renderer,
                           const std::string& requestedClip,
                           float normalizedTime,
                           Color tint,
-                          float fadeSeconds)
+                          float fadeSeconds,
+                          const char* preferredClip,
+                          float fallbackYaw)
 {
     if (binding != m_ModelBinding)
     {
@@ -32,6 +34,15 @@ bool GameActor::DrawModel(Renderer& renderer,
         return false;
     }
     auto clip = m_Model.asset->animationByName.find(requestedClip);
+    if (preferredClip)
+    {
+        const auto preferred = m_Model.asset->animationByName.find(preferredClip);
+        if (preferred != m_Model.asset->animationByName.end())
+        {
+            clip = preferred;
+            fallbackYaw = 0;
+        }
+    }
     if (clip == m_Model.asset->animationByName.end() && requestedClip.find("HERO_") == 0)
     {
         const std::string fallback = requestedClip == "HERO_AttackLongsword"
@@ -78,7 +89,7 @@ bool GameActor::DrawModel(Renderer& renderer,
                               &m_ModelAnimation->CurrentPose(),
                               m_Game.Project(WorldX(), WorldY()),
                               m_Game.Zoom(),
-                              ModelYaw(),
+                              ModelYaw() + fallbackYaw,
                               true,
                               tint);
 }

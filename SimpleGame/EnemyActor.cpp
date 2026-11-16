@@ -32,7 +32,7 @@ EnemyActor::EnemyActor(Prototype& game, MonsterKind species)
 
 void EnemyActor::Update(float dt)
 {
-    if (outpost >= 0)
+    if (outpost >= 0 || IsStunned())
     {
         return;
     }

@@ -249,12 +249,12 @@ async function poll() {
         if (!response.ok) throw new Error(message.message || 'JSON 수신 실패');
         if (paused) return;
         $('connection').className = message.status;
-        $('connection').textContent = { live: '● 실시간 연결', stale: '● 데이터 갱신 중단', waiting: '○ 게임 데이터 대기' }[message.status] || '상태 확인';
+        $('connection').textContent = { live: '● 실시간 연결', stale: '● 메시지 지연 · 재시도 중', waiting: '○ 게임 데이터 대기' }[message.status] || '상태 확인';
         if (message.snapshot) {
             renderSnapshot(message.snapshot);
             $('clock').textContent = `게임 ${number(data.simulationTime, 1)}초 · 메시지 #${data.sequence} · ${number(message.ageSeconds, 1)}초 전`;
             $('source').textContent = `JSON: ${message.source} · 세션 ${data.sessionId} · 시드 ${data.worldSeed}`;
-            $('notice').textContent = message.status === 'stale' ? '5초 이상 새 메시지가 없습니다. 게임 종료·일시정지·내보내기 오류를 확인하세요. 아래는 마지막 상태입니다.' : 'JSON 연결 정상 · 현재 등록된 Actor의 상태를 표시하고 있습니다.';
+            $('notice').textContent = message.status === 'stale' ? '5초 이상 새 메시지가 없습니다. 수신 요청은 계속 진행 중이며 새 메시지가 오면 자동 복구됩니다. 게임 콘솔의 [GameLoop]·[NpcMonitor] 로그를 확인하세요. 아래는 마지막 상태입니다.' : 'JSON 연결 정상 · 현재 등록된 Actor의 상태를 표시하고 있습니다.';
         } else {
             $('notice').textContent = `${message.message} ${data ? '아래는 마지막 수신 상태입니다.' : ''}`;
             $('source').textContent = `탐색 경로: ${(message.candidates || []).join(' | ')}`;

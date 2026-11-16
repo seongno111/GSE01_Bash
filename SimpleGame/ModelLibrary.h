@@ -3,6 +3,8 @@
 #include "ModelAsset.h"
 #include <map>
 
+struct HeroWeapon;
+
 namespace Terrain
 {
     struct Catalog;
@@ -110,6 +112,7 @@ namespace Models
         ModelInstance Player(int role = 2) const;
         ModelInstance HeroWeaponModel(const std::string& key, bool equipped) const;
         const HeroWeaponVisual* HeroWeaponActions(const std::string& key) const;
+        const Animation* HeroWeaponSkill(const HeroWeapon& weapon) const;
         ModelInstance Monster(int index) const;
         const MonsterVisual* MonsterSpecies(const std::string& modelKey) const;
         ModelInstance Prop(int propIndex) const;

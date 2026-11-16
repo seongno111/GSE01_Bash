@@ -34,7 +34,7 @@ void EchoActor::Update(float dt)
     const bool sanctuary = !m_Game.m_Player.EnabledInHierarchy()
                            || InsideSanctuary(m_Game.m_Player.WorldX(), m_Game.m_Player.WorldY());
 
-    if (!echo.alive)
+    if (!echo.alive || IsStunned())
     {
         return;
     }

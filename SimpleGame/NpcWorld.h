@@ -1,6 +1,7 @@
 #pragma once
 #include "NpcAI.h"
 #include "Villages.h"
+#include "SaveTypes.h"
 #include <filesystem>
 #include <chrono>
 #include <set>
@@ -20,6 +21,7 @@ public:
     void DrawHUD(Renderer& renderer);
     bool PlayerCanTarget(const NpcActor& npc) const;
     bool HitByPlayer(double x, double y, float damage, bool allowPK);
+    void HitByPlayer(NpcActor& npc, float damage, float stun);
     bool HitByMonster(double x, double y, float damage, ActorId source = InvalidActor);
     Actor* EnemyTarget(const EnemyActor& enemy) const;
     void MonsterDamage(Actor& target, float damage, const EnemyActor* source = nullptr);
@@ -74,6 +76,7 @@ public:
 private:
 
     friend class NpcMissileActor;
+    friend class ProgressSave;
 
     struct Reservation
     {
@@ -101,12 +104,27 @@ private:
         std::string subjectName;
         std::uint64_t sourceEvent = 0;
         std::vector<ActorId> knowers;
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(WorldEvent,
+                                       id,
+                                       time,
+                                       type,
+                                       text,
+                                       position,
+                                       actor,
+                                       actorName,
+                                       subject,
+                                       subjectName,
+                                       sourceEvent,
+                                       knowers)
     };
 
     struct Conduct
     {
         int care = 0;
         int violence = 0;
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Conduct, care, violence)
     };
 
     NpcActor* Npc(NpcEntity entity) const;
@@ -149,6 +167,7 @@ private:
     {
         bool monitorWritten = false;
         bool logWritten = true;
+        unsigned long monitorError = 0;
         double workerMs = 0;
     };
 
@@ -190,6 +209,20 @@ private:
         std::map<size_t, VillageKnowledge> known;
         std::array<float, Villages.size()> relations{};
         std::array<float, Villages.size()> incidents{};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(VillageSociety,
+                                       alignment,
+                                       threatened,
+                                       nextDispatch,
+                                       dispatches,
+                                       nextPost,
+                                       postsSent,
+                                       postsReceived,
+                                       immigrants,
+                                       emigrants,
+                                       known,
+                                       relations,
+                                       incidents)
     };
 
     struct EnemyOutpost
@@ -201,6 +234,15 @@ private:
         float radius = 18;
         unsigned waves = 0;
         unsigned spawned = 0;
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(EnemyOutpost,
+                                       members,
+                                       nextSpawn,
+                                       nextExpansion,
+                                       nextWave,
+                                       radius,
+                                       waves,
+                                       spawned)
     };
 
     std::array<VillageSociety, Villages.size()> m_Societies{};
@@ -221,6 +263,16 @@ private:
         ActorId bird = InvalidActor;
         std::map<size_t, VillageKnowledge> reports;
         std::vector<WorldEvent> events;
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(CarrierPost,
+                                       id,
+                                       source,
+                                       destination,
+                                       departedAt,
+                                       arrivesAt,
+                                       bird,
+                                       reports,
+                                       events)
     };
 
     std::vector<CarrierPost> m_CarrierPosts;
@@ -254,6 +306,8 @@ private:
         int food = 420;
         int medicine = 210;
         int goods = 0;
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(VillageEconomy, treasury, food, medicine, goods)
     };
 
     std::array<VillageEconomy, Villages.size()> m_Economies{};
@@ -261,6 +315,7 @@ private:
     bool m_Inspector = true;
     bool m_LogWarning = false;
     bool m_MonitorWarning = false;
+    bool m_MonitorSlowWarning = false;
     std::string m_MonitorSession;
     std::uint64_t m_MonitorSequence = 0;
     std::chrono::steady_clock::time_point m_NextMonitor{};
@@ -270,4 +325,54 @@ private:
     double m_LastMonitorWorkerMs = 0;
     std::uint64_t m_MonitorSkipped = 0;
     std::future<MonitorExportResult> m_MonitorExport;
+
+public:
+
+    struct SavedProgress
+    {
+        decltype(m_Time) Time{};
+        decltype(m_Accumulator) Accumulator{};
+        decltype(m_Economies) Economies{};
+        decltype(m_Societies) Societies{};
+        decltype(m_Outposts) Outposts{};
+        decltype(m_Enemies) Enemies{};
+        decltype(m_CarrierPosts) CarrierPosts{};
+        decltype(m_NextCarrierPost) NextCarrierPost{};
+        decltype(m_NextWorldSimulation) NextWorldSimulation{};
+        decltype(m_NextMigrationReview) NextMigrationReview{};
+        decltype(m_RumorCursor) RumorCursor{};
+        decltype(m_Events) Events{};
+        decltype(m_WorldEvents) WorldEvents{};
+        decltype(m_EventCounts) EventCounts{};
+        decltype(m_Conduct) Conduct{};
+        decltype(m_UnlawfulConflicts) UnlawfulConflicts{};
+        decltype(m_NextWorldEvent) NextWorldEvent{};
+        decltype(m_NextRumor) NextRumor{};
+        decltype(m_NextExecution) NextExecution{};
+        decltype(m_PK) PK{};
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(SavedProgress,
+                                       Time,
+                                       Accumulator,
+                                       Economies,
+                                       Societies,
+                                       Outposts,
+                                       Enemies,
+                                       CarrierPosts,
+                                       NextCarrierPost,
+                                       NextWorldSimulation,
+                                       NextMigrationReview,
+                                       RumorCursor,
+                                       Events,
+                                       WorldEvents,
+                                       EventCounts,
+                                       Conduct,
+                                       UnlawfulConflicts,
+                                       NextWorldEvent,
+                                       NextRumor,
+                                       NextExecution,
+                                       PK)
+    };
+
+    SavedProgress CaptureProgress() const;
+    void RestoreProgress(SavedProgress state, const std::map<ActorId, ActorId>& ids);
 };

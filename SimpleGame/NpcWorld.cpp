@@ -462,6 +462,10 @@ void NpcWorld::Update(float dt)
 
 void NpcWorld::UpdateActor(NpcActor& npc, float dt)
 {
+    if (npc.IsStunned())
+    {
+        return;
+    }
     auto& v = npc.vitals;
     if (!v.alive)
     {

@@ -21,7 +21,29 @@ void Prototype::Interface(Renderer& r)
     r.Rect(28, 24, 3, 49, Gold);
     r.Text(45, 17, "성화의 파편", Paper, 2.3f);
     r.Text(46, 53, std::string("장착 · ") + HeroWeapons[m_Player.weapon].name, Muted, 1.4f);
-    r.Text(46, 78, "불을 찾아라. 네가 누구인지 잊지 마라.", Gold, 1.2f);
+    std::ostringstream skillStatus;
+    skillStatus << "[Z] " << HeroWeapons[m_Player.weapon].skill.name << " · ";
+    if (m_Player.skillCast.startedAt >= 0)
+    {
+        skillStatus << "시전 중";
+    }
+    else if (m_Player.corruption >= MutationThreshold)
+    {
+        skillStatus << "인간 형태 필요";
+    }
+    else if (InsideSanctuary(m_Player.WorldX(), m_Player.WorldY()))
+    {
+        skillStatus << "성소 밖에서 사용";
+    }
+    else if (m_Player.skillCooldown > 0)
+    {
+        skillStatus << std::fixed << std::setprecision(1) << m_Player.skillCooldown << "초";
+    }
+    else
+    {
+        skillStatus << "사용 가능";
+    }
+    r.Text(46, 78, skillStatus.str(), Gold, 1.2f);
     const float panelX = w - 305;
     r.Text(panelX,
            16,
@@ -45,7 +67,8 @@ void Prototype::Interface(Renderer& r)
         r.Text(40, 139, "파밍과 성장", Gold, 1.5f);
         r.Text(40,
                171,
-               "WASD   이동\nSHIFT 유지   달리기\nSPACE 유지   자동 조준\nF   자동 사격 전환\nU   "
+               "WASD   이동\nSHIFT 유지   달리기\nSPACE 유지   자동 조준\nZ   무기 스킬\nF   자동 "
+               "사격 전환\nU   "
                "파편 3개로 무기 강화\nQ  "
                " 회복약 사용\nT   정화석 사용\nE   대장간 교체·성소 회복\nR   성물 사용\nH   안내 "
                "숨기기",

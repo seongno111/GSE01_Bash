@@ -132,5 +132,10 @@ void Prototype::DrawWeaponShop(Renderer& r)
                   : m_Player.weapon == int(i) ? "장착 중"
                                               : "클릭하여 장착");
         r.Text(x + 10 * s, y + 165 * s, specs.str(), Color(.9f, .9f, .9f), 1.1f * s);
+        r.Text(x + 10 * s,
+               y + 230 * s,
+               std::string("[Z] ") + weapon.skill.name,
+               Color(1, .8f, .4f),
+               1.0f * s);
     }
 }

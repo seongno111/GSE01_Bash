@@ -17,7 +17,8 @@
       "idle_clip": "HERO_Idle",
       "walk_clip": "HERO_Walk",
       "run_clip": "HERO_Run",
-      "animation_count": 11
+      "animation_count": 12,
+      "animation_revision": "20261110_five_head_hero"
     },
     {
       "key": "NPC_Shared",
@@ -153,7 +154,7 @@
       "meshes": 25,
       "skins": 1,
       "before_clips": 33,
-      "clips": 11,
+      "clips": 12,
       "removed_clip_names": [
         "HERO_Turn_L45",
         "HERO_Turn_L90",
@@ -179,11 +180,12 @@
         "HERO_TurnScreenDownToUp_R"
       ],
       "before_bytes": 3234328,
-      "bytes": 1161772,
+      "bytes": 2047880,
       "idle_clip": "HERO_Idle",
       "walk_clip": "HERO_Walk",
       "run_clip": "HERO_Run",
-      "model_and_kept_animation_payloads_identical": true
+      "animation_revision": "20261110_five_head_hero",
+      "bind_revision": "five_head_hero"
     },
     {
       "file": "LowPolyKit_v3/npc/npc_parts_rigged.glb",

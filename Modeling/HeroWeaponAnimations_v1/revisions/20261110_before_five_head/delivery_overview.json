@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-10",
+  "revised_actions": 41,
+  "skill_actions": 8,
+  "weapon_types": 8,
+  "common_hero_actions": 12,
+  "total_library_actions": 49,
+  "glb_files": 9,
+  "blender_sources": 2,
+  "checks_passed": 34,
+  "hammer_grip_revision": "20261105_cross_palm",
+  "game_code_changed": false,
+  "build_run": false,
+  "delivery_files": 151,
+  "delivery_bytes": 102087446
+}

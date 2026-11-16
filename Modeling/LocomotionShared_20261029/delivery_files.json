@@ -7,8 +7,8 @@
   "files": [
     {
       "path": "Hero_v1/hero_rigged.glb",
-      "bytes": 1161772,
-      "sha256": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259"
+      "bytes": 2047880,
+      "sha256": "95f1e51b53155bd9e0541ecd5c10d9cd58c74c84e34c2a440899d77625a91bd2"
     },
     {
       "path": "LowPolyKit_v3/npc/npc_parts_rigged.glb",
@@ -97,23 +97,23 @@
     },
     {
       "path": "Hero_v1/hero_v1.blend",
-      "bytes": 1023596,
-      "sha256": "05d2636114cf81628a4ff9961614b0b16d4057934a0d8c39d90989e478d5cd06"
+      "bytes": 2690507,
+      "sha256": "792e9b09f00c5504f5714ccc167de0ef7fc324014fe021fbdce843875368df2a"
     },
     {
       "path": "Hero_v1/hero_catalog.json",
-      "bytes": 19642,
-      "sha256": "0fd029e1ec08b44fda99235edb7528a291c29e5ea02b648f7870374f6e9f927c"
+      "bytes": 21451,
+      "sha256": "ed2b116a823d94d259c8dfd3e0eb2732c21fa621b03f5fb9c9a30fbd5d078475"
     },
     {
       "path": "Hero_v1/validation.json",
-      "bytes": 2287,
-      "sha256": "855348084eca94a762d68f52dde6436ecbd67feb1a13728b7fe32c243ed97103"
+      "bytes": 946,
+      "sha256": "5a38d9e3de45a1f1bbe230eeb5c6f828936c721ecc20b134b25d175aec4ffe93"
     },
     {
       "path": "Hero_v1/README.md",
-      "bytes": 6123,
-      "sha256": "e10eee3d74e253205ec21a44b5fbc25e0063206d59c1bd1d0098b1aa3fe1411c"
+      "bytes": 6412,
+      "sha256": "c3674d7458e7d48a32704029b6cb0d4ace8f694e83551d6dd5a50ef2f714008c"
     },
     {
       "path": "LowPolyKit_v3/lowpoly_kit_v3.blend",
@@ -157,13 +157,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 3266,
-      "sha256": "3f90f440d37579ba2391541f83592d9aca06d99b6317f4cad4eab16ba7bdccd0"
+      "bytes": 4160,
+      "sha256": "c97037e3f5688abc57d7d4a931519eca745933e631dcfcd868cb475a88ad101b"
     },
     {
       "path": "LocomotionShared_20261029/README.md",
-      "bytes": 5069,
-      "sha256": "3cdc67a99823c3ff2048f60d259e6d8c299f71fb416012c60b2747746885980e"
+      "bytes": 5408,
+      "sha256": "c71dc719f98054fdd4ad43134a2fb53dea485b796f0de5c155080fc1f88cb24b"
     },
     {
       "path": "LocomotionShared_20261029/validation.json",
@@ -172,8 +172,8 @@
     },
     {
       "path": "LocomotionShared_20261029/locomotion_catalog.json",
-      "bytes": 25795,
-      "sha256": "3e5209e9618587ee103ecb753cdeb614905371a709c28dcc57216d453b691def"
+      "bytes": 25891,
+      "sha256": "edbff5901024bd708d894f77a88fcf7cec0b6ddcc7fa15b7e3967766ef1263d8"
     },
     {
       "path": "LocomotionShared_20261029/removed_clips.json",
@@ -191,6 +191,6 @@
       "sha256": "6ee6132bec9bde036cd462300ffbeffffb3fd694d2b056f714b4cf13fb4210a8"
     }
   ],
-  "updated": "2026-11-02",
+  "updated": "2026-11-10",
   "current_quadruped_revision": "AnatomyRevision_20261102"
 }

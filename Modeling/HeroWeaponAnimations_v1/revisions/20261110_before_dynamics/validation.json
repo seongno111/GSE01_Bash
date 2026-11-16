@@ -1,0 +1,430 @@
+{
+  "date": "2026-11-05",
+  "all_checks_passed": true,
+  "checks": {
+    "source_files_unchanged": true,
+    "original_33_bone_names_and_hierarchy_preserved": true,
+    "inverse_bind_matrices_preserved": true,
+    "original_hero_meshes_and_weights_preserved": true,
+    "exactly_11_original_plus_30_new_clips": true,
+    "single_shared_walk_and_run": true,
+    "original_11_animation_poses_preserved": true,
+    "eight_glbs_readable": true,
+    "equipped_glbs_match_original_skin_and_expected_parts": true,
+    "all_30_clips_have_full_33_bone_channels": true,
+    "all_30_clip_durations_match_catalog": true,
+    "all_30_clip_values_finite": true,
+    "root_translation_and_yaw_static": true,
+    "loop_endpoints_match": true,
+    "event_times_valid": true,
+    "bow_string_limb_and_arrow_morph_channels": true,
+    "all_30_actual_export_clips_reimported": true,
+    "boot_floor_and_foot_lock_within_1mm": true,
+    "two_handed_grips_within_1mm": true,
+    "bow_draw_hand_matches_animated_nock_within_1mm": true,
+    "bow_transitions_no_single_frame_hand_jump_over_5cm": true,
+    "reimported_loops_match": true,
+    "attack_ready_and_bow_chain_endpoints_match": true,
+    "other_37_library_clips_preserved": true,
+    "other_six_equipped_glbs_byte_identical": true
+  },
+  "metrics": {
+    "inverse_bind_max_error": 0.0,
+    "hero_attribute_max_error": 0,
+    "common_clip_sample_error": 3.406226356528208e-08,
+    "bow_morph_ranges": {
+      "HERO_Bow_Ready": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 1.0,
+          "last": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        }
+      },
+      "HERO_Bow_Nock": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 1.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        }
+      },
+      "HERO_Bow_Draw": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 0.0,
+          "last": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 0.0,
+          "last": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      },
+      "HERO_Bow_Aim": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 1.0,
+          "last": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 1.0,
+          "last": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      },
+      "HERO_Bow_Release": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 0.0,
+          "last": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 1.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 1.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      },
+      "HERO_Bow_Lower": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 0.0,
+          "last": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 1.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 1.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      }
+    },
+    "minimum_boot_z_m": -2.474021130183246e-07,
+    "maximum_foot_anchor_deviation_m": 3.4582674760812405e-07,
+    "maximum_support_grip_gap_m": 1.2798527456437931e-06,
+    "maximum_bow_draw_hand_to_nock_m": 9.79269633608531e-07,
+    "maximum_bow_hand_step_per_60fps_frame_m": 0.04904948305898009,
+    "attack_and_bow_transition_pose_error": 0,
+    "unchanged_37_clip_sample_error": 5.551115123125783e-16
+  },
+  "clips": {
+    "HERO_Staff_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Staff_CastBolt": {
+      "duration_seconds": 1.2999999523162842,
+      "channels": 99,
+      "events": [
+        {
+          "name": "cast_release",
+          "time_seconds": 0.6166666666666667,
+          "frame": 38
+        }
+      ]
+    },
+    "HERO_Staff_CastSweep": {
+      "duration_seconds": 1.649999976158142,
+      "channels": 99,
+      "events": [
+        {
+          "name": "cast_release",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ]
+    },
+    "HERO_Staff_Channel": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": [
+        {
+          "name": "channel_tick",
+          "time_seconds": 0.5,
+          "frame": 31
+        },
+        {
+          "name": "channel_tick",
+          "time_seconds": 1.5,
+          "frame": 91
+        }
+      ]
+    },
+    "HERO_Mace_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Mace_Strike": {
+      "duration_seconds": 1.25,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.6166666666666667,
+          "frame": 38
+        }
+      ]
+    },
+    "HERO_Mace_Sweep": {
+      "duration_seconds": 1.149999976158142,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ]
+    },
+    "HERO_Mace_Guard": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Axe_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Axe_Chop": {
+      "duration_seconds": 1.2999999523162842,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.6666666666666666,
+          "frame": 41
+        }
+      ]
+    },
+    "HERO_Axe_Cleave": {
+      "duration_seconds": 1.5,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.7833333333333333,
+          "frame": 48
+        }
+      ]
+    },
+    "HERO_Axe_Guard": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Hammer_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Hammer_Smash": {
+      "duration_seconds": 1.7999999523162842,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 1.0,
+          "frame": 61
+        }
+      ]
+    },
+    "HERO_Hammer_Uppercut": {
+      "duration_seconds": 1.649999976158142,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ]
+    },
+    "HERO_Hammer_Guard": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Spear_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Spear_Thrust": {
+      "duration_seconds": 1.100000023841858,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.5166666666666667,
+          "frame": 32
+        }
+      ]
+    },
+    "HERO_Spear_Sweep": {
+      "duration_seconds": 1.5,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.75,
+          "frame": 46
+        }
+      ]
+    },
+    "HERO_Spear_Guard": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Dagger_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Dagger_Stab": {
+      "duration_seconds": 0.75,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        }
+      ]
+    },
+    "HERO_Dagger_Slash": {
+      "duration_seconds": 0.8500000238418579,
+      "channels": 99,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.4166666666666667,
+          "frame": 26
+        }
+      ]
+    },
+    "HERO_Dagger_Guard": {
+      "duration_seconds": 2.0,
+      "channels": 99,
+      "events": []
+    },
+    "HERO_Bow_Ready": {
+      "duration_seconds": 2.0,
+      "channels": 102,
+      "events": []
+    },
+    "HERO_Bow_Nock": {
+      "duration_seconds": 0.75,
+      "channels": 102,
+      "events": [
+        {
+          "name": "arrow_show",
+          "time_seconds": 0.25,
+          "frame": 16
+        }
+      ]
+    },
+    "HERO_Bow_Draw": {
+      "duration_seconds": 0.800000011920929,
+      "channels": 102,
+      "events": [
+        {
+          "name": "draw_complete",
+          "time_seconds": 0.8,
+          "frame": 49
+        }
+      ]
+    },
+    "HERO_Bow_Aim": {
+      "duration_seconds": 2.0,
+      "channels": 102,
+      "events": []
+    },
+    "HERO_Bow_Release": {
+      "duration_seconds": 0.550000011920929,
+      "channels": 102,
+      "events": [
+        {
+          "name": "projectile_release",
+          "time_seconds": 0.1,
+          "frame": 7
+        },
+        {
+          "name": "arrow_hide",
+          "time_seconds": 0.1,
+          "frame": 7
+        }
+      ]
+    },
+    "HERO_Bow_Lower": {
+      "duration_seconds": 0.6499999761581421,
+      "channels": 102,
+      "events": [
+        {
+          "name": "arrow_hide",
+          "time_seconds": 0.5,
+          "frame": 31
+        }
+      ]
+    }
+  },
+  "scope": "Exported GLB binary structure, original-source hashes, bind/geometry comparison, motion channel sampling, full 60fps reimported bone/boot/hand checks. No game execution or performance check."
+}

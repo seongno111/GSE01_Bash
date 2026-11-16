@@ -5,7 +5,9 @@ Bone/skin buffers stay byte-identical; only the three bow morph samplers change.
 """
 import json,struct
 from pathlib import Path
-P=Path(__file__).resolve().parents[1]
+from skill_motion import bow_arrow_visible
+from dynamic_motion import segment_progress
+P=globals().get('OUTPUT_DIR',Path(__file__).resolve().parents[1])
 path=P/'hero_bow_actions.glb'
 b=path.read_bytes();jlen=struct.unpack_from('<I',b,12)[0]
 d=json.loads(b[20:20+jlen]);binlen=struct.unpack_from('<I',b,20+jlen)[0]
@@ -21,7 +23,7 @@ def draw(s,t):
  for i in range(len(s['keyposes'])-1):
   ta,a=s['keyposes'][i];tb,z=s['keyposes'][i+1]
   if t<=tb+1e-6:
-   u=max(0,min(1,(t-ta)/(tb-ta)));u=u*u*(3-2*u);return a['draw']+(z['draw']-a['draw'])*u
+   u=segment_progress(s,s['keyposes'],i,(t-ta)/(tb-ta));return a['draw']+(z['draw']-a['draw'])*u
  return s['keyposes'][-1][1]['draw']
 for anim in d['animations']:
  n=anim['name'];s=specs[n];ts=[i/60 for i in range(s['end_frame'])]
@@ -31,7 +33,7 @@ for anim in d['animations']:
   if name.startswith('AMMO_'):
    values=[]
    for t in ts:
-    visible=(n in ('HERO_Bow_Draw','HERO_Bow_Aim') or (n=='HERO_Bow_Nock' and t>=.25) or (n=='HERO_Bow_Release' and t<.1) or (n=='HERO_Bow_Lower' and t<.5))
+    visible=bow_arrow_visible(n,t)
     values.append(0 if visible else 1)
    interpolation='STEP'
   else:values=[draw(s,t) for t in ts];interpolation='LINEAR'

@@ -148,8 +148,19 @@ void GameActor::BeginAttackAnimation(double directionX,
     m_AttackAnimationDuration = (std::max)(0.01f, duration);
 }
 
+void GameActor::StunFor(float seconds)
+{
+    m_StunnedUntil = (std::max)(m_StunnedUntil, m_Game.Time() + seconds);
+}
+
+bool GameActor::IsStunned() const
+{
+    return m_Game.Time() < m_StunnedUntil;
+}
+
 void GameActor::ResetAnimation()
 {
+    m_StunnedUntil = 0;
     m_WalkCycle = 0;
     m_TravelWindow = 0;
     m_TravelDistance = 0;

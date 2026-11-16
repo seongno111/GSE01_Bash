@@ -99,37 +99,9 @@ void Prototype::ResolvePlayerAttack()
     m_Player.attack = .16f;
     if (!HeroWeapons[m_Player.weapon].ranged)
     {
-        auto* target = m_Scene.Find(m_Player.attackTarget);
-        const float damage = m_Player.attackDamage;
-        if (auto* enemy = dynamic_cast<EnemyActor*>(target))
+        if (auto* target = m_Scene.Find(m_Player.attackTarget))
         {
-            const float applied = enemy->ReceiveDamage(damage, m_Player.Id());
-            AddCombatText(targetX, targetY, std::to_string(int(applied)), DamageColor);
-            if (enemy->health <= 0)
-            {
-                DefeatEnemy(*enemy);
-            }
-        }
-        else if (auto* echo = dynamic_cast<EchoActor*>(target))
-        {
-            echo->health -= damage;
-            AddCombatText(targetX, targetY, std::to_string(int(damage)), DamageColor);
-            if (echo->health <= 0)
-            {
-                echo->alive = false;
-                if (m_NpcWorld)
-                {
-                    m_NpcWorld->RecordWorldEvent("hunt",
-                                                 "플레이어가 변이 잔재를 토벌했다",
-                                                 echo->WorldPosition(),
-                                                 &m_Player,
-                                                 echo);
-                }
-            }
-        }
-        else if (m_NpcWorld && target)
-        {
-            m_NpcWorld->HitByPlayer(targetX, targetY, damage, m_NpcWorld->PKEnabled());
+            ApplyPlayerHit(*target, m_Player.attackDamage);
         }
     }
     else

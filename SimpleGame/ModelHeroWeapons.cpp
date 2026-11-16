@@ -8,6 +8,39 @@
 #include <algorithm>
 #include <cmath>
 #include <set>
+#include <string_view>
+
+namespace
+{
+    void CheckSharedHeroBind(const Models::Asset& common,
+                             const Models::Asset& equipped,
+                             const nlohmann::json& bones)
+    {
+        const auto parentName = [](const Models::Asset& asset, int parent) -> std::string_view
+        {
+            return parent < 0 ? std::string_view{} : std::string_view(asset.nodes.at(parent).name);
+        };
+        for (const auto& bone : bones)
+        {
+            const auto name = bone.get<std::string>();
+            const auto& a = common.nodes.at(common.nodeByName.at(name));
+            const auto& b = equipped.nodes.at(equipped.nodeByName.at(name));
+            const auto left = a.bind.LocalMatrix();
+            const auto right = b.bind.LocalMatrix();
+            if (parentName(common, a.parent) != parentName(equipped, b.parent)
+                || !std::equal(left.begin(),
+                               left.end(),
+                               right.begin(),
+                               [](float x, float y)
+                               {
+                                   return std::abs(x - y) < .0001f;
+                               }))
+            {
+                throw std::runtime_error("Equipped hero uses a different bind pose: " + name);
+            }
+        }
+    }
+} // namespace
 
 void Models::ModelLibrary::LoadHeroWeapons(const std::filesystem::path& folder)
 {
@@ -16,6 +49,19 @@ void Models::ModelLibrary::LoadHeroWeapons(const std::filesystem::path& folder)
         return;
     }
     LoadHeroWeaponAnimations(folder.parent_path() / "HeroWeaponAnimations_v1");
+    ModelInstance sword{m_Hero.asset, {}};
+    for (int node : m_Hero.nodes)
+    {
+        if (m_Hero.asset->nodes[node].name.find("HERO_WEAPON_R_") == 0)
+        {
+            sword.nodes.push_back(node);
+        }
+    }
+    if (sword)
+    {
+        m_WeaponPreviews.emplace(HeroLongswordKey, std::move(sword));
+        m_EquippedHeroes.try_emplace(HeroLongswordKey, m_Hero);
+    }
     try
     {
         std::ifstream input(folder / "weapon_catalog.json");
@@ -35,6 +81,10 @@ void Models::ModelLibrary::LoadHeroWeapons(const std::filesystem::path& folder)
         }
         for (const auto& definition : HeroWeapons)
         {
+            if (std::string_view(definition.key) == HeroLongswordKey)
+            {
+                continue;
+            }
             try
             {
                 const nlohmann::json* entry = nullptr;
@@ -147,6 +197,15 @@ void Models::ModelLibrary::LoadHeroWeapons(const std::filesystem::path& folder)
     {
         std::cerr << "[Weapons] " << error.what() << '\n';
     }
+    for (const auto& weapon : HeroWeapons)
+    {
+        if (const auto* clip = HeroWeaponSkill(weapon))
+        {
+            std::cout << "[HeroSkill] weapon=" << weapon.key << " clip=" << clip->name
+                      << " duration=" << clip->duration << " contacts=" << weapon.skill.hits
+                      << '\n';
+        }
+    }
 }
 
 Models::ModelInstance Models::ModelLibrary::HeroWeaponModel(const std::string& key,
@@ -171,6 +230,7 @@ void Models::ModelLibrary::LoadHeroWeaponAnimations(const std::filesystem::path&
         {
             throw std::runtime_error("Unsupported hero animation catalog");
         }
+        const auto commonClips = catalog.at("original_clips").get<std::vector<std::string>>();
         for (const auto& equipment : catalog.at("equipment"))
         {
             const std::string key = equipment.at("weapon_key");
@@ -178,6 +238,7 @@ void Models::ModelLibrary::LoadHeroWeaponAnimations(const std::filesystem::path&
             {
                 // The delivered meshes already contain skinned weapons. Do not attach them twice.
                 auto hero = ReadCached(folder / equipment.at("file").get<std::string>());
+                CheckSharedHeroBind(*m_Hero.asset, *hero, catalog.at("bones"));
                 HeroWeaponVisual visual;
                 const auto names = equipment.at("clip_names").get<std::vector<std::string>>();
                 visual.prefix = names.at(0).substr(0, names.at(0).rfind('_'));
@@ -212,7 +273,9 @@ void Models::ModelLibrary::LoadHeroWeaponAnimations(const std::filesystem::path&
                 // Map by bone name: node ordering differs between exported GLBs.
                 for (const auto& original : m_Hero.asset->animations)
                 {
-                    if (hero->animationByName.count(original.name))
+                    if (hero->animationByName.count(original.name)
+                        || std::find(commonClips.begin(), commonClips.end(), original.name)
+                               == commonClips.end())
                     {
                         continue;
                     }
@@ -363,4 +426,39 @@ Models::ModelLibrary::HeroWeaponActions(const std::string& key) const
 {
     const auto found = m_HeroWeaponActions.find(key);
     return found == m_HeroWeaponActions.end() ? nullptr : &found->second;
+}
+
+const Models::Animation* Models::ModelLibrary::HeroWeaponSkill(const HeroWeapon& weapon) const
+{
+    const auto model = m_EquippedHeroes.find(weapon.key);
+    if (model == m_EquippedHeroes.end())
+    {
+        return nullptr;
+    }
+    const auto& asset = *model->second.asset;
+    const auto found = asset.animationByName.find(weapon.skill.clip);
+    if (found == asset.animationByName.end())
+    {
+        return nullptr;
+    }
+    const auto& clip = asset.animations.at(found->second);
+    if (clip.loop || !std::isfinite(clip.duration) || clip.duration <= 0)
+    {
+        return nullptr;
+    }
+    int contacts = 0;
+    float previous = 0;
+    for (const auto& event : clip.events)
+    {
+        if (event.name == "skill_contact")
+        {
+            if (!std::isfinite(event.time) || event.time <= previous || event.time >= clip.duration)
+            {
+                return nullptr;
+            }
+            previous = event.time;
+            ++contacts;
+        }
+    }
+    return contacts == weapon.skill.hits ? &clip : nullptr;
 }

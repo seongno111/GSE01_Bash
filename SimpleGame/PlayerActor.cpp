@@ -20,6 +20,7 @@ void PlayerActor::Update(float dt)
     hitCooldown = (std::max)(0.0f, hitCooldown - dt);
 
     shotCooldown = (std::max)(0.0f, shotCooldown - dt);
+    skillCooldown = (std::max)(0.0f, skillCooldown - dt);
     magnetTime = (std::max)(0.0f, magnetTime - dt);
     if (m_Game.m_WeaponShopOpen)
     {
@@ -27,6 +28,12 @@ void PlayerActor::Update(float dt)
         {
             ResetAnimation();
         }
+        walking = false;
+        running = false;
+        return;
+    }
+    if (m_Game.UpdateWeaponSkill())
+    {
         walking = false;
         running = false;
         return;
@@ -109,6 +116,8 @@ void PlayerActor::Draw(Renderer& r)
         : pose.attackProgress >= 0 ? "HERO_AttackLongsword"
                                    : MovementClip("HERO", running);
     float progress = pose.attackProgress;
+    const char* skillClip = nullptr;
+    float spinYaw = 0;
     if (!mutant)
     {
         if (const auto* visual = m_Game.ModelAssets().HeroWeaponActions(HeroWeapons[weapon].key))
@@ -135,6 +144,21 @@ void PlayerActor::Draw(Renderer& r)
             }
         }
     }
+    if (!mutant && skillCast.startedAt >= 0)
+    {
+        const auto& skill = HeroWeapons[weapon].skill;
+        const float elapsed = m_Game.Time() - skillCast.startedAt;
+        skillClip = skillCast.clip;
+        progress = std::clamp(elapsed / skillCast.duration, 0.0f, 1.0f);
+        if (const auto* visual = m_Game.ModelAssets().HeroWeaponActions(HeroWeapons[weapon].key))
+        {
+            clip = visual->attacks.front().stages.back().clip;
+        }
+        if (!skillClip && skill.kind == HeroSkillKind::Whirlwind)
+        {
+            spinYaw = 12.5663706f * std::clamp((elapsed - .15f) / .8f, 0.0f, 1.0f);
+        }
+    }
     if (DrawModel(
             r,
             mutant ? "player/mutated" : std::string("player/") + HeroWeapons[weapon].key,
@@ -151,7 +175,9 @@ void PlayerActor::Draw(Renderer& r)
             clip,
             progress,
             Color(),
-            progress >= 0 ? 0.0f : .12f))
+            progress >= 0 ? 0.0f : .12f,
+            skillClip,
+            spinYaw))
     {
         return;
     }
@@ -161,6 +187,7 @@ void PlayerActor::Draw(Renderer& r)
 void PlayerActor::ResetAnimation()
 {
     GameActor::ResetAnimation();
+    skillCast = {};
     weaponAttack = nullptr;
     weaponAttackStart = -1;
     weaponAttackDuration = 0;

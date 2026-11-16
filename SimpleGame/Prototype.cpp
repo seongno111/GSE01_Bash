@@ -2,6 +2,7 @@
 #include "Prototype.h"
 #include "GameRules.h"
 #include "NpcWorld.h"
+#include "ProgressSave.h"
 
 #include <algorithm>
 #include <cmath>
@@ -11,6 +12,14 @@
 using namespace GameRules;
 
 Prototype::~Prototype() = default;
+
+void Prototype::SaveOnExit()
+{
+    if (m_ProgressSave && m_LevelOneStarted)
+    {
+        m_ProgressSave->Finish(*this);
+    }
+}
 
 Prototype::Prototype()
     : m_WorldRoot(m_Scene.Spawn<::Actor>(m_Scene.Root(), "World").Id()),
@@ -130,6 +139,11 @@ void Prototype::Key(unsigned char key, bool down)
     }
     if (m_WeaponShopOpen)
     {
+        return;
+    }
+    if (key == 'z')
+    {
+        BeginWeaponSkill();
         return;
     }
     if (m_NpcWorld && m_NpcWorld->Key(key))
@@ -298,6 +312,10 @@ void Prototype::Update(float dt)
     m_CameraY += (m_Player.WorldY() - m_CameraY) * blend;
     Stream();
     m_Scene.CollectGarbage();
+    if (m_ProgressSave)
+    {
+        m_ProgressSave->Tick(*this);
+    }
     m_UpdateStats.streamMs =
         std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - streamStart)
             .count();
@@ -317,6 +335,7 @@ void Prototype::Draw(Renderer& r)
     m_Height = r.Height();
     r.Begin(Color(0.065f, 0.095f, 0.10f));
     m_Scene.DrawWorld(r);
+    DrawWeaponSkill(r);
     r.BeginUI();
     m_Scene.DrawUI(r);
     DrawWeaponShop(r);

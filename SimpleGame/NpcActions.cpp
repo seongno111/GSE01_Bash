@@ -730,6 +730,25 @@ bool NpcWorld::PlayerCanTarget(const NpcActor& npc) const
            && (m_PK || Hostile(npc, PlayerEntity));
 }
 
+void NpcWorld::HitByPlayer(NpcActor& npc, float damage, float stun)
+{
+    if (!npc.EnabledInHierarchy() || !PlayerCanTarget(npc))
+    {
+        return;
+    }
+    Damage(PlayerEntity, npc.Entity(), damage);
+    if (stun > 0 && npc.vitals.alive)
+    {
+        if (npc.execution.phase != NpcPhase::Complete)
+        {
+            Finish(npc, false, "기절로 행동 중단");
+        }
+        npc.ResetAnimation();
+        npc.StunFor(stun);
+        m_Game.AddCombatText(npc.WorldX(), npc.WorldY() + .3, "기절", Gold);
+    }
+}
+
 bool NpcWorld::HitByPlayer(double x, double y, float damage, bool allowPK)
 {
     if (InsideSanctuary(m_Game.Player().WorldX(), m_Game.Player().WorldY()))

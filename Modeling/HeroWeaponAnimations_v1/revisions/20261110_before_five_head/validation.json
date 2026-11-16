@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-10",
+  "checks": {
+    "common_hero_meshes_nodes_lights_and_base_buffer_preserved": true,
+    "original_33_bone_names_and_hierarchy_preserved": true,
+    "inverse_bind_matrices_preserved": true,
+    "original_hero_meshes_and_weights_preserved": true,
+    "common_and_sword_actions_match_library": true,
+    "single_shared_walk_and_run": true,
+    "sword_two_turns_about_vertical_at_fixed_origin": true,
+    "all_49_actual_export_clips_reimported": true,
+    "visible_meshes_clear_floor_within_2mm": true,
+    "skill_contact_samples_exact_in_export": true
+  },
+  "meshes": 25,
+  "bones": 33,
+  "clips": 12,
+  "animation_revision": "20261110_dynamics_and_skills",
+  "full_validation": "../HeroWeaponAnimations_v1/validation.json"
+}

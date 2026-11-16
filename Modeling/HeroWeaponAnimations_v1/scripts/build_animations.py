@@ -4,18 +4,26 @@ from pathlib import Path
 from mathutils import Vector, Matrix, Quaternion
 
 BASE=Path(__file__).resolve().parents[2]
-OUT=Path(__file__).resolve().parents[1]
+PACKAGE=Path(__file__).resolve().parents[1]
+OUT=next((Path(a.split('=',1)[1]).resolve() for a in sys.argv if a.startswith('out=')),PACKAGE)
 OUT.mkdir(exist_ok=True)
 (OUT/'previews').mkdir(exist_ok=True)
 RAD=math.pi/180
 only_kind=next((a.split('=',1)[1] for a in sys.argv if a.startswith('only=')),None)
+sys.path.insert(0,str(PACKAGE/'scripts'))
+from dynamic_motion import direct_weapon, sharpen_weapon_keys, STANCE, segment_progress, retarget_pose
+from common_motion import bake_common_actions, blend, cape_floor_weights, raise_cape_hem
+from skill_motion import register_skills, skill_time, direct_skill, bow_mode, bow_arrow_visible
+from hero_model import reshape_hero, HEIGHT, HEAD_CHIN, HOOD_TOP
 source_paths=[BASE/'Hero_v1/hero_v1.blend',BASE/'Hero_v1/hero_rigged.glb',BASE/'HeroWeapons_v1/hero_weapons_v1.blend',BASE/'HeroWeapons_v1/weapon_catalog.json']
 source_hashes={str(p.relative_to(BASE)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}
-bpy.ops.wm.open_mainfile(filepath=str(source_paths[0]))
+baseline=PACKAGE/'revisions/20261110_before_dynamics/hero_v1.blend'
+bpy.ops.wm.open_mainfile(filepath=str(baseline if baseline.exists() else source_paths[0]))
 scene=bpy.context.scene
 rig=bpy.data.objects['RIG_HERO_HoodedLantern']
 hero=[o for o in bpy.data.objects if o.type=='MESH' and o.name.startswith('HERO_')]
-keep=set(hero+[rig])
+lantern_light=bpy.data.objects.get('LIGHT_HERO_Lantern')
+keep=set(hero+[rig]+([lantern_light] if lantern_light else []))
 for o in list(bpy.data.objects):
     if o not in keep: bpy.data.objects.remove(o,do_unlink=True)
 for c in bpy.data.collections: c.hide_render=False; c.hide_viewport=False
@@ -23,13 +31,22 @@ for o in keep: o.hide_render=False; o.hide_viewport=False; o.hide_set(False)
 old_actions={t.name:t.strips[0].action for t in rig.animation_data.nla_tracks}
 for t in list(rig.animation_data.nla_tracks): rig.animation_data.nla_tracks.remove(t)
 rig.animation_data.action=None
+for p in rig.pose.bones:
+    p.rotation_mode='QUATERNION'
+    p.matrix_basis=Matrix.Identity(4)
+bpy.context.view_layer.update()
+reshape_hero(rig,hero,lantern_light)
 rest={b.name:b.matrix_local.copy() for b in rig.data.bones}
+boots={side:[o.matrix_world@v.co for o in hero if o.name.startswith('HERO_FOOT_'+side.upper()+'_') for v in o.data.vertices] for side in ('l','r')}
+cape=next(o for o in hero if o.name.startswith('HERO_CAPE_'))
+hem_weights=cape_floor_weights(cape)
 for p in rig.pose.bones: p.rotation_mode='QUATERNION'; p.matrix_basis=Matrix.Identity(4)
 scene.render.fps=60
 
 wc=json.loads((BASE/'HeroWeapons_v1/weapon_catalog.json').read_text('utf-8'))
 weapon_by_kind={w['kind']:w for w in wc['weapons']}
 keys={k:weapon_by_kind[k]['weapon_key'] for k in weapon_by_kind}
+keys['longsword']='HERO_Longsword'
 with bpy.data.libraries.load(str(source_paths[2]),link=False) as (src,dst):
     dst.objects=[n for n in src.objects if (n.startswith(('WPN_','AMMO_')) and not n.endswith('.001'))]
 weapons={}
@@ -37,6 +54,7 @@ for o in dst.objects:
     if o: scene.collection.objects.link(o); o.hide_render=False; o.hide_viewport=False; o.hide_set(False); weapons[o.name]=o
 for o in weapons.values():
     if o.type=='MESH': o.data=o.data.copy()
+ground_geometry={kind:[o.matrix_local@v.co for o in weapons[keys[kind]].children if o.type=='MESH' for v in o.data.vertices] for kind in ('staff','warhammer')}
 
 def pose(rp=(-.34,-.18,1.04),rd=(0,-.12,1),lp=(.43,-.18,.85),ld=(0,0,1),yaw=0,pitch=0,crouch=.035,twist=0,roll=0,draw=0):
     return dict(rp=list(rp),rd=list(rd),lp=list(lp),ld=list(ld),yaw=yaw,pitch=pitch,crouch=crouch,twist=twist,roll=roll,draw=draw)
@@ -53,9 +71,17 @@ ready={
 def change(p,**kw): q={k:(v[:] if isinstance(v,list) else v) for k,v in p.items()}; q.update(kw); return q
 
 specs=[]
-def clip(kind,action,duration,poses,loop=False,events=(),description='',start='Ready',end='Ready'):
-    n='HERO_'+('Hammer' if kind=='warhammer' else kind.title())+'_'+action
-    specs.append(dict(name=n,weapon_kind=kind,weapon_key=keys[kind],duration_seconds=duration,fps=60,start_frame=1,end_frame=round(duration*60)+1,loop=loop,keyposes=poses,events=[dict(name=a,time_seconds=round(t*60)/60,frame=round(t*60)+1) for a,t in events],description=description,start_pose=start,end_pose=end,blend_in_seconds=.12,blend_out_seconds=.12,root_translation='in_place',root_yaw_degrees=0))
+def clip(kind,action,duration,poses,loop=False,events=(),description='',start='Ready',end='Ready',skill_label=None):
+    prefix={'warhammer':'Hammer','longsword':'Sword'}.get(kind,kind.title())
+    n='HERO_'+prefix+'_'+action
+    spec=dict(name=n,weapon_kind=kind,weapon_key=keys[kind],duration_seconds=duration,fps=60,start_frame=1,end_frame=round(duration*60)+1,loop=loop,keyposes=poses,events=[dict(name=a,time_seconds=t if skill_label else round(t*60)/60,frame=round(t*60)+1) for a,t in events],description=description,start_pose=start,end_pose=end,blend_in_seconds=.12,blend_out_seconds=.12,root_translation='in_place',root_yaw_degrees=0)
+    if skill_label:
+        spec.update(skill_label=skill_label,kind='weapon_skill',tags=['weapon_skill'])
+    if n=='HERO_Hammer_SkillGroundSlam':
+        spec['sample_divisions']=4
+    if kind=='longsword':
+        spec.update(root_yaw_degrees=720,start_pose='Idle',end_pose='Idle')
+    specs.append(spec)
 
 for k,p in ready.items(): clip(k,'Ready',2,[(0,p),(1,change(p,pitch=p['pitch']+1,crouch=p['crouch']+.005)),(2,p)],True,description='Weapon-specific breathing ready stance')
 p=ready['staff']
@@ -77,8 +103,8 @@ g=change(p,rp=(-.24,-.29,1.13),rd=(.22,-.12,1),yaw=-7,crouch=.065)
 clip('axe','Guard',2,[(0,g),(1,change(g,crouch=.071)),(2,g)],True,description='Axe haft and head raised',start='Guard',end='Guard')
 
 p=ready['warhammer']
-clip('warhammer','Smash',1.8,[(0,p),(.7,change(p,rp=(-.30,-.15,1.30),rd=(-.48,.12,.87),yaw=-15,crouch=.045,pitch=-4)),(1.0,change(p,rp=(-.23,-.25,.96),rd=(-.18,-.87,-.46),yaw=-10,crouch=.13,pitch=12)),(1.22,change(p,rp=(-.23,-.28,.93),rd=(-.18,-.85,-.49),yaw=-12,crouch=.135,pitch=13)),(1.8,p)],events=[('melee_contact',1.0)],description='Two-handed overhead smash; opposed cross-palm grip and strike-aligned hammer face')
-clip('warhammer','Uppercut',1.65,[(0,p),(.55,change(p,rp=(-.25,-.19,.87),rd=(-.45,-.78,-.43),yaw=5,crouch=.14,pitch=8)),(.85,change(p,rp=(-.24,-.28,1.10),rd=(-.35,-.70,.62),yaw=-12,crouch=.06,pitch=-3)),(1.08,change(p,rp=(-.27,-.21,1.21),rd=(-.5,-.4,.76),yaw=-18)),(1.65,p)],events=[('melee_contact',.85)],description='Rising hammer strike with neutral wrists and fixed support-hand spacing')
+clip('warhammer','Smash',1.8,[(0,p),(.7,change(p,rp=(-.43,-.16,1.27),rd=(-.58,.07,.81),yaw=-15,crouch=.045,pitch=-4)),(1.0,change(p,rp=(-.40,-.28,.96),rd=(-.58,-.63,-.52),yaw=-10,crouch=.13,pitch=12)),(1.22,change(p,rp=(-.40,-.29,.92),rd=(-.57,-.63,-.55),yaw=-12,crouch=.135,pitch=13)),(1.8,p)],events=[('melee_contact',1.0)],description='Two-handed diagonal smash; opposed cross-palm grip and strike-aligned hammer face')
+clip('warhammer','Uppercut',1.65,[(0,p),(.55,change(p,rp=(-.43,-.24,.92),rd=(-.62,-.62,-.48),yaw=5,crouch=.14,pitch=8)),(.85,change(p,rp=(-.40,-.30,1.11),rd=(-.60,-.53,.60),yaw=-12,crouch=.06,pitch=-3)),(1.08,change(p,rp=(-.43,-.22,1.22),rd=(-.63,-.29,.72),yaw=-18)),(1.65,p)],events=[('melee_contact',.85)],description='Rising hammer strike with neutral wrists and fixed support-hand spacing')
 g=change(p,rp=(-.22,-.28,1.12),rd=(-.68,-.22,.70),yaw=-15,crouch=.075)
 clip('warhammer','Guard',2,[(0,g),(1,change(g,crouch=.081)),(2,g)],True,description='Two hands brace hammer vertically',start='Guard',end='Guard')
 
@@ -104,12 +130,15 @@ recoil=change(aim,draw=.1,rp=(.03,.015,1.20),yaw=-63)
 clip('bow','Release',.55,[(0,aim),(.10,aim),(.15,recoil),(.3,change(recoil,draw=0)),(.55,p)],events=[('projectile_release',.10),('arrow_hide',.10)],description='Release string, small recoil and lower; projectile motion belongs to game',start='Aim',end='Ready')
 clip('bow','Lower',.65,[(0,aim),(.35,nock),(.65,p)],events=[('arrow_hide',.5)],description='Controlled undraw and lower without firing',start='Aim',end='Ready')
 
-def interpolate(keys,t):
+def interpolate(keys,t,spec=None):
     for i in range(len(keys)-1):
         ta,a=keys[i];tb,b=keys[i+1]
         if t<=tb+1e-6:
-            u=max(0,min(1,(t-ta)/(tb-ta)));u=u*u*(3-2*u)
-            return {k:([x+(y-x)*u for x,y in zip(a[k],b[k])] if isinstance(a[k],(tuple,list)) else a[k]+(b[k]-a[k])*u) for k in a}
+            u=segment_progress(spec,keys,i,(t-ta)/(tb-ta))
+            result={k:blend(a[k],b[k],u) for k in a}
+            for axis in ('rd','ld'):
+                result[axis]=Vector(a[axis]).normalized().slerp(Vector(b[axis]).normalized(),u)
+            return result
     return keys[-1][1]
 
 def basis(direction,roll=0):
@@ -126,36 +155,34 @@ def align(name,a,b):
     set_world(name,transform(a,q))
 
 reach_stats={}
-def solve_chain(a_name,b_name,target,pole,forearm_cross_axis=None):
+def solve_chain(a_name,b_name,target,pole,arm_side=None):
     a=rig.pose.bones[a_name].head.copy(); target=Vector(target)
     l1=rig.data.bones[a_name].length;l2=rig.data.bones[b_name].length
     d=target-a;length=d.length;axis=d.normalized()
     dist=max(abs(l1-l2)+.002,min(length,l1+l2-.002))
     actual=a+axis*dist
     pole=Vector(pole);bend=pole-a-axis*(pole-a).dot(axis)
+    if arm_side:
+        sign=1 if arm_side=='l' else -1
+        bend=Vector((0,-1,0)).rotation_difference(axis)@Vector((sign*.62,0,-.78))
     if bend.length<.001: bend=Vector((0,-1,0))-axis*axis.dot(Vector((0,-1,0)))
     bend.normalize();along=(l1*l1-l2*l2+dist*dist)/(2*dist)
     height=math.sqrt(max(0,l1*l1-along*along))
-    if forearm_cross_axis is not None and height>.0001:
-        shaft=Vector(forearm_cross_axis).normalized();projected=shaft-axis*shaft.dot(axis)
-        if projected.length>.0001:
-            cosine=max(-1,min(1,axis.dot(shaft)*(dist-along)/(height*projected.length)))
-            u=projected.normalized();v=axis.cross(u).normalized();sine=math.sqrt(max(0,1-cosine*cosine))
-            choices=[u*cosine+v*sine,u*cosine-v*sine]
-            bend=max(choices,key=lambda b:b.dot(pole-a))
     elbow=a+axis*along+bend*height
     align(a_name,a,elbow);align(b_name,elbow,actual)
     return actual-target
 
-def arm(side,grip,orientation):
+def arm(side,grip,orientation,front_clearance=0):
     wn='weapon_'+side;hn='hand_'+side
     desired=transform(grip,orientation @ rest[wn].to_quaternion())
     h=desired @ rest[wn].inverted() @ rest[hn]
     # Pole puts elbow beside the rib cage, away from face and weapon path.
     shoulder=rig.pose.bones['upper_arm_'+side].head.copy()
+    clearance=max(0,h.translation.y-shoulder.y+front_clearance) if front_clearance else 0
+    h.translation.y-=clearance
     sign=1 if side=='l' else -1
     pole=shoulder+Vector((sign*.32,.16,-.20))
-    shift=solve_chain('upper_arm_'+side,'forearm_'+side,h.translation,pole)
+    shift=solve_chain('upper_arm_'+side,'forearm_'+side,h.translation,pole,arm_side=side)
     h.translation+=shift
     set_world(hn,h)
     # Keep weapon node rigidly attached with its original local bind transform.
@@ -199,9 +226,8 @@ def hammer_arm(side,grip,q):
     a=grip-shaft*(sign*offset.x)-shoulder;projected=a-shaft*a.dot(shaft)
     cosine=(a.length_squared+radius*radius-l1*l1)/(2*radius*projected.length)
     cosine=max(-1,min(1,cosine));u=projected.normalized();v=shaft.cross(u)
-    sine=math.sqrt(max(0,1-cosine*cosine));pole=shoulder+Vector(((1 if side=='l' else -1)*.15,.04,-.38))
-    choices=[u*cosine+v*sine,u*cosine-v*sine]
-    across=min(choices,key=lambda b:(grip-shaft*(sign*offset.x)-radius*b-pole).length_squared)
+    sine=math.sqrt(max(0,1-cosine*cosine))
+    across=u*cosine+sign*v*sine
     forward=(length*across-cross*shaft.cross(across))/radius
     hq=hammer_hand_frame(side,grip,q,forward)
     wrist=grip-hq@offset;elbow=wrist-forward*l2
@@ -210,12 +236,19 @@ def hammer_arm(side,grip,q):
     set_world(wn,transform(grip,q@rest[wn].to_quaternion()))
     return grip,abs((elbow-shoulder).length-l1)
 
-def hammer_pair(grip,q):
+def hammer_pair(grip,q,floor=None,lock_floor=False):
     g=Vector(grip);shaft=q@Vector((0,0,1))
+    forward=q@Vector((1,0,0))
     # Jointly fit both grips into the neutral-wrist reach region. Its meridian
     # is a circle (upper-arm radius) around the forearm+fist offset.
-    for _ in range(40):
-        for side,pos in [('r',g),('l',g+shaft*HAMMER_SUPPORT)]:
+    for _ in range(160 if floor is not None else 64):
+        changed=False
+        ahead=min((g-rig.pose.bones['upper_arm_'+side].head).dot(forward) for side in ('r','l'))
+        if ahead<.115:
+            g+=forward*(.115-ahead)
+            changed=True
+        for side in ('r','l'):
+            pos=g if side=='r' else g+shaft*HAMMER_SUPPORT
             sign=1 if side=='r' else -1
             offset=(rest['hand_'+side].inverted()@rest['weapon_'+side]).translation
             l1=rig.data.bones['upper_arm_'+side].length-.0005;l2=rig.data.bones['forearm_'+side].length
@@ -224,25 +257,66 @@ def hammer_pair(grip,q):
             z=a.dot(shaft);perp=a-shaft*z;r=perp.length;distance=math.hypot(r-radius,z)
             if distance>l1:
                 ratio=l1/distance;g+=perp.normalized()*((r-radius)*(ratio-1))+shaft*(z*(ratio-1))
+                changed=True
+            elif z*z+(r+radius)**2<l1*l1:
+                g+=perp.normalized()*(math.sqrt(l1*l1-z*z)-radius-r)
+                changed=True
+        if floor is not None and (g.z<floor or lock_floor):
+            changed |= abs(g.z-floor)>1e-7
+            g.z=floor
+        if not changed:break
     right,er=hammer_arm('r',g,q)
     left,el=hammer_arm('l',right+q@Vector((0,0,HAMMER_SUPPORT)),q)
     return max(er,el)
 
 def animate_pose(p,kind,t=0):
+    p=retarget_pose(p,kind)
     for b in rig.pose.bones: b.matrix_basis=Matrix.Identity(4)
-    hip=rest['hips'].copy();hip.translation.z-=p['crouch']
-    hip=Matrix.Translation(hip.translation) @ Quaternion((0,0,1),p['twist']*RAD).to_matrix().to_4x4() @ rest['hips'].to_3x3().to_4x4()
+    hip=rest['hips'].translation.copy()
+    dx,dy=p.get('shift',(0,0));hip+=Vector((dx,dy,-p['crouch']))
+    hip_rotation=Quaternion((0,0,1),p['twist']*RAD) @ Quaternion((0,1,0),p.get('hip_roll',0)*RAD) @ rest['hips'].to_quaternion()
+    hip=transform(hip,hip_rotation)
     set_world('hips',hip)
+    targets={}
+    lower=0
+    for s,foot in zip(('l','r'),p.get('feet',((.14,0,0,0),(-.14,0,0,0)))):
+        x,y,lift,rock=foot
+        base=rig.data.bones['foot_'+s].head_local
+        rotation=Quaternion((1,0,0),rock*RAD)
+        depth=min((rotation@(v-base)).z for v in boots[s])
+        target=Vector((x,y,lift-depth+.001))
+        thigh=rig.pose.bones['thigh_'+s].head
+        reach=rig.data.bones['thigh_'+s].length+rig.data.bones['shin_'+s].length-.004
+        planar=(thigh.x-x)**2+(thigh.y-y)**2
+        lower=max(lower,thigh.z-target.z-math.sqrt(max(.02,reach**2-planar)))
+        targets[s]=(target,rotation)
+    if lower:
+        hip.translation.z-=lower
+        set_world('hips',hip)
     for n,f in [('spine',.35),('chest',.65)]:
         b=rig.pose.bones[n];b.rotation_quaternion=Quaternion((0,1,0),p['yaw']*f*RAD) @ Quaternion((1,0,0),p['pitch']*f*RAD);update()
-    h=rig.pose.bones['head'].matrix.copy();h=transform(h.translation,Quaternion((1,0,0),2*RAD) @ rest['head'].to_quaternion());set_world('head',h)
-    for s in ['l','r']:
-        target=rig.data.bones['foot_'+s].head_local.copy()
+    h=rig.pose.bones['head'].matrix.copy()
+    look=Quaternion((0,0,1),p.get('look',0)*RAD) @ Quaternion((1,0,0),(2+p.get('head_pitch',0))*RAD)
+    set_world('head',transform(h.translation,look @ rest['head'].to_quaternion()))
+    for s,(target,rotation) in targets.items():
         shift=solve_chain('thigh_'+s,'shin_'+s,target,(target.x,-.7,.4))
-        set_world('foot_'+s,transform(target+shift,rest['foot_'+s].to_quaternion()))
+        set_world('foot_'+s,transform(target+shift,rotation @ rest['foot_'+s].to_quaternion()))
     q=basis(p['rd'],p['roll'])
+    if kind=='longsword':
+        q=q@sword_basis
+    grip=Vector(p['rp'])
     if kind=='warhammer':
-        err=hammer_pair(p['rp'],hammer_frame(p['rd']));err2=0
+        q=hammer_frame(p['rd'])
+    contact_z=None
+    ground_weight=p.get('ground',0)
+    if 'ground' in p and kind in ground_geometry:
+        contact_z=.001-min((q@v).z for v in ground_geometry[kind])
+        if kind=='warhammer':
+            grip.z=max(grip.z,contact_z)
+        if ground_weight:
+            grip.z=blend(grip.z,contact_z,ground_weight)
+    if kind=='warhammer':
+        err=hammer_pair(grip,q,contact_z,ground_weight>.999);err2=0
     elif kind=='bow':
         bq=basis(p['ld']);bg,err=arm('l',p['lp'],bq)
         nock=bg+bq@Vector((0,.20+.29*p['draw'],0))
@@ -250,6 +324,8 @@ def animate_pose(p,kind,t=0):
             if t[0]=='nock':
                 u=max(0,min(1,t[1]/.4));u=u*u*(3-2*u)
                 nock=Vector(p['rp']).lerp(nock,u)
+            elif t[0]=='skill_nock':
+                nock=Vector(p['rp']).lerp(nock,t[1])
             else:
                 u=max(0,min(1,(t[1]-.35)/.3));u=u*u*(3-2*u)
                 nock=nock.lerp(Vector(p['rp']),u)
@@ -257,23 +333,42 @@ def animate_pose(p,kind,t=0):
         if t=='release_recoil': nock=Vector(p['rp'])
         _,err2=arm('r',nock,bq)
     else:
-        actual,err=arm('r',p['rp'],q)
+        actual,err=arm('r',grip,q,front_clearance=0 if kind=='spear' else .095)
         if kind in ('spear','warhammer'):
             support=.32 if kind=='spear' else -.22
-            fitted=paired_grip(p['rp'],q,(0,0,support))
+            fitted=paired_grip(grip,q,(0,0,support))
             actual,err=arm('r',fitted,q)
             _,err2=arm('l',actual+q@Vector((0,0,support)),q)
         else:
-            _,err2=arm('l',p['lp'],basis(p['ld']))
+            _,err2=arm('l',p['lp'],basis(p['ld']),front_clearance=.075)
             # Keep the lamp hanging vertically, with subtle keyed pendulum motion.
-            for n in ['lamp_pivot','lamp_body']:
-                m=rig.pose.bones[n].matrix.copy();set_world(n,transform(m.translation,rest[n].to_quaternion()))
-    for n,a in [('skirt_back',-p['pitch']*.3),('skirt_l',p['yaw']*.04),('skirt_r',-p['yaw']*.04)]:
-        rig.pose.bones[n].rotation_quaternion=Quaternion((1,0,0),a*RAD)
+            n='lamp_pivot'
+            m=rig.pose.bones[n].matrix.copy()
+            swing=Quaternion((1,0,0),p.get('lamp_swing',0)*RAD)
+            set_world(n,transform(m.translation,swing@rest[n].to_quaternion()))
+    flare,drift=p.get('cape',(0,0))
+    for n,weight in [('skirt_back',1),('skirt_l',.78),('skirt_r',.78)]:
+        pb=rig.pose.bones[n]
+        wr=Quaternion((1,0,0),(flare*weight-p['pitch']*.18)*RAD) @ Quaternion((0,0,1),drift*RAD)
+        set_world(n,transform(pb.head,wr@pb.matrix.to_quaternion()))
+    if p.get('spin',0):
+        root=rest['root']
+        set_world('root',transform(root.translation,Quaternion((0,0,1),p['spin'])@root.to_quaternion()))
     update()
+    if p['crouch']>.15 or kind=='warhammer' and p.get('ground',0):
+        raise_cape_hem(rig,cape,hem_weights,set_world)
     return max(err,err2)
 
 new_actions={};metrics={}
+blade=next(o for o in hero if o.name.startswith('HERO_WEAPON_R_00'))
+grip=rig.data.bones['weapon_r'].head_local
+sword_tip=max((blade.matrix_world@v.co for v in blade.data.vertices),key=lambda v:(v-grip).length_squared)
+sword_basis=(sword_tip-grip).normalized().rotation_difference(Vector((0,0,1)))
+common_source=[s for s in json.loads((BASE/'Hero_v1/hero_catalog.json').read_text('utf-8'))['clips'] if s['kind']!='weapon_skill']
+old_actions=bake_common_actions(rig,scene,old_actions,common_source,hero,pose,animate_pose,rest,set_world,(sword_tip-grip).normalized())
+for spec in specs:
+    sharpen_weapon_keys(spec)
+register_skills(clip,ready,change,pose)
 existing_actions={}
 if only_kind:
     metrics=json.loads((OUT/'authoring_metrics.json').read_text('utf-8'))
@@ -288,13 +383,24 @@ for spec in specs:
         new_actions[spec['name']]=existing_actions[spec['name']];continue
     name=spec['name']; act=bpy.data.actions.new(name);act.use_fake_user=True;rig.animation_data.action=act
     max_reach=0;first=None;last_q={}
-    for f in range(1,spec['end_frame']+1):
-        scene.frame_set(f);t=(f-1)/60;p=interpolate(spec['keyposes'],t)
+    divisions=spec.get('sample_divisions',1)
+    last_frame=1+(spec['end_frame']-1)*divisions
+    for f in range(1,last_frame+1):
+        scene.frame_set(f)
+        skill='skill_label' in spec
+        t=skill_time(spec,1+(f-1)/divisions) if skill else (f-1)/60
+        p=interpolate(spec['keyposes'],t,spec)
         mode=0
         if name=='HERO_Bow_Nock': mode=('nock',t)
         if name=='HERO_Bow_Ready': mode='nock_early'
         if name=='HERO_Bow_Release' and t>.10: mode='release_recoil'
         if name=='HERO_Bow_Lower': mode=('lower',t)
+        if skill:
+            p=direct_skill(spec,p,t)
+            skill_mode=bow_mode(spec,p,t)
+            if skill_mode is not None:mode=skill_mode
+        else:
+            p=direct_weapon(spec,p,t)
         max_reach=max(max_reach,animate_pose(p,spec['weapon_kind'],mode))
         for b in rig.pose.bones:
             q=b.rotation_quaternion.copy()
@@ -368,7 +474,7 @@ for o in [bowbody,bowstring]:
     for s in bow_specs:
         datablock=o.data.shape_keys;datablock.animation_data_create();a=bpy.data.actions.new(s['name']+'__'+o.name);datablock.animation_data.action=a
         for f in range(1,s['end_frame']+1):
-            t=(f-1)/60;v=interpolate(s['keyposes'],t)['draw'];datablock.key_blocks['Draw'].value=v;datablock.key_blocks['Draw'].keyframe_insert('value',frame=f)
+            t=(f-1)/60;v=interpolate(s['keyposes'],t,s)['draw'];datablock.key_blocks['Draw'].value=v;datablock.key_blocks['Draw'].keyframe_insert('value',frame=f)
         acts[s['name']]=a
     tracks(o.data.shape_keys,acts)
 arrow_actions={}
@@ -376,7 +482,7 @@ for s in bow_specs:
     ad=arrow.data.shape_keys;ad.animation_data_create();act=bpy.data.actions.new(s['name']+'__ArrowVisibility');ad.animation_data.action=act
     for f in range(1,s['end_frame']+1):
         t=(f-1)/60;n=s['name']
-        visible=(n in ('HERO_Bow_Draw','HERO_Bow_Aim') or (n=='HERO_Bow_Nock' and t>=.25) or (n=='HERO_Bow_Release' and t<.1) or (n=='HERO_Bow_Lower' and t<.5))
+        visible=bow_arrow_visible(n,t)
         hide_arrow.value=0 if visible else 1;hide_arrow.keyframe_insert('value',frame=f)
     for la in act.layers:
         for st in la.strips:
@@ -392,17 +498,35 @@ def select_only(obs):
     bpy.context.view_layer.objects.active=rig
 def export(path,obs):
     select_only(obs)
-    bpy.ops.export_scene.gltf(filepath=str(path),export_format='GLB',use_selection=True,export_animations=True,export_animation_mode='NLA_TRACKS',export_frame_range=False,export_force_sampling=True,export_optimize_animation_size=False,export_anim_slide_to_zero=True,export_yup=True,export_skins=True,export_morph=True,export_morph_animation=True,export_extras=True,export_lights=False)
+    bpy.ops.export_scene.gltf(filepath=str(path),export_format='GLB',use_selection=True,export_animations=True,export_animation_mode='NLA_TRACKS',export_frame_range=False,export_force_sampling=True,export_optimize_animation_size=False,export_anim_slide_to_zero=True,export_yup=True,export_skins=True,export_morph=True,export_morph_animation=True,export_extras=True,export_lights=True)
 
 tracks(rig,all_actions)
-export(OUT/'hero_weapon_animation_library.glb',[rig]+hero)
+base_objects=[rig]+hero+([lantern_light] if lantern_light else [])
+export(OUT/'hero_weapon_animation_library.glb',base_objects)
+timed_exports=[OUT/'hero_weapon_animation_library.glb']
 for kind in ready:
     if only_kind and kind!=only_kind:continue
     acts={n:a for n,a in new_actions.items() if next(s['weapon_kind'] for s in specs if s['name']==n)==kind}
     tracks(rig,acts)
     parts=[o for o in hero if not o.name.startswith('HERO_WEAPON_R_') and (kind not in ('bow','spear','warhammer') or not o.name.startswith('HERO_WEAPON_L_'))]
     selected=[rig]+parts+equipment[kind]+([arrow] if kind=='bow' else [])
-    export(OUT/('hero_'+kind+'_actions.glb'),selected)
+    if lantern_light and kind not in ('bow','spear','warhammer'):
+        selected.append(lantern_light)
+    path=OUT/('hero_'+kind+'_actions.glb')
+    export(path,selected)
+    timed_exports.append(path)
+
+for spec in specs:
+    divisions=spec.get('sample_divisions',1)
+    if divisions==1 or only_kind and spec['weapon_kind']!=only_kind:continue
+    action=new_actions[spec['name']]
+    for layer in action.layers:
+        for strip in layer.strips:
+            for bag in strip.channelbags:
+                for curve in bag.fcurves:
+                    for key in curve.keyframe_points:
+                        key.co.x=1+(key.co.x-1)/divisions
+                    curve.update()
 
 tracks(rig,all_actions)
 for group in equipment.values():
@@ -414,13 +538,46 @@ scene.frame_start=1;scene.frame_end=121
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'hero_weapon_animations_v1.blend'))
 if only_kind:import_source.unlink()
 
-catalog=dict(schema_version=1,date='2026-11-05',asset_id='HERO_WeaponActions_v1',rig=rig.name,bones=list(rest),hero_source_hashes=source_hashes,source_rig_unchanged=True,animation_sample_fps=60,axes=dict(blender='Z up, -Y front',gltf='Y up, +Z front'),library_file='hero_weapon_animation_library.glb',original_clips=list(old_actions),new_clip_count=len(specs),new_clips=[{k:v for k,v in s.items() if k!='keyposes'} for s in specs],locomotion=dict(walk='HERO_Walk',run='HERO_Run',direction='actor rotation in game',weapon_locomotion_duplicates=False,layering='For moving with two-handed equipment, use shared Walk/Run lower-body and weapon Ready upper-body mask; no runtime blending implemented.'),upper_body_mask=['spine','chest','neck','head','jaw','clavicle_l','upper_arm_l','forearm_l','hand_l','weapon_l','lamp_pivot','lamp_body','clavicle_r','upper_arm_r','forearm_r','hand_r','weapon_r'],equipment=[],runtime_integration=False)
+clip_metadata=[{k:v for k,v in s.items() if k!='keyposes'} for s in specs]
+common_skill=[s for s in clip_metadata if s['weapon_kind']=='longsword']
+equipped_clips=[s for s in clip_metadata if s['weapon_kind']!='longsword']
+catalog=dict(schema_version=1,date='2026-11-10',animation_revision='20261110_five_head_hero',asset_id='HERO_WeaponActions_v1',rig=rig.name,bones=list(rest),hero_source_hashes=source_hashes,bind_revision='five_head_hero',animation_sample_fps=60,axes=dict(blender='Z up, -Y front',gltf='Y up, +Z front'),library_file='hero_weapon_animation_library.glb',original_clips=list(old_actions),common_clips=common_source+common_skill,new_clip_count=len(equipped_clips),new_clips=equipped_clips,skills=[s for s in clip_metadata if 'skill_label' in s],locomotion=dict(walk='HERO_Walk',run='HERO_Run',direction='actor rotation in game',weapon_locomotion_duplicates=False,layering='For moving with two-handed equipment, use shared Walk/Run lower-body and weapon Ready upper-body mask.'),upper_body_mask=['spine','chest','neck','head','jaw','clavicle_l','upper_arm_l','forearm_l','hand_l','weapon_l','lamp_pivot','lamp_body','clavicle_r','upper_arm_r','forearm_r','hand_r','weapon_r'],equipment=[])
 for kind in ready:
     catalog['equipment'].append(dict(weapon_kind=kind,weapon_key=keys[kind],file='hero_'+kind+'_actions.glb',clip_names=[s['name'] for s in specs if s['weapon_kind']==kind],hand='left' if kind=='bow' else 'right',two_handed=kind in ('bow','warhammer','spear'),hide_original_meshes=[o.name for o in hero if o.name.startswith('HERO_WEAPON_R_') or (kind in ('bow','warhammer','spear') and o.name.startswith('HERO_WEAPON_L_'))],hide_lamp_light=kind in ('bow','warhammer','spear'),weapon_parts=[o.name for o in equipment[kind]],shared_bone_bind='Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.',bow_morph='Draw 0..1, baked per action on Body and String' if kind=='bow' else None,arrow_mesh=arrow.name if kind=='bow' else None))
     if kind=='warhammer':catalog['equipment'][-1].update(grip_revision='20261105_cross_palm',support_offset_weapon_local_z_m=HAMMER_SUPPORT,grip_description='Opposed cross-palm grips, neutral wrists; hammer face aligned with swing plane')
+    catalog['equipment'][-1]['ready_foot_anchors_blender_xy']=[[.155*.90,-STANCE[kind][0]*1.23],[-.155*.90,STANCE[kind][1]*1.23]]
+    catalog['equipment'][-1]['shared_bone_bind']='Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.'
+
+common_names=list(old_actions)+[s['name'] for s in common_skill]
+tracks(rig,{name:all_actions[name] for name in common_names})
+for obj in list(bpy.data.objects):
+    if obj not in keep:bpy.data.objects.remove(obj,do_unlink=True)
+for name,action in new_actions.items():
+    if name not in common_names:bpy.data.actions.remove(action)
+common_path=OUT/'hero_rigged.glb'
+export(common_path,base_objects)
+timed_exports.append(common_path)
+rig.animation_data.action=old_actions['HERO_Idle']
+scene.frame_set(1)
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'hero_v1.blend'))
+hero_metadata=json.loads((BASE/'Hero_v1/hero_catalog.json').read_text('utf-8'))
+hero_metadata.update(height_without_hood_m=HEIGHT,hood_height_m=HOOD_TOP,
+                     head_height_m=HEIGHT-HEAD_CHIN,body_to_head_ratio=HEIGHT/(HEIGHT-HEAD_CHIN),
+                     style='five-head tailored dark fantasy',animation_revision=catalog['animation_revision'],
+                     rig_compatibility='33 original bone names and hierarchy, revised bind and skin',
+                     clips=catalog['common_clips'])
+hero_metadata['bones']=[dict(name=b.name,parent=b.parent.name if b.parent else None,
+                             head_z_up=list(b.head_local),tail_z_up=list(b.tail_local)) for b in rig.data.bones]
+for part in hero_metadata['parts']:
+    obj=bpy.data.objects[part['mesh']]
+    obj.data.calc_loop_triangles()
+    part.update(vertices=len(obj.data.vertices),triangles=len(obj.data.loop_triangles),
+                binding='tailored_five_head_bind')
+(OUT/'hero_catalog.json').write_text(json.dumps(hero_metadata,ensure_ascii=False,indent=2),encoding='utf-8')
 (OUT/'animation_catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2),encoding='utf-8')
 (OUT/'authoring_metrics.json').write_text(json.dumps(metrics,indent=2),encoding='utf-8')
 (OUT/'authoring_keyposes.json').write_text(json.dumps(specs,indent=2),encoding='utf-8')
 import runpy
-if not only_kind or only_kind=='bow':runpy.run_path(str(OUT/'scripts/bake_bow_channels.py'))
-print('DELIVERED',len(specs),'new actions',flush=True)
+if not only_kind or only_kind=='bow':runpy.run_path(str(PACKAGE/'scripts/bake_bow_channels.py'),init_globals={'OUTPUT_DIR':OUT})
+runpy.run_path(str(PACKAGE/'scripts/exact_skill_times.py'),init_globals={'EXPORTS':timed_exports,'SKILLS':catalog['skills']})
+print('DELIVERED',len(all_actions),'hero actions',flush=True)

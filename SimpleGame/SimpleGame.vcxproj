@@ -169,6 +169,9 @@
     <ClInclude Include="ModelAsset.h" />
     <ClInclude Include="ModelLibrary.h" />
     <ClInclude Include="HeroWeapons.h" />
+    <ClInclude Include="ProgressSave.h" />
+    <ClInclude Include="SaveData.h" />
+    <ClInclude Include="SaveTypes.h" />
     <ClInclude Include="WorldTerrain.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="FrameProfiler.h" />
@@ -199,6 +202,10 @@
     <ClCompile Include="ModelAnimation.cpp" />
     <ClCompile Include="ModelLibrary.cpp" />
     <ClCompile Include="ModelHeroWeapons.cpp" />
+    <ClCompile Include="WeaponSkills.cpp" />
+    <ClCompile Include="ProgressSave.cpp" />
+    <ClCompile Include="SaveData.cpp" />
+    <ClCompile Include="NpcSave.cpp" />
     <ClCompile Include="WeaponShop.cpp" />
     <ClCompile Include="ModelVillageBuildings.cpp" />
     <ClCompile Include="ModelWorldChunks.cpp" />

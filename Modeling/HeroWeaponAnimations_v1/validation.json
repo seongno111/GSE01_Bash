@@ -1,37 +1,60 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-10",
   "all_checks_passed": true,
   "checks": {
-    "source_files_unchanged": true,
+    "25_original_hero_part_names_retained": true,
+    "common_and_library_keep_lantern_light": true,
+    "five_head_body_ratio": true,
+    "moderate_polygon_budget": true,
     "original_33_bone_names_and_hierarchy_preserved": true,
-    "inverse_bind_matrices_preserved": true,
-    "original_hero_meshes_and_weights_preserved": true,
-    "exactly_11_original_plus_30_new_clips": true,
+    "common_and_library_share_revised_bind": true,
+    "bind_updated_for_reproportioned_limbs": true,
+    "weapon_socket_rest_axes_match_previous_mounts": true,
+    "common_and_library_use_same_tailored_meshes": true,
+    "tailored_vertices_have_normalized_weights": true,
+    "exactly_41_revised_actions_and_8_skills": true,
     "single_shared_walk_and_run": true,
-    "original_11_animation_poses_preserved": true,
-    "eight_glbs_readable": true,
+    "common_and_sword_actions_match_library": true,
+    "nine_glbs_readable": true,
     "equipped_glbs_match_original_skin_and_expected_parts": true,
-    "all_30_clips_have_full_33_bone_channels": true,
-    "all_30_clip_durations_match_catalog": true,
-    "all_30_clip_values_finite": true,
-    "root_translation_and_yaw_static": true,
+    "equipped_clips_have_full_33_bone_channels": true,
+    "equipped_clip_durations_match_catalog": true,
+    "equipped_clip_values_finite": true,
+    "equipped_root_translation_and_yaw_static": true,
     "loop_endpoints_match": true,
     "event_times_valid": true,
     "bow_string_limb_and_arrow_morph_channels": true,
-    "all_30_actual_export_clips_reimported": true,
+    "all_49_actual_export_clips_reimported": true,
     "boot_floor_and_foot_lock_within_1mm": true,
-    "two_handed_grips_within_1mm": true,
+    "visible_meshes_clear_floor_within_2mm": true,
+    "limb_connections_within_1mm": true,
+    "hammer_neutral_wrist_and_continuous_elbows": true,
+    "all_clips_keep_root_in_place": true,
+    "two_handed_grips_within_1mm_on_keys_and_5mm_between_keys": true,
     "bow_draw_hand_matches_animated_nock_within_1mm": true,
-    "bow_transitions_no_single_frame_hand_jump_over_5cm": true,
+    "bow_transitions_no_single_frame_hand_jump_over_6cm": true,
     "reimported_loops_match": true,
     "attack_ready_and_bow_chain_endpoints_match": true,
-    "other_37_library_clips_preserved": true,
-    "other_six_equipped_glbs_byte_identical": true
+    "all_49_actions_retargeted_from_previous_delivery": true,
+    "original_clip_timing_loop_and_events_preserved": true,
+    "skill_metadata_matches_specification": true,
+    "skill_contact_samples_exact_in_export": true,
+    "sword_two_turns_about_vertical_at_fixed_origin": true,
+    "bow_skill_string_and_arrow_release_at_055": true,
+    "staff_and_hammer_ground_contacts_within_8mm": true,
+    "strike_motion_faster_than_final_settle": true
   },
   "metrics": {
+    "head_height_m": 0.3650001287460327,
+    "height_without_hood_m": 1.840000033378601,
+    "body_to_head_ratio": 5.041094203719786,
+    "hood_height_m": 1.9311412572860718,
+    "triangles_before": 1849,
+    "triangles_after": 6221,
     "inverse_bind_max_error": 0.0,
+    "weapon_socket_rest_axis_max_change": 5.029141334489395e-07,
     "hero_attribute_max_error": 0,
-    "common_clip_sample_error": 3.406226356528208e-08,
+    "common_clip_sample_error": 0,
     "bow_morph_ranges": {
       "HERO_Bow_Ready": {
         "AMMO_Arrow_00_Iron__Body": {
@@ -152,15 +175,128 @@
           "minimum": 0.0,
           "maximum": 1.0
         }
+      },
+      "HERO_Bow_SkillArrowFan": {
+        "AMMO_Arrow_00_Iron__Body": {
+          "first": 1.0,
+          "last": 1.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__Body": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "WPN_Bow_00_ThornRecurve__String": {
+          "first": 0.0,
+          "last": 0.0,
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
       }
     },
-    "minimum_boot_z_m": -2.474021130183246e-07,
-    "maximum_foot_anchor_deviation_m": 3.4582674760812405e-07,
-    "maximum_support_grip_gap_m": 1.2798527456437931e-06,
-    "maximum_bow_draw_hand_to_nock_m": 9.79269633608531e-07,
-    "maximum_bow_hand_step_per_60fps_frame_m": 0.04904948305898009,
-    "attack_and_bow_transition_pose_error": 0,
-    "unchanged_37_clip_sample_error": 5.551115123125783e-16
+    "minimum_boot_z_m": -0.0001497291959822178,
+    "minimum_visible_mesh_z_m": -0.0001497291959822178,
+    "maximum_chain_gap_m": 5.697745959484361e-06,
+    "maximum_hammer_wrist_bend_degrees": 0,
+    "maximum_elbow_step_m": 0.14195145328071224,
+    "maximum_hammer_elbow_step_m": 0.12456471773773801,
+    "maximum_foot_anchor_deviation_m": 0.0007405811352556011,
+    "maximum_support_grip_gap_m": 0.004817604002417851,
+    "maximum_bow_draw_hand_to_nock_m": 1.4108230634405537e-06,
+    "maximum_bow_hand_step_per_60fps_frame_m": 0.05923781676213293,
+    "maximum_baked_support_grip_gap_m": 1.5827971689398549e-06,
+    "attack_and_bow_transition_pose_error": 2.980232238769531e-07,
+    "per_clip_pose_change": {
+      "HERO_Idle": 0.20697999000549316,
+      "HERO_Walk": 0.20845712939008576,
+      "HERO_Run": 0.20622877661946803,
+      "HERO_MoveStart": 0.20697999000549316,
+      "HERO_MoveStop": 0.20697999000549316,
+      "HERO_AttackLongsword": 0.9999478758075635,
+      "HERO_Guard": 0.18726998567581177,
+      "HERO_Hit": 0.21051761933735436,
+      "HERO_Death": 0.21427435321439858,
+      "HERO_GetUp": 0.2241604883671614,
+      "HERO_LampInspect": 0.2094873191495028,
+      "HERO_Staff_Ready": 0.2013107538231793,
+      "HERO_Mace_Ready": 0.2013107538231793,
+      "HERO_Axe_Ready": 0.2013107538231793,
+      "HERO_Hammer_Ready": 0.1945607151313108,
+      "HERO_Spear_Ready": 0.1959107007308286,
+      "HERO_Dagger_Ready": 0.1959107007308286,
+      "HERO_Bow_Ready": 0.970697269163722,
+      "HERO_Staff_CastBolt": 0.5260667465060038,
+      "HERO_Staff_CastSweep": 0.9912714592301918,
+      "HERO_Staff_Channel": 0.20147603751252063,
+      "HERO_Mace_Strike": 0.9898175378878659,
+      "HERO_Mace_Sweep": 0.9892782347714576,
+      "HERO_Mace_Guard": 0.1945599913597107,
+      "HERO_Axe_Chop": 0.624494633625569,
+      "HERO_Axe_Cleave": 0.7839805530378521,
+      "HERO_Axe_Guard": 0.19321000576019287,
+      "HERO_Hammer_Smash": 0.998574006271403,
+      "HERO_Hammer_Uppercut": 0.9895554377026,
+      "HERO_Hammer_Guard": 0.19050997495651245,
+      "HERO_Spear_Thrust": 0.23894537562264306,
+      "HERO_Spear_Sweep": 0.5320112798667895,
+      "HERO_Spear_Guard": 0.33073964062021877,
+      "HERO_Dagger_Stab": 0.9870235752423774,
+      "HERO_Dagger_Slash": 0.9894346432892546,
+      "HERO_Dagger_Guard": 0.19186002016067505,
+      "HERO_Bow_Nock": 0.9860041817415948,
+      "HERO_Bow_Draw": 0.5759502334602189,
+      "HERO_Bow_Aim": 0.3197049747015831,
+      "HERO_Bow_Release": 0.8117737078757223,
+      "HERO_Bow_Lower": 0.9624018252020689,
+      "HERO_Staff_SkillAshField": 0.20953261852264404,
+      "HERO_Bow_SkillArrowFan": 0.9971158647882801,
+      "HERO_Mace_SkillGuardBreak": 0.9947208258552236,
+      "HERO_Axe_SkillExecution": 0.9956583346234015,
+      "HERO_Hammer_SkillGroundSlam": 0.8272905839768954,
+      "HERO_Spear_SkillLongThrust": 0.19831293560643182,
+      "HERO_Dagger_SkillFlurry": 0.7771673961160281,
+      "HERO_Sword_SkillWhirlwind": 0.2114761971387885
+    },
+    "whirlwind_turns": 2.0,
+    "weapon_floor_at_skill_contacts_m": {
+      "HERO_Staff_SkillAshField": {
+        "0.45": 0.0009995698928833008,
+        "0.8": 0.0009995698928833008,
+        "1.15": 0.0009995698928833008
+      },
+      "HERO_Hammer_SkillGroundSlam": {
+        "0.72": 0.0009996891021728516
+      }
+    },
+    "grip_speed_profile": {
+      "HERO_AttackLongsword": {
+        "contact_m_per_s": 4.128880381841475,
+        "settle_m_per_s": 0.6401059630374216
+      },
+      "HERO_Mace_SkillGuardBreak": {
+        "contact_m_per_s": 4.524922141486244,
+        "settle_m_per_s": 0.5937779740905399
+      },
+      "HERO_Axe_SkillExecution": {
+        "contact_m_per_s": 2.1014866441591464,
+        "settle_m_per_s": 0.5062041627239826
+      },
+      "HERO_Hammer_SkillGroundSlam": {
+        "contact_m_per_s": 6.47945837898895,
+        "settle_m_per_s": 1.0165690115660804
+      },
+      "HERO_Spear_SkillLongThrust": {
+        "contact_m_per_s": 3.6619746916561446,
+        "settle_m_per_s": 0.18428761813945457
+      },
+      "HERO_Dagger_SkillFlurry": {
+        "contact_m_per_s": 7.104580179646662,
+        "settle_m_per_s": 0.5610373452705396
+      }
+    }
   },
   "clips": {
     "HERO_Staff_Ready": {
@@ -206,6 +342,27 @@
         }
       ]
     },
+    "HERO_Staff_SkillAshField": {
+      "duration_seconds": 1.399999976158142,
+      "channels": 99,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.45,
+          "frame": 28
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.8,
+          "frame": 49
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 1.15,
+          "frame": 70
+        }
+      ]
+    },
     "HERO_Mace_Ready": {
       "duration_seconds": 2.0,
       "channels": 99,
@@ -237,6 +394,17 @@
       "duration_seconds": 2.0,
       "channels": 99,
       "events": []
+    },
+    "HERO_Mace_SkillGuardBreak": {
+      "duration_seconds": 0.8199999928474426,
+      "channels": 99,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.38,
+          "frame": 24
+        }
+      ]
     },
     "HERO_Axe_Ready": {
       "duration_seconds": 2.0,
@@ -270,6 +438,17 @@
       "channels": 99,
       "events": []
     },
+    "HERO_Axe_SkillExecution": {
+      "duration_seconds": 1.0499999523162842,
+      "channels": 99,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ]
+    },
     "HERO_Hammer_Ready": {
       "duration_seconds": 2.0,
       "channels": 99,
@@ -301,6 +480,17 @@
       "duration_seconds": 2.0,
       "channels": 99,
       "events": []
+    },
+    "HERO_Hammer_SkillGroundSlam": {
+      "duration_seconds": 1.350000023841858,
+      "channels": 99,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.72,
+          "frame": 44
+        }
+      ]
     },
     "HERO_Spear_Ready": {
       "duration_seconds": 2.0,
@@ -334,6 +524,17 @@
       "channels": 99,
       "events": []
     },
+    "HERO_Spear_SkillLongThrust": {
+      "duration_seconds": 0.8600000143051147,
+      "channels": 99,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ]
+    },
     "HERO_Dagger_Ready": {
       "duration_seconds": 2.0,
       "channels": 99,
@@ -365,6 +566,27 @@
       "duration_seconds": 2.0,
       "channels": 99,
       "events": []
+    },
+    "HERO_Dagger_SkillFlurry": {
+      "duration_seconds": 0.6700000166893005,
+      "channels": 99,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.14,
+          "frame": 9
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.27,
+          "frame": 17
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ]
     },
     "HERO_Bow_Ready": {
       "duration_seconds": 2.0,
@@ -424,7 +646,18 @@
           "frame": 31
         }
       ]
+    },
+    "HERO_Bow_SkillArrowFan": {
+      "duration_seconds": 0.949999988079071,
+      "channels": 102,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ]
     }
   },
-  "scope": "Exported GLB binary structure, original-source hashes, bind/geometry comparison, motion channel sampling, full 60fps reimported bone/boot/hand checks. No game execution or performance check."
+  "scope": "Five-head hero mesh, shared revised skin, and frame-by-frame checks for 49 retargeted animations."
 }

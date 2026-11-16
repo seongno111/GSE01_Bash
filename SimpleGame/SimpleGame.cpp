@@ -164,13 +164,32 @@ namespace
         auto nextFrame = lastFrame;
         int scheduledLimit = 0;
         FrameClock::duration framePeriod{};
+        bool background = false;
 
         while (!glfwWindowShouldClose(window))
         {
-            const auto now = FrameClock::now();
-            if (scheduledLimit != frameLimit)
+            glfwPollEvents();
+            if (glfwWindowShouldClose(window))
             {
-                scheduledLimit = frameLimit;
+                break;
+            }
+            int pixelWidth;
+            int pixelHeight;
+            glfwGetFramebufferSize(window, &pixelWidth, &pixelHeight);
+            const bool hidden =
+                pixelWidth <= 0 || pixelHeight <= 0 || glfwGetWindowAttrib(window, GLFW_ICONIFIED);
+            if (hidden != background)
+            {
+                background = hidden;
+                std::cout << (background ? "[GameLoop] minimized: simulation=20Hz, rendering=off, "
+                                           "monitoring/saves=active\n"
+                                         : "[GameLoop] restored: rendering=on\n");
+            }
+            const int updateLimit = hidden ? 20 : frameLimit;
+            const auto now = FrameClock::now();
+            if (scheduledLimit != updateLimit)
+            {
+                scheduledLimit = updateLimit;
                 framePeriod = std::chrono::duration_cast<FrameClock::duration>(
                     std::chrono::duration<double>(1.0 / scheduledLimit));
                 nextFrame = lastFrame + framePeriod;
@@ -181,24 +200,7 @@ namespace
                 continue;
             }
 
-            glfwPollEvents();
-            if (glfwWindowShouldClose(window))
-            {
-                break;
-            }
-
-            int pixelWidth;
-            int pixelHeight;
-            glfwGetFramebufferSize(window, &pixelWidth, &pixelHeight);
-            if (pixelWidth <= 0 || pixelHeight <= 0 || glfwGetWindowAttrib(window, GLFW_ICONIFIED))
-            {
-                glfwWaitEvents();
-                lastFrame = FrameClock::now();
-                nextFrame = lastFrame;
-                continue;
-            }
-
-            if (pixelWidth != width || pixelHeight != height)
+            if (!hidden && (pixelWidth != width || pixelHeight != height))
             {
                 width = pixelWidth;
                 height = pixelHeight;
@@ -219,6 +221,11 @@ namespace
             game.SetRunHeld(glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS
                             || glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS);
             game.Update((std::min)(0.05f, elapsed));
+            if (hidden)
+            {
+                // Keep AI, monitor export and autosave alive without submitting GPU work.
+                continue;
+            }
             profiler.RecordUpdate(
                 std::chrono::duration<double, std::milli>(FrameClock::now() - updateStart).count(),
                 game);
@@ -295,11 +302,11 @@ int main()
               << "WASD move | Hold Shift run | Hold Space auto aim | F auto fire | U upgrade | Q "
                  "potion | T "
                  "cleansing stone\n"
-              << "E sanctuary/report | R relic | K demo death\n"
+              << "E sanctuary/report | Z weapon skill | R relic | K demo death\n"
               << "NPC: C select | I inspector | J PK | Y trade | O blessing | L AI log\n"
               << "H help | G chunk grid | +/- zoom | F8 60/120 FPS | Esc exit\n"
               << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
-              << "Session only: no gameplay saves, no AI dialogue service.\n"
+              << "Progress: automatic save every 120 seconds and on normal exit.\n"
               << "Mesh files: MeshCache/ | Performance captures: Profiling/\n"
               << "[Profile] Logs every second: FPS and glDraw calls per frame "
                  "(scene + UI + post processing; last/avg/min/max).\n";
@@ -307,6 +314,7 @@ int main()
     glfwSetMouseButtonCallback(window, MouseButton);
     game.Update(0);
     RunFrames(window, width, height);
+    game.SaveOnExit();
 
     // Release GPU resources while their context is current.
     renderer.reset();

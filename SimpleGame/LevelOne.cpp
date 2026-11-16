@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "ProgressSave.h"
 #include "Prototype.h"
 #include "GameRules.h"
 #include "NpcWorld.h"
@@ -120,6 +121,11 @@ void Prototype::InitializeLevelOne()
         }
     }
     std::free(configuredSeed);
+    m_ProgressSave = std::make_unique<ProgressSave>();
+    if (const auto savedSeed = m_ProgressSave->SavedSeed())
+    {
+        m_WorldSeed = *savedSeed;
+    }
 
     if (const auto* catalog = m_ModelAssets.WorldChunks())
     {
@@ -161,6 +167,7 @@ void Prototype::InitializeLevelOne()
     GenerateLevelOneMap();
     InitializeMonsterEcology();
     m_NpcWorld = std::make_unique<NpcWorld>(*this, m_WorldSeed);
+    m_ProgressSave->Restore(*this);
 }
 
 void Prototype::CompleteLevelOne()

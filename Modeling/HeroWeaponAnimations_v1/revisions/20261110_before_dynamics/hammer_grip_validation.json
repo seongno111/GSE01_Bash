@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-05",
+  "checks": {
+    "hand_length_perpendicular_to_shaft": true,
+    "handle_center_stays_in_palm": true,
+    "mean_wrist_bend_reduced_in_all_four_clips": true,
+    "wrist_bend_under_5_degrees_in_every_keyframe": true
+  },
+  "measurements": {
+    "before": {
+      "HERO_Hammer_Guard": {
+        "mean_wrist_bend_degrees": 118.37809171676209,
+        "maximum_wrist_bend_degrees": 132.52217163528212,
+        "maximum_hand_axis_dot_shaft": 0.9988039182499051,
+        "maximum_palm_to_grip_distance_m": 3.9000071073479654e-07
+      },
+      "HERO_Hammer_Uppercut": {
+        "mean_wrist_bend_degrees": 122.27454512537768,
+        "maximum_wrist_bend_degrees": 154.32902588140854,
+        "maximum_hand_axis_dot_shaft": 0.9988039992749691,
+        "maximum_palm_to_grip_distance_m": 4.500668737452911e-07
+      },
+      "HERO_Hammer_Smash": {
+        "mean_wrist_bend_degrees": 119.67925185961896,
+        "maximum_wrist_bend_degrees": 148.84753952528484,
+        "maximum_hand_axis_dot_shaft": 0.9988040663301945,
+        "maximum_palm_to_grip_distance_m": 4.917383193969727e-07
+      },
+      "HERO_Hammer_Ready": {
+        "mean_wrist_bend_degrees": 112.74359337428152,
+        "maximum_wrist_bend_degrees": 124.12392129599618,
+        "maximum_hand_axis_dot_shaft": 0.998804084956646,
+        "maximum_palm_to_grip_distance_m": 4.110668368379391e-07
+      }
+    },
+    "after": {
+      "HERO_Hammer_Guard": {
+        "mean_wrist_bend_degrees": 0.0,
+        "maximum_wrist_bend_degrees": 0.0,
+        "maximum_hand_axis_dot_shaft": 1.564621925354004e-06,
+        "maximum_palm_to_grip_distance_m": 3.8310766614027146e-07
+      },
+      "HERO_Hammer_Uppercut": {
+        "mean_wrist_bend_degrees": 0.0,
+        "maximum_wrist_bend_degrees": 0.0,
+        "maximum_hand_axis_dot_shaft": 1.8328428268432617e-06,
+        "maximum_palm_to_grip_distance_m": 3.6983709472390583e-07
+      },
+      "HERO_Hammer_Smash": {
+        "mean_wrist_bend_degrees": 0.0,
+        "maximum_wrist_bend_degrees": 0.0,
+        "maximum_hand_axis_dot_shaft": 1.430511474609375e-06,
+        "maximum_palm_to_grip_distance_m": 3.8231443948516226e-07
+      },
+      "HERO_Hammer_Ready": {
+        "mean_wrist_bend_degrees": 0.0,
+        "maximum_wrist_bend_degrees": 0.0,
+        "maximum_hand_axis_dot_shaft": 1.3709068298339844e-06,
+        "maximum_palm_to_grip_distance_m": 4.164334718132651e-07
+      }
+    }
+  }
+}

@@ -36,6 +36,8 @@ public:
     void RecordMovement(double dx, double dy);
     void UpdateVisual(float dt) override;
     void AimAttackAnimation(double directionX, double directionY);
+    void StunFor(float seconds);
+    bool IsStunned() const;
     void BeginAttackAnimation(double directionX,
                               double directionY,
                               float duration,
@@ -54,7 +56,9 @@ public:
                    const std::string& clip,
                    float normalizedTime = -1,
                    Color tint = Color(),
-                   float fadeSeconds = .12f);
+                   float fadeSeconds = .12f,
+                   const char* preferredClip = nullptr,
+                   float fallbackYaw = 0);
 
 protected:
 
@@ -79,6 +83,7 @@ private:
     float m_TargetModelYaw = 0;
     float m_AttackModelYaw = 0;
     bool m_LockAttackHeading = false;
+    float m_StunnedUntil = 0;
     std::string m_ModelBinding;
     Models::ModelInstance m_Model;
     std::unique_ptr<Models::AnimationPlayer> m_ModelAnimation;
@@ -95,6 +100,22 @@ public:
     void Update(float dt) override;
     void Draw(Renderer& renderer) override;
     void ResetAnimation() override;
+
+    struct SkillCast
+    {
+        float startedAt = -1;
+        float duration = 0;
+        std::vector<float> contacts;
+        const char* clip = nullptr;
+        size_t nextHit = 0;
+        ActorId target = InvalidActor;
+        WorldPoint center;
+        double yaw = 0;
+        float damage = 0;
+    };
+
+    SkillCast skillCast;
+    float skillCooldown = 0;
     const Models::HeroAttackVisual* weaponAttack = nullptr;
     float weaponAttackStart = -1;
     float weaponAttackDuration = 0;

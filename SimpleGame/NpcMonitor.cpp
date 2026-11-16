@@ -489,12 +489,19 @@ void NpcWorld::PollMonitorExport()
             m_LastMonitorWorkerMs = result.workerMs;
             if (!result.monitorWritten && !m_MonitorWarning)
             {
-                std::cerr << "[NpcMonitor] Snapshot write failed: " << m_LogDirectory << '\n';
+                std::cerr << "[NpcMonitor] Snapshot write failed: " << m_LogDirectory
+                          << " windowsError=" << result.monitorError << '\n';
             }
             if (!result.logWritten && !m_LogWarning)
             {
                 std::cerr << "[NpcAI] Diagnostic snapshot write failed.\n";
             }
+            if (result.monitorWritten && (m_MonitorWarning || m_MonitorSlowWarning))
+            {
+                std::cout << "[NpcMonitor] Snapshot export recovered; workerMs=" << result.workerMs
+                          << '\n';
+            }
+            m_MonitorSlowWarning = false;
             m_MonitorWarning = !result.monitorWritten;
             m_LogWarning = !result.logWritten;
             if (result.monitorWritten)
@@ -508,6 +515,13 @@ void NpcWorld::PollMonitorExport()
         }
     }
     m_Performance.monitorWorkerMs = m_LastMonitorWorkerMs;
+    if (m_MonitorExport.valid() && !m_MonitorSlowWarning
+        && std::chrono::steady_clock::now() - m_MonitorCapturedAt > std::chrono::seconds(5))
+    {
+        m_MonitorSlowWarning = true;
+        std::cerr << "[NpcMonitor] Export pending over 5 seconds; simulation continues. directory="
+                  << m_LogDirectory << '\n';
+    }
     m_Performance.monitorAgeMs =
         m_LastMonitorCompletedAt == std::chrono::steady_clock::time_point{}
             ? -1
@@ -1094,10 +1108,21 @@ NpcWorld::MonitorExportResult NpcWorld::WriteMonitorSnapshot(const MonitorSnapsh
     std::ofstream file(temporary, std::ios::binary | std::ios::trunc);
     file << json;
     file.close();
-    result.monitorWritten = !error && bool(file)
-                            && MoveFileExW(temporary.c_str(),
-                                           (snapshot.directory / "monitor.json").c_str(),
-                                           MOVEFILE_REPLACE_EXISTING);
+    if (error || !file)
+    {
+        result.monitorError = error ? static_cast<unsigned long>(error.value()) : ERROR_WRITE_FAULT;
+    }
+    else
+    {
+        result.monitorWritten = MoveFileExW(temporary.c_str(),
+                                            (snapshot.directory / "monitor.json").c_str(),
+                                            MOVEFILE_REPLACE_EXISTING)
+                                != FALSE;
+        if (!result.monitorWritten)
+        {
+            result.monitorError = GetLastError();
+        }
+    }
     if (snapshot.diagnosticLog)
     {
         result.logWritten = WriteDiagnosticSnapshot(snapshot);

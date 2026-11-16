@@ -1,20 +1,20 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-10",
   "files": [
     {
       "file": "animation_catalog.json",
-      "bytes": 26555,
-      "sha256": "a1eb24cb0084fac22ef2fb3990013d5e58e20d4fbef2d828c9fb9edd0669650a"
+      "bytes": 46828,
+      "sha256": "0354c9282d8a7175cd99523b83ddca356d3557a1928efcf3decbbe9f5ecb5ec2"
     },
     {
       "file": "authoring_keyposes.json",
-      "bytes": 81044,
-      "sha256": "313d3f6a47f8904de28d15ff96c08b77c0edfd4161a07dab73206ae914c17940"
+      "bytes": 144995,
+      "sha256": "31476dc31030ca637d473eaa6f451fb37a62c76b5846b38c33c4370bfd094bba"
     },
     {
       "file": "authoring_metrics.json",
-      "bytes": 3110,
-      "sha256": "0b26392957261ee01910c44266f921bd4f6da6f4c98e79070896a5db67b07627"
+      "bytes": 4022,
+      "sha256": "de90de2e72ad60cf9e6da12f63aa6c3413f5f40031a475e1e5a35bf328a29297"
     },
     {
       "file": "HAMMER_GRIP_20261105.md",
@@ -28,78 +28,83 @@
     },
     {
       "file": "hero_axe_actions.glb",
-      "bytes": 888152,
-      "sha256": "678d7d60722c6f97dbda35936c95cebfcb60bf3684dbda72c0edd607ef6c2c51"
+      "bytes": 1504620,
+      "sha256": "b8aef3eded6f242aa2ae3f280fec92e7f9bbec389025542173bfeda5e4ccf99e"
     },
     {
       "file": "hero_bow_actions.glb",
-      "bytes": 968892,
-      "sha256": "dcc816d122a7aabce2b709949da1d33c5d649ee8232f01d1f39414dd47aaba87"
+      "bytes": 1592172,
+      "sha256": "97edb6dc4d79cd7a308862aec5a0f9ecc37b0fc42638b10ffc320beff2ebc690"
     },
     {
       "file": "hero_dagger_actions.glb",
-      "bytes": 797060,
-      "sha256": "0a9b0bd6dea13003d927809061059a596b11c460b24e7f5618019a71ab881ce2"
+      "bytes": 1374040,
+      "sha256": "0942d9945eec74c30671f83fada53992d65451c835de72cb722458a660c3293e"
     },
     {
       "file": "hero_mace_actions.glb",
-      "bytes": 883104,
-      "sha256": "67829d4789d679815287c1184794f821767e6636f81c4b3c8090057bd998df85"
+      "bytes": 1473916,
+      "sha256": "46b38d7279a3dc7940dfe4ee0314d82968c204b6b85dddbdfbaf9c89436cd983"
     },
     {
       "file": "hero_spear_actions.glb",
-      "bytes": 826644,
-      "sha256": "dc3a18a690d7916f57cf673945ba2ad5e2c51551428736008b13a6e77427367e"
+      "bytes": 1433212,
+      "sha256": "e13969b7adc1ac4bf6b1a23eb4601fbff3539e81146b8ffbb419a26d517b8d27"
     },
     {
       "file": "hero_staff_actions.glb",
-      "bytes": 961256,
-      "sha256": "fa28bfedc236da68f9aa475ddb54a4b6fe0672add59f54653730d6dd9d66da28"
+      "bytes": 1592272,
+      "sha256": "6c9c374983c1dc215d91aac2894ac370e4b762ed0449e1590a207d28acbfa5cb"
     },
     {
       "file": "hero_warhammer_actions.glb",
-      "bytes": 915300,
-      "sha256": "5a87c2327e9c4ccad746bd36979dbb38cf36fdecf8ec99e43c8a172d299da631"
+      "bytes": 1874988,
+      "sha256": "04aa7ce9840363685368f13aa66fdaf42f7378882b624d9e6fc28546551946bf"
     },
     {
       "file": "hero_weapon_animation_library.glb",
-      "bytes": 4487632,
-      "sha256": "5e1f3e91ad86b77094f49f8ed79cb9079b7771b992becbb487660f3d6a859a7e"
+      "bytes": 7300388,
+      "sha256": "d774c6592b3b58cb15da066e27b08f0b7f5b807ea4aa6dc80d6ce115767660ed"
     },
     {
       "file": "hero_weapon_animations_v1.blend",
-      "bytes": 5046350,
-      "sha256": "d3553ae873b929e678e60a165b77b4a6504d253165de4f5537d7dd45f4be8baf"
+      "bytes": 10699193,
+      "sha256": "a2c5007c44e169a90227f5b41ef001e2953ed6cb7f2db120e9f34da94df9b277"
     },
     {
       "file": "previews/all_clips_contact.jpg",
-      "bytes": 418883,
-      "sha256": "dd1aeb9b49522f31d24ad10f9f72849f5f70cf4f8064ca7375a8a772bc1b38eb"
+      "bytes": 636611,
+      "sha256": "e52bf84850837c0525494bc91d89fd38e8a5533bdb8bad045f8b78dca248ab29"
     },
     {
       "file": "previews/animations_overview.gif",
-      "bytes": 6112728,
-      "sha256": "e3a051d2021efdae53e4d633b8f3376db6f9bddcc59d972c72d87930330dce03"
+      "bytes": 6627042,
+      "sha256": "191eb79f239ea7c8f45820fffaa1f74812f9e2fd5d29ef333be388ff67663481"
     },
     {
       "file": "previews/animations_overview.jpg",
-      "bytes": 191802,
-      "sha256": "ff148c5bb9a07eb8be6c7e419e244e7f4b3ca7f2da1088a6e8d258b74abad3ab"
+      "bytes": 182282,
+      "sha256": "18bc34b13ecf4648bc42ef4615925acf27e04f0709a15a7d1d55d0acae7ca5e9"
     },
     {
       "file": "previews/axe_keyframes.jpg",
-      "bytes": 52880,
-      "sha256": "b1c1cc5ee943c8cd751adaf3bfdae926d92d51f736256f4c8794b36cc9b760b6"
+      "bytes": 49035,
+      "sha256": "e0b586c1d3bb5282ee07ebe663d585f44b576893e9f1747eae14bd7d225904a2"
     },
     {
       "file": "previews/bow_keyframes.jpg",
-      "bytes": 49355,
-      "sha256": "fa7ee8a4c6e8982e66cd76f0174931b363639df102ee9f279e597c3ba309c91e"
+      "bytes": 47230,
+      "sha256": "a29ce66b66f0bbf4246591a58d0fad2db71c63742652c23df8d8ea25e883ed57"
+    },
+    {
+      "file": "previews/common_motion_overview.gif",
+      "bytes": 5825456,
+      "sha256": "4886cac167f4bb5227e6c053ff0dd6be6e70a6960ede7da083fb3edf0454ef2b"
     },
     {
       "file": "previews/dagger_keyframes.jpg",
-      "bytes": 51370,
-      "sha256": "461eaf7a72c4fac11e7cfbbf621387f49fc22d1c9d71d5ae5a8f1405285fb639"
+      "bytes": 47168,
+      "sha256": "bfe7a84145752f1d6d311812d820e8d876e421d12664dbcc6a8c499ce1bfbace"
     },
     {
       "file": "previews/hammer_grip_before_after.jpg",
@@ -112,224 +117,424 @@
       "sha256": "e12f44b13649a8f289b5b201d575539e03a977951a2bbb9ddf2fc50b75dacc10"
     },
     {
+      "file": "previews/HERO_AttackLongsword.gif",
+      "bytes": 369600,
+      "sha256": "65cc637b86e8e3706fb083b6d11d87ecac23fae4d80e020fb965fc417cd943aa"
+    },
+    {
+      "file": "previews/HERO_AttackLongsword.png",
+      "bytes": 272141,
+      "sha256": "ccd46e9ef013a9310cf676016fb3df248086462513b54aa6b13676aca2bb8691"
+    },
+    {
       "file": "previews/hero_axe.gif",
-      "bytes": 1198366,
-      "sha256": "1dfe3f8bf86f6669dbaf193ea7310cad3c2e98aa90d1751f22e4d1ad6b612e0a"
+      "bytes": 590435,
+      "sha256": "e90f3b27c77d5000534fae42c03c9076df79c34e118dd845dfb663c7e192ead8"
     },
     {
       "file": "previews/HERO_Axe_Chop.png",
-      "bytes": 276197,
-      "sha256": "a5b60da8c74160daa69420e8c58c7960dcf6e96bbb4257830faad20696b14f44"
+      "bytes": 272559,
+      "sha256": "062981a51fbe8a8b52de14c4243fe4184968c84ea3b558f7beb43e1ced74f76b"
     },
     {
       "file": "previews/HERO_Axe_Cleave.png",
-      "bytes": 273716,
-      "sha256": "39dc9b30936bbeb910cdb7929f05f202967d1209450112a2c389e0a9f8549216"
+      "bytes": 271751,
+      "sha256": "f35d5ef894de1b995a6bdf630a0cbf81e13e37d7ac74a120ada58a0f5331b61b"
     },
     {
       "file": "previews/HERO_Axe_Guard.png",
-      "bytes": 275084,
-      "sha256": "74274473faac529f9a228f7c95870a862e796fae2bc5c372aaf224bbd875a4b5"
+      "bytes": 276587,
+      "sha256": "5edca44e48a7b015cf2e46edbcd3e8e4ee819b292dcade61c3741e1aba0fa37d"
     },
     {
       "file": "previews/HERO_Axe_Ready.png",
-      "bytes": 275758,
-      "sha256": "9b66912ad1663c6ad19d94e1baa92de951be1e459419512f7f8cc593a8102494"
+      "bytes": 274529,
+      "sha256": "cec19ae5ee4340ac29b9b40a809ad1811661d21e45621bcd64b0a156580364a5"
+    },
+    {
+      "file": "previews/HERO_Axe_SkillExecution.gif",
+      "bytes": 513736,
+      "sha256": "aded6e84f2abd4d4a2b17629da3efe753139a68a802dd5f382064419a44a9d75"
+    },
+    {
+      "file": "previews/HERO_Axe_SkillExecution.png",
+      "bytes": 113580,
+      "sha256": "b71467316719280d614e541bdca3c7325e67ede8cbc59537e405098f83e49d39"
+    },
+    {
+      "file": "previews/hero_back.png",
+      "bytes": 516156,
+      "sha256": "de55154f5416730b9efad8441351d1e5788388eca01b5e89f859e3aba4d0c0b6"
+    },
+    {
+      "file": "previews/hero_before.png",
+      "bytes": 555238,
+      "sha256": "2b2e100970bb9f40d18337d0fb443693c415016fbba0a7fe642ef915e2edee72"
     },
     {
       "file": "previews/hero_bow.gif",
-      "bytes": 1818222,
-      "sha256": "9443b4425bd3716b70ec95b2cba47a1e39d576849d03c6d4916812c79178ed79"
+      "bytes": 1066776,
+      "sha256": "e143264106cc6902ca74f928945f2796b110387fd8ec5c8f7c896c3b748a70c3"
     },
     {
       "file": "previews/HERO_Bow_Aim.png",
-      "bytes": 271235,
-      "sha256": "dd10ddc3bc8a7afb0d46a0f39f166056f61acb7ebc84c42a3dd4f88a303faed0"
+      "bytes": 273632,
+      "sha256": "9eea7c8bb07fcc37d84f4090a9efdf31704aa0bedd2ed82b44731b7d18a675aa"
     },
     {
       "file": "previews/HERO_Bow_Draw.png",
-      "bytes": 271235,
-      "sha256": "755319f51bec64a2f76eed5bebe50469153387fb137b16dc83f4f9f8dcaf2b6d"
+      "bytes": 273632,
+      "sha256": "78cb9ba476c156d8376f538315f86e7eb5456f69f2908f13feb2d59ad4600c3f"
     },
     {
       "file": "previews/HERO_Bow_Lower.png",
-      "bytes": 271792,
-      "sha256": "86c5da78a18e7cc914e39c9c526093918eaaaa34d442838a5ce7d1e25dccad62"
+      "bytes": 274132,
+      "sha256": "c39499839aab66d26f4ec9b662fba9e370c5eb3214fa6ced9b0309fbd853798c"
     },
     {
       "file": "previews/HERO_Bow_Nock.png",
-      "bytes": 270334,
-      "sha256": "6b883da1f56180e4dc3d9836da0b2995f1de6cc35f22ac3c00a8ac96ccc82d57"
+      "bytes": 272526,
+      "sha256": "f84089e974fb604dafa1c50d58d4d95f53c928974ec4d2b7c19e8cbd2635108b"
     },
     {
       "file": "previews/HERO_Bow_Ready.png",
-      "bytes": 271952,
-      "sha256": "7d57a5675f8df03f366a3f2ec5312798cf6f35ca69357874d060859f84fc2db8"
+      "bytes": 273323,
+      "sha256": "8410749657dd96292222bb3063aa02ec0f7ea88a02d058a71ee77170fb353678"
     },
     {
       "file": "previews/HERO_Bow_Release.png",
-      "bytes": 271409,
-      "sha256": "cb6c16d731b1a2e92d8af414f10176e057365158ad49e151a4077a4e9b302fe5"
+      "bytes": 273417,
+      "sha256": "3d032e414a64e37a985499d3d46324bf3b96fff8c89cbda9dbe01e3d9799fafa"
+    },
+    {
+      "file": "previews/HERO_Bow_SkillArrowFan.gif",
+      "bytes": 444378,
+      "sha256": "866280af483996012d487762f97cd801c62c1b87c44f8d1995e294c94884cfc2"
+    },
+    {
+      "file": "previews/HERO_Bow_SkillArrowFan.png",
+      "bytes": 114640,
+      "sha256": "f68b22ab60c7734837085a17018b79d773b6cf9f9423c2d87099955cd3019d0d"
     },
     {
       "file": "previews/hero_dagger.gif",
-      "bytes": 668161,
-      "sha256": "4f8c849ee2f4d5cc2bf197bb60849a1af0e6664d137417be8b8808b6af859c30"
+      "bytes": 330440,
+      "sha256": "3c1b166eda06b9a5d23813d939e182864cafd108690dac0d975e3e85727d2eff"
     },
     {
       "file": "previews/HERO_Dagger_Guard.png",
-      "bytes": 275762,
-      "sha256": "dc1be94b435d32f4fff1c1cf379f2c019ecf7fca6646600d965c1f5960ebae3d"
+      "bytes": 274750,
+      "sha256": "28f2eb43178d6b18a8b6bf15a48f8272540e2d36e2a6286e4752acfb63be09c3"
     },
     {
       "file": "previews/HERO_Dagger_Ready.png",
-      "bytes": 276049,
-      "sha256": "413c6d7fe16676893c00bd1ce27af46c02a960964ce55cbbbbee9ee8f13eb5a6"
+      "bytes": 274409,
+      "sha256": "12adea06e68850736ad1bd0204fabc609fbf3f29e51805433fe6aa8b8af71784"
+    },
+    {
+      "file": "previews/HERO_Dagger_SkillFlurry.gif",
+      "bytes": 328878,
+      "sha256": "a9cb6babd324440f5ea7194d8cb74a63d2c1029ce4d028064dc0f399589a7d0b"
+    },
+    {
+      "file": "previews/HERO_Dagger_SkillFlurry.png",
+      "bytes": 113725,
+      "sha256": "f9f39b78321619e591975d5abcd17d12034cb226896627f4b78314dc73e71856"
     },
     {
       "file": "previews/HERO_Dagger_Slash.png",
-      "bytes": 276273,
-      "sha256": "9bbcbde3389607b4fbd9e67f247f7727bef9ecb404c8f15f36646a6eb24bb153"
+      "bytes": 272243,
+      "sha256": "5ab4e9ecdb96610af3d7702898a66b6828275e85463d20247bf8924da540ecff"
     },
     {
       "file": "previews/HERO_Dagger_Stab.png",
-      "bytes": 274804,
-      "sha256": "f72bfab3b6ef0bb05ecc59a0bd3e21c98c317a26fae3dfa99a276c72173c6fb1"
+      "bytes": 271492,
+      "sha256": "4811e3588551200e2d382fd8a98b2510645a208b47107014e3a7320961efe55b"
+    },
+    {
+      "file": "previews/HERO_Death.gif",
+      "bytes": 484451,
+      "sha256": "5fd9a13c5e14a1aae3ec9869eed627785ee2d3dd107f5fe8cfa43d78f4b0c7b5"
+    },
+    {
+      "file": "previews/HERO_Death.png",
+      "bytes": 263555,
+      "sha256": "fd4fabfeb13615bbb88de9e707eb708abad8cf09cd1bf00accbb9b5658e166bc"
+    },
+    {
+      "file": "previews/hero_front.png",
+      "bytes": 557155,
+      "sha256": "13c301e49d167b600d228137cf6c01fb0f051ca465b085cb0bb3ed0ad1d3703c"
+    },
+    {
+      "file": "previews/HERO_GetUp.gif",
+      "bytes": 505500,
+      "sha256": "c77b623be404788ddc03ad333a2140d97005f63241651f42788c4b2b5b623898"
+    },
+    {
+      "file": "previews/HERO_GetUp.png",
+      "bytes": 270100,
+      "sha256": "6a74e9d1b2a8ef3197eb2e47f927b29b209151a51a8fdcbd5f1129bdc72e1770"
+    },
+    {
+      "file": "previews/HERO_Guard.png",
+      "bytes": 274304,
+      "sha256": "e7a75d13b551916d82e2269b6a0dce21a4a4e18455e8b83d7f3294dea7a15f0e"
     },
     {
       "file": "previews/HERO_Hammer_Guard.png",
-      "bytes": 271396,
-      "sha256": "875b6e787864f5a84e9dd79c585c2cb86a247a5c93b2eab30a3f9a16671a462e"
+      "bytes": 273735,
+      "sha256": "387b82f0346c2c1132f6db3007728585046e141652b0d9ea91649ed4d41561cd"
     },
     {
       "file": "previews/HERO_Hammer_Ready.png",
-      "bytes": 271745,
-      "sha256": "9c65d43f14a6a6e994b4980c06a663feef3c686f149a1f59b3d561d511cb63bc"
+      "bytes": 273283,
+      "sha256": "1eeebb86a4b21a696c0f1d7a2be2088842c45a218500c68dc02ac840eecd71ed"
+    },
+    {
+      "file": "previews/HERO_Hammer_SkillGroundSlam.gif",
+      "bytes": 611566,
+      "sha256": "b3e241454958bc365ed56338ef6da52997a2a8530ab538edbe0de21070b77fec"
+    },
+    {
+      "file": "previews/HERO_Hammer_SkillGroundSlam.png",
+      "bytes": 110408,
+      "sha256": "3ec228a4c3447902e01a05dbf1dfd022a30dfc8afd5dc49dcdada13915bf1dab"
     },
     {
       "file": "previews/HERO_Hammer_Smash.png",
-      "bytes": 267787,
-      "sha256": "4671f9e5b2f11da0304e55ef9e8aa0d087804172d478f7f558f57a6787d0a2b9"
+      "bytes": 265893,
+      "sha256": "24d453ba9d326d6f59077badcd25c0d11411e22b56bdd2417a8f65e20a201e0a"
     },
     {
       "file": "previews/HERO_Hammer_Uppercut.png",
-      "bytes": 269602,
-      "sha256": "74417c61f36af4e095a4e276ccf0aa08b8db5c1123235d6b220de835b8484d8a"
+      "bytes": 267182,
+      "sha256": "e600cea1966865a2c9edbd7192055ecf223f98e4a77d053c28041fe20bb5007a"
+    },
+    {
+      "file": "previews/HERO_Hit.gif",
+      "bytes": 221487,
+      "sha256": "6191f40e60ff571f51261732f8fea963582f67a823d4397673c00e4220109df0"
+    },
+    {
+      "file": "previews/HERO_Hit.png",
+      "bytes": 276048,
+      "sha256": "c2a306f9d7dd02dba899324419501160cf577438526b75920a9cdbd1839e249b"
+    },
+    {
+      "file": "previews/HERO_Idle.png",
+      "bytes": 274861,
+      "sha256": "8589aab07bd63b7b4a106c06ac09bd16f260c14fa916882632129f5315e1dfdd"
+    },
+    {
+      "file": "previews/HERO_LampInspect.gif",
+      "bytes": 879894,
+      "sha256": "680021da4c8792f667957787febeee83edf3b6e935bb11e7eb26ec454c6541a9"
+    },
+    {
+      "file": "previews/HERO_LampInspect.png",
+      "bytes": 270716,
+      "sha256": "5262b741f20c31282ed3a0645304ce69ed4c1a5072af72d858dd9be73cc597a2"
     },
     {
       "file": "previews/hero_mace.gif",
-      "bytes": 1129703,
-      "sha256": "d2579fe0d00efed49be9c2cc73bcfb48c59f71ccba72c30d546f181377b83a38"
+      "bytes": 555629,
+      "sha256": "efd5eaae57dfe6502c1ed317f2fdf036a796a9b5e4ad0ebc940fb2effcda8baf"
     },
     {
       "file": "previews/HERO_Mace_Guard.png",
-      "bytes": 276859,
-      "sha256": "943fff82c20bc9e0614e66ed08d6535fb4c5a6240c8ed10cfd5a1c56fed5d791"
+      "bytes": 277452,
+      "sha256": "241035febb7eb276ac8522d0da16d1a082a3623aee01fa7bbd84eb2276a3c5bf"
     },
     {
       "file": "previews/HERO_Mace_Ready.png",
-      "bytes": 277918,
-      "sha256": "529c132f3e13b5f45790dba1e5fc9c343a663190f34a01b621fbf41f9c516197"
+      "bytes": 277109,
+      "sha256": "22229338eda34bb1196ec62bd9b689a811ba34e6f8be087148c9c5a1512d2aca"
+    },
+    {
+      "file": "previews/HERO_Mace_SkillGuardBreak.gif",
+      "bytes": 409239,
+      "sha256": "ef345a1198736ef4889587682f5b1a75c7173d80a36fde0b408055166b1dd7f8"
+    },
+    {
+      "file": "previews/HERO_Mace_SkillGuardBreak.png",
+      "bytes": 115065,
+      "sha256": "fd6e4857c03b5beff4c95493060a7f90216e048a32d4af52ddda75c501e23da4"
     },
     {
       "file": "previews/HERO_Mace_Strike.png",
-      "bytes": 276846,
-      "sha256": "30cf1ee672a1b719d1077390262df73eba52bd2f7451577f7d25a6e64fafa249"
+      "bytes": 272957,
+      "sha256": "5e22674ef599006dada5d6253ab309a59f326ead52b02e6872693fe602d5bd52"
     },
     {
       "file": "previews/HERO_Mace_Sweep.png",
-      "bytes": 276941,
-      "sha256": "385ad27ac6fc396fda8a80446f351fe66c2b27bc5d15e64435605829d95fdee3"
+      "bytes": 274308,
+      "sha256": "298b271ecd75a75a793a5848e9c966e0013405ef0c560585387877e8cd42086a"
+    },
+    {
+      "file": "previews/HERO_MoveStart.png",
+      "bytes": 272145,
+      "sha256": "ea8bff3dedb573e8e1cb1d8d96106472a0d80ef0290d3129a885b334ed2d0287"
+    },
+    {
+      "file": "previews/HERO_MoveStop.png",
+      "bytes": 273452,
+      "sha256": "24c1f2907a1bca4f71715321eb155f0ad1f10ec86b4cb43f283ebc448f289202"
+    },
+    {
+      "file": "previews/hero_proportions.jpg",
+      "bytes": 115973,
+      "sha256": "17fdc8010d6549ba08f4c01e4fa6eecdba822405451dbebba24ee31c3b21e605"
+    },
+    {
+      "file": "previews/HERO_Run.gif",
+      "bytes": 291826,
+      "sha256": "1cfb999b2a8481c485c4cff59ebbd4cbe9c5ab85b86826b518d7e884a77b944c"
+    },
+    {
+      "file": "previews/HERO_Run.png",
+      "bytes": 272629,
+      "sha256": "23a9539d932d25356833d9c75260cb21c6739fbac31297b1e1e30f84dfc896cf"
+    },
+    {
+      "file": "previews/hero_side.png",
+      "bytes": 530579,
+      "sha256": "daf769b64d9fdeb3b915a2706ab6717938342ca5e892caca2be7df23ffeed85f"
     },
     {
       "file": "previews/hero_spear.gif",
-      "bytes": 958767,
-      "sha256": "fc1056d35d08578d2824b462b160592d3f9927f1c26264b1dd6bbc30d87b1c6c"
+      "bytes": 467682,
+      "sha256": "508d4b1c9caf25903fb7def355af6936281c5d677cac4438eebfb57afdf6215d"
     },
     {
       "file": "previews/HERO_Spear_Guard.png",
-      "bytes": 268246,
-      "sha256": "6f51256867499aa549dcbcee1dba9e46b22258c4453478c5199933a36dda60c8"
+      "bytes": 268682,
+      "sha256": "997587a1ede5f70f09afe62281a1689b9d1f0a006e4a7b3171c6ce08ccde5a39"
     },
     {
       "file": "previews/HERO_Spear_Ready.png",
-      "bytes": 266531,
-      "sha256": "188dd98353c0426ec5a02cc1fe51275b9c2138979403fb1e988c799b3d5962de"
+      "bytes": 265238,
+      "sha256": "f349ca11071d3e230a6b9c59d4179222c5aedda33411bbe0670efaabeeaf663c"
+    },
+    {
+      "file": "previews/HERO_Spear_SkillLongThrust.gif",
+      "bytes": 397496,
+      "sha256": "f31d1bf1c8ab7bba7bfbccd810bd88a50afbc3a5088ae772ebde544c7df51247"
+    },
+    {
+      "file": "previews/HERO_Spear_SkillLongThrust.png",
+      "bytes": 111073,
+      "sha256": "09c8bbae8cb3b4b4a0dae126f68cc71dc174faf5356d3d244bcb5445cb50a9eb"
     },
     {
       "file": "previews/HERO_Spear_Sweep.png",
-      "bytes": 266334,
-      "sha256": "9e2bd1c967da80254e42f27186d08420906c43e65d2343275947f0a12505b78e"
+      "bytes": 263479,
+      "sha256": "fc6f371059ea79ee79e2ba84341c315bdf08e3f3f2fa885bc131b6ac66943bf6"
     },
     {
       "file": "previews/HERO_Spear_Thrust.png",
-      "bytes": 266467,
-      "sha256": "5b49788f33c20fa424966746c6ab8632b69060dfdc4613de5fa66e9c68d0cb57"
+      "bytes": 263562,
+      "sha256": "485717995a03ce994b90b8120e06227905bca7fec4652163fc499931685f4105"
     },
     {
       "file": "previews/hero_staff.gif",
-      "bytes": 1202574,
-      "sha256": "c2bf01af6808585d3f5269da9ab79f039dda84b05cd363975d30c30d3c713995"
+      "bytes": 583841,
+      "sha256": "be1fe676851e6a75a33e575812036c14c50df843ee3dca3ff513c12c05216c0e"
     },
     {
       "file": "previews/HERO_Staff_CastBolt.png",
-      "bytes": 268470,
-      "sha256": "d8ffc08f0ad866f46824736019634000e6355ae4f94511469f4afebe5ea1cba4"
+      "bytes": 266200,
+      "sha256": "d12ea3621b19b8b206f2c66896af2d8967d11d1e256bd9fbc91b1ca9a3311839"
     },
     {
       "file": "previews/HERO_Staff_CastSweep.png",
-      "bytes": 272120,
-      "sha256": "dfb76047b57b5dfd679ef4bcc1297c5fb3a3cb2dcf7a4760b0be174097e643fb"
+      "bytes": 268938,
+      "sha256": "de9d4ea6ed7dc880289f0a6ee8494042687f8bef36a2cd20c58645de22721e69"
     },
     {
       "file": "previews/HERO_Staff_Channel.png",
-      "bytes": 272564,
-      "sha256": "4d8957a6cf2b3a571d289ea4c536d1df7e23e853d83d19f9caedf56af21fa235"
+      "bytes": 271184,
+      "sha256": "86101ab07d09271ba9526b3d46b75b86f573b05e74ccc3da717dfe622662ee34"
     },
     {
       "file": "previews/HERO_Staff_Ready.png",
-      "bytes": 273070,
-      "sha256": "ddecd31ce2f09cfed866a2292ceaf7fd9805449150c6827bb48c871c537fb315"
+      "bytes": 272481,
+      "sha256": "a70a34042e05b3d9de882518d10d4a14673c274317dfff33fc78c4c194a77180"
+    },
+    {
+      "file": "previews/HERO_Staff_SkillAshField.gif",
+      "bytes": 651960,
+      "sha256": "b49f617927a8b88e5a2c37bace7aa9c69c8681cf9faf021d6236523ef7640465"
+    },
+    {
+      "file": "previews/HERO_Staff_SkillAshField.png",
+      "bytes": 112520,
+      "sha256": "b810d666c3e3aad1eb679c33fba3979f0b7224e893ea7aa260d995d61521122e"
+    },
+    {
+      "file": "previews/HERO_Sword_SkillWhirlwind.gif",
+      "bytes": 506563,
+      "sha256": "5d7f0e7f9930f9ffb75c45fbbf7ce07796aaeacc8968ff9390365c22db4dec9a"
+    },
+    {
+      "file": "previews/HERO_Sword_SkillWhirlwind.png",
+      "bytes": 110046,
+      "sha256": "6a0e950911f6057f8e6b5e21f257ee7636b3d3d004d7b3e5b57fabe154ec1fa4"
+    },
+    {
+      "file": "previews/HERO_Walk.gif",
+      "bytes": 443796,
+      "sha256": "6ec62732c6a635c598bfc61f09a15e15594696b017b3baec30a1f617c82d3e09"
+    },
+    {
+      "file": "previews/HERO_Walk.png",
+      "bytes": 273786,
+      "sha256": "11f7b2df4580de3ebe8e8726a4294af72237db5013910a1ace8441044039151a"
     },
     {
       "file": "previews/hero_warhammer.gif",
-      "bytes": 1601432,
-      "sha256": "b44e82219da3e2ecdceca1bb86b405d7164c698ce76edb5d23fe3679309df23d"
+      "bytes": 795391,
+      "sha256": "fe826fab606142cca641e48012500c5412e6c0b6013d9b25616f105f795304c9"
     },
     {
       "file": "previews/hero_warhammer_uppercut.gif",
-      "bytes": 1459009,
-      "sha256": "f17f02cf82a4b4b9494768a66d68fbf03a120c97737141feacb090ae27486728"
+      "bytes": 721757,
+      "sha256": "6abd67ba4778adffd1f4ef257286e1111ccccfbc47abba3b584793c129795d5b"
     },
     {
       "file": "previews/mace_keyframes.jpg",
-      "bytes": 52445,
-      "sha256": "0dd9cb2b96c06e9d3186b84fac0c9be619397e90fe7503965858965d412267b4"
+      "bytes": 48548,
+      "sha256": "7b51809200b006e852b89e6da71b78bbca2b6e953aaf69cac0798f22c913bc26"
+    },
+    {
+      "file": "previews/skill_overview.gif",
+      "bytes": 6015195,
+      "sha256": "51b39b89a9dd9e012d44e3d0bb6e1b0c187022b86bf55b6c8604e09b83042149"
     },
     {
       "file": "previews/spear_keyframes.jpg",
-      "bytes": 45251,
-      "sha256": "a4ea24125ecd66e65a27c086b812ea599e2ac97da8797ed8fae4cdde4306f611"
+      "bytes": 42622,
+      "sha256": "6e2aa9901b0521a2f0bda43dd2a404960720b4edd67bde324935602b403a89e5"
     },
     {
       "file": "previews/staff_keyframes.jpg",
-      "bytes": 48566,
-      "sha256": "1fcbf5c01da36ba40745151ca446e4589bfe4cb9330a41b5486826643a62c999"
+      "bytes": 45735,
+      "sha256": "2555d3fe2af15a9a93029c3007ef713353861cbeb42483f14a608595f26c0bba"
     },
     {
       "file": "previews/warhammer_keyframes.jpg",
-      "bytes": 49499,
-      "sha256": "cc28e4e9c9511ff3783a9752ab920ece954806bed7f76cb7a84b548ba5f05b4f"
+      "bytes": 46910,
+      "sha256": "32bb3db6f0ac6925fe2ad75c26b2216fd3f2a8a70958eeb1de23f8cdd3826750"
     },
     {
       "file": "README.md",
-      "bytes": 8444,
-      "sha256": "68a55506417821c5a377572068631510bc8770a8b89af3848268637fc58a4ba7"
+      "bytes": 9695,
+      "sha256": "a9026a04fcb69f93f4c0c5d68704825de884482fae4c2f0a0a0ebcc2e509ee18"
     },
     {
       "file": "reimport_validation.json",
-      "bytes": 11415,
-      "sha256": "246ae13e66ab12df5cb15b6458a2d5ba403073729cca84e45b25724b528e366d"
+      "bytes": 40110,
+      "sha256": "61a1ae3691823426ff8bb732aaad7fa4ff4834d6b32beb660c5153036f2d1bba"
     },
     {
       "file": "revisions/20261105_before_hammer_grip/animation_catalog.json",
@@ -402,24 +607,234 @@
       "sha256": "56419ee29276cf23ff13fa1228a2286427a5b95264cce838cc87f4b0952307ab"
     },
     {
+      "file": "revisions/20261110_before_dynamics/animation_catalog.json",
+      "bytes": 26555,
+      "sha256": "a1eb24cb0084fac22ef2fb3990013d5e58e20d4fbef2d828c9fb9edd0669650a"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/authoring_keyposes.json",
+      "bytes": 81044,
+      "sha256": "313d3f6a47f8904de28d15ff96c08b77c0edfd4161a07dab73206ae914c17940"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/authoring_metrics.json",
+      "bytes": 3110,
+      "sha256": "0b26392957261ee01910c44266f921bd4f6da6f4c98e79070896a5db67b07627"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/delivery_files.json",
+      "bytes": 15574,
+      "sha256": "8eab5f94fbd4525663606cae5ade0504d57e53716b95348a224dcffc36182784"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/delivery_overview.json",
+      "bytes": 372,
+      "sha256": "0d95e80807ec7c5a2ef25e1eec23a7c334fe13e5e3c07d892e08cb38a14fbbeb"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hammer_grip_validation.json",
+      "bytes": 2478,
+      "sha256": "d38eb1a6ef5ffd08fcfbb3946610f3efc09a4b78198beca89a1c5cf8fb78f491"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_axe_actions.glb",
+      "bytes": 888152,
+      "sha256": "678d7d60722c6f97dbda35936c95cebfcb60bf3684dbda72c0edd607ef6c2c51"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_bow_actions.glb",
+      "bytes": 968892,
+      "sha256": "dcc816d122a7aabce2b709949da1d33c5d649ee8232f01d1f39414dd47aaba87"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_catalog.json",
+      "bytes": 19642,
+      "sha256": "0fd029e1ec08b44fda99235edb7528a291c29e5ea02b648f7870374f6e9f927c"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_common_validation.json",
+      "bytes": 2287,
+      "sha256": "855348084eca94a762d68f52dde6436ecbd67feb1a13728b7fe32c243ed97103"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_dagger_actions.glb",
+      "bytes": 797060,
+      "sha256": "0a9b0bd6dea13003d927809061059a596b11c460b24e7f5618019a71ab881ce2"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_mace_actions.glb",
+      "bytes": 883104,
+      "sha256": "67829d4789d679815287c1184794f821767e6636f81c4b3c8090057bd998df85"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_rigged.glb",
+      "bytes": 1161772,
+      "sha256": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_spear_actions.glb",
+      "bytes": 826644,
+      "sha256": "dc3a18a690d7916f57cf673945ba2ad5e2c51551428736008b13a6e77427367e"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_staff_actions.glb",
+      "bytes": 961256,
+      "sha256": "fa28bfedc236da68f9aa475ddb54a4b6fe0672add59f54653730d6dd9d66da28"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_v1.blend",
+      "bytes": 1023596,
+      "sha256": "05d2636114cf81628a4ff9961614b0b16d4057934a0d8c39d90989e478d5cd06"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_warhammer_actions.glb",
+      "bytes": 915300,
+      "sha256": "5a87c2327e9c4ccad746bd36979dbb38cf36fdecf8ec99e43c8a172d299da631"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_weapon_animation_library.glb",
+      "bytes": 4487632,
+      "sha256": "5e1f3e91ad86b77094f49f8ed79cb9079b7771b992becbb487660f3d6a859a7e"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/hero_weapon_animations_v1.blend",
+      "bytes": 5046350,
+      "sha256": "d3553ae873b929e678e60a165b77b4a6504d253165de4f5537d7dd45f4be8baf"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/reimport_validation.json",
+      "bytes": 11415,
+      "sha256": "246ae13e66ab12df5cb15b6458a2d5ba403073729cca84e45b25724b528e366d"
+    },
+    {
+      "file": "revisions/20261110_before_dynamics/validation.json",
+      "bytes": 10996,
+      "sha256": "afd295529726fce6c12c3b5ff5bef7ab57cf2422493d15d903c52cef56a10df9"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/animation_catalog.json",
+      "bytes": 46657,
+      "sha256": "926c661578ca79f73d4291a14b0b85ed770a8dfea5e77be793a69134aac66de0"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/delivery_files.json",
+      "bytes": 26794,
+      "sha256": "aa6954bd337b8b5751b865e326409b8e2f238f200afabd7c141578a158368679"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/delivery_overview.json",
+      "bytes": 391,
+      "sha256": "31f077d8a742b0c7d84b9f3dbb30605e7cda4dd6e992462c97a39e700c4f9d48"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_axe_actions.glb",
+      "bytes": 1067224,
+      "sha256": "717f356895d11007ee71252381e476e36db87678df2c35c6b1b9507bc44338c8"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_bow_actions.glb",
+      "bytes": 1140872,
+      "sha256": "0142d610fee42156a561639773598231dcdeb63fc2ba0eacee0cb657096a6853"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_catalog.json",
+      "bytes": 20585,
+      "sha256": "b15976502a2fff0b5e764e02d054025fa1b1f524165e02f8fc642f9cd1db5e75"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_dagger_actions.glb",
+      "bytes": 936704,
+      "sha256": "db50b00fadd119082a8ed6a07cf3a54912fdd9ab7146916cb298bcc29d4d70aa"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_mace_actions.glb",
+      "bytes": 1034452,
+      "sha256": "d597076e938b3faeb6732bc7b6d389ca2d52740154b655e38f9068c3fb009519"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_rigged.glb",
+      "bytes": 2362828,
+      "sha256": "b07f3f36fed04bb5cd2fab7cf3641c3a1f073f1b1a375c0d527938b00469954a"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_spear_actions.glb",
+      "bytes": 982648,
+      "sha256": "8d24c5d3f431c7819bddf30639c836004f47c0f4bae65bf5270999aa4d383029"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_staff_actions.glb",
+      "bytes": 1152784,
+      "sha256": "599c9c3229a34535e855f4d200a66bd7b92bdf1e26faddeb93b0225941d6e2c0"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_v1.blend",
+      "bytes": 2567027,
+      "sha256": "81b3a0bbc495553d151d93ade798ea15b88eec116dee09917b055d1844bdb817"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_warhammer_actions.glb",
+      "bytes": 1115336,
+      "sha256": "42754a3246328c6e6851f4e3d7277ec68d39f7a1873e77f09333723fa6a852f1"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_weapon_animation_library.glb",
+      "bytes": 6491528,
+      "sha256": "0365dbf35ba5b057a8b82a54728f86b1b6c201ab8e1dd9d21a6cf16e35958275"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/hero_weapon_animations_v1.blend",
+      "bytes": 9758575,
+      "sha256": "3d02a29a187ed2f3bc7cd39e6040e982de3f7d627502aa27e95fe3a46a762d87"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/reimport_validation.json",
+      "bytes": 34157,
+      "sha256": "4a7d6aa1d981214b1aa1e8e4efd32619f359bd3fc0b7b1357bd50fcb7448664f"
+    },
+    {
+      "file": "revisions/20261110_before_five_head/validation.json",
+      "bytes": 771,
+      "sha256": "b83a43ba37767878b14ade0b217cff0b90fef4557c3178307445eb032a77f2d8"
+    },
+    {
       "file": "scripts/bake_bow_channels.py",
-      "bytes": 2524,
-      "sha256": "3c16149c2e56df959e3f254ac07546606f73bb614799f5e7e5aeadc4568cda89"
+      "bytes": 2525,
+      "sha256": "73678a39fcdc2073a3dc0f7a863ab02f9a04a60cfd55dde949f70f872c20f60f"
     },
     {
       "file": "scripts/build_animations.py",
-      "bytes": 29621,
-      "sha256": "c116a248d7e784096c73bc7ad2cfa3eae3f72f69208027fa60f3f3de5ca4507c"
+      "bytes": 37632,
+      "sha256": "91147ce91f6c7ed53685fccafd7cf1f9d23c711f12b0d7ca4c5d26634395b802"
+    },
+    {
+      "file": "scripts/common_motion.py",
+      "bytes": 15226,
+      "sha256": "6754bca05cda64e59bcc656a7e83aa7aa0f8e175c5534bbb19fc8ae341033e3e"
+    },
+    {
+      "file": "scripts/dynamic_motion.py",
+      "bytes": 6299,
+      "sha256": "6cccaf657c89660be6be9942337aa6bd50787e863a38f58d8901c52f5241e856"
+    },
+    {
+      "file": "scripts/exact_skill_times.py",
+      "bytes": 2290,
+      "sha256": "df7300f9b4f4e4e6f1d2c26c1ba22f0fd3002750e40a5b0a722aa666c89ba7b9"
     },
     {
       "file": "scripts/finalize_delivery.py",
-      "bytes": 1823,
-      "sha256": "a0a68c33aa3b965c45d2cb23546d8f731e453971e6724ccb295fa3cce2af88ac"
+      "bytes": 1871,
+      "sha256": "be4b46a7a06c052fd249b206d3c934dab966ca96df8799dbbf26c1abd29d822f"
+    },
+    {
+      "file": "scripts/hero_model.py",
+      "bytes": 17361,
+      "sha256": "19ccea92fff78aa0c31c46a670ffebe126f6b3102a75c56ab40240152218d3a2"
     },
     {
       "file": "scripts/make_delivery_media.py",
-      "bytes": 3836,
-      "sha256": "dec9fe543928ef83dd49eb0c50d15b6dc3c22006b08a0c732e5e81b600b5b0ff"
+      "bytes": 7208,
+      "sha256": "b9b07609af7e907062b940143bf64fb8abba6355bd16b70f8d091c4c1887e93f"
     },
     {
       "file": "scripts/make_hammer_media.py",
@@ -428,13 +843,23 @@
     },
     {
       "file": "scripts/preview_and_validate.py",
-      "bytes": 8293,
-      "sha256": "8837ce64c88b450830b711b50ca5410968ea28880d30eaa1867b46d2e4e4c150"
+      "bytes": 16793,
+      "sha256": "b52dec456002a90b55a2e28d350cdb355184b07b168e27315a3d650dfe33e899"
+    },
+    {
+      "file": "scripts/skill_motion.py",
+      "bytes": 8542,
+      "sha256": "8215b944f22493e97a8636ef934015427c99a591341d9caf2190068c636510cf"
+    },
+    {
+      "file": "scripts/sync_common_hero.py",
+      "bytes": 3239,
+      "sha256": "18cb48536db24d14c839178650561be9cb7dbbcb2d89a650d0bb2df6b2b4d8f0"
     },
     {
       "file": "scripts/validate_assets.py",
-      "bytes": 10628,
-      "sha256": "862fc2b5f2af56c7315f334faba7a883f1cab8c1f1a68a72d10c85743989b353"
+      "bytes": 17379,
+      "sha256": "54d5446cca7ed73eb3da811f208e474c1656aa4d1bcb5567273d8a6560b0fd5b"
     },
     {
       "file": "scripts/validate_hammer_grip.py",
@@ -443,10 +868,10 @@
     },
     {
       "file": "validation.json",
-      "bytes": 10996,
-      "sha256": "afd295529726fce6c12c3b5ff5bef7ab57cf2422493d15d903c52cef56a10df9"
+      "bytes": 18711,
+      "sha256": "053ad8e824c7dac510df39fb89ef371f7467cb39676cb4ad384a434f30b2efad"
     }
   ],
-  "total_files": 89,
-  "total_bytes": 53584362
+  "total_files": 174,
+  "total_bytes": 134552980
 }

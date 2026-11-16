@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "date": "2026-11-05",
+  "date": "2026-11-10",
+  "animation_revision": "20261110_five_head_hero",
   "asset_id": "HERO_WeaponActions_v1",
   "rig": "RIG_HERO_HoodedLantern",
   "bones": [
@@ -39,12 +40,12 @@
     "tail_tip"
   ],
   "hero_source_hashes": {
-    "Hero_v1\\hero_v1.blend": "05d2636114cf81628a4ff9961614b0b16d4057934a0d8c39d90989e478d5cd06",
-    "Hero_v1\\hero_rigged.glb": "3949cfd21721af9a84cbb16fa93748b123e1e0ae808b05bba76d0342ed4f0259",
+    "Hero_v1\\hero_v1.blend": "81b3a0bbc495553d151d93ade798ea15b88eec116dee09917b055d1844bdb817",
+    "Hero_v1\\hero_rigged.glb": "b07f3f36fed04bb5cd2fab7cf3641c3a1f073f1b1a375c0d527938b00469954a",
     "HeroWeapons_v1\\hero_weapons_v1.blend": "b378fe18807286a6ac7281899ec17f7596f18300b2cf0418acec4ad26fdd5bfa",
     "HeroWeapons_v1\\weapon_catalog.json": "6e1e9c6b9d09817b8fcb0e1adabd18a6cbd50bf6aaf814a0d43ad5eecb0d3e97"
   },
-  "source_rig_unchanged": true,
+  "bind_revision": "five_head_hero",
   "animation_sample_fps": 60,
   "axes": {
     "blender": "Z up, -Y front",
@@ -64,7 +65,244 @@
     "HERO_GetUp",
     "HERO_LampInspect"
   ],
-  "new_clip_count": 30,
+  "common_clips": [
+    {
+      "name": "HERO_Idle",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Idle"
+    },
+    {
+      "name": "HERO_Walk",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Walk"
+    },
+    {
+      "name": "HERO_Run",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 41,
+      "duration_seconds": 0.6666666666666666,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Run"
+    },
+    {
+      "name": "HERO_MoveStart",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "start",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_MoveStart"
+    },
+    {
+      "name": "HERO_MoveStop",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "stop",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_MoveStop"
+    },
+    {
+      "name": "HERO_AttackLongsword",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "attack_sword",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 52,
+      "duration_seconds": 0.85,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "tags": [
+        "role_attack"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_AttackKnight"
+    },
+    {
+      "name": "HERO_Guard",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "guard",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Guard"
+    },
+    {
+      "name": "HERO_Hit",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Hit"
+    },
+    {
+      "name": "HERO_Death",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [
+        {
+          "name": "fallen",
+          "time_seconds": 1.2,
+          "frame": 73
+        }
+      ],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Death"
+    },
+    {
+      "name": "HERO_GetUp",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "getup",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_GetUp"
+    },
+    {
+      "name": "HERO_LampInspect",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Idle"
+    },
+    {
+      "name": "HERO_Sword_SkillWhirlwind",
+      "weapon_kind": "longsword",
+      "weapon_key": "HERO_Longsword",
+      "duration_seconds": 1.12,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 68,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.75,
+          "frame": 46
+        }
+      ],
+      "description": "잿바람 회전베기",
+      "start_pose": "Idle",
+      "end_pose": "Idle",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 720,
+      "skill_label": "잿바람 회전베기",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    }
+  ],
+  "new_clip_count": 37,
   "new_clips": [
     {
       "name": "HERO_Staff_Ready",
@@ -417,7 +655,7 @@
           "frame": 61
         }
       ],
-      "description": "Two-handed overhead smash; opposed cross-palm grip and strike-aligned hammer face",
+      "description": "Two-handed diagonal smash; opposed cross-palm grip and strike-aligned hammer face",
       "start_pose": "Ready",
       "end_pose": "Ready",
       "blend_in_seconds": 0.12,
@@ -717,6 +955,490 @@
       "blend_out_seconds": 0.12,
       "root_translation": "in_place",
       "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_SkillAshField",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.4,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 85,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.45,
+          "frame": 28
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.8,
+          "frame": 49
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 1.15,
+          "frame": 70
+        }
+      ],
+      "description": "잔불의 문양",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "잔불의 문양",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Bow_SkillArrowFan",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.95,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 58,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "가시 부채살",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "가시 부채살",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Mace_SkillGuardBreak",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 0.82,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 50,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.38,
+          "frame": 24
+        }
+      ],
+      "description": "방패 분쇄",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "방패 분쇄",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Axe_SkillExecution",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.05,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 64,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "사형 집행",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "사형 집행",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Hammer_SkillGroundSlam",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.35,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 82,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.72,
+          "frame": 44
+        }
+      ],
+      "description": "대지 강타",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "대지 강타",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ],
+      "sample_divisions": 4
+    },
+    {
+      "name": "HERO_Spear_SkillLongThrust",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 0.86,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 53,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "description": "잿빛 관통",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "잿빛 관통",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Dagger_SkillFlurry",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.67,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 41,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.14,
+          "frame": 9
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.27,
+          "frame": 17
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "description": "세 번의 상흔",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "세 번의 상흔",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "HERO_Staff_SkillAshField",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.4,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 85,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.45,
+          "frame": 28
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.8,
+          "frame": 49
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 1.15,
+          "frame": 70
+        }
+      ],
+      "description": "잔불의 문양",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "잔불의 문양",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Bow_SkillArrowFan",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.95,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 58,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "가시 부채살",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "가시 부채살",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Mace_SkillGuardBreak",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 0.82,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 50,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.38,
+          "frame": 24
+        }
+      ],
+      "description": "방패 분쇄",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "방패 분쇄",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Axe_SkillExecution",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.05,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 64,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "사형 집행",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "사형 집행",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Hammer_SkillGroundSlam",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.35,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 82,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.72,
+          "frame": 44
+        }
+      ],
+      "description": "대지 강타",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "대지 강타",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ],
+      "sample_divisions": 4
+    },
+    {
+      "name": "HERO_Spear_SkillLongThrust",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 0.86,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 53,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "description": "잿빛 관통",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "잿빛 관통",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Dagger_SkillFlurry",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.67,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 41,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.14,
+          "frame": 9
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.27,
+          "frame": 17
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "description": "세 번의 상흔",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "세 번의 상흔",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Sword_SkillWhirlwind",
+      "weapon_kind": "longsword",
+      "weapon_key": "HERO_Longsword",
+      "duration_seconds": 1.12,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 68,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.75,
+          "frame": 46
+        }
+      ],
+      "description": "잿바람 회전베기",
+      "start_pose": "Idle",
+      "end_pose": "Idle",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 720,
+      "skill_label": "잿바람 회전베기",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
     }
   ],
   "locomotion": {
@@ -724,7 +1446,7 @@
     "run": "HERO_Run",
     "direction": "actor rotation in game",
     "weapon_locomotion_duplicates": false,
-    "layering": "For moving with two-handed equipment, use shared Walk/Run lower-body and weapon Ready upper-body mask; no runtime blending implemented."
+    "layering": "For moving with two-handed equipment, use shared Walk/Run lower-body and weapon Ready upper-body mask."
   },
   "upper_body_mask": [
     "spine",
@@ -754,7 +1476,8 @@
         "HERO_Staff_Ready",
         "HERO_Staff_CastBolt",
         "HERO_Staff_CastSweep",
-        "HERO_Staff_Channel"
+        "HERO_Staff_Channel",
+        "HERO_Staff_SkillAshField"
       ],
       "hand": "right",
       "two_handed": false,
@@ -766,9 +1489,19 @@
       "weapon_parts": [
         "WPN_Staff_00_CinderCrook__Body"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": null,
-      "arrow_mesh": null
+      "arrow_mesh": null,
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.05288999999999999
+        ],
+        [
+          -0.1395,
+          0.0492
+        ]
+      ]
     },
     {
       "weapon_kind": "mace",
@@ -778,7 +1511,8 @@
         "HERO_Mace_Ready",
         "HERO_Mace_Strike",
         "HERO_Mace_Sweep",
-        "HERO_Mace_Guard"
+        "HERO_Mace_Guard",
+        "HERO_Mace_SkillGuardBreak"
       ],
       "hand": "right",
       "two_handed": false,
@@ -790,9 +1524,19 @@
       "weapon_parts": [
         "WPN_Mace_00_FlangedIron__Body"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": null,
-      "arrow_mesh": null
+      "arrow_mesh": null,
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.0615
+        ],
+        [
+          -0.1395,
+          0.055349999999999996
+        ]
+      ]
     },
     {
       "weapon_kind": "axe",
@@ -802,7 +1546,8 @@
         "HERO_Axe_Ready",
         "HERO_Axe_Chop",
         "HERO_Axe_Cleave",
-        "HERO_Axe_Guard"
+        "HERO_Axe_Guard",
+        "HERO_Axe_SkillExecution"
       ],
       "hand": "right",
       "two_handed": false,
@@ -814,9 +1559,19 @@
       "weapon_parts": [
         "WPN_Axe_00_Riven__Body"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": null,
-      "arrow_mesh": null
+      "arrow_mesh": null,
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.06765
+        ],
+        [
+          -0.1395,
+          0.07379999999999999
+        ]
+      ]
     },
     {
       "weapon_kind": "warhammer",
@@ -826,7 +1581,8 @@
         "HERO_Hammer_Ready",
         "HERO_Hammer_Smash",
         "HERO_Hammer_Uppercut",
-        "HERO_Hammer_Guard"
+        "HERO_Hammer_Guard",
+        "HERO_Hammer_SkillGroundSlam"
       ],
       "hand": "right",
       "two_handed": true,
@@ -840,12 +1596,22 @@
       "weapon_parts": [
         "WPN_Hammer_00_Warden__Body"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": null,
       "arrow_mesh": null,
       "grip_revision": "20261105_cross_palm",
       "support_offset_weapon_local_z_m": -0.3,
-      "grip_description": "Opposed cross-palm grips, neutral wrists; hammer face aligned with swing plane"
+      "grip_description": "Opposed cross-palm grips, neutral wrists; hammer face aligned with swing plane",
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.07995000000000001
+        ],
+        [
+          -0.1395,
+          0.08610000000000001
+        ]
+      ]
     },
     {
       "weapon_kind": "spear",
@@ -855,7 +1621,8 @@
         "HERO_Spear_Ready",
         "HERO_Spear_Thrust",
         "HERO_Spear_Sweep",
-        "HERO_Spear_Guard"
+        "HERO_Spear_Guard",
+        "HERO_Spear_SkillLongThrust"
       ],
       "hand": "right",
       "two_handed": true,
@@ -869,9 +1636,19 @@
       "weapon_parts": [
         "WPN_Spear_00_AshPike__Body"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": null,
-      "arrow_mesh": null
+      "arrow_mesh": null,
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.11069999999999999
+        ],
+        [
+          -0.1395,
+          0.08610000000000001
+        ]
+      ]
     },
     {
       "weapon_kind": "dagger",
@@ -881,7 +1658,8 @@
         "HERO_Dagger_Ready",
         "HERO_Dagger_Stab",
         "HERO_Dagger_Slash",
-        "HERO_Dagger_Guard"
+        "HERO_Dagger_Guard",
+        "HERO_Dagger_SkillFlurry"
       ],
       "hand": "right",
       "two_handed": false,
@@ -893,9 +1671,19 @@
       "weapon_parts": [
         "WPN_Dagger_00_Rondel__Body"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": null,
-      "arrow_mesh": null
+      "arrow_mesh": null,
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.06765
+        ],
+        [
+          -0.1395,
+          0.06765
+        ]
+      ]
     },
     {
       "weapon_kind": "bow",
@@ -907,7 +1695,8 @@
         "HERO_Bow_Draw",
         "HERO_Bow_Aim",
         "HERO_Bow_Release",
-        "HERO_Bow_Lower"
+        "HERO_Bow_Lower",
+        "HERO_Bow_SkillArrowFan"
       ],
       "hand": "left",
       "two_handed": true,
@@ -922,10 +1711,29 @@
         "WPN_Bow_00_ThornRecurve__Body",
         "WPN_Bow_00_ThornRecurve__String"
       ],
-      "shared_bone_bind": "Original hero rest skin unchanged. Equipped weapon meshes are rigid-weighted in this pack; do not add a second static weapon.",
+      "shared_bone_bind": "Five-head hero bind. Weapon meshes use rigid weights on the original named weapon sockets.",
       "bow_morph": "Draw 0..1, baked per action on Body and String",
-      "arrow_mesh": "AMMO_Arrow_00_Iron__Body"
+      "arrow_mesh": "AMMO_Arrow_00_Iron__Body",
+      "ready_foot_anchors_blender_xy": [
+        [
+          0.1395,
+          -0.07995000000000001
+        ],
+        [
+          -0.1395,
+          0.07379999999999999
+        ]
+      ]
     }
   ],
-  "runtime_integration": false
+  "active_common_hero_sha256": "95f1e51b53155bd9e0541ecd5c10d9cd58c74c84e34c2a440899d77625a91bd2",
+  "hero_source_snapshot": "revisions/20261110_before_five_head",
+  "proportions": {
+    "height_without_hood_m": 1.840000033378601,
+    "hood_height_m": 1.9311412572860718,
+    "head_height_m": 0.3650001287460327,
+    "body_to_head_ratio": 5.041094203719786,
+    "triangles_before": 1849,
+    "triangles_after": 6221
+  }
 }

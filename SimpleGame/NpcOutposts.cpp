@@ -188,6 +188,10 @@ bool NpcWorld::UpdateOutpostEnemy(EnemyActor& enemy, float dt)
     {
         return false;
     }
+    if (enemy.IsStunned())
+    {
+        return true;
+    }
     if (!enemy.alive)
     {
         enemy.respawn = (std::max)(0.0f, enemy.respawn - dt);
