@@ -228,6 +228,7 @@
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="WorldActors.cpp" />
     <ClCompile Include="GameHUD.cpp" />
+    <ClCompile Include="WorldMap.cpp" />
     <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="PostProcessing.cpp" />

@@ -6,11 +6,13 @@
 #include "WorldNavigation.h"
 #include <cstdint>
 #include <map>
+#include <optional>
 #include <string>
 #include <vector>
 
 class NpcWorld;
 class ProgressSave;
+struct MapView;
 
 class Prototype
 {
@@ -21,7 +23,8 @@ public:
     void Update(float dt);
     void Draw(Renderer& renderer);
     void Key(unsigned char key, bool down);
-    void WeaponShopClick(float x, float y);
+    void Click(float x, float y);
+    bool CloseWorldMap();
     bool CloseWeaponShop();
     void SaveOnExit();
 
@@ -151,7 +154,15 @@ private:
 
     bool NearBlacksmith() const;
     void DrawWeaponShop(Renderer& renderer);
+    void WeaponShopClick(float x, float y);
     bool m_WeaponShopOpen = false;
+    void OpenWorldMap();
+    void DrawWorldMap(Renderer& renderer) const;
+    void DrawMinimap(Renderer& renderer);
+    void DrawMap(Renderer& renderer, const MapView& view, bool overview) const;
+    bool MinimapBesideStatus() const;
+    void UpdateMapTravel(float dt);
+    void CancelMapTravel();
     void ProcessNavigation();
     void InitializeLevelOne();
     void GenerateLevelOneMap();
@@ -212,6 +223,16 @@ private:
     PlayerActor& m_Player;
     UpdateStats m_UpdateStats;
     NavigationState m_Navigation;
+    bool m_WorldMapOpen = false;
+    bool m_MapClickBlocked = false;
+    WorldPoint m_MapCenter{};
+    std::optional<WorldPoint> m_MapDestination;
+    std::vector<WorldPoint> m_MapRoute;
+    size_t m_MapRouteIndex = 0;
+    double m_MapTravelStalledTime = 0;
+    bool m_MapTravelRetried = false;
+    std::optional<WorldPoint> m_MinimapTileCenter;
+    std::vector<WorldPoint> m_MinimapProps;
     std::map<ChunkKey, ActorId> m_Chunks;
     ChunkKey m_StreamCenter{};
     int m_StreamRadius = -1;

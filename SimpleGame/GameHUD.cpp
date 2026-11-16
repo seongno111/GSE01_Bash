@@ -44,7 +44,7 @@ void Prototype::Interface(Renderer& r)
         skillStatus << "사용 가능";
     }
     r.Text(46, 78, skillStatus.str(), Gold, 1.2f);
-    const float panelX = w - 305;
+    const float panelX = w - (MinimapBesideStatus() ? 479 : 305);
     r.Text(panelX,
            16,
            m_Player.corruption >= MutationThreshold ? "상태 / 괴물화" : "상태 / 인간",
@@ -85,10 +85,11 @@ void Prototype::Interface(Renderer& r)
                 << "\nN   가장자리 블러: " << onOff(post.edgeBlur)
                 << "\n[ / ]   노출: " << std::fixed << std::setprecision(2) << post.exposure
                 << "\n0   효과 기본값 복원";
-        r.Rect(w - 280, 125, 255, 205, Color(0.025f, 0.035f, 0.042f, 0.86f));
-        r.Text(w - 264, 139, "빛과 그림자", Gold, 1.5f);
+        const float effectsTop = MinimapBesideStatus() ? 125.0f : 221.0f;
+        r.Rect(w - 280, effectsTop, 255, 205, Color(0.025f, 0.035f, 0.042f, 0.86f));
+        r.Text(w - 264, effectsTop + 14, "빛과 그림자", Gold, 1.5f);
         r.Text(w - 264,
-               171,
+               effectsTop + 46,
                r.Post().Available()
                    ? effects.str()
                    : "후처리 초기화 실패\n기본 렌더링으로 실행 중\n콘솔 오류를 확인해 주세요.",
@@ -148,6 +149,7 @@ void Prototype::Interface(Renderer& r)
                Gold,
                1.3f);
     }
+    DrawMinimap(r);
 }
 
 void Prototype::DrawLevelOneUI(Renderer& r)

@@ -55,6 +55,8 @@ void Prototype::Notice(const std::string& text)
 void Prototype::Die(const ::Actor* killer, bool unlawful)
 {
     CloseWeaponShop();
+    CloseWorldMap();
+    CancelMapTravel();
     if (m_NpcWorld)
     {
         m_NpcWorld->RecordWorldEvent(unlawful ? "murder" : "death",
@@ -128,11 +130,28 @@ void Prototype::Key(unsigned char key, bool down)
     {
         return;
     }
+    if (key == 'm' && !m_WeaponShopOpen)
+    {
+        if (!CloseWorldMap())
+        {
+            OpenWorldMap();
+        }
+        return;
+    }
+    if (m_WorldMapOpen)
+    {
+        if (key == 'w' || key == 'a' || key == 's' || key == 'd')
+        {
+            CancelMapTravel();
+        }
+        return;
+    }
     if (key == 'e' && (m_WeaponShopOpen || NearBlacksmith()))
     {
         m_WeaponShopOpen = !m_WeaponShopOpen;
         if (m_WeaponShopOpen)
         {
+            CancelMapTravel();
             m_Player.ResetAnimation();
         }
         return;
@@ -339,5 +358,6 @@ void Prototype::Draw(Renderer& r)
     r.BeginUI();
     m_Scene.DrawUI(r);
     DrawWeaponShop(r);
+    DrawWorldMap(r);
     r.EndFrame();
 }

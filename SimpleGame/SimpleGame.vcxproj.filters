@@ -175,6 +175,9 @@
     <ClCompile Include="GameHUD.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="WorldMap.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="Prototype.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

@@ -98,13 +98,21 @@ Prototype::RequestRoute(const Actor& actor, WorldPoint target, std::vector<World
         }
     }
 
-    if (requests.size() < NavigationState::Capacity)
+    const bool player = actor.Id() == m_Player.Id();
+    if (player || requests.size() < NavigationState::Capacity)
     {
         NavigationRequest request;
         request.target = target;
         request.touchedAt = m_Time;
         requests.emplace(actor.Id(), std::move(request));
-        m_Navigation.pending.push_back(actor.Id());
+        if (player)
+        {
+            m_Navigation.pending.push_front(actor.Id());
+        }
+        else
+        {
+            m_Navigation.pending.push_back(actor.Id());
+        }
     }
     ++m_UpdateStats.pathDeferred;
     return RouteStatus::Pending;
@@ -161,7 +169,9 @@ void Prototype::ProcessNavigation()
             search.actor = actorId;
             search.from = actor->WorldPosition();
             request->second.origin = search.from;
-            search.target = VillageRoadWaypoint(search.from, request->second.target);
+            search.target = actorId == m_Player.Id()
+                                ? request->second.target
+                                : VillageRoadWaypoint(search.from, request->second.target);
             const double distance =
                 GameRules::Length(search.target.x - search.from.x, search.target.y - search.from.y);
             if (distance > 12)
@@ -199,6 +209,11 @@ void Prototype::ProcessNavigation()
             }
 
             search.searching = true;
+            if (search.actor == m_Player.Id())
+            {
+                // Rank detours toward the destination rather than the end of the direct segment.
+                search.target = request.target;
+            }
             search.left = int(std::round(search.from.x)) - NavigationSearch::Width / 2;
             search.top = int(std::round(search.from.y)) - NavigationSearch::Width / 2;
             search.previous.fill(-1);

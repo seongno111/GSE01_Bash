@@ -9,6 +9,8 @@ namespace GameRules
     inline constexpr int MutationThreshold = 100;
     inline constexpr double PlayerWalkSpeed = 3.7;
     inline constexpr double PlayerRunMultiplier = 1.75;
+    inline constexpr float PlayerRadius = 0.18f;
+    inline constexpr double PlayerMoveStep = 0.1;
     inline constexpr int VillageHalfExtent = 18;
     inline constexpr int VillageInitialPopulation = 56;
     inline constexpr int VillageMigrationFloor = 50;

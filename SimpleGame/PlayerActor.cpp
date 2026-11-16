@@ -32,14 +32,20 @@ void PlayerActor::Update(float dt)
         running = false;
         return;
     }
+    const auto& keys = m_Game.m_Keys;
+    const bool manual = !m_Game.m_WorldMapOpen && (keys['w'] || keys['a'] || keys['s'] || keys['d']);
+    if (manual)
+    {
+        m_Game.CancelMapTravel();
+    }
     if (m_Game.UpdateWeaponSkill())
     {
         walking = false;
         running = false;
         return;
     }
-    const float right = float(m_Game.m_Keys['d']) - float(m_Game.m_Keys['a']);
-    const float down = float(m_Game.m_Keys['s']) - float(m_Game.m_Keys['w']);
+    const float right = manual ? float(keys['d']) - float(keys['a']) : 0;
+    const float down = manual ? float(keys['s']) - float(keys['w']) : 0;
     const double dx = right + down;
     const double dy = down - right;
     const double length = Distance(dx, dy);
@@ -51,13 +57,17 @@ void PlayerActor::Update(float dt)
         // Keep collision checks close together even while running at a low frame rate.
         while (remaining > 0)
         {
-            const double step = (std::min)(remaining, 0.1);
-            m_Game.MoveActor(*this, dx / length * step, dy / length * step, 0.18f);
+            const double step = (std::min)(remaining, PlayerMoveStep);
+            m_Game.MoveActor(*this, dx / length * step, dy / length * step, PlayerRadius);
             remaining -= step;
         }
     }
+    else if (m_Game.m_MapDestination)
+    {
+        m_Game.UpdateMapTravel(dt);
+    }
     walking = Distance(WorldX() - previous.x, WorldY() - previous.y) > 0.00001;
-    running = walking && m_Game.m_RunHeld;
+    running = walking && manual && m_Game.m_RunHeld;
     if (weaponAttackStart >= 0 && attackMutant != (corruption >= MutationThreshold))
     {
         ResetAnimation();
@@ -101,7 +111,7 @@ void PlayerActor::Update(float dt)
         m_Game.ResolvePlayerAttack();
     }
     m_Game.SelectTarget();
-    if ((autoFire || m_Game.m_Keys[' ']) && shotCooldown <= 0)
+    if ((autoFire || (!m_Game.m_WorldMapOpen && keys[' '])) && shotCooldown <= 0)
     {
         m_Game.FireProjectile();
     }

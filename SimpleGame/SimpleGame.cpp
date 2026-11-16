@@ -53,7 +53,7 @@ namespace
                 profiler.RecordFrameLimit(frameLimit);
                 return;
             case GLFW_KEY_ESCAPE:
-                if (game.CloseWeaponShop())
+                if (game.CloseWorldMap() || game.CloseWeaponShop())
                 {
                     return;
                 }
@@ -118,9 +118,9 @@ namespace
         glfwGetCursorPos(window, &x, &y);
         glfwGetWindowSize(window, &width, &height);
         glfwGetFramebufferSize(window, &pixelsX, &pixelsY);
-        if (width > 0 && height > 0)
+        if (width > 0 && height > 0 && pixelsX == renderer->Width() && pixelsY == renderer->Height())
         {
-            game.WeaponShopClick(float(x * pixelsX / width), float(y * pixelsY / height));
+            game.Click(float(x * pixelsX / width), float(y * pixelsY / height));
         }
     }
 
@@ -304,7 +304,8 @@ int main()
                  "cleansing stone\n"
               << "E sanctuary/report | Z weapon skill | R relic | K demo death\n"
               << "NPC: C select | I inspector | J PK | Y trade | O blessing | L AI log\n"
-              << "H help | G chunk grid | +/- zoom | F8 60/120 FPS | Esc exit\n"
+              << "M map / click to travel | H help | G chunk grid | +/- zoom | F8 60/120 FPS\n"
+              << "Esc close map/shop or exit\n"
               << "P post FX | B bloom | V vignette | N edge blur | [/] exposure | 0 reset FX\n"
               << "Progress: automatic save every 120 seconds and on normal exit.\n"
               << "Mesh files: MeshCache/ | Performance captures: Profiling/\n"

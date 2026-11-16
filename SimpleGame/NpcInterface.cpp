@@ -198,7 +198,7 @@ void NpcWorld::DrawHUD(Renderer& r)
         return;
     }
     const float left = (std::max)(24.0f, width - 414);
-    const float top = 118;
+    const float top = m_Game.MinimapBesideStatus() ? 118.0f : 214.0f;
     const float bottom = height - 235;
     r.Rect(left, top, 390, (std::max)(120.0f, bottom - top), panel);
     float y = top + 12;
