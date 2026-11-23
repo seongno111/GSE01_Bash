@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-10",
+  "date": "2026-11-17",
   "retargeted_actions": 49,
   "skill_actions": 8,
   "weapon_types": 8,
@@ -9,9 +9,9 @@
   "total_library_actions": 49,
   "glb_files": 9,
   "blender_sources": 2,
-  "checks_passed": 41,
+  "checks_passed": 46,
   "game_code_changed": false,
   "build_run": false,
-  "delivery_files": 174,
-  "delivery_bytes": 134552980
+  "delivery_files": 191,
+  "delivery_bytes": 211500800
 }

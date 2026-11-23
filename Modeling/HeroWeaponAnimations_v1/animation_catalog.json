@@ -656,13 +656,14 @@
           "frame": 61
         }
       ],
-      "description": "Two-handed diagonal smash; opposed cross-palm grip and strike-aligned hammer face",
+      "description": "Two-handed overhead hammer blow in a vertical semicircle",
       "start_pose": "Ready",
       "end_pose": "Ready",
       "blend_in_seconds": 0.12,
       "blend_out_seconds": 0.12,
       "root_translation": "in_place",
-      "root_yaw_degrees": 0
+      "root_yaw_degrees": 0,
+      "sample_divisions": 6
     },
     {
       "name": "HERO_Hammer_Uppercut",
@@ -680,13 +681,14 @@
           "frame": 52
         }
       ],
-      "description": "Rising hammer strike with neutral wrists and fixed support-hand spacing",
+      "description": "Faster second overhead blow, retaining the original clip slot",
       "start_pose": "Ready",
       "end_pose": "Ready",
       "blend_in_seconds": 0.12,
       "blend_out_seconds": 0.12,
       "root_translation": "in_place",
-      "root_yaw_degrees": 0
+      "root_yaw_degrees": 0,
+      "sample_divisions": 6
     },
     {
       "name": "HERO_Hammer_Guard",
@@ -1111,7 +1113,7 @@
       "tags": [
         "weapon_skill"
       ],
-      "sample_divisions": 8
+      "sample_divisions": 12
     },
     {
       "name": "HERO_Spear_SkillLongThrust",
@@ -1338,7 +1340,7 @@
       "tags": [
         "weapon_skill"
       ],
-      "sample_divisions": 8
+      "sample_divisions": 12
     },
     {
       "name": "HERO_Spear_SkillLongThrust",
@@ -1739,5 +1741,18 @@
     "body_to_head_ratio": 5.041094203719786,
     "triangles_before": 1849,
     "triangles_after": 6221
+  },
+  "hammer_animation_revision": {
+    "id": "20261117_hammer_overhead_ground_slam",
+    "date": "2026-11-17",
+    "supersedes": "20261117_hammer_semicircle",
+    "clips": [
+      "HERO_Hammer_SkillGroundSlam",
+      "HERO_Hammer_Smash",
+      "HERO_Hammer_Uppercut"
+    ],
+    "motion": "Fixed 180 degree vertical head arc, two rigid grip sockets, ground contact on the positive steel cap.",
+    "strike_face_check": "hammer_contact_validation.json",
+    "ground_slam": "Raised two-handed windup, wider semicircle, deeper torso fold into impact."
   }
 }

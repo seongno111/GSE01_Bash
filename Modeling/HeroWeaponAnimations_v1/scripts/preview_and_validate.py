@@ -113,7 +113,7 @@ for eq in [{'weapon_kind':'common','file':'hero_rigged.glb'}]+cat['equipment'] i
             settle_speed=0
             sample_frames=set(range(0,spec['end_frame']))
             authored_frames=set(sample_frames)
-            if 'skill_label' in spec:
+            if 'skill_label' in spec or spec.get('sample_divisions',1)>1:
                 end=spec['duration_seconds']*60
                 sample_frames={f for f in sample_frames if f<=end}
                 sample_frames.update([end]+[e['time_seconds']*60 for e in spec['events']])
@@ -135,7 +135,7 @@ for eq in [{'weapon_kind':'common','file':'hero_rigged.glb'}]+cat['equipment'] i
                     step=max((a-b).length for a,b in zip(grips,last_grips))
                     max_grip_step=max(max_grip_step,step)
                     elapsed=(sample_frame-previous_sample)/60
-                    if elapsed>.001:
+                    if elapsed>1e-5:
                         time=sample_frame/60
                         if any(abs(time-e['time_seconds'])<.11 for e in spec['events']):
                             contact_speed=max(contact_speed,step/elapsed)

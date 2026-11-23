@@ -1,0 +1,84 @@
+{
+  "HERO_Hammer_Smash": {
+    "contact_seconds": 1.0,
+    "normal_vs_incoming_motion": 0.903196960495879,
+    "side_vs_incoming_motion": 0.1450682436407078,
+    "positive_cap_normal_world": [
+      -5.662441253662109e-07,
+      0.5000002384185791,
+      -0.866025447845459
+    ],
+    "incoming_head_direction_world": [
+      0.00033864943543449044,
+      0.8233194947242737,
+      -0.5675780177116394
+    ],
+    "face_angle_from_floor_normal_degrees": 30.000007665015225,
+    "positive_steel_face_lowest_point_m": 0.0009996592998504639,
+    "arc_span_degrees": 180.00000260981514,
+    "maximum_reverse_degrees": 0,
+    "maximum_radius_error_m": 0.0006516973174617302,
+    "maximum_plane_error_m": 0.0008589327335357666,
+    "maximum_grip_socket_error_m": 0.0003882687233260031,
+    "minimum_hammer_mesh_z_m": 0.0009993314743041992,
+    "mesh_intersection_times": {}
+  },
+  "HERO_Hammer_Uppercut": {
+    "contact_seconds": 0.85,
+    "normal_vs_incoming_motion": 0.906376063531233,
+    "side_vs_incoming_motion": 0.14278034653398208,
+    "positive_cap_normal_world": [
+      -8.642673492431641e-07,
+      0.5000004768371582,
+      -0.8660253882408142
+    ],
+    "incoming_head_direction_world": [
+      0.0003383987641427666,
+      0.8190596699714661,
+      -0.573708176612854
+    ],
+    "face_angle_from_floor_normal_degrees": 30.000021325393565,
+    "positive_steel_face_lowest_point_m": 0.0009995996952056885,
+    "arc_span_degrees": 180.00000223422833,
+    "maximum_reverse_degrees": 0,
+    "maximum_radius_error_m": 0.0007639194280437689,
+    "maximum_plane_error_m": 0.000997304916381836,
+    "maximum_grip_socket_error_m": 0.000715274939676651,
+    "minimum_hammer_mesh_z_m": 0.00099945068359375,
+    "mesh_intersection_times": {}
+  },
+  "HERO_Hammer_SkillGroundSlam": {
+    "contact_seconds": 0.72,
+    "normal_vs_incoming_motion": 0.9022797343842802,
+    "side_vs_incoming_motion": 0.16071587277110666,
+    "positive_cap_normal_world": [
+      3.5762786865234375e-07,
+      0.5000000596046448,
+      -0.8660256266593933
+    ],
+    "incoming_head_direction_world": [
+      -0.0006353838834911585,
+      0.8245274424552917,
+      -0.5658215284347534
+    ],
+    "face_angle_from_floor_normal_degrees": 29.999994004636886,
+    "positive_steel_face_lowest_point_m": 0.0010000765323638916,
+    "arc_span_degrees": 180.00000188513027,
+    "maximum_reverse_degrees": 0,
+    "maximum_radius_error_m": 0.0002016019367445665,
+    "maximum_plane_error_m": 0.0001277625560760498,
+    "maximum_grip_socket_error_m": 0.0003075282397927595,
+    "minimum_hammer_mesh_z_m": 0.0009996891021728516,
+    "mesh_intersection_times": {},
+    "overhead_grip_degrees_from_vertical": {
+      "l": 28.910797398073292,
+      "r": 18.933040200012517
+    },
+    "overhead_elbow_bend_degrees": {
+      "l": 20.492271642236172,
+      "r": 37.601956984820646
+    },
+    "swing_radius_m": 0.96,
+    "impact_torso_lean_degrees": 32.300722735988174
+  }
+}

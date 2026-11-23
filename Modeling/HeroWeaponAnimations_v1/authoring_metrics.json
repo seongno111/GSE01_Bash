@@ -48,10 +48,10 @@
     "maximum_authored_target_reach_projection_m": 5.960464477539063e-08
   },
   "HERO_Hammer_Smash": {
-    "maximum_authored_target_reach_projection_m": 1.1979681574514345e-07
+    "maximum_authored_target_reach_projection_m": 1.609517186751397e-07
   },
   "HERO_Hammer_Uppercut": {
-    "maximum_authored_target_reach_projection_m": 1.0494606178523824e-07
+    "maximum_authored_target_reach_projection_m": 1.6835960053862564e-07
   },
   "HERO_Hammer_Guard": {
     "maximum_authored_target_reach_projection_m": 7.284522829387186e-08
@@ -102,7 +102,7 @@
     "maximum_authored_target_reach_projection_m": 6.664001874625056e-08
   },
   "HERO_Hammer_SkillGroundSlam": {
-    "maximum_authored_target_reach_projection_m": 1.7846343536298548e-07
+    "maximum_authored_target_reach_projection_m": 0.00035096358308817077
   },
   "HERO_Spear_SkillLongThrust": {
     "maximum_authored_target_reach_projection_m": 4.470348358154297e-08

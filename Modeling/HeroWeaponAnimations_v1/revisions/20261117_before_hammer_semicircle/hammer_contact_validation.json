@@ -1,0 +1,49 @@
+{
+  "HERO_Hammer_Smash": {
+    "contact_seconds": 1.0,
+    "normal_vs_incoming_motion": 0.9119841111823916,
+    "side_vs_incoming_motion": 0.004488285630941391,
+    "positive_cap_normal_world": [
+      0.3106071949005127,
+      0.33830490708351135,
+      -0.8882976770401001
+    ],
+    "incoming_head_direction_world": [
+      -0.037989526987075806,
+      0.12861283123493195,
+      -0.9909669160842896
+    ]
+  },
+  "HERO_Hammer_Uppercut": {
+    "contact_seconds": 0.85,
+    "normal_vs_incoming_motion": 0.9050202500075102,
+    "side_vs_incoming_motion": 0.0018475055694580078,
+    "positive_cap_normal_world": [
+      0.1660214364528656,
+      0.6272109746932983,
+      0.7609491348266602
+    ],
+    "incoming_head_direction_world": [
+      -0.1256600022315979,
+      0.34994837641716003,
+      0.9283025860786438
+    ]
+  },
+  "HERO_Hammer_SkillGroundSlam": {
+    "contact_seconds": 0.72,
+    "normal_vs_incoming_motion": 0.841124564409256,
+    "side_vs_incoming_motion": 0.43847628124058247,
+    "positive_cap_normal_world": [
+      0.36222565174102783,
+      0.3419193625450134,
+      -0.8671125173568726
+    ],
+    "incoming_head_direction_world": [
+      0.4009544849395752,
+      -0.220005601644516,
+      -0.8892879486083984
+    ],
+    "face_angle_from_floor_normal_degrees": 29.875209863595337,
+    "positive_steel_face_lowest_point_m": 0.0009998679161071777
+  }
+}

@@ -105,6 +105,10 @@ ATTACK_DRIVE = {
 
 def weapon_step(kind, name, keys, contact):
     profile = ATTACK_DRIVE[name]
+    if kind == 'warhammer':
+        if name == 'Smash':
+            return profile, (.54,.92,1.22,.142,.076,17)
+        return profile, (.33,.77,1.04,.125,.074,14)
     if kind == 'spear' and name == 'Sweep':
         profile = (.120, .104, 24, .060)
     wind = keys[1][0]
@@ -118,6 +122,8 @@ def direct_weapon(spec, p, t):
     kind = spec['weapon_kind']
     name = spec['name'].split('_')[-1]
     duration = spec['duration_seconds']
+    authored_shift = p.get('shift',(0,0))
+    authored_cape = p.get('cape',(2,0))
     phase = t / duration
     left, right = STANCE[kind]
     p = dict(p, feet=((.155, -left, 0, 0), (-.155, right, 0, 0)))
@@ -142,6 +148,11 @@ def direct_weapon(spec, p, t):
         p['cape'] = (2 + 4 * pulse, 5 * counter)
         p['lamp_swing'] = 6 * counter
         return p
+    if kind == 'warhammer':
+        p['shift']=(.008+authored_shift[0],-.016+authored_shift[1])
+        p['cape']=authored_cape
+        _,step=weapon_step(kind,name,spec['keyposes'],spec['events'][0]['time_seconds'])
+        return footwork(p,t,*step[:3],duration,*step[3:])
     if kind == 'bow':
         if name == 'Draw':
             brace = window(t, 0, .52, duration)
@@ -202,11 +213,11 @@ def direct_weapon(spec, p, t):
 def sharpen_weapon_keys(spec):
     """Compress the release out of anticipation while keeping event frames."""
     keys = spec['keyposes']
-    if spec['loop'] or spec['weapon_kind'] == 'bow':
+    if spec['loop'] or spec['weapon_kind'] == 'bow' or spec['weapon_kind']=='warhammer':
         return
     start, wind, contact, follow, finish = keys
     peak = contact[0]
-    fraction = {'warhammer':.69, 'axe':.55, 'mace':.57,
+    fraction = {'axe':.55, 'mace':.57,
                 'spear':.55, 'dagger':.54, 'staff':.60}[spec['weapon_kind']]
     wind_time = peak - (peak - wind[0]) * fraction
     follow_time = peak + (follow[0] - peak) * .71

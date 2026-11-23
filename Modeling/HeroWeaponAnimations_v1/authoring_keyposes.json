@@ -2326,21 +2326,31 @@
           "crouch": 0.06,
           "twist": 0,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0,
+            0
+          ],
+          "cape": [
+            2,
+            0
+          ],
+          "head_pitch": 0
         }
       ],
       [
-        0.7929999999999999,
+        0.65,
         {
           "rp": [
-            -0.43,
-            -0.16,
-            1.27
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.58,
-            0.07,
-            0.81
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -2352,26 +2362,36 @@
             0,
             1
           ],
-          "yaw": -15,
-          "pitch": -4,
-          "crouch": 0.045,
-          "twist": 0,
+          "yaw": -7,
+          "pitch": 12,
+          "crouch": 0.067,
+          "twist": -3,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.006,
+            -0.144
+          ],
+          "cape": [
+            1,
+            5
+          ],
+          "head_pitch": -6
         }
       ],
       [
-        1.0,
+        0.8495,
         {
           "rp": [
-            -0.4,
-            -0.28,
-            0.96
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.58,
-            -0.63,
-            -0.52
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -2384,25 +2404,35 @@
             1
           ],
           "yaw": -10,
-          "pitch": 12,
-          "crouch": 0.13,
-          "twist": 0,
+          "pitch": 28,
+          "crouch": 0.092,
+          "twist": -5,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            -0.025,
+            -0.25
+          ],
+          "cape": [
+            9,
+            -1
+          ],
+          "head_pitch": 4
         }
       ],
       [
-        1.1562,
+        0.923,
         {
           "rp": [
-            -0.4,
-            -0.29,
-            0.92
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.57,
-            -0.63,
-            -0.55
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -2415,11 +2445,226 @@
             1
           ],
           "yaw": -12,
-          "pitch": 13,
-          "crouch": 0.135,
+          "pitch": 37,
+          "crouch": 0.105,
+          "twist": 4,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.063,
+            -0.22
+          ],
+          "cape": [
+            13,
+            -2
+          ],
+          "head_pitch": 8
+        }
+      ],
+      [
+        0.9475,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -15,
+          "pitch": 33,
+          "crouch": 0.296,
+          "twist": 4,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.11,
+            -0.273
+          ],
+          "cape": [
+            17,
+            -3
+          ],
+          "head_pitch": 12
+        }
+      ],
+      [
+        1.0,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -11,
+          "pitch": 27,
+          "crouch": 0.35,
+          "twist": -3,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.081,
+            -0.226
+          ],
+          "cape": [
+            20,
+            -3
+          ],
+          "head_pitch": 13
+        }
+      ],
+      [
+        1.09,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -11,
+          "pitch": 27,
+          "crouch": 0.358,
+          "twist": -3,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.081,
+            -0.226
+          ],
+          "cape": [
+            22,
+            -3
+          ],
+          "head_pitch": 13
+        }
+      ],
+      [
+        1.2959,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -7,
+          "pitch": 14,
+          "crouch": 0.285,
           "twist": 0,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.057,
+            -0.242
+          ],
+          "cape": [
+            17,
+            -2
+          ],
+          "head_pitch": 11
+        }
+      ],
+      [
+        1.4521000000000002,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -10,
+          "pitch": 9,
+          "crouch": 0.232,
+          "twist": -5,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.017,
+            -0.139
+          ],
+          "cape": [
+            11,
+            -1
+          ],
+          "head_pitch": 7
         }
       ],
       [
@@ -2450,7 +2695,17 @@
           "crouch": 0.06,
           "twist": 0,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0,
+            0
+          ],
+          "cape": [
+            2,
+            0
+          ],
+          "head_pitch": 0
         }
       ]
     ],
@@ -2461,13 +2716,14 @@
         "frame": 61
       }
     ],
-    "description": "Two-handed diagonal smash; opposed cross-palm grip and strike-aligned hammer face",
+    "description": "Two-handed overhead hammer blow in a vertical semicircle",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
-    "root_yaw_degrees": 0
+    "root_yaw_degrees": 0,
+    "sample_divisions": 6
   },
   {
     "name": "HERO_Hammer_Uppercut",
@@ -2507,21 +2763,31 @@
           "crouch": 0.06,
           "twist": 0,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0,
+            0
+          ],
+          "cape": [
+            2,
+            0
+          ],
+          "head_pitch": 0
         }
       ],
       [
-        0.643,
+        0.55,
         {
           "rp": [
-            -0.43,
+            -0.26,
             -0.24,
-            0.92
+            1.06
           ],
           "rd": [
-            -0.62,
-            -0.62,
-            -0.48
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -2533,26 +2799,77 @@
             0,
             1
           ],
-          "yaw": 5,
-          "pitch": 8,
-          "crouch": 0.14,
-          "twist": 0,
+          "yaw": -7,
+          "pitch": 12,
+          "crouch": 0.067,
+          "twist": -3,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.006,
+            -0.144
+          ],
+          "cape": [
+            1,
+            5
+          ],
+          "head_pitch": -6
         }
       ],
       [
-        0.85,
+        0.721,
         {
           "rp": [
-            -0.4,
-            -0.3,
-            1.11
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.6,
-            -0.53,
-            0.6
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -10,
+          "pitch": 28,
+          "crouch": 0.092,
+          "twist": -5,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            -0.025,
+            -0.25
+          ],
+          "cape": [
+            9,
+            -1
+          ],
+          "head_pitch": 4
+        }
+      ],
+      [
+        0.784,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -2565,25 +2882,35 @@
             1
           ],
           "yaw": -12,
-          "pitch": -3,
-          "crouch": 0.06,
-          "twist": 0,
+          "pitch": 37,
+          "crouch": 0.105,
+          "twist": 4,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.063,
+            -0.22
+          ],
+          "cape": [
+            13,
+            -2
+          ],
+          "head_pitch": 8
         }
       ],
       [
-        1.0133,
+        0.8049999999999999,
         {
           "rp": [
-            -0.43,
-            -0.22,
-            1.22
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.63,
-            -0.29,
-            0.72
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -2595,12 +2922,186 @@
             0,
             1
           ],
-          "yaw": -18,
-          "pitch": 0,
-          "crouch": 0.06,
+          "yaw": -15,
+          "pitch": 33,
+          "crouch": 0.296,
+          "twist": 4,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.11,
+            -0.273
+          ],
+          "cape": [
+            17,
+            -3
+          ],
+          "head_pitch": 12
+        }
+      ],
+      [
+        0.85,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -11,
+          "pitch": 27,
+          "crouch": 0.35,
+          "twist": -3,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.081,
+            -0.226
+          ],
+          "cape": [
+            20,
+            -3
+          ],
+          "head_pitch": 13
+        }
+      ],
+      [
+        0.93,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -11,
+          "pitch": 27,
+          "crouch": 0.358,
+          "twist": -3,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.081,
+            -0.226
+          ],
+          "cape": [
+            22,
+            -3
+          ],
+          "head_pitch": 13
+        }
+      ],
+      [
+        1.1388,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -7,
+          "pitch": 14,
+          "crouch": 0.285,
           "twist": 0,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.057,
+            -0.242
+          ],
+          "cape": [
+            17,
+            -2
+          ],
+          "head_pitch": 11
+        }
+      ],
+      [
+        1.2972,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -10,
+          "pitch": 9,
+          "crouch": 0.232,
+          "twist": -5,
+          "roll": 0,
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0.017,
+            -0.139
+          ],
+          "cape": [
+            11,
+            -1
+          ],
+          "head_pitch": 7
         }
       ],
       [
@@ -2631,7 +3132,17 @@
           "crouch": 0.06,
           "twist": 0,
           "roll": 0,
-          "draw": 0
+          "draw": 0,
+          "hip_roll": 0,
+          "shift": [
+            0,
+            0
+          ],
+          "cape": [
+            2,
+            0
+          ],
+          "head_pitch": 0
         }
       ]
     ],
@@ -2642,13 +3153,14 @@
         "frame": 52
       }
     ],
-    "description": "Rising hammer strike with neutral wrists and fixed support-hand spacing",
+    "description": "Faster second overhead blow, retaining the original clip slot",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
-    "root_yaw_degrees": 0
+    "root_yaw_degrees": 0,
+    "sample_divisions": 6
   },
   {
     "name": "HERO_Hammer_Guard",
@@ -5004,14 +5516,14 @@
         "frame": 70
       }
     ],
-    "description": "\uc794\ubd88\uc758 \ubb38\uc591",
+    "description": "잔불의 문양",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\uc794\ubd88\uc758 \ubb38\uc591",
+    "skill_label": "잔불의 문양",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
@@ -5441,14 +5953,14 @@
         "frame": 34
       }
     ],
-    "description": "\uac00\uc2dc \ubd80\ucc44\uc0b4",
+    "description": "가시 부채살",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\uac00\uc2dc \ubd80\ucc44\uc0b4",
+    "skill_label": "가시 부채살",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
@@ -5820,14 +6332,14 @@
         "frame": 24
       }
     ],
-    "description": "\ubc29\ud328 \ubd84\uc1c4",
+    "description": "방패 분쇄",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\ubc29\ud328 \ubd84\uc1c4",
+    "skill_label": "방패 분쇄",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
@@ -6257,14 +6769,14 @@
         "frame": 34
       }
     ],
-    "description": "\uc0ac\ud615 \uc9d1\ud589",
+    "description": "사형 집행",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\uc0ac\ud615 \uc9d1\ud589",
+    "skill_label": "사형 집행",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
@@ -6339,17 +6851,17 @@
         }
       ],
       [
-        0.43,
+        0.18,
         {
           "rp": [
-            -0.35,
-            -0.258,
-            1.39
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.61,
-            -0.03,
-            0.79
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -6361,10 +6873,10 @@
             0,
             1
           ],
-          "yaw": -15,
-          "pitch": -10,
+          "yaw": -13,
+          "pitch": 3,
           "crouch": 0.043,
-          "twist": -11,
+          "twist": 0.050000000000000044,
           "roll": 0,
           "draw": 0,
           "feet": [
@@ -6382,32 +6894,322 @@
             ]
           ],
           "shift": [
-            -0.067,
-            0.04
+            -0.026000000000000002,
+            -0.07400000000000001
           ],
           "look": -1.2,
           "cape": [
             -3,
-            10
+            1
           ],
           "lamp_swing": 0.0,
           "ground": 0,
-          "hip_roll": -7,
+          "hip_roll": 0,
           "head_pitch": -8
         }
       ],
       [
-        0.55,
+        0.36,
         {
           "rp": [
-            -0.246,
-            -0.37,
-            1.055
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.69,
-            -0.68,
-            0.24
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -14,
+          "pitch": -1,
+          "crouch": 0.045,
+          "twist": -6.1,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            0.023,
+            -0.12
+          ],
+          "look": -1.2,
+          "cape": [
+            -5,
+            2
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": -14
+        }
+      ],
+      [
+        0.5651999999999999,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -10,
+          "pitch": 24,
+          "crouch": 0.041999999999999996,
+          "twist": -6.5,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            -0.032,
+            -0.29600000000000004
+          ],
+          "look": -1.2,
+          "cape": [
+            9,
+            -1
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": 4
+        }
+      ],
+      [
+        0.603,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -9,
+          "pitch": 29,
+          "crouch": 0.02,
+          "twist": -3.3499999999999996,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            0.02,
+            -0.281
+          ],
+          "look": -1.2,
+          "cape": [
+            13,
+            -2
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": 8
+        }
+      ],
+      [
+        0.62352,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -11,
+          "pitch": 32,
+          "crouch": 0.036000000000000004,
+          "twist": 1.35,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            0.029,
+            -0.28
+          ],
+          "look": -1.2,
+          "cape": [
+            13,
+            -2
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": 8
+        }
+      ],
+      [
+        0.6354,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -4,
+          "pitch": 38,
+          "crouch": 0.089,
+          "twist": 10.4,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            0.046,
+            -0.259
+          ],
+          "look": -1.2,
+          "cape": [
+            17,
+            -3
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": 12
+        }
+      ],
+      [
+        0.6641999999999999,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -6420,9 +7222,9 @@
             1
           ],
           "yaw": -7,
-          "pitch": 13,
-          "crouch": 0.162,
-          "twist": -5,
+          "pitch": 39,
+          "crouch": 0.196,
+          "twist": 11.95,
           "roll": 0,
           "draw": 0,
           "feet": [
@@ -6440,32 +7242,32 @@
             ]
           ],
           "shift": [
-            0.003,
-            -0.038
+            0.095,
+            -0.312
           ],
           "look": -1.2,
           "cape": [
-            12,
-            -2
+            17,
+            -3
           ],
           "lamp_swing": 0.0,
           "ground": 0,
           "hip_roll": 0,
-          "head_pitch": 0
+          "head_pitch": 12
         }
       ],
       [
-        0.646,
+        0.6930000000000001,
         {
           "rp": [
-            -0.19,
-            -0.38,
-            0.79
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.56,
-            -0.61,
-            -0.55
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -6477,10 +7279,10 @@
             0,
             1
           ],
-          "yaw": -6,
-          "pitch": 21,
-          "crouch": 0.268,
-          "twist": -3,
+          "yaw": -14,
+          "pitch": 47,
+          "crouch": 0.29000000000000004,
+          "twist": -8.1,
           "roll": 0,
           "draw": 0,
           "feet": [
@@ -6498,32 +7300,32 @@
             ]
           ],
           "shift": [
-            0.012,
-            -0.035
+            0.089,
+            -0.322
           ],
           "look": -1.2,
           "cape": [
-            15,
-            -5
+            17,
+            -3
           ],
           "lamp_swing": 0.0,
           "ground": 0,
           "hip_roll": 0,
-          "head_pitch": 0
+          "head_pitch": 12
         }
       ],
       [
         0.72,
         {
           "rp": [
-            -0.115,
-            -0.468,
-            0.635
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.53,
-            -0.45,
-            -0.72
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -6535,10 +7337,10 @@
             0,
             1
           ],
-          "yaw": -6,
-          "pitch": 29,
-          "crouch": 0.399,
-          "twist": 7,
+          "yaw": -11,
+          "pitch": 52,
+          "crouch": 0.332,
+          "twist": -4.65,
           "roll": 0,
           "draw": 0,
           "feet": [
@@ -6556,148 +7358,32 @@
             ]
           ],
           "shift": [
-            0.057,
-            -0.092
+            0.133,
+            -0.186
           ],
           "look": -1.2,
           "cape": [
-            25,
-            -8
-          ],
-          "lamp_swing": 0.0,
-          "ground": 1,
-          "hip_roll": 6,
-          "head_pitch": 16
-        }
-      ],
-      [
-        0.83,
-        {
-          "rp": [
-            -0.117,
-            -0.465,
-            0.635
-          ],
-          "rd": [
-            -0.53,
-            -0.45,
-            -0.72
-          ],
-          "lp": [
-            0.43,
-            -0.18,
-            0.85
-          ],
-          "ld": [
-            0,
-            0,
-            1
-          ],
-          "yaw": -6,
-          "pitch": 26,
-          "crouch": 0.405,
-          "twist": 7,
-          "roll": 0,
-          "draw": 0,
-          "feet": [
-            [
-              0.155,
-              -0.065,
-              0,
-              0
-            ],
-            [
-              -0.155,
-              0.07,
-              0,
-              0
-            ]
-          ],
-          "shift": [
-            0.057,
-            -0.092
-          ],
-          "look": -1.2,
-          "cape": [
-            26,
-            -10
-          ],
-          "lamp_swing": 0.0,
-          "ground": 1,
-          "hip_roll": 6,
-          "head_pitch": 17
-        }
-      ],
-      [
-        0.99,
-        {
-          "rp": [
-            -0.215,
-            -0.412,
-            0.84
-          ],
-          "rd": [
-            -0.67,
-            -0.61,
-            -0.38
-          ],
-          "lp": [
-            0.43,
-            -0.18,
-            0.85
-          ],
-          "ld": [
-            0,
-            0,
-            1
-          ],
-          "yaw": -6,
-          "pitch": 23,
-          "crouch": 0.243,
-          "twist": -3,
-          "roll": 0,
-          "draw": 0,
-          "feet": [
-            [
-              0.155,
-              -0.065,
-              0,
-              0
-            ],
-            [
-              -0.155,
-              0.07,
-              0,
-              0
-            ]
-          ],
-          "shift": [
-            0.019,
-            -0.042
-          ],
-          "look": -1.2,
-          "cape": [
-            18,
-            -5
+            28,
+            -3
           ],
           "lamp_swing": 0.0,
           "ground": 0,
           "hip_roll": 0,
-          "head_pitch": 9
+          "head_pitch": 19
         }
       ],
       [
-        1.19,
+        0.8,
         {
           "rp": [
-            -0.244,
-            -0.33,
-            1.045
+            -0.26,
+            -0.24,
+            1.06
           ],
           "rd": [
-            -0.76,
-            -0.3,
-            0.58
+            -0.72,
+            -0.18,
+            0.67
           ],
           "lp": [
             0.43,
@@ -6709,10 +7395,10 @@
             0,
             1
           ],
-          "yaw": -8,
-          "pitch": 12,
-          "crouch": 0.119,
-          "twist": -2,
+          "yaw": -11,
+          "pitch": 52,
+          "crouch": 0.322,
+          "twist": -4.65,
           "roll": 0,
           "draw": 0,
           "feet": [
@@ -6730,18 +7416,134 @@
             ]
           ],
           "shift": [
-            0.013,
-            -0.036
+            0.133,
+            -0.186
           ],
           "look": -1.2,
           "cape": [
-            12,
+            25,
             -2
           ],
           "lamp_swing": 0.0,
           "ground": 0,
           "hip_roll": 0,
-          "head_pitch": 4
+          "head_pitch": 19
+        }
+      ],
+      [
+        0.9595,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -7,
+          "pitch": 26,
+          "crouch": 0.328,
+          "twist": -1.05,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            0.11099999999999999,
+            -0.23099999999999998
+          ],
+          "look": -1.2,
+          "cape": [
+            17,
+            -2
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": 11
+        }
+      ],
+      [
+        1.0805,
+        {
+          "rp": [
+            -0.26,
+            -0.24,
+            1.06
+          ],
+          "rd": [
+            -0.72,
+            -0.18,
+            0.67
+          ],
+          "lp": [
+            0.43,
+            -0.18,
+            0.85
+          ],
+          "ld": [
+            0,
+            0,
+            1
+          ],
+          "yaw": -10,
+          "pitch": 12,
+          "crouch": 0.24400000000000002,
+          "twist": -6.5,
+          "roll": 0,
+          "draw": 0,
+          "feet": [
+            [
+              0.155,
+              -0.065,
+              0,
+              0
+            ],
+            [
+              -0.155,
+              0.07,
+              0,
+              0
+            ]
+          ],
+          "shift": [
+            0.025,
+            -0.15500000000000003
+          ],
+          "look": -1.2,
+          "cape": [
+            11,
+            -1
+          ],
+          "lamp_swing": 0.0,
+          "ground": 0,
+          "hip_roll": 0,
+          "head_pitch": 7
         }
       ],
       [
@@ -6810,19 +7612,19 @@
         "frame": 44
       }
     ],
-    "description": "\ub300\uc9c0 \uac15\ud0c0",
+    "description": "대지 강타",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\ub300\uc9c0 \uac15\ud0c0",
+    "skill_label": "대지 강타",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
     ],
-    "sample_divisions": 8
+    "sample_divisions": 12
   },
   {
     "name": "HERO_Spear_SkillLongThrust",
@@ -7190,14 +7992,14 @@
         "frame": 25
       }
     ],
-    "description": "\uc7bf\ube5b \uad00\ud1b5",
+    "description": "잿빛 관통",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\uc7bf\ube5b \uad00\ud1b5",
+    "skill_label": "잿빛 관통",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
@@ -7753,14 +8555,14 @@
         "frame": 25
       }
     ],
-    "description": "\uc138 \ubc88\uc758 \uc0c1\ud754",
+    "description": "세 번의 상흔",
     "start_pose": "Ready",
     "end_pose": "Ready",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 0,
-    "skill_label": "\uc138 \ubc88\uc758 \uc0c1\ud754",
+    "skill_label": "세 번의 상흔",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"
@@ -8370,14 +9172,14 @@
         "frame": 46
       }
     ],
-    "description": "\uc7bf\ubc14\ub78c \ud68c\uc804\ubca0\uae30",
+    "description": "잿바람 회전베기",
     "start_pose": "Idle",
     "end_pose": "Idle",
     "blend_in_seconds": 0.12,
     "blend_out_seconds": 0.12,
     "root_translation": "in_place",
     "root_yaw_degrees": 720,
-    "skill_label": "\uc7bf\ubc14\ub78c \ud68c\uc804\ubca0\uae30",
+    "skill_label": "잿바람 회전베기",
     "kind": "weapon_skill",
     "tags": [
       "weapon_skill"

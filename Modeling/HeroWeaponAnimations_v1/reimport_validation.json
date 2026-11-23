@@ -490,38 +490,38 @@
       "peak_final_settle_grip_speed_m_per_s": 5.378001053248537e-05
     },
     "HERO_Hammer_Smash": {
-      "minimum_boot_z_m": 0.0009914541151374578,
-      "minimum_visible_mesh_z_m": 0.0009914541151374578,
-      "maximum_boot_lift_m": 0.08264492452144623,
-      "max_foot_anchor_deviation_m": 7.39122201302447e-06,
+      "minimum_boot_z_m": 0.0004228306352160871,
+      "minimum_visible_mesh_z_m": 0.0004228306352160871,
+      "maximum_boot_lift_m": 0.08611292392015457,
+      "max_foot_anchor_deviation_m": 0.0007305290289251951,
       "max_root_translation_m": 0,
-      "maximum_support_grip_gap_m": 1.2797659965505533e-06,
+      "maximum_support_grip_gap_m": 0.000629492261329697,
       "maximum_bow_draw_hand_to_nock_m": 0,
-      "maximum_hand_step_per_60fps_frame_m": 0.11370620105181081,
-      "maximum_elbow_step_per_60fps_frame_m": 0.14735188877018673,
-      "maximum_chain_gap_m": 4.235810696473844e-06,
+      "maximum_hand_step_per_60fps_frame_m": 0.011945015451263632,
+      "maximum_elbow_step_per_60fps_frame_m": 0.020713793155673114,
+      "maximum_chain_gap_m": 3.9732766479267305e-06,
       "maximum_hammer_wrist_bend_degrees": 0,
       "loop_matrix_error": null,
-      "baked_support_grip_gap_m": 1.2797659965505533e-06,
-      "peak_contact_grip_speed_m_per_s": 6.822372063108649,
-      "peak_final_settle_grip_speed_m_per_s": 0.18160193357416887
+      "baked_support_grip_gap_m": 1.340524892591808e-06,
+      "peak_contact_grip_speed_m_per_s": 8.60041112490957,
+      "peak_final_settle_grip_speed_m_per_s": 0.18791229467492768
     },
     "HERO_Hammer_Uppercut": {
-      "minimum_boot_z_m": 0.000990911852568388,
-      "minimum_visible_mesh_z_m": 0.000990911852568388,
-      "maximum_boot_lift_m": 0.08264482021331787,
-      "max_foot_anchor_deviation_m": 7.0638458886178805e-06,
+      "minimum_boot_z_m": 0.00023062383115757257,
+      "minimum_visible_mesh_z_m": 0.00023062383115757257,
+      "maximum_boot_lift_m": 0.08387456834316254,
+      "max_foot_anchor_deviation_m": 0.000942066440874584,
       "max_root_translation_m": 0,
-      "maximum_support_grip_gap_m": 1.2219179328691195e-06,
+      "maximum_support_grip_gap_m": 0.0008277839161108444,
       "maximum_bow_draw_hand_to_nock_m": 0,
-      "maximum_hand_step_per_60fps_frame_m": 0.13188632130919056,
-      "maximum_elbow_step_per_60fps_frame_m": 0.16128748402472148,
-      "maximum_chain_gap_m": 4.308162535986022e-06,
+      "maximum_hand_step_per_60fps_frame_m": 0.013333140664236534,
+      "maximum_elbow_step_per_60fps_frame_m": 0.02383435416871546,
+      "maximum_chain_gap_m": 3.98477919204317e-06,
       "maximum_hammer_wrist_bend_degrees": 0,
       "loop_matrix_error": null,
-      "baked_support_grip_gap_m": 1.2219179328691195e-06,
-      "peak_contact_grip_speed_m_per_s": 7.913179278551434,
-      "peak_final_settle_grip_speed_m_per_s": 0.18419003440325937
+      "baked_support_grip_gap_m": 1.3993787230242272e-06,
+      "peak_contact_grip_speed_m_per_s": 9.59986127825085,
+      "peak_final_settle_grip_speed_m_per_s": 0.17839111815323172
     },
     "HERO_Hammer_Guard": {
       "minimum_boot_z_m": 0.0009943463373929262,
@@ -541,24 +541,24 @@
       "peak_final_settle_grip_speed_m_per_s": 5.126899559899794e-05
     },
     "HERO_Hammer_SkillGroundSlam": {
-      "minimum_boot_z_m": 0.0009083673357963562,
-      "minimum_visible_mesh_z_m": 0.0009083673357963562,
-      "maximum_boot_lift_m": 0.09059248119592667,
-      "max_foot_anchor_deviation_m": 6.137565822446976e-05,
+      "minimum_boot_z_m": 0.0005279779434204102,
+      "minimum_visible_mesh_z_m": 0.0005279779434204102,
+      "maximum_boot_lift_m": 0.09395045787096024,
+      "max_foot_anchor_deviation_m": 0.0004577204863876059,
       "max_root_translation_m": 0,
-      "maximum_support_grip_gap_m": 0.0018755766967479745,
+      "maximum_support_grip_gap_m": 0.000943437141351281,
       "maximum_bow_draw_hand_to_nock_m": 0,
-      "maximum_hand_step_per_60fps_frame_m": 0.020166956230745905,
-      "maximum_elbow_step_per_60fps_frame_m": 0.024898615843228725,
-      "maximum_chain_gap_m": 4.267719621013149e-06,
+      "maximum_hand_step_per_60fps_frame_m": 0.0070191559716871,
+      "maximum_elbow_step_per_60fps_frame_m": 0.014282916456864773,
+      "maximum_chain_gap_m": 0.0003510077500645425,
       "maximum_hammer_wrist_bend_degrees": 0,
       "loop_matrix_error": null,
       "weapon_floor_at_contacts_m": {
-        "0.72": 0.001000046730041504
+        "0.72": 0.0010004043579101562
       },
-      "baked_support_grip_gap_m": 1.4123174444257793e-06,
-      "peak_contact_grip_speed_m_per_s": 18.32179292319858,
-      "peak_final_settle_grip_speed_m_per_s": 0.8665205520848778
+      "baked_support_grip_gap_m": 1.5503653918716917e-06,
+      "peak_contact_grip_speed_m_per_s": 10.06079022608474,
+      "peak_final_settle_grip_speed_m_per_s": 0.6270011014848883
     }
   },
   "spear": {

@@ -257,7 +257,34 @@ details['grip_speed_profile']=speed_profile
 checks['strike_motion_faster_than_final_settle']=all(
     row['contact_m_per_s']>1.5*max(.25,row['settle_m_per_s']) for row in speed_profile.values()
 )
+hammer_contact_path=P/'hammer_contact_validation.json'
+if hammer_contact_path.exists() and cat.get('hammer_animation_revision'):
+    faces=json.loads(hammer_contact_path.read_text('utf-8'))
+    checks['hammer_steel_striking_caps_lead_at_all_three_contacts']=len(faces)==3 and all(
+        row['normal_vs_incoming_motion']>.76 and row['side_vs_incoming_motion']<.53
+        for row in faces.values()
+    )
+    checks['all_hammer_striking_caps_reach_floor']=all(
+        row['face_angle_from_floor_normal_degrees']<33
+        and abs(row['positive_steel_face_lowest_point_m']-.001)<.003 for row in faces.values()
+    )
+    checks['hammer_heads_follow_one_vertical_semicircle']=all(
+        abs(row['arc_span_degrees']-180)<.1 and row['maximum_reverse_degrees']<.02
+        and row['maximum_radius_error_m']<.003 and row['maximum_plane_error_m']<.001
+        and row['maximum_grip_socket_error_m']<.003 for row in faces.values()
+    )
+    checks['hammer_mesh_clears_head_hood_torso_and_floor']=all(
+        row['minimum_hammer_mesh_z_m']>-.001 and not row['mesh_intersection_times']
+        for row in faces.values()
+    )
+    slam=faces['HERO_Hammer_SkillGroundSlam']
+    checks['ground_slam_overhead_extension_and_torso_fold']=(
+        max(slam['overhead_grip_degrees_from_vertical'].values())<35
+        and max(slam['overhead_elbow_bend_degrees'].values())<45
+        and slam['impact_torso_lean_degrees']>30 and slam['swing_radius_m']>.93
+    )
+    details['hammer_striking_faces']=faces
 checks={name:bool(passed) for name,passed in checks.items()}
-result=dict(date='2026-11-10',all_checks_passed=all(checks.values()),checks=checks,metrics=details,clips=newdetails,scope='Five-head hero mesh, shared revised skin, and frame-by-frame checks for 49 retargeted animations.')
+result=dict(date=cat.get('hammer_animation_revision',{}).get('date',cat['date']),all_checks_passed=all(checks.values()),checks=checks,metrics=details,clips=newdetails,scope='Five-head hero mesh, shared revised skin, and frame-by-frame checks for 49 retargeted animations.')
 (P/'validation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps(dict(checks=checks,metrics=details),indent=2));assert result['all_checks_passed'], 'See validation.json'

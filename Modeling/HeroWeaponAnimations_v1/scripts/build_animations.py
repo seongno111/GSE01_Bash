@@ -15,6 +15,7 @@ from dynamic_motion import direct_weapon, sharpen_weapon_keys, STANCE, segment_p
 from common_motion import bake_common_actions, blend, cape_floor_weights, raise_cape_hem
 from skill_motion import register_skills, skill_time, direct_skill, bow_mode, bow_arrow_visible
 from hero_model import reshape_hero, HEIGHT, HEAD_CHIN, HOOD_TOP
+from hammer_motion import SWINGS, body_keys, shoulder_drive, swing_target
 source_paths=[BASE/'Hero_v1/hero_v1.blend',BASE/'Hero_v1/hero_rigged.glb',BASE/'HeroWeapons_v1/hero_weapons_v1.blend',BASE/'HeroWeapons_v1/weapon_catalog.json']
 source_hashes={str(p.relative_to(BASE)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}
 baseline=PACKAGE/'revisions/20261110_before_dynamics/hero_v1.blend'
@@ -71,7 +72,7 @@ ready={
 def change(p,**kw): q={k:(v[:] if isinstance(v,list) else v) for k,v in p.items()}; q.update(kw); return q
 
 specs=[]
-SKILL_SAMPLE_DIVISIONS = {'warhammer': 8, 'dagger': 3, 'longsword': 3}
+SKILL_SAMPLE_DIVISIONS = {'warhammer': 12, 'dagger': 3, 'longsword': 3}
 
 
 def clip(kind,action,duration,poses,loop=False,events=(),description='',start='Ready',end='Ready',skill_label=None):
@@ -84,6 +85,8 @@ def clip(kind,action,duration,poses,loop=False,events=(),description='',start='R
             spec['sample_divisions']=SKILL_SAMPLE_DIVISIONS[kind]
     if kind=='longsword':
         spec.update(root_yaw_degrees=720,start_pose='Idle',end_pose='Idle')
+    if kind=='warhammer' and action in ('Smash','Uppercut'):
+        spec['sample_divisions']=6
     specs.append(spec)
 
 for k,p in ready.items(): clip(k,'Ready',2,[(0,p),(1,change(p,pitch=p['pitch']+1,crouch=p['crouch']+.005)),(2,p)],True,description='Weapon-specific breathing ready stance')
@@ -105,9 +108,11 @@ clip('axe','Cleave',1.5,[(0,p),(.48,change(p,rp=(-.43,.02,1.16),rd=(-.8,.22,.6),
 g=change(p,rp=(-.24,-.29,1.13),rd=(.22,-.12,1),yaw=-7,crouch=.065)
 clip('axe','Guard',2,[(0,g),(1,change(g,crouch=.071)),(2,g)],True,description='Axe haft and head raised',start='Guard',end='Guard')
 
-p=ready['warhammer']
-clip('warhammer','Smash',1.8,[(0,p),(.7,change(p,rp=(-.43,-.16,1.27),rd=(-.58,.07,.81),yaw=-15,crouch=.045,pitch=-4)),(1.0,change(p,rp=(-.40,-.28,.96),rd=(-.58,-.63,-.52),yaw=-10,crouch=.13,pitch=12)),(1.22,change(p,rp=(-.40,-.29,.92),rd=(-.57,-.63,-.55),yaw=-12,crouch=.135,pitch=13)),(1.8,p)],events=[('melee_contact',1.0)],description='Two-handed diagonal smash; opposed cross-palm grip and strike-aligned hammer face')
-clip('warhammer','Uppercut',1.65,[(0,p),(.55,change(p,rp=(-.43,-.24,.92),rd=(-.62,-.62,-.48),yaw=5,crouch=.14,pitch=8)),(.85,change(p,rp=(-.40,-.30,1.11),rd=(-.60,-.53,.60),yaw=-12,crouch=.06,pitch=-3)),(1.08,change(p,rp=(-.43,-.22,1.22),rd=(-.63,-.29,.72),yaw=-18)),(1.65,p)],events=[('melee_contact',.85)],description='Rising hammer strike with neutral wrists and fixed support-hand spacing')
+p=dict(ready['warhammer'],hip_roll=0,shift=(0,0),cape=(2,0))
+clip('warhammer','Smash',1.8,body_keys(p,change,'Smash',1.0,1.8),
+     events=[('melee_contact',1.0)], description='Two-handed overhead hammer blow in a vertical semicircle')
+clip('warhammer','Uppercut',1.65,body_keys(p,change,'Uppercut',.85,1.65),
+     events=[('melee_contact',.85)], description='Faster second overhead blow, retaining the original clip slot')
 g=change(p,rp=(-.22,-.28,1.12),rd=(-.68,-.22,.70),yaw=-15,crouch=.075)
 clip('warhammer','Guard',2,[(0,g),(1,change(g,crouch=.081)),(2,g)],True,description='Two hands brace hammer vertically',start='Guard',end='Guard')
 
@@ -239,12 +244,12 @@ def hammer_arm(side,grip,q):
     set_world(wn,transform(grip,q@rest[wn].to_quaternion()))
     return grip,abs((elbow-shoulder).length-l1)
 
-def hammer_pair(grip,q,floor=None,lock_floor=False):
+def fit_hammer_grip(grip,q):
     g=Vector(grip);shaft=q@Vector((0,0,1))
     forward=q@Vector((1,0,0))
     # Jointly fit both grips into the neutral-wrist reach region. Its meridian
     # is a circle (upper-arm radius) around the forearm+fist offset.
-    for _ in range(160 if floor is not None else 64):
+    for _ in range(64):
         changed=False
         ahead=min((g-rig.pose.bones['upper_arm_'+side].head).dot(forward) for side in ('r','l'))
         if ahead<.115:
@@ -264,12 +269,15 @@ def hammer_pair(grip,q,floor=None,lock_floor=False):
             elif z*z+(r+radius)**2<l1*l1:
                 g+=perp.normalized()*(math.sqrt(l1*l1-z*z)-radius-r)
                 changed=True
-        if floor is not None and (g.z<floor or lock_floor):
-            changed |= abs(g.z-floor)>1e-7
-            g.z=floor
         if not changed:break
+    return g
+
+def hammer_pair(g,q,face_orientation):
     right,er=hammer_arm('r',g,q)
     left,el=hammer_arm('l',right+q@Vector((0,0,HAMMER_SUPPORT)),q)
+    for side,point in [('r',right),('l',left)]:
+        name='weapon_'+side
+        set_world(name,transform(point,face_orientation@rest[name].to_quaternion()))
     return max(er,el)
 
 def animate_pose(p,kind,t=0):
@@ -309,17 +317,21 @@ def animate_pose(p,kind,t=0):
         q=q@sword_basis
     grip=Vector(p['rp'])
     if kind=='warhammer':
-        q=hammer_frame(p['rd'])
-    contact_z=None
-    ground_weight=p.get('ground',0)
-    if 'ground' in p and kind in ground_geometry:
-        contact_z=.001-min((q@v).z for v in ground_geometry[kind])
-        if kind=='warhammer':
-            grip.z=max(grip.z,contact_z)
-        if ground_weight:
-            grip.z=blend(grip.z,contact_z,ground_weight)
-    if kind=='warhammer':
-        err=hammer_pair(grip,q,contact_z,ground_weight>.999);err2=0
+        shaft_frame=hammer_frame(p['rd'])
+        q=shaft_frame@Quaternion((0,0,1),p['roll']*RAD)
+        if p.get('hammer_swing'):
+            name,time,contact,finish=p['hammer_swing']
+            protraction=shoulder_drive(name,time,contact)
+            if protraction:
+                clavicle=rig.pose.bones['clavicle_r']
+                swing=Quaternion((0,0,1),protraction)
+                set_world(clavicle.name,transform(clavicle.head,swing@clavicle.matrix.to_quaternion()))
+            geometry=ground_geometry['warhammer']
+            grip,q=swing_target(name,time,contact,finish,grip,q,geometry)
+            shaft_frame=q
+        else:
+            grip=fit_hammer_grip(grip,shaft_frame)
+        err=hammer_pair(grip,shaft_frame,q);err2=0
     elif kind=='bow':
         bq=basis(p['ld']);bg,err=arm('l',p['lp'],bq)
         nock=bg+bq@Vector((0,.20+.29*p['draw'],0))
@@ -358,7 +370,7 @@ def animate_pose(p,kind,t=0):
         root=rest['root']
         set_world('root',transform(root.translation,Quaternion((0,0,1),p['spin'])@root.to_quaternion()))
     update()
-    if p['crouch']>.15 or p.get('spin',0) or kind=='warhammer' and p.get('ground',0):
+    if p['crouch']>.15 or p.get('spin',0) or kind=='warhammer' and p.get('hammer_swing'):
         raise_cape_hem(rig,cape,hem_weights,set_world)
     return max(err,err2)
 
@@ -408,7 +420,7 @@ for spec in specs:
     for f in range(1,last_frame+1):
         scene.frame_set(f)
         skill='skill_label' in spec
-        t=skill_time(spec,1+(f-1)/divisions) if skill else (f-1)/60
+        t=skill_time(spec,1+(f-1)/divisions) if skill or divisions>1 else (f-1)/60
         p=interpolate(spec['keyposes'],t,spec)
         mode=0
         if name=='HERO_Bow_Nock': mode=('nock',t)
@@ -421,6 +433,8 @@ for spec in specs:
             if skill_mode is not None:mode=skill_mode
         else:
             p=direct_weapon(spec,p,t)
+        if name in SWINGS:
+            p['hammer_swing']=(name,t,spec['events'][0]['time_seconds'],spec['duration_seconds'])
         max_reach=max(max_reach,animate_pose(p,spec['weapon_kind'],mode))
         for b in rig.pose.bones:
             q=b.rotation_quaternion.copy()
@@ -595,5 +609,6 @@ for part in hero_metadata['parts']:
 (OUT/'authoring_keyposes.json').write_text(json.dumps(specs,indent=2),encoding='utf-8')
 import runpy
 if not only_kind or only_kind=='bow':runpy.run_path(str(PACKAGE/'scripts/bake_bow_channels.py'),init_globals={'OUTPUT_DIR':OUT})
-runpy.run_path(str(PACKAGE/'scripts/exact_skill_times.py'),init_globals={'EXPORTS':timed_exports,'SKILLS':catalog['skills']})
+timed_clips=catalog['skills']+[s for s in equipped_clips if 'skill_label' not in s and s.get('sample_divisions',1)>1]
+runpy.run_path(str(PACKAGE/'scripts/exact_skill_times.py'),init_globals={'EXPORTS':timed_exports,'SKILLS':timed_clips})
 print('DELIVERED',len(all_actions),'hero actions',flush=True)

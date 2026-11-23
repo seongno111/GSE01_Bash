@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-10",
+  "date": "2026-11-17",
   "all_checks_passed": true,
   "checks": {
     "25_original_hero_part_names_retained": true,
@@ -42,7 +42,12 @@
     "sword_two_turns_about_vertical_at_fixed_origin": true,
     "bow_skill_string_and_arrow_release_at_055": true,
     "staff_and_hammer_ground_contacts_within_8mm": true,
-    "strike_motion_faster_than_final_settle": true
+    "strike_motion_faster_than_final_settle": true,
+    "hammer_steel_striking_caps_lead_at_all_three_contacts": true,
+    "all_hammer_striking_caps_reach_floor": true,
+    "hammer_heads_follow_one_vertical_semicircle": true,
+    "hammer_mesh_clears_head_hood_torso_and_floor": true,
+    "ground_slam_overhead_extension_and_torso_fold": true
   },
   "metrics": {
     "head_height_m": 0.3650001287460327,
@@ -199,15 +204,15 @@
     },
     "minimum_boot_z_m": -0.000873960554599762,
     "minimum_visible_mesh_z_m": -0.000873960554599762,
-    "maximum_chain_gap_m": 5.679713003653409e-06,
+    "maximum_chain_gap_m": 0.0003510077500645425,
     "maximum_hammer_wrist_bend_degrees": 0,
     "maximum_elbow_step_m": 0.21999058272626446,
-    "maximum_hammer_elbow_step_m": 0.16128748402472148,
-    "maximum_foot_anchor_deviation_m": 0.0008215980147831146,
-    "maximum_support_grip_gap_m": 0.0018755766967479745,
+    "maximum_hammer_elbow_step_m": 0.02383435416871546,
+    "maximum_foot_anchor_deviation_m": 0.000942066440874584,
+    "maximum_support_grip_gap_m": 0.000943437141351281,
     "maximum_bow_draw_hand_to_nock_m": 1.4108230634405537e-06,
     "maximum_bow_hand_step_per_60fps_frame_m": 0.05424629730795638,
-    "maximum_baked_support_grip_gap_m": 1.4123174444257793e-06,
+    "maximum_baked_support_grip_gap_m": 1.5503653918716917e-06,
     "attack_and_bow_transition_pose_error": 4.76837158203125e-07,
     "per_clip_pose_change": {
       "HERO_Idle": 0.20697999000549316,
@@ -237,8 +242,8 @@
       "HERO_Axe_Chop": 0.7450711121827068,
       "HERO_Axe_Cleave": 0.9853897201844628,
       "HERO_Axe_Guard": 0.19321000576019287,
-      "HERO_Hammer_Smash": 0.9887084974056081,
-      "HERO_Hammer_Uppercut": 0.9833755611779335,
+      "HERO_Hammer_Smash": 0.9575954348793144,
+      "HERO_Hammer_Uppercut": 0.9891177432620498,
       "HERO_Hammer_Guard": 0.19050997495651245,
       "HERO_Spear_Thrust": 0.9691454366182675,
       "HERO_Spear_Sweep": 0.9969086082873013,
@@ -255,7 +260,7 @@
       "HERO_Bow_SkillArrowFan": 0.9964653176592161,
       "HERO_Mace_SkillGuardBreak": 0.7949019849970739,
       "HERO_Axe_SkillExecution": 0.9940049015791965,
-      "HERO_Hammer_SkillGroundSlam": 0.9607453644672164,
+      "HERO_Hammer_SkillGroundSlam": 0.9901791095541934,
       "HERO_Spear_SkillLongThrust": 0.2748482986667059,
       "HERO_Dagger_SkillFlurry": 0.9427799437073026,
       "HERO_Sword_SkillWhirlwind": 0.9665898200149102
@@ -268,7 +273,7 @@
         "1.15": 0.0009996742010116577
       },
       "HERO_Hammer_SkillGroundSlam": {
-        "0.72": 0.001000046730041504
+        "0.72": 0.0010004043579101562
       }
     },
     "grip_speed_profile": {
@@ -285,8 +290,8 @@
         "settle_m_per_s": 0.5322194154484018
       },
       "HERO_Hammer_SkillGroundSlam": {
-        "contact_m_per_s": 18.32179292319858,
-        "settle_m_per_s": 0.8665205520848778
+        "contact_m_per_s": 10.06079022608474,
+        "settle_m_per_s": 0.6270011014848883
       },
       "HERO_Spear_SkillLongThrust": {
         "contact_m_per_s": 7.363818480503671,
@@ -295,6 +300,90 @@
       "HERO_Dagger_SkillFlurry": {
         "contact_m_per_s": 17.618783506571443,
         "settle_m_per_s": 0.6926367630864879
+      }
+    },
+    "hammer_striking_faces": {
+      "HERO_Hammer_Smash": {
+        "contact_seconds": 1.0,
+        "normal_vs_incoming_motion": 0.903196960495879,
+        "side_vs_incoming_motion": 0.1450682436407078,
+        "positive_cap_normal_world": [
+          -5.662441253662109e-07,
+          0.5000002384185791,
+          -0.866025447845459
+        ],
+        "incoming_head_direction_world": [
+          0.00033864943543449044,
+          0.8233194947242737,
+          -0.5675780177116394
+        ],
+        "face_angle_from_floor_normal_degrees": 30.000007665015225,
+        "positive_steel_face_lowest_point_m": 0.0009996592998504639,
+        "arc_span_degrees": 180.00000260981514,
+        "maximum_reverse_degrees": 0,
+        "maximum_radius_error_m": 0.0006516973174617302,
+        "maximum_plane_error_m": 0.0008589327335357666,
+        "maximum_grip_socket_error_m": 0.0003882687233260031,
+        "minimum_hammer_mesh_z_m": 0.0009993314743041992,
+        "mesh_intersection_times": {}
+      },
+      "HERO_Hammer_Uppercut": {
+        "contact_seconds": 0.85,
+        "normal_vs_incoming_motion": 0.906376063531233,
+        "side_vs_incoming_motion": 0.14278034653398208,
+        "positive_cap_normal_world": [
+          -8.642673492431641e-07,
+          0.5000004768371582,
+          -0.8660253882408142
+        ],
+        "incoming_head_direction_world": [
+          0.0003383987641427666,
+          0.8190596699714661,
+          -0.573708176612854
+        ],
+        "face_angle_from_floor_normal_degrees": 30.000021325393565,
+        "positive_steel_face_lowest_point_m": 0.0009995996952056885,
+        "arc_span_degrees": 180.00000223422833,
+        "maximum_reverse_degrees": 0,
+        "maximum_radius_error_m": 0.0007639194280437689,
+        "maximum_plane_error_m": 0.000997304916381836,
+        "maximum_grip_socket_error_m": 0.000715274939676651,
+        "minimum_hammer_mesh_z_m": 0.00099945068359375,
+        "mesh_intersection_times": {}
+      },
+      "HERO_Hammer_SkillGroundSlam": {
+        "contact_seconds": 0.72,
+        "normal_vs_incoming_motion": 0.9022797343842802,
+        "side_vs_incoming_motion": 0.16071587277110666,
+        "positive_cap_normal_world": [
+          3.5762786865234375e-07,
+          0.5000000596046448,
+          -0.8660256266593933
+        ],
+        "incoming_head_direction_world": [
+          -0.0006353838834911585,
+          0.8245274424552917,
+          -0.5658215284347534
+        ],
+        "face_angle_from_floor_normal_degrees": 29.999994004636886,
+        "positive_steel_face_lowest_point_m": 0.0010000765323638916,
+        "arc_span_degrees": 180.00000188513027,
+        "maximum_reverse_degrees": 0,
+        "maximum_radius_error_m": 0.0002016019367445665,
+        "maximum_plane_error_m": 0.0001277625560760498,
+        "maximum_grip_socket_error_m": 0.0003075282397927595,
+        "minimum_hammer_mesh_z_m": 0.0009996891021728516,
+        "mesh_intersection_times": {},
+        "overhead_grip_degrees_from_vertical": {
+          "l": 28.910797398073292,
+          "r": 18.933040200012517
+        },
+        "overhead_elbow_bend_degrees": {
+          "l": 20.492271642236172,
+          "r": 37.601956984820646
+        },
+        "swing_radius_m": 0.96,
+        "impact_torso_lean_degrees": 32.300722735988174
       }
     }
   },

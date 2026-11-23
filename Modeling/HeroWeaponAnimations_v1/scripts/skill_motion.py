@@ -1,6 +1,7 @@
 """Eight skill performances based on the project's weapon skill specification."""
 from math import cos, pi, radians, sin
 from dynamic_motion import direct_weapon, ease, footwork, window
+from hammer_motion import body_keys
 
 
 def register_skills(clip, ready, change, pose):
@@ -68,23 +69,8 @@ def register_skills(clip, ready, change, pose):
         [(0,p),(.35,coiled),(.463,across),(.55,cut),(.635,through),(.70,through),(1.05,p)])
 
     p=base('warhammer')
-    raised=change(p,rp=(-.35,-.258,1.39),rd=(-.61,-.03,.79),yaw=-15,twist=-11,
-                  hip_roll=-7,shift=(-.067,.040),crouch=.043,pitch=-10,head_pitch=-8,cape=(-3,10))
-    swinging=change(p,rp=(-.246,-.37,1.055),rd=(-.69,-.68,.24),yaw=-7,twist=-5,
-                    shift=(.003,-.038),crouch=.162,pitch=13,cape=(12,-2))
-    drop=change(p,rp=(-.19,-.38,.79),rd=(-.56,-.61,-.55),yaw=-6,twist=-3,
-                shift=(.012,-.035),crouch=.268,pitch=21,cape=(15,-5))
-    ground=change(p,rp=(-.115,-.468,.635),rd=(-.53,-.45,-.72),yaw=-6,twist=7,
-                  hip_roll=6,shift=(.057,-.092),crouch=.399,pitch=29,
-                  head_pitch=16,cape=(25,-8),ground=1)
-    absorb=change(ground,rp=(-.117,-.465,.635),crouch=.405,pitch=26,head_pitch=17,cape=(26,-10))
-    heave=change(p,rp=(-.215,-.412,.84),rd=(-.67,-.61,-.38),yaw=-6,twist=-3,
-                 shift=(.019,-.042),crouch=.243,pitch=23,head_pitch=9,cape=(18,-5))
-    reset=change(p,rp=(-.244,-.33,1.045),rd=(-.76,-.30,.58),yaw=-8,twist=-2,
-                 shift=(.013,-.036),crouch=.119,pitch=12,head_pitch=4,cape=(12,-2))
     add('warhammer','GroundSlam','대지 강타',1.35,[.72],
-        [(0,p),(.43,raised),(.55,swinging),(.646,drop),(.72,ground),(.83,absorb),
-         (.99,heave),(1.19,reset),(1.35,p)])
+        body_keys(p,change,'SkillGroundSlam',.72,1.35))
 
     p=base('spear')
     chamber=change(p,rp=(-.25,.109,.96),rd=(.26,-.96,.04),yaw=-53,twist=-23,
@@ -157,7 +143,7 @@ SKILL_STEPS = {
     'staff': (.219, .411, 1.215, .094, .063, 13),
     'mace': (.207, .338, .523, .163, .076, 23),
     'axe': (.294, .489, .702, .149, .081, 24),
-    'warhammer': (.368, .603, 1.030, .111, .080, 15),
+    'warhammer': (.273, .588, 1.021, .143, .083, 15),
     'spear': (.201, .359, .557, .242, .094, 23),
     'dagger': (.018, .120, .475, .153, .062, 18),
 }
