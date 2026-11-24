@@ -1,0 +1,2936 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-24",
+  "asset_id": "HERO_CorruptedModular_v1",
+  "units": "meter",
+  "front_blender": "-Y",
+  "up_blender": "Z",
+  "up_gltf": "Y",
+  "front_gltf": "+Z",
+  "rig": "RIG_HERO_HoodedLantern",
+  "bone_schema": [
+    {
+      "name": "root",
+      "parent": null,
+      "head_blender_z_up": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        0.0,
+        0.18000000715255737
+      ]
+    },
+    {
+      "name": "hips",
+      "parent": "root",
+      "head_blender_z_up": [
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        0.014999999664723873,
+        1.034999966621399
+      ]
+    },
+    {
+      "name": "spine",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.0,
+        0.014999999664723873,
+        1.034999966621399
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        0.008999999612569809,
+        1.2259999513626099
+      ]
+    },
+    {
+      "name": "chest",
+      "parent": "spine",
+      "head_blender_z_up": [
+        0.0,
+        0.008999999612569809,
+        1.2259999513626099
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        -0.014000000432133675,
+        1.437000036239624
+      ]
+    },
+    {
+      "name": "neck",
+      "parent": "chest",
+      "head_blender_z_up": [
+        0.0,
+        -0.014000000432133675,
+        1.437000036239624
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        -0.01899999938905239,
+        1.4889999628067017
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "neck",
+      "head_blender_z_up": [
+        0.0,
+        -0.01899999938905239,
+        1.4889999628067017
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        -0.017999999225139618,
+        1.840000033378601
+      ]
+    },
+    {
+      "name": "jaw",
+      "parent": "head",
+      "head_blender_z_up": [
+        0.0,
+        -0.08799999952316284,
+        1.5579999685287476
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        -0.18799999356269836,
+        1.4480000734329224
+      ]
+    },
+    {
+      "name": "clavicle_l",
+      "parent": "chest",
+      "head_blender_z_up": [
+        0.0,
+        -0.004000000189989805,
+        1.4160000085830688
+      ],
+      "tail_blender_z_up": [
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
+      ]
+    },
+    {
+      "name": "upper_arm_l",
+      "parent": "clavicle_l",
+      "head_blender_z_up": [
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
+      ],
+      "tail_blender_z_up": [
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
+      ]
+    },
+    {
+      "name": "forearm_l",
+      "parent": "upper_arm_l",
+      "head_blender_z_up": [
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
+      ],
+      "tail_blender_z_up": [
+        0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
+      ]
+    },
+    {
+      "name": "hand_l",
+      "parent": "forearm_l",
+      "head_blender_z_up": [
+        0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
+      ],
+      "tail_blender_z_up": [
+        0.33900001645088196,
+        0.00040000572334975004,
+        0.7900000810623169
+      ]
+    },
+    {
+      "name": "weapon_l",
+      "parent": "hand_l",
+      "head_blender_z_up": [
+        0.33899998664855957,
+        0.0,
+        0.8299999833106995
+      ],
+      "tail_blender_z_up": [
+        0.33899998664855957,
+        5.587935447692871e-09,
+        0.5899999737739563
+      ]
+    },
+    {
+      "name": "lamp_pivot",
+      "parent": "hand_l",
+      "head_blender_z_up": [
+        0.33899998664855957,
+        -0.028120001778006554,
+        0.8299999833106995
+      ],
+      "tail_blender_z_up": [
+        0.33899998664855957,
+        -0.028119996190071106,
+        0.7264000177383423
+      ]
+    },
+    {
+      "name": "lamp_body",
+      "parent": "lamp_pivot",
+      "head_blender_z_up": [
+        0.33899998664855957,
+        -0.028120001778006554,
+        0.7264000177383423
+      ],
+      "tail_blender_z_up": [
+        0.33899998664855957,
+        -0.028119996190071106,
+        0.5636000037193298
+      ]
+    },
+    {
+      "name": "clavicle_r",
+      "parent": "chest",
+      "head_blender_z_up": [
+        0.0,
+        -0.004000000189989805,
+        1.4160000085830688
+      ],
+      "tail_blender_z_up": [
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
+      ]
+    },
+    {
+      "name": "upper_arm_r",
+      "parent": "clavicle_r",
+      "head_blender_z_up": [
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
+      ],
+      "tail_blender_z_up": [
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
+      ]
+    },
+    {
+      "name": "forearm_r",
+      "parent": "upper_arm_r",
+      "head_blender_z_up": [
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
+      ],
+      "tail_blender_z_up": [
+        -0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
+      ]
+    },
+    {
+      "name": "hand_r",
+      "parent": "forearm_r",
+      "head_blender_z_up": [
+        -0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
+      ],
+      "tail_blender_z_up": [
+        -0.33900001645088196,
+        0.00040000572334975004,
+        0.7900000810623169
+      ]
+    },
+    {
+      "name": "weapon_r",
+      "parent": "hand_r",
+      "head_blender_z_up": [
+        -0.33899998664855957,
+        0.0,
+        0.8299999833106995
+      ],
+      "tail_blender_z_up": [
+        -0.33899998664855957,
+        5.587935447692871e-09,
+        0.5899999737739563
+      ]
+    },
+    {
+      "name": "thigh_l",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
+      ],
+      "tail_blender_z_up": [
+        0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ]
+    },
+    {
+      "name": "shin_l",
+      "parent": "thigh_l",
+      "head_blender_z_up": [
+        0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ],
+      "tail_blender_z_up": [
+        0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ]
+    },
+    {
+      "name": "foot_l",
+      "parent": "shin_l",
+      "head_blender_z_up": [
+        0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ],
+      "tail_blender_z_up": [
+        0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "toe_l",
+      "parent": "foot_l",
+      "head_blender_z_up": [
+        0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ],
+      "tail_blender_z_up": [
+        0.11800000071525574,
+        -0.22600001096725464,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "thigh_r",
+      "parent": "hips",
+      "head_blender_z_up": [
+        -0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
+      ],
+      "tail_blender_z_up": [
+        -0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ]
+    },
+    {
+      "name": "shin_r",
+      "parent": "thigh_r",
+      "head_blender_z_up": [
+        -0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ],
+      "tail_blender_z_up": [
+        -0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ]
+    },
+    {
+      "name": "foot_r",
+      "parent": "shin_r",
+      "head_blender_z_up": [
+        -0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ],
+      "tail_blender_z_up": [
+        -0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "toe_r",
+      "parent": "foot_r",
+      "head_blender_z_up": [
+        -0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ],
+      "tail_blender_z_up": [
+        -0.11800000071525574,
+        -0.22600001096725464,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "skirt_front",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.0,
+        -0.11299999803304672,
+        0.9480000138282776
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        -0.18476000428199768,
+        0.4235999584197998
+      ]
+    },
+    {
+      "name": "skirt_back",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.0,
+        0.15399999916553497,
+        0.9750000238418579
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        0.22575999796390533,
+        0.4505999684333801
+      ]
+    },
+    {
+      "name": "skirt_l",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.15399999916553497,
+        0.04600000008940697,
+        0.9580000042915344
+      ],
+      "tail_blender_z_up": [
+        0.22575999796390533,
+        0.04600000008940697,
+        0.43359994888305664
+      ]
+    },
+    {
+      "name": "skirt_r",
+      "parent": "hips",
+      "head_blender_z_up": [
+        -0.15399999916553497,
+        0.04600000008940697,
+        0.9580000042915344
+      ],
+      "tail_blender_z_up": [
+        -0.22575999796390533,
+        0.04600000008940697,
+        0.43359994888305664
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.0,
+        0.1509999930858612,
+        0.9449999928474426
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        0.4259999990463257,
+        0.7699999809265137
+      ]
+    },
+    {
+      "name": "tail_tip",
+      "parent": "tail",
+      "head_blender_z_up": [
+        0.0,
+        0.4259999990463257,
+        0.7699999809265137
+      ],
+      "tail_blender_z_up": [
+        0.0,
+        0.7860000133514404,
+        0.6499999761581421
+      ]
+    }
+  ],
+  "part_library_file": "hero_corrupted_parts.glb",
+  "shared_body_file": "hero_corrupted_base.glb",
+  "shared_body": [
+    "CORR_BODY_CAPE_00_WornMantle",
+    "CORR_BODY_FOOT_L_00_TravelBoot",
+    "CORR_BODY_FOOT_R_00_TravelBoot",
+    "CORR_BODY_HARNESS_00_SwordBelt",
+    "CORR_BODY_HEAD_00_Human",
+    "CORR_BODY_HEADGEAR_00_AshenHood",
+    "CORR_BODY_PAULDRON_L_00_LayeredIron",
+    "CORR_BODY_PAULDRON_R_00_LayeredIron",
+    "CORR_BODY_PELVIS_00_LeatherBelt",
+    "CORR_BODY_SHIN_L_00_LeatherPants",
+    "CORR_BODY_SHIN_R_00_LeatherPants",
+    "CORR_BODY_THIGH_L_00_LeatherPants",
+    "CORR_BODY_THIGH_R_00_LeatherPants",
+    "CORR_BODY_TORSO_00_TravelTunic",
+    "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+    "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+    "CORR_BODY_WAIST_00_TravelPouch"
+  ],
+  "free_arms": {
+    "l": "CORR_ARM_FREE_L",
+    "r": "CORR_ARM_FREE_R"
+  },
+  "optional_lamp": [
+    "CORR_LAMP_Frame",
+    "CORR_LAMP_Ember"
+  ],
+  "modules": [
+    {
+      "module_index": 0,
+      "weapon_key": "HERO_Longsword",
+      "weapon_kind": "longsword",
+      "name_ko": "장검",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_00_Longsword_Arm",
+        "CORR_WEAPON_00_Longsword_Blade",
+        "CORR_WEAPON_00_Longsword_Hilt"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_longsword_module.glb",
+      "assembled_file": "assembled/hero_corrupted_longsword.glb",
+      "source_equipped_file": "../Hero_v1/hero_rigged.glb",
+      "source_node_map": {
+        "HERO_WEAPON_R_00_LongswordBlade": "CORR_WEAPON_00_Longsword_Blade",
+        "HERO_WEAPON_R_01_LongswordHilt": "CORR_WEAPON_00_Longsword_Hilt"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": null,
+      "assembled_triangles": 8507,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Sword_SkillWhirlwind",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        19,
+        20,
+        21
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember",
+        "CORR_FUSION_00_Longsword_Arm",
+        "CORR_WEAPON_00_Longsword_Blade",
+        "CORR_WEAPON_00_Longsword_Hilt"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        38,
+        39,
+        19,
+        20,
+        21
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.13721508889872008,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.015024661971464
+      }
+    },
+    {
+      "module_index": 1,
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "weapon_kind": "staff",
+      "name_ko": "지팡이",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_01_Staff_Arm",
+        "CORR_WEAPON_01_Staff_Body"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_staff_module.glb",
+      "assembled_file": "assembled/hero_corrupted_staff.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_staff_actions.glb",
+      "source_node_map": {
+        "WPN_Staff_00_CinderCrook__Body": "CORR_WEAPON_01_Staff_Body"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": null,
+      "assembled_triangles": 9833,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Staff_CastBolt",
+        "HERO_Staff_CastSweep",
+        "HERO_Staff_Channel",
+        "HERO_Staff_Ready",
+        "HERO_Staff_SkillAshField",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        22,
+        23
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember",
+        "CORR_FUSION_01_Staff_Arm",
+        "CORR_WEAPON_01_Staff_Body"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        38,
+        39,
+        22,
+        23
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.13721508889872008,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.015024661971464
+      }
+    },
+    {
+      "module_index": 2,
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "weapon_kind": "bow",
+      "name_ko": "활",
+      "side": "l",
+      "fused_bone": "weapon_l",
+      "parts": [
+        "CORR_FUSION_02_Bow_Arm",
+        "CORR_WEAPON_02_Bow_Body",
+        "CORR_WEAPON_02_Bow_String",
+        "CORR_AMMO_02_BoneArrow"
+      ],
+      "free_arm": "CORR_ARM_FREE_R",
+      "module_file": "modules/corrupted_bow_module.glb",
+      "assembled_file": "assembled/hero_corrupted_bow.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_bow_actions.glb",
+      "source_node_map": {
+        "WPN_Bow_00_ThornRecurve__Body": "CORR_WEAPON_02_Bow_Body",
+        "WPN_Bow_00_ThornRecurve__String": "CORR_WEAPON_02_Bow_String",
+        "AMMO_Arrow_00_Iron__Body": "CORR_AMMO_02_BoneArrow"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_L_00_LeatherBracer",
+        "HERO_HAND_L_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": "right_draw",
+      "assembled_triangles": 9201,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Bow_Aim",
+        "HERO_Bow_Draw",
+        "HERO_Bow_Lower",
+        "HERO_Bow_Nock",
+        "HERO_Bow_Ready",
+        "HERO_Bow_Release",
+        "HERO_Bow_SkillArrowFan",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "free_arm_index": 18,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_R"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_R",
+        "CORR_FUSION_02_Bow_Arm",
+        "CORR_WEAPON_02_Bow_Body",
+        "CORR_WEAPON_02_Bow_String",
+        "CORR_AMMO_02_BoneArrow"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        24,
+        25,
+        26,
+        27
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.1372151160480493,
+        "free_forearm_radius_m": 0.06809595859198529,
+        "forearm_flesh_radius_ratio": 2.0150258383204425
+      }
+    },
+    {
+      "module_index": 3,
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "weapon_kind": "mace",
+      "name_ko": "철퇴",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_03_Mace_Arm",
+        "CORR_WEAPON_03_Mace_Body"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_mace_module.glb",
+      "assembled_file": "assembled/hero_corrupted_mace.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_mace_actions.glb",
+      "source_node_map": {
+        "WPN_Mace_00_FlangedIron__Body": "CORR_WEAPON_03_Mace_Body"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": null,
+      "assembled_triangles": 9617,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_Mace_Guard",
+        "HERO_Mace_Ready",
+        "HERO_Mace_SkillGuardBreak",
+        "HERO_Mace_Strike",
+        "HERO_Mace_Sweep",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        28,
+        29
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember",
+        "CORR_FUSION_03_Mace_Arm",
+        "CORR_WEAPON_03_Mace_Body"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        38,
+        39,
+        28,
+        29
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.15679664827327358,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.302582869864385
+      }
+    },
+    {
+      "module_index": 4,
+      "weapon_key": "WPN_Axe_00_Riven",
+      "weapon_kind": "axe",
+      "name_ko": "도끼",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_04_Axe_Arm",
+        "CORR_WEAPON_04_Axe_Body"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_axe_module.glb",
+      "assembled_file": "assembled/hero_corrupted_axe.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_axe_actions.glb",
+      "source_node_map": {
+        "WPN_Axe_00_Riven__Body": "CORR_WEAPON_04_Axe_Body"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": null,
+      "assembled_triangles": 9297,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Axe_Chop",
+        "HERO_Axe_Cleave",
+        "HERO_Axe_Guard",
+        "HERO_Axe_Ready",
+        "HERO_Axe_SkillExecution",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        30,
+        31
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember",
+        "CORR_FUSION_04_Axe_Arm",
+        "CORR_WEAPON_04_Axe_Body"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        38,
+        39,
+        30,
+        31
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.13721508889872008,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.015024661971464
+      }
+    },
+    {
+      "module_index": 5,
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "weapon_kind": "warhammer",
+      "name_ko": "전투 망치",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_05_Warhammer_Arm",
+        "CORR_WEAPON_05_Warhammer_Body"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_warhammer_module.glb",
+      "assembled_file": "assembled/hero_corrupted_warhammer.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_warhammer_actions.glb",
+      "source_node_map": {
+        "WPN_Hammer_00_Warden__Body": "CORR_WEAPON_05_Warhammer_Body"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": "left",
+      "assembled_triangles": 9077,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hammer_Guard",
+        "HERO_Hammer_Ready",
+        "HERO_Hammer_SkillGroundSlam",
+        "HERO_Hammer_Smash",
+        "HERO_Hammer_Uppercut",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        32,
+        33
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_FUSION_05_Warhammer_Arm",
+        "CORR_WEAPON_05_Warhammer_Body"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        32,
+        33
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.15679664827327358,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.302582869864385
+      }
+    },
+    {
+      "module_index": 6,
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "weapon_kind": "spear",
+      "name_ko": "창",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_06_Spear_Arm",
+        "CORR_WEAPON_06_Spear_Body"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_spear_module.glb",
+      "assembled_file": "assembled/hero_corrupted_spear.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_spear_actions.glb",
+      "source_node_map": {
+        "WPN_Spear_00_AshPike__Body": "CORR_WEAPON_06_Spear_Body"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": "left",
+      "assembled_triangles": 8941,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Spear_Guard",
+        "HERO_Spear_Ready",
+        "HERO_Spear_SkillLongThrust",
+        "HERO_Spear_Sweep",
+        "HERO_Spear_Thrust",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        34,
+        35
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_FUSION_06_Spear_Arm",
+        "CORR_WEAPON_06_Spear_Body"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        34,
+        35
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.13721508889872008,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.015024661971464
+      }
+    },
+    {
+      "module_index": 7,
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "weapon_kind": "dagger",
+      "name_ko": "단검",
+      "side": "r",
+      "fused_bone": "weapon_r",
+      "parts": [
+        "CORR_FUSION_07_Dagger_Arm",
+        "CORR_WEAPON_07_Dagger_Body"
+      ],
+      "free_arm": "CORR_ARM_FREE_L",
+      "module_file": "modules/corrupted_dagger_module.glb",
+      "assembled_file": "assembled/hero_corrupted_dagger.glb",
+      "source_equipped_file": "../HeroWeaponAnimations_v1/hero_dagger_actions.glb",
+      "source_node_map": {
+        "WPN_Dagger_00_Rondel__Body": "CORR_WEAPON_07_Dagger_Body"
+      },
+      "hide_normal_parts": [
+        "HERO_FOREARM_R_00_LeatherBracer",
+        "HERO_HAND_R_00_Glove",
+        "HERO_WEAPON_R_00_LongswordBlade",
+        "HERO_WEAPON_R_01_LongswordHilt"
+      ],
+      "support_hand": null,
+      "assembled_triangles": 9217,
+      "clip_names": [
+        "HERO_AttackLongsword",
+        "HERO_Dagger_Guard",
+        "HERO_Dagger_Ready",
+        "HERO_Dagger_SkillFlurry",
+        "HERO_Dagger_Slash",
+        "HERO_Dagger_Stab",
+        "HERO_Death",
+        "HERO_GetUp",
+        "HERO_Guard",
+        "HERO_Hit",
+        "HERO_Idle",
+        "HERO_LampInspect",
+        "HERO_MoveStart",
+        "HERO_MoveStop",
+        "HERO_Run",
+        "HERO_Walk"
+      ],
+      "part_indices": [
+        36,
+        37
+      ],
+      "free_arm_index": 17,
+      "show_base_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember"
+      ],
+      "hide_base_parts": [
+        "CORR_ARM_FREE_R"
+      ],
+      "assembly_parts": [
+        "CORR_BODY_CAPE_00_WornMantle",
+        "CORR_BODY_FOOT_L_00_TravelBoot",
+        "CORR_BODY_FOOT_R_00_TravelBoot",
+        "CORR_BODY_HARNESS_00_SwordBelt",
+        "CORR_BODY_HEAD_00_Human",
+        "CORR_BODY_HEADGEAR_00_AshenHood",
+        "CORR_BODY_PAULDRON_L_00_LayeredIron",
+        "CORR_BODY_PAULDRON_R_00_LayeredIron",
+        "CORR_BODY_PELVIS_00_LeatherBelt",
+        "CORR_BODY_SHIN_L_00_LeatherPants",
+        "CORR_BODY_SHIN_R_00_LeatherPants",
+        "CORR_BODY_THIGH_L_00_LeatherPants",
+        "CORR_BODY_THIGH_R_00_LeatherPants",
+        "CORR_BODY_TORSO_00_TravelTunic",
+        "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+        "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+        "CORR_BODY_WAIST_00_TravelPouch",
+        "CORR_ARM_FREE_L",
+        "CORR_LAMP_Frame",
+        "CORR_LAMP_Ember",
+        "CORR_FUSION_07_Dagger_Arm",
+        "CORR_WEAPON_07_Dagger_Body"
+      ],
+      "assembly_part_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        38,
+        39,
+        36,
+        37
+      ],
+      "arm_profile": {
+        "fused_forearm_radius_m": 0.13721508889872008,
+        "free_forearm_radius_m": 0.06809598487220067,
+        "forearm_flesh_radius_ratio": 2.015024661971464
+      }
+    }
+  ],
+  "selection_order": [
+    "shared_body",
+    "module.parts",
+    "module.free_arm",
+    "optional_lamp_when_one_handed"
+  ],
+  "corruption_state": "Existing game corruption >= MutationThreshold. State selection is applied by the integration task.",
+  "source_reference": "../HeroWeaponAnimations_v1/animation_catalog.json",
+  "source_common": "../Hero_v1/hero_rigged.glb",
+  "source_library": "../HeroWeaponAnimations_v1/hero_weapon_animation_library.glb",
+  "common_clips": [
+    {
+      "name": "HERO_Idle",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Idle"
+    },
+    {
+      "name": "HERO_Walk",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "walk",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 61,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Walk"
+    },
+    {
+      "name": "HERO_Run",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "run",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 41,
+      "duration_seconds": 0.6666666666666666,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Run"
+    },
+    {
+      "name": "HERO_MoveStart",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "start",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_MoveStart"
+    },
+    {
+      "name": "HERO_MoveStop",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "stop",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_MoveStop"
+    },
+    {
+      "name": "HERO_AttackLongsword",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "attack_sword",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 52,
+      "duration_seconds": 0.85,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "tags": [
+        "role_attack"
+      ],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_AttackKnight"
+    },
+    {
+      "name": "HERO_Guard",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "guard",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Guard"
+    },
+    {
+      "name": "HERO_Hit",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "hit",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 0.4,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Hit"
+    },
+    {
+      "name": "HERO_Death",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "death",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [
+        {
+          "name": "fallen",
+          "time_seconds": 1.2,
+          "frame": 73
+        }
+      ],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Death"
+    },
+    {
+      "name": "HERO_GetUp",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "getup",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 73,
+      "duration_seconds": 1.2,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_GetUp"
+    },
+    {
+      "name": "HERO_LampInspect",
+      "rig": "RIG_HERO_HoodedLantern",
+      "kind": "idle",
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "duration_seconds": 2.0,
+      "loop": false,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "events": [],
+      "tags": [],
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "source_clip": "NPC_Idle"
+    },
+    {
+      "name": "HERO_Sword_SkillWhirlwind",
+      "weapon_kind": "longsword",
+      "weapon_key": "HERO_Longsword",
+      "duration_seconds": 1.12,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 68,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.75,
+          "frame": 46
+        }
+      ],
+      "description": "잿바람 회전베기",
+      "start_pose": "Idle",
+      "end_pose": "Idle",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 720,
+      "skill_label": "잿바람 회전베기",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ],
+      "sample_divisions": 3
+    }
+  ],
+  "weapon_clips": [
+    {
+      "name": "HERO_Staff_Ready",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Ready",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Ready",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Hammer_Ready",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Ready",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Ready",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Ready",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Weapon-specific breathing ready stance",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_CastBolt",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.3,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "loop": false,
+      "events": [
+        {
+          "name": "cast_release",
+          "time_seconds": 0.6166666666666667,
+          "frame": 38
+        }
+      ],
+      "description": "Anticipate, point crook crystal forward, release and recover",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_CastSweep",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.65,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 100,
+      "loop": false,
+      "events": [
+        {
+          "name": "cast_release",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ],
+      "description": "Broad lateral ritual sweep; no spell VFX",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_Channel",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [
+        {
+          "name": "channel_tick",
+          "time_seconds": 0.5,
+          "frame": 31
+        },
+        {
+          "name": "channel_tick",
+          "time_seconds": 1.5,
+          "frame": 91
+        }
+      ],
+      "description": "Continuous focus loop",
+      "start_pose": "Channel",
+      "end_pose": "Channel",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Strike",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 1.25,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 76,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.6166666666666667,
+          "frame": 38
+        }
+      ],
+      "description": "Compact weighted downward flanged-head strike",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Sweep",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 1.15,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 70,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "Short waist-height crushing arc",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Mace_Guard",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Raised head guards chest",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Chop",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.3,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 79,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.6666666666666666,
+          "frame": 41
+        }
+      ],
+      "description": "High diagonal axe chop with delayed recovery",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Cleave",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.5,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 91,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.7833333333333333,
+          "frame": 48
+        }
+      ],
+      "description": "Broad edge-leading heavy cleave",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Axe_Guard",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Axe haft and head raised",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Hammer_Smash",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.8,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 109,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 1.0,
+          "frame": 61
+        }
+      ],
+      "description": "Two-handed overhead hammer blow in a vertical semicircle",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "sample_divisions": 6
+    },
+    {
+      "name": "HERO_Hammer_Uppercut",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.65,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 100,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.85,
+          "frame": 52
+        }
+      ],
+      "description": "Faster second overhead blow, retaining the original clip slot",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "sample_divisions": 6
+    },
+    {
+      "name": "HERO_Hammer_Guard",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Two hands brace hammer vertically",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Thrust",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 1.1,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 67,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.5166666666666667,
+          "frame": 32
+        }
+      ],
+      "description": "Two-handed straight thrust and recoil",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Sweep",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 1.5,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 91,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.75,
+          "frame": 46
+        }
+      ],
+      "description": "Wide spear sweep with support hand retained on shaft",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Spear_Guard",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Diagonal two-handed shaft guard",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Stab",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.75,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 46,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.35,
+          "frame": 22
+        }
+      ],
+      "description": "Fast direct point-first stab",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Slash",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.85,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 52,
+      "loop": false,
+      "events": [
+        {
+          "name": "melee_contact",
+          "time_seconds": 0.4166666666666667,
+          "frame": 26
+        }
+      ],
+      "description": "Quick close-range diagonal slice",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Dagger_Guard",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Compact close-quarters guard",
+      "start_pose": "Guard",
+      "end_pose": "Guard",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Nock",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.75,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 46,
+      "loop": false,
+      "events": [
+        {
+          "name": "arrow_show",
+          "time_seconds": 0.25,
+          "frame": 16
+        }
+      ],
+      "description": "Bring arrow to resting nocking point",
+      "start_pose": "Ready",
+      "end_pose": "Nocked",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Draw",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.8,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 49,
+      "loop": false,
+      "events": [
+        {
+          "name": "draw_complete",
+          "time_seconds": 0.8,
+          "frame": 49
+        }
+      ],
+      "description": "Extend bow arm, draw nock back; synchronized bow morph",
+      "start_pose": "Nocked",
+      "end_pose": "Aim",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Aim",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 2,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 121,
+      "loop": true,
+      "events": [],
+      "description": "Full draw aim loop",
+      "start_pose": "Aim",
+      "end_pose": "Aim",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Release",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.55,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 34,
+      "loop": false,
+      "events": [
+        {
+          "name": "projectile_release",
+          "time_seconds": 0.1,
+          "frame": 7
+        },
+        {
+          "name": "arrow_hide",
+          "time_seconds": 0.1,
+          "frame": 7
+        }
+      ],
+      "description": "Release string, small recoil and lower; projectile motion belongs to game",
+      "start_pose": "Aim",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Bow_Lower",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.65,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 40,
+      "loop": false,
+      "events": [
+        {
+          "name": "arrow_hide",
+          "time_seconds": 0.5,
+          "frame": 31
+        }
+      ],
+      "description": "Controlled undraw and lower without firing",
+      "start_pose": "Aim",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0
+    },
+    {
+      "name": "HERO_Staff_SkillAshField",
+      "weapon_kind": "staff",
+      "weapon_key": "WPN_Staff_00_CinderCrook",
+      "duration_seconds": 1.4,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 85,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.45,
+          "frame": 28
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.8,
+          "frame": 49
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 1.15,
+          "frame": 70
+        }
+      ],
+      "description": "잔불의 문양",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "잔불의 문양",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Bow_SkillArrowFan",
+      "weapon_kind": "bow",
+      "weapon_key": "WPN_Bow_00_ThornRecurve",
+      "duration_seconds": 0.95,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 58,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "가시 부채살",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "가시 부채살",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Mace_SkillGuardBreak",
+      "weapon_kind": "mace",
+      "weapon_key": "WPN_Mace_00_FlangedIron",
+      "duration_seconds": 0.82,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 50,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.38,
+          "frame": 24
+        }
+      ],
+      "description": "방패 분쇄",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "방패 분쇄",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Axe_SkillExecution",
+      "weapon_kind": "axe",
+      "weapon_key": "WPN_Axe_00_Riven",
+      "duration_seconds": 1.05,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 64,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.55,
+          "frame": 34
+        }
+      ],
+      "description": "사형 집행",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "사형 집행",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Hammer_SkillGroundSlam",
+      "weapon_kind": "warhammer",
+      "weapon_key": "WPN_Hammer_00_Warden",
+      "duration_seconds": 1.35,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 82,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.72,
+          "frame": 44
+        }
+      ],
+      "description": "대지 강타",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "대지 강타",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ],
+      "sample_divisions": 12
+    },
+    {
+      "name": "HERO_Spear_SkillLongThrust",
+      "weapon_kind": "spear",
+      "weapon_key": "WPN_Spear_00_AshPike",
+      "duration_seconds": 0.86,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 53,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "description": "잿빛 관통",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "잿빛 관통",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ]
+    },
+    {
+      "name": "HERO_Dagger_SkillFlurry",
+      "weapon_kind": "dagger",
+      "weapon_key": "WPN_Dagger_00_Rondel",
+      "duration_seconds": 0.67,
+      "fps": 60,
+      "start_frame": 1,
+      "end_frame": 41,
+      "loop": false,
+      "events": [
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.14,
+          "frame": 9
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.27,
+          "frame": 17
+        },
+        {
+          "name": "skill_contact",
+          "time_seconds": 0.4,
+          "frame": 25
+        }
+      ],
+      "description": "세 번의 상흔",
+      "start_pose": "Ready",
+      "end_pose": "Ready",
+      "blend_in_seconds": 0.12,
+      "blend_out_seconds": 0.12,
+      "root_translation": "in_place",
+      "root_yaw_degrees": 0,
+      "skill_label": "세 번의 상흔",
+      "kind": "weapon_skill",
+      "tags": [
+        "weapon_skill"
+      ],
+      "sample_divisions": 3
+    }
+  ],
+  "parts": [
+    {
+      "mesh": "CORR_BODY_CAPE_00_WornMantle",
+      "vertices": 340,
+      "triangles": 676,
+      "part_index": 0
+    },
+    {
+      "mesh": "CORR_BODY_FOOT_L_00_TravelBoot",
+      "vertices": 80,
+      "triangles": 152,
+      "part_index": 1
+    },
+    {
+      "mesh": "CORR_BODY_FOOT_R_00_TravelBoot",
+      "vertices": 80,
+      "triangles": 152,
+      "part_index": 2
+    },
+    {
+      "mesh": "CORR_BODY_HARNESS_00_SwordBelt",
+      "vertices": 84,
+      "triangles": 132,
+      "part_index": 3
+    },
+    {
+      "mesh": "CORR_BODY_HEAD_00_Human",
+      "vertices": 234,
+      "triangles": 396,
+      "part_index": 4
+    },
+    {
+      "mesh": "CORR_BODY_HEADGEAR_00_AshenHood",
+      "vertices": 427,
+      "triangles": 783,
+      "part_index": 5
+    },
+    {
+      "mesh": "CORR_BODY_PAULDRON_L_00_LayeredIron",
+      "vertices": 450,
+      "triangles": 844,
+      "part_index": 6
+    },
+    {
+      "mesh": "CORR_BODY_PAULDRON_R_00_LayeredIron",
+      "vertices": 450,
+      "triangles": 844,
+      "part_index": 7
+    },
+    {
+      "mesh": "CORR_BODY_PELVIS_00_LeatherBelt",
+      "vertices": 92,
+      "triangles": 172,
+      "part_index": 8
+    },
+    {
+      "mesh": "CORR_BODY_SHIN_L_00_LeatherPants",
+      "vertices": 93,
+      "triangles": 178,
+      "part_index": 9
+    },
+    {
+      "mesh": "CORR_BODY_SHIN_R_00_LeatherPants",
+      "vertices": 93,
+      "triangles": 178,
+      "part_index": 10
+    },
+    {
+      "mesh": "CORR_BODY_THIGH_L_00_LeatherPants",
+      "vertices": 72,
+      "triangles": 140,
+      "part_index": 11
+    },
+    {
+      "mesh": "CORR_BODY_THIGH_R_00_LeatherPants",
+      "vertices": 72,
+      "triangles": 140,
+      "part_index": 12
+    },
+    {
+      "mesh": "CORR_BODY_TORSO_00_TravelTunic",
+      "vertices": 309,
+      "triangles": 570,
+      "part_index": 13
+    },
+    {
+      "mesh": "CORR_BODY_UPPER_ARM_L_00_Sleeve",
+      "vertices": 100,
+      "triangles": 180,
+      "part_index": 14
+    },
+    {
+      "mesh": "CORR_BODY_UPPER_ARM_R_00_Sleeve",
+      "vertices": 100,
+      "triangles": 180,
+      "part_index": 15
+    },
+    {
+      "mesh": "CORR_BODY_WAIST_00_TravelPouch",
+      "vertices": 54,
+      "triangles": 96,
+      "part_index": 16
+    },
+    {
+      "mesh": "CORR_ARM_FREE_L",
+      "vertices": 408,
+      "triangles": 728,
+      "part_index": 17
+    },
+    {
+      "mesh": "CORR_ARM_FREE_R",
+      "vertices": 408,
+      "triangles": 728,
+      "part_index": 18
+    },
+    {
+      "mesh": "CORR_FUSION_00_Longsword_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 19
+    },
+    {
+      "mesh": "CORR_WEAPON_00_Longsword_Blade",
+      "vertices": 49,
+      "triangles": 78,
+      "part_index": 20
+    },
+    {
+      "mesh": "CORR_WEAPON_00_Longsword_Hilt",
+      "vertices": 184,
+      "triangles": 336,
+      "part_index": 21
+    },
+    {
+      "mesh": "CORR_FUSION_01_Staff_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 22
+    },
+    {
+      "mesh": "CORR_WEAPON_01_Staff_Body",
+      "vertices": 964,
+      "triangles": 1740,
+      "part_index": 23
+    },
+    {
+      "mesh": "CORR_FUSION_02_Bow_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 24
+    },
+    {
+      "mesh": "CORR_WEAPON_02_Bow_Body",
+      "vertices": 744,
+      "triangles": 1324,
+      "part_index": 25
+    },
+    {
+      "mesh": "CORR_WEAPON_02_Bow_String",
+      "vertices": 16,
+      "triangles": 24,
+      "part_index": 26
+    },
+    {
+      "mesh": "CORR_AMMO_02_BoneArrow",
+      "vertices": 44,
+      "triangles": 68,
+      "part_index": 27
+    },
+    {
+      "mesh": "CORR_FUSION_03_Mace_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 28
+    },
+    {
+      "mesh": "CORR_WEAPON_03_Mace_Body",
+      "vertices": 850,
+      "triangles": 1524,
+      "part_index": 29
+    },
+    {
+      "mesh": "CORR_FUSION_04_Axe_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 30
+    },
+    {
+      "mesh": "CORR_WEAPON_04_Axe_Body",
+      "vertices": 682,
+      "triangles": 1204,
+      "part_index": 31
+    },
+    {
+      "mesh": "CORR_FUSION_05_Warhammer_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 32
+    },
+    {
+      "mesh": "CORR_WEAPON_05_Warhammer_Body",
+      "vertices": 732,
+      "triangles": 1292,
+      "part_index": 33
+    },
+    {
+      "mesh": "CORR_FUSION_06_Spear_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 34
+    },
+    {
+      "mesh": "CORR_WEAPON_06_Spear_Body",
+      "vertices": 654,
+      "triangles": 1156,
+      "part_index": 35
+    },
+    {
+      "mesh": "CORR_FUSION_07_Dagger_Arm",
+      "vertices": 682,
+      "triangles": 1244,
+      "part_index": 36
+    },
+    {
+      "mesh": "CORR_WEAPON_07_Dagger_Body",
+      "vertices": 636,
+      "triangles": 1124,
+      "part_index": 37
+    },
+    {
+      "mesh": "CORR_LAMP_Frame",
+      "vertices": 164,
+      "triangles": 268,
+      "part_index": 38
+    },
+    {
+      "mesh": "CORR_LAMP_Ember",
+      "vertices": 24,
+      "triangles": 40,
+      "part_index": 39
+    }
+  ],
+  "unique_mesh_count": 40,
+  "bone_animation_count": 49,
+  "module_index_scope": "Corruption appearance modules. Resolve equipment by weapon_key.",
+  "shared_body_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "free_arm_indices": {
+    "l": 17,
+    "r": 18
+  },
+  "optional_lamp_indices": [
+    38,
+    39
+  ],
+  "appearance_revision": "20261124_asymmetric_weapon_arm_fusion",
+  "default_module_index": 0,
+  "height_without_hood_m": 1.84,
+  "body_to_head_ratio": 5.0410958904109595
+}

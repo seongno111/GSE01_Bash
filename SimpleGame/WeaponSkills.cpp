@@ -189,6 +189,7 @@ bool Prototype::UpdateWeaponSkill()
 
 void Prototype::ApplyPlayerHit(::Actor& target, float damage, float stun)
 {
+    m_FireVfx.Hit(target.WorldPosition());
     if (auto* enemy = dynamic_cast<EnemyActor*>(&target))
     {
         const float applied = enemy->ReceiveDamage(damage, m_Player.Id());
@@ -243,6 +244,13 @@ void Prototype::ResolveWeaponSkill()
     const auto& skill = HeroWeapons[m_Player.weapon].skill;
     const auto& cast = m_Player.skillCast;
     const auto origin = m_Player.WorldPosition();
+    m_FireVfx.WeaponContact(skill.kind,
+                            skill.kind == HeroSkillKind::AshField ? cast.center : origin,
+                            cast.yaw,
+                            skill.range,
+                            skill.width,
+                            true,
+                            int(cast.nextHit) - 1);
     if (skill.kind == HeroSkillKind::ArrowFan)
     {
         for (int i = 0; i < FanArrows; ++i)
@@ -335,68 +343,5 @@ void Prototype::ResolveWeaponSkill()
                 MoveActor(actor, forwardX * .1, forwardY * .1, .18f);
             }
         }
-    }
-}
-
-void Prototype::DrawWeaponSkill(Renderer& renderer)
-{
-    const auto& cast = m_Player.skillCast;
-    if (cast.startedAt < 0)
-    {
-        return;
-    }
-    const auto& skill = HeroWeapons[m_Player.weapon].skill;
-    const auto origin = m_Player.WorldPosition();
-    const Color color =
-        cast.nextHit > 0 ? Color(1, .56f, .19f, .88f) : Color(.94f, .81f, .45f, .65f);
-    const auto line = [&](WorldPoint a, WorldPoint b)
-    {
-        renderer.Line(Project(a.x, a.y), Project(b.x, b.y), 2 * m_Zoom, color);
-    };
-    if (skill.kind == HeroSkillKind::ArrowFan)
-    {
-        for (int i = 0; i < FanArrows; ++i)
-        {
-            line(origin, Offset(origin, FanAngle(cast.yaw, skill.width, i), skill.range));
-        }
-        return;
-    }
-    if (skill.kind == HeroSkillKind::LongThrust)
-    {
-        const auto a = Offset(origin, cast.yaw, 0, -skill.width);
-        const auto b = Offset(origin, cast.yaw, skill.range, -skill.width);
-        const auto c = Offset(origin, cast.yaw, skill.range, skill.width);
-        const auto d = Offset(origin, cast.yaw, 0, skill.width);
-        line(a, b);
-        line(b, c);
-        line(c, d);
-        line(d, a);
-        return;
-    }
-    const bool cone = skill.kind == HeroSkillKind::GuardBreak
-                      || skill.kind == HeroSkillKind::Execution
-                      || skill.kind == HeroSkillKind::GroundSlam;
-    const bool targeted =
-        skill.kind == HeroSkillKind::AshField || skill.kind == HeroSkillKind::Flurry;
-    const auto center = targeted ? cast.center : origin;
-    const double radius = skill.kind == HeroSkillKind::AshField ? skill.width
-                          : skill.kind == HeroSkillKind::Flurry ? .5
-                                                                : skill.range;
-    const double halfAngle = (cone ? skill.width : 180.0) * ToRadians;
-    auto edge = Offset(center, cast.yaw - halfAngle, radius);
-    if (cone)
-    {
-        line(center, edge);
-    }
-    constexpr int Segments = 24;
-    for (int i = 1; i <= Segments; ++i)
-    {
-        const auto next = Offset(center, cast.yaw + halfAngle * (2.0 * i / Segments - 1), radius);
-        line(edge, next);
-        edge = next;
-    }
-    if (cone)
-    {
-        line(edge, center);
     }
 }

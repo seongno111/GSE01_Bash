@@ -242,6 +242,7 @@ Renderer::Renderer(int width, int height)
     InitializeMeshCache();
     InitializeSpriteAtlas();
     InitializeModelRenderer();
+    InitializeFireVfx();
     if (!m_Post.Initialize(width, height))
     {
         std::cerr << "Post processing unavailable. Using direct rendering.\n";
@@ -251,6 +252,7 @@ Renderer::Renderer(int width, int height)
 Renderer::~Renderer()
 {
     m_Models.reset();
+    m_FireVfx.reset();
     // All GL resources must be released while the renderer's context is alive.
     for (auto& sample : m_GpuSamples)
     {

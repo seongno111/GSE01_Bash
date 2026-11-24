@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Prototype.h"
 #include "GameRules.h"
+#include "HeroWeapons.h"
 
 #include <cmath>
 
@@ -15,7 +16,8 @@ EchoActor::EchoActor(Prototype& game,
                      bool alive,
                      float maxHealth,
                      float damage,
-                     int level)
+                     int level,
+                     int weapon)
     : GameActor(game, "Echo", TickGroup::Enemy, ActorLayer::World),
       id(number),
       corruption(corruption),
@@ -23,7 +25,8 @@ EchoActor::EchoActor(Prototype& game,
       alive(alive),
       maxHealth(maxHealth),
       damage(damage),
-      level(level)
+      level(level),
+      weapon(weapon)
 {
     SetLocalPosition(x, y);
 }
@@ -61,14 +64,28 @@ void EchoActor::Update(float dt)
 void EchoActor::Draw(Renderer& r)
 {
     const Point p = m_Game.Project(WorldX(), WorldY());
+    const auto* corrupted = weapon >= 0 && size_t(weapon) < HeroWeapons.size()
+                                ? m_Game.ModelAssets().CorruptedHero(HeroWeapons[weapon].key)
+                                : nullptr;
+    std::string clip = alive ? MovementClip("MON_04") : "MON_04_DeadHold";
+    if (corrupted)
+    {
+        const auto* actions = m_Game.ModelAssets().HeroWeaponActions(HeroWeapons[weapon].key);
+        clip = alive ? MovementClip("HERO") : "HERO_Death";
+        if (alive && actions)
+        {
+            clip = actions->prefix + (SpritePose().moving ? "_Walk" : "_Ready");
+        }
+    }
     if (DrawModel(
             r,
-            "echo/death",
+            "echo/death/" + std::to_string(weapon),
             [&]()
             {
-                return m_Game.ModelAssets().Monster(4);
+                return corrupted ? *corrupted : m_Game.ModelAssets().Monster(4);
             },
-            alive ? MovementClip("MON_04") : "MON_04_DeadHold"))
+            clip,
+            alive ? -1.0f : 1.0f))
     {
         return;
     }

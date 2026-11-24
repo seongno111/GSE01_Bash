@@ -28,7 +28,8 @@ namespace
         "unaccounted_ms,gpu_world_ms,gpu_post_ms,gpu_ui_ms,gpu_sample_age,buffer_orphans,stream_"
         "capacity_bytes,model_draws,model_uploads,model_pose_bytes,"
         "target_fps,path_cpu_ms,path_pending,path_deferred,path_completed,"
-        "monitor_capture_cpu_ms,monitor_worker_ms,monitor_age_ms,monitor_skipped,monitor_pending\n";
+        "monitor_capture_cpu_ms,monitor_worker_ms,monitor_age_ms,monitor_skipped,monitor_pending,"
+        "vfx_draws,vfx_instances,vfx_dropped_total\n";
 
     double Milliseconds(std::chrono::steady_clock::duration duration)
     {
@@ -79,7 +80,7 @@ void FrameProfiler::Initialize(Renderer& renderer)
     m_Summary.open(m_LogDirectory / "session.log");
     m_Summary.imbue(std::locale::classic());
     m_Summary
-        << "Profiling schema=5; renderer=ordered-triangles-and-skinned-models; mesh-cache=v1\n"
+        << "Profiling schema=6; renderer=ordered-triangles-and-skinned-models; mesh-cache=v1\n"
         << "Build=" << __DATE__ << ' ' << __TIME__ << '\n'
 #ifdef _DEBUG
         << "Configuration=Debug\n"
@@ -301,7 +302,8 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
                << update.pathPending << ',' << update.pathDeferred << ',' << update.pathCompleted
                << ',' << update.monitorCaptureMs << ',' << update.monitorWorkerMs << ','
                << update.monitorAgeMs << ',' << update.monitorSkipped << ','
-               << update.monitorPending << '\n';
+               << update.monitorPending << ',' << stats.vfxDraws << ',' << stats.vfxInstances << ','
+               << stats.vfxDropped << '\n';
     }
     m_GameplayMs = 0;
     m_NpcMs = 0;
@@ -340,6 +342,8 @@ void FrameProfiler::EndFrame(Renderer& renderer, const Prototype& game)
             << " cacheIO=" << m_DiskTotal / m_Frames << " pacing/other=" << m_IdleTotal / m_Frames;
     message << " | Models/frame: draws=" << stats.modelDraws << " uploads=" << stats.modelUploads
             << " poseBytes=" << stats.modelPoseBytes;
+    message << " | VFX/frame: draws=" << stats.vfxDraws << " instances=" << stats.vfxInstances
+            << " droppedTotal=" << stats.vfxDropped;
     message << " | Navigation last: ms=" << update.pathMs << " pending=" << update.pathPending
             << " deferred=" << update.pathDeferred << " completed=" << update.pathCompleted
             << " | Monitor last: capture=" << update.monitorCaptureMs

@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-23",
+  "checks": {
+    "exported_files_count": true,
+    "original_mesh_and_bone_names": true,
+    "modular_slots_51_parts_and_presets": true,
+    "headgear_keeps_real_head": true,
+    "every_character_gained_authored_geometry": true,
+    "normalized_skin_weights_and_valid_joint_indices": true,
+    "all_175_clip_names_and_durations_preserved": true,
+    "one_walk_and_run_per_rig": true,
+    "all_animation_samples_are_finite": true,
+    "five_head_npc_ratio": true,
+    "revised_quadruped_anatomy_and_motion_preserved": true,
+    "props_and_assignment_indices_preserved": true,
+    "loops_and_contact_event_times_preserved": true
+  },
+  "all_checks_passed": true,
+  "npc_head_height_m": 0.36499977111816406,
+  "npc_body_to_head_ratio": 5.0410990515507015,
+  "files": {
+    "LowPolyKit_v3/monsters/DeathEcho_rigged.glb": {
+      "triangles_before": 806,
+      "triangles_after": 6160,
+      "meshes": 1,
+      "bones": 31,
+      "clips": 10,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/monsters/FieldWarden_rigged.glb": {
+      "triangles_before": 834,
+      "triangles_after": 7206,
+      "meshes": 1,
+      "bones": 31,
+      "clips": 11,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/monsters/MutatedHuman_rigged.glb": {
+      "triangles_before": 806,
+      "triangles_after": 6160,
+      "meshes": 1,
+      "bones": 31,
+      "clips": 10,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/monsters/TaintedRaider_rigged.glb": {
+      "triangles_before": 812,
+      "triangles_after": 7136,
+      "meshes": 1,
+      "bones": 31,
+      "clips": 9,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/monsters/WitheredHollow_rigged.glb": {
+      "triangles_before": 780,
+      "triangles_after": 5224,
+      "meshes": 1,
+      "bones": 31,
+      "clips": 9,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/npc/adventurer_rigged.glb": {
+      "triangles_before": 1077,
+      "triangles_after": 5219,
+      "meshes": 18,
+      "bones": 31,
+      "clips": 39,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/npc/knight_rigged.glb": {
+      "triangles_before": 1392,
+      "triangles_after": 6108,
+      "meshes": 17,
+      "bones": 31,
+      "clips": 39,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/npc/merchant_rigged.glb": {
+      "triangles_before": 856,
+      "triangles_after": 4496,
+      "meshes": 18,
+      "bones": 31,
+      "clips": 39,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/npc/npc_parts_rigged.glb": {
+      "triangles_before": 4072,
+      "triangles_after": 16754,
+      "meshes": 51,
+      "bones": 31,
+      "clips": 39,
+      "max_weight_error": 2.9802322387695312e-08,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/npc/priest_rigged.glb": {
+      "triangles_before": 764,
+      "triangles_after": 3752,
+      "meshes": 13,
+      "bones": 31,
+      "clips": 39,
+      "max_weight_error": 2.9802322387695312e-08,
+      "max_loop_endpoint_error": 0
+    },
+    "LowPolyKit_v3/npc/raider_rigged.glb": {
+      "triangles_before": 981,
+      "triangles_after": 4889,
+      "meshes": 18,
+      "bones": 31,
+      "clips": 39,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "Monsters_v1/AshWolf.glb": {
+      "triangles_before": 1679,
+      "triangles_after": 10003,
+      "meshes": 1,
+      "bones": 25,
+      "clips": 14,
+      "max_weight_error": 5.960464477539063e-08,
+      "max_loop_endpoint_error": 0
+    },
+    "Monsters_v1/BlightBear.glb": {
+      "triangles_before": 1940,
+      "triangles_after": 12676,
+      "meshes": 2,
+      "bones": 26,
+      "clips": 13,
+      "max_weight_error": 2.9802322387695312e-08,
+      "max_loop_endpoint_error": 0
+    },
+    "Monsters_v1/FallenPaladin.glb": {
+      "triangles_before": 1522,
+      "triangles_after": 9428,
+      "meshes": 3,
+      "bones": 31,
+      "clips": 14,
+      "max_weight_error": 2.9802322387695312e-08,
+      "max_loop_endpoint_error": 0
+    },
+    "Monsters_v1/FallenPriest.glb": {
+      "triangles_before": 971,
+      "triangles_after": 5521,
+      "meshes": 3,
+      "bones": 31,
+      "clips": 16,
+      "max_weight_error": 9.42964106798172e-08,
+      "max_loop_endpoint_error": 0
+    },
+    "Monsters_v1/HighDemonAzar.glb": {
+      "triangles_before": 1241,
+      "triangles_after": 7471,
+      "meshes": 4,
+      "bones": 37,
+      "clips": 17,
+      "max_weight_error": 0,
+      "max_loop_endpoint_error": 0
+    },
+    "Monsters_v1/ThornStag.glb": {
+      "triangles_before": 1348,
+      "triangles_after": 7792,
+      "meshes": 2,
+      "bones": 26,
+      "clips": 13,
+      "max_weight_error": 3.725290298461914e-08,
+      "max_loop_endpoint_error": 0
+    }
+  },
+  "quadruped_maximum_animation_channel_difference": 4.606743653667866e-05,
+  "scope": "Exported geometry, skins and action data. See playback_validation.json for deformed frame checks."
+}

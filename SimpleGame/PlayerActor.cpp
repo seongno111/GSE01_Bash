@@ -33,7 +33,8 @@ void PlayerActor::Update(float dt)
         return;
     }
     const auto& keys = m_Game.m_Keys;
-    const bool manual = !m_Game.m_WorldMapOpen && (keys['w'] || keys['a'] || keys['s'] || keys['d']);
+    const bool manual =
+        !m_Game.m_WorldMapOpen && (keys['w'] || keys['a'] || keys['s'] || keys['d']);
     if (manual)
     {
         m_Game.CancelMapTravel();
@@ -121,14 +122,16 @@ void PlayerActor::Draw(Renderer& r)
 {
     const auto pose = SpritePose();
     const bool mutant = corruption >= MutationThreshold;
+    const auto* corrupted = m_Game.ModelAssets().CorruptedHero(HeroWeapons[weapon].key);
+    const bool heroForm = !mutant || corrupted;
     std::string clip =
-        mutant ? (pose.attackProgress >= 0 ? "MON_03_Attack" : MovementClip("MON_03", running))
+        !heroForm ? (pose.attackProgress >= 0 ? "MON_03_Attack" : MovementClip("MON_03", running))
         : pose.attackProgress >= 0 ? "HERO_AttackLongsword"
                                    : MovementClip("HERO", running);
     float progress = pose.attackProgress;
     const char* skillClip = nullptr;
     float spinYaw = 0;
-    if (!mutant)
+    if (heroForm)
     {
         if (const auto* visual = m_Game.ModelAssets().HeroWeaponActions(HeroWeapons[weapon].key))
         {
@@ -171,12 +174,12 @@ void PlayerActor::Draw(Renderer& r)
     }
     if (DrawModel(
             r,
-            mutant ? "player/mutated" : std::string("player/") + HeroWeapons[weapon].key,
+            std::string(mutant ? "player/mutated/" : "player/") + HeroWeapons[weapon].key,
             [&]()
             {
                 if (mutant)
                 {
-                    return m_Game.ModelAssets().Monster(3);
+                    return corrupted ? *corrupted : m_Game.ModelAssets().Monster(3);
                 }
                 const auto equipped =
                     m_Game.ModelAssets().HeroWeaponModel(HeroWeapons[weapon].key, true);

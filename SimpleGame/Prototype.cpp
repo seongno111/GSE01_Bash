@@ -81,7 +81,8 @@ void Prototype::Die(const ::Actor* killer, bool unlawful)
                        true,
                        echoHealth,
                        echoDamage,
-                       m_Player.level);
+                       m_Player.level,
+                       m_Player.weapon);
         Notice("과거의 네가 이 땅에 남았다. 그것은 네 힘을 기억한다.");
     }
     else
@@ -297,6 +298,7 @@ void Prototype::Update(float dt)
     const auto updateStart = std::chrono::steady_clock::now();
     InitializeLevelOne();
     m_Time += dt;
+    m_FireVfx.Update(dt);
     if (m_WeaponShopOpen && (!NearBlacksmith() || m_Player.health <= 0))
     {
         CloseWeaponShop();
@@ -354,7 +356,7 @@ void Prototype::Draw(Renderer& r)
     m_Height = r.Height();
     r.Begin(Color(0.065f, 0.095f, 0.10f));
     m_Scene.DrawWorld(r);
-    DrawWeaponSkill(r);
+    m_FireVfx.Draw(*this, r);
     r.BeginUI();
     m_Scene.DrawUI(r);
     DrawWeaponShop(r);

@@ -1,0 +1,340 @@
+{
+  "date": "2026-11-23",
+  "files": [
+    {
+      "file": "CharacterQuality_20261123/playback_validation.json",
+      "bytes": 28606,
+      "sha256": "f1414b5198d787adb8b82c4b662971fac7e5e1b8ca48e1e76d54c357575b7248"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/adventurer.png",
+      "bytes": 282774,
+      "sha256": "cfcd890ea641707f61c315b37c0b11334f06c49cb866c56f9d27cecd0adf4619"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/adventurer_side.png",
+      "bytes": 263548,
+      "sha256": "059727f287b0eda1e684260398c7982ddf32ac23e88d8ea1085ac1e8572bd90c"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/AshWolf.png",
+      "bytes": 288894,
+      "sha256": "9255c77124768c48d7fcee86376b6d7d9753f0ea1ec4cf26dc290d65422e474e"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/AshWolf_side.png",
+      "bytes": 258997,
+      "sha256": "d62001b1c3b71a46203d60bdc3ce91009b47c9ec2a45fe5dfde6796ee768ecc3"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/AshWolf_Walk.gif",
+      "bytes": 786802,
+      "sha256": "0fbd59a142cf4e1a87c5d80137aa6d0aa0ae0f11e64f4c28927c1afec20c7af5"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/BlightBear.png",
+      "bytes": 312422,
+      "sha256": "111c4a2f424801ddba16dd4a8706ec55f96be7c35425ba1b522bdc0e212b0c89"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/BlightBear_side.png",
+      "bytes": 286655,
+      "sha256": "fdd58a2ae876527e7ab57bbda6f291a1c9e649cb97cc6441898513f65b221a26"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/DeathEcho.png",
+      "bytes": 284352,
+      "sha256": "94193e19bb167cee9f430925468d83d60cd30baee49bb83e564e506a39aa158e"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/DeathEcho_side.png",
+      "bytes": 271175,
+      "sha256": "7c3c53eac76bdbcf44a1ab805bd87bb299d062d77f9b3bd85fb32023bf3d1f1c"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FallenPaladin.png",
+      "bytes": 286985,
+      "sha256": "b351553e098e3c3d67d37f04e647f60c84892f8ef74c245d2e3d44d73f044f0c"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FallenPaladin_side.png",
+      "bytes": 271912,
+      "sha256": "bbbecb656ba320820755200e032ec80e9417a0cffd2b4323a4445e0c9d23c9cd"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FallenPaladin_Walk.gif",
+      "bytes": 849347,
+      "sha256": "a0dcb79755f1faaf2b0f01aaec4cf773baa925592b059a56a4b43ade9b3e1e77"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FallenPriest.png",
+      "bytes": 275021,
+      "sha256": "dd0a1f1d6c0fabbb33a893cc588bd92d8acfbd875b607d9869fe60bbffc9e70f"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FallenPriest_side.png",
+      "bytes": 266162,
+      "sha256": "473d9c754b7da10a23760fe0a2ef12c667054eb3b12eb6acd00bcd495f65d436"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FieldWarden.png",
+      "bytes": 284202,
+      "sha256": "c3bfb2ea3def32046cd3683216692fb51ad6b128c0fd475b70b6281a304d2845"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/FieldWarden_side.png",
+      "bytes": 270518,
+      "sha256": "66ac064ab187ca39bd10a59c0894437b953780fd2f610c8ea24c766ed079a55a"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/hero.png",
+      "bytes": 295773,
+      "sha256": "dc34f33e5308052e6ecfd0d70b2a5be21079c6028d734704d2398b2d60cc3062"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/hero_side.png",
+      "bytes": 275815,
+      "sha256": "ce43649dbf8f12a568bc992c72dc0f711455efbf49ae81c4f739ba8d9a977dd4"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/HighDemonAzar.png",
+      "bytes": 293164,
+      "sha256": "629049c59c181b07bcb4e3713ab7d9dd21519e39276407bc26e24f3fabe4e716"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/HighDemonAzar_side.png",
+      "bytes": 280845,
+      "sha256": "bc9dc3d41de76a1361bee33a0fa1a0c777c2f3e9f35982d8c6157192102d8ccd"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/HighDemonAzar_Walk.gif",
+      "bytes": 833530,
+      "sha256": "2198c42ce877bb90cab47389cf8d6d62d75234f913929ce1b92ff3be53b57a0b"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/knight.png",
+      "bytes": 290607,
+      "sha256": "d28bd7a592cee0b19052cf9d41823582cdbecc95cf414152e69dc36778fcffbf"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/knight_side.png",
+      "bytes": 267112,
+      "sha256": "06ffe294b5ebafcd86270acd23f7bb7b54e2384cfa042419b337be45963ffe2e"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/knight_Walk.gif",
+      "bytes": 821695,
+      "sha256": "1b8b8850706b54fc839d01a99c872086051ade4ecc50a6709ee50ff93d6fbc60"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/merchant.png",
+      "bytes": 281324,
+      "sha256": "7192b57d82a708c56af522d8f9ca0ac34d52c25f2b4cb88897c81ebc08a53350"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/merchant_side.png",
+      "bytes": 263851,
+      "sha256": "1301f4870e0580af76c8903a9e81002ffd9349838d85d3aa5f49eaa61f944c2b"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/monster_lineup.jpg",
+      "bytes": 233528,
+      "sha256": "bf35e6af2ec35d25cba21039a1d3e16b4eac6fdbed0d4788457491dfc9490b3e"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/MutatedHuman.png",
+      "bytes": 284352,
+      "sha256": "78efa1dbe15a0b9527b45417f8d2781429f76ed0ae9e3657af1aa9249c6b9460"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/MutatedHuman_side.png",
+      "bytes": 271175,
+      "sha256": "011d2a0f5d66b84b6d26d34a2e69a86d5a2032f79cb7a26ecb457f17672b368d"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/npc_lineup.jpg",
+      "bytes": 92828,
+      "sha256": "29b514a74fabc96533a3a60d41db472d594137b4983aa32c06d53d21fd6b054f"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/priest.png",
+      "bytes": 270199,
+      "sha256": "e8231e9f7205a2d205138ad0d51b310ce2adf7edc8a5e6ec542cb43a0a3def98"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/priest_side.png",
+      "bytes": 262400,
+      "sha256": "bfd9f8df3501717e2b75fccf0e4f4b641131ed4a0a3be179e4542223d47339ea"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/raider.png",
+      "bytes": 283788,
+      "sha256": "cf5acac651094ce5ceeec211008e108ea73c6e894b3e27adef7c42655ac4a9af"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/raider_side.png",
+      "bytes": 263230,
+      "sha256": "95ff2c6234e2dc41dc5af1804a19fff53fd51a5c1321a82f04b9b2fc89dd99d0"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/TaintedRaider.png",
+      "bytes": 287061,
+      "sha256": "fff52c8ff07c7fce067c1311396941de431963e22fa41c84168f62abd05fcecc"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/TaintedRaider_side.png",
+      "bytes": 270032,
+      "sha256": "bf5acc3b0bd76b3344a9b757f45e08d4bcc42a68853ed973e2e6a883b126839a"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/ThornStag.png",
+      "bytes": 287000,
+      "sha256": "3430b7ff1f4119383934a6d46477f048f59fbdf1b0915ab808bb4d11d52fed3b"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/ThornStag_side.png",
+      "bytes": 277676,
+      "sha256": "ff1dacbf973d08c9c9f9e792cc633ff960b292791e727677c05d7719ab166281"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/WitheredHollow.png",
+      "bytes": 280630,
+      "sha256": "7bb097bed9dce5ed1a3d3244252d47d8137213b42611e0cd5ab605cad2a677a1"
+    },
+    {
+      "file": "CharacterQuality_20261123/previews/WitheredHollow_side.png",
+      "bytes": 265427,
+      "sha256": "3319123312c743381ee00c322c27ed2204fcc22083dde1b2851a2ba070e6e52b"
+    },
+    {
+      "file": "CharacterQuality_20261123/README.md",
+      "bytes": 3864,
+      "sha256": "57cc2611ee842cab2f010745202945d4186621a22633c304df8533ad854b6bac"
+    },
+    {
+      "file": "CharacterQuality_20261123/validation.json",
+      "bytes": 5327,
+      "sha256": "4745436599c5ef6f27cab919eacee5a0de834d013087e70df6bdb1042f5c86ee"
+    },
+    {
+      "file": "LowPolyKit_v3/animation_catalog.json",
+      "bytes": 46025,
+      "sha256": "151d2896e7a8ed726882a33c1b90f986d6dd7d61beb33246e42a4a8bd4390372"
+    },
+    {
+      "file": "LowPolyKit_v3/asset_catalog.json",
+      "bytes": 62867,
+      "sha256": "7915cbbee0011a6e67ceafe32588ed5eaa90abdb7deffe97f5a8fd6e88927998"
+    },
+    {
+      "file": "LowPolyKit_v3/lowpoly_kit_v3.blend",
+      "bytes": 14263654,
+      "sha256": "af61c419d957d356d7d05965443bf21059c93b08e779e0702b0b89270d3d8ed1"
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/DeathEcho_rigged.glb",
+      "bytes": 884088,
+      "sha256": "a09ae6751dd7444d3a30357392330ec01c8962a2061e7e82e6e6cf038abdb55b"
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/FieldWarden_rigged.glb",
+      "bytes": 991492,
+      "sha256": "2ccecfcc0cac7c0886a8c988f230cd391b34f9697f3be2bbd29515252b1eebef"
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/MutatedHuman_rigged.glb",
+      "bytes": 884096,
+      "sha256": "f4aeab5ddedf0130aa2f66beb44dc50ff32df87a36b9092172bf5a2e2252ea46"
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/TaintedRaider_rigged.glb",
+      "bytes": 941380,
+      "sha256": "cf1bd3d66608a6c4d01a2162e5cf013d6179cd16a66180403fccd55d92d4b7ab"
+    },
+    {
+      "file": "LowPolyKit_v3/monsters/WitheredHollow_rigged.glb",
+      "bytes": 767096,
+      "sha256": "c89290cb48a942cffd45fcb6d852c0f487fa923f11b30dd630b74b07c4706196"
+    },
+    {
+      "file": "LowPolyKit_v3/npc/adventurer_rigged.glb",
+      "bytes": 1438612,
+      "sha256": "76f6652fceca68f2dfb712bc75ac657d12ce12ea9e00c0c983aecaf0f53ca423"
+    },
+    {
+      "file": "LowPolyKit_v3/npc/knight_rigged.glb",
+      "bytes": 1507408,
+      "sha256": "b4400ca2b329c203d27e127b3d0ce9fe0814494ca6b6724a64376cebfaccc0c8"
+    },
+    {
+      "file": "LowPolyKit_v3/npc/merchant_rigged.glb",
+      "bytes": 1357452,
+      "sha256": "7e8284080f75579d00f4e271466263ff81dec499d6dd8da5fcecfd708c6b3895"
+    },
+    {
+      "file": "LowPolyKit_v3/npc/npc_parts_rigged.glb",
+      "bytes": 2665364,
+      "sha256": "54992c239c0cd99e648328f4df1b7caaf0f6831df511f5084fd0ee11991e16ef"
+    },
+    {
+      "file": "LowPolyKit_v3/npc/priest_rigged.glb",
+      "bytes": 1290240,
+      "sha256": "bc10ecfaa05f8edeb8169e1b26692f9fe0342178b64a62fae32bf28ebb078b7a"
+    },
+    {
+      "file": "LowPolyKit_v3/npc/raider_rigged.glb",
+      "bytes": 1405112,
+      "sha256": "a5cca81e002606fbbd643563331fc757c337ff1897bfd1dd00425599527b72ae"
+    },
+    {
+      "file": "LowPolyKit_v3/validation.json",
+      "bytes": 3720,
+      "sha256": "2d6bb758b15ff8a879a175ab39ee49272cef002d833f37a28124e9e91305fd82"
+    },
+    {
+      "file": "Monsters_v1/AshWolf.glb",
+      "bytes": 1262864,
+      "sha256": "c752a8284add11c9d2d1565816f24d1158cdb2b90d30c73a7cbb7029bf4c9d58"
+    },
+    {
+      "file": "Monsters_v1/BlightBear.glb",
+      "bytes": 1512456,
+      "sha256": "7d59c67ef92a94915a499d97f3deccf44fb547077905dfa681e283faadf89ac7"
+    },
+    {
+      "file": "Monsters_v1/FallenPaladin.glb",
+      "bytes": 1273784,
+      "sha256": "185cc5eab072b638bc667365a3fb68bf6eef23628d07b058e90836a1c2e338c8"
+    },
+    {
+      "file": "Monsters_v1/FallenPriest.glb",
+      "bytes": 955372,
+      "sha256": "fcc9599ac826c0cff6b3312e47416234db80592b6dfaebef31e523454cf35a04"
+    },
+    {
+      "file": "Monsters_v1/HighDemonAzar.glb",
+      "bytes": 1341432,
+      "sha256": "78d9abe79ab144ecf5729383f338dee43119801b6fd3a3418dd6467ce338b1b5"
+    },
+    {
+      "file": "Monsters_v1/monster_catalog.json",
+      "bytes": 166959,
+      "sha256": "eba0fd0956a627d291c2849430d16d881c610182a33162fff7a80d6418124e44"
+    },
+    {
+      "file": "Monsters_v1/monsters_v1.blend",
+      "bytes": 11650239,
+      "sha256": "eeb917756aa173d1bc3c5faf0b6bfa7c3a5fb7b581578ac6314b8b41b5829dc5"
+    },
+    {
+      "file": "Monsters_v1/ThornStag.glb",
+      "bytes": 1030392,
+      "sha256": "5ae55e151c52a4447a9690369aa204d2fd4f268b9e193cc4fcf5c14ffdd7d586"
+    },
+    {
+      "file": "Monsters_v1/validation.json",
+      "bytes": 2445,
+      "sha256": "fc56a608fe9ddfe8c7fe785cb017f2aed33e94c5f789267b2f761abb2a20b59e"
+    }
+  ]
+}

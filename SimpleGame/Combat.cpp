@@ -49,7 +49,7 @@ void Prototype::FireProjectile()
     const double directionY = distance > 0.0001 ? dy / distance : 0.0;
     m_Player.weaponAttack = nullptr;
     const bool mutant = m_Player.corruption >= MutationThreshold;
-    if (!mutant)
+    if (!mutant || m_ModelAssets.CorruptedHero(HeroWeapons[m_Player.weapon].key))
     {
         if (const auto* visual = m_ModelAssets.HeroWeaponActions(HeroWeapons[m_Player.weapon].key))
         {
@@ -79,6 +79,13 @@ void Prototype::ResolvePlayerAttack()
     {
         return;
     }
+    const auto& weapon = HeroWeapons[m_Player.weapon];
+    m_FireVfx.WeaponContact(weapon.skill.kind,
+                            m_Player.WorldPosition(),
+                            m_Player.ModelYaw(),
+                            weapon.range,
+                            weapon.skill.width,
+                            false);
     double targetX = 0;
     double targetY = 0;
     if (m_Player.attackTarget == InvalidActor

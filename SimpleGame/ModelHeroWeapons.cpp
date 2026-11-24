@@ -462,3 +462,160 @@ const Models::Animation* Models::ModelLibrary::HeroWeaponSkill(const HeroWeapon&
     }
     return contacts == weapon.skill.hits ? &clip : nullptr;
 }
+
+void Models::ModelLibrary::LoadCorruptedHero(const std::filesystem::path& folder)
+{
+    if (!std::filesystem::is_regular_file(folder / "corruption_catalog.json"))
+    {
+        return;
+    }
+    try
+    {
+        std::ifstream input(folder / "corruption_catalog.json");
+        const auto catalog = nlohmann::json::parse(input);
+        if (catalog.at("schema_version") != 1 || catalog.at("units") != "meter"
+            || catalog.at("up_gltf") != "Y" || catalog.at("front_gltf") != "+Z")
+        {
+            throw std::runtime_error("Unsupported corrupted hero catalog");
+        }
+        std::ifstream validationInput(folder / "validation.json");
+        const auto validation = nlohmann::json::parse(validationInput);
+        if (!validation.at("all_checks_passed").get<bool>())
+        {
+            throw std::runtime_error("Corrupted hero export validation failed");
+        }
+        auto asset = ReadCached(folder / catalog.at("part_library_file").get<std::string>());
+        nlohmann::json bones = nlohmann::json::array();
+        for (const auto& bone : catalog.at("bone_schema"))
+        {
+            bones.push_back(bone.at("name"));
+        }
+        CheckSharedHeroBind(*m_Hero.asset, *asset, bones);
+        std::set<std::string> matched;
+        for (const char* group : {"common_clips", "weapon_clips"})
+        {
+            for (const auto& metadata : catalog.at(group))
+            {
+                const std::string name = metadata.at("name");
+                if (!matched.insert(name).second)
+                {
+                    throw std::runtime_error("Duplicate corrupted hero clip metadata: " + name);
+                }
+                auto& clip = asset->animations.at(asset->animationByName.at(name));
+                const float duration = metadata.at("duration_seconds");
+                if (!std::isfinite(duration) || std::abs(clip.duration - duration) > .04f)
+                {
+                    throw std::runtime_error("Corrupted hero clip length mismatch: " + name);
+                }
+                clip.loop = metadata.at("loop");
+                clip.events.clear();
+                for (const auto& marker : metadata.at("events"))
+                {
+                    const float time = marker.at("time_seconds");
+                    if (!std::isfinite(time) || time < 0 || time > duration + .001f)
+                    {
+                        throw std::runtime_error("Invalid corrupted hero animation event");
+                    }
+                    clip.events.push_back({marker.at("name").get<std::string>(), time});
+                }
+            }
+        }
+        if (matched.size() != asset->animations.size())
+        {
+            throw std::runtime_error("Corrupted hero animation metadata incomplete");
+        }
+        std::map<int, int> parts;
+        for (const auto& part : catalog.at("parts"))
+        {
+            const int node = asset->nodeByName.at(part.at("mesh").get<std::string>());
+            if (asset->nodes[node].mesh < 0 || asset->nodes[node].skin < 0
+                || !parts.emplace(part.at("part_index").get<int>(), node).second)
+            {
+                throw std::runtime_error("Invalid corrupted hero part index or skin");
+            }
+        }
+
+        std::map<std::string, ModelInstance> models;
+        for (const auto& module : catalog.at("modules"))
+        {
+            const std::string key = module.at("weapon_key");
+            if (std::none_of(HeroWeapons.begin(),
+                             HeroWeapons.end(),
+                             [&](const HeroWeapon& weapon)
+                             {
+                                 return key == weapon.key;
+                             }))
+            {
+                throw std::runtime_error("Unknown corrupted hero equipment: " + key);
+            }
+            ModelInstance model{asset, {}};
+            std::set<int> selection;
+            const auto indices = module.at("assembly_part_indices").get<std::vector<int>>();
+            const auto names = module.at("assembly_parts").get<std::vector<std::string>>();
+            if (indices.size() != names.size())
+            {
+                throw std::runtime_error("Corrupted hero assembly selection mismatch");
+            }
+            for (size_t i = 0; i < indices.size(); ++i)
+            {
+                const int node = parts.at(indices[i]);
+                if (asset->nodes[node].name != names[i] || !selection.insert(node).second)
+                {
+                    throw std::runtime_error("Duplicate or mismatched corrupted hero part");
+                }
+                model.nodes.push_back(node);
+            }
+            for (const auto& name : module.at("clip_names"))
+            {
+                if (!asset->animationByName.count(name.get<std::string>()))
+                {
+                    throw std::runtime_error("Corrupted hero weapon clip missing");
+                }
+            }
+
+            // Reuse the equipped upper-body locomotion, mapping all nodes by name.
+            if (const auto* actions = HeroWeaponActions(key))
+            {
+                const auto source = HeroWeaponModel(key, true);
+                for (const char* movement : {"Walk", "Run"})
+                {
+                    const std::string name = actions->prefix + "_" + movement;
+                    auto clip = source.asset->animations.at(source.asset->animationByName.at(name));
+                    for (auto& channel : clip.channels)
+                    {
+                        std::string node = source.asset->nodes.at(channel.node).name;
+                        const auto remapped = module.at("source_node_map").find(node);
+                        if (remapped != module.at("source_node_map").end())
+                        {
+                            node = remapped->get<std::string>();
+                        }
+                        channel.node = asset->nodeByName.at(node);
+                    }
+                    asset->animationByName.emplace(name, int(asset->animations.size()));
+                    asset->animations.push_back(std::move(clip));
+                }
+            }
+            if (!models.emplace(key, std::move(model)).second)
+            {
+                throw std::runtime_error("Duplicate corrupted hero weapon key");
+            }
+            std::cout << "[HeroCorruption] weapon=" << key << " parts=" << selection.size()
+                      << " sharedMeshes=" << asset->meshes.size() << '\n';
+        }
+        if (models.size() != HeroWeapons.size())
+        {
+            throw std::runtime_error("Corrupted hero pack must cover all equipped weapons");
+        }
+        m_CorruptedHeroes = std::move(models);
+    }
+    catch (const std::exception& error)
+    {
+        std::cerr << "[HeroCorruption] unavailable: " << error.what() << '\n';
+    }
+}
+
+const Models::ModelInstance* Models::ModelLibrary::CorruptedHero(const std::string& key) const
+{
+    const auto found = m_CorruptedHeroes.find(key);
+    return found == m_CorruptedHeroes.end() ? nullptr : &found->second;
+}

@@ -30,6 +30,7 @@ ProjectileActor::ProjectileActor(Prototype& game,
 
 void ProjectileActor::Update(float dt)
 {
+    const auto fireTrailStart = WorldPosition();
     if (hostile)
     {
         auto& shot = *this;
@@ -181,7 +182,31 @@ void ProjectileActor::Update(float dt)
     }
     if (!alive)
     {
+        if (!hostile)
+        {
+            m_Game.m_FireVfx.Hit(WorldPosition(), .98f, .6f);
+        }
         Destroy();
+    }
+    if (!hostile)
+    {
+        constexpr float TrailInterval = .025f;
+        fireTrailTime += dt;
+        const int count = (std::min)(8, int(fireTrailTime / TrailInterval));
+        if (count > 0)
+        {
+            fireTrailTime = std::fmod(fireTrailTime, TrailInterval);
+            const auto end = WorldPosition();
+            for (int i = 1; i <= count; ++i)
+            {
+                const double t = double(i) / count;
+                m_Game.m_FireVfx.Trail({fireTrailStart.x + (end.x - fireTrailStart.x) * t,
+                                        fireTrailStart.y + (end.y - fireTrailStart.y) * t},
+                                       directionX,
+                                       directionY,
+                                       arrow);
+            }
+        }
     }
 }
 

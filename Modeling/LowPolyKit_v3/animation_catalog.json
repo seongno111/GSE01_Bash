@@ -1826,5 +1826,6 @@
   ],
   "attachment_notes": "Weapons are skinned attachments. Thrown objects and fired arrows are spawned by the future runtime at events; the held mesh must be hidden/re-equipped by runtime. No damage/AI code included.",
   "locomotion_revision": "shared_walk_run_20261029",
-  "locomotion_manifest": "../LocomotionShared_20261029/locomotion_catalog.json"
+  "locomotion_manifest": "../LocomotionShared_20261029/locomotion_catalog.json",
+  "character_quality_revision": "2026-11-23"
 }

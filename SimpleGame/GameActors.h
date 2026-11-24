@@ -245,7 +245,8 @@ public:
               bool alive,
               float maxHealth,
               float damage,
-              int level);
+              int level,
+              int weapon = -1);
     void Update(float dt) override;
     void Draw(Renderer& renderer) override;
     void DrawOverlay(Renderer& renderer) override;
@@ -262,6 +263,7 @@ public:
     float maxHealth;
     float damage;
     int level;
+    int weapon;
 };
 
 class ProjectileActor final : public GameActor
@@ -286,6 +288,7 @@ public:
     bool hostile;
     bool allowPK = false;
     bool arrow = false;
+    float fireTrailTime = 0;
     ActorId source = InvalidActor;
     float travelSpeed = 4.2f;
     Color tint = Color(1, .19f, .12f);

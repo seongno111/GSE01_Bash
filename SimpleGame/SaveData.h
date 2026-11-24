@@ -226,6 +226,8 @@ namespace Saves
         decltype(std::declval<EchoActor>().maxHealth) maxHealth{};
         decltype(std::declval<EchoActor>().damage) damage{};
         decltype(std::declval<EchoActor>().level) level{};
+        // ProgressSave reads/writes this optional field so older echoes remain loadable.
+        int weapon = -1;
 
         static Echo Capture(const EchoActor& value)
         {
@@ -240,6 +242,7 @@ namespace Saves
             result.maxHealth = value.maxHealth;
             result.damage = value.damage;
             result.level = value.level;
+            result.weapon = value.weapon;
             return result;
         }
 
@@ -252,6 +255,7 @@ namespace Saves
             value.maxHealth = maxHealth;
             value.damage = damage;
             value.level = level;
+            value.weapon = weapon;
             value.SetWorldPosition(position.x, position.y);
             value.SetEnabled(enabled);
             value.ResetAnimation();

@@ -1,0 +1,47 @@
+{
+  "all_checks_passed": true,
+  "samples": [
+    {
+      "clip": "HERO_Bow_Ready",
+      "time_seconds": 0,
+      "body_draw": 0.0,
+      "string_draw": 0.0,
+      "arrow_hide": 1.0
+    },
+    {
+      "clip": "HERO_Bow_Draw",
+      "time_seconds": 0.8,
+      "body_draw": 1.0,
+      "string_draw": 1.0,
+      "arrow_hide": 0.0
+    },
+    {
+      "clip": "HERO_Bow_Aim",
+      "time_seconds": 0,
+      "body_draw": 1.0,
+      "string_draw": 1.0,
+      "arrow_hide": 0.0
+    },
+    {
+      "clip": "HERO_Bow_Release",
+      "time_seconds": 0.05,
+      "body_draw": 1.0,
+      "string_draw": 1.0,
+      "arrow_hide": 0.0
+    },
+    {
+      "clip": "HERO_Bow_Release",
+      "time_seconds": 0.16,
+      "body_draw": 0.09930802881717682,
+      "string_draw": 0.09930802881717682,
+      "arrow_hide": 1.0
+    },
+    {
+      "clip": "HERO_Bow_SkillArrowFan",
+      "time_seconds": 0.55,
+      "body_draw": 0.0,
+      "string_draw": 0.0,
+      "arrow_hide": 1.0
+    }
+  ]
+}

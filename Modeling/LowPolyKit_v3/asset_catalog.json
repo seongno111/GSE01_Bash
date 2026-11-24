@@ -4,8 +4,8 @@
   "blender_axes": "Z up, front -Y, character left +X",
   "gltf_axes": "Y up, front +Z, character left +X",
   "origin": "All NPC parts share (0,0,0) at sole center; apply zero local transform when assembling.",
-  "height_m": 1.8,
-  "hair_max_height_m": 1.84,
+  "height_m": 1.84,
+  "hair_max_height_m": 1.865,
   "none_index": -1,
   "slots": [
     {
@@ -142,16 +142,16 @@
       "part_index": 0,
       "mesh": "NPC_HEAD_00_Male",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
-      "triangles": 220,
-      "vertices": 130,
+      "triangles": 652,
+      "vertices": 346,
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ]
     },
     {
@@ -160,16 +160,16 @@
       "part_index": 1,
       "mesh": "NPC_HEAD_01_Female",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
-      "triangles": 240,
-      "vertices": 142,
+      "triangles": 720,
+      "vertices": 382,
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ]
     },
     {
@@ -178,16 +178,16 @@
       "part_index": 0,
       "mesh": "NPC_HAIR_00_Short",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
-      "triangles": 152,
-      "vertices": 84,
+      "triangles": 396,
+      "vertices": 206,
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ]
     },
     {
@@ -196,16 +196,16 @@
       "part_index": 1,
       "mesh": "NPC_HAIR_01_Long",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
-      "triangles": 272,
-      "vertices": 150,
+      "triangles": 676,
+      "vertices": 352,
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ]
     },
     {
@@ -214,16 +214,16 @@
       "part_index": 0,
       "mesh": "NPC_TORSO_00_Tunic",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.8
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 68,
-      "vertices": 40,
+      "triangles": 508,
+      "vertices": 268,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.8,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -232,16 +232,16 @@
       "part_index": 1,
       "mesh": "NPC_TORSO_01_Armor",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.8
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 226,
-      "vertices": 138,
+      "triangles": 704,
+      "vertices": 374,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.8,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -250,16 +250,16 @@
       "part_index": 2,
       "mesh": "NPC_TORSO_02_Priest",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.8
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 140,
-      "vertices": 84,
+      "triangles": 492,
+      "vertices": 260,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.8,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -268,16 +268,16 @@
       "part_index": 0,
       "mesh": "NPC_UPPER_ARM_L_00_Tunic",
       "joint_pivot_blender_z_up": [
-        0.28,
-        0,
-        1.16
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.28,
-        1.16,
-        0
+        0.2240000069141388,
+        1.4049999713897705,
+        -0.0
       ]
     },
     {
@@ -286,16 +286,16 @@
       "part_index": 0,
       "mesh": "NPC_FOREARM_L_00_Tunic",
       "joint_pivot_blender_z_up": [
-        0.43,
-        0,
-        0.965
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
-      "triangles": 60,
-      "vertices": 36,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.43,
-        0.965,
-        0
+        0.30000001192092896,
+        1.1330000162124634,
+        -0.01600000075995922
       ]
     },
     {
@@ -304,16 +304,16 @@
       "part_index": 1,
       "mesh": "NPC_UPPER_ARM_L_01_Armor",
       "joint_pivot_blender_z_up": [
-        0.28,
-        0,
-        1.16
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
-      "triangles": 72,
-      "vertices": 44,
+      "triangles": 504,
+      "vertices": 264,
       "joint_pivot_gltf_y_up": [
-        0.28,
-        1.16,
-        0
+        0.2240000069141388,
+        1.4049999713897705,
+        -0.0
       ]
     },
     {
@@ -322,16 +322,16 @@
       "part_index": 1,
       "mesh": "NPC_FOREARM_L_01_Armor",
       "joint_pivot_blender_z_up": [
-        0.43,
-        0,
-        0.965
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 248,
+      "vertices": 132,
       "joint_pivot_gltf_y_up": [
-        0.43,
-        0.965,
-        0
+        0.30000001192092896,
+        1.1330000162124634,
+        -0.01600000075995922
       ]
     },
     {
@@ -340,16 +340,16 @@
       "part_index": 2,
       "mesh": "NPC_UPPER_ARM_L_02_Priest",
       "joint_pivot_blender_z_up": [
-        0.28,
-        0,
-        1.16
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.28,
-        1.16,
-        0
+        0.2240000069141388,
+        1.4049999713897705,
+        -0.0
       ]
     },
     {
@@ -358,16 +358,16 @@
       "part_index": 2,
       "mesh": "NPC_FOREARM_L_02_Priest",
       "joint_pivot_blender_z_up": [
-        0.43,
-        0,
-        0.965
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.43,
-        0.965,
-        0
+        0.30000001192092896,
+        1.1330000162124634,
+        -0.01600000075995922
       ]
     },
     {
@@ -376,16 +376,16 @@
       "part_index": 0,
       "mesh": "NPC_HAND_L_00_Shared",
       "joint_pivot_blender_z_up": [
-        0.48,
-        -0.01,
-        0.79
+        0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 242,
+      "vertices": 133,
       "joint_pivot_gltf_y_up": [
-        0.48,
-        0.79,
-        0.01
+        0.33500000834465027,
+        0.878000020980835,
+        -0.0020000000949949026
       ]
     },
     {
@@ -394,16 +394,16 @@
       "part_index": 0,
       "mesh": "NPC_THIGH_L_00_Pants",
       "joint_pivot_blender_z_up": [
-        0.125,
-        0,
-        0.65
+        0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.125,
-        0.65,
-        0
+        0.10100000351667404,
+        0.8790000081062317,
+        -0.013000000268220901
       ]
     },
     {
@@ -412,16 +412,16 @@
       "part_index": 0,
       "mesh": "NPC_SHIN_L_00_Pants",
       "joint_pivot_blender_z_up": [
-        0.14,
-        0,
-        0.39
+        0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.14,
-        0.39,
-        0
+        0.11100000143051147,
+        0.4860000014305115,
+        0.010999999940395355
       ]
     },
     {
@@ -430,16 +430,16 @@
       "part_index": 1,
       "mesh": "NPC_THIGH_L_01_Armor",
       "joint_pivot_blender_z_up": [
-        0.125,
-        0,
-        0.65
+        0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 248,
+      "vertices": 132,
       "joint_pivot_gltf_y_up": [
-        0.125,
-        0.65,
-        0
+        0.10100000351667404,
+        0.8790000081062317,
+        -0.013000000268220901
       ]
     },
     {
@@ -448,16 +448,16 @@
       "part_index": 1,
       "mesh": "NPC_SHIN_L_01_Armor",
       "joint_pivot_blender_z_up": [
-        0.14,
-        0,
-        0.39
+        0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
       ],
-      "triangles": 72,
-      "vertices": 44,
+      "triangles": 248,
+      "vertices": 132,
       "joint_pivot_gltf_y_up": [
-        0.14,
-        0.39,
-        0
+        0.11100000143051147,
+        0.4860000014305115,
+        0.010999999940395355
       ]
     },
     {
@@ -466,16 +466,16 @@
       "part_index": 0,
       "mesh": "NPC_FOOT_L_00_Boot",
       "joint_pivot_blender_z_up": [
-        0.14,
-        0,
-        0.13
+        0.11800000071525574,
+        0.0,
+        0.11299999803304672
       ],
-      "triangles": 12,
-      "vertices": 8,
+      "triangles": 152,
+      "vertices": 84,
       "joint_pivot_gltf_y_up": [
-        0.14,
-        0.13,
-        0
+        0.11800000071525574,
+        0.11299999803304672,
+        -0.0
       ]
     },
     {
@@ -484,16 +484,16 @@
       "part_index": 0,
       "mesh": "NPC_UPPER_ARM_R_00_Tunic",
       "joint_pivot_blender_z_up": [
-        -0.28,
-        0,
-        1.16
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        -0.28,
-        1.16,
-        0
+        -0.2240000069141388,
+        1.4049999713897705,
+        -0.0
       ]
     },
     {
@@ -502,16 +502,16 @@
       "part_index": 0,
       "mesh": "NPC_FOREARM_R_00_Tunic",
       "joint_pivot_blender_z_up": [
-        -0.43,
-        0,
-        0.965
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
-      "triangles": 60,
-      "vertices": 36,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        -0.43,
-        0.965,
-        0
+        -0.30000001192092896,
+        1.1330000162124634,
+        -0.01600000075995922
       ]
     },
     {
@@ -520,16 +520,16 @@
       "part_index": 1,
       "mesh": "NPC_UPPER_ARM_R_01_Armor",
       "joint_pivot_blender_z_up": [
-        -0.28,
-        0,
-        1.16
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
-      "triangles": 72,
-      "vertices": 44,
+      "triangles": 504,
+      "vertices": 264,
       "joint_pivot_gltf_y_up": [
-        -0.28,
-        1.16,
-        0
+        -0.2240000069141388,
+        1.4049999713897705,
+        -0.0
       ]
     },
     {
@@ -538,16 +538,16 @@
       "part_index": 1,
       "mesh": "NPC_FOREARM_R_01_Armor",
       "joint_pivot_blender_z_up": [
-        -0.43,
-        0,
-        0.965
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 248,
+      "vertices": 132,
       "joint_pivot_gltf_y_up": [
-        -0.43,
-        0.965,
-        0
+        -0.30000001192092896,
+        1.1330000162124634,
+        -0.01600000075995922
       ]
     },
     {
@@ -556,16 +556,16 @@
       "part_index": 2,
       "mesh": "NPC_UPPER_ARM_R_02_Priest",
       "joint_pivot_blender_z_up": [
-        -0.28,
-        0,
-        1.16
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        -0.28,
-        1.16,
-        0
+        -0.2240000069141388,
+        1.4049999713897705,
+        -0.0
       ]
     },
     {
@@ -574,16 +574,16 @@
       "part_index": 2,
       "mesh": "NPC_FOREARM_R_02_Priest",
       "joint_pivot_blender_z_up": [
-        -0.43,
-        0,
-        0.965
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        -0.43,
-        0.965,
-        0
+        -0.30000001192092896,
+        1.1330000162124634,
+        -0.01600000075995922
       ]
     },
     {
@@ -592,16 +592,16 @@
       "part_index": 0,
       "mesh": "NPC_HAND_R_00_Shared",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 242,
+      "vertices": 133,
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        -0.33500000834465027,
+        0.878000020980835,
+        -0.0020000000949949026
       ]
     },
     {
@@ -610,16 +610,16 @@
       "part_index": 0,
       "mesh": "NPC_THIGH_R_00_Pants",
       "joint_pivot_blender_z_up": [
-        -0.125,
-        0,
-        0.65
+        -0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        -0.125,
-        0.65,
-        0
+        -0.10100000351667404,
+        0.8790000081062317,
+        -0.013000000268220901
       ]
     },
     {
@@ -628,16 +628,16 @@
       "part_index": 0,
       "mesh": "NPC_SHIN_R_00_Pants",
       "joint_pivot_blender_z_up": [
-        -0.14,
-        0,
-        0.39
+        -0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        -0.14,
-        0.39,
-        0
+        -0.11100000143051147,
+        0.4860000014305115,
+        0.010999999940395355
       ]
     },
     {
@@ -646,16 +646,16 @@
       "part_index": 1,
       "mesh": "NPC_THIGH_R_01_Armor",
       "joint_pivot_blender_z_up": [
-        -0.125,
-        0,
-        0.65
+        -0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
       ],
-      "triangles": 20,
-      "vertices": 12,
+      "triangles": 248,
+      "vertices": 132,
       "joint_pivot_gltf_y_up": [
-        -0.125,
-        0.65,
-        0
+        -0.10100000351667404,
+        0.8790000081062317,
+        -0.013000000268220901
       ]
     },
     {
@@ -664,16 +664,16 @@
       "part_index": 1,
       "mesh": "NPC_SHIN_R_01_Armor",
       "joint_pivot_blender_z_up": [
-        -0.14,
-        0,
-        0.39
+        -0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
       ],
-      "triangles": 72,
-      "vertices": 44,
+      "triangles": 248,
+      "vertices": 132,
       "joint_pivot_gltf_y_up": [
-        -0.14,
-        0.39,
-        0
+        -0.11100000143051147,
+        0.4860000014305115,
+        0.010999999940395355
       ]
     },
     {
@@ -682,16 +682,16 @@
       "part_index": 0,
       "mesh": "NPC_FOOT_R_00_Boot",
       "joint_pivot_blender_z_up": [
-        -0.14,
-        0,
-        0.13
+        -0.11800000071525574,
+        0.0,
+        0.11299999803304672
       ],
-      "triangles": 12,
-      "vertices": 8,
+      "triangles": 152,
+      "vertices": 84,
       "joint_pivot_gltf_y_up": [
-        -0.14,
-        0.13,
-        0
+        -0.11800000071525574,
+        0.11299999803304672,
+        -0.0
       ]
     },
     {
@@ -700,16 +700,16 @@
       "part_index": 0,
       "mesh": "NPC_PELVIS_00_BeltPants",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.72
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 144,
+      "vertices": 76,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.72,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -718,16 +718,16 @@
       "part_index": 1,
       "mesh": "NPC_PELVIS_01_BeltArmor",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.72
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 40,
-      "vertices": 24,
+      "triangles": 144,
+      "vertices": 76,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.72,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -736,16 +736,16 @@
       "part_index": 0,
       "mesh": "NPC_SKIRT_00_Priest",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.76
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 44,
-      "vertices": 36,
+      "triangles": 220,
+      "vertices": 114,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.76,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -754,16 +754,16 @@
       "part_index": 0,
       "mesh": "NPC_ACCESSORY_BACK_00_TravelerPack",
       "joint_pivot_blender_z_up": [
-        0,
-        0.23,
-        1.1
+        0.0,
+        0.008999999612569809,
+        1.2259999513626099
       ],
-      "triangles": 56,
-      "vertices": 36,
+      "triangles": 200,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0,
-        1.1,
-        -0.23
+        0.0,
+        1.2259999513626099,
+        -0.008999999612569809
       ]
     },
     {
@@ -772,16 +772,16 @@
       "part_index": 0,
       "mesh": "NPC_ACCESSORY_WAIST_00_MerchantPouches",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        0.76
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 52,
-      "vertices": 32,
+      "triangles": 196,
+      "vertices": 104,
       "joint_pivot_gltf_y_up": [
-        0,
-        0.76,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -790,16 +790,16 @@
       "part_index": 1,
       "mesh": "NPC_ACCESSORY_BACK_01_RaiderSpikes",
       "joint_pivot_blender_z_up": [
-        0,
-        0.23,
-        1.1
+        0.0,
+        0.008999999612569809,
+        1.2259999513626099
       ],
-      "triangles": 58,
-      "vertices": 37,
+      "triangles": 216,
+      "vertices": 116,
       "joint_pivot_gltf_y_up": [
-        0,
-        1.1,
-        -0.23
+        0.0,
+        1.2259999513626099,
+        -0.008999999612569809
       ]
     },
     {
@@ -808,16 +808,16 @@
       "part_index": 0,
       "mesh": "NPC_ACCESSORY_HAND_00_PriestStaff",
       "joint_pivot_blender_z_up": [
-        -0.49,
-        -0.06,
-        0.74
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
-      "triangles": 68,
-      "vertices": 40,
+      "triangles": 276,
+      "vertices": 144,
       "joint_pivot_gltf_y_up": [
-        -0.49,
-        0.74,
-        0.06
+        -0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ]
     },
     {
@@ -826,16 +826,16 @@
       "part_index": 1,
       "mesh": "NPC_ACCESSORY_WAIST_01_KnightSword",
       "joint_pivot_blender_z_up": [
-        0.3,
-        0,
-        0.76
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
-      "triangles": 60,
-      "vertices": 36,
+      "triangles": 204,
+      "vertices": 108,
       "joint_pivot_gltf_y_up": [
-        0.3,
-        0.76,
-        0
+        0.0,
+        0.9340000152587891,
+        -0.017999999225139618
       ]
     },
     {
@@ -844,19 +844,19 @@
       "part_index": 0,
       "mesh": "NPC_HEADGEAR_00_AshKnightClosed",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ],
       "hides_hair": true,
       "hides_head": false,
-      "triangles": 354,
-      "vertices": 226
+      "triangles": 1052,
+      "vertices": 584
     },
     {
       "slot": "headgear",
@@ -864,19 +864,19 @@
       "part_index": 1,
       "mesh": "NPC_HEADGEAR_01_WardenOpenHelm",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ],
       "hides_hair": true,
       "hides_head": false,
-      "triangles": 158,
-      "vertices": 100
+      "triangles": 510,
+      "vertices": 284
     },
     {
       "slot": "headgear",
@@ -884,19 +884,19 @@
       "part_index": 2,
       "mesh": "NPC_HEADGEAR_02_CinderClericMitre",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ],
       "hides_hair": true,
       "hides_head": false,
-      "triangles": 108,
-      "vertices": 66
+      "triangles": 508,
+      "vertices": 274
     },
     {
       "slot": "headgear",
@@ -904,19 +904,19 @@
       "part_index": 3,
       "mesh": "NPC_HEADGEAR_03_PilgrimHood",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ],
       "hides_hair": true,
       "hides_head": false,
-      "triangles": 209,
-      "vertices": 125
+      "triangles": 819,
+      "vertices": 439
     },
     {
       "slot": "headgear",
@@ -924,19 +924,19 @@
       "part_index": 4,
       "mesh": "NPC_HEADGEAR_04_RaggedHood",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ],
       "hides_hair": true,
       "hides_head": false,
-      "triangles": 191,
-      "vertices": 119
+      "triangles": 745,
+      "vertices": 405
     },
     {
       "slot": "headgear",
@@ -944,19 +944,19 @@
       "part_index": 5,
       "mesh": "NPC_HEADGEAR_05_WayfarerCap",
       "joint_pivot_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "joint_pivot_gltf_y_up": [
-        0,
-        1.2,
-        0
+        0.0,
+        1.5240000486373901,
+        0.01899999938905239
       ],
       "hides_hair": true,
       "hides_head": false,
-      "triangles": 112,
-      "vertices": 64
+      "triangles": 468,
+      "vertices": 250
     },
     {
       "slot": "accessory_hand",
@@ -964,17 +964,17 @@
       "part_index": 1,
       "mesh": "NPC_ACCESSORY_HAND_01_DrawnSword",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        -0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ],
-      "triangles": 60,
-      "vertices": 36
+      "triangles": 204,
+      "vertices": 108
     },
     {
       "slot": "accessory_hand",
@@ -982,17 +982,17 @@
       "part_index": 2,
       "mesh": "NPC_ACCESSORY_HAND_02_HunterBow",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ],
-      "triangles": 140,
-      "vertices": 84
+      "triangles": 476,
+      "vertices": 252
     },
     {
       "slot": "accessory_hand",
@@ -1000,17 +1000,17 @@
       "part_index": 3,
       "mesh": "NPC_ACCESSORY_HAND_03_ThrowingKnife",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        -0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ],
-      "triangles": 40,
-      "vertices": 24
+      "triangles": 136,
+      "vertices": 72
     },
     {
       "slot": "accessory_hand",
@@ -1018,17 +1018,17 @@
       "part_index": 4,
       "mesh": "NPC_ACCESSORY_HAND_04_ThrowingStone",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        -0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ],
-      "triangles": 20,
-      "vertices": 12
+      "triangles": 108,
+      "vertices": 56
     },
     {
       "slot": "accessory_hand",
@@ -1036,17 +1036,17 @@
       "part_index": 5,
       "mesh": "NPC_ACCESSORY_HAND_05_WorkHammer",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        -0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ],
-      "triangles": 32,
-      "vertices": 20
+      "triangles": 112,
+      "vertices": 60
     },
     {
       "slot": "accessory_hand",
@@ -1054,17 +1054,17 @@
       "part_index": 6,
       "mesh": "NPC_ACCESSORY_HAND_06_MedicineVial",
       "joint_pivot_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "joint_pivot_gltf_y_up": [
-        -0.48,
-        0.79,
-        0.01
+        -0.33890002965927124,
+        0.8390000462532043,
+        -0.00044000125490128994
       ],
-      "triangles": 40,
-      "vertices": 24
+      "triangles": 136,
+      "vertices": 72
     }
   ],
   "props": [
@@ -2503,7 +2503,7 @@
       "headgear_index": -1
     }
   ],
-  "rigging_status": "Shared deform skeleton with per-vertex skin weights; authored keyframe actions. No runtime code.",
+  "rigging_status": "Five-head revised bind with normalized skin and baked compatible keyframe actions.",
   "compatibility": [
     "Both heads accept both hair styles and all outfits. Shared body silhouette avoids sex-specific outfit copies.",
     "Priest skirt excludes pelvis, thighs and shins. Feet remain visible.",
@@ -2577,7 +2577,8 @@
       "name_ko": "메마른 망자",
       "mesh": "MON_00_WitheredHollow",
       "rig": "RIG_MON_WitheredHollow",
-      "height_scale": 1.0
+      "height_scale": 1.0,
+      "character_quality_revision": "2026-11-23"
     },
     {
       "monster_index": 1,
@@ -2585,7 +2586,8 @@
       "name_ko": "오염된 약탈자",
       "mesh": "MON_01_TaintedRaider",
       "rig": "RIG_MON_TaintedRaider",
-      "height_scale": 1.16
+      "height_scale": 1.16,
+      "character_quality_revision": "2026-11-23"
     },
     {
       "monster_index": 2,
@@ -2593,7 +2595,8 @@
       "name_ko": "경작지 수문장",
       "mesh": "MON_02_FieldWarden",
       "rig": "RIG_MON_FieldWarden",
-      "height_scale": 1.65
+      "height_scale": 1.65,
+      "character_quality_revision": "2026-11-23"
     },
     {
       "monster_index": 3,
@@ -2601,7 +2604,8 @@
       "name_ko": "변이체",
       "mesh": "MON_03_MutatedHuman",
       "rig": "RIG_MON_MutatedHuman",
-      "height_scale": 1.25
+      "height_scale": 1.25,
+      "character_quality_revision": "2026-11-23"
     },
     {
       "monster_index": 4,
@@ -2610,443 +2614,444 @@
       "mesh": "MON_04_DeathEcho",
       "rig": "RIG_MON_DeathEcho",
       "height_scale": 1.25,
-      "shares_geometry_with": 3
+      "shares_geometry_with": 3,
+      "character_quality_revision": "2026-11-23"
     }
   ],
   "bone_schema": [
     {
       "name": "root",
+      "parent": null,
       "head_blender_z_up": [
-        0,
-        0,
-        0
+        0.0,
+        0.0,
+        0.0
       ],
       "tail_blender_z_up": [
-        0,
-        0,
-        0.18
-      ],
-      "parent": null
+        0.0,
+        0.0,
+        0.15300001204013824
+      ]
     },
     {
       "name": "hips",
+      "parent": "root",
       "head_blender_z_up": [
-        0,
-        0,
-        0.72
+        0.0,
+        0.017999999225139618,
+        0.9340000152587891
       ],
       "tail_blender_z_up": [
-        0,
-        0,
-        0.82
-      ],
-      "parent": "root"
+        0.0,
+        0.014999999664723873,
+        1.034999966621399
+      ]
     },
     {
       "name": "spine",
+      "parent": "hips",
       "head_blender_z_up": [
-        0,
-        0,
-        0.82
+        0.0,
+        0.014999999664723873,
+        1.034999966621399
       ],
       "tail_blender_z_up": [
-        0,
-        0,
-        1.0
-      ],
-      "parent": "hips"
+        0.0,
+        0.008999999612569809,
+        1.2259999513626099
+      ]
     },
     {
       "name": "chest",
+      "parent": "spine",
       "head_blender_z_up": [
-        0,
-        0,
-        1.0
+        0.0,
+        0.008999999612569809,
+        1.2259999513626099
       ],
       "tail_blender_z_up": [
-        0,
-        0,
-        1.2
-      ],
-      "parent": "spine"
+        0.0,
+        -0.014000000432133675,
+        1.437000036239624
+      ]
     },
     {
       "name": "neck",
+      "parent": "chest",
       "head_blender_z_up": [
-        0,
-        0,
-        1.2
+        0.0,
+        -0.014000000432133675,
+        1.437000036239624
       ],
       "tail_blender_z_up": [
-        0,
-        0,
-        1.28
-      ],
-      "parent": "chest"
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
+      ]
     },
     {
       "name": "head",
+      "parent": "neck",
       "head_blender_z_up": [
-        0,
-        0,
-        1.28
+        0.0,
+        -0.01899999938905239,
+        1.5240000486373901
       ],
       "tail_blender_z_up": [
-        0,
-        0,
-        1.8
-      ],
-      "parent": "neck"
+        0.0,
+        -0.01899999938905239,
+        1.840000033378601
+      ]
     },
     {
       "name": "jaw",
+      "parent": "head",
       "head_blender_z_up": [
-        0,
-        -0.12,
-        1.43
+        0.0,
+        -0.09200000017881393,
+        1.6150000095367432
       ],
       "tail_blender_z_up": [
-        0,
-        -0.22,
-        1.32
-      ],
-      "parent": "head"
+        0.0,
+        -0.17000000178813934,
+        1.5292000770568848
+      ]
     },
     {
       "name": "clavicle_l",
+      "parent": "chest",
       "head_blender_z_up": [
-        0,
-        0,
-        1.17
+        0.0,
+        -0.004000000189989805,
+        1.4160000085830688
       ],
       "tail_blender_z_up": [
-        0.28,
-        0,
-        1.16
-      ],
-      "parent": "chest"
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
+      ]
     },
     {
       "name": "upper_arm_l",
+      "parent": "clavicle_l",
       "head_blender_z_up": [
-        0.28,
-        0,
-        1.16
+        0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
       "tail_blender_z_up": [
-        0.43,
-        0,
-        0.965
-      ],
-      "parent": "clavicle_l"
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
+      ]
     },
     {
       "name": "forearm_l",
+      "parent": "upper_arm_l",
       "head_blender_z_up": [
-        0.43,
-        0,
-        0.965
+        0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
       "tail_blender_z_up": [
-        0.48,
-        -0.01,
-        0.79
-      ],
-      "parent": "upper_arm_l"
+        0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
+      ]
     },
     {
       "name": "hand_l",
+      "parent": "forearm_l",
       "head_blender_z_up": [
-        0.48,
-        -0.01,
-        0.79
+        0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
       ],
       "tail_blender_z_up": [
-        0.485,
-        -0.012,
-        0.68
-      ],
-      "parent": "forearm_l"
-    },
-    {
-      "name": "thigh_l",
-      "head_blender_z_up": [
-        0.125,
-        0,
-        0.65
-      ],
-      "tail_blender_z_up": [
-        0.14,
-        0,
-        0.39
-      ],
-      "parent": "hips"
-    },
-    {
-      "name": "shin_l",
-      "head_blender_z_up": [
-        0.14,
-        0,
-        0.39
-      ],
-      "tail_blender_z_up": [
-        0.14,
-        0,
-        0.13
-      ],
-      "parent": "thigh_l"
-    },
-    {
-      "name": "foot_l",
-      "head_blender_z_up": [
-        0.14,
-        0,
-        0.13
-      ],
-      "tail_blender_z_up": [
-        0.14,
-        -0.18,
-        0.075
-      ],
-      "parent": "shin_l"
-    },
-    {
-      "name": "toe_l",
-      "head_blender_z_up": [
-        0.14,
-        -0.18,
-        0.075
-      ],
-      "tail_blender_z_up": [
-        0.14,
-        -0.25,
-        0.075
-      ],
-      "parent": "foot_l"
+        0.33890002965927124,
+        0.00044000567868351936,
+        0.7922000885009766
+      ]
     },
     {
       "name": "weapon_l",
+      "parent": "hand_l",
       "head_blender_z_up": [
-        0.485,
-        -0.012,
-        0.74
+        0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "tail_blender_z_up": [
-        0.485,
-        -0.012,
-        0.5
-      ],
-      "parent": "hand_l"
+        0.33890002965927124,
+        0.00044000562047585845,
+        0.6518000364303589
+      ]
     },
     {
       "name": "clavicle_r",
+      "parent": "chest",
       "head_blender_z_up": [
-        0,
-        0,
-        1.17
+        0.0,
+        -0.004000000189989805,
+        1.4160000085830688
       ],
       "tail_blender_z_up": [
-        -0.28,
-        0,
-        1.16
-      ],
-      "parent": "chest"
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
+      ]
     },
     {
       "name": "upper_arm_r",
+      "parent": "clavicle_r",
       "head_blender_z_up": [
-        -0.28,
-        0,
-        1.16
+        -0.2240000069141388,
+        0.0,
+        1.4049999713897705
       ],
       "tail_blender_z_up": [
-        -0.43,
-        0,
-        0.965
-      ],
-      "parent": "clavicle_r"
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
+      ]
     },
     {
       "name": "forearm_r",
+      "parent": "upper_arm_r",
       "head_blender_z_up": [
-        -0.43,
-        0,
-        0.965
+        -0.30000001192092896,
+        0.01600000075995922,
+        1.1330000162124634
       ],
       "tail_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
-      ],
-      "parent": "upper_arm_r"
+        -0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
+      ]
     },
     {
       "name": "hand_r",
+      "parent": "forearm_r",
       "head_blender_z_up": [
-        -0.48,
-        -0.01,
-        0.79
+        -0.33500000834465027,
+        0.0020000000949949026,
+        0.878000020980835
       ],
       "tail_blender_z_up": [
-        -0.485,
-        -0.012,
-        0.68
-      ],
-      "parent": "forearm_r"
-    },
-    {
-      "name": "thigh_r",
-      "head_blender_z_up": [
-        -0.125,
-        0,
-        0.65
-      ],
-      "tail_blender_z_up": [
-        -0.14,
-        0,
-        0.39
-      ],
-      "parent": "hips"
-    },
-    {
-      "name": "shin_r",
-      "head_blender_z_up": [
-        -0.14,
-        0,
-        0.39
-      ],
-      "tail_blender_z_up": [
-        -0.14,
-        0,
-        0.13
-      ],
-      "parent": "thigh_r"
-    },
-    {
-      "name": "foot_r",
-      "head_blender_z_up": [
-        -0.14,
-        0,
-        0.13
-      ],
-      "tail_blender_z_up": [
-        -0.14,
-        -0.18,
-        0.075
-      ],
-      "parent": "shin_r"
-    },
-    {
-      "name": "toe_r",
-      "head_blender_z_up": [
-        -0.14,
-        -0.18,
-        0.075
-      ],
-      "tail_blender_z_up": [
-        -0.14,
-        -0.25,
-        0.075
-      ],
-      "parent": "foot_r"
+        -0.33890002965927124,
+        0.00044000567868351936,
+        0.7922000885009766
+      ]
     },
     {
       "name": "weapon_r",
+      "parent": "hand_r",
       "head_blender_z_up": [
-        -0.485,
-        -0.012,
-        0.74
+        -0.33890002965927124,
+        0.00044000125490128994,
+        0.8390000462532043
       ],
       "tail_blender_z_up": [
-        -0.485,
-        -0.012,
-        0.5
+        -0.33890002965927124,
+        0.00044000562047585845,
+        0.6518000364303589
+      ]
+    },
+    {
+      "name": "thigh_l",
+      "parent": "hips",
+      "head_blender_z_up": [
+        0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
       ],
-      "parent": "hand_r"
+      "tail_blender_z_up": [
+        0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ]
+    },
+    {
+      "name": "shin_l",
+      "parent": "thigh_l",
+      "head_blender_z_up": [
+        0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ],
+      "tail_blender_z_up": [
+        0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ]
+    },
+    {
+      "name": "foot_l",
+      "parent": "shin_l",
+      "head_blender_z_up": [
+        0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ],
+      "tail_blender_z_up": [
+        0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "toe_l",
+      "parent": "foot_l",
+      "head_blender_z_up": [
+        0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ],
+      "tail_blender_z_up": [
+        0.11800000071525574,
+        -0.21550001204013824,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "thigh_r",
+      "parent": "hips",
+      "head_blender_z_up": [
+        -0.10100000351667404,
+        0.013000000268220901,
+        0.8790000081062317
+      ],
+      "tail_blender_z_up": [
+        -0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ]
+    },
+    {
+      "name": "shin_r",
+      "parent": "thigh_r",
+      "head_blender_z_up": [
+        -0.11100000143051147,
+        -0.010999999940395355,
+        0.4860000014305115
+      ],
+      "tail_blender_z_up": [
+        -0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ]
+    },
+    {
+      "name": "foot_r",
+      "parent": "shin_r",
+      "head_blender_z_up": [
+        -0.11800000071525574,
+        0.0,
+        0.11299999803304672
+      ],
+      "tail_blender_z_up": [
+        -0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ]
+    },
+    {
+      "name": "toe_r",
+      "parent": "foot_r",
+      "head_blender_z_up": [
+        -0.11800000071525574,
+        -0.15600000321865082,
+        0.04699999839067459
+      ],
+      "tail_blender_z_up": [
+        -0.11800000071525574,
+        -0.21550001204013824,
+        0.04699999839067459
+      ]
     },
     {
       "name": "skirt_front",
+      "parent": "hips",
       "head_blender_z_up": [
         0.0,
-        -0.182,
-        0.72
+        -0.11299999803304672,
+        0.9480000138282776
       ],
       "tail_blender_z_up": [
-        0,
-        -0.26,
-        0.15
-      ],
-      "parent": "hips"
+        0.0,
+        -0.179299995303154,
+        0.4634999632835388
+      ]
     },
     {
       "name": "skirt_back",
+      "parent": "hips",
       "head_blender_z_up": [
         0.0,
-        0.182,
-        0.72
+        0.15399999916553497,
+        0.9750000238418579
       ],
       "tail_blender_z_up": [
-        0,
-        0.26,
-        0.15
-      ],
-      "parent": "hips"
+        0.0,
+        0.22029998898506165,
+        0.49049997329711914
+      ]
     },
     {
       "name": "skirt_l",
+      "parent": "hips",
       "head_blender_z_up": [
-        0.182,
-        0.0,
-        0.72
+        0.15399999916553497,
+        0.04600000008940697,
+        0.9580000042915344
       ],
       "tail_blender_z_up": [
-        0.26,
-        0,
-        0.15
-      ],
-      "parent": "hips"
+        0.22029998898506165,
+        0.04600000008940697,
+        0.47349995374679565
+      ]
     },
     {
       "name": "skirt_r",
+      "parent": "hips",
       "head_blender_z_up": [
-        -0.182,
-        0.0,
-        0.72
+        -0.15399999916553497,
+        0.04600000008940697,
+        0.9580000042915344
       ],
       "tail_blender_z_up": [
-        -0.26,
-        0,
-        0.15
-      ],
-      "parent": "hips"
+        -0.22029998898506165,
+        0.04600000008940697,
+        0.47349995374679565
+      ]
     },
     {
       "name": "tail",
+      "parent": "hips",
       "head_blender_z_up": [
-        0,
-        0.18,
-        0.72
+        0.0,
+        0.1509999930858612,
+        0.9449999928474426
       ],
       "tail_blender_z_up": [
-        0,
-        0.54,
-        0.6
-      ],
-      "parent": "hips"
+        0.0,
+        0.4259999990463257,
+        0.7699999809265137
+      ]
     },
     {
       "name": "tail_tip",
+      "parent": "tail",
       "head_blender_z_up": [
-        0,
-        0.54,
-        0.6
+        0.0,
+        0.4259999990463257,
+        0.7699999809265137
       ],
       "tail_blender_z_up": [
-        0,
-        0.9,
-        0.48
-      ],
-      "parent": "tail"
+        0.0,
+        0.7319999933242798,
+        0.6679999232292175
+      ]
     }
   ],
   "npc_weapons": {
@@ -3129,5 +3134,9 @@
         24
       ]
     }
-  ]
+  ],
+  "character_quality_revision": "2026-11-23",
+  "quality_reference": "Hero_v1 five-head body and tailored dark fantasy geometry",
+  "bind_revision": "2026-11-23",
+  "body_to_head_ratio": 5.0410958904109595
 }

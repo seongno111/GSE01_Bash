@@ -1,0 +1,779 @@
+{
+  "date": "2026-11-24",
+  "all_checks_passed": true,
+  "variants": {
+    "longsword": {
+      "HERO_Sword_SkillWhirlwind": {
+        "samples": 24,
+        "maximum_fusion_socket_gap_m": 2.5272326552676957e-07,
+        "maximum_limb_joint_gap_m": 5.441556417530983e-06,
+        "minimum_corrupted_body_z_m": 0.0009185373783111572
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "staff": {
+      "HERO_Staff_SkillAshField": {
+        "samples": 29,
+        "maximum_fusion_socket_gap_m": 2.421152116249788e-07,
+        "maximum_limb_joint_gap_m": 4.2924915097509536e-06,
+        "minimum_corrupted_body_z_m": 0.000992049346677959
+      },
+      "HERO_Staff_Channel": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.980232238769531e-07,
+        "maximum_limb_joint_gap_m": 3.2807267692587633e-06,
+        "minimum_corrupted_body_z_m": 0.000996094080619514
+      },
+      "HERO_Staff_CastSweep": {
+        "samples": 34,
+        "maximum_fusion_socket_gap_m": 2.874031889734553e-07,
+        "maximum_limb_joint_gap_m": 4.440145986573378e-06,
+        "minimum_corrupted_body_z_m": 0.0009938012808561325
+      },
+      "HERO_Staff_CastBolt": {
+        "samples": 27,
+        "maximum_fusion_socket_gap_m": 4.097141946812725e-07,
+        "maximum_limb_joint_gap_m": 4.294379188828526e-06,
+        "minimum_corrupted_body_z_m": 0.000994386151432991
+      },
+      "HERO_Staff_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.585254843964796e-07,
+        "maximum_limb_joint_gap_m": 3.375992820815372e-06,
+        "minimum_corrupted_body_z_m": 0.0009960683528333902
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "bow": {
+      "HERO_Bow_SkillArrowFan": {
+        "samples": 20,
+        "maximum_fusion_socket_gap_m": 3.694053160340814e-07,
+        "maximum_limb_joint_gap_m": 4.027154257074168e-06,
+        "minimum_corrupted_body_z_m": 0.0009945441270247102
+      },
+      "HERO_Bow_Lower": {
+        "samples": 14,
+        "maximum_fusion_socket_gap_m": 4.815288970487274e-07,
+        "maximum_limb_joint_gap_m": 2.99220362939876e-06,
+        "minimum_corrupted_body_z_m": 0.0009958383161574602
+      },
+      "HERO_Bow_Release": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.8356020199004103e-07,
+        "maximum_limb_joint_gap_m": 3.0003183711509173e-06,
+        "minimum_corrupted_body_z_m": 0.0008843889809213579
+      },
+      "HERO_Bow_Aim": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 6.041061049038462e-07,
+        "maximum_limb_joint_gap_m": 3.2721877840505936e-06,
+        "minimum_corrupted_body_z_m": 0.0009952771943062544
+      },
+      "HERO_Bow_Draw": {
+        "samples": 17,
+        "maximum_fusion_socket_gap_m": 4.868742071061875e-07,
+        "maximum_limb_joint_gap_m": 3.4098597760456864e-06,
+        "minimum_corrupted_body_z_m": 0.0009952823165804148
+      },
+      "HERO_Bow_Nock": {
+        "samples": 16,
+        "maximum_fusion_socket_gap_m": 4.840584358805652e-07,
+        "maximum_limb_joint_gap_m": 3.0282737959774695e-06,
+        "minimum_corrupted_body_z_m": 0.0009955933783203363
+      },
+      "HERO_Bow_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.4620758953479386e-07,
+        "maximum_limb_joint_gap_m": 3.3833840400263556e-06,
+        "minimum_corrupted_body_z_m": 0.0009953690459951758
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 4.308471767545033e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.7342202920143806e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.999784085443832e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.6987150723151616e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 3.7814907850174666e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 1.7881393432617188e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.674277068954096e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.9839552036674004e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 3.793216365980463e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 2.8115454709698567e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.950279395762582e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "mace": {
+      "HERO_Mace_SkillGuardBreak": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 2.467706078541159e-07,
+        "maximum_limb_joint_gap_m": 4.511484973470273e-06,
+        "minimum_corrupted_body_z_m": -0.00025872141122817993
+      },
+      "HERO_Mace_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.4620758953479386e-07,
+        "maximum_limb_joint_gap_m": 3.6239550497896497e-06,
+        "minimum_corrupted_body_z_m": 0.0009949048981070518
+      },
+      "HERO_Mace_Sweep": {
+        "samples": 24,
+        "maximum_fusion_socket_gap_m": 3.976125736274223e-07,
+        "maximum_limb_joint_gap_m": 4.70690392355791e-06,
+        "minimum_corrupted_body_z_m": 0.0009931497042998672
+      },
+      "HERO_Mace_Strike": {
+        "samples": 26,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 4.583070089742056e-06,
+        "minimum_corrupted_body_z_m": 0.0009921070886775851
+      },
+      "HERO_Mace_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 3.459059927348793e-06,
+        "minimum_corrupted_body_z_m": 0.0009959988528862596
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "axe": {
+      "HERO_Axe_SkillExecution": {
+        "samples": 22,
+        "maximum_fusion_socket_gap_m": 3.788090890314031e-07,
+        "maximum_limb_joint_gap_m": 4.710016394181123e-06,
+        "minimum_corrupted_body_z_m": 0.0009921645978465676
+      },
+      "HERO_Axe_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 3.665201031043781e-07,
+        "maximum_limb_joint_gap_m": 3.7032008917657787e-06,
+        "minimum_corrupted_body_z_m": 0.0009946891805157065
+      },
+      "HERO_Axe_Cleave": {
+        "samples": 31,
+        "maximum_fusion_socket_gap_m": 3.623742508574421e-07,
+        "maximum_limb_joint_gap_m": 4.66596736682699e-06,
+        "minimum_corrupted_body_z_m": 0.000992378918454051
+      },
+      "HERO_Axe_Chop": {
+        "samples": 27,
+        "maximum_fusion_socket_gap_m": 3.662928507710056e-07,
+        "maximum_limb_joint_gap_m": 4.436243616362313e-06,
+        "minimum_corrupted_body_z_m": 0.0009924606420099735
+      },
+      "HERO_Axe_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 3.5004093173474836e-06,
+        "minimum_corrupted_body_z_m": 0.0009956235298886895
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "warhammer": {
+      "HERO_Hammer_SkillGroundSlam": {
+        "samples": 28,
+        "maximum_fusion_socket_gap_m": 3.816559456248789e-07,
+        "maximum_limb_joint_gap_m": 3.9523205786570445e-06,
+        "minimum_corrupted_body_z_m": 0.0009654279565438628
+      },
+      "HERO_Hammer_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 6.006850114687196e-07,
+        "maximum_limb_joint_gap_m": 3.7106285056303154e-06,
+        "minimum_corrupted_body_z_m": 0.0009943463373929262
+      },
+      "HERO_Hammer_Uppercut": {
+        "samples": 34,
+        "maximum_fusion_socket_gap_m": 4.777675730550706e-07,
+        "maximum_limb_joint_gap_m": 3.872159276000146e-06,
+        "minimum_corrupted_body_z_m": 0.0009933104738593102
+      },
+      "HERO_Hammer_Smash": {
+        "samples": 37,
+        "maximum_fusion_socket_gap_m": 4.588009213906721e-07,
+        "maximum_limb_joint_gap_m": 3.920280000877631e-06,
+        "minimum_corrupted_body_z_m": 0.0009930434171110392
+      },
+      "HERO_Hammer_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 5.136039239053156e-07,
+        "maximum_limb_joint_gap_m": 3.549980788275491e-06,
+        "minimum_corrupted_body_z_m": 0.0009948894148692489
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "spear": {
+      "HERO_Spear_SkillLongThrust": {
+        "samples": 19,
+        "maximum_fusion_socket_gap_m": 2.481166393361496e-07,
+        "maximum_limb_joint_gap_m": 4.692067831320422e-06,
+        "minimum_corrupted_body_z_m": 0.0004337996942922473
+      },
+      "HERO_Spear_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.1139176128970247e-07,
+        "maximum_limb_joint_gap_m": 3.5356910579516508e-06,
+        "minimum_corrupted_body_z_m": 0.0009939338779076934
+      },
+      "HERO_Spear_Sweep": {
+        "samples": 31,
+        "maximum_fusion_socket_gap_m": 3.69010642082685e-07,
+        "maximum_limb_joint_gap_m": 4.679652675224008e-06,
+        "minimum_corrupted_body_z_m": 0.000992188579402864
+      },
+      "HERO_Spear_Thrust": {
+        "samples": 23,
+        "maximum_fusion_socket_gap_m": 3.6210128308006726e-07,
+        "maximum_limb_joint_gap_m": 4.56367371841515e-06,
+        "minimum_corrupted_body_z_m": 0.0009919945150613785
+      },
+      "HERO_Spear_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.494554078993679e-07,
+        "maximum_limb_joint_gap_m": 3.2738159745358835e-06,
+        "minimum_corrupted_body_z_m": 0.0009948924416676164
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    },
+    "dagger": {
+      "HERO_Dagger_SkillFlurry": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 1.6858739404357614e-07,
+        "maximum_limb_joint_gap_m": 4.538865325711306e-06,
+        "minimum_corrupted_body_z_m": 0.0008882302790880203
+      },
+      "HERO_Dagger_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 3.7155321586556037e-06,
+        "minimum_corrupted_body_z_m": 0.0009945761412382126
+      },
+      "HERO_Dagger_Slash": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.374981941579031e-06,
+        "minimum_corrupted_body_z_m": 0.0009935536654666066
+      },
+      "HERO_Dagger_Stab": {
+        "samples": 16,
+        "maximum_fusion_socket_gap_m": 3.6983709472390583e-07,
+        "maximum_limb_joint_gap_m": 4.337978587175308e-06,
+        "minimum_corrupted_body_z_m": 0.0009929330553859472
+      },
+      "HERO_Dagger_Ready": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.4027400458748785e-07,
+        "maximum_limb_joint_gap_m": 3.7357957055161614e-06,
+        "minimum_corrupted_body_z_m": 0.0009950216626748443
+      },
+      "HERO_LampInspect": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.9950963321688443e-07,
+        "maximum_limb_joint_gap_m": 3.1552834977262548e-06,
+        "minimum_corrupted_body_z_m": 0.0009965448407456279
+      },
+      "HERO_GetUp": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 3.625608998714816e-07,
+        "maximum_limb_joint_gap_m": 3.911043883060734e-06,
+        "minimum_corrupted_body_z_m": 0.0009927089558914304
+      },
+      "HERO_Death": {
+        "samples": 25,
+        "maximum_fusion_socket_gap_m": 2.4755668231600746e-07,
+        "maximum_limb_joint_gap_m": 2.4166081921017417e-06,
+        "minimum_corrupted_body_z_m": 0.0009981816401705146
+      },
+      "HERO_Hit": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 2.5463115409962923e-07,
+        "maximum_limb_joint_gap_m": 4.203316210955323e-06,
+        "minimum_corrupted_body_z_m": 0.0009936828864738345
+      },
+      "HERO_Guard": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.5636927089222153e-07,
+        "maximum_limb_joint_gap_m": 3.4835747115090374e-06,
+        "minimum_corrupted_body_z_m": 0.0009940634481608868
+      },
+      "HERO_AttackLongsword": {
+        "samples": 18,
+        "maximum_fusion_socket_gap_m": 3.4240261593687705e-07,
+        "maximum_limb_joint_gap_m": 4.708578311184229e-06,
+        "minimum_corrupted_body_z_m": 0.0009917919524013996
+      },
+      "HERO_MoveStop": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.6378370570342845e-07,
+        "maximum_limb_joint_gap_m": 4.315224231644771e-06,
+        "minimum_corrupted_body_z_m": 0.0009954478591680527
+      },
+      "HERO_MoveStart": {
+        "samples": 13,
+        "maximum_fusion_socket_gap_m": 3.591767189858541e-07,
+        "maximum_limb_joint_gap_m": 4.150207470553683e-06,
+        "minimum_corrupted_body_z_m": 0.0009954795241355896
+      },
+      "HERO_Run": {
+        "samples": 15,
+        "maximum_fusion_socket_gap_m": 2.457562461863554e-07,
+        "maximum_limb_joint_gap_m": 4.006528500316114e-06,
+        "minimum_corrupted_body_z_m": 0.0003464040346443653
+      },
+      "HERO_Walk": {
+        "samples": 21,
+        "maximum_fusion_socket_gap_m": 3.5886748369909214e-07,
+        "maximum_limb_joint_gap_m": 4.124177346073072e-06,
+        "minimum_corrupted_body_z_m": 0.0009951908141374588
+      },
+      "HERO_Idle": {
+        "samples": 41,
+        "maximum_fusion_socket_gap_m": 2.908590629092326e-07,
+        "maximum_limb_joint_gap_m": 2.7787369597828144e-06,
+        "minimum_corrupted_body_z_m": 0.0009971680119633675
+      }
+    }
+  },
+  "scope": "Reimported assembled skins. Sampled fusion sockets, limb joints and finite deformed body bounds. Terrain collision and arbitrary crossfades are integration work."
+}

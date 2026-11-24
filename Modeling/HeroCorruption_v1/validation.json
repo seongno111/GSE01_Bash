@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-24",
+  "all_checks_passed": true,
+  "checks": {
+    "eight_equipment_keys_have_unique_modules": true,
+    "forty_shared_meshes_have_stable_indices": true,
+    "all_18_glbs_share_the_33_bone_hero_bind": true,
+    "all_weights_normalized": true,
+    "selected_arms_and_optional_lamp_compose_without_duplicates": true,
+    "all_49_bone_animations_copied_without_resampling": true,
+    "bow_draw_string_and_arrow_visibility_channels_match_source": true,
+    "shared_geometry_matches_library_and_modules": true,
+    "weapon_forearm_flesh_radius_exceeds_the_other_arm_by_1_5_times": true
+  },
+  "files": {
+    "hero_corrupted_parts.glb": {
+      "meshes": 40,
+      "triangles": 27399,
+      "bones": 33,
+      "actions": 49,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "hero_corrupted_base.glb": {
+      "meshes": 21,
+      "triangles": 7577,
+      "bones": 33,
+      "actions": 49,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "modules/corrupted_longsword_module.glb": {
+      "meshes": 3,
+      "triangles": 1658,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_longsword.glb": {
+      "meshes": 23,
+      "triangles": 8507,
+      "bones": 33,
+      "actions": 12,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.13721508889872008,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.015024661971464
+    },
+    "modules/corrupted_staff_module.glb": {
+      "meshes": 2,
+      "triangles": 2984,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_staff.glb": {
+      "meshes": 22,
+      "triangles": 9833,
+      "bones": 33,
+      "actions": 16,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.13721508889872008,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.015024661971464
+    },
+    "modules/corrupted_bow_module.glb": {
+      "meshes": 4,
+      "triangles": 2660,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_bow.glb": {
+      "meshes": 22,
+      "triangles": 9201,
+      "bones": 33,
+      "actions": 18,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.1372151160480493,
+      "free_forearm_radius_m": 0.06809595859198529,
+      "forearm_flesh_radius_ratio": 2.0150258383204425
+    },
+    "modules/corrupted_mace_module.glb": {
+      "meshes": 2,
+      "triangles": 2768,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_mace.glb": {
+      "meshes": 22,
+      "triangles": 9617,
+      "bones": 33,
+      "actions": 16,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.15679664827327358,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.302582869864385
+    },
+    "modules/corrupted_axe_module.glb": {
+      "meshes": 2,
+      "triangles": 2448,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_axe.glb": {
+      "meshes": 22,
+      "triangles": 9297,
+      "bones": 33,
+      "actions": 16,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.13721508889872008,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.015024661971464
+    },
+    "modules/corrupted_warhammer_module.glb": {
+      "meshes": 2,
+      "triangles": 2536,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_warhammer.glb": {
+      "meshes": 20,
+      "triangles": 9077,
+      "bones": 33,
+      "actions": 16,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.15679664827327358,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.302582869864385
+    },
+    "modules/corrupted_spear_module.glb": {
+      "meshes": 2,
+      "triangles": 2400,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_spear.glb": {
+      "meshes": 20,
+      "triangles": 8941,
+      "bones": 33,
+      "actions": 16,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.13721508889872008,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.015024661971464
+    },
+    "modules/corrupted_dagger_module.glb": {
+      "meshes": 2,
+      "triangles": 2368,
+      "bones": 33,
+      "actions": 0,
+      "maximum_inverse_bind_difference": 0.0
+    },
+    "assembled/hero_corrupted_dagger.glb": {
+      "meshes": 22,
+      "triangles": 9217,
+      "bones": 33,
+      "actions": 16,
+      "maximum_inverse_bind_difference": 0.0,
+      "fused_forearm_radius_m": 0.13721508889872008,
+      "free_forearm_radius_m": 0.06809598487220067,
+      "forearm_flesh_radius_ratio": 2.015024661971464
+    }
+  },
+  "scope": "Binary geometry, skin, assembly and animation verification. Deformed pose observations are in playback_validation.json."
+}

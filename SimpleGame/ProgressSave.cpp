@@ -64,6 +64,10 @@ namespace
         CheckNumbers(payload);
         auto state = payload.get<Saves::Snapshot>();
         state.skillCooldown = payload.value("skillCooldown", 0.0f);
+        for (size_t i = 0; i < state.echoes.size(); ++i)
+        {
+            state.echoes[i].weapon = payload.at("echoes").at(i).value("weapon", -1);
+        }
         Saves::Validate(state);
         return state;
     }
@@ -307,6 +311,10 @@ ProgressSave::Write(const std::filesystem::path& path, Saves::Snapshot state, bo
         Saves::Validate(state);
         Json payload = state;
         payload["skillCooldown"] = state.skillCooldown;
+        for (size_t i = 0; i < state.echoes.size(); ++i)
+        {
+            payload["echoes"][i]["weapon"] = state.echoes[i].weapon;
+        }
         CheckNumbers(payload);
         const auto checksum = Checksum(payload.dump());
         Json envelope{{"format", "TheLastEmber"},

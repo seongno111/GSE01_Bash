@@ -12,6 +12,7 @@
 #include "PostProcessing.h"
 #include "UnitAnimation.h"
 #include "ModelLibrary.h"
+#include "FireVfx.h"
 
 struct Point
 {
@@ -93,6 +94,9 @@ public:
         std::uint64_t modelDraws = 0;
         std::uint64_t modelUploads = 0;
         std::uint64_t modelPoseBytes = 0;
+        std::uint64_t vfxInstances = 0;
+        std::uint64_t vfxDraws = 0;
+        std::uint64_t vfxDropped = 0;
         std::uint64_t diskLoads = 0;
         std::uint64_t geometryBytes = 0;
         std::uint64_t instanceBytes = 0;
@@ -194,6 +198,7 @@ public:
     void Line(Point a, Point b, float width, Color color);
     void Ellipse(Point center, float rx, float ry, Color color, int segments = 24);
     void Glow(Point center, float rx, float ry, Color color);
+    void DrawFireVfx(const std::vector<FireVfxInstance>& instances, std::uint64_t dropped);
     void Text(float x, float y, const std::string& text, Color color, float scale = 2);
     float TextWidth(const std::string& text, float scale = 2);
 
@@ -214,6 +219,9 @@ private:
     struct ModelState;
     std::shared_ptr<ModelState> m_Models;
     void InitializeModelRenderer();
+    struct FireVfxState;
+    std::shared_ptr<FireVfxState> m_FireVfx;
+    void InitializeFireVfx();
 
     struct Vertex
     {

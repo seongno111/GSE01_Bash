@@ -68,7 +68,8 @@ float Prototype::ProjectileCooldown() const
 float Prototype::WeaponCooldown(int weapon) const
 {
     float cooldown = HeroWeapons[weapon].Cooldown(m_Player.level);
-    if (m_Player.corruption < MutationThreshold)
+    if (m_Player.corruption < MutationThreshold
+        || m_ModelAssets.CorruptedHero(HeroWeapons[weapon].key))
     {
         if (const auto* visual = m_ModelAssets.HeroWeaponActions(HeroWeapons[weapon].key))
         {

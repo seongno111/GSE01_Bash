@@ -1,0 +1,329 @@
+{
+  "date": "2026-11-24",
+  "asset_id": "HERO_CorruptedModular_v1",
+  "files": [
+    {
+      "path": "assembled/hero_corrupted_axe.glb",
+      "bytes": 2885944,
+      "sha256": "a9d80b90c471ab95f240cfbefbbbc4d9353c61176104eac8f0c4eb300a86f06e"
+    },
+    {
+      "path": "assembled/hero_corrupted_bow.glb",
+      "bytes": 2993152,
+      "sha256": "786f473607d0c50b0ccbed83894dd37bd4c820bb05302bfde7fd664c96df6ca4"
+    },
+    {
+      "path": "assembled/hero_corrupted_dagger.glb",
+      "bytes": 2851520,
+      "sha256": "029d2a64274c02a636bb5cb4e22d886df0499313b81e269120b59e05f50a2cb4"
+    },
+    {
+      "path": "assembled/hero_corrupted_longsword.glb",
+      "bytes": 2374120,
+      "sha256": "d90ea0e48e180b8ef14f572b47f7be3731fb63abf363283894eae1520d421eac"
+    },
+    {
+      "path": "assembled/hero_corrupted_mace.glb",
+      "bytes": 2864244,
+      "sha256": "6f787616ccab0991a403550e5728d3ac7ce50e80334c9823b8a2a9fe163edc46"
+    },
+    {
+      "path": "assembled/hero_corrupted_spear.glb",
+      "bytes": 2812492,
+      "sha256": "4b584483c744d05e5bf3247aa97717df1f7f99368a40eb0613df385726eea679"
+    },
+    {
+      "path": "assembled/hero_corrupted_staff.glb",
+      "bytes": 2976060,
+      "sha256": "00267d3edba864863f4406a7410cf7cd5ad5e6f3ed45d0c3928719e463178c77"
+    },
+    {
+      "path": "assembled/hero_corrupted_warhammer.glb",
+      "bytes": 5481612,
+      "sha256": "af14e70209df444dc47424a240da9a59fde98a44cdc5d70712f133e77292c29f"
+    },
+    {
+      "path": "bow_validation.json",
+      "bytes": 1012,
+      "sha256": "3dc9d61c04acee3fba40eabd8dfd67a9aefb1310389c7fd533e7ce7357caf728"
+    },
+    {
+      "path": "corruption_catalog.json",
+      "bytes": 79032,
+      "sha256": "c482f4b81e40ca957ef2356a48b7d4590ffa4bb41d1c51c07ca3d0b0d110584c"
+    },
+    {
+      "path": "hero_corrupted_base.glb",
+      "bytes": 9869180,
+      "sha256": "1d46d3fed5e439c8c1127efef1e8e59bc01281a26fe9e66db2a121ca1e36d5aa"
+    },
+    {
+      "path": "hero_corrupted_parts.glb",
+      "bytes": 11737472,
+      "sha256": "40c680b5c2cbb2bb642ce471ec051a2fdfd61e26af6aba2f67244acba08ac2b9"
+    },
+    {
+      "path": "hero_corruption_v1.blend",
+      "bytes": 15583573,
+      "sha256": "3373b04048e270eadeb00e6b3e1daa37a84adc4cf8b116be5637c5dc2fde60b7"
+    },
+    {
+      "path": "modules/corrupted_axe_module.glb",
+      "bytes": 239168,
+      "sha256": "55999fecf63d3004f53742c5c03742cda3f15cde9093620276950973574cf8d1"
+    },
+    {
+      "path": "modules/corrupted_bow_module.glb",
+      "bytes": 329952,
+      "sha256": "2f45c65bc6717c17d5eeef1caa30f6c50f746266aa3098b7e0fdd3173e68c3a2"
+    },
+    {
+      "path": "modules/corrupted_dagger_module.glb",
+      "bytes": 232644,
+      "sha256": "db6b0a2bf920e9079a200ff24b1415ed662308ccab5d7a0abe8bd4e9e28feec6"
+    },
+    {
+      "path": "modules/corrupted_longsword_module.glb",
+      "bytes": 168440,
+      "sha256": "5e6d169bc0eb65a1e95dc2ac5bb8e04e074bf2a9fc768c26154cc52726bf962e"
+    },
+    {
+      "path": "modules/corrupted_mace_module.glb",
+      "bytes": 267844,
+      "sha256": "a803fe9306461a3321465e987cbc6fd55b597caac20eb3f6c3dbc1a8e0c83667"
+    },
+    {
+      "path": "modules/corrupted_spear_module.glb",
+      "bytes": 234856,
+      "sha256": "d2a7770ded8922d37640213dadf7dcda8f2ed6fa038a423f96c104e583409c3e"
+    },
+    {
+      "path": "modules/corrupted_staff_module.glb",
+      "bytes": 289332,
+      "sha256": "5f62d4c9842e74aa2c8287187e59b67665e157c96ed111fb0d17e9388f153c9f"
+    },
+    {
+      "path": "modules/corrupted_warhammer_module.glb",
+      "bytes": 247392,
+      "sha256": "d21d30b61ae80ed23743eaf7fe8e96d902970bb092d0d33621cd18543a60ba74"
+    },
+    {
+      "path": "playback_validation.json",
+      "bytes": 31345,
+      "sha256": "7a0be3a0a5bfaf40daebab00e28c66cd27d1f01f1cc5e3e8a5ffb6ed183e9a9d"
+    },
+    {
+      "path": "previews/axe.png",
+      "bytes": 366433,
+      "sha256": "6ee460c4ed41cdb2b3da413b39420febaf85c6306bc25f052fe6c960bb3a252b"
+    },
+    {
+      "path": "previews/axe_fusion.png",
+      "bytes": 442241,
+      "sha256": "23ff5344c5fc4c214ce2bbda59899e4fc37a2e6bee0047b5e0b0e2e1c35ee3e9"
+    },
+    {
+      "path": "previews/bow.png",
+      "bytes": 363975,
+      "sha256": "0f84f8e68a3d27c9d11c8cd7d4db155f99e31c7b407cc37ca71d51f76a7cd04a"
+    },
+    {
+      "path": "previews/bow_fusion.png",
+      "bytes": 453337,
+      "sha256": "f6814dac847ad71f279c5f5a5ae4ee5c4dc885ce66305438b86061abb0a30ff5"
+    },
+    {
+      "path": "previews/bow_motion.gif",
+      "bytes": 1307910,
+      "sha256": "c6f1d68bc23a93782208fb412a2c5dc9112300755b8ecf9c1ee1ef93e081e48a"
+    },
+    {
+      "path": "previews/corrupted_forms.jpg",
+      "bytes": 150481,
+      "sha256": "58c158902a9758e79fe9098e8d69793e5410308d83293496b66fbbfcf294dfec"
+    },
+    {
+      "path": "previews/dagger.png",
+      "bytes": 368280,
+      "sha256": "2672bf5c06b34e8e8d5f86ca5423f4280c7fc04b1ec1f1af67acf69c7e2b3cf9"
+    },
+    {
+      "path": "previews/dagger_fusion.png",
+      "bytes": 459881,
+      "sha256": "0451583ac5de43ff677973f9607b26446dc9fa4d5b3ec1c0e8647dbc37c2120d"
+    },
+    {
+      "path": "previews/fusion_details.jpg",
+      "bytes": 252291,
+      "sha256": "be8a0147ca566b913dc768733ef5c871f3f1ff5c2d8be3d86829efbc1a1ce99b"
+    },
+    {
+      "path": "previews/longsword.png",
+      "bytes": 369934,
+      "sha256": "a50028ee6c3f6171ba80869e4b5d00efb8949ab9a9144a6fcbda1c77a3aab0fa"
+    },
+    {
+      "path": "previews/longsword_fusion.png",
+      "bytes": 452847,
+      "sha256": "de807258a3c9549eb91206f620ba25c2fc853e1800f0deb05286b38d61ba13f8"
+    },
+    {
+      "path": "previews/longsword_motion.gif",
+      "bytes": 1283019,
+      "sha256": "e6c3aa26f368cb23015cf7bfaf6b62a5071ee7921f15ac7b9a74f89135ae21da"
+    },
+    {
+      "path": "previews/mace.png",
+      "bytes": 371298,
+      "sha256": "9a0d7bc238c97e578c5cd8dc83acf3f8bbc56c4a414b4b4126e0ffc400d13dfb"
+    },
+    {
+      "path": "previews/mace_fusion.png",
+      "bytes": 453041,
+      "sha256": "32fa1b437d3dabeef9c36eba9a1a3683c3f12869ccce4ab3d63a4c1574e5c907"
+    },
+    {
+      "path": "previews/spear.png",
+      "bytes": 363401,
+      "sha256": "009ae9881cd21f2ca77d144e2d970b8619a96cf9894c5bc734378d5780944093"
+    },
+    {
+      "path": "previews/spear_fusion.png",
+      "bytes": 457260,
+      "sha256": "2f78d877725d3856a5002caf764131ea07053de29b7e62151dd2e48b78bef01c"
+    },
+    {
+      "path": "previews/staff.png",
+      "bytes": 369789,
+      "sha256": "0ca4627ec18091b3c7c39316a9f2998959ed2477bb48f7c04757ca250d7fbe3b"
+    },
+    {
+      "path": "previews/staff_fusion.png",
+      "bytes": 446149,
+      "sha256": "b16dddf0a92676072c7f812a2c114b4cf1a8dd3f091b30704d4cfa5bf1eb0697"
+    },
+    {
+      "path": "previews/warhammer.png",
+      "bytes": 367343,
+      "sha256": "4fb00251af4f6a159c151b105fa40324ebdac1abc23e2275672190bd57eb83fa"
+    },
+    {
+      "path": "previews/warhammer_fusion.png",
+      "bytes": 470705,
+      "sha256": "680d3628fa222513899901779620af4119128b8832e2f0112777945ecb21ac1c"
+    },
+    {
+      "path": "previews/warhammer_motion.gif",
+      "bytes": 1255400,
+      "sha256": "4b2fd13a8976f1982067c0c59d92808ba094287bd2060efdbc99527cc94871b7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7692,
+      "sha256": "e0355b0a1a581d8c57319c5bdf33abdcc06857df5673815c599aa0a93b22b740"
+    },
+    {
+      "path": "scripts/attach_animations.py",
+      "bytes": 4631,
+      "sha256": "2a30b5c76fd76c54248ce4299980299231f7442efbc4503c95cbc6c3c001cca6"
+    },
+    {
+      "path": "scripts/build_corruption.py",
+      "bytes": 19610,
+      "sha256": "49e3dd6c6f78ba284cc71de800c65b1ae3df3032926360e38e869e78a8c037a9"
+    },
+    {
+      "path": "scripts/compose_previews.py",
+      "bytes": 1656,
+      "sha256": "01d7adc0b6f6aee80649eeb3d88165fcc6ac7545e3b501bfe2a5a93ded20708c"
+    },
+    {
+      "path": "scripts/finalize_delivery.py",
+      "bytes": 3118,
+      "sha256": "f69ccbfb67601c49dae6c9f4f6d5309351b4545204f50d424d46669d1007f6c6"
+    },
+    {
+      "path": "scripts/render_corruption.py",
+      "bytes": 4769,
+      "sha256": "801627812630cea882c0b2ad1692097ec040cbc69fabca277b217c39ff6b9597"
+    },
+    {
+      "path": "scripts/sync_metadata.py",
+      "bytes": 3310,
+      "sha256": "48770d8f2c2eee54f2c0bd75ebbff65f5bb9f0e4256d5823f5bdaf1ef56a5162"
+    },
+    {
+      "path": "scripts/validate_corruption.py",
+      "bytes": 7073,
+      "sha256": "08341f1cd9511cda5cffe7ca48128b7320194dc724de922dbfb73b98ca012932"
+    },
+    {
+      "path": "scripts/validate_playback.py",
+      "bytes": 3777,
+      "sha256": "cbba6f82047a5a47e5cc98f68a8d0914c517d7b130efd9ad4ee24040f4aeb19e"
+    },
+    {
+      "path": "scripts/verify_bow.py",
+      "bytes": 2704,
+      "sha256": "6ca06d9b97623caf941c31a0bfe846e67cea03e3b066ec1247ce24abf0e547b2"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 5436,
+      "sha256": "0c03ac44aa9b9333d11d8441859924ebd0a6f4f28a162e85193a0724fdd7f879"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "Hero_v1/hero_rigged.glb",
+      "bytes": 2225984,
+      "sha256": "fe6cfa1c03077c306f0d1cc3db44c5875d75c512b121d04368771a92c0f22716"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/animation_catalog.json",
+      "bytes": 47537,
+      "sha256": "2a10a96ca6bca1697a09924691af5376df149ada1e27d22d48222322b9bf3c8d"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_axe_actions.glb",
+      "bytes": 1504620,
+      "sha256": "a0a9f647a95b28655492c1ccf421764f1e4bea80d9715404e1641f5c446bca8f"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_bow_actions.glb",
+      "bytes": 1592864,
+      "sha256": "35f8516698bbedc466504de4ed20055ccdceb487ce7be3b83d3fe4b706c76abb"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_dagger_actions.glb",
+      "bytes": 1474648,
+      "sha256": "b2ab2a11a01a38b5f532cb790a7456c7820079ab477fb927292ffb92a8a74407"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_mace_actions.glb",
+      "bytes": 1473916,
+      "sha256": "8726168666013bffb89446c6dba877e9dfb5dd0861ac6a14155cf9e38beda1f4"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_spear_actions.glb",
+      "bytes": 1433212,
+      "sha256": "686bb448cb0bee8706f01e027411ee926aad97275313e675180cd2be5b125d76"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_staff_actions.glb",
+      "bytes": 1592288,
+      "sha256": "c0a0cd8d8cd9e0273a27f26c150d7575310ab8fe78ea6d51cd80da8eeefda39b"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_warhammer_actions.glb",
+      "bytes": 9548580,
+      "sha256": "a9ab56ba21c3dc9fcfcdb4e98e92ad0e144f2917d4be15a9aa5c53cdf9187955"
+    },
+    {
+      "path": "HeroWeaponAnimations_v1/hero_weapon_animation_library.glb",
+      "bytes": 15255536,
+      "sha256": "0913fed6eca773bc40b713a97f9e89c7066cdf21ac1468d1f98643749cb98418"
+    }
+  ],
+  "scope": "Modeling assets only; equipment and corruption state selection require game integration."
+}

@@ -1,0 +1,911 @@
+{
+  "date": "2026-11-23",
+  "checks": {
+    "all_175_actions_reimported": true,
+    "all_sampled_character_meshes_clear_floor_within_2mm": true,
+    "all_sampled_limb_joints_connected_within_1mm": true
+  },
+  "all_checks_passed": true,
+  "scope": "Reimported GLBs, nine phases per action including endpoints. Checks are sampled deformations, not game runtime validation.",
+  "files": {
+    "LowPolyKit_v3\\npc\\npc_parts_rigged.glb": {
+      "NPC_Transform": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "NPC_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "NPC_GetUp": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "NPC_DeadHold": {
+        "minimum_character_z_m": 0.001002,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "NPC_Death": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "NPC_Hit": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "NPC_Talk": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Guard": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_KneelExit": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.2e-06,
+        "low_frames": []
+      },
+      "NPC_Reflect": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3.2e-06,
+        "low_frames": []
+      },
+      "NPC_Pray": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3.2e-06,
+        "low_frames": []
+      },
+      "NPC_KneelEnter": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.2e-06,
+        "low_frames": []
+      },
+      "NPC_SitExit": {
+        "minimum_character_z_m": 0.000402,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "NPC_Rest": {
+        "minimum_character_z_m": 0.000402,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "NPC_SitEnter": {
+        "minimum_character_z_m": 0.000402,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "NPC_Train": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_DawnOil": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Purify": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_HealAlly": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Bless": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Eat": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Trade": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Work": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_RaidMelee": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_AttackMerchant": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_AttackRaider": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_AttackAdventurer": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_AttackKnight": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_AttackPriest": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_WalkBack": {
+        "minimum_character_z_m": 0.000992,
+        "maximum_connected_joint_gap_m": 3.7e-06,
+        "low_frames": []
+      },
+      "NPC_StrafeR": {
+        "minimum_character_z_m": 0.000991,
+        "maximum_connected_joint_gap_m": 3.7e-06,
+        "low_frames": []
+      },
+      "NPC_StrafeL": {
+        "minimum_character_z_m": 0.000991,
+        "maximum_connected_joint_gap_m": 4.4e-06,
+        "low_frames": []
+      },
+      "NPC_MoveStop": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.5e-06,
+        "low_frames": []
+      },
+      "NPC_MoveStart": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.3e-06,
+        "low_frames": []
+      },
+      "NPC_Flee": {
+        "minimum_character_z_m": 0.000977,
+        "maximum_connected_joint_gap_m": 3.4e-06,
+        "low_frames": []
+      },
+      "NPC_Run": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3.4e-06,
+        "low_frames": []
+      },
+      "NPC_Walk": {
+        "minimum_character_z_m": 0.000992,
+        "maximum_connected_joint_gap_m": 3.5e-06,
+        "low_frames": []
+      },
+      "NPC_Observe": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "NPC_Idle": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      }
+    },
+    "LowPolyKit_v3\\monsters\\DeathEcho_rigged.glb": {
+      "MON_04_Transform": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "MON_04_Roar": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      },
+      "MON_04_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 5e-07,
+        "low_frames": []
+      },
+      "MON_04_DeadHold": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_04_Death": {
+        "minimum_character_z_m": 0.000945,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_04_Hit": {
+        "minimum_character_z_m": 0.000939,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      },
+      "MON_04_Attack": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      },
+      "MON_04_Run": {
+        "minimum_character_z_m": 0.000994,
+        "maximum_connected_joint_gap_m": 4.3e-06,
+        "low_frames": []
+      },
+      "MON_04_Walk": {
+        "minimum_character_z_m": 0.000994,
+        "maximum_connected_joint_gap_m": 4.3e-06,
+        "low_frames": []
+      },
+      "MON_04_Idle": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      }
+    },
+    "LowPolyKit_v3\\monsters\\FieldWarden_rigged.glb": {
+      "MON_02_Enrage": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_02_Burst": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_02_Roar": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_02_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_02_DeadHold": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_02_Death": {
+        "minimum_character_z_m": 0.00093,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_02_Hit": {
+        "minimum_character_z_m": 0.000919,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_02_Attack": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_02_Run": {
+        "minimum_character_z_m": 0.000991,
+        "maximum_connected_joint_gap_m": 5.7e-06,
+        "low_frames": []
+      },
+      "MON_02_Walk": {
+        "minimum_character_z_m": 0.000992,
+        "maximum_connected_joint_gap_m": 5.6e-06,
+        "low_frames": []
+      },
+      "MON_02_Idle": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      }
+    },
+    "LowPolyKit_v3\\monsters\\MutatedHuman_rigged.glb": {
+      "MON_03_Transform": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "MON_03_Roar": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      },
+      "MON_03_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 5e-07,
+        "low_frames": []
+      },
+      "MON_03_DeadHold": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_03_Death": {
+        "minimum_character_z_m": 0.000945,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_03_Hit": {
+        "minimum_character_z_m": 0.000939,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      },
+      "MON_03_Attack": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      },
+      "MON_03_Run": {
+        "minimum_character_z_m": 0.000994,
+        "maximum_connected_joint_gap_m": 4.3e-06,
+        "low_frames": []
+      },
+      "MON_03_Walk": {
+        "minimum_character_z_m": 0.000994,
+        "maximum_connected_joint_gap_m": 4.3e-06,
+        "low_frames": []
+      },
+      "MON_03_Idle": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.1e-06,
+        "low_frames": []
+      }
+    },
+    "LowPolyKit_v3\\monsters\\TaintedRaider_rigged.glb": {
+      "MON_01_Roar": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 2.9e-06,
+        "low_frames": []
+      },
+      "MON_01_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_01_DeadHold": {
+        "minimum_character_z_m": 0.000999,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "MON_01_Death": {
+        "minimum_character_z_m": 0.000951,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "MON_01_Hit": {
+        "minimum_character_z_m": 0.000944,
+        "maximum_connected_joint_gap_m": 2.9e-06,
+        "low_frames": []
+      },
+      "MON_01_Attack": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 2.9e-06,
+        "low_frames": []
+      },
+      "MON_01_Run": {
+        "minimum_character_z_m": 0.000994,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_01_Walk": {
+        "minimum_character_z_m": 0.000995,
+        "maximum_connected_joint_gap_m": 4e-06,
+        "low_frames": []
+      },
+      "MON_01_Idle": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 2.9e-06,
+        "low_frames": []
+      }
+    },
+    "LowPolyKit_v3\\monsters\\WitheredHollow_rigged.glb": {
+      "MON_00_Roar": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "MON_00_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "MON_00_DeadHold": {
+        "minimum_character_z_m": 0.000999,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "MON_00_Death": {
+        "minimum_character_z_m": 0.000958,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "MON_00_Hit": {
+        "minimum_character_z_m": 0.000951,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "MON_00_Attack": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      },
+      "MON_00_Run": {
+        "minimum_character_z_m": 0.000995,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "MON_00_Walk": {
+        "minimum_character_z_m": 0.000996,
+        "maximum_connected_joint_gap_m": 3.4e-06,
+        "low_frames": []
+      },
+      "MON_00_Idle": {
+        "minimum_character_z_m": 0.000998,
+        "maximum_connected_joint_gap_m": 2.5e-06,
+        "low_frames": []
+      }
+    },
+    "Monsters_v1\\AshWolf.glb": {
+      "AshWolf_FlankR": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "AshWolf_FlankL": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_PounceLand": {
+        "minimum_character_z_m": 0.005948,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_PounceTravel": {
+        "minimum_character_z_m": 0.107,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_PouncePrepare": {
+        "minimum_character_z_m": 0.005954,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Bite": {
+        "minimum_character_z_m": 0.005992,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Alert": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Spawn": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_DeadHold": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Death": {
+        "minimum_character_z_m": 0.005991,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Hit": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Run": {
+        "minimum_character_z_m": 0.00547,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Walk": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "AshWolf_Idle": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      }
+    },
+    "Monsters_v1\\BlightBear.glb": {
+      "BlightBear_Enrage": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_SlamRecover": {
+        "minimum_character_z_m": 0.005987,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_SlamImpact": {
+        "minimum_character_z_m": 0.005998,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_SlamPrepare": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_Slam": {
+        "minimum_character_z_m": 0.005999,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_Swipe": {
+        "minimum_character_z_m": 0.005971,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_Spawn": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_DeadHold": {
+        "minimum_character_z_m": 0.006845,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "BlightBear_Death": {
+        "minimum_character_z_m": 0.005985,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "BlightBear_Hit": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "BlightBear_Run": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "BlightBear_Walk": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "BlightBear_Idle": {
+        "minimum_character_z_m": 0.006,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      }
+    },
+    "Monsters_v1\\FallenPaladin.glb": {
+      "FallenPaladin_WardEnd": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_WardHold": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_WardPrepare": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_SlashRecover": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_SlashStrike": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_SlashPrepare": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_Slash": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_Spawn": {
+        "minimum_character_z_m": 0.006684,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "FallenPaladin_DeadHold": {
+        "minimum_character_z_m": 0.015342,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "FallenPaladin_Death": {
+        "minimum_character_z_m": 0.000955,
+        "maximum_connected_joint_gap_m": 5e-07,
+        "low_frames": []
+      },
+      "FallenPaladin_Hit": {
+        "minimum_character_z_m": 0.00668,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_Run": {
+        "minimum_character_z_m": 0.006557,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_Walk": {
+        "minimum_character_z_m": 0.006647,
+        "maximum_connected_joint_gap_m": 3.7e-06,
+        "low_frames": []
+      },
+      "FallenPaladin_Idle": {
+        "minimum_character_z_m": 0.006681,
+        "maximum_connected_joint_gap_m": 2.8e-06,
+        "low_frames": []
+      }
+    },
+    "Monsters_v1\\FallenPriest.glb": {
+      "FallenPriest_MendRecover": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_MendRelease": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_MendPrepare": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Mend": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_CurseRecover": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_CurseRelease": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_CursePrepare": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Curse": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Backstep": {
+        "minimum_character_z_m": 0.00635,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Spawn": {
+        "minimum_character_z_m": 0.006385,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "FallenPriest_DeadHold": {
+        "minimum_character_z_m": 0.001001,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "FallenPriest_Death": {
+        "minimum_character_z_m": 0.000958,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "FallenPriest_Hit": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.7e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Run": {
+        "minimum_character_z_m": 0.006265,
+        "maximum_connected_joint_gap_m": 3.5e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Walk": {
+        "minimum_character_z_m": 0.00635,
+        "maximum_connected_joint_gap_m": 3.5e-06,
+        "low_frames": []
+      },
+      "FallenPriest_Idle": {
+        "minimum_character_z_m": 0.006382,
+        "maximum_connected_joint_gap_m": 2.6e-06,
+        "low_frames": []
+      }
+    },
+    "Monsters_v1\\HighDemonAzar.glb": {
+      "HighDemonAzar_Roar": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Enrage": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_RiftRecover": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_RiftRelease": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_RiftPrepare": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Rift": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_VolleyRecover": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_VolleyRelease": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_VolleyPrepare": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Volley": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Spawn": {
+        "minimum_character_z_m": 0.001,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "HighDemonAzar_DeadHold": {
+        "minimum_character_z_m": 0.00099,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "HighDemonAzar_Death": {
+        "minimum_character_z_m": 0.000933,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "HighDemonAzar_Hit": {
+        "minimum_character_z_m": 0.000995,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Run": {
+        "minimum_character_z_m": 0.000993,
+        "maximum_connected_joint_gap_m": 4.9e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Walk": {
+        "minimum_character_z_m": 0.000951,
+        "maximum_connected_joint_gap_m": 4.8e-06,
+        "low_frames": []
+      },
+      "HighDemonAzar_Idle": {
+        "minimum_character_z_m": 0.000997,
+        "maximum_connected_joint_gap_m": 3.6e-06,
+        "low_frames": []
+      }
+    },
+    "Monsters_v1\\ThornStag.glb": {
+      "ThornStag_ChargeStop": {
+        "minimum_character_z_m": 0.008088,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "ThornStag_ChargeTravel": {
+        "minimum_character_z_m": -0.000852,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "ThornStag_ChargePrepare": {
+        "minimum_character_z_m": 0.01,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "ThornStag_Gore": {
+        "minimum_character_z_m": 0.008675,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "ThornStag_Flee": {
+        "minimum_character_z_m": 0.002933,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "ThornStag_Alert": {
+        "minimum_character_z_m": 0.009743,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "ThornStag_Spawn": {
+        "minimum_character_z_m": 0.01,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      },
+      "ThornStag_DeadHold": {
+        "minimum_character_z_m": 0.006044,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "ThornStag_Death": {
+        "minimum_character_z_m": 0.005991,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "ThornStag_Hit": {
+        "minimum_character_z_m": 0.01,
+        "maximum_connected_joint_gap_m": 3e-07,
+        "low_frames": []
+      },
+      "ThornStag_Run": {
+        "minimum_character_z_m": 0.006001,
+        "maximum_connected_joint_gap_m": 4e-07,
+        "low_frames": []
+      },
+      "ThornStag_Walk": {
+        "minimum_character_z_m": 0.006007,
+        "maximum_connected_joint_gap_m": 6e-07,
+        "low_frames": []
+      },
+      "ThornStag_Idle": {
+        "minimum_character_z_m": 0.009743,
+        "maximum_connected_joint_gap_m": 2e-07,
+        "low_frames": []
+      }
+    }
+  }
+}

@@ -113,6 +113,7 @@ namespace Models
         ModelInstance HeroWeaponModel(const std::string& key, bool equipped) const;
         const HeroWeaponVisual* HeroWeaponActions(const std::string& key) const;
         const Animation* HeroWeaponSkill(const HeroWeapon& weapon) const;
+        const ModelInstance* CorruptedHero(const std::string& key) const;
         ModelInstance Monster(int index) const;
         const MonsterVisual* MonsterSpecies(const std::string& modelKey) const;
         ModelInstance Prop(int propIndex) const;
@@ -150,6 +151,8 @@ namespace Models
         std::shared_ptr<const Asset> m_Props;
         void LoadHeroWeapons(const std::filesystem::path& folder);
         void LoadHeroWeaponAnimations(const std::filesystem::path& folder);
+        void LoadCorruptedHero(const std::filesystem::path& folder);
+        std::map<std::string, ModelInstance> m_CorruptedHeroes;
         std::map<std::string, HeroWeaponVisual> m_HeroWeaponActions;
         ModelInstance m_Hero;
         ModelInstance m_Arrow;

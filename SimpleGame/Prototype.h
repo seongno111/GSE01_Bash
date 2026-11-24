@@ -177,7 +177,6 @@ private:
     void BeginWeaponSkill();
     bool UpdateWeaponSkill();
     void ResolveWeaponSkill();
-    void DrawWeaponSkill(Renderer& renderer);
     std::vector<ActorId> WeaponSkillTargets() const;
     void ApplyPlayerHit(::Actor& target, float damage, float stun = 0);
     float WeaponCooldown(int weapon) const;
@@ -214,6 +213,7 @@ private:
     void DrawTile(Renderer& r, const WorldTileData& tile, Point p);
     void DrawProp(Renderer& r, Point p, int kind, unsigned seed);
     Models::ModelLibrary m_ModelAssets;
+    FireVfx m_FireVfx;
     std::unique_ptr<Terrain::Sampler> m_Terrain;
     SceneGraph m_Scene;
     ActorId m_WorldRoot;

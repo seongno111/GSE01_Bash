@@ -910,5 +910,6 @@
   "locomotion_manifest": "../LocomotionShared_20261029/locomotion_catalog.json",
   "animation_revision": "20261110_five_head_hero",
   "head_height_m": 0.365,
-  "body_to_head_ratio": 5.0410958904109595
+  "body_to_head_ratio": 5.0410958904109595,
+  "corrupted_appearance_catalog": "../HeroCorruption_v1/corruption_catalog.json"
 }

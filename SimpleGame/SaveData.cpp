@@ -85,6 +85,8 @@ namespace Saves
         for (const auto& echo : state.echoes)
         {
             actor(echo);
+            require(echo.weapon >= -1 && echo.weapon < int(HeroWeapons.size()),
+                    "Invalid echo weapon");
             require(echo.id > 0 && echo.id < state.nextEcho && echoes.insert(echo.id).second
                         && echo.maxHealth > 0 && echo.level >= 1,
                     "Invalid mutation echo");

@@ -236,4 +236,11 @@
     <ClInclude Include="SaveData.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="SaveTypes.h"><Filter>헤더 파일</Filter></ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FireVfx.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="RendererFireVfx.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClInclude Include="FireVfx.h"><Filter>헤더 파일</Filter></ClInclude>
+    <None Include="Shaders\FireVfx.vs"><Filter>소스 파일\Shaders</Filter></None>
+    <None Include="Shaders\FireVfx.fs"><Filter>소스 파일\Shaders</Filter></None>
+  </ItemGroup>
 </Project>
